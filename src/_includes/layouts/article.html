@@ -1,0 +1,13 @@
+---
+layout: layouts/article-layout.html
+---
+
+{% include "layouts/home/header.html" %}
+
+<main class="main-content">
+  <article class="window main-article">
+    <h1>{{title}}</h1>
+
+    <div class="window-body">{{ content | safe }}</div>
+  </article>
+</main>

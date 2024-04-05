@@ -1,0 +1,82 @@
+@import url("./layouts/single-column.css");
+
+.main-article {
+  padding: 1rem 2.25rem;
+}
+
+.main-article img:first-of-type {
+  display: block;
+  margin-inline: auto;
+}
+
+.main-article img {
+  max-width: 45%;
+  margin-block: 1rem;
+}
+
+.main-article > *:first-child {
+  margin-top: 0;
+}
+
+.main-article > h1,
+.main-article > h2,
+.main-article > h3,
+.main-article > h4,
+.main-article > h5 {
+  color: var(--clr-primary-main);
+}
+
+.main-article h1 + .window-body p:first-of-type {
+  margin-top: 1rem;
+}
+
+.main-article code {
+  margin-block: 2ch;
+}
+
+.direct-link {
+  opacity: 0;
+  font-size: 0.75rem;
+  color: var(--clr-primary-main);
+  font-family: var(--font-family-body);
+  font-style: normal;
+  text-decoration: none;
+}
+
+h2:has(.direct-link):hover .direct-link,
+h3:has(.direct-link):hover .direct-link,
+h4:has(.direct-link):hover .direct-link {
+  opacity: 1;
+}
+
+/** IMAGES */
+@media only screen and (min-width: 600px) {
+  img.float-left {
+    float: left;
+    max-width: 30%;
+    padding-right: 1rem;
+  }
+
+  img.float-right {
+    float: right;
+    max-width: 30%;
+    padding-left: 1rem;
+  }
+}
+
+/** OTHERS */
+table.stat-table {
+  margin: 0 auto;
+  min-width: 50%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table.stat-table thead tr,
+table.stat-table tr:not(:last-of-type) {
+  border-bottom: 1px solid currentColor;
+}
+
+.twitter-tweet {
+  margin-inline: auto;
+}

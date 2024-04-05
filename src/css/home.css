@@ -1,0 +1,19 @@
+@import url("./layouts/golden.css");
+
+/** GAME OF THE DAY */
+#game-of-the-day {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  width: 100%;
+}
+
+#game-of-the-day > img {
+  border-radius: var(--border-radius-sm);
+  max-width: 50px;
+}
+
+#game-of-the-day > * > p {
+  margin: 0;
+  font-style: italic;
+}

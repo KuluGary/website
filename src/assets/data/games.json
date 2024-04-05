@@ -1,0 +1,274 @@
+{
+  "backlog": [
+    {
+      "title": "New Pokémon Snap",
+      "link": "https://howlongtobeat.com/game/80153",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/80153_New_Pokemon_Snap.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Paper Mario",
+      "link": "https://howlongtobeat.com/game/6909",
+      "platform": "Nintendo 64",
+      "image": "https://howlongtobeat.com/games/Papermario.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Paper Mario: The Thousand-Year Door",
+      "link": "https://howlongtobeat.com/game/6911",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/Ttydbox.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Snap",
+      "link": "https://howlongtobeat.com/game/7173",
+      "platform": "Nintendo 64",
+      "image": "https://howlongtobeat.com/games/Pokemon_Snap_Coverart.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "The Legend of Zelda: Link's Awakening",
+      "link": "https://howlongtobeat.com/game/66255",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/66255_The_Legend_of_Zelda_Links_Awakening_(2019).jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "The Legend of Zelda: Link's Awakening DX",
+      "link": "https://howlongtobeat.com/game/10033",
+      "platform": "Game Boy Color",
+      "image": "https://howlongtobeat.com/games/ThLegendfeldaLinkAwakeningDX.JPG?width=50&crop=48%3A48%2Csmart"
+    }
+  ],
+  "custom": [
+    {
+      "title": "Animal Crossing: Wild World",
+      "link": "https://howlongtobeat.com/game/475",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/256px-Animal-crossing-wild-world-20060323091032903.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Minecraft",
+      "link": "https://howlongtobeat.com/game/6064",
+      "platform": "",
+      "image": "https://howlongtobeat.com/games/256px-Minecraft_1.1_Title.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Stardew Valley",
+      "link": "https://howlongtobeat.com/game/34716",
+      "platform": "PC",
+      "image": "https://howlongtobeat.com/games/34716_Stardew_Valley.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Super Smash Bros. Melee",
+      "link": "https://howlongtobeat.com/game/9442",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/250px-Super_Smash_Bros_Melee_Players_Ch.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Wakfu",
+      "link": "https://howlongtobeat.com/game/20849",
+      "platform": "PC",
+      "image": "https://howlongtobeat.com/games/WAKFUheader.jpg?width=50&crop=48%3A48%2Csmart"
+    }
+  ],
+  "completed": [
+    {
+      "title": "The Legend of Zelda: A Link to the Past",
+      "link": "https://howlongtobeat.com/game/10028",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/250px-Zelda_SNES.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "The Legend of Zelda: The Minish Cap",
+      "link": "https://howlongtobeat.com/game/10044",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/250px-TMC_Box_Art.JPG?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Super Mario Advance 2: Super Mario World",
+      "link": "https://howlongtobeat.com/game/9367",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/SuperMarioAdvance2SuperMarioWorld.JPG?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Mario & Luigi: Bowser's Inside Story",
+      "link": "https://howlongtobeat.com/game/5619",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/250px-Mario_and_Luigi_3_NA_Cover.PNG?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Mario & Luigi: Partners in Time",
+      "link": "https://howlongtobeat.com/game/5621",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/250px-Mario_and_Luigi_-_Parnters_In_Time_(box_art).jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Super Mario RPG",
+      "link": "https://howlongtobeat.com/game/130456",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/130456_Super_Mario_RPG.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Mario & Luigi: Superstar Saga",
+      "link": "https://howlongtobeat.com/game/5622",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/250px-MarioAndLuigiSuperstarSagaGBACoverArtUS.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Emerald Version",
+      "link": "https://howlongtobeat.com/game/7150",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/510BNCVM1NL._SL500_AA300_.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Blue/Red Rescue Team",
+      "link": "https://howlongtobeat.com/game/7155",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/200px-Pokemon_Mystery_Dungeon_-_Blue_Rescue_Team_Coverart.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Ruby and Sapphire",
+      "link": "https://howlongtobeat.com/game/7170",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/Pokemon_Ruby_NA.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Wario Land 4",
+      "link": "https://howlongtobeat.com/game/11064",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/250px-Wario_Land_4_Coverart.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Diamond and Pearl",
+      "link": "https://howlongtobeat.com/game/7148",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/PokemonDiamondBox.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Explorers of Sky",
+      "link": "https://howlongtobeat.com/game/7156",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/Pokemon-Mystery-Dungeon-Sky.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Explorers of Time and Explorers of Darkness",
+      "link": "https://howlongtobeat.com/game/7157",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/200px-Pokemon-mystery-dungeon-explorers-of-time.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Ranger",
+      "link": "https://howlongtobeat.com/game/7166",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/Pokemon_Ranger_Coverart.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Ranger: Guardian Signs",
+      "link": "https://howlongtobeat.com/game/7167",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/256px-Pokemon_Ranger_Guardian_Signs_Cover.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Ranger: Shadows of Almia",
+      "link": "https://howlongtobeat.com/game/7168",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/250px-Pokemon_Ranger_Shadows_of_Almia_Box_Art.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Crash Bandicoot: The Wrath of Cortex",
+      "link": "https://howlongtobeat.com/game/1975",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/CrashWrathofcortex_boxart.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon Colosseum",
+      "link": "https://howlongtobeat.com/game/7144",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/Pokemon_Colosseum_Coverart.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Pokémon XD: Gale of Darkness",
+      "link": "https://howlongtobeat.com/game/7181",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/PokemonXDbox.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Rayman 3: Hoodlum Havoc",
+      "link": "https://howlongtobeat.com/game/7612",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/Rayman_3.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Sonic Adventure 2 Battle",
+      "link": "https://howlongtobeat.com/game/8750",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/2kqxeg.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Sonic Adventure DX",
+      "link": "https://howlongtobeat.com/game/8751",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/1803649-box_sonicaddxdc_large.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Sonic Heroes",
+      "link": "https://howlongtobeat.com/game/8764",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/256px-Sonic_Heroes_cover.png?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Super Mario Sunshine",
+      "link": "https://howlongtobeat.com/game/9386",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/250px-Super_mario_sunshine.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "The Legend of Zelda: The Wind Waker",
+      "link": "https://howlongtobeat.com/game/10045",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/250px-ZeldaWindWakerGCNCoverArtUS.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Wario World",
+      "link": "https://howlongtobeat.com/game/11068",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/250px-Wario_World_game_cover.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Undertale",
+      "link": "https://howlongtobeat.com/game/30385",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/Undertale_header.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Disco Elysium",
+      "link": "https://howlongtobeat.com/game/57335",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/57335_Disco_Elysium.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Hollow Knight",
+      "link": "https://howlongtobeat.com/game/26286",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/Hollow_Knight_collection_branding.jpg?width=50&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Crash Bandicoot 2: Cortex Strikes Back",
+      "link": "https://howlongtobeat.com/game/1970",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/Crash2.jpg?width=100&crop=48%3A48%2Csmart"
+    },
+    {
+      "title": "Crash Bandicoot 3: Warped",
+      "link": "https://howlongtobeat.com/game/1972",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/252px-Crash_Bandicoot_3_Warped_Original_Box_Art.jpg?width=100&crop=48%3A48%2Csmart"
+    }
+  ],
+  "retired": [
+    {
+      "title": "Castlevania: Symphony of the Night",
+      "link": "https://howlongtobeat.com/game/1593",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/250px-Castlevania_SOTN_PAL.jpg?width=50&crop=48%3A48%2Csmart"
+    }
+  ]
+}

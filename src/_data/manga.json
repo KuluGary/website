@@ -1,0 +1,83 @@
+{
+  "on_hold": [
+    {
+      "title": "Tamen de Gushi",
+      "link": "https://m.weibo.cn/u/1300957955",
+      "cover": "d61cd6e5-7ae2-4e7d-a2a7-a6e8dce808a9.png.256.jpg",
+      "rating": "safe"
+    }
+  ],
+  "completed": [
+    {
+      "title": "Naruto",
+      "link": "https://shonenjumpplus.com/episode/10833519556325021854",
+      "cover": "c5a3090c-4ca0-40a2-9102-e0ee0c6dac15.jpg.256.jpg",
+      "rating": "safe"
+    },
+    {
+      "title": "Koe no Katachi",
+      "link": "https://pocket.shonenmagazine.com/episode/10834108156640750310",
+      "cover": "2f8d133a-cf64-442a-9c79-cde975f6ae0c.jpg.256.jpg",
+      "rating": "safe"
+    },
+    { "title": "Bartender", "cover": "50b521bc-a603-4d43-b860-8ad0adaab29c.png.256.jpg", "rating": "safe" },
+    { "title": "Dorohedoro", "cover": "54a405c8-c20b-475d-ae67-c8cf9d3b4aa6.jpg.256.jpg", "rating": "suggestive" },
+    { "title": "Kimetsu no Yaiba", "cover": "60530e72-f76f-45d5-b6f9-f95e05058fc3.png.256.jpg", "rating": "safe" }
+  ],
+  "reading": [
+    {
+      "title": "Yotsuba&!",
+      "link": "https://dengekidaioh.jp/product/yotsubato/",
+      "cover": "5951267f-f863-4e1b-b1fc-a5cfb56faaf8.jpg.256.jpg",
+      "rating": "safe"
+    },
+    {
+      "title": "Tsugumomo",
+      "link": "https://getsuaku.com/episode/001_gaw_tsugumomo",
+      "cover": "3e527997-35b6-4294-bc17-018dc2b7769a.jpg.256.jpg",
+      "rating": "erotica"
+    },
+    {
+      "title": "Witch Hat Atelier",
+      "link": "https://morning.kodansha.co.jp/c/tongariboushi.html",
+      "cover": "b6344fd4-7660-446d-8750-963bd391bcd2.jpg.256.jpg",
+      "rating": "safe"
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Attack on Titan",
+      "link": "https://pocket.shonenmagazine.com/episode/10834108156635088814",
+      "cover": "12158456-0511-468b-be37-8d2aa3772723.png.256.jpg",
+      "rating": "safe"
+    }
+  ],
+  "favourite": [
+    {
+      "title": "Yotsuba&!",
+      "link": "https://dengekidaioh.jp/product/yotsubato/",
+      "cover": "5951267f-f863-4e1b-b1fc-a5cfb56faaf8.jpg.256.jpg",
+      "rating": "safe"
+    },
+    { "title": "Vagabond", "cover": "05f8dcb4-8ea1-48db-a0b1-3a8fbf695e5a.jpg.256.jpg", "rating": "safe" },
+    {
+      "title": "Dungeon Meshi",
+      "link": "https://comic-walker.com/contents/detail/KDCW_EB06000001010000_68/",
+      "cover": "d885a28e-a5d3-4dc3-85e9-ca600f227b04.jpg.256.jpg",
+      "rating": "safe"
+    },
+    {
+      "title": "Haikyu!!",
+      "link": "https://www.shonenjump.com/j/rensai/haikyu.html",
+      "cover": "0929bd2f-284d-44c8-bc44-9a3da5f1002f.jpg.256.jpg",
+      "rating": "safe"
+    },
+    {
+      "title": "Witch Hat Atelier",
+      "link": "https://morning.kodansha.co.jp/c/tongariboushi.html",
+      "cover": "b6344fd4-7660-446d-8750-963bd391bcd2.jpg.256.jpg",
+      "rating": "safe"
+    },
+    { "title": "Fullmetal Alchemist", "cover": "a9cd0207-1b86-4738-a2b5-3575c32d5315.jpg.256.jpg", "rating": "safe" }
+  ]
+}
