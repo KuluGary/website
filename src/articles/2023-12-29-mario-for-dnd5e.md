@@ -3,7 +3,7 @@ title: Mario in Dungeons and Dragons 5e
 date: 2023-12-29
 lang: en
 tags: ["article", "dnd5e", "mario"]
-image: /assets/images/articless/2023-12-29-mario-for-dnd5e/header.png
+image: /assets/images/articles/2023-12-29-mario-for-dnd5e/header.png
 imageAlt: Mario in Dungeons and Dragons 5e
 description: We delve into the challenge of adapting the iconic Nintendo character to the world of Dungeons & Dragons 5th edition (D&D5e). From acrobatic skills to combat prowess, discover how to seamlessly integrate the famed plumber into your D&D5e campaign.
 ---

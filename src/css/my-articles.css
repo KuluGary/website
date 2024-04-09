@@ -3,7 +3,7 @@
 .article-list {
   display: flex;
   flex-direction: column;
-  row-gap: var(--spc-gutter-md);
+  row-gap: var(--spc-gutter-lg);
 }
 
 .article-date {
