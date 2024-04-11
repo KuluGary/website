@@ -22,4 +22,37 @@ function filterMangaOnlySafe(mangaList) {
   return mangaList.filter((manga) => manga.rating === "safe");
 }
 
-module.exports = { articlesByYear, formatDate, filterMangaOnlySafe };
+function generateShareUrl(pageUrl, site, title, tags) {
+  let url = "";
+
+  switch (site) {
+    case "twitter":
+      const twitterUrl = new URL("https://twitter.com/intent/tweet/");
+      twitterUrl.searchParams.append("url", pageUrl);
+      twitterUrl.searchParams.append("text", title);
+      twitterUrl.searchParams.append("hashtags", tags.join(","));
+
+      url = twitterUrl;
+      break;
+    case "tumblr":
+      const tumblrUrl = new URL("http://tumblr.com/widgets/share/tool");
+      tumblrUrl.searchParams.append("posttype", "link");
+      tumblrUrl.searchParams.append("canonicalUrl", pageUrl);
+      tumblrUrl.searchParams.append("title", title);
+      tumblrUrl.searchParams.append("tags", tags.join(","));
+
+      url = tumblrUrl;
+      break;
+    case "reddit":
+      const redditUrl = new URL("https://reddit.com/submit");
+      redditUrl.searchParams.append("url", pageUrl);
+      redditUrl.searchParams.append("title", title);
+
+      url = redditUrl;
+      break;
+  }
+
+  return url;
+}
+
+module.exports = { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl };

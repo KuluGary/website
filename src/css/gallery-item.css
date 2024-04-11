@@ -60,6 +60,33 @@ h4:has(.direct-link):hover .direct-link {
   }
 }
 
+/** FOOTER */
+.share-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-block: 2rem;
+  grid-column: span 3 / span 3;
+}
+
+.share-footer .share-title {
+  font-family: var(--font-family-body);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.share-button {
+  display: grid;
+  place-items: center;
+  background-color: var(--clr-bg-main);
+  border: 1px solid var(--clr-outline-main);
+  color: var(--text-400);
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
 /** OTHERS */
 table.stat-table {
   margin: 0 auto;

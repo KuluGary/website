@@ -1,9 +1,11 @@
-const { articlesByYear, formatDate, filterMangaOnlySafe } = require("./src/js/eleventyConfig");
+const { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
+
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/css");
   eleventyConfig.addPassthroughCopy("./src/js");
@@ -12,6 +14,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/js");
 
   eleventyConfig.addFilter("formatDate", formatDate);
+  eleventyConfig.addFilter("shareUrl", generateShareUrl);
   eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
 
   eleventyConfig.addCollection("articlesByYear", articlesByYear);
