@@ -1,0 +1,17 @@
+{% include "components/header.html" %}
+
+<main class="main-content">
+  <ul role="list" class="grid-list list-unstyled">
+    {% for item in pagination.items %}
+      <li class="window">
+        <a href="{{item.url}}">
+          <figure>
+            <img src="{{item.data.images[0].url}}" alt="{{ item.data.images[0].alt }}"/>
+            <figcaption>{{ item.data.title }}</figcaption>
+          </figure>
+        </a>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+</main>

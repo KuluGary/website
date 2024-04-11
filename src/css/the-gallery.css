@@ -1,0 +1,81 @@
+@import url("./layouts/single-column.css");
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: max-content;
+  row-gap: var(--spc-gutter-md);
+  column-gap: var(--spc-gutter-md);
+  place-items: start;
+  height: fit-content;
+}
+
+@media (min-width: 768px) {
+  .grid-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* desktop breakpoint */
+@media (min-width: 1024px) {
+  .grid-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid-list > li {
+  overflow: hidden;
+}
+
+.grid-list > li,
+.grid-list > li > a,
+.grid-list > li > a > figure {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-list > li > a > figure {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.grid-list > li > a > figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-list > li > a > figure > figcaption {
+  position: absolute;
+  bottom: 1ch;
+  left: 1ch;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.grid-list > li > a > figure::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grid-list > li > a:hover > figure > figcaption,
+.grid-list > li > a:focus > figure > figcaption {
+  opacity: 1;
+}
+
+.grid-list > li > a:hover > figure::before,
+.grid-list > li > a:focus > figure::before {
+  opacity: 0.45;
+  z-index: 0;
+  isolation: isolate;
+}
