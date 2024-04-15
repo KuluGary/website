@@ -71,7 +71,6 @@ h4:has(.direct-link):hover .direct-link {
   place-items: center;
   background-color: var(--clr-bg-main);
   border: 1px solid var(--clr-outline-main);
-  color: var(--text-400);
   padding: 3px 6px;
   border-radius: 4px;
 }

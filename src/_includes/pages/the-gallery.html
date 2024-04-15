@@ -6,7 +6,9 @@
       <li class="window">
         <a href="{{item.url}}">
           <figure>
-            <img src="{{item.data.images[0].url}}" alt="{{ item.data.images[0].alt }}"/>
+            {% if item.data.thumb %}
+              <img src="{{item.data.thumb.url}}" alt="{{ item.data.thumb.alt }}"/>
+            {% endif %}
             <figcaption>{{ item.data.title }}</figcaption>
           </figure>
         </a>
@@ -14,4 +16,17 @@
     </li>
   {% endfor %}
 </ul>
+
+<nav class="pagination">
+  {% if pagination.href.previous %}
+    <a id="button-previous" href="{{ pagination.href.previous }}">&laquo; Previous</a>
+  {% endif %}
+  {% if pagination.href.next %}
+    <a id="button-next" href="{{ pagination.href.next }}">Next &raquo;</a>
+  {% endif %}
+</nav>
 </main>
+
+<section class="right-sidebar">
+{% include "components/gallery-tags.html" %}
+</section>

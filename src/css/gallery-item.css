@@ -4,7 +4,8 @@
   padding: 1rem 2.25rem;
 }
 
-.main-article .splide img {
+.main-article .splide img, .main-article .splide iframe {
+  display: block;
   margin-inline: auto;
   margin-block: 2rem;
   max-height: 320px;
@@ -22,8 +23,18 @@
   color: var(--clr-primary-main);
 }
 
+.main-article h1 {
+  margin-bottom: 0.15rem;
+}
+
 .main-article h1 + .window-body p:first-of-type {
   margin-top: 1rem;
+}
+
+.main-article time {
+  margin-inline-start: 1ch;
+  font-style: italic;
+  font-size: 0.75rem;
 }
 
 .main-article code {
@@ -82,7 +93,6 @@ h4:has(.direct-link):hover .direct-link {
   place-items: center;
   background-color: var(--clr-bg-main);
   border: 1px solid var(--clr-outline-main);
-  color: var(--text-400);
   padding: 3px 6px;
   border-radius: 4px;
 }

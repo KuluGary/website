@@ -7,16 +7,25 @@ layout: layouts/gallery-item.html
 <main id="main-content" class="main-content">
   <article class="window main-article">
     <h1>{{title}}</h1>
+    <time datetime="{{article.data.date}}">{{ article.data.date | formatDate }}</time>
 
     <section class="splide" aria-label="Splide Basic HTML Example">
       <div class="splide__track">
         <ul class="splide__list">
-          {% for item in images %}
-          <li class="splide__slide">
-            <img src="{{item.url}}" alt="{{item.alt}}" />
-          </li>
-
-          {% endfor %}
+          {% if images %}
+            {% for item in images %}
+              <li class="splide__slide">
+                <img src="{{item.url}}" alt="{{item.alt}}"/>
+              </li>
+            {% endfor %}
+          {% endif %}
+          {% if videos %}
+            {% for item in videos %}
+              <li class="splide__slide">
+                {{ item.url | safe }}
+              </li>
+            {% endfor %}
+          {% endif %}
         </ul>
       </div>
     </section>

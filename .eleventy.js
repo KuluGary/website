@@ -1,4 +1,11 @@
-const { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl } = require("./src/js/eleventyConfig");
+const {
+  articlesByYear,
+  formatDate,
+  filterMangaOnlySafe,
+  generateShareUrl,
+  uniqueTags,
+  unslugify,
+} = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
@@ -16,6 +23,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("formatDate", formatDate);
   eleventyConfig.addFilter("shareUrl", generateShareUrl);
   eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
+  eleventyConfig.addFilter("uniqueTags", uniqueTags);
+  eleventyConfig.addFilter("unslugify", unslugify);
 
   eleventyConfig.addCollection("articlesByYear", articlesByYear);
 

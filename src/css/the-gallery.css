@@ -1,4 +1,4 @@
-@import url("./layouts/single-column.css");
+@import url("./layouts/two-column.css");
 
 .grid-list {
   display: grid;
@@ -42,7 +42,8 @@
   overflow: hidden;
 }
 
-.grid-list > li > a > figure > img {
+.grid-list > li > a > figure > img,
+.grid-list > li > a > figure > iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -53,9 +54,9 @@
   bottom: 1ch;
   left: 1ch;
   opacity: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: normal;
+  color: inherit;
+  font-size: 0.75rem;
 }
 
 .grid-list > li > a > figure::before {

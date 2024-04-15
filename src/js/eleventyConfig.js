@@ -55,4 +55,25 @@ function generateShareUrl(pageUrl, site, title, tags) {
   return url;
 }
 
-module.exports = { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl };
+function uniqueTags(collections = []) {
+  let tags = new Set();
+
+  for (const post of collections) {
+    if (post.data && post.data.tags) {
+      for (const tag of post.data.tags) {
+        tags.add(tag);
+      }
+    }
+  }
+  return [...tags];
+}
+
+function unslugify(slug) {
+  return slug
+    .toLowerCase()
+    .split(/[-_.\s]/)
+    .map((w) => `${w.charAt(0).toUpperCase()}${w.substr(1)}`)
+    .join(" ");
+}
+
+module.exports = { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl, uniqueTags, unslugify };
