@@ -3,7 +3,7 @@ title: Roguelike prototype
 date: 2024-04-13
 tags: ["gallery", "game-dev"]
 thumb:
-  url: https://i9.ytimg.com/vi_webp/XwVtgIe1eQk/mq2.webp?sqp=CKyl67AG-oaymwEmCMACELQB8quKqQMa8AEB-AHOBYAC4AOKAgwIABABGFEgRShyMA8=&rs=AOn4CLDU2pBWeRmZvNAVL698uD4WPlWo3Q
+  url: https://img.youtube.com/vi/XwVtgIe1eQk/sddefault.jpg
   alt: lorem
 videos:
   - url: <iframe width="560" height="315" src="https://www.youtube.com/embed/XwVtgIe1eQk?si=d_DrgQC7KGKicXF3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
