@@ -1,25 +1,27 @@
-{% set currentGame = games.playing[0] %} {% set currentManga = manga.reading[0]%}
+{% set currentGame = games.playing[0] %}
+{% set currentManga = manga.reading[0]%}
 
 <div class="window">
   <h2>Now</h2>
 
   <div class="window-body">
     <ul class="list-unstyled">
-      <li><b>Working on:</b> <a href="https://itch.io/jam/sant-jordi-24">Sant Jordi Jam</a></li>
+      <li>
+        <b>Working on:</b> Nothing</li>
       <li>
         <b>Playing: </b>
         {% if currentGame %}
-        <a href="{{currentGame.link}}">{{currentGame.title}}</a>
+          <a href="{{currentGame.link}}">{{currentGame.title}}</a>
         {% else %}
-        <span>Nothing</span>
+          <span>Nothing</span>
         {% endif %}
       </li>
       <li>
         <b>Reading: </b>
         {% if currentManga %}
-        <a href="{{currentManga.link}}">{{currentManga.title}}</a>
+          <a href="{{currentManga.link}}">{{currentManga.title}}</a>
         {% else %}
-        <span>Nothing</span>
+          <span>Nothing</span>
         {% endif %}
       </li>
     </ul>
