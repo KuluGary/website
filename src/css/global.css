@@ -13,16 +13,16 @@
   --clr-outline-main: grey;
   --clr-bg-main: #0e0e0e;
   --clr-font-main: #e4e4e4;
-  
+
   /** Border radius*/
   --border-radius-sm: 2px;
   --border-radius-md: 4px;
-  
+
   /** Spacing */
   --spc-gutter-sm: 0.25rem;
   --spc-gutter-md: 0.5rem;
   --spc-gutter-lg: 0.75rem;
-  
+
   /** Images */
   --img-bg-main: url("/assets/images/textures/sky_dark.jpg");
 }
@@ -35,7 +35,7 @@
     --clr-outline-main: grey;
     --clr-bg-main: #e4dfdc;
     --clr-font-main: #1d1d1d;
-    
+
     /** Images */
     --img-bg-main: url("/assets/images/textures/sky_light.jpg");
   }
@@ -180,7 +180,7 @@ a[href]:focus {
   font-weight: 400;
 }
 
-.window > .window-body > *:first-of-type {
+.window > .window-body > *:first-child {
   margin-top: 0px;
   padding-top: 0px;
 }
