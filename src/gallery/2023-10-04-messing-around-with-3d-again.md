@@ -1,6 +1,6 @@
 ---
 title: Messing around with 3D... again
-date: 2023-09-09
+date: 2023-10-04
 tags: ["gallery", "game-dev"]
 thumb:
   url: "/assets/images/gallery/2023-10-04-messing-around-with-3d-again/1.jpg"
