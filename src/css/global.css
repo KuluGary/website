@@ -5,7 +5,8 @@
 
   /** Fonts */
   --font-family-body: "MS gothic", consolas, sans-serif;
-  --font-family-heading: "Permanent Marker", cursive;
+  --font-family-heading: Gaposis, sans-serif;
+  /* "Permanent Marker", cursive; */
 
   /** Colors */
   --clr-primary-main: #11bfbc;
@@ -39,6 +40,11 @@
     /** Images */
     --img-bg-main: url("/assets/images/textures/sky_light.jpg");
   }
+}
+
+@font-face {
+  font-family: Gaposis;
+  src: url(/assets/fonts/gaposiss.ttf);
 }
 
 body {
@@ -75,7 +81,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-heading);
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 blockquote {
@@ -168,15 +174,15 @@ a[href]:focus {
   margin: 0;
   top: -1px;
   left: 0.5ch;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   color: var(--clr-primary-main);
   height: 8px;
   width: fit-content;
   padding-inline: 2px;
-  line-height: 0;
+  line-height: 8px;
   background: var(--clr-bg-main);
-  background-size: 2px;
+  background-size: 4px;
   font-weight: 400;
 }
 
