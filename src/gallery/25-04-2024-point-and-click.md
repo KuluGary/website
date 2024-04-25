@@ -3,7 +3,7 @@ title: Point and click
 date: 2024-04-13
 tags: ["gallery", "game-dev"]
 thumb:
-  url: https://img.youtube.com/vi/wbLRQ5w9ItA/sddefault.jpg
+  url: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
   alt: lorem
 videos:
   - url: <iframe width="560" height="315" src="https://www.youtube.com/embed/wbLRQ5w9ItA?si=N0hOrHbuXcpt2ZDH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
