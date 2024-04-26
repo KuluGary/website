@@ -37,18 +37,12 @@
       <link href="{{ absolutePostUrl }}"/>
       <updated>{{ post.date | dateToRfc3339 }}</updated>
       <id>{{ absolutePostUrl }}</id>
-
       {% if post.data.thumb %}
-        <image>
-          <title>{{post.data.title}}</title>
-          <link>{{ post.data.thumb.url }}</link>
-          <description>{{ post.data.thumb.alt }}</description>
-        </image>
+        <image:image xmlns:image="http://web.resource.org/rss/1.0/modules/image/">{{post.data.thumb.url}}</image:image>
       {% endif %}
-
-      <content xml:lang="{{ metadata.language }}" type="html"
-			>{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content
-		>
+      <content xml:lang="{{ metadata.language }}" type="html">
+        {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+      </content>
     </entry>
   {%- endfor %}
 </feed>
