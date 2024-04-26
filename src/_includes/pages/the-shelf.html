@@ -36,41 +36,41 @@
         If you wanna check the full list, you can see it at
         <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>
       </p>
-      <br />
+
       <h3>Playing now</h3>
 
       {% if games.playing %}
-      <ul class="list-unstyled">
-        {% for game in games.playing %}
-        <li class="list-element">
-          <img src="{{ game.image }}" />
-          <hgroup>
-            <h3>
-              <a href="{{game.link}}">{{game.title}}</a>
-            </h3>
-            <p>{{game.platform}}</p>
-          </hgroup>
-        </li>
-        {% endfor %}
-      </ul>
+        <ul class="list-unstyled">
+          {% for game in games.playing %}
+            <li class="list-element">
+              <img src="{{ game.image }}"/>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </li>
+          {% endfor %}
+        </ul>
       {% else %}
-      <p>Nothing currently</p>
-      <br />
+        <p>Nothing currently</p>
+
       {% endif %}
 
       <details>
         <summary>Backlog</summary>
         <ul class="list-unstyled">
           {% for game in games.backlog %}
-          <li class="list-element">
-            <img src="{{ game.image }}" />
-            <hgroup>
-              <h3>
-                <a href="{{game.link}}">{{game.title}}</a>
-              </h3>
-              <p>{{game.platform}}</p>
-            </hgroup>
-          </li>
+            <li class="list-element">
+              <img src="{{ game.image }}"/>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </li>
           {% endfor %}
         </ul>
       </details>
@@ -78,15 +78,15 @@
         <summary>Completed</summary>
         <ul class="list-unstyled">
           {% for game in games.completed %}
-          <li class="list-element">
-            <img src="{{ game.image }}" />
-            <hgroup>
-              <h3>
-                <a href="{{game.link}}">{{game.title}}</a>
-              </h3>
-              <p>{{game.platform}}</p>
-            </hgroup>
-          </li>
+            <li class="list-element">
+              <img src="{{ game.image }}"/>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </li>
           {% endfor %}
         </ul>
       </details>
@@ -94,15 +94,15 @@
         <summary>Have played / In progress</summary>
         <ul class="list-unstyled">
           {% for game in games.custom %}
-          <li class="list-element">
-            <img src="{{ game.image }}" />
-            <hgroup>
-              <h3>
-                <a href="{{game.link}}">{{game.title}}</a>
-              </h3>
-              <p>{{game.platform}}</p>
-            </hgroup>
-          </li>
+            <li class="list-element">
+              <img src="{{ game.image }}"/>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </li>
           {% endfor %}
         </ul>
       </details>
@@ -114,19 +114,18 @@
     <div class="window-body">
       <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
 
-      <br />
       <h3>Reading now</h3>
 
       <ul id="manga-list" class="list-unstyled">
         {% for manga in manga.reading | filterMangaOnlySafe %}
-        <li class="list-element">
-          <img src="/assets/images/covers/{{ manga.cover }}" />
-          <hgroup>
-            <h3>
-              <a href="{{manga.link}}">{{manga.title}}</a>
-            </h3>
-          </hgroup>
-        </li>
+          <li class="list-element">
+            <img src="/assets/images/covers/{{ manga.cover }}"/>
+            <hgroup>
+              <h3>
+                <a href="{{manga.link}}">{{manga.title}}</a>
+              </h3>
+            </hgroup>
+          </li>
         {% endfor %}
       </ul>
 
@@ -135,14 +134,14 @@
 
         <ul class="list-unstyled">
           {% for manga in manga.favourite %}
-          <li class="list-element">
-            <img src="/assets/images/covers/{{ manga.cover }}" />
-            <hgroup>
-              <h3>
-                <a href="{{manga.link}}">{{manga.title}}</a>
-              </h3>
-            </hgroup>
-          </li>
+            <li class="list-element">
+              <img src="/assets/images/covers/{{ manga.cover }}"/>
+              <hgroup>
+                <h3>
+                  <a href="{{manga.link}}">{{manga.title}}</a>
+                </h3>
+              </hgroup>
+            </li>
           {% endfor %}
         </ul>
       </details>
@@ -151,7 +150,8 @@
 </main>
 
 <aside class="right-sidebar">
-  {% include "components/now.html" %} {% include "components/game-of-the-day.html" %}
+  {% include "components/now.html" %}
+  {% include "components/game-of-the-day.html" %}
 </aside>
 
 {% include "components/footer.html" %}
