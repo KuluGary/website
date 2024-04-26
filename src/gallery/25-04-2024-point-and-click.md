@@ -1,6 +1,6 @@
 ---
 title: Point and click
-date: 2024-04-13
+date: 2024-04-25
 tags: ["gallery", "game-dev"]
 thumb:
   url: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
