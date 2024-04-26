@@ -37,6 +37,15 @@
       <link href="{{ absolutePostUrl }}"/>
       <updated>{{ post.date | dateToRfc3339 }}</updated>
       <id>{{ absolutePostUrl }}</id>
+
+      {% if post.data.thumb %}
+        <image>
+          <title>{{post.data.title}}</title>
+          <link>{{ post.data.thumb.url }}</link>
+          <description>{{ post.data.thumb.alt }}</description>
+        </image>
+      {% endif %}
+
       <content xml:lang="{{ metadata.language }}" type="html"
 			>{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content
 		>
