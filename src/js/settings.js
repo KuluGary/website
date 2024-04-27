@@ -1,5 +1,9 @@
 setUpSettings();
-setUpThemeSwitcher();
+document.onreadystatechange = () => {
+  if (document.readyState == "complete") {
+    setUpThemeSwitcher();
+  }
+};
 
 function setUpSettings() {
   const theme = localStorage.getItem("theme");
