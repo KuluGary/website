@@ -1,22 +1,10 @@
 @import url("./reset.css");
 
 :root {
-  color-scheme: light dark;
-
   /** Fonts */
   --font-family-body: "MS gothic", consolas, sans-serif;
   --font-family-heading: BlurryPixel, sans-serif;
   --font-family-section-heading: Gaposis, sans-serif;
-
-  /** Colors */
-  --clr-primary-main: #187986;
-  --clr-secondary-main: #915768;
-  --clr-outline-main: #dadada;
-  --clr-bg-main: #fff;
-  --clr-font-main: #1d1d1d;
-
-  /** Images */
-  --img-bg-main: url("/assets/images/textures/sky_light.jpg");
 
   /** Border radius*/
   --border-radius-sm: 2px;
@@ -28,7 +16,23 @@
   --spc-gutter-lg: 0.75rem;
 }
 
-.darkmode {
+html[data-theme="default"],
+html[data-theme="light"] {
+  color-scheme: light;
+
+  /** Colors */
+  --clr-primary-main: #187986;
+  --clr-secondary-main: #915768;
+  --clr-outline-main: #dadada;
+  --clr-bg-main: #fff;
+  --clr-font-main: #1d1d1d;
+
+  /** Images */
+  --img-bg-main: url("/assets/images/textures/sky_light.jpg");
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
   /** Colors */
   --clr-primary-main: #11bfbc;
   --clr-secondary-main: #bc2464;
@@ -38,6 +42,22 @@
 
   /** Images */
   --img-bg-main: url("/assets/images/textures/sky_dark.jpg");
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="default"] {
+    color-scheme: dark;
+
+    /** Colors */
+    --clr-primary-main: #11bfbc;
+    --clr-secondary-main: #bc2464;
+    --clr-outline-main: grey;
+    --clr-bg-main: #0e0e0e;
+    --clr-font-main: #e4e4e4;
+
+    /** Images */
+    --img-bg-main: url("/assets/images/textures/sky_dark.jpg");
+  }
 }
 
 @font-face {
