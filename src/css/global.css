@@ -9,11 +9,14 @@
   --font-family-section-heading: Gaposis, sans-serif;
 
   /** Colors */
-  --clr-primary-main: #11bfbc;
-  --clr-secondary-main: #bc2464;
-  --clr-outline-main: grey;
-  --clr-bg-main: #0e0e0e;
-  --clr-font-main: #e4e4e4;
+  --clr-primary-main: #187986;
+  --clr-secondary-main: #915768;
+  --clr-outline-main: #dadada;
+  --clr-bg-main: #fff;
+  --clr-font-main: #1d1d1d;
+
+  /** Images */
+  --img-bg-main: url("/assets/images/textures/sky_light.jpg");
 
   /** Border radius*/
   --border-radius-sm: 2px;
@@ -23,23 +26,18 @@
   --spc-gutter-sm: 0.25rem;
   --spc-gutter-md: 0.5rem;
   --spc-gutter-lg: 0.75rem;
+}
+
+.darkmode {
+  /** Colors */
+  --clr-primary-main: #11bfbc;
+  --clr-secondary-main: #bc2464;
+  --clr-outline-main: grey;
+  --clr-bg-main: #0e0e0e;
+  --clr-font-main: #e4e4e4;
 
   /** Images */
   --img-bg-main: url("/assets/images/textures/sky_dark.jpg");
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    /** Colors */
-    --clr-primary-main: #008d78;
-    --clr-secondary-main: #915768;
-    --clr-outline-main: grey;
-    --clr-bg-main: #e4dfdc;
-    --clr-font-main: #1d1d1d;
-
-    /** Images */
-    --img-bg-main: url("/assets/images/textures/sky_light.jpg");
-  }
 }
 
 @font-face {
@@ -102,6 +100,16 @@ a[href] {
 a[href]:hover,
 a[href]:focus {
   text-decoration: underline var(--clr-primary-main) dashed;
+}
+
+hr {
+  height: 0px;
+  border: 0;
+  border-bottom: 1px solid var(--clr-outline-main);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--clr-primary-main);
 }
 
 /** HEADER */
