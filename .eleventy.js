@@ -5,6 +5,7 @@ const {
   generateShareUrl,
   uniqueTags,
   unslugify,
+  generateSocialMediaImage,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -27,6 +28,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
   eleventyConfig.addFilter("uniqueTags", uniqueTags);
   eleventyConfig.addFilter("unslugify", unslugify);
+  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
 
   eleventyConfig.addCollection("articlesByYear", articlesByYear);
 

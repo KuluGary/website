@@ -76,4 +76,20 @@ function unslugify(slug) {
     .join(" ");
 }
 
-module.exports = { articlesByYear, formatDate, filterMangaOnlySafe, generateShareUrl, uniqueTags, unslugify };
+function generateSocialMediaImage(imageSrc) {
+  if (!imageSrc) return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
+
+  if (imageSrc.startsWith("https://")) return imageSrc;
+
+  return `https://kulugary.neocities.org${imageSrc}`;
+}
+
+module.exports = {
+  articlesByYear,
+  formatDate,
+  filterMangaOnlySafe,
+  generateShareUrl,
+  uniqueTags,
+  unslugify,
+  generateSocialMediaImage,
+};
