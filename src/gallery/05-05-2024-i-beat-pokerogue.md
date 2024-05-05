@@ -2,6 +2,8 @@
 title: I beat PokéRogue
 date: 2024-05-05
 tags: ["gallery", "games", "pokemon"]
+image: /assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png
+description: After playing for about a week, I've finally beaten PokéRogue.
 thumb:
   url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
   alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
