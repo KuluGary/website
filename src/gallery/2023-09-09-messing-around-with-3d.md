@@ -1,7 +1,7 @@
 ---
 title: Messing around with 3D
 date: 2023-09-09
-tags: ["gallery", "game-dev"]
+tags: ["gallery", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-12-09-messing-around-with-3d/1.gif"
   alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.

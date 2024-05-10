@@ -3,13 +3,38 @@ layout: layouts/gallery-item.html
 ---
 
 {% include "components/header.html" %}
+{% set previousPost = collections.gallery | getPreviousCollectionItem %}
+{% set nextPost = collections.gallery | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
   <article class="window main-article">
-    <h1>{{title}}</h1>
-    <time datetime="{{article.data.date}}">{{ article.data.date | formatDate }}</time>
+    <nav>
+      <div>
+        {% if nextPost %}
+          <a href="{{ nextPost.url }}">&laquo; {{ nextPost.data.title }}</a>
+        {% endif %}
+      </div>
+      <div>
+        {% if previousPost %}
+          <a href="{{ previousPost.url }}">{{ previousPost.data.title }} &raquo;</a>
+        {% endif %}
+      </div>
+    </nav>
 
-    <section class="splide" aria-label="Splide Basic HTML Example">
+    <header>
+      <h1>{{title}}</h1>
+      <time datetime="{{date}}">{{ date | formatDate }} </time>
+        in
+      <div class="tag-list">
+        {% for tag in tags %}
+          {% if tag !== "gallery" %}
+            <span>{{tag | unslugify}}{% if loop.index < tags.length %},{% endif %}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </header>
+
+    <section class="splide" aria-label="Gallery carousel">
       <div class="splide__track">
         <ul class="splide__list">
           {% if images %}

@@ -1,5 +1,6 @@
 {% set currentGame = games.playing[0] %}
 {% set currentManga = manga.reading[0]%}
+{% set currentProject = collections.game_dev[collections.game_dev.length - 1] %}
 
 <div class="window">
   <h2>Now</h2>
@@ -7,7 +8,13 @@
   <div class="window-body">
     <ul class="list-unstyled">
       <li>
-        <b>Working on:</b> Nothing</li>
+        <b>Working on:</b>
+        {% if currentProject %}
+          <a href="{{currentProject.link}}">{{currentProject.data.title}}</a>
+        {% else %}
+          <span>Nothing</span>
+        {% endif %}
+      </li>
       <li>
         <b>Playing: </b>
         {% if currentGame %}

@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var splide = new Splide(".splide", { role: "tab" });
+  var splide = new Splide(".splide", {
+    type: "tab",
+    perPage: 1.5,
+    focus: "center",
+    gap: 20,
+    fixedWidth: true,
+
+    // Responsive breakpoint
+    breakpoints: {
+      768: {
+        perPage: 1,
+        snap: true,
+        fixedWidth: false
+      },
+    },
+  });
   splide.mount();
 });
 

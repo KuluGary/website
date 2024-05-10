@@ -3,10 +3,38 @@ layout: layouts/article.html
 ---
 
 {% include "components/header.html" %}
+{% set previousPost = collections.article | getPreviousCollectionItem %}
+{% set nextPost = collections.article | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
   <article class="window main-article">
-    <h1>{{title}}</h1>
+    <nav>
+      <div>
+        {% if nextPost %}
+          <a href="{{ nextPost.url }}">&laquo; {{ nextPost.data.title }}</a>
+        {% endif %}
+      </div>
+      <div>
+        {% if previousPost %}
+          <a href="{{ previousPost.url }}">{{ previousPost.data.title }} &raquo;</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <header>
+      <h1>{{title}}</h1>
+      <time datetime="{{date}}">{{ date | formatDate }} </time>
+        in
+      <div class="tag-list">
+        {% for tag in tags %}
+          {% if tag !== "gallery" %}
+            <span>{{tag | unslugify}}
+              {% if loop.index < tags.length %},{% endif %}
+            </span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </header>
 
     <div class="window-body">{{ content | safe }}</div>
   </article>

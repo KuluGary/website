@@ -4,6 +4,18 @@
   padding: 1rem 2.25rem;
 }
 
+.main-article > nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5ch;
+}
+
+.main-article > nav > * {
+  width: max-content;
+  min-width: fit-content;
+}
+
 .main-article img:first-of-type {
   display: block;
   margin-inline: auto;
@@ -22,12 +34,29 @@
 .main-article > h2,
 .main-article > h3,
 .main-article > h4,
-.main-article > h5 {
+.main-article > h5,
+.main-article > header > h1 {
   color: var(--clr-primary-main);
+}
+
+.main-article h1 {
+  margin-bottom: 0.15rem;
+}
+
+.main-article header {
+  margin-bottom: 2rem;
 }
 
 .main-article h1 + .window-body p:first-of-type {
   margin-top: 1rem;
+}
+
+.main-article time {
+  display: inline-block;
+}
+
+.main-article .tag-list {
+  display: inline-block;
 }
 
 .main-article code {
