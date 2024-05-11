@@ -183,6 +183,11 @@ input[type="checkbox"] {
   transform: translateX(0%);
 }
 
+.header > hgroup > h1 {
+  font-size: 1.4rem;
+  font-family: var(--font-family-section-heading);
+}
+
 /** WINDOW STYLING */
 .window {
   position: relative;
