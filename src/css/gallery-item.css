@@ -132,3 +132,27 @@ table.stat-table tr:not(:last-of-type) {
 .twitter-tweet {
   margin-inline: auto;
 }
+
+details.spoilers {
+  margin-block: 1ch;
+  margin-top: 2ch
+}
+
+details.spoilers > * {
+  margin-left: 1ch;
+}
+
+details.spoilers[open] {
+  border: 1px solid var(--clr-outline-main);
+}
+
+details.spoilers > p:first-of-type {
+  margin-top: 0;
+}
+
+details.spoilers[open] summary {
+  margin-top: -0.5lh;
+  background-color: var(--clr-bg-main);
+  width: fit-content;
+  padding-inline: 0.25ch;
+}
