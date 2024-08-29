@@ -1,75 +1,64 @@
 {% include "components/header.html" %}
 
-<main id="main-content" class="main-content">
-  <div class="window">
-    <h2>my quizzes</h2>
+<main>
+  <section>
+    <h2>My quizzes</h2>
+    <ul>
+      <li>
+        <b> <a href="https://www.16personalities.com">16Personalities</a> / MBTI</b>:
+        <a href="https://www.16personalities.com/infj-personality">INFJ-T (Turbulent Advocate)</a>
+      </li>
+      <li>
+        <b>
+          <a href="https://principlesyou.com/archetypes">Archetypes</a> </b
+        >: <a href="https://principlesyou.com/archetypes/artisan">Artisan</a>,
+        <a href="https://principlesyou.com/archetypes/helper">Helper</a> and
+        <a href="https://principlesyou.com/archetypes/peacekeeper">Peacekeeper</a>. Weakest matches:
+        <a href="https://principlesyou.com/archetypes/commander">Commander</a> and
+        <a href="https://principlesyou.com/archetypes/impresario">Impresario</a>.
+      </li>
+    </ul>
+  </section>
 
-    <div class="window-body">
-      <ul>
-        <li>
-          <b><a href="https://www.16personalities.com">16Personalities</a> / MBTI</b>:
-          <a href="https://www.16personalities.com/infj-personality">INFJ-T (Turbulent Advocate)</a>
-        </li>
-        <li>
-          <b><a href="https://principlesyou.com/archetypes">Archetypes</a></b
-          >: <a href="https://principlesyou.com/archetypes/artisan">Artisan</a>,
-          <a href="https://principlesyou.com/archetypes/helper">Helper</a> and
-          <a href="https://principlesyou.com/archetypes/peacekeeper">Peacekeeper</a>. Weakest matches:
-          <a href="https://principlesyou.com/archetypes/commander">Commander</a> and
-          <a href="https://principlesyou.com/archetypes/impresario">Impresario</a>.
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="window">
-    <h2>More quizz results</h2>
-
-    <div class="window-body quizz-image-list">
-      <div>
-        <a href="https://uquiz.com/quiz/y7ORUH/whats-your-role-in-the-tragic-play" target="_blank">
-          <img
-            src="/assets/images/quizzes/tragic.jpg"
-            alt="The result of a test assigning me a role in a tragic story. It says: 'desperate narrator. this story is a cycle, and you're spinning around it like a hamster in a ball being tormented by a cat. you know how this story ends. after all, you've told it a thousand times. but you try to change it every time. you love the people in this story more than anything. so watching them fall victim to the narrative breaks you in a way you can't begin to describe. but all you can do is tell the story their story- with tears in your eyes. you're prone to anxiety and feelings of helplessness. you have so much love in your heart, and for once you wish it would change something. it didn't. it doesn't. it won't. but you refuse to stop telling the story. and you refuse to stop loving the people in it. in this way, no one is stronger than you. you just wish being strong hurt less.'"
-          />
-        </a>
-
-        <a href="https://web.archive.org/web/20231122014345/https://www.designexpo.org.tw/zh-TW" target="_blank">
-          <img
-            src="/assets/images/quizzes/elemental.jpg"
-            alt="The result of a test about what element I am more like. It says: 'WATER. Innate personality: worried, no news is good news, regretful, he/she knows me!, calm down. Character traits: soft spoken, a true thinker, seeking peace, show emotions only in front of close friends, monochrome artist, determined, secretive, independent. Most compatible: LIGHT, GROUND. Least compatible: WIND, STEEL.'"
-          />
-        </a>
-      </div>
-
-      <div>
-        <a href="https://en.shindanmaker.com/629150" target="_blank">
-          <img
-            src="/assets/images/quizzes/demon.jpg"
-            alt="The result of a test about what kind of demon I am. It says: 'What kind of demon are you? Gary is a Familiar Spirit! Your best friend must be a witch, then, hm?'"
-          />
-        </a>
-        <figure>
-          <a href="https://www.idrlabs.com/jock-nerd-prep-goth/test.php" target="_blank">
-            <img
-              src="/assets/images/quizzes/jock-nerd-prep-goth.jpg"
-              alt="The result of a test assigning me a Jock-Prep-Nerd-Goth archetype. There's a square graphs with a point in it. The text says: 'You're 55.8% Goth, 76.7% Nerd, placing you in the LARP category.'"
-            />
-          </a>
-          <figcaption>
-            <strong>LARP</strong> stands for Live Action Role-Playing. It is a form of role-playing where participants
-            physically act out their characters' actions and interact with one another in a simulated world. In the
-            Jock-Nerd/Prep-Goth Test, LARP should not be understood pejoratively or as exclusively pertaining to
-            role-playing, but as someone who combines the geeky knowledge of nerds with the non-conformity of Goths to
-            engage in gaming, fantasy-worlds and the like.
-          </figcaption>
-        </figure>
-        <a href="http://cupped-expressions.net/cheese/quiz/" target="NEW">
-          <img src="/assets/images/quizzes/mozzarella.gif" border="0" width="226" height="93" alt="I am mozzarella!" />
-        </a>
-      </div>
-    </div>
-  </div>
+  <section class="quizz-image-list">
+    {# <h2>More quizz results</h2> #}
+    <a href="https://uquiz.com/quiz/y7ORUH/whats-your-role-in-the-tragic-play" target="_blank">
+      <img
+        src="/assets/images/quizzes/tragic.jpg"
+        alt="The result of a test assigning me a role in a tragic story. It says: 'desperate narrator. this story is a cycle, and you're spinning around it like a hamster in a ball being tormented by a cat. you know how this story ends. after all, you've told it a thousand times. but you try to change it every time. you love the people in this story more than anything. so watching them fall victim to the narrative breaks you in a way you can't begin to describe. but all you can do is tell the story their story- with tears in your eyes. you're prone to anxiety and feelings of helplessness. you have so much love in your heart, and for once you wish it would change something. it didn't. it doesn't. it won't. but you refuse to stop telling the story. and you refuse to stop loving the people in it. in this way, no one is stronger than you. you just wish being strong hurt less.'"
+      />
+    </a>
+    <a href="https://web.archive.org/web/20231122014345/https://www.designexpo.org.tw/zh-TW" target="_blank">
+      <img
+        src="/assets/images/quizzes/elemental.jpg"
+        alt="The result of a test about what element I am more like. It says: 'WATER. Innate personality: worried, no news is good news, regretful, he/she knows me!, calm down. Character traits: soft spoken, a true thinker, seeking peace, show emotions only in front of close friends, monochrome artist, determined, secretive, independent. Most compatible: LIGHT, GROUND. Least compatible: WIND, STEEL.'"
+      />
+    </a>
+    <a href="https://en.shindanmaker.com/629150" target="_blank">
+      <img
+        src="/assets/images/quizzes/demon.jpg"
+        alt="The result of a test about what kind of demon I am. It says: 'What kind of demon are you? Gary is a Familiar Spirit! Your best friend must be a witch, then, hm?'"
+      />
+    </a>
+    <figure>
+      <a href="https://www.idrlabs.com/jock-nerd-prep-goth/test.php" target="_blank">
+        <img
+          src="/assets/images/quizzes/jock-nerd-prep-goth.jpg"
+          alt="The result of a test assigning me a Jock-Prep-Nerd-Goth archetype. There's a square graphs with a point in it. The text says: 'You're 55.8% Goth, 76.7% Nerd, placing you in the LARP category.'"
+        />
+      </a>
+      <figcaption>
+        <strong>LARP</strong> stands for Live Action Role-Playing. It is a form of role-playing where participants
+        physically act out their characters' actions and interact with one another in a simulated world. In the
+        Jock-Nerd/Prep-Goth Test, LARP should not be understood pejoratively or as exclusively pertaining to
+        role-playing, but as someone who combines the geeky knowledge of nerds with the non-conformity of Goths to
+        engage in gaming, fantasy-worlds and the like.
+      </figcaption>
+    </figure>
+    <a href="http://cupped-expressions.net/cheese/quiz/" target="NEW">
+      <img src="/assets/images/quizzes/mozzarella.gif" border="0" width="226" height="93" alt="I am mozzarella!" />
+    </a>
+  </section>
 </main>
 
 {% include "components/footer.html" %}

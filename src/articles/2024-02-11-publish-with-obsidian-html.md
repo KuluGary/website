@@ -1,6 +1,6 @@
 ---
 title: Publish your notes with ObsidianHTML
-date: 2024-02-11
+# date: 2024-02-11
 lang: en
 tags: ["article", "obsidian", "development"]
 image: /assets/images/articles/2024-02-11-publish-with-obsidian-html/header.png

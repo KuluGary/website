@@ -1,6 +1,6 @@
 ---
 title: Mario in Dungeons and Dragons 5e
-date: 2023-12-29
+# date: 2023-12-29
 lang: en
 tags: ["article", "dnd5e", "mario"]
 image: /assets/images/articles/2023-12-29-mario-for-dnd5e/header.png

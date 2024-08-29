@@ -1,18 +1,22 @@
-@import url("./layouts/single-column.css");
-
 .quizz-image-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1ch;
   column-gap: var(--spc-gutter-md);
 }
+
 @media (min-width: 1024px) {
   .quizz-image-list {
     grid-template-columns: 1fr 1fr;
   }
 }
+.quizz-image-list > h2 {
+  grid-column: 1 / -1;
+  outline: 1px solid red;
+}
 
-.quizz-image-list > * {
+.quizz-image-list > a,
+.quizz-image-list > figure {
   display: flex;
   flex-direction: column;
   row-gap: var(--spc-gutter-lg);
@@ -26,4 +30,8 @@ figure > figcaption {
   padding: 1ch;
   border: 1px solid var(--clr-outline-main);
   border-top: 0;
+}
+
+img {
+  width: 100%;
 }

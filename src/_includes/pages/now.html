@@ -1,0 +1,202 @@
+{% include "components/header.html" %}
+{% set currentProject = collections.game_dev[collections.game_dev.length - 1] %}
+
+<main>
+  <h2>About this page</h2>
+
+  <p>
+    This is both a <a href="https://nownownow.com/about">now page</a> and an archive of sorts for the stuff I'm into or i've been into in the past.
+  </p>
+  <p>I have a long backlog of stuff I still need to check out, which you can peek at in the following section.</p>
+
+  <h2>Working on</h2>
+  <p>Here's the stuff I'm working on currently.</p>
+
+  <table class="data-table">
+    <tbody>
+      <tr>
+        <td>
+          <a href="{{currentProject.data.image}}" target="_blank"><img width="120" src="{{ currentProject.data.image }}"/></a>
+        </td>
+        <td>
+          <hgroup>
+            <h3>
+              <a href="{{currentProject.url}}">{{currentProject.data.title}}</a>
+            </h3>
+            <p>{{currentProject.data.date | formatDate}}</p>
+
+          </hgroup>
+        </td>
+        <td>
+          <p>{{currentProject.data.description}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Game List</h2>
+
+  <p>Here are some of the games I've played or I'm currently playing.</p>
+  <p>The "Have played / In progress" section are games that either don't have an ending or are multiplayer</p>
+  <p>
+        If you wanna check the full list, you can see it at
+        <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>
+  </p>
+
+  <h3>Playing now</h3>
+
+  {% if games.playing %}
+    <table class="data-table">
+      <tbody>
+        {% for game in games.playing %}
+          <tr>
+            <td>
+              <a href="{{ game.image }}" target="_blank" rel="noopener noreferrer"><img src="{{ game.image }}"/></a>
+            </td>
+            <td>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Nothing currently</p>
+
+  {% endif %}
+
+  <details>
+    <summary>Backlog</summary>
+    <table class="data-table">
+      <tbody>
+        {% for game in games.backlog %}
+          <tr>
+            <td>
+              <a href="{{ game.image }}" target="_blank" rel="noopener noreferrer">
+                <img width="80" src="{{ game.image }}"/>
+              </a>
+            </td>
+            <td>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </details>
+
+  <details>
+    <summary>Completed</summary>
+    <table class="data-table">
+      <tbody>
+        {% for game in games.completed %}
+          <tr>
+            <td>
+              <a href="{{ game.image }}" target="_blank" rel="noopener noreferrer">
+                <img width="80" src="{{ game.image }}"/>
+              </a>
+            </td>
+            <td>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </details>
+  <details>
+    <summary>Have played / In progress</summary>
+    <table class="data-table">
+      <tbody>
+        {% for game in games.custom %}
+          <tr>
+            <td>
+              <a href="{{ game.image }}" target="_blank" rel="noopener noreferrer">
+                <img width="80" src="{{ game.image }}"/>
+              </a>
+            </td>
+            <td>
+              <hgroup>
+                <h3>
+                  <a href="{{game.link}}">{{game.title}}</a>
+                </h3>
+                <p>{{game.platform}}</p>
+              </hgroup>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </details>
+</div>
+<div class="window">
+  <h2>Manga</h2>
+
+  <div class="window-body">
+    <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
+
+    <h3>Reading now</h3>
+
+    <table class="data-table">
+      <tbody>
+        {% for manga in manga.reading | filterMangaOnlySafe %}
+          <tr>
+            <td>
+              <a href="/assets/images/covers/{{ manga.cover }}" target="_blank" rel="noopener noreferrer">
+                <img width="60" src="/assets/images/covers/{{ manga.cover }}"/>
+              </a>
+            </td>
+            <td>
+              <hgroup>
+                <h3>
+                  <a href="{{manga.link}}">{{manga.title}}</a>
+                </h3>
+              </hgroup>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <details>
+      <summary>Favorite manga</summary>
+
+      <table class="data-table">
+        <tbody>
+          {% for manga in manga.favourite %}
+            <tr>
+              <td>
+                <a href="/assets/images/covers/{{ manga.cover }}" target="_blank" rel="noopener noreferrer">
+                  <img width="60" src="/assets/images/covers/{{ manga.cover }}"/>
+                </a>
+              </td>
+              <td>
+                <hgroup>
+                  <h3>
+                    <a href="{{manga.link}}">{{manga.title}}</a>
+                  </h3>
+                </hgroup>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>      
+    </details>
+  </div>
+</div>
+</main>

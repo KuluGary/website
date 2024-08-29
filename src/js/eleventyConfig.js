@@ -13,7 +13,12 @@ function articlesByYear(collection) {
 }
 
 function formatDate(dateObj) {
-  const formatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+  const formatter = new Intl.DateTimeFormat("es", {
+    // dateStyle: "short",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 
   return formatter.format(dateObj);
 }

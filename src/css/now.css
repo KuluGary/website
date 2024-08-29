@@ -1,4 +1,31 @@
-@import url("./layouts/two-column.css");
+.item-list li {
+  display: flex;
+  gap: 1ch;
+  margin-block: 1ch;
+  align-items: center;
+}
+
+.item-list li img {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+}
+
+.item-list li h3 {
+  font-size: 0.8rem;
+  font-family: var(--font-family-body);
+  font-weight: 400;
+  font-style: normal;
+  margin-block: 0.5ch;
+}
+
+.item-list li hgroup > p {
+  font-size: 0.7rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* @import url("./layouts/two-column.css");
 
 .list-element {
   gap: 0.5rem;
@@ -17,23 +44,7 @@
 
 .list-element hgroup > p {
   font-size: 0.7rem;
-  font-style: italic;
-  margin: 0;
-}
-
-.list-element img {
-  max-width: 50px;
-}
-
-/** GAME OF THE DAY */
-#game-of-the-day {
-  display: flex;
-  align-items: center;
-  gap: 1ch;
-  width: 100%;
-}
-
-#game-of-the-day > img {
+  fow#game-of-the-day > img {
   border-radius: var(--border-radius-sm);
   max-width: 50px;
 }
@@ -41,10 +52,10 @@
 #game-of-the-day > * > p {
   margin: 0;
   font-style: italic;
-}
+} */
 
 /* MANGA LIST */
-#manga-list {
+/* #manga-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -59,4 +70,4 @@
 
 #manga-list img {
   max-width: 128px;
-}
+} */

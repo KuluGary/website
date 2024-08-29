@@ -3,8 +3,8 @@ layout: layouts/gallery-item.html
 ---
 
 {% include "components/header.html" %}
-{% set previousPost = collections.gallery | getPreviousCollectionItem %}
-{% set nextPost = collections.gallery | getNextCollectionItem %}
+{% set previousPost = collections.post | getPreviousCollectionItem %}
+{% set nextPost = collections.post | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
   <article class="window main-article">

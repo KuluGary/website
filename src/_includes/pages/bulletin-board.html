@@ -1,0 +1,32 @@
+{% include "components/header.html" %}
+<main>
+  <h2>Bulletin board</h2>
+
+  <p>Some bite-sized updates about what I'm currently up to.</p>
+
+  <p>Want to be notified whenever I update this page? Get the <a href="/bulletin-board/feed.xml"><img src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
+
+  <table class="data-table">
+    <tbody>
+      {% for post in collections.post | reverse %}
+        <tr>
+          <td>
+            {% if post.data.thumb.url %}
+              <img width="120" src="{{ post.data.thumb.url }}"/>
+            {% endif %}
+          </td>
+          <td>
+            <time datetime="{{ post.date }}">{{ post.date | formatDate }}</time>:
+            <p>
+              <a href="{{ post.url }}">
+                {{ post.data.title }}
+              </a>
+            </p>
+          </td>
+          <td>
+            {{ post.data.description }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>

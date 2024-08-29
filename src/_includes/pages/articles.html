@@ -1,0 +1,33 @@
+{% include "components/header.html" %}
+<main>
+  <h2>Articles</h2>
+
+  <p>These are my essays, tutorials and long-form write-ups.</p>
+
+  <p>Want to be notified whenever I update this page? Get the <a href="/articles/feed.xml"><img src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
+
+  <table class="data-table">
+    <tbody>
+      {% for article in collections.article | reverse %}
+        <tr>
+          <td>
+            {% if article.data.image %}
+              <img width="120" src="{{ article.data.image }}"/>
+            {% endif %}
+          </td>
+          <td>
+            <time datetime="{{ article.date }}">{{ article.date | formatDate }}</time>:
+            <p>
+              <a href="{{ article.url }}">
+                {{ article.data.title }}
+              </a>
+            </p>
+          </td>
+          <td>
+            {{ article.data.description }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>

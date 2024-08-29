@@ -101,7 +101,7 @@ h4:has(.direct-link):hover .direct-link {
 }
 
 .share-footer .share-title {
-  font-family: var(--font-family-body);
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-style: normal;
   font-weight: normal;
@@ -110,6 +110,8 @@ h4:has(.direct-link):hover .direct-link {
 .share-button {
   display: grid;
   place-items: center;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
   background-color: var(--clr-bg-main);
   border: 1px solid var(--clr-outline-main);
   padding: 3px 6px;
@@ -148,11 +150,4 @@ details.spoilers[open] {
 
 details.spoilers > p:first-of-type {
   margin-top: 0;
-}
-
-details.spoilers[open] summary {
-  margin-top: -0.5lh;
-  background-color: var(--clr-bg-main);
-  width: fit-content;
-  padding-inline: 0.25ch;
 }

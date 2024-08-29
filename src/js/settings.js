@@ -1,9 +1,7 @@
 setUpSettings();
 
-document.onreadystatechange = () => {
-  if (document.readyState == "complete") {
-    setUpThemeSwitcher();
-  }
+window.onload = () => {
+  setUpThemeSwitcher();
 };
 
 function setUpSettings() {
@@ -15,10 +13,13 @@ function setUpSettings() {
 }
 
 function setUpThemeSwitcher() {
-  const themeSwitcher = document.getElementById("theme-select");
+  const themeButtons = document.querySelectorAll(".theme-button");
 
-  themeSwitcher?.addEventListener("change", (e) => {
-    document.documentElement.setAttribute("data-theme", e.target.value);
-    localStorage.setItem("theme", e.target.value);
+  themeButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const theme = e.target.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    });
   });
 }
