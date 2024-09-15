@@ -19,6 +19,16 @@ layout: layouts/gallery-item.html
 
     <h2>{{title}}</h2>
 
+    <ul class="horizontal">
+      {% for tag in tags %}
+        {% if tag != 'post' %}
+          <li>
+            <a class="subtitle" href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
+          </li>
+        {% endif %}
+      {%- endfor %}
+    </ul>
+
     <section class="splide" aria-label="Gallery carousel">
       <div class="splide__track">
         <ul class="splide__list">

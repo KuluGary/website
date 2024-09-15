@@ -1,4 +1,5 @@
 {% include "components/header.html" %}
+{%- set collection = 'post' -%}
 <main>
   <h2>Bulletin board</h2>
 
@@ -6,14 +7,7 @@
 
   <p>Want to be notified whenever I update this page? Get the <a href="/bulletin-board/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-  <ul>
-    {% for post in collections.post | reverse %}
-      <li>
-        <time datetime="{{ post.date }}">{{ post.date | formatDate }}</time>: 
-        <a href="{{ post.url }}">
-          {{ post.data.title }}
-        </a>
-      </li>
-      <tr></tr>
-    {% endfor %}
-  </ul>
+  {% include "components/post-list.html" %}
+
+  {% include "components/tag-list.html" %}
+</main>
