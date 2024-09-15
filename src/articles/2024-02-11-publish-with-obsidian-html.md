@@ -10,10 +10,6 @@ description: Thanks to the ObsidianHTML package, you can share your notes online
 
 ![Publish your notes with ObsidianHTML](/assets/images/articles/2024-02-11-publish-with-obsidian-html/header.png "Publish your notes with ObsidianHTML")
 
-<details>
-<summary>Table of contents</summary>
-<!-- MarkdownTOC -->
-
 - [Preamble](#preamble)
 - [Preparing the environment](#preparing-the-environment)
 - [General introduction](#general-introduction)
@@ -22,9 +18,6 @@ description: Thanks to the ObsidianHTML package, you can share your notes online
 - [Automation with bash](#automation-with-bash)
 - [Publishing online](#publishin-online)
 - [Appendix](#appendix)
-
-<!-- MarkdownTOC -->
-</details>
 
 ## Preamble
 

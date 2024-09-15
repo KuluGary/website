@@ -1,68 +1,3 @@
-@import url("./layouts/single-column.css");
-
-.main-article {
-  padding: 1rem 2.25rem;
-}
-
-.main-article > nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5ch;
-}
-
-.main-article > nav > * {
-  width: max-content;
-  min-width: fit-content;
-}
-
-.main-article img:first-of-type {
-  display: block;
-  margin-inline: auto;
-}
-
-.main-article img {
-  max-width: 45%;
-  margin-block: 1rem;
-}
-
-.main-article > *:first-child {
-  margin-top: 0;
-}
-
-.main-article > h1,
-.main-article > h2,
-.main-article > h3,
-.main-article > h4,
-.main-article > h5,
-.main-article > header > h1 {
-  color: var(--clr-primary-main);
-}
-
-.main-article h1 {
-  margin-bottom: 0.15rem;
-}
-
-.main-article header {
-  margin-bottom: 2rem;
-}
-
-.main-article h1 + .window-body p:first-of-type {
-  margin-top: 1rem;
-}
-
-.main-article time {
-  display: inline-block;
-}
-
-.main-article .tag-list {
-  display: inline-block;
-}
-
-.main-article code {
-  margin-block: 2ch;
-}
-
 .direct-link {
   opacity: 0;
   font-size: 0.75rem;
@@ -78,60 +13,15 @@ h4:has(.direct-link):hover .direct-link {
   opacity: 1;
 }
 
-/** FOOTER */
-.share-footer {
+.main-article > nav {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  margin-block: 2rem;
-  grid-column: span 3 / span 3;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.share-footer .share-title {
-  font-family: var(--font-family-body);
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: normal;
-}
-
-.share-button {
-  display: grid;
-  place-items: center;
-  background-color: var(--clr-bg-main);
-  border: 1px solid var(--clr-outline-main);
-  padding: 3px 6px;
-  border-radius: 4px;
-}
-
-/** IMAGES */
-@media only screen and (min-width: 600px) {
-  img.float-left {
-    float: left;
-    max-width: 30%;
-    padding-right: 1rem;
-  }
-
-  img.float-right {
-    float: right;
-    max-width: 30%;
-    padding-left: 1rem;
-  }
-}
-
-/** OTHERS */
-table.stat-table {
-  margin: 0 auto;
-  min-width: 50%;
-  text-align: center;
-  border-collapse: collapse;
-}
-
-table.stat-table thead tr,
-table.stat-table tr:not(:last-of-type) {
-  border-bottom: 1px solid currentColor;
-}
-
-.twitter-tweet {
-  margin-inline: auto;
+.main-article > nav > * {
+  width: max-content;
+  min-width: fit-content;
+  margin: 0;
 }

@@ -9,30 +9,15 @@ layout: layouts/gallery-item.html
 <main id="main-content" class="main-content">
   <article class="window main-article">
     <nav>
-      <div>
-        {% if nextPost %}
-          <a href="{{ nextPost.url }}">&laquo; {{ nextPost.data.title }}</a>
-        {% endif %}
-      </div>
-      <div>
-        {% if previousPost %}
-          <a href="{{ previousPost.url }}">{{ previousPost.data.title }} &raquo;</a>
-        {% endif %}
-      </div>
+      {% if nextPost %}
+        <a href="{{ nextPost.url }}">&laquo; Next</a>
+      {% endif %}
+      {% if previousPost %}
+        <a href="{{ previousPost.url }}">Prev &raquo;</a>
+      {% endif %}
     </nav>
 
-    <header>
-      <h1>{{title}}</h1>
-      <time datetime="{{date}}">{{ date | formatDate }} </time>
-        in
-      <div class="tag-list">
-        {% for tag in tags %}
-          {% if tag !== "gallery" %}
-            <span>{{tag | unslugify}}{% if loop.index < tags.length %},{% endif %}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </header>
+    <h2>{{title}}</h2>
 
     <section class="splide" aria-label="Gallery carousel">
       <div class="splide__track">
@@ -54,7 +39,8 @@ layout: layouts/gallery-item.html
         </ul>
       </div>
     </section>
-    <div class="window-body">{{ content | safe }}</div>
+
+    <div>{{ content | safe }}</div>
   </article>
 </main>
 

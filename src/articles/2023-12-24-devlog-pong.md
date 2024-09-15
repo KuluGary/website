@@ -11,18 +11,12 @@ description: In this Devlog I take on 'The 20 Games Challenge' to try to recreat
 
 ![Pong screenshot](/assets/images/articles/2023-12-24-devlog-pong/pong.png "Pong")
 
-<details>
-<summary>Table of contents</summary>
-<!-- MarkdownTOC -->
-
 - [Preamble](#preamble)
 - [The ball](#the-ball)
 - [The player paddle](#the-player-paddle)
 - [The opponent paddle](#la-raqueta-del-oponente)
 - [Conclusión](#conclusión)
 
-<!-- MarkdownTOC -->
-</details>
 
 ## Preamble
 

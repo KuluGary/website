@@ -1,8 +1,6 @@
-window.onload = () => {
-  document.querySelectorAll("pre code").forEach((block) => {
-    hljs.highlightElement(block);
-  });
-};
+document.querySelectorAll("pre code").forEach((block) => {
+  hljs.highlightElement(block);
+});
 
 function mastodonShare(e) {
   let title = e.getAttribute("data-title");

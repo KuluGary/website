@@ -6,10 +6,6 @@ tags: ["article", "maps"]
 description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from installation to customization, discovering how to harness the full power of this robust map library. With detailed instructions and practical examples, acquire the necessary tools to transform your ideas into interactive maps.
 ---
 
-<details>
-<summary>Table of contents</summary>
-<!-- MarkdownTOC -->
-
 - [Preamble](#preamble)
 - [Leaflet.js](#leaflet.js)
 - [How to make the map](#how-to-make-the-map)
@@ -17,9 +13,6 @@ description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from
   - [Markers](#markers)
 - [Finishing](#finishing)
 - [Appendix](#appendix)
-
-<!-- MarkdownTOC -->
-</details>
 
 ## Preamble
 
