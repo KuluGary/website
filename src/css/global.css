@@ -1,10 +1,23 @@
 @import url("https://fonts.cdnfonts.com/css/jetbrains-mono-2");
 
-html[data-theme="light"],
 :root {
   --font-family: "JetBrains Mono", monospace;
   --line-height: 1.2rem;
   --border-thickness: 2px;
+  
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+ 
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
+  font-weight: var(--font-weight-normal);
+  font-style: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-size: 14px;
+}
+
+html[data-theme="light"] {
   --text-color: #000;
   --text-color-alt: #666;
   --background-color: #cccccc;
@@ -12,17 +25,6 @@ html[data-theme="light"],
   --blue: #216dc4;
   --orange: #b46816;
   --purple: #7646b9;
-
-  --font-weight-normal: 500;
-  --font-weight-medium: 600;
-  --font-weight-bold: 800;
-
-  font-family: var(--font-family);
-  font-optical-sizing: auto;
-  font-weight: var(--font-weight-normal);
-  font-style: normal;
-  font-variant-numeric: tabular-nums lining-nums;
-  font-size: 14px;
 }
 
 html[data-theme="dark"] {
@@ -290,7 +292,8 @@ ul ul {
   padding: 0 0 0 3ch;
   margin: 0;
 }
-ul.horizontal, ol.horizontal {
+ul.horizontal,
+ol.horizontal {
   list-style-type: none;
   display: inline-flex;
   column-gap: var(--line-height);

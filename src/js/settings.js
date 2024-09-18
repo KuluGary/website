@@ -1,7 +1,9 @@
 window.onload = () => {
   setUpThemeSwitcher();
 };
+
 setUpSettings();
+
 function setUpSettings() {
   const themeButton = document.querySelector(".theme-switcher");
   const selectedTheme = localStorage.getItem("theme") || getPreferredTheme();
