@@ -166,7 +166,6 @@ This script is in charge of, generally, three things.
 1. Generating the HTML files from the Markdown files of our Vault.
 2. Moving the output to a `website` folder.
 3. Manage what we do with our website.
-
    1. If we use the `serve` parameter, it opens a local server pointing to the `website`.
    2. If we use the `deploy` parameter, it makes a commit and pushes it to the remote repository.
 
@@ -221,7 +220,7 @@ fi
 
 If instead we use `serve`, we create a local server pointing to our "website" on the 8000 port. Thanks to this, if we access `localhost:8000` we can see our website as it will be when we publish it.
 
-## Publicación online
+## Deploying online
 
 Once we have our "website" folder generated, we can treat it as any other web project. There are hundreds of ways to manage hosting: For example, I use [Netlify](https://www.netlify.com/) to [publish my website automatically](https://docs.netlify.com/get-started/#deploy-a-project-to-netlify) every time I push a commit to my remote repository.
 

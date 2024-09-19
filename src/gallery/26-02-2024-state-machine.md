@@ -14,8 +14,6 @@ In my [previous post](/25-04-2024-point-and-click) I've made some basic point an
 
 I've done state machine in the past, but its my first time implementing it in C#.
 
-<br />
-
 <ul class="list-unstyled">
   <li>
     <small>- Tiles by <a href="https://sodacoma.itch.io/awakening-complete-tileset">Sodacoma</a> and edits by me</small> 

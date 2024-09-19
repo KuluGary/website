@@ -30,7 +30,7 @@ In this article I want to go into some of the more interesting parts I found whi
 
 The ball is the most important part of the fame, and it has a few interesting this. In particular, the colliding and bouncing logic.
 
-```godot
+```
 func _change_direction(body):
 	if not body is Ball:
 		collision_sound.play()
@@ -57,7 +57,7 @@ What would happen is that the ball would move back and forth, in a straight line
 
 In the pong game there's two kinds of paddles, the player's and the opponent's. The player's is simpler, since what I did was follow the mouse's position in the y-axis as long as there's a minimum distance (to avoid _jittering_).
 
-```godot
+```
 func _physics_process(delta):
 	velocity = Vector2(velocity.x, global_position.direction_to(get_global_mouse_position()).y) * speed
 
@@ -71,7 +71,7 @@ The opponent's paddle has to have a rudimentary AI. It's very easy to make it fo
 
 The point is that it does follow the ball, but it does so based on a `Timer` node whose wait time is random.
 
-```godot
+```
 func _physics_process(delta):
 	velocity = Vector2(velocity.x, global_position.direction_to(target).y) * speed
 
@@ -86,7 +86,7 @@ func _on_timer_timeout():
 		target = ball.global_position
 ```
 
-## Conclusión
+## Conclussion
 
 With this three elemens, you have the basics of the game made. The only things left is to simply make the walls, which are `StaticBody2D` nodes and the `Area2D` nodes that are the area the ball has to enter to assign a pointer to the corresponding score.
 

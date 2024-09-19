@@ -7,13 +7,13 @@ layout: layouts/article.html
 {% set nextPost = collections.article | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
-  <article class="main-article">
+  <article>
     <nav>
       {% if nextPost %}
-        <a href="{{ nextPost.url }}">&laquo; Next</a>
+        <a class="nxt-btn" href="{{ nextPost.url }}">&laquo; Next</a>
       {% endif %}
       {% if previousPost %}
-        <a href="{{ previousPost.url }}">Prev &raquo;</a>
+        <a class="prev-btn" href="{{ previousPost.url }}">Prev &raquo;</a>
       {% endif %}
     </nav>
 

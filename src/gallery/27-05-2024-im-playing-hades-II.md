@@ -18,7 +18,9 @@ I've been having a blast. Even though it's early access, it's full of content bo
 I've found it a bit more difficult than the original, specially the end game boss.
 
 <details class="spoilers">
-  <summary>Spoilers - About the final boss</summary>
+  <summary>
+    Spoilers - About the final boss
+  </summary>
 
   Even though Hades, the end boss of the original game was formidable, Chronos is another beast altogether. He's much faster, for starters. His attacks come out incredibly fast and has little anticipation to his movements. He deals a ton of damage and has much more environmental dangers with him. He also summons some of the most annoying enemies in both games (the satyrs, goddamn). 
 

@@ -1,22 +1,22 @@
-.main-article > nav {
+article > nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.main-article > nav > * {
-  width: max-content;
-  min-width: fit-content;
+.nxt-btn {
+  margin-right: auto;
+}
+
+.prev-btn {
   margin: 0;
+  margin-left: auto;
 }
 
 .splide {
   padding-block: 1rem 2rem;
 }
 
-.main-article .splide img,
-.main-article .splide iframe {
+article .splide img,
+article .splide iframe {
   width: 100%;
   outline: 1px solid var(--clr-outline-main);
   margin-block: 0.5rem;

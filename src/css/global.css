@@ -92,7 +92,8 @@ h1 {
   margin-bottom: calc(var(--line-height) * 2);
   text-transform: uppercase;
 }
-h2 {
+
+h2, h3, h4 {
   font-size: 1rem;
   text-transform: uppercase;
 }
