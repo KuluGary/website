@@ -4,11 +4,11 @@
   --font-family: "JetBrains Mono", monospace;
   --line-height: 1.2rem;
   --border-thickness: 2px;
-  
+
   --font-weight-normal: 500;
   --font-weight-medium: 600;
   --font-weight-bold: 800;
- 
+
   font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: var(--font-weight-normal);
@@ -75,6 +75,16 @@ body {
   }
 }
 
+::-moz-selection {
+  color: var(--background-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--background-color);
+  background: var(--text-color);
+}
+
 h1,
 h2,
 h3,
@@ -93,7 +103,9 @@ h1 {
   text-transform: uppercase;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-size: 1rem;
   text-transform: uppercase;
 }
