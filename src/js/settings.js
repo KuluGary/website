@@ -6,6 +6,7 @@ setUpDefaultSettings();
 
 function setUpDefaultSettings() {
   const theme = localStorage.getItem("theme");
+  const fontStack = localStorage.getItem("font-stack");
 
   if (!theme) {
     if (window.matchMedia("(prefers-color-scheme: dark)")) {
@@ -16,6 +17,8 @@ function setUpDefaultSettings() {
   } else {
     applyTheme(theme);
   }
+
+  document.documentElement.setAttribute("data-font-stack", fontStack);
 }
 
 function getPreferredTheme() {
