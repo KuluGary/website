@@ -1,17 +1,20 @@
 window.onload = () => {
-  setUpThemeSwitcher();
+  setUpSettingsForm();
 };
 
-setUpSettings();
+setUpDefaultSettings();
 
-function setUpSettings() {
-  const themeButton = document.querySelector(".theme-switcher");
-  const selectedTheme = localStorage.getItem("theme") || getPreferredTheme();
+function setUpDefaultSettings() {
+  const theme = localStorage.getItem("theme");
 
-  applyTheme(selectedTheme);
-
-  if (selectedTheme === "dark" && themeButton) {
-    themeButton.checked = true;
+  if (!theme) {
+    if (window.matchMedia("(prefers-color-scheme: dark)")) {
+      applyTheme("dark-grayscale");
+    } else {
+      applyTheme("grayscale");
+    }
+  } else {
+    applyTheme(theme);
   }
 }
 
@@ -26,6 +29,12 @@ function getPreferredTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
+
+  const themeSelectorElement = document.querySelector("#theme-select");
+
+  if (themeSelectorElement != null) {
+    themeSelectorElement.value = theme;
+  }
 }
 
 function setUpThemeSwitcher() {
@@ -40,4 +49,42 @@ function setUpThemeSwitcher() {
       localStorage.setItem("theme", "light");
     }
   });
+}
+
+/** Settings Form */
+function setUpSettingsForm() {
+  const themeSelectorElement = document.querySelector("#theme-select");
+  const fontSelectorElement = document.querySelector("#font-select");
+  const resetButton = document.querySelector("#reset-button");
+
+  if (themeSelectorElement && fontSelectorElement && resetButton) {
+    themeSelectorElement.onchange = (e) => {
+      const theme = e.target.value;
+
+      localStorage.setItem("theme", theme);
+
+      applyTheme(theme);
+    };
+
+    fontSelectorElement.onchange = (e) => {
+      const fontStack = e.target.value;
+
+      localStorage.setItem("font-stack", fontStack);
+
+      document.documentElement.setAttribute("data-font-stack", fontStack);
+    };
+
+    resetButton.onclick = (e) => {
+      e.preventDefault();
+
+      document.documentElement.setAttribute("data-font-stack", "system-ui");
+      fontSelectorElement.value = "system-ui";
+
+      if (window.matchMedia("(prefers-color-scheme: dark)")) {
+        applyTheme("dark-blue");
+      } else {
+        applyTheme("grayscale");
+      }
+    };
+  }
 }

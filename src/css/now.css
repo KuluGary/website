@@ -1,26 +1,15 @@
-.item-list li {
-  display: flex;
-  gap: 1ch;
-  margin-block: 1ch;
-  align-items: center;
+.item-list li:has(.thumbnail) {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--line-height);
 }
 
-.item-list li img {
-  max-width: 50px;
-  max-height: 50px;
+.item-list .thumbnail {
+  max-width: 100px;
+  width: 100%;
   object-fit: cover;
 }
 
-.item-list li h3 {
-  font-size: 0.8rem;
-  font-family: var(--font-family-body);
-  font-weight: 400;
-  font-style: normal;
-  margin-block: 0.5ch;
-}
-
-.item-list li hgroup > p {
-  font-size: 0.7rem;
-  font-style: italic;
-  margin: 0;
+.item-list div {
+  margin-top: 0;
 }

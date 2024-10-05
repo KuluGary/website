@@ -5,58 +5,49 @@
   <h2>About this page</h2>
 
   <p>
-    This is both a <a href="https://nownownow.com/about">now page</a> and an archive of sorts for the stuff I'm into or i've been into in the past.
+    This is both a <a href="https://nownownow.com/about">now page</a> and an archive of sorts for the stuff I'm into or
+    i've been into in the past.
   </p>
   <p>I have a long backlog of stuff I still need to check out, which you can peek at in the following section.</p>
 
-  <h2>Working on</h2>
+  <h3>Working on</h3>
 
-  <table>
-    <tbody>
-      <tr>
-        <td>
-          <a href="{{currentProject.url}}">{{currentProject.data.title}}</a>
-        </td>
-        <td>
-          <time datetime="{{ currentProject.data.date }}">{{ currentProject.data.date | formatDate }}</time>
-        </td>
-        <td>
-          {{currentProject.data.description}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ul>
+    <li>
+      <a href="{{currentProject.url}}">{{currentProject.data.title}}</a> -
+      <small>
+        <time datetime="{{ currentProject.data.date }}">{{ currentProject.data.date | formatDate }}</time>:
+      </small>
+      <p>{{currentProject.data.description}}</p>
+    </li>
+  </ul>
 
-  <h2>Game List</h2>
+  <h3>Game List</h3>
 
   <p>Here are some of the games I've played or I'm currently playing.</p>
   <p>The "Have played / In progress" section are games that either don't have an ending or are multiplayer</p>
   <p>
-        If you wanna check the full list, you can see it at
-        <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>
+    If you wanna check the full list, you can see it at
+    <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>.
   </p>
 
-  <h2>Playing now</h2>
+  <h4>Playing now</h4>
 
   {% if games.playing %}
-    <table>
-      <tbody>
-        {% for game in games.playing %}
-          <tr>
-            <td class="fit">
-              <img width="30" src="{{ game.image }}"/>
-            </td>
-            <td>
-              <a href="{{game.link}}">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <ul class="item-list">
+      {% for game in games.playing %}
+        <li>
+          <img class="thumbnail" src="{{ game.image }}"/>
+
+          <div>
+            <a href="{{game.link}}">{{game.title}}</a>
+            <p class="subtitle">{{game.platform}}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   {% else %}
     <p>Nothing currently</p>
-
   {% endif %}
 
   <details>
@@ -64,114 +55,94 @@
       Backlog
     </summary>
 
-    <table>
-      <tbody>
-        {% for game in games.backlog %}
-          <tr>
-            <td class="fit">
-              <img width="30" src="{{ game.image }}"/>
-            </td>
-            <td>
-              <a href="{{game.link}}">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <ul class="item-list">
+      {% for game in games.backlog %}
+        <li>
+          <img class="thumbnail" src="{{ game.image }}"/>
+
+          <div>
+            <a href="{{game.link}}">{{game.title}}</a>
+            <p class="subtitle">{{game.platform}}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   </details>
 
   <details>
     <summary>
       Completed
     </summary>
-    <table>
-      <tbody>
-        {% for game in games.completed %}
-          <tr>
-            <td class="fit">
-              <img width="30" src="{{ game.image }}"/>
-            </td>
-            <td>
-              <a href="{{game.link}}">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-            </hgroup>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</details>
-<details>
-  <summary>
-    Have played / In progress
-  </summary>
-  <table>
-    <tbody>
-      {% for game in games.custom %}
-        <tr>
-          <td class="fit">
-            <img width="30" src="{{ game.image }}"/>
-          </td>
-          <td>
+    <ul class="item-list">
+      {% for game in games.completed %}
+        <li>
+          <img class="thumbnail" src="{{ game.image }}"/>
+
+          <div>
             <a href="{{game.link}}">{{game.title}}</a>
             <p class="subtitle">{{game.platform}}</p>
-          </td>
-        </tr>
+          </div>
+        </li>
       {% endfor %}
-    </tbody>
-  </table>
-</details>
-</div>
-<div class="window">
-<h2>Manga</h2>
+    </ul>
+  </details>
 
-<div class="window-body">
+  <details>
+    <summary>
+      Have played / In progress
+    </summary>
+
+    <ul class="item-list">
+      {% for game in games.custom %}
+        <li>
+          <img class="thumbnail" src="{{ game.image }}"/>
+
+          <div>
+            <a href="{{game.link}}">{{game.title}}</a>
+            <p class="subtitle">{{game.platform}}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </details>
+
+  <h3>Manga</h3>
+
   <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
 
-  <h2>Reading now</h2>
+  <h3>Reading now</h3>
 
-  <table>
-    <tbody>
-      {% for manga in manga.reading | filterMangaOnlySafe %}
-        <tr>
-          <td class="fit">
-            <img style="height:100px" src="/assets/images/covers/{{ manga.cover }}"/>
-          </td>
-          <td>
-            <a href="{{manga.link}}">{{manga.title}}</a>
-            <p class="subtitle">{{manga.author}}</p>
+  <ul class="item-list">
+    {% for manga in manga.reading | filterMangaOnlySafe %}
+      <li>
+        <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
 
-            {{ manga.description | safe }}
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        <div>
+          <a href="{{manga.link}}">{{manga.title}}</a>
+          <p class="subtitle">{{manga.author}}</p>
+          <p>{{ manga.description | safe }}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 
   <details>
     <summary>
       Favorite manga
     </summary>
 
-    <table>
-      <tbody>
-        {% for manga in manga.favourite %}
-          <tr>
-            <td class="fit">
-              <img style="height:100px" width="30" src="/assets/images/covers/{{ manga.cover }}"/>
-            </td>
-            <td>
-              <a href="{{manga.link}}">{{manga.title}}</a>
-              <p class="subtitle">{{manga.author}}</p>
+    <ul class="item-list">
+      {% for manga in manga.favourite | filterMangaOnlySafe %}
+        <li>
+          <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
 
-              {{ manga.description | safe }}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          <div>
+            <a href="{{manga.link}}">{{manga.title}}</a>
+            <p class="subtitle">{{manga.author}}</p>
+            <p>{{ manga.description | safe }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   </details>
-</div>
-</div>
 </main>
