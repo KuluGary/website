@@ -10,7 +10,7 @@ function setUpDefaultSettings() {
 
   if (!theme) {
     if (window.matchMedia("(prefers-color-scheme: dark)")) {
-      applyTheme("dark-grayscale");
+      applyTheme("dark-blue");
     } else {
       applyTheme("grayscale");
     }
