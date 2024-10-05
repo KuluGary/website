@@ -1,5 +1,6 @@
 window.onload = () => {
   setUpSettingsForm();
+  setUpDefaultSettings();
 };
 
 setUpDefaultSettings();
