@@ -260,14 +260,23 @@ th {
 
 .header {
   margin-bottom: calc(var(--line-height) * 2);
+  flex-wrap: wrap;
 }
 
 .header h1 {
   margin: 0;
 }
 
-.header tr td:last-child {
-  text-align: right;
+.header nav {
+  flex: 1;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.header table {
+  margin-bottom: 0;
 }
 
 p {
