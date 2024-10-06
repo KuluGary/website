@@ -1,15 +1,25 @@
 .item-list li:has(.thumbnail) {
+  --thumbnail-size: 48px;
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: var(--line-height);
+  grid-template-columns: var(--thumbnail-size) 1fr;
+  gap: calc(var(--line-height) / 2);
 }
 
 .item-list .thumbnail {
-  max-width: 100px;
+  max-width: var(--thumbnail-size);
   width: 100%;
   object-fit: cover;
 }
 
 .item-list div {
   margin-top: 0;
+}
+
+.item-list hgroup {
+  display: flex;
+  column-gap: calc(var(--line-height) / 2);
+}
+
+.item-list div > p {
+  margin-block: calc(var(--line-height) / 2);
 }

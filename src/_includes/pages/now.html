@@ -31,24 +31,30 @@
     <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>.
   </p>
 
-  <h4>Playing now</h4>
+  {# <h4>Playing now</h4> #}
+  <details>
+    <summary>
+      Playing now
+    </summary>
 
-  {% if games.playing %}
-    <ul class="item-list">
-      {% for game in games.playing %}
-        <li>
-          <img class="thumbnail" src="{{ game.image }}"/>
+    {% if games.playing %}
+      <ul class="item-list">
+        {% for game in games.playing %}
+          <li>
+            <img class="thumbnail" src="{{ game.image }}"/>
 
-          <div>
-            <a href="{{game.link}}">{{game.title}}</a>
-            <p class="subtitle">{{game.platform}}</p>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Nothing currently</p>
-  {% endif %}
+            <div>
+              <a href="{{game.link}}">{{game.title}}</a>
+              <p class="subtitle">{{game.platform}}</p>
+              <p>{{ game.description | safe }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Nothing currently</p>
+    {% endif %}
+  </details>
 
   <details>
     <summary>
@@ -63,6 +69,7 @@
           <div>
             <a href="{{game.link}}">{{game.title}}</a>
             <p class="subtitle">{{game.platform}}</p>
+            <p>{{ game.description | safe }}</p>
           </div>
         </li>
       {% endfor %}
@@ -81,6 +88,7 @@
           <div>
             <a href="{{game.link}}">{{game.title}}</a>
             <p class="subtitle">{{game.platform}}</p>
+            <p>{{ game.description | safe }}</p>
           </div>
         </li>
       {% endfor %}
@@ -100,6 +108,7 @@
           <div>
             <a href="{{game.link}}">{{game.title}}</a>
             <p class="subtitle">{{game.platform}}</p>
+            <p>{{ game.description | safe }}</p>
           </div>
         </li>
       {% endfor %}
@@ -110,21 +119,23 @@
 
   <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
 
-  <h3>Reading now</h3>
-
-  <ul class="item-list">
-    {% for manga in manga.reading | filterMangaOnlySafe %}
-      <li>
-        <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
-
-        <div>
-          <a href="{{manga.link}}">{{manga.title}}</a>
-          <p class="subtitle">{{manga.author}}</p>
-          <p>{{ manga.description | safe }}</p>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
+  <details>
+    <summary>
+      Reading now
+    </summary>
+    <ul class="item-list">
+      {% for manga in manga.reading | filterMangaOnlySafe %}
+        <li>
+          <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
+          <div>
+            <a href="{{manga.link}}">{{manga.title}}</a>
+            <p class="subtitle">{{manga.author}}</p>
+            <p>{{ manga.description | safe }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </details>
 
   <details>
     <summary>
