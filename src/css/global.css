@@ -387,6 +387,7 @@ ol.horizontal {
   column-gap: var(--line-height);
   padding: 0;
   flex-wrap: wrap;
+  margin-bottom: 0;
 }
 ol li:before {
   content: counters(item, ".") ". ";
