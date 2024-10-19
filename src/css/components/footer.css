@@ -4,3 +4,19 @@ footer .button-list {
   padding-block: calc(var(--line-height) / 2);
   justify-content: center;
 }
+
+footer .button-list img {
+  width: 99px;
+  height: 56px;
+}
+
+footer #made-with {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer #made-with > * {
+  margin: 0;
+  padding: 0;
+}

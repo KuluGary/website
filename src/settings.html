@@ -3,4 +3,57 @@ title: settings
 layout: layouts/settings.html
 ---
 
-{% include "pages/settings.html" %}
+<main>
+  <h2>Settings</h2>
+  <p>Here you can set up your <strong>preferred visualization</strong> settings for this website.</p>
+
+  <p>
+    This site intends to be accessible for all and I will try to make it so it respect your browser preferences, but if
+    I forgot something please feel free to contact me and I will correct it as soon as I'm able.
+  </p>
+
+  <p>
+    The settings you input in this page will be stored in your
+    <a href="https://developer.mozilla.org/es/docs/Web/API/Window/localStorage">Local Storage</a>, so it
+    <strong> will not persist between browsers </strong> or devices.
+  </p>
+
+  <form action="">
+    <label for="theme-select">
+      <h3>Theme:</h3>
+    </label>
+    <select id="theme-select">
+      <optgroup label="Light themes">
+        <option value="grayscale">Grayscale</option>
+      </optgroup>
+      <optgroup label="Dark themes">
+        <option value="dark-blue">Dark Blue</option>
+      </optgroup>
+    </select>
+
+    <label for="font-select">
+      <h3>Font stack:</h3>
+    </label>
+
+    <select id="font-select">
+      <option value="system-ui">System UI</option>
+      <option value="transitional">Transitional</option>
+      <option value="old-style">Old Style</option>
+      <option value="humanist">Humanist</option>
+      <option value="heometric-humanist">Geometric Humanist</option>
+      <option value="classical-humanist">Classical Humanist</option>
+      <option value="neo-grotesque">Neo-Grotesque</option>
+      <option value="monospace-slab-serif">Monospace Slab Serif</option>
+      <option value="monospace-code">Monospace Code</option>
+      <option value="industrial">Industrial</option>
+      <option value="rounded-sans">Rounded Sans</option>
+      <option value="antique">Antique</option>
+      <option value="didone">Didone</option>
+      <option value="handrwitten">Handwritten</option>
+    </select>
+
+    <button id="reset-button">Reset</button>
+  </form>
+</main>
+
+{% include "components/footer.html" %}
