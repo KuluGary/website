@@ -1,0 +1,32 @@
+.header {
+  margin-bottom: calc(var(--line-height) * 2);
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header ul,
+.header li {
+  margin: 0;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+  column-gap: calc(var(--line-height) / 2);
+  margin-bottom: calc(var(--line-height) / 2);
+}
+
+.header .button-list {
+  width: 100%;
+  border-top: var(--border-thickness) solid var(--text-color);
+  padding-block: calc(var(--line-height) / 2);
+  justify-content: center;
+}
+
+.header table {
+  margin-bottom: calc(var(--line-height) / 2);
+}

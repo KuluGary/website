@@ -1,0 +1,6 @@
+footer .button-list {
+  width: 100%;
+  border-top: var(--border-thickness) solid var(--text-color);
+  padding-block: calc(var(--line-height) / 2);
+  justify-content: center;
+}
