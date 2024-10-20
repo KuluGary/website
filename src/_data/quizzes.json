@@ -1,0 +1,133 @@
+[
+  {
+    "title": "MBTI",
+    "children": [
+      {
+        "title": "16Personalities",
+        "url": "https://www.16personalities.com",
+        "children": [
+          {
+            "title": "INFJ-T (Turbulent Advocate)",
+            "url": "https://www.16personalities.com/infj-personality"
+          }
+        ]
+      },
+      {
+        "title": "The Michael Caloz Cognitive Functions Test",
+        "url": "http://https://www.michaelcaloz.com/personality/",
+        "children": [
+          {
+            "url": "https://www.michaelcaloz.com/personality/index.html?screen=last&Ti=6&Te=2&Fi=9&Fe=11&Si=4&Se=8&Ni=6&Ne=6&SJ=0&NF=1.5&NT=1.5&SP=0&iFi=0&iTi=0&iSi=1&iNi=0&iFe=0&iTe=1&iSe=0&iNe=1&E=0&I=2&N=2&S=0&T=0&F=2&J=0&P=0",
+            "title": "INFJ / INFP"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Archetypes",
+    "url": "https://principlesyou.com/archetypes",
+    "children": [
+      {
+        "title": "Strongest",
+        "children": [
+          {
+            "title": "Artistan",
+            "url": "https://principlesyou.com/archetypes/artisan"
+          },
+          {
+            "title": "Helper",
+            "url": "https://principlesyou.com/archetypes/helper"
+          },
+          {
+            "title": "Peacekeeper",
+            "url": "https://principlesyou.com/archetypes/peacekeeper"
+          }
+        ]
+      },
+      {
+        "title": "Weakest",
+        "children": [
+          {
+            "title": "Commander",
+            "url": "https://principlesyou.com/archetypes/commander"
+          },
+          {
+            "title": "Impresario",
+            "url": "https://principlesyou.com/archetypes/impresario"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Extended Zodiac - Hiveswap",
+    "url": "http://hs.hiveswap.com/ezodiac/index.php",
+    "children": [
+      {
+        "title": "Aquo - Sign of the Obsessive",
+        "url": "http://hs.hiveswap.com/ezodiac/truesign.php?TS=Aquo"
+      }
+    ]
+  },
+  {
+    "title": "What's your role in the tragic play?",
+    "url": "https://uquiz.com/quiz/y7ORUH/whats-your-role-in-the-tragic-play",
+    "children": [
+      {
+        "title": "desperate narrator",
+        "url": "/assets/images/quizzes/tragic.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Personality type",
+    "url": "https://web.archive.org/web/20231122014345/https://www.designexpo.org.tw/zh-TW",
+    "children": [
+      {
+        "title": "Water",
+        "url": "/assets/images/quizzes/elemental.jpg"
+      }
+    ]
+  },
+  {
+    "title": "What kind of demon are you?",
+    "url": "https://en.shindanmaker.com/629150",
+    "children": [
+      {
+        "title": "Familiar Spirit",
+        "url": "/assets/images/quizzes/demon.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Jock-Nerd/Prep-Goth",
+    "url": "https://www.idrlabs.com/jock-nerd-prep-goth/test.php",
+    "children": [
+      {
+        "title": "LARP",
+        "url": "/assets/images/quizzes/jock-nerd-prep-goth.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Cheese quiz",
+    "url": "http://cupped-expressions.net/cheese/quiz/",
+    "children": [
+      {
+        "title": "Mozzarella",
+        "url": "/assets/images/quizzes/mozzarella.gif"
+      }
+    ]
+  },
+  {
+    "title": "What vegetable are you?",
+    "url": "https://sophie006liu.github.io/vegetal/",
+    "children": [
+      {
+        "title": "Leak",
+        "url": "/assets/images/quizzes/vegetables.jpg"
+      }
+    ]
+  }
+]

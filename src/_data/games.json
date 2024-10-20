@@ -1,0 +1,348 @@
+{
+  "playing": [
+    {
+      "title": "Hades II",
+      "link": "https://howlongtobeat.com/game/118218",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/118218_Hades_II.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Battle beyond the Underworld using dark sorcery to take on the Titan of Time in this bewitching sequel to the award-winning rogue-like dungeon crawler."
+    },
+    {
+      "title": "PokéRogue",
+      "link": "https://howlongtobeat.com/game/149393",
+      "platform": "Browser",
+      "image": "https://howlongtobeat.com/games/149393_PokRogue.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "PokéRogue is a browser based Pokémon fangame heavily inspired by the roguelite genre. Battle endlessly while gathering stacking items, exploring many different biomes, fighting trainers, bosses, and more!"
+    },
+    {
+      "title": "Vampire Survivors",
+      "link": "https://howlongtobeat.com/game/102750",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/102750_Vampire_Survivors.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Mow thousands of night creatures and survive until dawn! Vampire Survivors is a gothic horror casual game with rogue-lite elements, where your choices can allow you to quickly snowball against the hundreds of monsters that get thrown at you."
+    }
+  ],
+  "backlog": [
+    {
+      "title": "New Pokémon Snap",
+      "link": "https://howlongtobeat.com/game/80153",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/80153_New_Pokmon_Snap.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Seek out and take in-game photographs of Pokémon in their native environments in New Pokémon Snap! You'll even discover behaviors and expressions you've never seen before when you encounter and research lively wild Pokémon. You might see them patrolling their territory, playing, or lurking in out-of-the-way spots. Travel to the islands that make up the Lental region. In this region, some of the Pokémon and vegetation will appear to have a special glow. Research these Pokémon alongside Professor Mirror as you explore dense jungles, vast deserts, and more! Your observations of Pokémon thriving in the wild may help unravel the truth behind the Illumina phenomenon. The Pokémon pictures you take will be used to build your very own Pokémon Photodex!"
+    },
+    {
+      "title": "Paper Mario",
+      "link": "https://howlongtobeat.com/game/6909",
+      "platform": "Nintendo 64",
+      "image": "https://howlongtobeat.com/games/6909_Paper_Mario.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Mario pals around in an all-new action adventure! Mario's back in his first adventure since Super Mario 64, and this time, Bowser's bent on preventing a storybook ending. When Princess Peach is kidnapped, Mario plots to rescue the seven Star Spirits and rid the Mushroom Kingdom of Koopa's cruel cohorts. As he travels from the tropical jungles of Lavalava Island to the frosty heights of Shiver Mountain, he'll meet up with seven all-new companions... and he'll need help from each one or there'll be no happily ever after."
+    },
+    {
+      "title": "Paper Mario: The Thousand-Year Door",
+      "link": "https://howlongtobeat.com/game/6911",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/6911_Paper_Mario_The_Thousand-Year_Door.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Paper Mario: Thousand Year Door is a full-blown role-playing game starring a classic 2D character! Time passes and pages turn, leading Mario to turn back to his paper form as he faces a new threat. Crawl through classic-style dungeons as you explore a number of levels, all taking you to different worlds and time periods. Every new chapter is a new adventure as you help Mario collect the Seven Star Stone jewels he needs!"
+    },
+    {
+      "title": "Pokémon Snap",
+      "link": "https://howlongtobeat.com/game/7173",
+      "platform": "Nintendo 64",
+      "image": "https://howlongtobeat.com/games/7173_Pokmon_Snap.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "As Todd Snap, an aspiring Pokémon photographer, you must travel through different environment types in order to photograph as many Pokémon as you can find. With the help of Professor Oak, you will discover new places to photograph Pokémon, ranging from those such as a volcano which houses Fire Pokémon to a jungle housing Grass Pokémon."
+    },
+    {
+      "title": "The Legend of Zelda: Link's Awakening",
+      "link": "https://howlongtobeat.com/game/66255",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/66255_The_Legend_of_Zelda_Links_Awakening_(2019).jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "26 years after its original release on Game Boy, The Legend of Zelda: Link's Awakening will be reborn as a new experience on Nintendo Switch. Buffeted by a storm, Link washes ashore on the mysterious Koholint Island. In order to return home, Link must overcome challenging dungeons and battle against fearsome monsters. This new version of the classic adventure includes many unique elements that appeared in the original Game Boy release, such as 2D platformer-style rooms and appearances from characters outside of The Legend of Zelda series."
+    },
+    {
+      "title": "The Legend of Zelda: Link's Awakening DX",
+      "link": "https://howlongtobeat.com/game/10033",
+      "platform": "Game Boy Color",
+      "image": "https://howlongtobeat.com/games/10033_The_Legend_of_Zelda_Links_Awakening_DX.png?width=100&crop=48%3A48%2Csmart",
+      "description": "After being attacked at sea, Link's ship sinks, and he finds himself stranded on Koholint Island. He awakens to see a beautiful woman looking down at him. He soon learns the island has a giant egg on top of a mountain that the Wind Fish inhabits deep inside. Link is told to \"awaken the wind fish and all will be answered,\" so Link sets out on another quest."
+    }
+  ],
+  "custom": [
+    {
+      "title": "Animal Crossing: Wild World",
+      "link": "https://howlongtobeat.com/game/475",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/475_Animal_Crossing_Wild_World.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Animal Crossing: Wild World takes you into a real-time virtual world where an entire village is waiting to be explored. Whether you want to decorate your home, catch bugs or fish, or just chat with the characters in your village, there's always something to do. Days and seasons pass in real time, and you can visit the villages of online players -- even if they're a thousand miles away."
+    },
+    {
+      "title": "Minecraft",
+      "link": "https://howlongtobeat.com/game/6064",
+      "platform": "",
+      "image": "https://howlongtobeat.com/games/256px-Minecraft_1.1_Title.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Minecraft is a game about placing blocks and going on adventures. Explore randomly-generated worlds and build amazing things from the simplest of homes to the grandest of castles. Play in Creative Mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armour to fend off the dangerous mobs. Craft, create, and explore alone, or with up to four players in split-screen and up to eight online."
+    },
+    {
+      "title": "Stardew Valley",
+      "link": "https://howlongtobeat.com/game/34716",
+      "platform": "PC",
+      "image": "https://howlongtobeat.com/games/34716_Stardew_Valley.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It won't be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the town's most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!"
+    },
+    {
+      "title": "Super Smash Bros. Melee",
+      "link": "https://howlongtobeat.com/game/9442",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/9442_Super_Smash_Bros_Melee.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Frantic multiplayer fighting returns with Super Smash Bros. Melee on the Nintendo GameCube. More than just a minor upgrade to the popular N64 game, the GameCube Smash Bros. is chock full of so many options and features it will make your head spin. Players can pummel each other with 25 classic Nintendo characters, and fight in 18 various game-themed arenas (not to mention an assortment of unlockable secret arenas). Multiple play modes include objective based missions, Stadium Contests, side-scrolling courses, Melee mode, and Versus mode. Stunning orchestrated soundtrack includes exciting remixes of classic game themes. High polygon character models and detailed environments animate smoothly and display in progressive scan."
+    },
+    {
+      "title": "Wakfu",
+      "link": "https://howlongtobeat.com/game/20849",
+      "platform": "PC",
+      "image": "https://howlongtobeat.com/games/WAKFUheader.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Touchdown in the World of Twelve and set off on a great adventure in WAKFU, an original massively multiplayer online role playing universe where humor goes hand in hand with action-packed,tactical battles."
+    }
+  ],
+  "completed": [
+    {
+      "title": "Hades",
+      "link": "https://howlongtobeat.com/game/62941",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/62941_Hades.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Defy the god of death as you hack and slash your way out of the Underworld in this rogue-like dungeon crawler from the creators of Bastion and Transistor."
+    },
+    {
+      "title": "Super Mario Advance 2: Super Mario World",
+      "link": "https://howlongtobeat.com/game/9367",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/SuperMarioAdvance2SuperMarioWorld.JPG?width=100&crop=48%3A48%2Csmart",
+      "description": "Mario hasn't even had a chance to savor his victory in the original Super Mario Advance, and already he's back for more in Super Mario World: Super Mario Advance 2. This game is a perfect recreation of the Super NES classic Super Mario World, featuring every last secret exit and all 96 levels of platform-jumping joy."
+    },
+    {
+      "title": "The Legend of Zelda: The Minish Cap",
+      "link": "https://howlongtobeat.com/game/10044",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=100&crop=48%3A48%2Csmart",
+      "description": "When the sorcerer Vaati turns Princess Zelda to stone the King of Hyrule sends Link on a quest that will take him to places he's never imagined. Using the power of a mystical hat called the Minish Cap, the Hylian hero will shrink down for a massive quest ... on a microscopic scale! When Link is asked to seek the advice of a Minish character living in the library of Hyrule Town, he soon learns that he cannot reach his goal because certain books have been checked out by forgetful citizens. Without the books in place, Link can't climb up to make his appointment. Link returns to normal size, then sets out to find the overdue books. Link can make his appointment when the books are returned, but even tracking down these missing tomes requires more interaction on the Minish scale. In addition to the new size-shifting gameplay elements, brand new items such as the Gust Jar and the Mole Mitts add unexpected twists to Link's latest adventure. The Mole Mitts allow Link to tunnel around underground, and the Gust Jar creates a powerful vacuum that can be used to inhale anything from dust to unfriendly foes. As Link progresses in his quest, he frequently discovers mysterious items called Kinstones. These Kinstones can be fused with other Kinstones held by various characters throughout the game. Successfully fusing Kinstones can trigger a variety of events, such as opening secret passages or summoning hidden treasure chests. Kinstones are everywhere and so are the characters hoping to fuse them."
+    },
+    {
+      "title": "The Legend of Zelda: A Link to the Past",
+      "link": "https://howlongtobeat.com/game/10028",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/10028_The_Legend_of_Zelda_A_Link_to_the_Past.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "In all his glory Link ventures back to the land of Hyrule. The predecessors of Link and Zelda face monsters on the march when a menacing magician takes over the kingdom. Only you can prevent his evil plot from shattering the peaceful Hyrule. In your quest you'll venture into twisting mazes dungeons palaces and shadowy forests. Test your mettle with mighty swords and magical weapons. Or heft a boulder and hurl it at your enemies. If the going gets tough dive into a river-you can swim to escape! Learn powerful spells locate magical artifacts and solve the mysteries of the evil magician and the hidden realm of Hyrule."
+    },
+    {
+      "title": "Mario & Luigi: Partners in Time",
+      "link": "https://howlongtobeat.com/game/5621",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/5621_Mario_&_Luigi_Partners_in_Time.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Mario and Luigi: Partners In Time an insane sequel to the classic adventure starring the heroic brothers! In this sequel to Mario and Luigi: Superstar Saga, the brothers travel back in time to retrieve Princess Peach, only to come face to face with baby versions of themselves, the princess and Bowser. They'll team up with their younger selves for a quest of lunatic proportions!"
+    },
+    {
+      "title": "Mario & Luigi: Bowser's Inside Story",
+      "link": "https://howlongtobeat.com/game/5619",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/5619_Mario_&_Luigi_Bowsers_Inside_Story.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Mario & Luigi: Bowser's Inside Story takes players on the DS literally into the belly of the beast - that beast being Bowser. Set within an off-the-wall storyline that turns the world of Nintendo on its ear and featuring the ability to toggle between playing as the team of Mario and Luigi, and playing as Bowser himself, this third installment of the Mario & Luigi franchise is not to be missed."
+    },
+    {
+      "title": "Super Mario RPG",
+      "link": "https://howlongtobeat.com/game/130456",
+      "platform": "Nintendo Switch",
+      "image": "https://howlongtobeat.com/games/130456_Super_Mario_RPG.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Mario, Bowser, and Peach partner up to repair the wish-granting Star Road in this approachable role-playing adventure."
+    },
+    {
+      "title": "Pokémon Ruby and Sapphire",
+      "link": "https://howlongtobeat.com/game/7170",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/7170_Pokmon_Ruby_and_Sapphire.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Pokémon Ruby and Sapphire take you on an immersive and more exciting new adventure as you travel and train to become a Pokemon master!"
+    },
+    {
+      "title": "Wario Land 4",
+      "link": "https://howlongtobeat.com/game/11064",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/11064_Wario_Land_4.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Wario reads in a newspaper about a secret treasure lost in a pyramid. That's enough for Wario: he jumps in his car, enters the pyramid, and then you take control of him."
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Blue/Red Rescue Team",
+      "link": "https://howlongtobeat.com/game/7155",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/7155_Pokmon_Mystery_Dungeon_BlueRed_Rescue_Team.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Introducing the newest Pokemon, YOU! What if you woke up one day, and you were a Pokemon? What if all of the sudden you find yourself in a NEW world, where you can speak and interact with other Pokemon? The adventure begins when you and your partner Pokemon set out on rescue missions in a world ravaged by natural disasters. But what is your true purpose and destiny in this Pokemon world? That's the real mystery...."
+    },
+    {
+      "title": "Mario & Luigi: Superstar Saga",
+      "link": "https://howlongtobeat.com/game/5622",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/5622_Mario_&_Luigi_Superstar_Saga.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "An epic unfolds in a strange new land as Mario and Luigi team up for a hilarious, action-packed quest! An evil witch has stolen Princess Peach's voice, replacing her fair speech with explosives! As chaos breaks out in the Mushroom Kingdom, Mario and Luigi head for the castle and meet up with Bowser, who just arrived to kidnap the princess. When they find out what happened, these sworn enemies join forces and follow the witch to a neighboring kingdom. After an aerial ambush crashes their ship and sends Bowser to who-knows-where, Mario and Luigi embark on foot, learning new moves and combining their brotherly might to fight off enemies, as they venture toward the kingdom's castle. If the witch finds the Magic Beans hidden deep within the castle, then all may already be lost... Classic Mario characters will appear all over the place in this brand-new epic set beyond the borders of the Mushroom Kingdom. The residents of this new land prize humor and laughter above all else, so the brothers' adventure quickly takes on the tone of their humor and personality. As hilarious as it is challenging, the Mario Bros. latest adventure is their best yet!"
+    },
+    {
+      "title": "Pokémon Emerald Version",
+      "link": "https://howlongtobeat.com/game/7150",
+      "platform": "Game Boy Advance",
+      "image": "https://howlongtobeat.com/games/7150_Pokmon_Emerald_Version.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Pokemon Emerald is an extension of Pokemon Ruby and Pokemon Sapphire -- you'll travel to an all-new region and explore as you face off against Team Aqua and Team Magma. An aspiring Pokemon trainer moves to tiny Littleroot Town and discovers all-new Pokemon to train and compete with -- now he's on the road to being a great trainer!"
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Explorers of Sky",
+      "link": "https://howlongtobeat.com/game/7156",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7156_Pokmon_Mystery_Dungeon_Explorers_of_Sky.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Continue the adventure of the Pokémon Mystery Dungeon series in an exciting new game that builds on the fun of Explorers of Time and Explorers of Darkness. In Pokémon Mystery Dungeon: Explorers of Sky, you'll have the chance to become a Pokémon and team up with an additional Pokémon to confront thrilling new challenges. Will your efforts be enough to save the entire world from destruction?"
+    },
+    {
+      "title": "Pokémon Mystery Dungeon: Explorers of Time and Explorers of Darkness",
+      "link": "https://howlongtobeat.com/game/7157",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7157_Pokmon_Mystery_Dungeon_Explorers_of_Time_and_Explorers_of_Darkness.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Which Pokemon are you? Another amazing addition to the Pokemon series but this time you get to be the Pokemon! You are in control of your own adventure in the latest release of Pokemon Mystery Dungeon: Explorers of Time! For years you've captured, traded and battled with them; now it's time once again to become a Pokemon yourself! Join a guild and prepare for adventure as you return to a fantastic land untouched by humans. Hundreds of Pokemon, randomly-generated dungeons, and online compatibility enhance strategic exploration and battles. Head out to explore long-lost dungeons, or hunt down criminal Pokemon - the choice is yours in this epic game."
+    },
+    {
+      "title": "Pokémon Ranger",
+      "link": "https://howlongtobeat.com/game/7166",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7166_Pokmon_Ranger.png?width=100&crop=48%3A48%2Csmart",
+      "description": "An action RPG set in the world of the Pokémon Ranger movie. You play as a Pokemon Ranger. Different from a Pokémon Trainer, a Ranger travels the lands, using Pokémon in a fight to defend nature from baddies. Its release precedes that of Diamond and Pearl, and all three games link up together for some top secret bonuses."
+    },
+    {
+      "title": "Pokémon Ranger: Guardian Signs",
+      "link": "https://howlongtobeat.com/game/7167",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7167_Pokmon_Ranger_Guardian_Signs.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Pokémon Ranger: Guardian Signs is an Action Role-Playing game (RPG) for play on the Nintendo DS/DSi. Based in the long-lived Pokémon mythology, the game retains certain battle and Pokémon capture elements from the earliest Pokémon games, as well as the RPG elements found in the newer Pokémon Ranger series. Features include: use of the DS stylus to facilitate Pokémon capture, and the ability to easily recall them thereafter; puzzle play using Pokémon skills; and 4-player wireless game support."
+    },
+    {
+      "title": "Pokémon Ranger: Shadows of Almia",
+      "link": "https://howlongtobeat.com/game/7168",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7168_Pokmon_Ranger_Shadows_of_Almia.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "In Pokémon Ranger: Shadows of Almia, you once again play as a Pokémon Ranger, working to help people, Pokémon and nature in a new area called the Almia Region. Starting out as a Student Ranger, you quickly earn the title of a full-fledged Pokémon Ranger. As you succeed in more and more missions, you will aspire to become the highest Ranger rank: Top Ranger. Along the way you meet and capture all kinds of different Pokémon."
+    },
+    {
+      "title": "Pokémon Diamond and Pearl",
+      "link": "https://howlongtobeat.com/game/7148",
+      "platform": "Nintendo DS",
+      "image": "https://howlongtobeat.com/games/7148_Pokmon_Diamond_and_Pearl.png?width=100&crop=48%3A48%2Csmart",
+      "description": "In the Sinnoh region, there are two Pokemon that symbolize the region. They appear in the Sinnoh reigon's myths and old folklore. One is called Dialga, and is said to have the power to control time. The other is called Palkia, who is said to have the ability to distort space. The sinister organization called Team Galaxy is trying to rule the region by utilizing these two Pokemon's power. During your adventure to complete your Pokedex and become the Champion, these two Pokemon, and Team Galactic, will intertwine into the story and lead you on a fantastic journey across the Sinnoh region."
+    },
+    {
+      "title": "Sonic Heroes",
+      "link": "https://howlongtobeat.com/game/8764",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/8764_Sonic_Heroes.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Sonic teams up with Knuckles, Tails and nine other characters from Sega's classic Sonic universe in a new take on platforming action in Sonic Heroes for PlayStation 2, GameCube, and Xbox. Utilize the abilities of three different characters in order to complete levels by switching on the fly. Four teams of three characters: Team Sonic, Team Dark, Team Chaotix, and Team Rose race through specially designed levels that require logical character switching. Level designs promote replay value by adding multiple paths and missions. New Sonic story is told through cinematic pre-rendered movies between levels."
+    },
+    {
+      "title": "Crash Bandicoot: The Wrath of Cortex",
+      "link": "https://howlongtobeat.com/game/1975",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/1975_Crash_Bandicoot_The_Wrath_of_Cortex.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "By harnessing the destructive power of the Four Elements, Dr. Neo Cortex creates Crunch, a Super-Bandicoot with one mission...demolish all that lies before him. Will Crash and Coco be up to the challenge? You can bet your bandicoot they will!"
+    },
+    {
+      "title": "Pokémon Colosseum",
+      "link": "https://howlongtobeat.com/game/7144",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/7144_Pokmon_Colosseum.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Pokémon Colosseum - If you've conquered the Pokemon Stadium games, then the next step up is winning in the massive Colosseums! In this game, you'll be challenged to retrain and convert the infamous \"Dark Pokemon\". These are Pokemon that were mistreated during training. Open their hearts through kindness & training, then battle them against champion trainers in the Colosseums! Work with Dark Pokemon to develop a strong relationship with them -- open its heart so that it'll fight for you in the Colosseum!"
+    },
+    {
+      "title": "Wario World",
+      "link": "https://howlongtobeat.com/game/11068",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/11068_Wario_World.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "He's the good, the bad and the ugly all rolled into one, and now he's 3D! Wario, Mario's jealous rival, plays the hero--well, kind of--in his first console adventure."
+    },
+    {
+      "title": "The Legend of Zelda: The Wind Waker",
+      "link": "https://howlongtobeat.com/game/10045",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/10045_The_Legend_of_Zelda_The_Wind_Waker.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Nintendo's thematic action-adventure sequel to Ocarina of Time takes the series back to its more cartoonish roots. Utilizing a completely new look with cel-shaded graphics, the game casts players in the role of a familiar young boy, who sets out to save his kidnapped sister. Gameplay is vintage Zelda, only that the game's overworld is covered by water. Players have to control the direction of the wind to sail across the ocean and find dungeons, towns, and plenty of secrets. A special Game Boy Advance link-up option lets another player join the quest and give hints and assistance via the handheld."
+    },
+    {
+      "title": "Super Mario Sunshine",
+      "link": "https://howlongtobeat.com/game/9386",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/9386_Super_Mario_Sunshine.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "When Mario, Peach, and an entourage of Peach's loyal Toad friends set out for a tropical vacation on lovely Isle Delfino, they're in store for much more than a relaxing holiday. A mustachioed maniac has mucked up the entire island, and Mario is accused of committing the crime. Armed with a hi-tech water cannon called FLUDD (Flash Liquidizer Ultra Dousing Device), Mario sets out to clean the island, clear his name, and solve the mystery of the villainous vandal. With new enemies, moves, and surprises, Super Mario Sunshine offers plenty of challenges."
+    },
+    {
+      "title": "Sonic Adventure DX",
+      "link": "https://howlongtobeat.com/game/8751",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/8751_Sonic_Adventure_DX.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "An ancient evil lurking within the Master Emerald has been unleashed from its slumber by the devious Dr. Eggman and is on the verge of becoming the ultimate monster using the 7 Chaos Emeralds. Only Sonic and his friends are heroic enough to put a stop to Dr. Eggman and his evil minions. Hit the ground running in this classic epic adventure in a race against time to save the world!"
+    },
+    {
+      "title": "Sonic Adventure 2 Battle",
+      "link": "https://howlongtobeat.com/game/8750",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/8750_Sonic_Adventure_2_Battle.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Sonic and crew need to stop Dr. Eggman from his nasty tricks again. There's new characters brought into the Sonic universe! A mysterious dark hedgehog called Shadow and a bat named Rouge. The Sonic Adventure 2 Battle has been enhanced with graphics, doubling the framerate and now is set as a multiplayer system."
+    },
+    {
+      "title": "Rayman 3: Hoodlum Havoc",
+      "link": "https://howlongtobeat.com/game/7612",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/7612_Rayman_3_Hoodlum_Havoc.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Adventurers beware - Rayman's universe has exploded into a wacked-out world of cartoon mayhem and mind-blowing battles! When Globox accidentally swallows the Lord of the Dark Lums, a fanatic army of trigger-happy Hoodlums wreaks total havoc to get their Lord back! Rayman's only chance? Journey the vast reaches of the world to purge the Dark Lum Lord from the manic Globox, scour the lands for unearthly new powers, and do battle with hordes of Hoodlum soldiers, contraptions, and maniacal bosses. This time, it's war!"
+    },
+    {
+      "title": "Pokémon XD: Gale of Darkness",
+      "link": "https://howlongtobeat.com/game/7181",
+      "platform": "Nintendo GameCube",
+      "image": "https://howlongtobeat.com/games/7181_Pokmon_XD_Gale_of_Darkness.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Pokemon XD: Gale of Darkness is the first full-fledged Pokémon roleplaying game to not appear on a handheld platform. Return to Orre for a new role-playing game in an expansive setting with a sinister plot and characters the likes of which have never been met before. With Eevee as their companion, players seek to unravel the mystery of Shadow Lugia. The fate and welfare of Pokémon lies in their ability to Snag and Purify them before it's too late."
+    },
+    {
+      "title": "Hollow Knight",
+      "link": "https://howlongtobeat.com/game/26286",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/Hollow_Knight_collection_branding.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Hollow Knight is a challenging, beautiful action adventure game set in the vast, inter-connected underground kingdom of Hallownest. A 2D action game with an emphasis on skill and exploration, Hollow Knight has you fighting a fearsome host of deadly creatures, avoiding intricate traps and solving ancient mysteries as you make your own way through fungal wastes, forests of bone, and ruined underground cities."
+    },
+    {
+      "title": "Disco Elysium",
+      "link": "https://howlongtobeat.com/game/57335",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/57335_Disco_Elysium.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "DISCO ELYSIUM is a groundbreaking blend of hardboiled cop show and isometric RPG. Solve a massive, open ended case in a unique urban fantasy setting. Kick in doors, interrogate suspects, or just get lost exploring the gorgeously rendered city of Revachol. What kind of cop you are — is up to you."
+    },
+    {
+      "title": "Undertale",
+      "link": "https://howlongtobeat.com/game/30385",
+      "platform": "PC · Steam",
+      "image": "https://howlongtobeat.com/games/30385_Undertale.png?width=100&crop=48%3A48%2Csmart",
+      "description": "Welcome to UNDERTALE. In this RPG, you control a human who falls underground into the world of monsters. Now you must find your way out... or stay trapped forever."
+    },
+    {
+      "title": "Crash Bandicoot 3: Warped",
+      "link": "https://howlongtobeat.com/game/1972",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/1972_Crash_Bandicoot_3_Warped.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Dr. N. Trophy has built a time machine to collect the gems and crystals dropped by Dr. Neo Cortex. Joining this dastardly group is Dr. Cortex's boss Uka Uka, a freaky floating mask that is out to crush Crash. It is up to Crash and his sister, Coco, to conquer this threatening threesome and grab the goodies."
+    },
+    {
+      "title": "Crash Bandicoot 2: Cortex Strikes Back",
+      "link": "https://howlongtobeat.com/game/1970",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/1970_Crash_Bandicoot_2_Cortex_Strikes_Back.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "The evil Dr. Neo Cortex is back with a vengeance. This time, he's out to save the world? And he's asking for help from his arch nemesis, Crash Bandicoot? Could this just some conniving plan to lure Crash into a deadly trap? Find out as you jump, crawl, spin, slide, fly and surf your way through over 30 exciting levels in an adventure that's out of this world!"
+    }
+  ],
+  "retired": [
+    {
+      "title": "Castlevania: Symphony of the Night",
+      "link": "https://howlongtobeat.com/game/1593",
+      "platform": "PlayStation",
+      "image": "https://howlongtobeat.com/games/250px-Castlevania_SOTN_PAL.jpg?width=100&crop=48%3A48%2Csmart",
+      "description": "Uncover all the mysteries of Dracula's castle and discover the true secret behind his power."
+    }
+  ]
+}

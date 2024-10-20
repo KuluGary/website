@@ -1,0 +1,132 @@
+[
+  {
+    "title": "RPG Maker Games",
+    "description": "My first ever experience in an online community was in a tight-knit RPG Maker subforum of an emulation website.",
+    "children": [
+      {
+        "date": "26-01-2010",
+        "url": "https://www.emudesc.com/threads/pokemon-police.195944/",
+        "title": "Pokémon Police"
+      },
+      {
+        "date": "02-04-2010",
+        "url": "https://www.emudesc.com/threads/sonic-the-hedgehog-6-feathuring-rpg.214204/",
+        "title": "Sonic the Hedgehog 6 (feathuring RPG)"
+      },
+      {
+        "date": "23-08-2010",
+        "url": "https://www.emudesc.com/threads/freedom-fighters-sonic-the-hedgehog.252399/",
+        "title": "Freedom Fighters 【Sonic the Hedgehog】✗"
+      },
+      {
+        "date": "28-11-2010",
+        "url": "https://www.emudesc.com/threads/rpg-tactico-isometrico-multiplataforma.276937/",
+        "title": "RPG Táctico Isométrico [Multiplataforma]"
+      },
+      {
+        "date": "30-12-2010",
+        "url": "https://www.emudesc.com/threads/ambientacion-y-armonia.285390/",
+        "title": "Ambientación y Armonía"
+      },
+      {
+        "date": "30-01-2011",
+        "url": "https://www.emudesc.com/threads/cry-of-fate.293758/",
+        "title": "◊ Cry of Fate ◊"
+      },
+      { "date": "20-02-2011", "url": "https://www.emudesc.com/threads/cry-of-fate.299203/", "title": "Cry of Fate" }
+    ]
+  },
+  {
+    "title": "Digital publications",
+    "description": "I've written a few articles for a digital magazine at a RPG Maker forum.",
+    "children": [
+      {
+        "date": "24-11-2011 to 26-02-2014",
+        "url": "https://universomaker.foroactivo.com/h2-revista",
+        "title": "Revista Universo Maker"
+      }
+    ]
+  },
+  {
+    "title": "Creative writing",
+    "description": "I first discovered I liked roleplaying games at a system-agnostic narrative fantasy forum around 2011.",
+    "children": [
+      {
+        "date": "10-06-2011",
+        "url": "https://www.dofus.com/es/foro/29-leonera-rolista/197292-rp-travesia-lokal",
+        "title": "La travesía de Lokal"
+      },
+      {
+        "date": "11-12-2012",
+        "url": "https://cuentosdenoreth.foroactivo.com/t3660-tristan-de-tincoras",
+        "title": "Tristán de Tincoras"
+      },
+      { "date": "16-12-2012", "url": "https://cuentosdenoreth.foroactivo.com/t3681-gwaew", "title": "Gwaew" },
+      {
+        "date": "26-05-2013",
+        "url": "https://cuentosdenoreth.foroactivo.com/t4587-ament-fordye",
+        "title": "Ament Fordye"
+      },
+      { "date": "28-05-2013", "url": "https://cuentosdenoreth.foroactivo.com/t4589-sentencia", "title": "Sentencia" },
+      {
+        "date": "04-02-2013",
+        "url": "https://cuentosdenoreth.foroactivo.com/t4006-la-tumba-del-heroe",
+        "title": "La tumba del héroe"
+      },
+      {
+        "date": "30-08-2013",
+        "url": "https://cuentosdenoreth.foroactivo.com/t4807-la-casa-del-lobo",
+        "title": "La casa del lobo"
+      },
+      {
+        "date": "14-04-2014",
+        "url": "https://cuentosdenoreth.foroactivo.com/t5140-la-orden-de-los-bravos",
+        "title": "La Orden de los Bravos"
+      },
+      {
+        "date": "18-05-2014",
+        "url": "https://cuentosdenoreth.foroactivo.com/t5185-el-mal-menor",
+        "title": "El mal menor"
+      }
+    ]
+  },
+  {
+    "title": "Art",
+    "description": "In the long years I've been on the internet, I've shared my art on a few different platforms.",
+    "children": [
+      {
+        "date": "16-06-2011",
+        "url": "https://www.dofus.com/es/foro/1060-museos-galerias/199229-gal-museo-brisantino",
+        "title": "Museo Brisantino"
+      },
+
+      {
+        "date": "18-10-2011",
+        "url": "https://www.dofus.com/es/foro/1060-museos-galerias/393314-gal-galeria-tymador",
+        "title": "Galería de un Tymador"
+      },
+      {
+        "date": "08-06-2015",
+        "url": "https://www.wakfu.com/es/foro/113-fan-art/119238-gal-galeria-brisant",
+        "title": "Galería de Brisant"
+      },
+      {
+        "date": "19-01-2016",
+        "url": "https://www.wakfu.com/es/foro/113-fan-art/129765-gal-chibis-dopeul",
+        "title": "Chibis Dopeul"
+      },
+
+      {
+        "date": "08-04-2012 to 01-01-2019",
+        "url": "https://www.deviantart.com/kulugary/gallery/all",
+        "title": "Deviantart gallery"
+      },
+
+      {
+        "date": "01-06-2015 to 05-11-2018",
+        "url": "https://www.deviantart.com/kulugary/gallery/all",
+        "title": "Tumblr gallery"
+      }
+    ]
+  }
+]

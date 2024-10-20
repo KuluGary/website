@@ -4,122 +4,30 @@ layout: layouts/quizzes.html
 ---
 
 {% include "components/header.html" %}
+{% macro quizzItem(quizz) %}
+  <li>
+    {% if quizz.url %}
+      <a href="{{ quizz.url }}">{{ quizz.title }}</a>
+    {% else %}
+      {{ quizz.title }}
+    {% endif %}
+
+    {% if quizz.children %}
+      <ul>
+        {% for item in quizz.children %}
+          {{ quizzItem(item) }}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endmacro %}
 
 <main>
-  <section>
-    <ul>
-      <li>
-        MBTI:
-        <ul>
-          <li>
-            <a href="https://www.16personalities.com">16Personalities</a>
-            <ul>
-              <li>
-                <a href="https://www.16personalities.com/infj-personality">INFJ-T (Turbulent Advocate)</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="http://https://www.michaelcaloz.com/personality/">The Michael Caloz Cognitive Functions Test</a>
-
-            <ul>
-              <li>
-                <a href="https://www.michaelcaloz.com/personality/index.html?screen=last&Ti=6&Te=2&Fi=9&Fe=11&Si=4&Se=8&Ni=6&Ne=6&SJ=0&NF=1.5&NT=1.5&SP=0&iFi=0&iTi=0&iSi=1&iNi=0&iFe=0&iTe=1&iSe=0&iNe=1&E=0&I=2&N=2&S=0&T=0&F=2&J=0&P=0">INFJ / INFP</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-      </li>
-      <li>
-        <a href="https://principlesyou.com/archetypes">Archetypes</a>
-
-        <ul>
-          <li>Strongest
-
-            <ul>
-              <li>
-                <a href="https://principlesyou.com/archetypes/artisan">Artisan</a>
-              </li>
-              <li>
-                <a href="https://principlesyou.com/archetypes/helper">Helper</a>
-              </li>
-              <li>
-                <a href="https://principlesyou.com/archetypes/peacekeeper">Peacekeeper</a>
-              </li>
-            </ul>
-          </li>
-          <li>Weakest
-            <ul>
-              <li>
-                <a href="https://principlesyou.com/archetypes/commander">Commander</a>
-              </li>
-              <li>
-                <a href="https://principlesyou.com/archetypes/impresario">Impresario</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="https://uquiz.com/quiz/y7ORUH/whats-your-role-in-the-tragic-play">What's your role in the tragic play?</a>
-
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/tragic.jpg" target="_blank">desperate narrator</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="https://web.archive.org/web/20231122014345/https://www.designexpo.org.tw/zh-TW" target="_blank">Personality type</a>
-
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/elemental.jpg" target="_blank">Water</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="https://en.shindanmaker.com/629150" target="_blank">What kind of demon are you?</a>
-
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/demon.jpg" target="_blank" rel="noopener noreferrer">Familiar Spirit</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="https://www.idrlabs.com/jock-nerd-prep-goth/test.php" target="_blank" rel="noopener noreferrer">Jock-Nerd/Prep-Goth</a>
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/jock-nerd-prep-goth.jpg" target="_blank" rel="noopener noreferrer">LARP</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="http://cupped-expressions.net/cheese/quiz/" target="_blank" rel="noopener noreferrer">Cheese quiz</a>
-
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/mozzarella.gif" target="_blank" rel="noopener noreferrer">Mozzarella</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="https://sophie006liu.github.io/vegetal/" target="_blank" rel="noopener noreferrer">What vegetable are you?</a>
-
-        <ul>
-          <li>
-            <a href="/assets/images/quizzes/vegetables.jpg" target="_blank" rel="noopener noreferrer">Leak</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+  <ul>
+    {% for quizz in quizzes %}
+      {{ quizzItem(quizz) }}
+    {% endfor %}
+  </ul>
 </main>
 
 {% include "components/footer.html" %}

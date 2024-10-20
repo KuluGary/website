@@ -12,79 +12,20 @@ layout: layouts/old-stuff.html
 
   <p>By the nature of it, a lot of the content here is in <b>spanish</b>, and I cannot promise the links will stay up indefinetely.</p>
 
-  <section>
-    <h2>RPG Maker games</h2>
-    <p>My first ever experience in an online community was in a tight-knit RPG Maker subforum of an emulation website.</p>
-    <ul>
-      <li>26-01-2010: <a href="https://www.emudesc.com/threads/pokemon-police.195944/">Pokémon Police</a>
-      </li>
-      <li>02-04-2010: <a href="https://www.emudesc.com/threads/sonic-the-hedgehog-6-feathuring-rpg.214204/">Sonic the Hedgehog 6 (feathuring RPG)</a>
-      </li>
-      <li>23-08-2010: <a href="https://www.emudesc.com/threads/freedom-fighters-sonic-the-hedgehog.252399/">Freedom Fighters 【Sonic the Hedgehog】✗</a>
-      </li>
-      <li>28-11-2010: <a href="https://www.emudesc.com/threads/rpg-tactico-isometrico-multiplataforma.276937/">RPG Táctico Isométrico [Multiplataforma]</a>
-      </li>
-      <li>30-12-2010: <a href="https://www.emudesc.com/threads/ambientacion-y-armonia.285390/">Ambientación y Armonía</a>
-      </li>
-      <li>30-01-2011: <a href="https://www.emudesc.com/threads/cry-of-fate.293758/">◊ Cry of Fate ◊</a>
-      </li>
-      <li>20-02-2011: <a href="https://www.emudesc.com/threads/cry-of-fate.299203/">Cry of Fate</a>
-      </li>
-    </ul>
-  </section>
+  {% for category in oldstuff %}
+    <section>
+      <h2>{{ category.title }}</h2>
+      <p>{{ category.description }}</p>
 
-  <section>
-    <h2>Digital publications</h2>
-    <p>I've written a few articles for a digital magazine at a RPG Maker forum.</p>
-
-    <ul>
-      <li>24-11-2011 to 26-02-2014: <a href="https://universomaker.foroactivo.com/h2-revista">Revista Universo Maker</a>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Creative writing</h2>
-    <p>I first discovered I liked roleplaying games at a system-agnostic narrative fantasy forum around 2011.</p>
-
-    <ul>
-      <li>10-06-2011: <a href="https://www.dofus.com/es/foro/29-leonera-rolista/197292-rp-travesia-lokal">La travesía de Lokal</a>
-      <li>11-12-2012: <a href="https://cuentosdenoreth.foroactivo.com/t3660-tristan-de-tincoras">Tristán de Tincoras</a>
-      </li>
-      <li>16-12-2012: <a href="https://cuentosdenoreth.foroactivo.com/t3681-gwaew">Gwaew</a>
-      </li>
-      <li>26-05-2013: <a href="https://cuentosdenoreth.foroactivo.com/t4587-ament-fordye">Ament Fordye</a>
-      </li>
-      <li>28-05-2013: <a href="https://cuentosdenoreth.foroactivo.com/t4589-sentencia">Sentencia</a>
-      </li>
-      <li>04-02-2013: <a href="https://cuentosdenoreth.foroactivo.com/t4006-la-tumba-del-heroe">La tumba del héroe</a>
-      </li>
-      <li>30-08-2013: <a href="https://cuentosdenoreth.foroactivo.com/t4807-la-casa-del-lobo">La casa del lobo</a>
-      </li>
-      <li>14-04-2014: <a href="https://cuentosdenoreth.foroactivo.com/t5140-la-orden-de-los-bravos">La Orden de los Bravos</a>
-      </li>
-      <li>18-05-2014: <a href="https://cuentosdenoreth.foroactivo.com/t5185-el-mal-menor">El mal menor</a>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Art</h2>
-    <p>In the long years I've been on the internet, I've shared my art on a few different platforms.</p>
-
-    <ul>
-      <li>16-06-2011: <a href="https://www.dofus.com/es/foro/1060-museos-galerias/199229-gal-museo-brisantino">Museo Brisantino</a>
-      </li>
-      <li>18-10-2011: <a href="https://www.dofus.com/es/foro/1060-museos-galerias/393314-gal-galeria-tymador">Galería de un Tymador</a>
-      <li>08-06-2015: <a href="https://www.wakfu.com/es/foro/113-fan-art/119238-gal-galeria-brisant">Galería de Brisant</a>
-      <li>19-01-2016: <a href="https://www.wakfu.com/es/foro/113-fan-art/129765-gal-chibis-dopeul">Chibis Dopeul</a>
-      </li>
-      <li>08-04-2012 to 01-01-2019: <a href="https://www.deviantart.com/kulugary/gallery/all">Deviantart gallery</a>
-      </li>
-      <li>01-06-2015 to 05-11-2018: <a href="https://www.deviantart.com/kulugary/gallery/all">Tumblr gallery</a>
-      </li>
-    </ul>
-  </section>
+      <ul>
+        {% for item in category.children %}
+          <li>
+            {{ item.date }}: <a href="{{ item.url }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
 </main>
 
 {% include "components/footer.html" %}

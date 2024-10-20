@@ -1,0 +1,125 @@
+[
+  {
+    "title": "Software",
+    "description": "I'm currently using a Windows 10 machine and the software I use is installed on that operating system, so availability may vary.",
+    "apps": [
+      {
+        "url": "https://www.mozilla.org/",
+        "title": "Firefox",
+        "description": "to browse the web."
+      },
+      {
+        "url": "https://godotengine.org/",
+        "title": "Godot",
+        "description": "to make videogames."
+      },
+      {
+        "url": "https://code.visualstudio.com/",
+        "title": "Visual Studio Code",
+        "description": "to write code."
+      },
+      {
+        "url": "https://www.gimp.org/",
+        "title": "GIMP",
+        "description": "to make and edit photos and images."
+      },
+      {
+        "url": "https://inkscape.org/",
+        "title": "Inkscape",
+        "description": "to make vector graphics."
+      },
+      {
+        "url": "https://krita.org/",
+        "title": "Krita",
+        "description": "to make digital art."
+      },
+      {
+        "url": "https://www.blender.org/",
+        "title": "Blender",
+        "description": "to make 3D models."
+      },
+      {
+        "url": "https://libresprite.github.io/#!/",
+        "title": "Libresprite",
+        "description": "to make pixel art."
+      },
+      {
+        "url": "https://www.libreoffice.org/",
+        "title": "LibreOffice",
+        "description": "for creative writing."
+      },
+      {
+        "url": "https://obsproject.com/es/",
+        "title": "OBS",
+        "description": "to make screen recordings and livestreams."
+      },
+      {
+        "url": "https://www.foxit.com/pdf-reader/",
+        "title": "Foxit PDF Reader",
+        "description": "to read PDFs."
+      },
+      {
+        "url": "https://www.oo-software.com/en/shutup10",
+        "title": "O&O ShutUp10++",
+        "description": "to have control over which Windows 10/11 functions to enable."
+      },
+      {
+        "url": "https://www.oo-software.com/en/ooappbuster",
+        "title": "O&O AppBuster",
+        "description": "to remove bloatware apps in your Windows 10/11 installation."
+      }
+    ]
+  },
+  {
+    "title": "Websites and web-apps",
+    "description": "These are some websites and webservices I find of particular interest.",
+    "apps": [
+      {
+        "url": "https://duckduckgo.com/",
+        "title": "DuckDuckGo",
+        "description": "to surf the web privately."
+      },
+      {
+        "url": "https://32bit.cafe/",
+        "title": "@32bit.cafe RSS",
+        "description": "to manage my RSS feed."
+      },
+      {
+        "url": "https://archive.org/",
+        "title": "Internet archive",
+        "description": "to browse through a ditital library."
+      },
+      {
+        "url": "https://web.archive.org/",
+        "title": "Wayback machine",
+        "description": "to browse preserved websites."
+      },
+      {
+        "url": "https://www.webdesignmuseum.org/",
+        "title": "Web design museum",
+        "description": "to browse old-school website designs."
+      },
+      {
+        "url": "https://neocities.org/",
+        "title": "Neocities",
+        "description": "to host static websites (like this one)."
+      }
+    ]
+  },
+  {
+    "title": "Web add-ons and extensions",
+    "description": "These are plugins I have installed on my preferred browser all the time",
+    "apps": [
+      {
+        "url": "https://ublockorigin.com/",
+        "title": "uBlock origin",
+        "description": "to block invasive ads."
+      },
+      {
+        "url": "https://bitwarden.com/",
+        "title": "bitwarden",
+        "description": "to manage my passwords."
+      }
+    ]
+  }
+]

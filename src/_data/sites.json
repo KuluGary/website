@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Gaming",
+    "sites": [
+      {
+        "title": "How Long To Beat",
+        "url": "https://howlongtobeat.com/",
+        "description": "If you want to manage your game backlog or share what you are playing, this site is awesome. I'm currently using it to manage my <a href=\"/now\">/now</a> page."
+      },
+      {
+        "title": "Vimm's Lair",
+        "url": "https://vimm.net/",
+        "description": "Some of my favourite games of all time are now considered retro, and if you are into game preservation you'll find that Vimm's Lair has an enormous database you can browse through."
+      }
+    ]
+  },
+  {
+    "title": "Game Dev",
+    "sites": [
+      {
+        "title": "Game accessibility guidelines",
+        "url": "https://gameaccessibilityguidelines.com/",
+        "description": "If you are a game developer and are concerned with the accessibility of your games, you should check out this site."
+      },
+      {
+        "title": "Godot Shaders",
+        "url": "https://godotshaders.com/",
+        "description": "A community driven shader library for the Godot game engine."
+      },
+      {
+        "title": "Kenney's Game Assets",
+        "url": "https://kenney.nl/",
+        "description": "Kenney has ammassed a gigantic collection of free-to-use game assets, from 2D to 3D to UI."
+      }
+    ]
+  },
+  {
+    "title": "Worldbuilding",
+    "sites": [
+      {
+        "title": "Azgaar's Fantasy Map Generator",
+        "url": "https://azgaar.github.io/Fantasy-Map-Generator/",
+        "description": "Fantasy maps is something I love looking at, from Lord of the Rings to The Witcher. But if you ever wanted to make one for yourself, check out Azgaar's."
+      },
+      {
+        "title": "Watabou's Procgen Arcana",
+        "url": "https://watabou.github.io/",
+        "description": "If you liked Azhaar's, Watabou's offers an array of different map generators from cities, villages and dungeons."
+      }
+    ]
+  },
+  {
+    "title": "Tabletop Gaming",
+    "sites": [
+      {
+        "title": "The Dungeon Master's Vault",
+        "url": "https://www.dungeonmastersvault.com/",
+        "description": "An online service for D&D5e players and Dungeon Masters to generate character sheet and other resources."
+      },
+      {
+        "title": "Mythological Figures (for D&D5e)",
+        "url": "https://www.enworld.org/wiki/mythological_figures/",
+        "description": "A collection of NPC stat blocks based on mythological and historic figures."
+      },
+      {
+        "title": "NPC Statblock Compendium",
+        "url": "https://www.gmbinder.com/share/-LaVgpp4u9SDWpfy16i4",
+        "description": "A PDF full of NPC stat blocks based on character classes and races for D&D5e."
+      }
+    ]
+  },
+  {
+    "title": "Other",
+    "sites": [
+      {
+        "title": "32-Bit cafe",
+        "url": "https://32bit.cafe/",
+        "description": "If you miss the old-school feel of the Internet before it was profitable for corporations, check out the info and resources provided by the 32-Bit cafe."
+      },
+      {
+        "title": "the museum of alexandra",
+        "url": "https://xandra.cc/",
+        "description": "Alexandra's personal website is an inspiration in both style and the sheer amount of content shared. If you want inspiration to start your own personal site, be sure to check hers out."
+      },
+      {
+        "title": "Modern Font Stacks",
+        "url": "https://modernfontstacks.com/",
+        "description": "System font stack CSS organized by typeface classification for every modern OS."
+      }
+    ]
+  }
+]
