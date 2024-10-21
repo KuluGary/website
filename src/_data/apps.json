@@ -119,6 +119,11 @@
         "url": "https://bitwarden.com/",
         "title": "bitwarden",
         "description": "to manage my passwords."
+      },
+      {
+        "url": "https://addons.mozilla.org/firefox/addon/tree-style-tab/",
+        "title": "Tree Style Tab",
+        "description": "to display browser tabs in a tree fashion."
       }
     ]
   }
