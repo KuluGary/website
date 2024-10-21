@@ -14,7 +14,7 @@ layout: layouts/apps.html
       <ul>
         {% for app in category.apps %}
           <li>
-            <a href="{{ app.url }}">{{ app.title }}</a>: {{ app.description }}
+            <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer">{{ app.title }}</a>: {{ app.description }}
           </li>
 
         {% endfor %}

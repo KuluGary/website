@@ -20,7 +20,7 @@ layout: layouts/old-stuff.html
       <ul>
         {% for item in category.children %}
           <li>
-            {{ item.date }}: <a href="{{ item.url }}">{{ item.title }}</a>
+            {{ item.date }}: <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
           </li>
         {% endfor %}
       </ul>

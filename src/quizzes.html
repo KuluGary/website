@@ -7,7 +7,7 @@ layout: layouts/quizzes.html
 {% macro quizzItem(quizz) %}
   <li>
     {% if quizz.url %}
-      <a href="{{ quizz.url }}">{{ quizz.title }}</a>
+      <a href="{{ quizz.url }}" target="_blank" rel="noopener noreferrer">{{ quizz.title }}</a>
     {% else %}
       {{ quizz.title }}
     {% endif %}
