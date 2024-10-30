@@ -14,9 +14,9 @@
         "description": "to make videogames."
       },
       {
-        "url": "https://code.visualstudio.com/",
-        "title": "Visual Studio Code",
-        "description": "to write code."
+        "url": "https://vscodium.com/",
+        "title": "VSCodium",
+        "description": "to write code. A fork of Visual Studio Code with telemetry disabled."
       },
       {
         "url": "https://www.gimp.org/",
