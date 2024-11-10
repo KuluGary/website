@@ -8,6 +8,13 @@
 
 .header h1 {
   margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.header h1::before {
+  content: "";
+  margin-right: 0;
 }
 
 .header ul,
@@ -77,4 +84,8 @@ header td a {
 
 header td a > * {
   color: var(--background-color);
+}
+
+header svg path {
+  fill: var(--background-color);
 }

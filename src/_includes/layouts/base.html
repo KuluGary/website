@@ -1,8 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="default">
+<html lang="en">
   <head>
     {% include "head.html" %}
     {% block head %}{% endblock %}
+
+    <script>
+      (() => {
+        document.addEventListener("DOMContentLoaded", () => {
+          const cachedTheme = localStorage.getItem("theme");
+          const cachedFontStack = localStorage.getItem("font-stack");
+
+          if (cachedTheme !== null) 
+            document
+              .documentElement
+              .setAttribute("data-theme", cachedTheme)
+
+          if (cachedFontStack !== null) 
+            document
+              .documentElement
+              .setAttribute("data-font-stack", cachedFontStack)
+          })
+      })();
+    </script>
   </head>
 
   <body>

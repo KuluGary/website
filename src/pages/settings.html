@@ -26,11 +26,15 @@ permalink: /settings/
       <h3>Theme:</h3>
     </label>
     <select id="theme-select">
-      <optgroup label="Light themes">
-        <option value="grayscale">Grayscale</option>
+      <optgroup id="light-themes" label="Light themes">
+        {% for theme in themes.light %}
+          <option value="{{theme.id}}" data-color-scheme="light">{{theme.label}}</option>
+        {% endfor %}
       </optgroup>
-      <optgroup label="Dark themes">
-        <option value="dark-blue">Dark Blue</option>
+      <optgroup id="dark-themes" label="Dark themes">
+        {% for theme in themes.dark %}
+          <option value="{{theme.id}}" data-color-scheme="dark">{{theme.label}}</option>
+        {% endfor %}
       </optgroup>
     </select>
 
@@ -39,20 +43,9 @@ permalink: /settings/
     </label>
 
     <select id="font-select">
-      <option value="system-ui">System UI</option>
-      <option value="transitional">Transitional</option>
-      <option value="old-style">Old Style</option>
-      <option value="humanist">Humanist</option>
-      <option value="heometric-humanist">Geometric Humanist</option>
-      <option value="classical-humanist">Classical Humanist</option>
-      <option value="neo-grotesque">Neo-Grotesque</option>
-      <option value="monospace-slab-serif">Monospace Slab Serif</option>
-      <option value="monospace-code">Monospace Code</option>
-      <option value="industrial">Industrial</option>
-      <option value="rounded-sans">Rounded Sans</option>
-      <option value="antique">Antique</option>
-      <option value="didone">Didone</option>
-      <option value="handrwitten">Handwritten</option>
+      {% for fontstack in fonts %}
+        <option value="{{ fontstack.id }}">{{fontstack.label}}</option>
+      {% endfor %}
     </select>
 
     <button id="reset-button">Reset</button>

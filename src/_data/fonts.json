@@ -1,0 +1,16 @@
+[
+  { "id": "system-ui", "label": "System UI" },
+  { "id": "transitional", "label": "Transitional" },
+  { "id": "old-style", "label": "Old Style" },
+  { "id": "humanist", "label": "Humanist" },
+  { "id": "heometric-humanist", "label": "Geometric Humanist" },
+  { "id": "classical-humanist", "label": "Classical Humanist" },
+  { "id": "neo-grotesque", "label": "Neo-Grotesque" },
+  { "id": "monospace-slab-serif", "label": "Monospace Slab Serif" },
+  { "id": "monospace-code", "label": "Monospace Code" },
+  { "id": "industrial", "label": "Industrial" },
+  { "id": "rounded-sans", "label": "Rounded Sans" },
+  { "id": "antique", "label": "Antique" },
+  { "id": "didone", "label": "Didone" },
+  { "id": "handrwitten", "label": "Handwritten" }
+]

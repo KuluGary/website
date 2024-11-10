@@ -1,5 +1,5 @@
 {% block head %}
-<link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/components/header.css"/>
 {% endblock %}
 
 <header class="header">
@@ -7,8 +7,7 @@
     <tr>
       <td colspan="2" class="width-auto">
         <div class="logo-cell">
-          <img class="logo-light" src="/assets/images/cap-dark.ico" alt="" />
-          <img class="logo-dark" src="/assets/images/cap-light.ico" alt="" />
+          {% include "components/header-icon.html" %}
 
           <a href="/">
             <h1 class="title">KULUGARY</h1>
