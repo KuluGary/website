@@ -4,7 +4,9 @@ function articlesByYear(collection) {
   const uniqueYears = [...new Set(years)];
 
   const articlesByYear = uniqueYears.reduce((prev, year) => {
-    const filteredArticles = articles.filter((post) => post.date.getFullYear() === year);
+    const filteredArticles = articles.filter(
+      (post) => post.date.getFullYear() === year
+    );
 
     return [...prev, [year, filteredArticles]];
   }, []);
@@ -82,11 +84,17 @@ function unslugify(slug) {
 }
 
 function generateSocialMediaImage(imageSrc) {
-  if (!imageSrc) return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
+  if (!imageSrc)
+    return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
 
   if (imageSrc.startsWith("https://")) return imageSrc;
 
   return `https://kulugary.neocities.org${imageSrc}`;
+}
+
+function limit(array, limit = 0) {
+  console.log({ array });
+  return array.slice(0, limit);
 }
 
 module.exports = {
@@ -97,4 +105,5 @@ module.exports = {
   uniqueTags,
   unslugify,
   generateSocialMediaImage,
+  limit,
 };

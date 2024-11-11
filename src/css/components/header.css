@@ -10,6 +10,9 @@
   margin: 0;
   padding: 0;
   background-color: transparent;
+  font-size: 2rem;
+  line-height: calc(2 * var(--line-height));
+  text-transform: uppercase;
 }
 
 .header h1::before {

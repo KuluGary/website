@@ -5,7 +5,7 @@ permalink: /bulletin-board/
 ---
 
 {% include "components/header.html" %}
-{%- set collection = 'post' -%}
+{%- set collection = collections.post |reverse -%}
 <main>
   <h2>Bulletin board</h2>
 

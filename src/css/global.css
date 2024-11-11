@@ -194,23 +194,10 @@ h6 {
   font-weight: var(--font-weight-bold);
   margin: calc(var(--line-height) * 2) 0 var(--line-height);
   line-height: var(--line-height);
-  background-color: var(--background-color-alt);
-  padding: calc(1ch / 2);
-}
-
-h1 {
-  font-size: 2rem;
-  line-height: calc(2 * var(--line-height));
-  margin-bottom: calc(var(--line-height) * 2);
-  text-transform: uppercase;
-}
-
-h2,
-h3,
-h4 {
   font-size: 1rem;
   text-transform: uppercase;
-  color: var(--primary-color);
+  background-color: var(--background-color-alt);
+  padding: calc(1ch / 2);
 }
 
 h1::before,
@@ -219,8 +206,32 @@ h3::before,
 h4::before,
 h5::before,
 h6::before {
-  content: "░░";
   margin-right: 1ch;
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
+}
+
+h2::before {
+  content: "░";
+}
+
+h3 {
+  color: var(--secondary-color);
+}
+
+h3::before {
+  content: "░░";
+}
+
+h4 {
+  color: var(--tertiary-color);
+}
+
+h4::before {
+  content: "░░░";
 }
 
 hr {

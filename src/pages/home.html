@@ -20,23 +20,23 @@ permalink: /
     third-party platforms.
   </p>
 
-  <h2 class="toc-title">Sitemap</h2>
+  <h2>Blog</h2>
+
+  <p>This are my latest full-size blog articles.</p>
+
+  {% set collection = collections.article | reverse | limit(3) %}
+  {% include "components/post-list.html" %}
+
+  <a href="/articles">Read more</a>
+
+  <h2>Microblog</h2>
+  {% set collection = collections.post | reverse | limit(3) %}
+  {% include "components/post-list.html" %}
+  <a href="/bulletin-board">Read more</a>
+
+  <h2>Sitemap</h2>
 
   <ul>
-    <li>
-      <a href="/articles">/articles</a>
-      <p>
-        From time to time I write some articles, tutorials or essays on the longer side. These tend to be more
-        informative and / or educative.
-      </p>
-    </li>
-    <li>
-      <a href="/bulletin-board">/bulletin-board</a>
-      <p>
-        Short-form posts about what's going on with me at the moment. They tend to be more bite-sized, and updated more
-        often.
-      </p>
-    </li>
     <li>
       <a href="/now">/now</a>
       <p>A now page that also serves as a backlog of whatever I'm currently into or I've been into in the past.</p>

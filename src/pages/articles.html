@@ -5,7 +5,7 @@ permalink: /articles/
 ---
 
 {% include "components/header.html" %}
-{%- set collection = 'article' -%}
+{%- set collection = collections.article | reverse -%}
 <main>
   <h2>Articles</h2>
 
