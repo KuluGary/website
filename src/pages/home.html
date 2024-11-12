@@ -18,15 +18,15 @@ permalink: /
 
   <p>This are my latest full-size blog articles.</p>
 
-  {% set collection = collections.article | reverse | limit(3) %}
+  {% set collection = collections['blog-post'] | reverse | limit(3) %}
   {% include "components/post-list.html" %}
 
-  <a href="/articles">Read more</a>
+  <a href="/blog">Read more</a>
 
   <h2>Microblog</h2>
-  {% set collection = collections.post | reverse | limit(3) %}
+  {% set collection = collections['micro-post'] | reverse | limit(3) %}
   {% include "components/post-list.html" %}
-  <a href="/bulletin-board">Read more</a>
+  <a href="/microblog">Read more</a>
 </main>
 
 {% include "components/footer.html" %}

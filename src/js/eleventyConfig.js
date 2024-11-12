@@ -1,17 +1,17 @@
-function articlesByYear(collection) {
-  const articles = collection.getFilteredByTag("article").reverse();
-  const years = articles.map((post) => post.date.getFullYear());
+function postsByYear(collection) {
+  const posts = collection.getFilteredByTag("blog-post").reverse();
+  const years = posts.map((post) => post.date.getFullYear());
   const uniqueYears = [...new Set(years)];
 
-  const articlesByYear = uniqueYears.reduce((prev, year) => {
-    const filteredArticles = articles.filter(
+  const postsByYear = uniqueYears.reduce((prev, year) => {
+    const filteredposts = posts.filter(
       (post) => post.date.getFullYear() === year
     );
 
-    return [...prev, [year, filteredArticles]];
+    return [...prev, [year, filteredposts]];
   }, []);
 
-  return articlesByYear;
+  return postsByYear;
 }
 
 function formatDate(dateObj) {
@@ -93,12 +93,11 @@ function generateSocialMediaImage(imageSrc) {
 }
 
 function limit(array, limit = 0) {
-  console.log({ array });
   return array.slice(0, limit);
 }
 
 module.exports = {
-  articlesByYear,
+  postsByYear,
   formatDate,
   filterMangaOnlySafe,
   generateShareUrl,

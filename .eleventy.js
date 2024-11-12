@@ -1,5 +1,5 @@
 const {
-  articlesByYear,
+  postsByYear,
   formatDate,
   filterMangaOnlySafe,
   generateShareUrl,
@@ -29,10 +29,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
   eleventyConfig.addFilter("uniqueTags", uniqueTags);
   eleventyConfig.addFilter("unslugify", unslugify);
-  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
+  eleventyConfig.addFilter(
+    "generateSocialMediaImage",
+    generateSocialMediaImage
+  );
   eleventyConfig.addFilter("limit", limit);
 
-  eleventyConfig.addCollection("articlesByYear", articlesByYear);
+  eleventyConfig.addCollection("postsByYear", postsByYear);
 
   eleventyConfig.setLibrary(
     "md",

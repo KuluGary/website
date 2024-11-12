@@ -1,6 +1,6 @@
 ---
 title: Roguelike prototype
-tags: ["post", "game_dev"]
+tags: ["micro-post", "game_dev"]
 thumb:
   url: https://img.youtube.com/vi/XwVtgIe1eQk/sddefault.jpg
   alt: lorem

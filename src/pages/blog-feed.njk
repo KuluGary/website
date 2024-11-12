@@ -1,9 +1,9 @@
 ---json
 {
-  "permalink": "/articles/feed.xml",
+  "permalink": "/blog/feed.xml",
   "eleventyExcludeFromCollections": true,
   "metadata": {
-    "title": "KuluGary - My articles",
+    "title": "KuluGary - Blog",
     "subtitle": "Blog site with long-form write-ups about anything that comes to mind.",
     "language": "en",
     "url": "https://kulugary.neocities.org/",
@@ -21,7 +21,7 @@
   <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self"/>
   <link href="{{ metadata.url }}"/>
   <updated
-		>{{ collections.article | getNewestCollectionItemDate | dateToRfc3339
+		>{{ collections.blog | getNewestCollectionItemDate | dateToRfc3339
 		}}</updated
 	>
   <id>{{ metadata.url }}</id>
@@ -29,7 +29,7 @@
     <name>{{ metadata.author.name }}</name>
     <email>{{ metadata.author.email }}</email>
   </author>
-  {%- for post in collections.article | reverse %}
+  {%- for post in collections.blog | reverse %}
     {%- set absolutePostUrl =
 	post.url | absoluteUrl(metadata.url) %}
     <entry>

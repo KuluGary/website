@@ -1,6 +1,6 @@
 ---
 title: State machine
-tags: ["post", "game_dev"]
+tags: ["micro-post", "game_dev"]
 thumb:
   url: https://img.youtube.com/vi/svhFr0xmTLQ/hqdefault.jpg
   alt: lorem

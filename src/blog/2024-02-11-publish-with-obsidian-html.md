@@ -2,13 +2,13 @@
 title: Publish your notes with ObsidianHTML
 # date: 2024-02-11
 lang: en
-tags: ["article", "obsidian", "development"]
-image: /assets/images/articles/2024-02-11-publish-with-obsidian-html/header.png
+tags: ["blog-post", "obsidian", "development"]
+image: /assets/images/blog/2024-02-11-publish-with-obsidian-html/header.png
 imageAlt: Publish your notes with ObsidianHTML
 description: Thanks to the ObsidianHTML package, you can share your notes online.
 ---
 
-![Publish your notes with ObsidianHTML](/assets/images/articles/2024-02-11-publish-with-obsidian-html/header.png "Publish your notes with ObsidianHTML")
+![Publish your notes with ObsidianHTML](/assets/images/blog/2024-02-11-publish-with-obsidian-html/header.png "Publish your notes with ObsidianHTML")
 
 - [Preamble](#preamble)
 - [Preparing the environment](#preparing-the-environment)
@@ -123,7 +123,8 @@ An important requirement for my use case is that, be it because the Note is priv
 module_config:
   filter_on_metadata:
     include_on:
-      value: [[{ "present": "visibility" }, { "equals": ["visibility", "public"] }]]
+      value:
+        [[{ "present": "visibility" }, { "equals": ["visibility", "public"] }]]
 ```
 
 This configuration is explained in [the documentation](https://obsidian-html.github.io/configurations/modules/filter-on-metadata.html), and in this case, I use it like this:
@@ -144,7 +145,8 @@ However, it's a bit of work if what we want is to publish most notes and only pi
 module_config:
   filter_on_metadata:
     exclude_on:
-      value: [[{ "present": "visibility" }, { "equals": ["visibility", "private"] }]]
+      value:
+        [[{ "present": "visibility" }, { "equals": ["visibility", "private"] }]]
 ```
 
 In this way, what we ask of ObsidianHTML is for it to exclude every Note that has the tag `visibility: private` in its frontmatter, like this:

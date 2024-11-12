@@ -3,20 +3,19 @@ title: >
   [Devlog] - The 20 Games Challenge: Pong
 # date: 2023-12-22
 lang: en
-tags: ["article", "devlog", "the-20-games-challenge"]
-image: "/assets/images/articles/2023-12-24-devlog-pong/pong.png"
+tags: ["blog-post", "devlog", "the-20-games-challenge"]
+image: "/assets/images/blog/2023-12-24-devlog-pong/pong.png"
 imageAlt: Screenshot of the game Pong.
 description: In this Devlog I take on 'The 20 Games Challenge' to try to recreate the classic game - Pong. Gain insights into the coding challenge, design considerations, and the overall learning experience of crafting Pong within the constraints of the 20 Games Challenge.
 ---
 
-![Pong screenshot](/assets/images/articles/2023-12-24-devlog-pong/pong.png "Pong")
+![Pong screenshot](/assets/images/blog/2023-12-24-devlog-pong/pong.png "Pong")
 
 - [Preamble](#preamble)
 - [The ball](#the-ball)
 - [The player paddle](#the-player-paddle)
 - [The opponent paddle](#la-raqueta-del-oponente)
 - [Conclusión](#conclusión)
-
 
 ## Preamble
 

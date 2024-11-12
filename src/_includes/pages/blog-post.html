@@ -1,10 +1,10 @@
 ---
-layout: layouts/article.html
+layout: layouts/blog-post.html
 ---
 
 {% include "components/header.html" %}
-{% set previousPost = collections.article | getPreviousCollectionItem %}
-{% set nextPost = collections.article | getNextCollectionItem %}
+{% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
+{% set nextPost = collections['blog-post'] | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
   <article>
@@ -21,7 +21,7 @@ layout: layouts/article.html
 
     <ul class="horizontal">
       {% for tag in tags %}
-        {% if tag != 'article' %}
+        {% if tag != "blog-post" %}
           <li>
             <a class="subtitle" href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
           </li>
@@ -33,5 +33,5 @@ layout: layouts/article.html
   </article>
 </main>
 
-{% set rssUrl = "/my-articles/feed.xml" %}
+{% set rssUrl = "/blog/feed.xml" %}
 {% include "components/share-footer.html" %}

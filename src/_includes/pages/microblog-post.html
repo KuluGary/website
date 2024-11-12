@@ -1,10 +1,10 @@
 ---
-layout: layouts/gallery-item.html
+layout: layouts/microblog-post.html
 ---
 
 {% include "components/header.html" %}
-{% set previousPost = collections.post | getPreviousCollectionItem %}
-{% set nextPost = collections.post | getNextCollectionItem %}
+{% set previousPost = collections['micro-post'] | getPreviousCollectionItem %}
+{% set nextPost = collections['micro-post'] | getNextCollectionItem %}
 
 <main id="main-content" class="main-content">
   <article>
@@ -21,7 +21,7 @@ layout: layouts/gallery-item.html
 
     <ul class="horizontal">
       {% for tag in tags %}
-        {% if tag != 'post' %}
+        {% if tag != 'micro-post' %}
           <li>
             <a class="subtitle" href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
           </li>

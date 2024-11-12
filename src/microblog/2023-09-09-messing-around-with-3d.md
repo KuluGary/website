@@ -1,6 +1,6 @@
 ---
 title: Messing around with 3D
-tags: ["post", "game_dev"]
+tags: ["micro-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-12-09-messing-around-with-3d/1.gif"
   alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.

@@ -1,6 +1,6 @@
 ---
 title: Point and click
-tags: ["post", "game_dev"]
+tags: ["micro-post", "game_dev"]
 thumb:
   url: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
   alt: lorem

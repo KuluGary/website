@@ -2,8 +2,8 @@
 title: Mario in Dungeons and Dragons 5e
 # date: 2023-12-29
 lang: en
-tags: ["article", "dnd5e", "mario"]
-image: /assets/images/articles/2023-12-29-mario-for-dnd5e/header.png
+tags: ["blog-post", "dnd5e", "mario"]
+image: /assets/images/blog/2023-12-29-mario-for-dnd5e/header.png
 imageAlt: Mario in Dungeons and Dragons 5e
 description: We delve into the challenge of adapting the iconic Nintendo character to the world of Dungeons & Dragons 5th edition (D&D5e). From acrobatic skills to combat prowess, discover how to seamlessly integrate the famed plumber into your D&D5e campaign.
 ---
@@ -48,7 +48,7 @@ Or in case you chose Custom Lineage:
 
 As you can see, we focus on Strength. Although one might think that Mario is a very agile character and therefore should focus on Dexterity, the truth is that his feats in the games dictate otherwise. He often uses grappling against Bowser, fights using a two-handed warhammer, and above all: he is a master jumper. In D&D5e, it's Strength that determines how far you can jump.
 
-![Mario grabbing and throwing Bowser](/assets/images/articles/2023-12-29-mario-for-dnd5e/screenshot-1.png "Mario grabbing and throwing Bowser"){.float-left}
+![Mario grabbing and throwing Bowser](/assets/images/blog/2023-12-29-mario-for-dnd5e/screenshot-1.png "Mario grabbing and throwing Bowser"){.float-left}
 
 At the first level, our class allows us to choose a **Fighting Style** and for Mario, we will choose **Unarmed Fighting** introduced in _Tasha's Cauldron of Everything_. This fighting style allows us to use a d6 + Strength modifier to attack, or if you're not wielding a shield or weapon in either of your hands, a d8. Additionally, it allows us to deal 1d4 damage to a creature we have grappled. As you'll see in the following levels, we're going to take advantage of grabbing and pushing enemies.
 
@@ -64,13 +64,13 @@ Here we have a fork in the road. As Mario, we will continue our path as a Fighte
 
 #### Eldritch Knight
 
-![Mario throwing his famous fireballs](/assets/images/articles/2023-12-29-mario-for-dnd5e/screenshot-2.jpg "Mario throwing his famous fireballs"){.float-right}
+![Mario throwing his famous fireballs](/assets/images/blog/2023-12-29-mario-for-dnd5e/screenshot-2.jpg "Mario throwing his famous fireballs"){.float-right}
 
 As an Eldritch Knight, we gain the option to use spells. Thematically, the spells **Create Bonfire** and **Fire Bolt** are perfect for a Mario who can brawl in melee but also possesses his classic fireballs. As first-level spells, **Absorb Elements** allows you to absorb Bowser's fire breath and throw it back at him, while **Shield** allows us to protect ourselves from powerful enemy attacks. Additionally, we couldn't create Super Mario without choosing the spell **Jump**.
 
 #### Rune Knight
 
-![Giant Mario wreaking havoc](/assets/images/articles/2023-12-29-mario-for-dnd5e/screenshot-3.jpg "Giant Mario wreaking havoc"){.float-left}
+![Giant Mario wreaking havoc](/assets/images/blog/2023-12-29-mario-for-dnd5e/screenshot-3.jpg "Giant Mario wreaking havoc"){.float-left}
 
 As a Rune Knight, we gain abilities that allow us to excel in melee combat. The **Fire Rune** allows you to restrain your enemies with fiery shackles that cause damage every turn; while the **Frost Rune** gives you a +2 bonus to all Strength and Constitution checks, making you even more effective when using grapples on your enemies.
 

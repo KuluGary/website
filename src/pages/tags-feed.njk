@@ -9,7 +9,7 @@ permalink: /{{tag}}/feed.xml
 <?xml version="1.0" encoding="utf-8"?>
 {% set taglist = collections[tag] %}
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.url }}">
-  <title>KuluGary - {{tag | unslugify }}</title>
+  <title>KuluGary - {{ tag | unslugify }}</title>
   <subtitle>Blog entries tagged {{tag | unslugify}}</subtitle>
   <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self"/>
   <link href="{{ metadata.url }}"/>

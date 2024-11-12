@@ -2,7 +2,7 @@
 title: Leaflet for Fantasy Maps
 # date: 2023-12-22
 lang: en
-tags: ["article", "maps"]
+tags: ["blog-post", "maps"]
 description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from installation to customization, discovering how to harness the full power of this robust map library. With detailed instructions and practical examples, acquire the necessary tools to transform your ideas into interactive maps.
 ---
 
@@ -32,7 +32,7 @@ As it is with most technology dilemmas, there's not a single solution to this pr
 
 Before you can add interactivity with [Leaflet](https://leafletjs.com/) and publish it to your website, you need to generate your map. There's tons of options available for your: you may choose to pick up pen and paper, paint it digitally in your software of choice, ...
 
-[![How to download a map from Azhaar's](/assets/images/articles/2023-12-22-leaflet-for-fantasy-maps/screenshot1.gif "How to download a map from Azhaar's"){.float-left}](/assets/images/articles/2023-12-22-leaflet-for-fantasy-maps/screenshot1.gif)
+[![How to download a map from Azhaar's](/assets/images/blog/2023-12-22-leaflet-for-fantasy-maps/screenshot1.gif "How to download a map from Azhaar's"){.float-left}](/assets/images/blog/2023-12-22-leaflet-for-fantasy-maps/screenshot1.gif)
 
 However, if all other choise is out of your reach, because you lack the skill or time to make them from scratch, there's some alternatives I can recommend. You can't bring up interactive fantasy maps without mentioning [Azgaar's Fantasy Map Generator](https://azgaar.github.io/Fantasy-Map-Generator/). The raw amount of choice of configuration and customization it offers makes it explaining the software way out of this article's scope, but I can send you to its [subreddit](https://www.reddit.com/r/FantasyMapGenerator/) where you may find information and ask any questions.
 
@@ -60,7 +60,7 @@ We initialize our map with a few parameters. The parameters minZoom and maxZoom 
 
 The maxBounds parameter is an imaginary rectangle of where the user can move when navigating your map. In the case of this example, it would be something like this: `bounds = [[0, 0], [3736, 5952]],`.
 
-[![Differences between maxBoundsViscosity](/assets/images/articles/2023-12-22-leaflet-for-fantasy-maps/screenshot2.gif "Differences between maxBoundsViscosity "){.float-left}](/assets/images/articles/2023-12-22-leaflet-for-fantasy-maps/screenshot2.gif)
+[![Differences between maxBoundsViscosity](/assets/images/blog/2023-12-22-leaflet-for-fantasy-maps/screenshot2.gif "Differences between maxBoundsViscosity "){.float-left}](/assets/images/blog/2023-12-22-leaflet-for-fantasy-maps/screenshot2.gif)
 
 Finally, `maxBoundsViscosity` is a parameter that you can optionally modify. By default, it has a value of `0.0`, and what it does is that if you go beyond the maxBounds, instead of stopping completely, it allows you to move a little (determined by the value you set) and when you release the mouse, it returns you to your position. With a value of `1`, it doesn't allow you to see anything beyond the bounds.
 

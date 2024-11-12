@@ -1,6 +1,6 @@
 ---
 title: Messing around with 3D... again
-tags: ["post", "game_dev"]
+tags: ["micro-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-10-04-messing-around-with-3d-again/1.jpg"
   alt: Two cubes of different colors in a green plane. There's a textbox saying 'Hey, this is a test message!'"

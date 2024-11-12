@@ -56,6 +56,7 @@ html[data-theme="dark-blue"] .header .logo-cell > .logo-light {
   list-style: none;
   display: flex;
   justify-content: right;
+  flex-wrap: wrap;
 }
 
 .header nav ul li + li::before {
