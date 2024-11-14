@@ -1,5 +1,6 @@
 ---
 title: I beat PokéRogue
+date: 2024-05-05
 tags: ["micro-post", "games", "pokemon"]
 image: /assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png
 description: After playing for about a week, I've finally beaten PokéRogue.

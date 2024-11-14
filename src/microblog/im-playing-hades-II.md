@@ -1,5 +1,6 @@
 ---
 title: I'm playing Hades II
+date: 2024-05-27
 tags: ["micro-post", "games", "hades"]
 image: /assets/images/gallery/27-05-2024-im-playing-hades-II/thumb.jpg
 description: After playing for about a week, I've finally beaten PokéRogue.

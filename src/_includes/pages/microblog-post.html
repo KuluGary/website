@@ -29,26 +29,28 @@ layout: layouts/microblog-post.html
       {%- endfor %}
     </ul>
 
-    <section class="splide" aria-label="Gallery carousel">
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% if images %}
-            {% for item in images %}
-              <li class="splide__slide">
-                <img src="{{item.url}}" alt="{{item.alt}}"/>
-              </li>
-            {% endfor %}
-          {% endif %}
-          {% if videos %}
-            {% for item in videos %}
-              <li class="splide__slide">
-                {{ item.url | safe }}
-              </li>
-            {% endfor %}
-          {% endif %}
-        </ul>
-      </div>
-    </section>
+    {% if videos or images%}
+      <section class="splide" aria-label="Gallery carousel">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% if images %}
+              {% for item in images %}
+                <li class="splide__slide">
+                  <img src="{{item.url}}" alt="{{item.alt}}"/>
+                </li>
+              {% endfor %}
+            {% endif %}
+            {% if videos %}
+              {% for item in videos %}
+                <li class="splide__slide">
+                  {{ item.url | safe }}
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </section>
+    {% endif %}
 
     <div>{{ content | safe }}</div>
   </article>

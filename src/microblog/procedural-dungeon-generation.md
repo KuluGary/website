@@ -1,5 +1,6 @@
 ---
 title: Procedural dungeon generation
+date: 2023-11-28
 tags: ["micro-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/1.gif"

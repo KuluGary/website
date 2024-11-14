@@ -1,8 +1,20 @@
-{% extends "layouts/base.html" %} {% block head %}
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-<link rel="stylesheet" href="/css/gallery-item.css" />
+{% extends "layouts/base.html" %}
+{% block head %}
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  <link rel="stylesheet" href="/css/gallery-item.css"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<script src="/js/gallery-item.js"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dirtysea.min.css"
+  media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+/>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/3024.min.css"
+  media="(prefers-color-scheme: dark)"
+/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <script src="/js/gallery-item.js" defer></script>
 {% endblock %}

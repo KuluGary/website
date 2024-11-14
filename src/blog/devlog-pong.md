@@ -1,7 +1,7 @@
 ---
 title: >
   [Devlog] - The 20 Games Challenge: Pong
-# date: 2023-12-22
+date: 2023-12-22
 lang: en
 tags: ["blog-post", "devlog", "the-20-games-challenge"]
 image: "/assets/images/blog/2023-12-24-devlog-pong/pong.png"

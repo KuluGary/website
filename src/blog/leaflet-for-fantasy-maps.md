@@ -1,6 +1,6 @@
 ---
 title: Leaflet for Fantasy Maps
-# date: 2023-12-22
+date: 2023-12-22
 lang: en
 tags: ["blog-post", "maps"]
 description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from installation to customization, discovering how to harness the full power of this robust map library. With detailed instructions and practical examples, acquire the necessary tools to transform your ideas into interactive maps.

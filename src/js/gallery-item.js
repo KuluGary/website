@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const splideElement = document.querySelector(".splide");
+
+  if (!splideElement) return;
+
   var splide = new Splide(".splide", {
     type: "tab",
     perPage: 1.5,
@@ -11,16 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
       768: {
         perPage: 1,
         snap: true,
-        fixedWidth: false
+        fixedWidth: false,
       },
     },
   });
   splide.mount();
 });
 
+document.querySelectorAll("pre code").forEach((block) => {
+  hljs.highlightElement(block);
+});
+
 function mastodonShare(e) {
   let title = e.getAttribute("data-title");
-  let preferredInstance = localStorage.getItem("preferredInstance") ?? "mastodon.social";
+  let preferredInstance =
+    localStorage.getItem("preferredInstance") ?? "mastodon.social";
 
   const pageUrl = window.location.href;
 

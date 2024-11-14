@@ -1,5 +1,6 @@
 ---
 title: State machine
+date: 2024-02-26
 tags: ["micro-post", "game_dev"]
 thumb:
   url: https://img.youtube.com/vi/svhFr0xmTLQ/hqdefault.jpg
