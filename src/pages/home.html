@@ -9,17 +9,26 @@ permalink: /
 <main>
   <p>Hello, I'm Gary.</p>
 
-  <p>I'm a guy with a long list of interests. I dabble in <strong>art</strong>, <strong>technology</strong>, and enjoy musing
-  about <strong>philosophy</strong>, <strong>psychology</strong> or <strong>sociology</strong>. This site is intended for personal 
-  use, as an outlet for my <strong>creativity</strong> and <strong>curiosity</strong> and 
-  I may share anything I find interesting in both <strong>science</strong> and <strong>humanities</strong>.</p>
+  <p>
+    I'm a <strong>technology enthusiast</strong> with a predilection for vintage
+    programs; an <strong>artistic cognoscente</strong> who's dabbled in
+    illustration, 3D and pixel art; and a
+    <strong>neophyte humanist</strong> with a growing regard for the social
+    sciences.
+  </p>
+
+  <p>
+    This site is for personal use and as such, both it's content and form are
+    subject to change sporadically and frequently.
+  </p>
 
   <h2>Blog</h2>
 
   <p>This are my latest full-size blog articles.</p>
 
   {% set collection = collections['blog-post'] | reverse | limit(3) %}
-  {% include "components/post-list.html" %}
+  {%
+  include "components/post-list.html" %}
 
   <a href="/blog">Read more</a>
 
