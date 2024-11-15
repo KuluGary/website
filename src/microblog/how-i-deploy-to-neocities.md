@@ -1,7 +1,8 @@
 ---
 title: How I deploy to Neocities
 date: 2024-11-14
-tags: ["micro-post", "game_dev"]
+tags: ["micro-post", "development"]
+description: Part of my workflow when writing to this site is building the static files and uploading them to Neocities, so I made a sh script to automate it.
 ---
 
 This personal site is hosted in [Neocities](https://neocities.org/) and built using [11ty](https://www.11ty.dev/). To simplify uploading my static files to Neocities, I wrote a very small shell script that I added to my `package.json`.
