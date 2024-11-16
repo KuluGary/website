@@ -1,12 +1,16 @@
 .header {
+  border: 1px solid var(--text-color);
+  margin-bottom: calc(var(--line-height) * 2);
+}
+
+.header .logo-row {
   display: flex;
   align-items: center;
   gap: var(--line-height);
-  margin-bottom: calc(var(--line-height) * 2);
-  flex-wrap: wrap;
+  padding: calc(var(--line-height) / 2);
 }
 
-.header h1 {
+.header .logo-row h1 {
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -15,23 +19,7 @@
   text-transform: uppercase;
 }
 
-.header h1::before {
-  content: "";
-  margin-right: 0;
-}
-
-.header ul,
-.header li {
-  margin: 0;
-}
-
-.header .logo-cell {
-  display: flex;
-  align-items: center;
-  gap: var(--line-height);
-}
-
-.header .logo-cell > img {
+.header .logo-row > img {
   width: auto;
   height: auto;
   display: inline;
@@ -40,16 +28,31 @@
   margin: 0px;
 }
 
-.header .logo-cell > a {
+header .logo-row a {
+  text-decoration: none;
   margin: 0px;
 }
 
-html[data-theme="grayscale"] .header .logo-cell > .logo-dark {
-  display: none;
+header .logo-row a > * {
+  color: var(--background-color);
 }
 
-html[data-theme="dark-blue"] .header .logo-cell > .logo-light {
-  display: none;
+header .logo-row svg path {
+  fill: var(--background-color);
+}
+
+.header nav {
+  margin: 0;
+  padding-inline: calc(var(--line-height) / 2);
+}
+
+.header nav a {
+  line-height: calc(2 * var(--line-height));
+}
+
+.header ul,
+.header li {
+  margin: 0;
 }
 
 .header nav ul {
@@ -64,35 +67,7 @@ html[data-theme="dark-blue"] .header .logo-cell > .logo-light {
   margin-left: 0.5ch;
 }
 
-.header .button-list {
-  width: 100%;
-  border-top: var(--border-thickness) solid var(--text-color);
-  padding-block: calc(var(--line-height) / 2);
-  justify-content: center;
-}
-
-.header .button-list img {
-  width: 88px;
-  height: 31px;
-}
-
-.header table {
-  margin-bottom: calc(var(--line-height) / 2);
-}
-
-header td:has(h1) {
+header *:has(h1) {
   background-color: var(--text-color);
   color: var(--background-color);
-}
-
-header td a {
-  text-decoration: none;
-}
-
-header td a > * {
-  color: var(--background-color);
-}
-
-header svg path {
-  fill: var(--background-color);
 }

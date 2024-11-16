@@ -3,54 +3,45 @@
 {% endblock %}
 
 <header class="header">
-  <table>
-    <tr>
-      <td colspan="2" class="width-auto">
-        <div class="logo-cell">
-          {% include "components/header-icon.html" %}
+  <div class="logo-row">
+    {% include "components/header-icon.html" %}
 
-          <a href="/">
-            <h1 class="title">KULUGARY</h1>
-            <span class="subtitle">An old web personal site</span>
-          </a>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" class="width-auto">
-        <nav>
-          <ul>
-            <li>
-              <a href="/">home</a>
-            </li>
-            <li>
-              <a href="/blog">blog</a>
-            </li>
-            <li>
-              <a href="/microblog">microblog</a>
-            </li>
-            <li>
-              <a href="/now">now</a>
-            </li>
-            <li>
-              <a href="/cool-sites">cool-sites</a>
-            </li>
-            <li>
-              <a href="/apps">apps</a>
-            </li>
-            <li>
-              <a href="/quizzes">quizzes</a>
-            </li>
-            <li>
-              <a href="/old-stuff">old-stuff</a>
-            </li>
-            <li>
-              <a href="/settings">settings</a>
-            </li>
-          </ul>
-        </nav>
-      </td>
-    </tr>
-  </table>
+    <a href="/">
+      <h1 class="title">KULUGARY</h1>
+      <span class="subtitle">An old web personal site</span>
+    </a>
+  </div>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="/">home</a>
+      </li>
+      <li>
+        <a href="/blog">blog</a>
+      </li>
+      <li>
+        <a href="/microblog">microblog</a>
+      </li>
+      <li>
+        <a href="/now">now</a>
+      </li>
+      <li>
+        <a href="/cool-sites">cool-sites</a>
+      </li>
+      <li>
+        <a href="/apps">apps</a>
+      </li>
+      <li>
+        <a href="/quizzes">quizzes</a>
+      </li>
+      <li>
+        <a href="/old-stuff">old-stuff</a>
+      </li>
+      <li>
+        <a href="/settings">settings</a>
+      </li>
+    </ul>
+  </nav>
 
 </header>
