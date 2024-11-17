@@ -21,7 +21,7 @@ permalink: /uses/
             {% if item.url %}
               <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>: {{ item.description }}
             {% else %}
-              <strong>{{ item.title }}</strong>: {{ app.description }}
+              <strong>{{ item.title }}</strong>: {{ item.description }}
             {% endif %}
           </li>
 
