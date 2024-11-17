@@ -20,13 +20,13 @@
 html,
 html[data-theme="grayscale"] {
   color-scheme: light;
-  --text-color: #000;
+  --text-color: #363330;
   --text-color-alt: #666;
-  --background-color: #cccccc;
-  --background-color-alt: #a8a8a8cc;
-  --primary-color: #216dc4;
-  --secondary-color: #b46816;
-  --tertiary-color: #7646b9;
+  --background-color: rgb(251, 249, 246);
+  --background-color-alt: rgb(241, 232, 225);
+  --primary-color: #6d655f;
+  --secondary-color: #161a38;
+  --tertiary-color: #b35e15;
 }
 
 html[data-theme="dark-blue"] {
@@ -43,7 +43,7 @@ html[data-theme="dark-blue"] {
 html[data-theme="dark-grayscale"] {
   color-scheme: dark;
   --text-color: #c5c8c6;
-  ----text-color-alt: #666;
+  --text-color-alt: #666;
   --background-color: #1d1f21;
   --background-color-alt: #373b41;
   --primary-color: #81a2be;
@@ -228,10 +228,6 @@ hr:after {
   width: 100%;
   border-top: calc(var(--border-thickness) * 3) double var(--text-color);
   height: 0;
-}
-
-a {
-  text-decoration-thickness: var(--border-thickness);
 }
 
 a:link,
