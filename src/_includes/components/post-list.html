@@ -16,14 +16,16 @@
           <span class="post-divider">|</span>
           <ul class="post-tags">
             {%- for tag in post.data.tags -%}
-              <li>
-                <a href="/tags/{{ tag }}">#{{ tag }}</a>
-              </li>
-              {%-endfor-%}
-            </ul>
-          </div>
-          <p class="post-description">{{ post.data.description }}</p>
-        </article>
-      </li>
-    {% endfor %}
-  </ul>
+              {% if tag != "blog-post" %}
+                <li>
+                  <a href="/tags/{{ tag }}">#{{ tag }}</a>
+                </li>
+              {% endif %}
+            {%- endfor -%}
+          </ul>
+        </div>
+        <p class="post-description">{{ post.data.description }}</p>
+      </article>
+    </li>
+  {% endfor %}
+</ul>
