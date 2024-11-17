@@ -1,35 +1,44 @@
 ---
 title: uses
-layout: layouts/uses.html
 permalink: /uses/
 description: This is a uses page, which includes a list of tools, applications, hardware and services that I use frequently.
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
+{% block content %}
+  {% include "components/header.html" %}
 
-<main>
-  <h1>Uses</h1>
-  <p>This is a <a href="https://uses.tech/">uses page</a>, which includes a list of <strong>tools</strong>, <strong>applications</strong>, <strong>hardware</strong> and <strong>services</strong> that I use frequently.</p>
+  <main>
+    <h1>Uses</h1>
+    <p>This is a <a href="https://uses.tech/">uses page</a>, which includes a list of <strong>tools</strong>, <strong>applications</strong>, <strong>hardware</strong> and <strong>services</strong> that I use frequently.</p>
 
-  {% for category in uses %}
-    <section>
-      <h2>{{ category.title }}</h2>
-      <p>{{ category.description }}</p>
+    {% for category in uses %}
+      <section>
+        <h2>{{ category.title }}</h2>
+        <p>{{ category.description }}</p>
 
-      <ul>
-        {% for item in category.children %}
-          <li>
-            {% if item.url %}
-              <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>: {{ item.description }}
-            {% else %}
-              <strong>{{ item.title }}</strong>: {{ item.description }}
-            {% endif %}
-          </li>
+        <dl>
+          {% for item in category.children %}
+            <dt>
+              {% if item.url %}
+                <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>: 
+              {% else %}
+                <strong>{{ item.title }}</strong>:
+              {% endif %}
 
-        {% endfor %}
-      </ul>
-    </section>
-  {% endfor %}
-</main>
+            </dt>
+            <dd>{{ item.description }}</dd>
+          {% endfor %}
+        </dl>
+      </section>
+    {% endfor %}
+  </main>
 
-{% include "components/footer.html" %}
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/uses.css">
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

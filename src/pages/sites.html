@@ -1,0 +1,40 @@
+---
+title: sites
+permalink: /sites/
+description: I've been around for a while, and I've seen some websites. These are just a few of my favourites.
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <main>
+    <h1>Cool sites</h1>
+
+    <p>I've been around for a while, and I've seen some <strong>websites</strong>. These are just a few of my favourites.</p>
+
+    {% for category in sites %}
+      <section>
+        <h2>{{ category.title }}</h2>
+
+        <dl>
+          {% for site in category.sites %}
+            <dt>
+              <a href="{{site.url}}" target="_blank" rel="noopener noreferrer">{{site.title}}</a>
+            </dt>
+
+            <dd>{{ site.description | safe }}</dd>
+          {% endfor %}
+        </dl>
+      </section>
+    {% endfor %}
+  </main>
+
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/sites.css">
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

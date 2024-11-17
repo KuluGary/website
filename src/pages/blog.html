@@ -1,32 +1,41 @@
 ---
 title: blog
-layout: layouts/blog.html
 permalink: /blog/
 description: These are my essays, tutorials, and long-form write-ups.
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
+{% block content %}
+  {% include "components/header.html" %}
 
-<main>
-  <h1>Blog</h1>
+  <main>
+    <h1>Blog</h1>
 
-  <p>These are my <strong>essays</strong>, <strong>tutorials</strong> and long-form <strong>write-ups</strong>.</p>
+    <p>These are my <strong>essays</strong>, <strong>tutorials</strong> and long-form <strong>write-ups</strong>.</p>
 
-  <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
+    <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-  <p>Last updated: {{ postsList | getNewestCollectionItemDate | formatDate }}.</p>
+    <p>Last updated: {{ postsList | getNewestCollectionItemDate | formatDate }}.</p>
 
-  {% for year, items in collections['postsByYear'] %}
-    <section>
-      <h2>{{ year }}</h2>
+    {% for year, items in collections['postsByYear'] %}
+      <section>
+        <h2>{{ year }}</h2>
 
-      {% set postStats = items | collectionStats %}
-      <p>{{postStats.totalItems}} posts made in {{year}}. <a href="{{ postStats.longestItem.item.url }}">
-          {{ postStats.longestItem.item.data.title }}</a> is the longest post with {{ postStats.longestItem.wordCount }} words.</p>
+        {% set postStats = items | collectionStats %}
+        <p>{{postStats.totalItems}} posts made in {{year}}. <a href="{{ postStats.longestItem.item.url }}">
+            {{ postStats.longestItem.item.data.title }}</a> is the longest post with {{ postStats.longestItem.wordCount }} words.</p>
 
-      {% set postsList = items %}
-      {% include "components/post-list.html" %}
-    </section>
-  {% endfor %}
-</main>
-{% include "components/footer.html" %}
+        {% set postsList = items %}
+        {% include "components/post-list.html" %}
+      </section>
+    {% endfor %}
+  </main>
+
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

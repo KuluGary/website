@@ -4,53 +4,62 @@ layout: layouts/settings.html
 permalink: /settings/
 description: Here you can set up your preferred visualization settings for this website.
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
+{% block content %}
+  {% include "components/header.html" %}
 
-<main>
-  <h2>Settings</h2>
-  <p>Here you can set up your <strong>preferred visualization</strong> settings for this website.</p>
+  <main>
+    <h2>Settings</h2>
+    <p>Here you can set up your <strong>preferred visualization</strong> settings for this website.</p>
 
-  <p>
+    <p>
     This site intends to be accessible for all and I will try to make it so it respect your browser preferences, but if
     I forgot something please feel free to contact me and I will correct it as soon as I'm able.
   </p>
 
-  <p>
+    <p>
     The settings you input in this page will be stored in your
     <a href="https://developer.mozilla.org/es/docs/Web/API/Window/localStorage">Local Storage</a>, so it
     <strong> will not persist between browsers </strong> or devices.
   </p>
 
-  <form action="">
-    <label for="theme-select">
-      <h3>Theme:</h3>
-    </label>
-    <select id="theme-select">
-      <optgroup id="light-themes" label="Light themes">
-        {% for theme in themes.light %}
-          <option value="{{theme.id}}" data-color-scheme="light">{{theme.label}}</option>
+    <form action="">
+      <label for="theme-select">
+        <h3>Theme:</h3>
+      </label>
+      <select id="theme-select">
+        <optgroup id="light-themes" label="Light themes">
+          {% for theme in themes.light %}
+            <option value="{{theme.id}}" data-color-scheme="light">{{theme.label}}</option>
+          {% endfor %}
+        </optgroup>
+        <optgroup id="dark-themes" label="Dark themes">
+          {% for theme in themes.dark %}
+            <option value="{{theme.id}}" data-color-scheme="dark">{{theme.label}}</option>
+          {% endfor %}
+        </optgroup>
+      </select>
+
+      <label for="font-select">
+        <h3>Font stack:</h3>
+      </label>
+
+      <select id="font-select">
+        {% for fontstack in fonts %}
+          <option value="{{ fontstack.id }}">{{fontstack.label}}</option>
         {% endfor %}
-      </optgroup>
-      <optgroup id="dark-themes" label="Dark themes">
-        {% for theme in themes.dark %}
-          <option value="{{theme.id}}" data-color-scheme="dark">{{theme.label}}</option>
-        {% endfor %}
-      </optgroup>
-    </select>
+      </select>
 
-    <label for="font-select">
-      <h3>Font stack:</h3>
-    </label>
+      <button id="reset-button">Reset</button>
+    </form>
+  </main>
 
-    <select id="font-select">
-      {% for fontstack in fonts %}
-        <option value="{{ fontstack.id }}">{{fontstack.label}}</option>
-      {% endfor %}
-    </select>
+  {% include "components/footer.html" %}
+{% endblock %}
 
-    <button id="reset-button">Reset</button>
-  </form>
-</main>
-
-{% include "components/footer.html" %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/settings.css"/>
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

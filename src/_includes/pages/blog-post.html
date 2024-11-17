@@ -1,73 +1,89 @@
----
-layout: layouts/blog-post.html
----
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
-{% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
-{% set nextPost = collections['blog-post'] | getNextCollectionItem %}
+{% block content %}
+  {% include "components/header.html" %}
+  {% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
+  {% set nextPost = collections['blog-post'] | getNextCollectionItem %}
 
-<main id="main-content" class="main-content">
-  <article>
-    <nav>
-      {% if nextPost %}
-        <a class="nxt-btn" href="{{ nextPost.url }}">&laquo; Next</a>
-      {% endif %}
-      {% if previousPost %}
-        <a class="prev-btn" href="{{ previousPost.url }}">Prev &raquo;</a>
-      {% endif %}
-    </nav>
+  <main id="main-content" class="main-content">
+    <article>
+      <nav>
+        {% if nextPost %}
+          <a class="nxt-btn" href="{{ nextPost.url }}">&laquo; Next</a>
+        {% endif %}
+        {% if previousPost %}
+          <a class="prev-btn" href="{{ previousPost.url }}">Prev &raquo;</a>
+        {% endif %}
+      </nav>
 
-    <h1>{{title}}</h1>
+      <h1>{{title}}</h1>
 
-    <div class="post-subtitle">
-      <p class="post-date">Written: {{date|formatDate("LLLL dd, yyyy")}}</p>
-      <span class="post-divider">|</span>
-      <p class="post-stats">~{{content|wordStats}}</p>
-      <span class="post-divider">|</span>
-      <ul class="post-tags">
-        {%- for tag in tags -%}
-          {% if tag != "blog-post" %}
-            <li>
-              <a href="/tags/{{ tag }}">#{{ tag }}</a>
-            </li>
-          {% endif %}
-        {%- endfor -%}
-      </ul>
-    </div>
-
-    {% if videos or images%}
-      <section class="splide" aria-label="Gallery carousel">
-        <div class="splide__track">
-          <ul class="splide__list">
-            {% if images %}
-              {% for item in images %}
-                <li class="splide__slide">
-                  <img src="{{item.url}}" alt="{{item.alt}}"/>
-                </li>
-              {% endfor %}
+      <div class="post-subtitle">
+        <p class="post-date">Written: {{date|formatDate("LLLL dd, yyyy")}}</p>
+        <span class="post-divider">|</span>
+        <p class="post-stats">~{{content|wordStats}}</p>
+        <span class="post-divider">|</span>
+        <ul class="post-tags">
+          {%- for tag in tags -%}
+            {% if tag != "blog-post" %}
+              <li>
+                <a href="/tags/{{ tag }}">#{{ tag }}</a>
+              </li>
             {% endif %}
-            {% if videos %}
-              {% for item in videos %}
-                <li class="splide__slide">
-                  {{ item.url | safe }}
-                </li>
-              {% endfor %}
-            {% endif %}
-          </ul>
-        </div>
-      </section>
-    {% endif %}
+          {%- endfor -%}
+        </ul>
+      </div>
 
-    <div>{{ content | safe }}</div>
-  </article>
-</main>
+      {% if videos or images%}
+        <section class="splide" aria-label="Gallery carousel">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% if images %}
+                {% for item in images %}
+                  <li class="splide__slide">
+                    <img src="{{item.url}}" alt="{{item.alt}}"/>
+                  </li>
+                {% endfor %}
+              {% endif %}
+              {% if videos %}
+                {% for item in videos %}
+                  <li class="splide__slide">
+                    {{ item.url | safe }}
+                  </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </section>
+      {% endif %}
 
-<footer class="share-footer">
-  <h2 class="share-title">Share:</h2>
+      <div>{{ content | safe }}</div>
+    </article>
+  </main>
 
-  {% include "components/share-buttons.html" %}
+  <footer class="share-footer">
+    <h2 class="share-title">Share:</h2>
 
-</footer>
+    {% include "components/share-buttons.html" %}
 
-{# {% set rssUrl = "/blog/feed.xml" %} #}
-{# {% include "components/share-footer.html" %} #}
+  </footer>
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/blog-post.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dirtysea.min.css"
+  media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/3024.min.css"
+  media="(prefers-color-scheme: dark)"/>
+{% endblock %}
+{% block script %}
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="/js/blog-post.js" defer></script>
+{% endblock %}

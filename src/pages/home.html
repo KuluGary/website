@@ -1,38 +1,48 @@
 ---
-layout: layouts/home.html
-title: KuluGary | an old web personal site
+title: KuluGary's site
 description: An old web personal site
 permalink: /
 ---
 
-{% include "components/header.html" %}
+{% extends "layouts/base.html" %}
 
-<main>
-  <p>Hello, I'm Gary.</p>
+{% block content %}
+  {% include "components/header.html" %}
 
-  <p>
-    I'm a <strong>technology enthusiast</strong> with a predilection for vintage
-    programs; an <strong>artistic cognoscente</strong> who's dabbled in
-    illustration, 3D and pixel art; and a
-    <strong>neophyte humanist</strong> with a growing regard for the social
-    sciences.
-  </p>
+  <main>
+    <p>Hello, I'm Gary.</p>
 
-  <p>
-    This site is for personal use and as such, both it's content and form are
-    subject to change sporadically and frequently.
-  </p>
-  
-  <section>
-    <h2>Blog</h2>
+    <p>
+      I'm a <strong>technology enthusiast</strong> with a predilection for vintage
+      programs; an <strong>artistic cognoscente</strong> who's dabbled in
+      illustration, 3D and pixel art; and a
+      <strong>neophyte humanist</strong> with a growing regard for the social
+      sciences.
+    </p>
 
-    <p>These are my latest posts written this year.</p>
+    <p>
+      This site is for personal use and as such, both it's content and form are
+      subject to change sporadically and frequently.
+    </p>
+    
+    <section>
+      <h2>Blog</h2>
 
-    {% set postsList = collections['blog-post'] | reverse | limit(3) %}
-    {% include "components/post-list.html" %}
+      <p>These are my latest posts written this year.</p>
 
-    <a href="/blog">Read more...</a>
-  </section>
-</main>
+      {% set postsList = collections['blog-post'] | reverse | limit(3) %}
+      {% include "components/post-list.html" %}
 
-{% include "components/footer.html" %}
+      <a href="/blog">Read more...</a>
+    </section>
+  </main>
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}
+{% block script %}
+  <script src="/js/settings.js"></script>
+{% endblock %}

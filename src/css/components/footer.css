@@ -16,6 +16,7 @@ footer .footer-credits {
   margin-left: auto;
 
   text-align: center;
+  margin-top: 0;
 }
 
 footer #made-with {
@@ -28,4 +29,23 @@ footer #made-with {
 footer #made-with > * {
   margin: 0;
   padding: 0;
+}
+
+.footer-under-construction {
+  font-size: small;
+  max-width: 45ch;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1ch;
+  text-align: left;
+}
+
+.footer-under-construction > * {
+  margin: 0;
+}
+
+footer .footer-under-construction img {
+  height: 22px;
 }

@@ -1,72 +1,93 @@
 ---
 title: now
-layout: layouts/now.html
 permalink: /now/
 description: This is both a now page and an archive of sorts for the stuff I'm into or i've been into in the past.
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
-{% set currentProject = collections.game_dev[collections.game_dev.length - 1] %}
+{% block content %}
+  {% include "components/header.html" %}
+  {% set currentProject = collections.game_dev[collections.game_dev.length - 1] %}
 
-<main>
-  <section>
-    <h1>About this page</h1>
-    <p>
+  <main>
+    <section>
+      <h1>About this page</h1>
+      <p>
       This is both a <a href="https://nownownow.com/about">now page</a> and an archive of sorts for the stuff I'm into or
       i've been into in the past.
     </p>
-  </section>
+    </section>
 
-  <section>
-    <h2 id="work-in-progress">Working on</h2>
+    <section>
+      <h2 id="work-in-progress">Working on</h2>
 
-    <ul>
-      <li>
-        <a href="{{currentProject.url}}">{{currentProject.data.title}}</a> -
+      <ul>
+        <li>
+          <a href="{{currentProject.url}}">{{currentProject.data.title}}</a> -
         
         <div class="post-subtitle">
-          <p class="post-date">Written: {{currentProject.date | formatDate("LLLL dd, yyyy")}}</p>
-          <span class="post-divider">|</span>
-          <p class="post-stats">~{{currentProject.content | wordStats}}</p>
-          <span class="post-divider">|</span>
-          <ul class="post-tags">
-            {%- for tag in currentProject.data.tags -%}
-              {% if tag != "blog-post" %}
-                <li>
-                  <a href="/tags/{{ tag }}">#{{ tag }}</a>
-                </li>
-              {% endif %}
-            {%- endfor -%}
-          </ul>
-        </div>
+            <p class="post-date">Written: {{currentProject.date | formatDate("LLLL dd, yyyy")}}</p>
+            <span class="post-divider">|</span>
+            <p class="post-stats">~{{currentProject.content | wordStats}}</p>
+            <span class="post-divider">|</span>
+            <ul class="post-tags">
+              {%- for tag in currentProject.data.tags -%}
+                {% if tag != "blog-post" %}
+                  <li>
+                    <a href="/tags/{{ tag }}">#{{ tag }}</a>
+                  </li>
+                {% endif %}
+              {%- endfor -%}
+            </ul>
+          </div>
 
-        {# <small>
-          <time datetime="{{ currentProject.data.date }}">{{ currentProject.data.date | formatDate }}</time>:
-        </small> #}
-        <p>{{currentProject.data.description}}</p>
-      </li>
-    </ul>
-  </section>
+          <p>{{currentProject.data.description}}</p>
+        </li>
+      </ul>
+    </section>
 
-  <section>
+    <section>
 
-    <h2 id="games">Game List</h2>
+      <h2 id="games">Game List</h2>
 
-    <p>Here are some of the games I've played or I'm currently playing.</p>
-    <p>The "Have played / In progress" section are games that either don't have an ending or are multiplayer</p>
-    <p>
+      <p>Here are some of the games I've played or I'm currently playing.</p>
+      <p>The "Have played / In progress" section are games that either don't have an ending or are multiplayer</p>
+      <p>
       If you wanna check the full list, you can see it at
       <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>.
     </p>
 
-    <details>
-      <summary>
+      <details>
+        <summary>
         Playing now
       </summary>
 
-      {% if games.playing %}
+        {% if games.playing %}
+          <ul class="item-list">
+            {% for game in games.playing %}
+              <li>
+                <img class="thumbnail" src="{{ game.image }}"/>
+
+                <div>
+                  <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
+                  <p class="subtitle">{{game.platform}}</p>
+                  <p>{{ game.description | safe }}</p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Nothing currently</p>
+        {% endif %}
+      </details>
+
+      <details>
+        <summary>
+        Backlog
+      </summary>
+
         <ul class="item-list">
-          {% for game in games.playing %}
+          {% for game in games.backlog %}
             <li>
               <img class="thumbnail" src="{{ game.image }}"/>
 
@@ -78,114 +99,98 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             </li>
           {% endfor %}
         </ul>
-      {% else %}
-        <p>Nothing currently</p>
-      {% endif %}
-    </details>
+      </details>
 
-    <details>
-      <summary>
-        Backlog
-      </summary>
-
-      <ul class="item-list">
-        {% for game in games.backlog %}
-          <li>
-            <img class="thumbnail" src="{{ game.image }}"/>
-
-            <div>
-              <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-              <p>{{ game.description | safe }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
-
-    <details>
-      <summary>
+      <details>
+        <summary>
         Completed
       </summary>
-      <ul class="item-list">
-        {% for game in games.completed %}
-          <li>
-            <img class="thumbnail" src="{{ game.image }}"/>
+        <ul class="item-list">
+          {% for game in games.completed %}
+            <li>
+              <img class="thumbnail" src="{{ game.image }}"/>
 
-            <div>
-              <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-              <p>{{ game.description | safe }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
+              <div>
+                <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
+                <p class="subtitle">{{game.platform}}</p>
+                <p>{{ game.description | safe }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
 
-    <details>
-      <summary>
+      <details>
+        <summary>
         Have played / In progress
       </summary>
 
-      <ul class="item-list">
-        {% for game in games.custom %}
-          <li>
-            <img class="thumbnail" src="{{ game.image }}"/>
+        <ul class="item-list">
+          {% for game in games.custom %}
+            <li>
+              <img class="thumbnail" src="{{ game.image }}"/>
 
-            <div>
-              <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-              <p class="subtitle">{{game.platform}}</p>
-              <p>{{ game.description | safe }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
-  </section>
-  <section>
+              <div>
+                <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
+                <p class="subtitle">{{game.platform}}</p>
+                <p>{{ game.description | safe }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+    </section>
+    <section>
 
-    <h2 id="manga">Manga</h2>
+      <h2 id="manga">Manga</h2>
 
-    <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
+      <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
 
-    <details>
-      <summary>
+      <details>
+        <summary>
         Reading now
       </summary>
-      <ul class="item-list">
-        {% for manga in manga.reading | filterMangaOnlySafe %}
-          <li>
-            <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
-            <div>
-              <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
-              <p class="subtitle">{{manga.author}}</p>
-              <p>{{ manga.description | safe }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
+        <ul class="item-list">
+          {% for manga in manga.reading | filterMangaOnlySafe %}
+            <li>
+              <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
+              <div>
+                <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
+                <p class="subtitle">{{manga.author}}</p>
+                <p>{{ manga.description | safe }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
 
-    <details>
-      <summary>
+      <details>
+        <summary>
         Favorite manga
       </summary>
 
-      <ul class="item-list">
-        {% for manga in manga.favourite | filterMangaOnlySafe %}
-          <li>
-            <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
+        <ul class="item-list">
+          {% for manga in manga.favourite | filterMangaOnlySafe %}
+            <li>
+              <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
 
-            <div>
-              <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
-              <p class="subtitle">{{manga.author}}</p>
-              <p>{{ manga.description | safe }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
-  </section>
-</main>
+              <div>
+                <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
+                <p class="subtitle">{{manga.author}}</p>
+                <p>{{ manga.description | safe }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+    </section>
+  </main>
 
-{% include "components/footer.html" %}
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/now.css">
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}
