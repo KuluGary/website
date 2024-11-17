@@ -19,6 +19,11 @@
   text-transform: uppercase;
 }
 
+.header .logo-row h1::before {
+  content: "";
+  margin: 0;
+}
+
 .header .logo-row > img {
   width: auto;
   height: auto;

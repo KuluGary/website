@@ -7,13 +7,13 @@ permalink: /cool-sites/
 {% include "components/header.html" %}
 
 <main>
-  <h2>Cool sites</h2>
+  <h1>Cool sites</h1>
 
   <p>I've been around for a while, and I've seen some websites. These are just a few of my favourites.</p>
 
   {% for category in sites %}
     <section>
-      <h3 >{{ category.title }}</h3>
+      <h2>{{ category.title }}</h2>
 
       <ul>
         {% for site in category.sites %}

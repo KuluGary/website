@@ -205,32 +205,25 @@ h3::before,
 h4::before,
 h5::before,
 h6::before {
+  content: "░";
   margin-right: 1ch;
 }
 
-h1,
-h2 {
+h1 {
   color: var(--primary-color);
 }
 
-h2::before {
-  content: "░";
-}
-
-h3 {
+h2 {
   color: var(--secondary-color);
 }
 
-h3::before {
-  content: "░░";
-}
-
+h3,
 h4 {
   color: var(--tertiary-color);
 }
 
-h4::before {
-  content: "░░░";
+h4 {
+  color: var(--tertiary-color);
 }
 
 hr {
