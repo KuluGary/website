@@ -23,3 +23,31 @@
 .item-list div > p {
   margin-block: calc(var(--line-height) / 2);
 }
+
+
+.post-date,
+.post-stats,
+.post-tags {
+  display: inline-flex;
+  font-size: smaller;
+  margin: 0;
+  padding: 0;
+}
+
+.post-subtitle .post-divider {
+  margin-inline: calc(var(--line-height) / 2);
+}
+
+.post-tags {
+  list-style: none;
+  gap: 1ch;
+}
+
+.post-tags li {
+  margin: 0;
+}
+
+
+.post-tags a {
+  text-decoration-thickness: 1px;
+}

@@ -31,43 +31,43 @@ layout: layouts/blog-post.html
               <a href="/tags/{{ tag }}">#{{ tag }}</a>
             </li>
           {% endif %}
-          {%-endfor-%}
-        </ul>
-      </div>
+        {%- endfor -%}
+      </ul>
+    </div>
 
-      {% if videos or images%}
-        <section class="splide" aria-label="Gallery carousel">
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% if images %}
-                {% for item in images %}
-                  <li class="splide__slide">
-                    <img src="{{item.url}}" alt="{{item.alt}}"/>
-                  </li>
-                {% endfor %}
-              {% endif %}
-              {% if videos %}
-                {% for item in videos %}
-                  <li class="splide__slide">
-                    {{ item.url | safe }}
-                  </li>
-                {% endfor %}
-              {% endif %}
-            </ul>
-          </div>
-        </section>
-      {% endif %}
+    {% if videos or images%}
+      <section class="splide" aria-label="Gallery carousel">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% if images %}
+              {% for item in images %}
+                <li class="splide__slide">
+                  <img src="{{item.url}}" alt="{{item.alt}}"/>
+                </li>
+              {% endfor %}
+            {% endif %}
+            {% if videos %}
+              {% for item in videos %}
+                <li class="splide__slide">
+                  {{ item.url | safe }}
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </section>
+    {% endif %}
 
-      <div>{{ content | safe }}</div>
-    </article>
-  </main>
+    <div>{{ content | safe }}</div>
+  </article>
+</main>
 
-  <footer class="share-footer">
-    <h2 class="share-title">Share:</h2>
+<footer class="share-footer">
+  <h2 class="share-title">Share:</h2>
 
-    {% include "components/share-buttons.html" %}
+  {% include "components/share-buttons.html" %}
 
-  </footer>
+</footer>
 
-  {# {% set rssUrl = "/blog/feed.xml" %} #}
-  {# {% include "components/share-footer.html" %} #}
+{# {% set rssUrl = "/blog/feed.xml" %} #}
+{# {% include "components/share-footer.html" %} #}

@@ -22,15 +22,17 @@ permalink: /
     This site is for personal use and as such, both it's content and form are
     subject to change sporadically and frequently.
   </p>
+  
+  <section>
+    <h2>Blog</h2>
 
-  <h2>Blog</h2>
+    <p>These are my latest posts written this year.</p>
 
-  <p>These are my latest posts written this year.</p>
+    {% set postsList = collections['blog-post'] | reverse | limit(3) %}
+    {% include "components/post-list.html" %}
 
-  {% set postsList = collections['blog-post'] | reverse | limit(3) %}
-  {% include "components/post-list.html" %}
-
-  <a href="/blog">Read more...</a>
+    <a href="/blog">Read more...</a>
+  </section>
 </main>
 
 {% include "components/footer.html" %}
