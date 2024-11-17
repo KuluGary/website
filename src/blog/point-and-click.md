@@ -1,7 +1,7 @@
 ---
 title: Point and click
 date: 2024-04-25
-tags: ["micro-post", "game_dev"]
+tags: ["blog-post", "game_dev"]
 thumb:
   url: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
   alt: lorem

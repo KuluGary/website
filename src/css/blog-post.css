@@ -1,0 +1,65 @@
+.direct-link {
+  opacity: 0;
+  font-size: 0.75rem;
+  color: var(--clr-primary-main);
+  font-family: var(--font-family-body);
+  font-style: normal;
+  text-decoration: none;
+}
+
+h2:has(.direct-link):hover .direct-link,
+h3:has(.direct-link):hover .direct-link,
+h4:has(.direct-link):hover .direct-link {
+  opacity: 1;
+}
+
+article > nav {
+  display: flex;
+}
+
+.nxt-btn {
+  margin-right: auto;
+}
+
+.prev-btn {
+  margin: 0;
+  margin-left: auto;
+}
+
+article .splide img,
+article .splide iframe {
+  width: 100%;
+  outline: 1px solid var(--clr-outline-main);
+  margin-block: 0.5rem;
+}
+
+.share-button {
+  text-decoration: none;
+}
+
+.post-date,
+.post-stats,
+.post-tags {
+  display: inline-flex;
+  font-size: smaller;
+  margin: 0;
+  padding: 0;
+}
+
+.post-subtitle .post-divider {
+  margin-inline: calc(var(--line-height) / 2);
+}
+
+.post-tags {
+  list-style: none;
+  gap: 1ch;
+}
+
+.post-tags li {
+  margin: 0;
+}
+
+
+.post-tags a {
+  text-decoration-thickness: 1px;
+}

@@ -10,6 +10,14 @@ footer .button-list img {
   height: 56px;
 }
 
+footer .footer-credits {
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+
+  text-align: center;
+}
+
 footer #made-with {
   display: flex;
   align-items: center;

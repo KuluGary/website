@@ -33,9 +33,9 @@ html[data-theme="dark-blue"] {
   color-scheme: dark;
   --text-color: #c9d1d9;
   --text-color-alt: #bfc6ce;
-  --background-color: #0d1117;
-  --background-color-alt: #1e2836;
-  --primary-color: #58a6ff;
+  --background-color: #18181b;
+  --background-color-alt: #3c3c44;
+  --primary-color: #0098fd;
   --secondary-color: #ec8e2c;
   --tertiary-color: #bc8cff;
 }
@@ -43,7 +43,7 @@ html[data-theme="dark-blue"] {
 html[data-theme="dark-grayscale"] {
   color-scheme: dark;
   --text-color: #c5c8c6;
-  --text-color-atl: #666;
+  ----text-color-alt: #666;
   --background-color: #1d1f21;
   --background-color-alt: #373b41;
   --primary-color: #81a2be;
@@ -192,7 +192,6 @@ h4,
 h5,
 h6 {
   font-weight: var(--font-weight-bold);
-  margin: calc(var(--line-height) * 2) 0 var(--line-height);
   line-height: var(--line-height);
   font-size: 1rem;
   text-transform: uppercase;
@@ -258,12 +257,9 @@ a {
   text-decoration-thickness: var(--border-thickness);
 }
 
-a:link {
-  color: var(--secondary-color);
-}
-
+a:link,
 a:visited {
-  color: color-mix(in srgb, var(--secondary-color) 65%, black);
+  color: var(--secondary-color);
 }
 
 p {

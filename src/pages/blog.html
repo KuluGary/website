@@ -5,16 +5,27 @@ permalink: /blog/
 ---
 
 {% include "components/header.html" %}
-{%- set collection = collections['blog-post'] | reverse -%}
+
 <main>
-  <h2>Blog</h2>
+  <h1>Blog</h1>
 
   <p>These are my essays, tutorials and long-form write-ups.</p>
 
   <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-  {% include "components/post-list.html" %}
+  <p>Last updated: {{ postsList | getNewestCollectionItemDate | formatDate }}.</p>
 
-  {% include "components/tag-list.html" %}
+  {% for year, items in collections['postsByYear'] %}
+    <section>
+      <h2>{{ year }}</h2>
+
+      {% set postStats = items | collectionStats %}
+      <p>{{postStats.totalItems}} posts made in {{year}}. <a href="{{ postStats.longestItem.item.url }}">
+          {{ postStats.longestItem.item.data.title }}</a> is the longest post with {{ postStats.longestItem.wordCount }} words.</p>
+
+      {% set postsList = items %}
+      {% include "components/post-list.html" %}
+    </section>
+  {% endfor %}
 </main>
 {% include "components/footer.html" %}

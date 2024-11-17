@@ -1,0 +1,34 @@
+---
+title: uses
+layout: layouts/uses.html
+permalink: /uses/
+---
+
+{% include "components/header.html" %}
+
+<main>
+  <h1>Uses</h1>
+  <p>This is a <a href="https://uses.tech/">uses page</a>, which includes a list for tools, applications, hardware and services that I use frequently.</p>
+
+  {% for category in uses %}
+    <section>
+      <h2>{{ category.title }}</h2>
+      <p>{{ category.description }}</p>
+
+      <ul>
+        {% for item in category.children %}
+          <li>
+            {% if item.url %}
+              <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>: {{ item.description }}
+            {% else %}
+              <strong>{{ item.title }}</strong>: {{ app.description }}
+            {% endif %}
+          </li>
+
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</main>
+
+{% include "components/footer.html" %}

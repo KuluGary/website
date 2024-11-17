@@ -1,3 +1,7 @@
+document.querySelectorAll("pre code").forEach((block) => {
+  hljs.highlightElement(block);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const splideElement = document.querySelector(".splide");
 
@@ -20,10 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
   splide.mount();
-});
-
-document.querySelectorAll("pre code").forEach((block) => {
-  hljs.highlightElement(block);
 });
 
 function mastodonShare(e) {

@@ -5,8 +5,6 @@ tags: ["blog-post", "development"]
 description: Learn to recursively generate HTML markup with Nunjucks using a static JSON file.
 ---
 
-## Preamble
-
 While re-writing my [Quizzes page](/quizzes) so it's easier to manage, I decided I wanted to separate the HTML markup from the raw data. The problem came when I realized that I needed to recursively generate the HTML so it was made up of nested lists with links.
 
 Thankfully I found a [Github issue](https://github.com/mozilla/nunjucks/issues/416) from someone with the same problem as me. In the issue, there was a [response from jbmoelker](https://github.com/mozilla/nunjucks/issues/416#issuecomment-206335032) in which they solved the problem with a macro.
@@ -72,32 +70,28 @@ Now that we have the basic data, we need to generate the nunjucks template in or
   {% endif %}
 </li>
 {% endmacro %} {% endraw %}
-``` 
+```
 
 In this macro we manage the conditions to print
 the correct HTML. If the quizz item has an `url` property, it puts the title
 inside an anchor tag. Otherwise, it's a regular text element. If the quizz item
 has the `children` property, it prints a new unordered list and the macro calls
 itself to generate lists in recursion. To start running this recursion, I just
-called it inside a for loop of all quizzes. 
+called it inside a for loop of all quizzes.
 
-```html {% raw %}
+````html {% raw %}
 <main>
   <ul>
     {% for quizz in quizzes %} {{ quizzItem(quizz) }} {% endfor %}
   </ul>
 </main>
-{% endraw %}``` 
-
-## Notes and pitfalls The only pitfall I fell into is the fact
+{% endraw %}``` ## Notes and pitfalls The only pitfall I fell into is the fact
 that you can't declare the macro inside a block declaration. As said in the
 documentation: > If you are using the asynchronous API, please be aware that you
 cannot do anything asynchronous inside macros. This is because macros are called
 like normal functions. In the future we may have a way to call a function
 asynchronously. If you do this now, the behavior is undefined. So in order to
-fix this, I set up the whole file in these maner: 
-
-```{% raw %} ## /quizzes.html
+fix this, I set up the whole file in these maner: ```{% raw %} ## /quizzes.html
 {% macro quizzItem(quizz) %}
 <li>
   {% if quizz.url %}
@@ -115,9 +109,8 @@ fix this, I set up the whole file in these maner:
     {% for quizz in quizzes %} {{ quizzItem(quizz) }} {% endfor %}
   </ul>
 </main>
-{% endraw %}``` 
-
-## Conclusion Thanks to this set-up, I can more easily add data
+{% endraw %}``` ## Conclusion Thanks to this set-up, I can more easily add data
 to my new json file and not have to worry about the markup structure, and I can
 also re-structure the HTML markup easily if I ever want to. If you want to check
 the result, you can check my [Quizzes page](/quizzes).
+````

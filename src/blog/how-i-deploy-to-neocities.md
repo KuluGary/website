@@ -1,7 +1,7 @@
 ---
 title: How I deploy to Neocities
 date: 2024-11-14
-tags: ["micro-post", "development"]
+tags: ["blog-post", "development"]
 description: Part of my workflow when writing to this site is building the static files and uploading them to Neocities, so I made a sh script to automate it.
 ---
 
@@ -17,6 +17,7 @@ neocities push _site
 ```
 
 A brief explanation of what this script does:
+
 - Deletes the previous `_site` folder, where the static files live, to re-generate it.
 - Runs `npm run build`, which is the same as `npx @11ty/eleventy`.
 - Stages all changed files for git, and makes a commit with a message in the format "Updated: 2024-11-12 22:17:05"

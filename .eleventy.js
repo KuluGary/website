@@ -7,14 +7,17 @@ const {
   unslugify,
   generateSocialMediaImage,
   limit,
+  collectionStats,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const wordStats = require("@photogabble/eleventy-plugin-word-stats");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
+  eleventyConfig.addPlugin(wordStats);
   eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addPassthroughCopy("./src/assets");
@@ -34,6 +37,7 @@ module.exports = function (eleventyConfig) {
     generateSocialMediaImage
   );
   eleventyConfig.addFilter("limit", limit);
+  eleventyConfig.addFilter("collectionStats", collectionStats);
 
   eleventyConfig.addCollection("postsByYear", postsByYear);
 

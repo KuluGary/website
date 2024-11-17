@@ -1,7 +1,7 @@
 ---
 title: Messing around with 3D... again
 date: 2023-04-20
-tags: ["micro-post", "game_dev"]
+tags: ["blog-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-10-04-messing-around-with-3d-again/1.jpg"
   alt: Two cubes of different colors in a green plane. There's a textbox saying 'Hey, this is a test message!'"

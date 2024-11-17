@@ -18,13 +18,17 @@
     </li>
   </ul>
 
-  <div id="made-with">
-    <p>Made with </p>
-    <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">
-      <img id="eleventy-badge" src="https://img.shields.io/badge/Eleventy-black?logo=eleventy" alt="11ty">
-    </a>
-    <a href="https://mozilla.github.io/nunjucks/" target="_blank" rel="noopener noreferrer">
-      <img id="eleventy-badge" src="https://img.shields.io/badge/Nunjucks-darkgreen?logo=nunjucks" alt="Nunjucks">
-    </a>
+  <div class="footer-credits">
+    <div id="made-with">
+      <p>© {{build.timestamp | formatDate('yyyy')}} made with </p>
+      <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">
+        <img id="eleventy-badge" src="https://img.shields.io/badge/Eleventy-black?logo=eleventy" alt="11ty">
+      </a>
+      <a href="https://mozilla.github.io/nunjucks/" target="_blank" rel="noopener noreferrer">
+        <img id="eleventy-badge" src="https://img.shields.io/badge/Nunjucks-darkgreen?logo=nunjucks" alt="Nunjucks">
+      </a>
+    </div>
+
+    <p>Last updated: {{build.timestamp | formatDate("LLL dd, yyyy HH:mm")}}</p>
   </div>
 </footer>

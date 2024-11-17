@@ -1,6 +1,6 @@
 ---
 layout: layouts/home.html
-title: KuluGary - An old web personal site
+title: KuluGary | an old web personal site
 description: An old web personal site
 permalink: /
 ---
@@ -25,18 +25,12 @@ permalink: /
 
   <h2>Blog</h2>
 
-  <p>This are my latest full-size blog articles.</p>
+  <p>These are my latest posts written this year.</p>
 
-  {% set collection = collections['blog-post'] | reverse | limit(3) %}
-  {%
-  include "components/post-list.html" %}
-
-  <a href="/blog">Read more</a>
-
-  <h2>Microblog</h2>
-  {% set collection = collections['micro-post'] | reverse | limit(3) %}
+  {% set postsList = collections['blog-post'] | reverse | limit(3) %}
   {% include "components/post-list.html" %}
-  <a href="/microblog">Read more</a>
+
+  <a href="/blog">Read more...</a>
 </main>
 
 {% include "components/footer.html" %}

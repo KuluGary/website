@@ -10,12 +10,13 @@ eleventyComputed:
 ---
 
 {% include "components/header.html" %}
+
 <main>
   <h2>Tagged "{{tag | unslugify}}"</h2>
 
   <p>This is everything tagged <strong>{{ tag | unslugify }}</strong> found in this website.</p>
 
-  <p>Want to be notified whenever I update this page? Get the <a href="/{{ tag }}/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
+  <p>Last updated: {{ collections[tag] | getNewestCollectionItemDate | formatDate }}.</p>
 
   <ul>
     {% set taglist = collections[tag] %}

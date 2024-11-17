@@ -19,19 +19,55 @@ layout: layouts/blog-post.html
 
     <h1>{{title}}</h1>
 
-    <ul class="horizontal">
-      {% for tag in tags %}
-        {% if tag != "blog-post" %}
-          <li>
-            <a class="subtitle" href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
-          </li>
-        {% endif %}
-      {%- endfor %}
-    </ul>
+    <div class="post-subtitle">
+      <p class="post-date">Written: {{date|formatDate("LLLL dd, yyyy")}}</p>
+      <span class="post-divider">|</span>
+      <p class="post-stats">~{{content|wordStats}}</p>
+      <span class="post-divider">|</span>
+      <ul class="post-tags">
+        {%- for tag in tags -%}
+          {% if tag != "blog-post" %}
+            <li>
+              <a href="/tags/{{ tag }}">#{{ tag }}</a>
+            </li>
+          {% endif %}
+          {%-endfor-%}
+        </ul>
+      </div>
 
-    <div>{{ content | safe }}</div>
-  </article>
-</main>
+      {% if videos or images%}
+        <section class="splide" aria-label="Gallery carousel">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% if images %}
+                {% for item in images %}
+                  <li class="splide__slide">
+                    <img src="{{item.url}}" alt="{{item.alt}}"/>
+                  </li>
+                {% endfor %}
+              {% endif %}
+              {% if videos %}
+                {% for item in videos %}
+                  <li class="splide__slide">
+                    {{ item.url | safe }}
+                  </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </section>
+      {% endif %}
 
-{% set rssUrl = "/blog/feed.xml" %}
-{% include "components/share-footer.html" %}
+      <div>{{ content | safe }}</div>
+    </article>
+  </main>
+
+  <footer class="share-footer">
+    <h2 class="share-title">Share:</h2>
+
+    {% include "components/share-buttons.html" %}
+
+  </footer>
+
+  {# {% set rssUrl = "/blog/feed.xml" %} #}
+  {# {% include "components/share-footer.html" %} #}

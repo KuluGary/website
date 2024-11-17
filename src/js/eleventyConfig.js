@@ -1,3 +1,6 @@
+const readingTime = require("reading-time");
+const { DateTime } = require("luxon");
+
 function postsByYear(collection) {
   const posts = collection.getFilteredByTag("blog-post").reverse();
   const years = posts.map((post) => post.date.getFullYear());
@@ -14,16 +17,11 @@ function postsByYear(collection) {
   return postsByYear;
 }
 
-function formatDate(dateObj) {
-  const formatter = new Intl.DateTimeFormat("es", {
-    // dateStyle: "short",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-
-  return formatter.format(dateObj);
-}
+const formatDate = (date, format = "dd/LL/yyyy") => {
+  return DateTime.fromJSDate(date, {
+    zone: "utc",
+  }).toFormat(String(format));
+};
 
 function filterMangaOnlySafe(mangaList) {
   return mangaList.filter((manga) => manga.rating === "safe");
@@ -96,6 +94,83 @@ function limit(array, limit = 0) {
   return array.slice(0, limit);
 }
 
+const collectionStats = (collection) => {
+  const numberFormatter = new Intl.NumberFormat("en-GB", {
+    maximumSignificantDigits: 3,
+  });
+
+  const stats = collection.reduce(
+    (stats, item) => {
+      stats.totalItems++;
+      if (stats.firstItem === null) stats.firstItem = item;
+
+      const itemStats = readingTime(item.templateContent);
+      const wordCount = itemStats.words;
+
+      if (wordCount > stats.longestItem.wordCount) {
+        stats.longestItem.wordCount = wordCount;
+        stats.longestItem.item = item;
+      }
+
+      stats.totalWords += wordCount;
+
+      // Year stats
+      const year = item.date.getFullYear();
+      const yearStats = stats.byYear.get(year) ?? {
+        year,
+        totalWords: 0,
+        totalItems: 0,
+      };
+
+      yearStats.totalItems++;
+      yearStats.totalWords += wordCount;
+
+      stats.byYear.set(year, yearStats);
+
+      return stats;
+    },
+    {
+      totalWords: 0,
+      totalItems: 0,
+      firstItem: null,
+      longestItem: {
+        wordCount: 0,
+        item: null,
+      },
+      byYear: new Map(),
+    }
+  );
+
+  // Number formatting
+
+  stats.avgWords =
+    stats.totalItems > 0
+      ? numberFormatter.format(stats.totalWords / stats.totalItems)
+      : 0;
+
+  stats.totalWords = numberFormatter.format(stats.totalWords);
+  stats.totalItems = numberFormatter.format(stats.totalItems);
+  stats.longestItem.wordCount = numberFormatter.format(
+    stats.longestItem.wordCount
+  );
+
+  stats.byYear = Array.from(stats.byYear.values())
+    .map((year) => {
+      return {
+        ...year,
+        totalWords: numberFormatter.format(year.totalWords),
+        totalItems: numberFormatter.format(year.totalItems),
+        avgWords:
+          year.totalItems > 0
+            ? numberFormatter.format(year.totalWords / year.totalItems)
+            : 0,
+      };
+    })
+    .sort((a, b) => a.year - b.year);
+
+  return stats;
+};
+
 module.exports = {
   postsByYear,
   formatDate,
@@ -105,4 +180,5 @@ module.exports = {
   unslugify,
   generateSocialMediaImage,
   limit,
+  collectionStats,
 };
