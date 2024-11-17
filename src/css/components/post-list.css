@@ -3,6 +3,15 @@ ul.post-list {
   padding-left: 0;
 }
 
+ul.post-list article h2 {
+  all: unset;
+}
+
+ul.post-list article h2::before {
+  content: "";
+  margin: 0;
+}
+
 ul.post-list > li {
   position: relative;
   padding-left: var(--line-height);

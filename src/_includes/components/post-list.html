@@ -1,15 +1,13 @@
-{% block head %}
-  <link rel="stylesheet" href="/css/components/post-list.css">
-{% endblock %}
-
 <ul class="post-list">
   {% for post in postsList %}
     {% set postStats = post | wordStats %}
     <li>
       <article>
         <header>
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          <time datetime="{{ post.date }}">{{ post.date | formatDate }}</time>
+          <h2>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h2>
+          <time datetime="{{ post.date | formatDate('dd-LL-yyyy') }}">{{ post.date | formatDate }}</time>
         </header>
         <div class="post-subtitle">
           <p class="post-stats">~{{postStats}}</p>
