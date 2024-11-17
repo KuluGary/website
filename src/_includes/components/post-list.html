@@ -12,7 +12,7 @@
           <time datetime="{{ post.date }}">{{ post.date | formatDate }}</time>
         </header>
         <div class="post-subtitle">
-          <p class="post-stats">{{postStats}}</p>
+          <p class="post-stats">~{{postStats}}</p>
           <span class="post-divider">|</span>
           <ul class="post-tags">
             {%- for tag in post.data.tags -%}
