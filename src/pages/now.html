@@ -7,7 +7,6 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 
 {% block content %}
   {% include "components/header.html" %}
-  {% set currentProject = collections.game_dev[collections.game_dev.length - 1] %}
 
   <main>
     <section>
@@ -21,29 +20,8 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
     <section>
       <h2 id="work-in-progress">Working on</h2>
 
-      <ul>
-        <li>
-          <a href="{{currentProject.url}}">{{currentProject.data.title}}</a> -
-        
-        <div class="post-subtitle">
-            <p class="post-date">Written: {{currentProject.date | formatDate("LLLL dd, yyyy")}}</p>
-            <span class="post-divider">|</span>
-            <p class="post-stats">~{{currentProject.content | wordStats}}</p>
-            <span class="post-divider">|</span>
-            <ul class="post-tags">
-              {%- for tag in currentProject.data.tags -%}
-                {% if tag != "blog-post" %}
-                  <li>
-                    <a href="/tags/{{ tag }}">#{{ tag }}</a>
-                  </li>
-                {% endif %}
-              {%- endfor -%}
-            </ul>
-          </div>
-
-          <p>{{currentProject.data.description}}</p>
-        </li>
-      </ul>
+      {% set postsList = collections.game_dev | reverse | limit(1) %}
+      {% include "components/post-list.html" %}
     </section>
 
     <section>
@@ -193,4 +171,5 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
   <link rel="stylesheet" href="/css/now.css">
   <link rel="stylesheet" href="/css/components/header.css"/>
   <link rel="stylesheet" href="/css/components/footer.css"/>
+  <link rel="stylesheet" href="/css/components/post-list.css"/>
 {% endblock %}
