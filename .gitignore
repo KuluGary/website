@@ -2,3 +2,4 @@ _site
 .cache
 node_modules
 .env./_site
+./_site
