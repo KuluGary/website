@@ -45,7 +45,12 @@
     </p>
 
     <p class="under-construction">
-      <img src="/assets/images/icons/underconstruction.gif" alt=""> This site is under construction. It was last updated {{build.timestamp | formatDate('MMM dd, yyyy')}} on commit {{metadata.commit.ref}}.</p>
-
+      <img src="/assets/images/icons/underconstruction.gif" alt=""/> This site
+      is under construction. It was last updated {{ build.timestamp |
+      formatDate('MMM dd, yyyy')}} on commit
+      <a target="_blank" href="{{metadata.commit.url}}"
+        >{{metadata.commit.ref}}</a
+      >.
+    </p>
   </div>
 </footer>
