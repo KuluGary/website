@@ -1,5 +1,5 @@
 _site
 .cache
 node_modules
-.env./_site
+.env
 ./_site
