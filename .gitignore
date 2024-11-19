@@ -3,3 +3,6 @@ _site
 node_modules
 .env
 ./_site
+*.sh
+bin
+lib

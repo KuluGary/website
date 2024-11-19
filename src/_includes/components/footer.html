@@ -1,8 +1,8 @@
 {% block head %}
-  <link rel="stylesheet" href="/css/components/footer.css">
+  <link rel="stylesheet" href="/css/components/footer.css"/>
 {% endblock %}
 
-<footer>
+<footer class="site-footer">
   <ul class="horizontal button-list">
     <li>
       <img src="/assets/images/buttons/stardew.gif" alt=""/>
@@ -19,19 +19,33 @@
   </ul>
 
   <div class="footer-credits">
-    <div id="made-with">
-      <p>© {{build.timestamp | formatDate('yyyy')}} made with </p>
+    <p class="made-with">
+      Made with
       <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">
-        <img id="eleventy-badge" src="https://img.shields.io/badge/Eleventy-black?logo=eleventy" alt="11ty">
-      </a>
-      <a href="https://mozilla.github.io/nunjucks/" target="_blank" rel="noopener noreferrer">
-        <img id="nunjucks-badge" src="https://img.shields.io/badge/Nunjucks-darkgreen?logo=nunjucks" alt="Nunjucks">
-      </a>
-    </div>
+        <img
+          id="eleventy-badge"
+          src="https://img.shields.io/badge/Eleventy-black?logo=eleventy"
+          alt="11ty"
+/></a>
+      and
+      <a
+        href="https://mozilla.github.io/nunjucks/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          id="nunjucks-badge"
+          src="https://img.shields.io/badge/Nunjucks-darkgreen?logo=nunjucks"
+          alt="Nunjucks"
+/></a>
+      and hosted at
+      <a href="https://neocities.org">
+        <img src="/assets/images/icons/neocities.png" alt=""/> Neocities </a
+      >.
+    </p>
 
-    <div class="footer-under-construction">
-      <img src="/assets/images/buttons/underconstruction.gif" alt=""/>
-      <p>This website is under construction. Last updated {{build.timestamp | formatDate("LLL dd, yyyy HH:mm")}} by {{build.commit_hash}}</p>
-    </div>
+    <p class="under-construction">
+      <img src="/assets/images/icons/underconstruction.gif" alt=""> This site is under construction. It was last updated {{build.timestamp | formatDate('MMM dd, yyyy')}} on commit {{metadata.commit.ref}}.</p>
+
   </div>
 </footer>
