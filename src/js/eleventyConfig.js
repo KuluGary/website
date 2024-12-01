@@ -18,6 +18,7 @@ function postsByYear(collection) {
 }
 
 const formatDate = (date, format = "dd/LL/yyyy") => {
+  console.log({date})
   return DateTime.fromJSDate(date, {
     zone: "utc",
   }).toFormat(String(format));

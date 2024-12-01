@@ -7,3 +7,16 @@ label h3 {
   display: block;
   margin-top: var(--line-height);
 }
+
+fieldset {
+  margin-top: 0;
+  margin-block: calc(var(--line-height) / 2);
+}
+
+fieldset > label {
+  display: block;
+}
+
+fieldset > label + label {
+  margin-block: var(--line-height);
+}
