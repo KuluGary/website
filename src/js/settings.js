@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleResetForm(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("AAA");
     localStorage.removeItem("theme");
     localStorage.removeItem("font-stack");
 

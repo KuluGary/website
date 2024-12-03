@@ -5,17 +5,20 @@ description: These are my essays, tutorials, and long-form write-ups.
 ---
 {% extends "layouts/base.html" %}
 
+{% set collection = collections["blog-post"] %}
+
 {% block content %}
   {% include "components/header.html" %}
 
   <main>
     <h1>Blog</h1>
 
-    <p>These are my <strong>essays</strong>, <strong>tutorials</strong> and long-form <strong>write-ups</strong>.</p>
+    <p>These are my <strong>essays</strong>, <strong>tutorials</strong> and long-form <strong>write-ups</strong>. Last updated {{ collection | getNewestCollectionItemDate | formatDate("LLL dd, yyyy") }}.</p>
 
     <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-    <p>Last updated: {{ postsList | getNewestCollectionItemDate | formatDate }}.</p>
+    {% set collection = collection %}
+    {% include "components/tag-list.html" %}
 
     {% for year, items in collections['postsByYear'] %}
       <section>
@@ -38,5 +41,5 @@ description: These are my essays, tutorials, and long-form write-ups.
   <link rel="stylesheet" href="/css/blog.css">
   <link rel="stylesheet" href="/css/components/header.css"/>
   <link rel="stylesheet" href="/css/components/footer.css"/>
-    <link rel="stylesheet" href="/css/components/post-list.css">
+  <link rel="stylesheet" href="/css/components/post-list.css">
 {% endblock %}
