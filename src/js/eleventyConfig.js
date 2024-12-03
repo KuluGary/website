@@ -7,9 +7,7 @@ function postsByYear(collection) {
   const uniqueYears = [...new Set(years)];
 
   const postsByYear = uniqueYears.reduce((prev, year) => {
-    const filteredposts = posts.filter(
-      (post) => post.date.getFullYear() === year
-    );
+    const filteredposts = posts.filter((post) => post.date.getFullYear() === year);
 
     return [...prev, [year, filteredposts]];
   }, []);
@@ -82,8 +80,7 @@ function unslugify(slug) {
 }
 
 function generateSocialMediaImage(imageSrc) {
-  if (!imageSrc)
-    return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
+  if (!imageSrc) return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
 
   if (imageSrc.startsWith("https://")) return imageSrc;
 
@@ -143,16 +140,11 @@ const collectionStats = (collection) => {
 
   // Number formatting
 
-  stats.avgWords =
-    stats.totalItems > 0
-      ? numberFormatter.format(stats.totalWords / stats.totalItems)
-      : 0;
+  stats.avgWords = stats.totalItems > 0 ? numberFormatter.format(stats.totalWords / stats.totalItems) : 0;
 
   stats.totalWords = numberFormatter.format(stats.totalWords);
   stats.totalItems = numberFormatter.format(stats.totalItems);
-  stats.longestItem.wordCount = numberFormatter.format(
-    stats.longestItem.wordCount
-  );
+  stats.longestItem.wordCount = numberFormatter.format(stats.longestItem.wordCount);
 
   stats.byYear = Array.from(stats.byYear.values())
     .map((year) => {
@@ -160,16 +152,21 @@ const collectionStats = (collection) => {
         ...year,
         totalWords: numberFormatter.format(year.totalWords),
         totalItems: numberFormatter.format(year.totalItems),
-        avgWords:
-          year.totalItems > 0
-            ? numberFormatter.format(year.totalWords / year.totalItems)
-            : 0,
+        avgWords: year.totalItems > 0 ? numberFormatter.format(year.totalWords / year.totalItems) : 0,
       };
     })
     .sort((a, b) => a.year - b.year);
 
   return stats;
 };
+
+function excludeFromList(collection, page) {
+  return collection.filter((post) => post.url !== page.url);
+}
+
+function log(any) {
+  console.log(any);
+}
 
 module.exports = {
   postsByYear,
@@ -181,4 +178,6 @@ module.exports = {
   generateSocialMediaImage,
   limit,
   collectionStats,
+  excludeFromList,
+  log,
 };

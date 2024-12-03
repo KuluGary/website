@@ -8,6 +8,8 @@ const {
   generateSocialMediaImage,
   limit,
   collectionStats,
+  excludeFromList,
+  log
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -32,12 +34,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
   eleventyConfig.addFilter("uniqueTags", uniqueTags);
   eleventyConfig.addFilter("unslugify", unslugify);
-  eleventyConfig.addFilter(
-    "generateSocialMediaImage",
-    generateSocialMediaImage
-  );
+  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("collectionStats", collectionStats);
+  eleventyConfig.addFilter("excludeFromList", excludeFromList);
+  eleventyConfig.addFilter("log", log);
 
   eleventyConfig.addCollection("postsByYear", postsByYear);
 

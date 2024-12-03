@@ -79,19 +79,26 @@ has the `children` property, it prints a new unordered list and the macro calls
 itself to generate lists in recursion. To start running this recursion, I just
 called it inside a for loop of all quizzes.
 
-````html {% raw %}
+```html {% raw %}
 <main>
   <ul>
     {% for quizz in quizzes %} {{ quizzItem(quizz) }} {% endfor %}
   </ul>
 </main>
-{% endraw %}``` ## Notes and pitfalls The only pitfall I fell into is the fact
+{% endraw %}``` 
+
+## Notes and pitfalls 
+
+The only pitfall I fell into is the fact
 that you can't declare the macro inside a block declaration. As said in the
 documentation: > If you are using the asynchronous API, please be aware that you
 cannot do anything asynchronous inside macros. This is because macros are called
 like normal functions. In the future we may have a way to call a function
 asynchronously. If you do this now, the behavior is undefined. So in order to
-fix this, I set up the whole file in these maner: ```{% raw %} ## /quizzes.html
+fix this, I set up the whole file in these maner: 
+```{% raw %} 
+## /quizzes.html
+
 {% macro quizzItem(quizz) %}
 <li>
   {% if quizz.url %}

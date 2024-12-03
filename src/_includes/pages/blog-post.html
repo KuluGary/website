@@ -61,7 +61,15 @@
     </article>
   </main>
 
-  <footer class="share-footer">
+  <footer class="post-footer">
+    {% set postsList = collections[tags[1]] | reverse | excludeFromList(page.url) | limit(3) %}
+
+    {% if postsList | length %}
+      <h2>You may also like</h2>
+
+      {% include "components/related-post-list.html" %}
+    {% endif %}
+
     <h2 class="share-title">Share:</h2>
 
     {% include "components/share-buttons.html" %}
@@ -71,6 +79,7 @@
 
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/post-list.css"/>
   <link rel="stylesheet" href="/css/blog-post.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <link

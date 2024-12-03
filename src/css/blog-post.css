@@ -63,3 +63,8 @@ article .splide iframe {
 .post-tags a {
   text-decoration-thickness: 1px;
 }
+
+.post-footer {
+  border-top: var(--border-thickness) solid var(--text-color);
+
+}
