@@ -1,0 +1,31 @@
+---
+title: status
+permalink: /status/
+description: status
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  {% include "components/header.html" %}
+
+  <main>
+    <h1>Status</h1>
+
+    <div id="statuscafe">
+      <div id="statuscafe-username"></div>
+      <div id="statuscafe-content"></div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/status.css"/>
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}
+
+{% block script %}
+  <script src="https://status.cafe/current-status.js?name=kulugary" defer></script>
+  {# <script src="/js/status.js"></script> #}
+{% endblock %}

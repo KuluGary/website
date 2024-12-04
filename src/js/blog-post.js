@@ -28,8 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function mastodonShare(e) {
   let title = e.getAttribute("data-title");
-  let preferredInstance =
-    localStorage.getItem("preferredInstance") ?? "mastodon.social";
+  let preferredInstance = localStorage.getItem("preferredInstance") ?? "mastodon.social";
 
   const pageUrl = window.location.href;
 

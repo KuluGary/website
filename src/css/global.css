@@ -29,6 +29,17 @@ html[data-theme="grayscale"] {
   --tertiary-color: #b35e15;
 }
 
+html[data-theme="cherry-blosom"] {
+  color-scheme: light;
+  --text-color: #460827;
+  --text-color-alt: #a70355;
+  --background-color: #ffe8ec;
+  --background-color-alt: #fccdd7;
+  --primary-color: #a70355;
+  --secondary-color: #7122aa;
+  --tertiary-color: #d60076;
+}
+
 html[data-theme="dark-blue"] {
   color-scheme: dark;
   --text-color: #c9d1d9;

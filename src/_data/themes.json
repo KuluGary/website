@@ -1,5 +1,8 @@
 {
-  "light": [{ "id": "grayscale", "label": "Dawn" }],
+  "light": [
+    { "id": "grayscale", "label": "Dawn" },
+    { "id": "cherry-blosom", "label": "Cherry Blosom" }
+  ],
   "dark": [
     { "id": "dark-blue", "label": "Dark Blue" },
     { "id": "dark-grayscale", "label": "Dark Dawn" }
