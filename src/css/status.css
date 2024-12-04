@@ -1,4 +1,4 @@
-/* ul#status-list {
+ul#status-list {
   list-style: none;
   padding-left: 0;
 }
@@ -42,19 +42,4 @@ ul#status-list header time {
 ul#status-list p {
   margin-top: calc(var(--line-height) / 2);
   margin-bottom: 0;
-} */
-
-#statuscafe {
-  position: relative;
-  padding-left: var(--line-height);
-  margin-top: var(--line-height);
-}
-
-#statuscafe::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 1ch;
-  background-color: var(--background-color-alt);
 }

@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <li>
             <article>
               <header>
-                <h2>${title}</h2>
+                <h2>
+                  <a href="https://status.cafe/users/kulugary" target="_blank">
+                    ${title}
+                  </a>
+                </h2>
                 <time datetime="${dateString}">${dateString}</date>
               </header>
 
