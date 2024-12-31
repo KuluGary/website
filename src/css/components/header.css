@@ -36,6 +36,7 @@
 header .logo-row a {
   text-decoration: none;
   margin: 0px;
+  background-color: transparent;
 }
 
 header .logo-row a > * {
@@ -65,11 +66,6 @@ header .logo-row svg path {
   display: flex;
   justify-content: right;
   flex-wrap: wrap;
-}
-
-.header nav ul li + li::before {
-  content: "|";
-  margin-left: 0.5ch;
 }
 
 header *:has(h1) {

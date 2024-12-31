@@ -8,13 +8,14 @@
   --font-weight-normal: 500;
   --font-weight-medium: 600;
   --font-weight-bold: 800;
+  --font-size: 14px;
 
   font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: var(--font-weight-normal);
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
-  font-size: 14px;
+  font-size: var(--font-size);
 }
 
 html,
@@ -141,16 +142,16 @@ html[data-font-stack="handwritten"] {
 
 /* Font size */
 html[data-font-size="small"] {
-  font-size: 14px;
+  --font-size: 14px;
 }
 
 html:not([data-font-size]),
 html[data-font-size="standard"] {
-  font-size: 16px;
+  --font-size: 16px;
 }
 
 html[data-font-size="large"] {
-  font-size: 18px;
+  --font-size: 18px;
 }
 
 /* Content Width */
@@ -451,6 +452,27 @@ li::marker {
   height: var(--line-height);
 }
 
+ul.bar-separated {
+  --bar-gap: 1ch;
+
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+ul.bar-separated > li {
+  display: flex;
+  align-items: center;
+}
+
+ul.bar-separated li + li::before {
+  content: "|";
+  margin-left: var(--bar-gap);
+  padding-right: var(--bar-gap);
+}
+
 fieldset {
   border: none;
   padding-inline: 0;
@@ -509,7 +531,6 @@ input[type="radio"]:checked:before {
 
 button:focus,
 input:focus {
-  --border-thickness: 3px;
   outline: none;
 }
 
@@ -693,3 +714,5 @@ label:has(.theme-switcher) {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* RESET */

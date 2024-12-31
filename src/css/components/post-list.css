@@ -69,3 +69,7 @@ ul.post-list .post-tags li {
 ul.post-list .post-tags a {
   text-decoration-thickness: 1px;
 }
+
+ul.bar-separated {
+  justify-content: start;
+}
