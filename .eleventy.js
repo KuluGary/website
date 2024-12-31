@@ -9,7 +9,8 @@ const {
   limit,
   collectionStats,
   excludeFromList,
-  log
+  log,
+  getSimilarPosts,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -38,6 +39,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("collectionStats", collectionStats);
   eleventyConfig.addFilter("excludeFromList", excludeFromList);
+  eleventyConfig.addFilter("similarPosts", getSimilarPosts);
   eleventyConfig.addFilter("log", log);
 
   eleventyConfig.addCollection("postsByYear", postsByYear);

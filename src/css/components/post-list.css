@@ -51,6 +51,11 @@ ul.post-list .post-subtitle,
 ul.post-list .post-description {
   margin-top: calc(var(--line-height) / 2);
   margin-bottom: 0;
+  font-size: max(0.85rem);
+}
+
+ul.post-list .post-description {
+  margin-top: 0;
 }
 
 ul.post-list .post-subtitle .post-divider {

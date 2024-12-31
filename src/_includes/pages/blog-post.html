@@ -27,7 +27,7 @@
           {%- for tag in tags -%}
             {% if tag != "blog-post" %}
               <li>
-                <a href="/tags/{{ tag }}">#{{ tag }}</a>
+                <a href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
               </li>
             {% endif %}
           {%- endfor -%}
@@ -62,12 +62,12 @@
   </main>
 
   <footer class="post-footer">
-    {% set postsList = collections[tags[1]] | reverse | excludeFromList(page.url) | limit(3) %}
+    {% set postsList = collections["blog-post"] | similarPosts(page.url, tags) | limit(1) %}
 
     {% if postsList | length %}
       <h2>You may also like</h2>
 
-      {% include "components/related-post-list.html" %}
+      {% include "components/post-list.html" %}
     {% endif %}
 
     <h2 class="share-title">Share:</h2>

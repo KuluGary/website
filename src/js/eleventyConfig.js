@@ -164,6 +164,20 @@ function excludeFromList(collection, page) {
   return collection.filter((post) => post.url !== page.url);
 }
 
+function getSimilarCategories(categoriesA, categoriesB) {
+  return categoriesA.filter(Set.prototype.has, new Set(categoriesB)).length;
+}
+
+function getSimilarPosts(collection, path, categories) {
+  return collection
+    .filter((post) => {
+      return getSimilarCategories(post.data.tags, categories) >= 1 && post.data.page.url !== path;
+    })
+    .sort((a, b) => {
+      return getSimilarCategories(b.data.tags, categories) - getSimilarCategories(a.data.tags, categories);
+    });
+}
+
 function log(any) {
   console.log(any);
 }
@@ -179,5 +193,6 @@ module.exports = {
   limit,
   collectionStats,
   excludeFromList,
+  getSimilarPosts,
   log,
 };

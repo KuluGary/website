@@ -65,6 +65,13 @@ article .splide iframe {
 }
 
 .post-footer {
+  --footer-separation: calc(var(--line-height) * 1.5);
+  
+  margin-top: var(--footer-separation);
+  padding-top: var(--footer-separation);
   border-top: var(--border-thickness) solid var(--text-color);
+}
 
+.post-footer > *:first-child {
+  margin-top: 0;
 }
