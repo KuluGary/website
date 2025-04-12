@@ -17,9 +17,6 @@ description: These are my essays, tutorials, and long-form write-ups.
 
     <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-    {% set collection = collection %}
-    {% include "components/tag-list.html" %}
-
     {% for year, items in collections['postsByYear'] %}
       <section>
         <h2>{{ year }}</h2>
