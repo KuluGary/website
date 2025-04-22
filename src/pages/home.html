@@ -4,43 +4,93 @@ description: An old web personal site
 permalink: /
 ---
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/base.html" %} {% block content %} {% include "components/header.html" %}
 
-{% block content %}
-  {% include "components/header.html" %}
+<main>
+  <p>
+    I'm a <a href="/uses">technology enthusiast</a> with a predilection for vintage programs; an
+    <a href="/now">artistic admirer</a> who's dabbled in illustration, 3D and pixel art; and a
+    <a href="/sites">neophyte humanist</a> with a growing regard for the social sciences.
+  </p>
 
-  <main>
-    <p>Hello, I'm Gary.</p>
+  <p>
+    This site is for personal use and as such, both it's content and form are subject to change sporadically and
+    frequently.
+  </p>
 
-    <p>
-      I'm a <strong>technology enthusiast</strong> with a predilection for vintage
-      programs; an <strong>artistic cognoscente</strong> who's dabbled in
-      illustration, 3D and pixel art; and a
-      <strong>neophyte humanist</strong> with a growing regard for the social
-      sciences.
-    </p>
+  <hr />
 
-    <p>
-      This site is for personal use and as such, both it's content and form are
-      subject to change sporadically and frequently.
-    </p>
-    
-    <section>
-      <h2>Blog</h2>
+  <section class="grid-list grid-col-4">
+    {% if games.playing %} {% for game in games.playing | limit(4) %}
+    <article>
+      <figure>
+        <img src="{{ game.image }}" />
 
-      <p>These are my latest posts written this year.</p>
+        <figcaption>
+          <a href="{{ game.link }}"> {{ game.title }} </a>
+        </figcaption>
+      </figure>
+    </article>
 
-      {% set postsList = collections['blog-post'] | reverse | limit(3) %}
-      {% include "components/post-list.html" %}
+    {% endfor %} {% endif %}
+  </section>
 
-      <a href="/blog">Read more...</a>
-    </section>
-  </main>
-  {% include "components/footer.html" %}
-{% endblock %}
+  <section class="grid-list grid-col-5">
+    {% for manga in manga.favourite | filterMangaOnlySafe | limit(5) %}
+    <article>
+      <figure>
+        <img src="/assets/images/covers/manga/{{ manga.cover }}" />
 
-{% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css"/>
-  <link rel="stylesheet" href="/css/components/footer.css"/>
-  <link rel="stylesheet" href="/css/components/post-list.css">
+        <figcaption>
+          <a href="{{ manga.link}}"> {{manga.title}} </a>
+        </figcaption>
+      </figure>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section class="grid-list grid-col-4">
+    {% if music %} {% for song in music.favourites | limit(4) %}
+    <article>
+      <figure>
+        <img src="{{ song.image }}" />
+
+        <figcaption>
+          <a href="#"> {{ song.name }} </a>
+        </figcaption>
+      </figure>
+    </article>
+    {% endfor %} {% endif %}
+  </section>
+
+  <section class="grid-list grid-col-5">
+    {% for show in shows.favorites | limit(5) %}
+    <article>
+      <figure>
+        <img src="/assets/images/covers/shows/favorites/{{ show.imagePath }}.jpg" />
+
+        <figcaption>
+          <a href="{{ show.link}}"> {{show.title}} </a>
+        </figcaption>
+      </figure>
+    </article>
+    {% endfor %}
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Recent updates</h2>
+
+    <p>These are my latest posts written this year.</p>
+
+    {% set postsList = collections['blog-post'] | reverse | limit(3) %} {% include "components/post-list.html" %}
+
+    <a href="/blog">Read more...</a>
+  </section>
+</main>
+{% include "components/footer.html" %} {% endblock %} {% block stylesheet %}
+<link rel="stylesheet" href="/css/components/header.css" />
+<link rel="stylesheet" href="/css/components/footer.css" />
+<link rel="stylesheet" href="/css/components/post-list.css" />
 {% endblock %}

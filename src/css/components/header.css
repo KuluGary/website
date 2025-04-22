@@ -1,4 +1,88 @@
-.header {
+.site-header {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+
+  & #site-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: currentColor;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  & nav {
+    margin: 0;
+    margin-left: auto;
+
+    & ul {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      list-style: none;
+      gap: 0 0.75rem;
+      margin: 0;
+
+      & li {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  a[href="/blog"] {
+    & svg {
+      fill: rgb(0, 255, 255);
+    }
+  }
+
+  a[href="/now"] {
+    & svg {
+      fill: rgb(214, 95, 43);
+    }
+  }
+
+  a[href="/uses"] {
+    & svg {
+      fill: rgb(95, 160, 80);
+    }
+  }
+
+  a[href="/sites"] {
+    & svg {
+      fill: rgb(226, 184, 255);
+    }
+  }
+
+  a[href="/settings"] {
+    & svg {
+      fill: rgb(192, 181, 148);
+    }
+  }
+
+  a[href] {
+    &:hover {
+      & svg {
+        filter: brightness(0.75);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2ch;
+
+    & nav {
+      margin: 0;
+    }
+  }
+}
+/* .header {
   border: 1px solid var(--text-color);
   margin-bottom: calc(var(--line-height) * 2);
 }
@@ -71,4 +155,4 @@ header .logo-row svg path {
 header *:has(h1) {
   background-color: var(--text-color);
   color: var(--background-color);
-}
+} */

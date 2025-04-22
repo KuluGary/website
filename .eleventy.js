@@ -17,6 +17,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const wordStats = require("@photogabble/eleventy-plugin-word-stats");
+require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
