@@ -66,14 +66,39 @@ async function scrapeGameFromProfile(page) {
 /**
  * Scrapes basic game info from the list view.
  * @param {puppeteer.ElementHandle} game - DOM element for a single game entry.
- * @returns {Promise<{ title: string, link: string, platform: string, image: string }>} Game metadata.
+ * @returns {Promise<{ title: string, link: string, platform: string, image: string, playtime: number, rate: string }>} Game metadata.
  */
 async function scrapeGameFromList(game) {
   const title = await game.$eval("a", (el) => el.innerText);
   const link = await game.$eval("a", (el) => el.href);
   const platform = await game.$eval("span", (el) => el.innerText);
+  const playtime = await game.$eval("div > div:nth-child(2)", (el) => {
+    const timeString = el.innerText;
+    if (!timeString) return undefined;
 
-  return { title, link, platform };
+    // Only consider the part before the slash
+    const [primaryPart] = timeString.split("/").map((part) => part.trim());
+
+    // If primaryPart is "--", return undefined
+    if (primaryPart === "--") return undefined;
+
+    // Match hours and minutes
+    const hoursMatch = primaryPart.match(/(\d+)h/);
+    const minutesMatch = primaryPart.match(/(\d+)m/);
+
+    const hours = hoursMatch ? parseInt(hoursMatch[1], 10) : 0;
+    const minutes = minutesMatch ? parseInt(minutesMatch[1], 10) : 0;
+
+    return hours * 60 + minutes;
+  });
+
+  const rate = await game.$eval("div > div:nth-child(3)", (el) => {
+    if (el.innerText === "NR") return;
+
+    return el.innerText;
+  });
+
+  return { title, link, platform, playtime, rate };
 }
 
 async function extractCookies(page) {
@@ -163,7 +188,7 @@ async function scrapeGamesFromPage(page, url, status) {
   const extendedListInfo = await fetchExtendedGameData(status, cookies);
 
   for (const game of gameElements) {
-    const { link, platform, title } = await scrapeGameFromList(game);
+    const { link, platform, title, playtime, rate } = await scrapeGameFromList(game);
     const newPage = await browser.newPage();
     await newPage.goto(link).catch(() => null);
     await delay(2000);
@@ -190,6 +215,8 @@ async function scrapeGamesFromPage(page, url, status) {
       addedAt: extendedInfo?.date_added,
       startedAt: extendedInfo?.date_start,
       completedAt: extendedInfo?.date_complete,
+      playtime,
+      rate,
     });
     incrementProgress();
   }

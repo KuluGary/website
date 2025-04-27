@@ -194,7 +194,7 @@ function getRecentMedia(collectionApi) {
   }
 
   const recentMedia = [
-    ...games.completed,
+    ...games.favourites,
     ...movies.watchlist,
     ...manga.reading,
     ...shows.watchlist,
@@ -216,6 +216,7 @@ function getRecentMedia(collectionApi) {
           views: element.views,
           rate: element.rate,
           date: getDate(element),
+          playtime: element.playtime,
         };
       }
 

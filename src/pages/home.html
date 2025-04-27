@@ -21,8 +21,8 @@ permalink: /
   <hr />
 
   <section class="grid-list grid-col-5">
-    {% if games.playing %}
-    {% for game in games.playing | limit(5) %}
+    {% if games.favourites %}
+    {% for game in games.favourites | limit(5) %}
     <article>
       <figure>
         <img src="{{ game.thumbnail }}" />
@@ -126,7 +126,7 @@ permalink: /
             </li>
           {% endif %}
 
-          {% if media.rate %}
+          {% if media.rate and media.type === "Video" %}
             <li><span>{{ media.rate | formatNumber('compact') }} likes</span>
             </li>
           {% endif %}
