@@ -20,11 +20,11 @@ permalink: /
 
   <hr />
 
-  <section class="grid-list grid-col-4">
-    {% if games.playing %} {% for game in games.playing | limit(4) %}
+  <section class="grid-list grid-col-5">
+    {% if games.playing %} {% for game in games.playing | limit(5) %}
     <article>
       <figure>
-        <img src="{{ game.image }}" />
+        <img src="{{ game.thumbnail }}" />
 
         <figcaption>
           <a href="{{ game.link }}"> {{ game.title }} </a>
@@ -35,11 +35,25 @@ permalink: /
     {% endfor %} {% endif %}
   </section>
 
+  <section class="grid-list grid-cols-3">
+    {% for video in youtube.favourites | limit(3) %}
+    <article>
+      <figure>
+        <img src="{{ video.thumbnail }}" />
+
+        <figcaption>
+          <a href="{{ video.link }}"> {{ video.title }} </a>
+        </figcaption>
+      </figure>
+    </article>
+    {% endfor %}
+  </section>
+
   <section class="grid-list grid-col-5">
     {% for manga in manga.favourite | filterMangaOnlySafe | limit(5) %}
     <article>
       <figure>
-        <img src="/assets/images/covers/manga/{{ manga.cover }}" />
+        <img src="/assets/images/covers/manga/{{ manga.thumbnail }}" />
 
         <figcaption>
           <a href="{{ manga.link}}"> {{manga.title}} </a>
@@ -56,7 +70,7 @@ permalink: /
         <img src="{{ song.image }}" />
 
         <figcaption>
-          <a href="#"> {{ song.name }} </a>
+          <a href="#"> {{ song.title }} </a>
         </figcaption>
       </figure>
     </article>
@@ -67,26 +81,62 @@ permalink: /
     {% for show in shows.favorites | limit(5) %}
     <article>
       <figure>
-        <img src="/assets/images/covers/shows/favorites/{{ show.imagePath }}.jpg" />
+        <img src="{{ show.thumbnail }}" />
 
         <figcaption>
-          <a href="{{ show.link}}"> {{show.title}} </a>
+          <a href="{{ show.link }}"> {{ show.title }} </a>
         </figcaption>
       </figure>
     </article>
     {% endfor %}
   </section>
 
-  <hr>
+  <hr />
 
-  <section>
-    <h2>Recent updates</h2>
+  <section class="recent-activity">
+    <h2>Recent activity</h2>
+    {% for media in collections['recentMedia'] %}
+    <article class="{{ media.type | slugify }}">
+      <aside>
+        <time datetime="{{media.date}}"> {{ media.date | formatDate('MMMM dd, yyyy')}} </time>
+        •
+        <span class="media-type">{{ media.type }}</span>
+      </aside>
+      <h3>
+        <a href="{{media.link}}"> {{ media.title }} </a>
+      </h3>
 
-    <p>These are my latest posts written this year.</p>
+      <footer>
+        <ul class="horizontal">
+          {% if media.author %}
+            <li>
+              <a rel="author" href="{{ media.author.link }}">
+                {{media.author.name}}
+              </a>
+            </li>
+          {% endif %}
 
-    {% set postsList = collections['blog-post'] | reverse | limit(3) %} {% include "components/post-list.html" %}
+          {% if media.views %}
+            <li><span>{{ media.views | formatNumber('compact') }}</span></li>
+          {% endif %}
 
-    <a href="/blog">Read more...</a>
+          {% if media.rate %}
+            <li><span>{{ media.rate }}</span></li>
+          {% endif %}
+
+          {% if media.tags.length > 0 %}
+            <li>
+              <ul class="horizontal">
+                {% for tag in media.tags %}
+                  <li>#{{ tag | slugify}}</li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+        </ul>
+      </footer>
+    </article>
+    {% endfor %}
   </section>
 </main>
 {% include "components/footer.html" %} {% endblock %} {% block stylesheet %}

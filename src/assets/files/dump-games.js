@@ -17,7 +17,7 @@ const PAGES = {
  */
 async function main() {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
   });
   const page = await browser.newPage();
   await page.setViewport({ width: 1080, height: 1024 });
@@ -31,10 +31,7 @@ async function main() {
     await page.goto(pagePath);
 
     try {
-      const rejectionModal = await page.waitForSelector(
-        "#onetrust-reject-all-handler",
-        { timeout: 1000 }
-      );
+      const rejectionModal = await page.waitForSelector("#onetrust-reject-all-handler", { timeout: 1000 });
       if (rejectionModal) await page.click("#onetrust-reject-all-handler");
     } catch (error) {}
 
@@ -48,9 +45,7 @@ async function main() {
 
     await page.waitForSelector("#user_games");
 
-    const rows = await page.$$(
-      "#user_games > div > div > div > div:not(:first-of-type)"
-    );
+    const rows = await page.$$("#user_games > div > div > div > div:not(:first-of-type)");
 
     for (const row of rows) {
       const titleSelector = await row.waitForSelector("a");
@@ -72,12 +67,9 @@ async function main() {
       await currentPage.bringToFront();
 
       try {
-        const descriptionSelector = await currentPage.waitForSelector(
-          ".GameSummary_profile_info__HZFQu",
-          {
-            timeout: 6000,
-          }
-        );
+        const descriptionSelector = await currentPage.waitForSelector(".GameSummary_profile_info__HZFQu", {
+          timeout: 6000,
+        });
 
         const readMoreSelector = await descriptionSelector
           .waitForSelector("#profile_summary_more", { timeout: 2000 })
@@ -88,9 +80,7 @@ async function main() {
           await readMoreSelector.evaluate((el) => el.remove());
         }
 
-        const description = await descriptionSelector
-          ?.evaluate((el) => el.innerText)
-          .catch(() => null);
+        const description = await descriptionSelector?.evaluate((el) => el.innerText).catch(() => null);
 
         await currentPage.close();
 

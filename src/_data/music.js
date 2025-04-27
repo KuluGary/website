@@ -44,17 +44,49 @@ async function fetchPlaylistTracks(playlistId) {
 /**
  * Formats raw Spotify track data into simplified objects.
  */
-function transformPlaylistItems(items) {
-  return items.map((item) => {
+async function transformPlaylistItems(items) {
+  const playlist = [];
+
+  for (const item of items) {
     const track = item.track;
-    return {
+    const genres = [];
+
+    for (const artist of track.artists) {
+      const artistGenres = await getArtistGenres(artist.id);
+      genres.push(...artistGenres);
+    }
+
+    playlist.push({
       id: track.id,
-      name: track.name,
+      type: "Song",
+      title: track.name,
       image: track.album.images[0]?.url || null,
-      artists: track.artists.map((a) => a.name).join(", "),
-      added_at: item.added_at,
-    };
-  });
+      author: {
+        name: track.artists.map((a) => a.name).join(", "),
+      },
+      genres,
+      addedAt: item.added_at,
+    });
+  }
+
+  return playlist;
+}
+
+/**
+ * Fetches an artist's information and returns the genres
+ * @param {string} artistId id of the artist associated with the track
+ * @returns {Promise<Array<string>>} array of genres for this artist
+ */
+async function getArtistGenres(artistId) {
+  const res = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, { headers });
+
+  if (!res.ok) {
+    throw new Error(`[Spotify] ❌ Failed to fetch album: ${albumId}`);
+  }
+
+  const artist = await res.json();
+
+  return artist.genres ?? [];
 }
 
 /**
@@ -75,7 +107,7 @@ module.exports = async function fetchSpotifyMusic() {
   for (const [key, playlistId] of Object.entries(PLAYLISTS)) {
     log("[Spotify]", `📥 Fetching playlist: ${key}`);
     const playlistData = await fetchPlaylistTracks(playlistId);
-    collection[key] = transformPlaylistItems(playlistData.items);
+    collection[key] = await transformPlaylistItems(playlistData.items);
   }
 
   setIntoCache("music", collection);

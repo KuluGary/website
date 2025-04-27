@@ -5,6 +5,7 @@ const fs = require("fs");
 const log = require("../js/utils/log");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
+const delay = require("../js/utils/delay");
 
 const TRAKT_USER = "kulugary";
 const TRAKT_PAGES = {
@@ -14,7 +15,7 @@ const TRAKT_PAGES = {
   seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=show&sort=rank%2Casc`,
 };
 
-const coverPath = "src/assets/images/covers/shows";
+const coverPath = "/assets/images/covers/shows";
 
 /**
  * Recursively scrapes show data from Trakt.TV structured pages.
@@ -36,13 +37,14 @@ async function traverseAndScrape(pages, pathParts, target, page) {
  * Scrapes a single Trakt show list page.
  */
 async function scrapeShowPage(page, url, relativeFolder) {
+  const browser = page.browser();
   log("[Trakt.tv/Shows]", `🔎 Scraping page: ${url}`);
   const results = [];
 
   try {
     await page.goto(url);
-    await page.waitForSelector("#sortable-grid");
-    const elements = await page.$$("#sortable-grid .grid-item");
+    await page.waitForSelector("#sortable-grid").catch(() => null);
+    const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
 
     for (const element of elements) {
       try {
@@ -52,18 +54,41 @@ async function scrapeShowPage(page, url, relativeFolder) {
           element.$("img.real"),
         ]);
 
-        const [title, link, imageSrc, originalTitle, id] = await Promise.all([
+        const [title, link, imageSrc, originalTitle, id, date_created, date_added] = await Promise.all([
           titleEl.evaluate((el) => el.innerText),
           linkEl.evaluate((el) => el.href),
           imageEl.evaluate((el) => el.src),
           element.evaluate((el) => el.getAttribute("data-title")),
           element.evaluate((el) => el.getAttribute("data-list-item-id")),
+          element.evaluate((el) => el.getAttribute("data-released")),
+          element.evaluate((el) => el.getAttribute("data-added")),
         ]);
+
+        const newPage = await browser.newPage();
+        newPage.goto(link);
+        await delay(2000);
+
+        const pages = await page.browser().pages();
+        const profilePage = pages[pages.length - 1];
+
+        await profilePage.bringToFront();
+        const { description, genres } = await scrapeShowProfile(profilePage);
+        await profilePage.close();
 
         const safeName = sanitizeFilename(originalTitle);
         const imagePath = await downloadImage(relativeFolder, imageSrc, safeName);
 
-        results.push({ id, title, link, imagePath });
+        results.push({
+          id,
+          type: "Show",
+          title,
+          description,
+          genres,
+          link,
+          thumbnail: imagePath,
+          createdAt: date_created,
+          updatedAt: date_added,
+        });
       } catch (innerErr) {
         log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${relativeFolder}: ${innerErr.message}`);
       }
@@ -76,24 +101,49 @@ async function scrapeShowPage(page, url, relativeFolder) {
 }
 
 /**
+ * Extracts the description and genres for a show
+ * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
+ * @returns {Promise<{ description: string, genres: Array<string> }>} Object containing the description and genres of a show
+ */
+async function scrapeShowProfile(page) {
+  const descriptionSelector = await page.waitForSelector("#overview");
+  const description = await descriptionSelector.evaluate((el) => el.innerText);
+
+  const genres = await page.evaluate(() => {
+    const genreSelector = Array.from(document.querySelectorAll("span[itemprop='genre']"));
+
+    if (!genreSelector) return [];
+
+    return genreSelector.map((genreElement) => genreElement.innerText.trim());
+  });
+
+  return { description, genres };
+}
+
+/**
  * Downloads and saves an image locally.
  */
 async function downloadImage(folder, url, fileName) {
-  const dir = path.join(coverPath, folder);
+  const dir = path.join("src/" + coverPath, folder);
   fs.mkdirSync(dir, { recursive: true });
 
   const fullPath = path.join(dir, `${fileName}.jpg`);
   const buffer = await fetch(url).then((res) => res.buffer());
 
   fs.writeFileSync(fullPath, buffer);
-  return fullPath;
+  return `${coverPath}/${folder}/${fileName}.jpg`;
 }
 
 /**
  * Sanitizes a filename for safe usage.
  */
 function sanitizeFilename(name) {
-  return name?.replace(/[<>:"/\\|?*\x00-\x1F]/g, "").trim() || "unknown";
+  return (
+    name
+      ?.replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/\s+/g, "-")
+      .trim() || "unknown"
+  );
 }
 
 /**

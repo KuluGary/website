@@ -1,12 +1,17 @@
 const { FlatCache } = require("flat-cache");
 
 let cache;
+const cacheId = "cache1";
 
-function getFromCache(cacheKey) {
+function _initializeCache() {
   if (!cache) {
     cache = new FlatCache();
   }
-  cache.load("cache1");
+  cache.load(cacheId);
+}
+
+function getFromCache(cacheKey) {
+  _initializeCache();
 
   const cachedItem = cache.getKey(cacheKey);
   if (cachedItem) {
@@ -19,13 +24,21 @@ function getFromCache(cacheKey) {
   return;
 }
 
-function setIntoCache(cacheKey, cacheData) {
+function setIntoCache(cacheKey, cacheData, daysToAdd) {
+  if (!cache) _initializeCache();
+
   cache.setKey(cacheKey, {
-    ttl: Math.floor(Date.now() / 1000 + 86400),
+    ttl: getTTL(daysToAdd),
     data: cacheData,
   });
 
   cache.save();
+}
+
+function getTTL(daysToAdd = 1) {
+  const nowInSeconds = Math.floor(Date.now() / 1000); // current time in seconds
+  const secondsInDay = 86400; // number of seconds in a day
+  return nowInSeconds + daysToAdd * secondsInDay; // add the specified days to the current time
 }
 
 module.exports = {

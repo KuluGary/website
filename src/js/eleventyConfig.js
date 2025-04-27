@@ -16,7 +16,7 @@ function postsByYear(collection) {
 }
 
 const formatDate = (date, format = "dd/LL/yyyy") => {
-  return DateTime.fromJSDate(date, {
+  return DateTime.fromJSDate(typeof date === "string" ? new Date(date) : date, {
     zone: "utc",
   }).toFormat(String(format));
 };
@@ -178,8 +178,72 @@ function getSimilarPosts(collection, path, categories) {
     });
 }
 
+function getRecentMedia(collectionApi) {
+  const allMedia = collectionApi.getAll()[0].data;
+  const posts = collectionApi.getFilteredByTag("blog-post");
+
+  const games = allMedia.games || [];
+  const manga = allMedia.manga || [];
+  const movies = allMedia.movies || [];
+  const music = allMedia.music || [];
+  const shows = allMedia.shows || [];
+  const youtube = allMedia.youtube || [];
+
+  function getDate(element) {
+    return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
+  }
+
+  const recentMedia = [
+    ...games.playing,
+    ...movies.watchlist,
+    ...manga.reading,
+    ...shows.watchlist,
+    ...music.favourites,
+    ...youtube.favourites,
+    ...posts,
+  ]
+    .map((element) => {
+      if (element.type) {
+        return {
+          id: element.id,
+          type: element.type,
+          title: element.title,
+          link: element.link,
+          tags: element.genres ?? [],
+          thumbnail: element.thumbnail,
+          author: element.author,
+          views: element.views,
+          rate: element.rate,
+          date: getDate(element),
+        };
+      }
+
+      return {
+        id: element.id,
+        type: "Post",
+        title: element.data.title,
+        link: element.url,
+        date: element.date,
+        tags: element.data.tags.filter((tag) => tag !== "blog-post"),
+      };
+    })
+    .sort((a, b) => {
+      const prevDate = new Date(a.date);
+      const nextDate = new Date(b.date);
+
+      return nextDate.getTime() - prevDate.getTime();
+    });
+
+  return recentMedia;
+}
+
 function log(any) {
   console.log(any);
+}
+
+function formatNumber(number, notation) {
+  const formatter = Intl.NumberFormat("en", { notation });
+  return formatter.format(number);
 }
 
 module.exports = {
@@ -194,5 +258,7 @@ module.exports = {
   collectionStats,
   excludeFromList,
   getSimilarPosts,
+  getRecentMedia,
+  formatNumber,
   log,
 };

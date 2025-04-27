@@ -27,16 +27,16 @@ async function scrapeVideoFromPlaylist(playlistId) {
   for (const video of data.feed.entry) {
     videos.push({
       id: video.id,
-      name: video.title,
-      link: video.link["@_href"],
-      channelName: video.author.name,
-      channelLink: video.author.uri,
-      created_at: video.published,
-      updated_at: video.updated,
+      type: "Video",
+      title: video.title,
       description: video["media:group"]["media:description"],
+      link: video.link["@_href"],
       thumbnail: video["media:group"]["media:thumbnail"]["@_url"],
+      createdAt: video.published,
+      updatedAt: video.updated,
+      author: { name: video.author.name, link: video.author.link },
       views: video["media:group"]["media:community"]["media:statistics"]["@_views"],
-      stars: video["media:group"]["media:community"]["media:starRating"]["@_average"],
+      rate: video["media:group"]["media:community"]["media:starRating"]["@_average"],
     });
   }
 
@@ -70,7 +70,7 @@ module.exports = async function fetchYoutubeVideos() {
   const cached = getFromCache("youtube");
   if (cached) {
     log("[YouTube]", "🗃️ Returning cached data");
-    // return cached;
+    return cached;
   }
 
   log("[YouTube]", "💻 Starting fresh scrape");

@@ -70,12 +70,15 @@ async function fetchMangaDetails(mangaRefs) {
  * @returns {Object}
  */
 function formatManga(manga) {
+  const id = manga.id;
   const title = manga.attributes.title.en || "Untitled";
   const descriptionHtml = converter.makeHtml(manga.attributes.description.en || "");
   const description = sanitize(descriptionHtml, { allowedTags: ["p"], disallowedTagsMode: "discard" });
 
   const author = manga.relationships.find((r) => r.type === "author")?.attributes?.name || "Unknown";
-  const genres = manga.attributes.tags.filter((tag) => tag.group === "genre").map((tag) => tag.name.en);
+  const genres = manga.attributes.tags
+    .filter((tag) => tag.attributes.group === "genre")
+    .map((tag) => tag.attributes?.name?.en);
 
   const updatedAt = manga.attributes.updatedAt;
   const rating = manga.attributes.contentRating;
@@ -87,14 +90,16 @@ function formatManga(manga) {
   downloadCover(coverUrl, coverFileName);
 
   return {
+    id,
+    type: "Manga",
     title,
     description,
-    author,
     genres,
-    updatedAt,
+    author: { name: author },
     rating,
     link: manga.attributes.links?.raw,
-    cover: coverFileName,
+    thumbnail: coverFileName,
+    updatedAt,
   };
 }
 

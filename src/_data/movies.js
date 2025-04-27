@@ -5,15 +5,17 @@ const fs = require("fs");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const log = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
+const delay = require("../js/utils/delay");
 
-const coverPath = "src/assets/images/covers/movies";
-
+const TRAKT_USER = "kulugary";
 const TRAKT_PAGES = {
-  favorites: "https://trakt.tv/users/kulugary/favorites?display=movie&sort=released%2Casc",
-  dropped: "https://trakt.tv/users/kulugary/lists/dropped?display=movie&sort=rank%2Casc",
-  watchlist: "https://trakt.tv/users/kulugary/watchlist?display=movie&sort=rank%2Casc",
-  seen: "https://trakt.tv/users/kulugary/lists/seen?display=movie&sort=rank%2Casc",
+  favorites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=movie&sort=released%2Casc`,
+  dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=movie&sort=rank%2Casc`,
+  watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=movie&sort=rank%2Casc`,
+  seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=movie&sort=rank%2Casc`,
 };
+
+const coverPath = "assets/images/covers/movies";
 
 /**
  * Recursively scrapes each page or nested group of pages.
@@ -35,12 +37,13 @@ async function traverseAndScrape(pages, pathParts, target, page) {
  * Scrapes a single Trakt page for movie entries.
  */
 async function scrapeMoviePage(page, url, relativeFolder) {
+  const browser = page.browser();
   log("[Trakt.tv/Movies]", `🔎 Scraping page: ${url}`);
   await page.goto(url);
-  await page.waitForSelector("#sortable-grid");
+  await page.waitForSelector("#sortable-grid").catch(() => null);
 
   const movies = [];
-  const elements = await page.$$("#sortable-grid .grid-item");
+  const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
 
   for (const element of elements) {
     try {
@@ -50,18 +53,41 @@ async function scrapeMoviePage(page, url, relativeFolder) {
         element.$("img.real"),
       ]);
 
-      const [title, link, imageSrc, originalTitle, id] = await Promise.all([
+      const [title, link, imageSrc, originalTitle, id, date_created, date_added] = await Promise.all([
         titleEl.evaluate((el) => el.innerText),
         linkEl.evaluate((el) => el.href),
         imageEl.evaluate((el) => el.src),
         element.evaluate((el) => el.getAttribute("data-title")),
         element.evaluate((el) => el.getAttribute("data-list-item-id")),
+        element.evaluate((el) => el.getAttribute("data-released")),
+        element.evaluate((el) => el.getAttribute("data-added")),
       ]);
+
+      const newPage = await browser.newPage();
+      newPage.goto(link);
+      await delay(2000);
+
+      const pages = await browser.pages();
+      const profilePage = pages[pages.length - 1];
+
+      await profilePage.bringToFront();
+      const { description, genres } = await scrapeMovieProfile(profilePage);
+      await profilePage.close();
 
       const safeName = sanitizeFilename(originalTitle);
       const imagePath = await downloadImage(relativeFolder, imageSrc, safeName);
 
-      movies.push({ id, title, link, imagePath });
+      movies.push({
+        id,
+        type: "Movie",
+        title,
+        description,
+        genres,
+        link,
+        thumbnail: imagePath,
+        createdAt: date_created,
+        addedAt: date_added,
+      });
     } catch (err) {
       log("[Trakt.tv/Movies]", "⚠️ Failed to scrape an element", err.message);
     }
@@ -71,24 +97,49 @@ async function scrapeMoviePage(page, url, relativeFolder) {
 }
 
 /**
- * Downloads a cover image locally.
+ * Extracts the description and genres for a movie
+ * @param {puppeteer.Page} page Puppeteer page instance for a movie profile.
+ * @returns {Promise<{ description: string, genres: Array<string> }>} Object containing the description and genres of a movie
+ */
+async function scrapeMovieProfile(page) {
+  const descriptionSelector = await page.waitForSelector("#overview");
+  const description = await descriptionSelector.evaluate((el) => el.innerText);
+
+  const genres = await page.evaluate(() => {
+    const genreSelector = Array.from(document.querySelectorAll("span[itemprop='genre']"));
+
+    if (!genreSelector) return [];
+
+    return genreSelector.map((genreElement) => genreElement.innerText.trim());
+  });
+
+  return { description, genres };
+}
+
+/**
+ * Downloads and saves an image locally.
  */
 async function downloadImage(folder, url, fileName) {
-  const dir = path.join(coverPath, folder);
+  const dir = path.join("src/" + coverPath, folder);
   fs.mkdirSync(dir, { recursive: true });
 
   const fullPath = path.join(dir, `${fileName}.jpg`);
   const buffer = await fetch(url).then((res) => res.buffer());
 
   fs.writeFileSync(fullPath, buffer);
-  return fullPath;
+  return `${coverPath}/${folder}/${fileName}.jpg`;
 }
 
 /**
- * Sanitizes filenames for safe file system usage.
+ * Sanitizes a filename for safe usage.
  */
 function sanitizeFilename(name) {
-  return name?.replace(/[<>:"/\\|?*\x00-\x1F]/g, "").trim() || "unknown";
+  return (
+    name
+      ?.replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/\s+/g, "-")
+      .trim() || "unknown"
+  );
 }
 
 /**
