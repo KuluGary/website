@@ -6,10 +6,12 @@ const log = require("../js/utils/log");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const delay = require("../js/utils/delay");
+const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
+const DEBUG = false;
 const TRAKT_USER = "kulugary";
-const TRAKT_PAGES = {
-  favorites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=show&sort=released%2Casc`,
+const PAGES = {
+  favourites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=show&sort=released%2Casc`,
   dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=show&sort=rank%2Casc`,
   watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=show&sort=rank%2Casc`,
   seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=show&sort=rank%2Casc`,
@@ -18,86 +20,70 @@ const TRAKT_PAGES = {
 const coverPath = "/assets/images/covers/shows";
 
 /**
- * Recursively scrapes show data from Trakt.TV structured pages.
- */
-async function traverseAndScrape(pages, pathParts, target, page) {
-  for (const [key, value] of Object.entries(pages)) {
-    const currentPath = [...pathParts, key];
-    if (typeof value === "string") {
-      const scraped = await scrapeShowPage(page, value, currentPath.join("/"));
-      setNested(target, currentPath, scraped);
-    } else if (typeof value === "object") {
-      if (!target[key]) target[key] = {};
-      await traverseAndScrape(value, currentPath, target, page);
-    }
-  }
-}
-
-/**
  * Scrapes a single Trakt show list page.
  */
-async function scrapeShowPage(page, url, relativeFolder) {
+async function scrapeShowPage(page, url, status) {
   const browser = page.browser();
-  log("[Trakt.tv/Shows]", `🔎 Scraping page: ${url}`);
-  const results = [];
 
-  try {
-    await page.goto(url);
-    await page.waitForSelector("#sortable-grid").catch(() => null);
-    const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
+  await page.goto(url).catch(() => null);
+  await page.waitForSelector("#sortable-grid").catch(() => null);
 
-    for (const element of elements) {
-      try {
-        const [titleEl, linkEl, imageEl] = await Promise.all([
-          element.$(".titles h3"),
-          element.$("a"),
-          element.$("img.real"),
-        ]);
+  const shows = [];
+  const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
+  startProgress(elements.length);
 
-        const [title, link, imageSrc, originalTitle, id, date_created, date_added] = await Promise.all([
-          titleEl.evaluate((el) => el.innerText),
-          linkEl.evaluate((el) => el.href),
-          imageEl.evaluate((el) => el.src),
-          element.evaluate((el) => el.getAttribute("data-title")),
-          element.evaluate((el) => el.getAttribute("data-list-item-id")),
-          element.evaluate((el) => el.getAttribute("data-released")),
-          element.evaluate((el) => el.getAttribute("data-added")),
-        ]);
+  for (const element of elements) {
+    try {
+      const [titleEl, linkEl, imageEl] = await Promise.all([
+        element.$(".titles h3"),
+        element.$("a"),
+        element.$("img.real"),
+      ]);
 
-        const newPage = await browser.newPage();
-        newPage.goto(link);
-        await delay(2000);
+      const [title, link, imageSrc, originalTitle, id, date_created, date_added] = await Promise.all([
+        titleEl.evaluate((el) => el.innerText),
+        linkEl.evaluate((el) => el.href),
+        imageEl.evaluate((el) => el.src),
+        element.evaluate((el) => el.getAttribute("data-title")),
+        element.evaluate((el) => el.getAttribute("data-list-item-id")),
+        element.evaluate((el) => el.getAttribute("data-released")),
+        element.evaluate((el) => el.getAttribute("data-added")),
+      ]);
 
-        const pages = await page.browser().pages();
-        const profilePage = pages[pages.length - 1];
+      const newPage = await browser.newPage();
+      newPage.goto(link);
+      await delay(2000);
 
-        await profilePage.bringToFront();
-        const { description, genres } = await scrapeShowProfile(profilePage);
-        await profilePage.close();
+      const pages = await browser.pages();
+      const profilePage = pages[pages.length - 1];
 
-        const safeName = sanitizeFilename(originalTitle);
-        const imagePath = await downloadImage(relativeFolder, imageSrc, safeName);
+      await profilePage.bringToFront();
+      const { description, genres } = await scrapeShowProfile(profilePage);
+      await profilePage.close();
 
-        results.push({
-          id,
-          type: "Show",
-          title,
-          description,
-          genres,
-          link,
-          thumbnail: imagePath,
-          createdAt: date_created,
-          updatedAt: date_added,
-        });
-      } catch (innerErr) {
-        log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${relativeFolder}: ${innerErr.message}`);
-      }
+      const safeName = sanitizeFilename(originalTitle);
+      const imagePath = await downloadImage(status, imageSrc, safeName);
+
+      shows.push({
+        id,
+        type: "Show",
+        title,
+        description,
+        genres,
+        link,
+        thumbnail: imagePath,
+        createdAt: date_created,
+        updatedAt: date_added,
+      });
+      incrementProgress();
+    } catch (innerErr) {
+      log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${innerErr.message}`);
     }
-  } catch (err) {
-    log("[Trakt.tv/Shows]", `❌ Failed to scrape ${relativeFolder}: ${err.message}`);
   }
 
-  return results;
+  stopProgress();
+
+  return shows;
 }
 
 /**
@@ -146,16 +132,26 @@ function sanitizeFilename(name) {
   );
 }
 
-/**
- * Deep-sets a value into a nested object path.
- */
-function setNested(obj, keys, value) {
-  let current = obj;
-  keys.slice(0, -1).forEach((key) => {
-    if (!current[key]) current[key] = {};
-    current = current[key];
+async function getCollection() {
+  const browser = await puppeteer.launch({
+    headless: !DEBUG,
+    args: [
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "--disable-features=site-per-process",
+    ],
   });
-  current[keys[keys.length - 1]] = value;
+
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1080, height: 1024 });
+
+  const collection = {};
+  for (const [status, url] of Object.entries(PAGES)) {
+    log("[Trakt.tv/Shows]", `🔍 Scraping ${status}`);
+    collection[status] = await scrapeShowPage(page, url, status);
+  }
+
+  await browser.close();
+  return collection;
 }
 
 /**
@@ -164,28 +160,16 @@ function setNested(obj, keys, value) {
  */
 module.exports = async function fetchTraktShows() {
   const cached = getFromCache("shows");
-  if (cached) {
+  if (cached && !DEBUG) {
     log("[Trakt.tv/Shows]", "🗃️ Returning cached data");
     return cached;
   }
 
   log("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124"],
-  });
-
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1024 });
-
-  const showCollection = {};
-  await traverseAndScrape(TRAKT_PAGES, [], showCollection, page);
-
-  await browser.close();
-
-  setIntoCache("shows", showCollection);
-  saveTestData("shows.json", showCollection);
+  const collection = await getCollection();
+  setIntoCache("shows", collection);
+  saveTestData("shows.json", collection);
 
   log("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
-  return showCollection;
+  return collection;
 };

@@ -4,6 +4,7 @@ const log = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const fetch = require("node-fetch");
 const delay = require("../js/utils/delay");
+const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
 const DEBUG = false;
 const HLTB_USER = "KuluGary";
@@ -91,10 +92,16 @@ async function extractCookies(page) {
 async function fetchExtendedGameData(list, cookies) {
   const userId = 525327;
 
+  const getListNameId = (list) => {
+    if (list === "favourites") return "custom";
+    if (list === "played") return "custom2";
+    return list;
+  };
+
   const body = {
     user_id: userId,
     toggleType: "Single List",
-    lists: [list], // all lists you want
+    lists: [getListNameId(list)], // all lists you want
     set_playstyle: "comp_all",
     name: "",
     platform: "",
@@ -121,7 +128,7 @@ async function fetchExtendedGameData(list, cookies) {
       Cookie: cookies,
     },
     body: JSON.stringify(body),
-  });
+  }).catch((err) => DEBUG && console.error(err));
 
   if (!response.ok) {
     const text = await response.text();
@@ -149,6 +156,7 @@ async function scrapeGamesFromPage(page, url, status) {
 
   await page.waitForSelector("#user_games");
   const gameElements = await page.$$("#user_games > div > div > div > div:not(:first-of-type)");
+  startProgress(gameElements.length);
 
   const games = [];
   const cookies = await extractCookies(page);
@@ -183,7 +191,10 @@ async function scrapeGamesFromPage(page, url, status) {
       startedAt: extendedInfo?.date_start,
       completedAt: extendedInfo?.date_complete,
     });
+    incrementProgress();
   }
+
+  stopProgress();
 
   return games;
 }
@@ -204,14 +215,14 @@ async function getCollection() {
   const page = await browser.newPage();
   await page.setViewport({ width: 1080, height: 1024 });
 
-  const allGames = {};
+  const collection = {};
   for (const [status, url] of Object.entries(PAGES)) {
     log("[HLTB]", `🔍 Scraping ${status}`);
-    allGames[status] = await scrapeGamesFromPage(page, url, status);
+    collection[status] = await scrapeGamesFromPage(page, url, status);
   }
 
   await browser.close();
-  return allGames;
+  return collection;
 }
 
 /**
@@ -226,10 +237,10 @@ module.exports = async function fetchHLTBGames() {
   }
 
   log("[HLTB]", "🎮 Starting fresh scrape");
-  const data = await getCollection();
-  setIntoCache("games", data);
-  saveTestData("games.json", data);
+  const collection = await getCollection();
+  setIntoCache("games", collection);
+  saveTestData("games.json", collection);
   log("[HLTB]", "✔️ Scraping complete");
 
-  return data;
+  return collection;
 };

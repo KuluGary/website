@@ -6,10 +6,12 @@ const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const log = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const delay = require("../js/utils/delay");
+const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
+const DEBUG = false;
 const TRAKT_USER = "kulugary";
-const TRAKT_PAGES = {
-  favorites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=movie&sort=released%2Casc`,
+const PAGES = {
+  favourites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=movie&sort=released%2Casc`,
   dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=movie&sort=rank%2Casc`,
   watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=movie&sort=rank%2Casc`,
   seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=movie&sort=rank%2Casc`,
@@ -18,32 +20,17 @@ const TRAKT_PAGES = {
 const coverPath = "assets/images/covers/movies";
 
 /**
- * Recursively scrapes each page or nested group of pages.
- */
-async function traverseAndScrape(pages, pathParts, target, page) {
-  for (const [key, value] of Object.entries(pages)) {
-    const currentPath = [...pathParts, key];
-    if (typeof value === "string") {
-      const scraped = await scrapeMoviePage(page, value, currentPath.join("/"));
-      setNested(target, currentPath, scraped);
-    } else if (typeof value === "object") {
-      if (!target[key]) target[key] = {};
-      await traverseAndScrape(value, currentPath, target, page);
-    }
-  }
-}
-
-/**
  * Scrapes a single Trakt page for movie entries.
  */
-async function scrapeMoviePage(page, url, relativeFolder) {
+async function scrapeMoviePage(page, url, status) {
   const browser = page.browser();
-  log("[Trakt.tv/Movies]", `🔎 Scraping page: ${url}`);
-  await page.goto(url);
+
+  await page.goto(url).catch(() => null);
   await page.waitForSelector("#sortable-grid").catch(() => null);
 
   const movies = [];
   const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
+  startProgress(elements.length);
 
   for (const element of elements) {
     try {
@@ -75,7 +62,7 @@ async function scrapeMoviePage(page, url, relativeFolder) {
       await profilePage.close();
 
       const safeName = sanitizeFilename(originalTitle);
-      const imagePath = await downloadImage(relativeFolder, imageSrc, safeName);
+      const imagePath = await downloadImage(status, imageSrc, safeName);
 
       movies.push({
         id,
@@ -88,10 +75,13 @@ async function scrapeMoviePage(page, url, relativeFolder) {
         createdAt: date_created,
         addedAt: date_added,
       });
+      incrementProgress();
     } catch (err) {
-      log("[Trakt.tv/Movies]", "⚠️ Failed to scrape an element", err.message);
+      log("[Trakt.tv/Movies]", `⚠️ Skipped one element in ${status}: ${innerErr.message}`);
     }
   }
+
+  stopProgress();
 
   return movies;
 }
@@ -142,16 +132,26 @@ function sanitizeFilename(name) {
   );
 }
 
-/**
- * Sets a nested value into an object given a path.
- */
-function setNested(obj, keys, value) {
-  let current = obj;
-  keys.slice(0, -1).forEach((key) => {
-    if (!current[key]) current[key] = {};
-    current = current[key];
+async function getCollection() {
+  const browser = await puppeteer.launch({
+    headless: !DEBUG,
+    args: [
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "--disable-features=site-per-process",
+    ],
   });
-  current[keys[keys.length - 1]] = value;
+
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1080, height: 1024 });
+
+  const collection = {};
+  for (const [status, url] of Object.entries(PAGES)) {
+    log("[Trakt.tv/Movies]", `🔍 Scraping ${status}`);
+    collection[status] = await scrapeMoviePage(page, url, status);
+  }
+
+  await browser.close();
+  return collection;
 }
 
 /**
@@ -160,28 +160,16 @@ function setNested(obj, keys, value) {
  */
 module.exports = async function fetchTraktMovies() {
   const cached = getFromCache("movies");
-  if (cached) {
+  if (cached && !DEBUG) {
     log("[Trakt.tv/Movies]", "🗃️ Returning cached data");
     return cached;
   }
 
   log("[Trakt.tv/Movies]", "🎞️ Starting fresh scrape");
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124"],
-  });
-
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1024 });
-
-  const movieCollection = {};
-  await traverseAndScrape(TRAKT_PAGES, [], movieCollection, page);
-
-  await browser.close();
-
-  setIntoCache("movies", movieCollection);
-  saveTestData("movies.json", movieCollection);
-
+  const collection = await getCollection();
+  setIntoCache("movies", collection);
+  saveTestData("movies.json", collection);
   log("[Trakt.tv/Movies]", "✔️ Scraping complete");
-  return movieCollection;
+
+  return collection;
 };

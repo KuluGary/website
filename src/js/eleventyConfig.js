@@ -194,7 +194,7 @@ function getRecentMedia(collectionApi) {
   }
 
   const recentMedia = [
-    ...games.playing,
+    ...games.completed,
     ...movies.watchlist,
     ...manga.reading,
     ...shows.watchlist,
@@ -209,9 +209,10 @@ function getRecentMedia(collectionApi) {
           type: element.type,
           title: element.title,
           link: element.link,
-          tags: element.genres ?? [],
+          tags: element.genres ?? element.tags ?? [],
           thumbnail: element.thumbnail,
           author: element.author,
+          platform: element.platform,
           views: element.views,
           rate: element.rate,
           date: getDate(element),
@@ -225,6 +226,7 @@ function getRecentMedia(collectionApi) {
         link: element.url,
         date: element.date,
         tags: element.data.tags.filter((tag) => tag !== "blog-post"),
+        author: { name: "Gary" },
       };
     })
     .sort((a, b) => {

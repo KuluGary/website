@@ -21,7 +21,8 @@ permalink: /
   <hr />
 
   <section class="grid-list grid-col-5">
-    {% if games.playing %} {% for game in games.playing | limit(5) %}
+    {% if games.playing %}
+    {% for game in games.playing | limit(5) %}
     <article>
       <figure>
         <img src="{{ game.thumbnail }}" />
@@ -32,7 +33,8 @@ permalink: /
       </figure>
     </article>
 
-    {% endfor %} {% endif %}
+    {% endfor %}
+    {% endif %}
   </section>
 
   <section class="grid-list grid-cols-3">
@@ -63,7 +65,7 @@ permalink: /
     {% endfor %}
   </section>
 
-  <section class="grid-list grid-col-4">
+  <section class="grid-list grid-col-4 aspect-ratio">
     {% if music %} {% for song in music.favourites | limit(4) %}
     <article>
       <figure>
@@ -78,7 +80,7 @@ permalink: /
   </section>
 
   <section class="grid-list grid-col-5">
-    {% for show in shows.favorites | limit(5) %}
+    {% for show in shows.favourites | limit(5) %}
     <article>
       <figure>
         <img src="{{ show.thumbnail }}" />
@@ -95,7 +97,7 @@ permalink: /
 
   <section class="recent-activity">
     <h2>Recent activity</h2>
-    {% for media in collections['recentMedia'] %}
+    {% for media in collections['recentMedia'] | limit(10) %}
     <article class="{{ media.type | slugify }}">
       <aside>
         <time datetime="{{media.date}}"> {{ media.date | formatDate('MMMM dd, yyyy')}} </time>
@@ -107,7 +109,7 @@ permalink: /
       </h3>
 
       <footer>
-        <ul class="horizontal">
+        <ul class="horizontal dot-separated">
           {% if media.author %}
             <li>
               <a rel="author" href="{{ media.author.link }}">
@@ -115,13 +117,18 @@ permalink: /
               </a>
             </li>
           {% endif %}
+          {% if media.platform %}
+            <li><span>{{ media.platform }}</span></li>
+          {% endif %}
 
           {% if media.views %}
-            <li><span>{{ media.views | formatNumber('compact') }}</span></li>
+            <li><span>{{ media.views | formatNumber('compact') }} views</span>
+            </li>
           {% endif %}
 
           {% if media.rate %}
-            <li><span>{{ media.rate }}</span></li>
+            <li><span>{{ media.rate | formatNumber('compact') }} likes</span>
+            </li>
           {% endif %}
 
           {% if media.tags.length > 0 %}
