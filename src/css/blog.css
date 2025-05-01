@@ -1,0 +1,12 @@
+nav.blog-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.blog-navigation a[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: currentColor;
+  opacity: 0.5;
+}

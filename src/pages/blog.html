@@ -1,7 +1,11 @@
 ---
 title: blog
-permalink: /blog/
+permalink: /blog/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}
 description: These are my essays, tutorials, and long-form write-ups.
+pagination:
+  data: collections.blog-post
+  size: 10
+  reverse: true
 ---
 {% extends "layouts/base.html" %}
 
@@ -13,11 +17,50 @@ description: These are my essays, tutorials, and long-form write-ups.
   <main>
     <h1>Blog</h1>
 
-    <p>These are my <strong>essays</strong>, <strong>tutorials</strong> and long-form <strong>write-ups</strong>. Last updated {{ collection | getNewestCollectionItemDate | formatDate("LLL dd, yyyy") }}.</p>
+    <p>This are all the posts I've made in this website. I tend to write about whatever I feel like in the moment, with a focus on
+    {% for element in collection | frequentTags | limit(3) %}
+        <span>
+          <a href="/blog/{{element.tag}}">{{ element.tag | unslugify }}
+          ({{element.count}})</a>
+          {% if loop.index < 3 %}
+            ,
+          {% endif %}
+        </span>
+      {% endfor %}
+    </p>
+
+    <p>Last updated {{ collection | getNewestCollectionItemDate | formatDate("LLLL dd, yyyy") }}.</p>
 
     <p>Want to be notified whenever I update this page? Get the <a href="/blog/feed.xml"><img class="rss-icon" src="/assets/images/buttons/feed-icon-14x14.png"/> RSS Feed</a> for this page.</p>
 
-    {% for year, items in collections['postsByYear'] %}
+    <hr/>
+    {% set postsList = pagination.items %}
+    {% include "components/post-list.html" %}
+
+    <nav class="blog-navigation">
+      <a href="{{ pagination.href.previous }}" aria-disabled="{{ "false" if pagination.href.previous else "true"  }}">
+        <svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0"/><path d="M5 12l4 4"/><path d="M5 12l4 -4"/></svg>
+      </a>
+
+      <select name="cars" id="cars">
+        {% for page in pagination.pages %}
+          <option value="{{ loop.index }}">
+            {{ loop.index }} of {{ pagination.pages.length }}
+          </option>
+        {% endfor %}
+        {# <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option> #}
+      </select>
+
+      <a href="{{ pagination.href.next }}" aria-disabled="{{ "false" if pagination.href.next else "true"  }}">
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0"/><path d="M15 16l4 -4"/><path d="M15 8l4 4"/></svg>
+      </a>
+    </nav>
+
+</ul>
+{# {% for year, items in collections['postsByYear'] %}
       <section>
         <h2>{{ year }}</h2>
 
@@ -28,15 +71,15 @@ description: These are my essays, tutorials, and long-form write-ups.
         {% set postsList = items %}
         {% include "components/post-list.html" %}
       </section>
-    {% endfor %}
-  </main>
+    {% endfor %} #}
+</main>
 
-  {% include "components/footer.html" %}
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/blog.css">
-  <link rel="stylesheet" href="/css/components/header.css"/>
-  <link rel="stylesheet" href="/css/components/footer.css"/>
-  <link rel="stylesheet" href="/css/components/post-list.css">
+<link rel="stylesheet" href="/css/blog.css">
+<link rel="stylesheet" href="/css/components/header.css"/>
+<link rel="stylesheet" href="/css/components/footer.css"/>
+<link rel="stylesheet" href="/css/components/post-list.css">
 {% endblock %}

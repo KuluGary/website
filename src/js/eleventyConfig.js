@@ -178,9 +178,9 @@ function getSimilarPosts(collection, path, categories) {
     });
 }
 
-function getRecentMedia(collectionApi) {
-  const allMedia = collectionApi.getAll()[0].data;
-  const posts = collectionApi.getFilteredByTag("blog-post");
+function getRecentMedia(collection) {
+  const allMedia = collection.getAll()[0].data;
+  const posts = collection.getFilteredByTag("blog-post");
 
   const games = allMedia.games || [];
   const manga = allMedia.manga || [];
@@ -249,6 +249,24 @@ function formatNumber(number, notation) {
   return formatter.format(number);
 }
 
+function frequentTags(posts) {
+  const tagCount = {};
+
+  for (const post of posts) {
+    if (Array.isArray(post.data.tags)) {
+      for (const tag of post.data.tags) {
+        if (tag !== "blog-post") tagCount[tag] = (tagCount[tag] || 0) + 1;
+      }
+    }
+  }
+
+  const sortedTags = Object.entries(tagCount)
+    .sort((a, b) => b[1] - a[1]) // sort by frequency descending
+    .map((entry) => ({ tag: entry[0], count: entry[1] }));
+
+  return sortedTags;
+}
+
 module.exports = {
   postsByYear,
   formatDate,
@@ -263,5 +281,6 @@ module.exports = {
   getSimilarPosts,
   getRecentMedia,
   formatNumber,
+  frequentTags,
   log,
 };

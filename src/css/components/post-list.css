@@ -4,27 +4,13 @@ ul.post-list {
 }
 
 ul.post-list article h2 {
-  all: unset;
-}
-
-ul.post-list article h2::before {
-  content: "";
+  line-height: 1.75;
   margin: 0;
 }
 
 ul.post-list > li {
   position: relative;
-  padding-left: var(--line-height);
-  margin-top: var(--line-height);
-}
-
-ul.post-list > li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 1ch;
-  background-color: var(--background-color-alt);
+  margin-block: 1rem;
 }
 
 ul.post-list header {
@@ -32,6 +18,9 @@ ul.post-list header {
   grid-template-columns: 1fr auto;
 
   align-items: center;
+}
+ul.post-list ul > li {
+  margin: 0;
 }
 
 ul.post-list header time {
@@ -55,7 +44,7 @@ ul.post-list .post-description {
 }
 
 ul.post-list .post-description {
-  margin-top: 0;
+  margin-top: 1rem;
 }
 
 ul.post-list .post-subtitle .post-divider {

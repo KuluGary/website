@@ -35,10 +35,10 @@ function setIntoCache(cacheKey, cacheData, daysToAdd) {
   cache.save();
 }
 
-function getTTL(daysToAdd = 1) {
-  const nowInSeconds = Math.floor(Date.now() / 1000); // current time in seconds
-  const secondsInDay = 86400; // number of seconds in a day
-  return nowInSeconds + daysToAdd * secondsInDay; // add the specified days to the current time
+function getTTL(daysToAdd = 7) {
+  const nowInSeconds = Math.floor(Date.now() / 1000);
+  const secondsInDay = 86400;
+  return nowInSeconds + daysToAdd * secondsInDay;
 }
 
 module.exports = {
