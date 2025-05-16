@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "sh ./lib/start.sh",
-    "commit": "sh ./lib/commit.sh"
+    "commit": "sh ./lib/commit.sh",
+    "deploy": "sh ./lib/deploy.sh"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +14,16 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "chalk": "^4.1.1",
+    "cli-progress": "^3.12.0",
+    "fast-xml-parser": "^5.2.0",
+    "flat-cache": "^6.1.8",
     "markdown-it-anchor": "^8.6.7",
-    "markdown-it-attrs": "^4.1.6"
+    "markdown-it-attrs": "^4.1.6",
+    "puppeteer": "^24.6.1",
+    "querystring": "^0.2.1",
+    "sanitize-html": "^2.17.0",
+    "showdown": "^2.1.0"
   },
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.1",

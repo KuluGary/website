@@ -11,12 +11,16 @@ const {
   excludeFromList,
   log,
   getSimilarPosts,
+  getRecentMedia,
+  formatNumber,
+  frequentTags,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const wordStats = require("@photogabble/eleventy-plugin-word-stats");
+require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
@@ -40,9 +44,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("collectionStats", collectionStats);
   eleventyConfig.addFilter("excludeFromList", excludeFromList);
   eleventyConfig.addFilter("similarPosts", getSimilarPosts);
+  eleventyConfig.addFilter("formatNumber", formatNumber);
+  eleventyConfig.addFilter("frequentTags", frequentTags);
   eleventyConfig.addFilter("log", log);
 
   eleventyConfig.addCollection("postsByYear", postsByYear);
+  eleventyConfig.addCollection("recentMedia", getRecentMedia);
 
   eleventyConfig.setLibrary(
     "md",

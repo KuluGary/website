@@ -16,7 +16,7 @@ function postsByYear(collection) {
 }
 
 const formatDate = (date, format = "dd/LL/yyyy") => {
-  return DateTime.fromJSDate(date, {
+  return DateTime.fromJSDate(typeof date === "string" ? new Date(date) : date, {
     zone: "utc",
   }).toFormat(String(format));
 };
@@ -178,8 +178,93 @@ function getSimilarPosts(collection, path, categories) {
     });
 }
 
+function getRecentMedia(collection) {
+  const allMedia = collection.getAll()[0].data;
+  const posts = collection.getFilteredByTag("blog-post");
+
+  const games = allMedia.games || [];
+  const manga = allMedia.manga || [];
+  const movies = allMedia.movies || [];
+  const music = allMedia.music || [];
+  const shows = allMedia.shows || [];
+  const youtube = allMedia.youtube || [];
+
+  function getDate(element) {
+    return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
+  }
+
+  const recentMedia = [
+    ...games.favourites,
+    ...movies.watchlist,
+    ...manga.reading,
+    ...shows.watchlist,
+    ...music.favourites,
+    ...youtube.favourites,
+    ...posts,
+  ]
+    .map((element) => {
+      if (element.type) {
+        return {
+          id: element.id,
+          type: element.type,
+          title: element.title,
+          link: element.link,
+          tags: element.genres ?? element.tags ?? [],
+          thumbnail: element.thumbnail,
+          author: element.author,
+          platform: element.platform,
+          views: element.views,
+          rate: element.rate,
+          date: getDate(element),
+          playtime: element.playtime,
+        };
+      }
+
+      return {
+        id: element.id,
+        type: "Post",
+        title: element.data.title,
+        link: element.url,
+        date: element.date,
+        tags: element.data.tags.filter((tag) => tag !== "blog-post"),
+        author: { name: "Gary" },
+      };
+    })
+    .sort((a, b) => {
+      const prevDate = new Date(a.date);
+      const nextDate = new Date(b.date);
+
+      return nextDate.getTime() - prevDate.getTime();
+    });
+
+  return recentMedia;
+}
+
 function log(any) {
   console.log(any);
+}
+
+function formatNumber(number, notation) {
+  const formatter = Intl.NumberFormat("en", { notation });
+  return formatter.format(number);
+}
+
+function frequentTags(posts) {
+  const tagCount = {};
+
+  for (const post of posts) {
+    if (Array.isArray(post.data.tags)) {
+      for (const tag of post.data.tags) {
+        if (tag !== "blog-post") tagCount[tag] = (tagCount[tag] || 0) + 1;
+      }
+    }
+  }
+
+  const sortedTags = Object.entries(tagCount)
+    .sort((a, b) => b[1] - a[1]) // sort by frequency descending
+    .map((entry) => ({ tag: entry[0], count: entry[1] }));
+
+  return sortedTags;
 }
 
 module.exports = {
@@ -194,5 +279,8 @@ module.exports = {
   collectionStats,
   excludeFromList,
   getSimilarPosts,
+  getRecentMedia,
+  formatNumber,
+  frequentTags,
   log,
 };
