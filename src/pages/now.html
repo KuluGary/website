@@ -9,159 +9,109 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
   {% include "components/header.html" %}
 
   <main>
-    <section>
-      <h1>About this page</h1>
-      <p>
-      This is both a <a href="https://nownownow.com/about">now page</a> and an archive of sorts for the stuff I'm into or
-      i've been into in the past.
-    </p>
-    </section>
+    {% if games.playing and games.playing.length > 0 %}
+      <section>
+        <h2 id="recent-games">
+          <a href="/game#playing">Recent games</a>
+        </h2>
 
-    <section>
-      <h2 id="work-in-progress">Working on</h2>
-
-      {% set postsList = collections.game_dev | reverse | limit(1) %}
-      {% include "components/post-list.html" %}
-    </section>
-
-    <section>
-
-      <h2 id="games">Game List</h2>
-
-      <p>Here are some of the games I've played or I'm currently playing.</p>
-      <p>The "Have played / In progress" section are games that either don't have an ending or are multiplayer</p>
-      <p>
-      If you wanna check the full list, you can see it at
-      <a href="https://howlongtobeat.com/user/KuluGary/games/backlog/1">How Long To Beat</a>.
-    </p>
-
-      <details>
-        <summary>
-        Playing now
-      </summary>
-
-        {% if games.playing %}
-          <ul class="item-list">
-            {% for game in games.playing %}
-              <li>
-                <img class="thumbnail" src="{{ game.image }}"/>
-
-                <div>
-                  <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-                  <p class="subtitle">{{game.platform}}</p>
-                  <p>{{ game.description | safe }}</p>
-                </div>
-              </li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>Nothing currently</p>
-        {% endif %}
-      </details>
-
-      <details>
-        <summary>
-        Backlog
-      </summary>
-
-        <ul class="item-list">
-          {% for game in games.backlog %}
+        <ul class="grid-list grid-col-5">
+          {% for game in games.playing | limit(6) %}
             <li>
-              <img class="thumbnail" src="{{ game.image }}"/>
+              <article>
+                <figure>
+                  <img src="{{ game.thumbnail }}"/>
 
-              <div>
-                <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-                <p class="subtitle">{{game.platform}}</p>
-                <p>{{ game.description | safe }}</p>
-              </div>
+                  <figcaption>
+                    <a href="{{ game.link }}">
+                      {{ game.title }}
+                    </a>
+                  </figcaption>
+                </figure>
+              </article>
             </li>
           {% endfor %}
         </ul>
-      </details>
+      </section>
+    {% endif %}
 
-      <details>
-        <summary>
-        Completed
-      </summary>
-        <ul class="item-list">
-          {% for game in games.completed %}
+    {% if manga.reading and manga.reading.length > 0 %}
+      <section>
+        <h2 id="recent-manga">
+          <a href="/manga/reading">Recent manga</a>
+        </h2>
+
+        <ul class="grid-list grid-col-5">
+          {% for manga in manga.reading | filterMangaOnlySafe | limit(5) %}
             <li>
-              <img class="thumbnail" src="{{ game.image }}"/>
+              <article>
+                <figure>
+                  <img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
 
-              <div>
-                <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-                <p class="subtitle">{{game.platform}}</p>
-                <p>{{ game.description | safe }}</p>
-              </div>
+                  <figcaption>
+                    <a href="{{ manga.link }}">
+                      {{ manga.title }}
+                    </a>
+                  </figcaption>
+                </figure>
+              </article>
             </li>
           {% endfor %}
         </ul>
-      </details>
+      </section>
+    {% endif %}
 
-      <details>
-        <summary>
-        Have played / In progress
-      </summary>
+    {% if shows.watchlist and shows.watchlist.length > 0 %}
+      <section>
+        <h2 id="recent-shows">
+          <a href="/shows/watchlist">Recent shows</a>
+        </h2>
 
-        <ul class="item-list">
-          {% for game in games.custom %}
+        <ul class="grid-list grid-col-5">
+          {% for show in shows.watchlist | limit(5) %}
             <li>
-              <img class="thumbnail" src="{{ game.image }}"/>
+              <article>
+                <figure>
+                  <img src="{{ show.thumbnail }}"/>
 
-              <div>
-                <a href="{{game.link}}" target="_blank" rel="noopener noreferrer">{{game.title}}</a>
-                <p class="subtitle">{{game.platform}}</p>
-                <p>{{ game.description | safe }}</p>
-              </div>
+                  <figcaption>
+                    <a href="{{ show.link }}">
+                      {{ show.title }}
+                    </a>
+                  </figcaption>
+                </figure>
+              </article>
             </li>
           {% endfor %}
         </ul>
-      </details>
-    </section>
-    <section>
+      </section>
+    {% endif %}
 
-      <h2 id="manga">Manga</h2>
+    {% if movies.watchlist and movies.watchlist.length > 0 %}
+      <section>
+        <h2 id="recent-movies">
+          <a href="/movies/watchlist">Recent movies</a>
+        </h2>
 
-      <p>I've read lots of manga in the past, so here's a few I'm reading currently and some of my favourites.</p>
-
-      <details>
-        <summary>
-        Reading now
-      </summary>
-        <ul class="item-list">
-          {% for manga in manga.reading | filterMangaOnlySafe %}
+        <ul class="grid-list grid-col-5">
+          {% for movie in movies.watchlist | limit(5) %}
             <li>
-              <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
-              <div>
-                <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
-                <p class="subtitle">{{manga.author}}</p>
-                <p>{{ manga.description | safe }}</p>
-              </div>
+              <article>
+                <figure>
+                  <img src="{{ movie.thumbnail }}"/>
+
+                  <figcaption>
+                    <a href="{{ movie.link }}">
+                      {{ movie.title }}
+                    </a>
+                  </figcaption>
+                </figure>
+              </article>
             </li>
           {% endfor %}
         </ul>
-      </details>
-
-      <details>
-        <summary>
-        Favorite manga
-      </summary>
-
-        <ul class="item-list">
-          {% for manga in manga.favourite | filterMangaOnlySafe %}
-            <li>
-              <img class="thumbnail" src="/assets/images/covers/{{ manga.cover }}"/>
-
-              <div>
-                <a href="{{manga.link}}" target="_blank" rel="noopener noreferrer">{{manga.title}}</a>
-                <p class="subtitle">{{manga.author}}</p>
-                <p>{{ manga.description | safe }}</p>
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
-      </details>
-    </section>
+      </section>
+    {% endif %}
   </main>
 
   {% include "components/footer.html" %}

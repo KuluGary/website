@@ -217,6 +217,7 @@ function getRecentMedia(collection) {
           rate: element.rate,
           date: getDate(element),
           playtime: element.playtime,
+          description: element.description,
         };
       }
 
@@ -228,6 +229,8 @@ function getRecentMedia(collection) {
         date: element.date,
         tags: element.data.tags.filter((tag) => tag !== "blog-post"),
         author: { name: "Gary" },
+        description: element.description,
+        post: element,
       };
     })
     .sort((a, b) => {

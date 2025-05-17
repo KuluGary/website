@@ -37,6 +37,7 @@ ul.post-list header {
 ul.post-list header time {
   color: var(--text-color-alt);
   margin: 0;
+  font-size: smaller;
 }
 
 ul.post-list .post-stats,

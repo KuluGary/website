@@ -1,0 +1,135 @@
+---
+title: Manga
+permalink: /manga/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+
+		{% if manga.reading and manga.reading.length > 0 %}
+			<section>
+				<h2 id="playing">Currently reading</h2>
+
+				<ul class="grid-list grid-col-5">
+					{% for manga in manga.reading %}
+						<li>
+							<article>
+								<figure>
+									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ manga.link }}">
+											{{ manga.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if manga.favourite and manga.favourite.length > 0 %}
+			<section>
+				<h2 id="favourites">Favourites</h2>
+				<ul class="grid-list grid-col-5">
+					{% for manga in manga.favourite %}
+						<li>
+							<article>
+								<figure>
+									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ manga.link }}">
+											{{ manga.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if manga.completed and manga.completed.length > 0 %}
+			<section>
+				<h2 id="completed">completed</h2>
+				<ul class="grid-list grid-col-5">
+					{% for manga in manga.completed %}
+						<li>
+							<article>
+								<figure>
+									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ manga.link }}">
+											{{ manga.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if manga.on_hold and manga.on_hold.length > 0 %}
+			<section>
+				<h2 id="played">played</h2>
+				<ul class="grid-list grid-col-5">
+					{% for manga in manga.on_hold %}
+						<li>
+							<article>
+								<figure>
+									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ manga.link }}">
+											{{ manga.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if manga.dropped and manga.dropped.length > 0 %}
+			<section>
+				<h2 id="dropped">Dropped</h2>
+				<ul class="grid-list grid-col-5">
+					{% for manga in manga.dropped %}
+						<li>
+							<article>
+								<figure>
+									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ manga.link }}">
+											{{ manga.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

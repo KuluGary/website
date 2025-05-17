@@ -4,43 +4,99 @@ description: An old web personal site
 permalink: /
 ---
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/base.html" %} {% block content %} {% include "components/header.html" %}
 
-{% block content %}
-  {% include "components/header.html" %}
+<main>
+  <p>Hello, I'm Gary.</p>
 
-  <main>
-    <p>Hello, I'm Gary.</p>
+  <p>
+    I'm a <strong>technology enthusiast</strong> with a predilection for vintage programs; an
+    <strong>artistic cognoscente</strong> who's dabbled in illustration, 3D and pixel art; and a
+    <strong>neophyte humanist</strong> with a growing regard for the social sciences.
+  </p>
 
-    <p>
-      I'm a <strong>technology enthusiast</strong> with a predilection for vintage
-      programs; an <strong>artistic cognoscente</strong> who's dabbled in
-      illustration, 3D and pixel art; and a
-      <strong>neophyte humanist</strong> with a growing regard for the social
-      sciences.
-    </p>
+  <p>
+    This site is for personal use and as such, both it's content and form are subject to change sporadically and
+    frequently.
+  </p>
 
-    <p>
-      This site is for personal use and as such, both it's content and form are
-      subject to change sporadically and frequently.
-    </p>
-    
-    <section>
-      <h2>Blog</h2>
+  <section class="recent-activity">
+    <h2>Recent activity</h2>
 
-      <p>These are my latest posts written this year.</p>
+    <ul class="recent-media">
+      {% for media in collections['recentMedia'] | limit(5)%}
+        <li>
+          <article>
+            <header>
+              <h3>
+                <a href="{{ media.link }}"> {{ media.title }} </a>
+              </h3>
+              <time datetime="{{ media.date }}"> {{ media.date | formatDate('MMMM dd, yyyy')}}</time>
+            </header>
 
-      {% set postsList = collections['blog-post'] | reverse | limit(3) %}
-      {% include "components/post-list.html" %}
+            <ul class="stats bar-separated">
+              <li>
+                <a href="/{{ media.type | slugify }}">{{ media.type }}</a>
+              </li>
 
-      <a href="/blog">Read more...</a>
-    </section>
-  </main>
-  {% include "components/footer.html" %}
-{% endblock %}
+              {% if media.author %}
+                <li>
+                  <a rel="author" href="{{ media.author.link }}"> {{media.author.name}} </a>
+                </li>
+              {% endif %}
 
-{% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css"/>
-  <link rel="stylesheet" href="/css/components/footer.css"/>
-  <link rel="stylesheet" href="/css/components/post-list.css">
+              {% if media.type === "Post" %}
+                <li>
+                    {% set postStats = media.post | wordStats %}
+
+                    <p class="post-stats">~{{postStats}}</p>
+                </li>
+              {% endif %}
+
+              {% if media.views %}
+                <li>
+                  <span>{{ media.views | formatNumber('compact') }} views</span>
+                </li>
+              {% endif %}
+
+              {% if media.platform %}
+                <li>
+                  <span>{{ media.platform }}</span>
+                </li>
+              {% endif %}
+
+              {% if media.rate and media.type === "Video" %}
+                <li>
+                  <span>{{ media.rate | formatNumber('compact') }} likes</span>
+                </li>
+              {% endif %}
+
+              {% if media.tags and media.tags.length > 0 %}
+                <li>
+                  <ul class="tags">
+                    {% for tag in media.tags %}
+                    <li>
+                      <a href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
+                    </li>
+                    {%- endfor -%}
+                  </ul>
+                </li>
+              {% endif %}
+
+            </ul>
+
+            {% if media.description %}
+              <div class="description"> {{ media.description | safe }} </div>
+            {% endif %}
+          </article>
+        </li>
+     {% endfor %}
+    </ul>
+  </section>
+</main>
+{% include "components/footer.html" %} {% endblock %} {% block stylesheet %}
+<link rel="stylesheet" href="/css/components/header.css" />
+<link rel="stylesheet" href="/css/components/footer.css" />
+<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/components/post-list.css" />
 {% endblock %}

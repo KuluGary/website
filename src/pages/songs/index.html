@@ -1,0 +1,45 @@
+---
+title: Music
+permalink: /song/
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+
+		{% if music.favourites and music.favourites.length > 0 %}
+			<section>
+				<h2 id="playing">Favourite songs</h2>
+
+				<ul class="grid-list grid-col-4">
+					{% for song in music.favourites %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ song.image }}"/>
+
+									<figcaption>
+										<a href="{{ song.link }}">
+											{{ song.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

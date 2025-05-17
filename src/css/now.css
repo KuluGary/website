@@ -1,8 +1,19 @@
+section {
+  padding-top: calc(var(--line-height) / 2);
+}
+
 .item-list li:has(.thumbnail) {
   --thumbnail-size: 48px;
   display: grid;
   grid-template-columns: var(--thumbnail-size) 1fr;
   gap: calc(var(--line-height) / 2);
+}
+
+h2#recent-games > a,
+h2#recent-shows > a,
+h2#recent-movies > a,
+h2#recent-manga > a {
+  color: inherit;
 }
 
 .item-list .thumbnail {
@@ -23,7 +34,6 @@
 .item-list div > p {
   margin-block: calc(var(--line-height) / 2);
 }
-
 
 .post-date,
 .post-stats,
@@ -46,7 +56,6 @@
 .post-tags li {
   margin: 0;
 }
-
 
 .post-tags a {
   text-decoration-thickness: 1px;

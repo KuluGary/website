@@ -1,0 +1,158 @@
+---
+title: Games
+permalink: /game/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+
+		{% if games.playing and games.playing.length > 0 %}
+			<section>
+				<h2 id="playing">Currently playing</h2>
+
+				<ul class="grid-list grid-col-5">
+					{% for game in games.playing %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if games.favourites and games.favourites.length > 0 %}
+			<section>
+				<h2 id="favourites">Favourites</h2>
+				<ul class="grid-list grid-col-5">
+					{% for game in games.favourites %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if games.completed and games.completed.length > 0 %}
+			<section>
+				<h2 id="completed">completed</h2>
+				<ul class="grid-list grid-col-5">
+					{% for game in games.completed %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if games.played and games.played.length > 0 %}
+			<section>
+				<h2 id="played">played</h2>
+				<ul class="grid-list grid-col-5">
+					{% for game in games.played %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if games.retired and games.retired.length > 0 %}
+			<section>
+				<h2 id="retired">retired</h2>
+				<ul class="grid-list grid-col-5">
+					{% for game in games.retired %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if games.backlog and games.backlog.length > 0 %}
+			<section>
+				<h2 id="backlog">backlog</h2>
+				<ul class="grid-list grid-col-5">
+					{% for game in games.completed %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ game.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ game.link }}">
+											{{ game.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

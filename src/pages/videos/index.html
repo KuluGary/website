@@ -1,0 +1,45 @@
+---
+title: Videos
+permalink: /video/
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+
+		{% if youtube.favourites and youtube.favourites.length > 0 %}
+			<section>
+				<h2 id="playing">Favourite videos</h2>
+
+				<ul class="grid-list grid-cols-3">
+					{% for video in youtube.favourites %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ video.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ video.link }}">
+											{{ video.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

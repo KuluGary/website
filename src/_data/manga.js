@@ -7,6 +7,7 @@ const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const log = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 
+const DEBUG = false;
 const coverPath = "src/assets/images/covers";
 
 const converter = new showdown.Converter();
@@ -130,7 +131,7 @@ async function fetchJSON(url, headers = {}) {
  */
 module.exports = async function fetchMangaDex() {
   const cached = getFromCache("manga");
-  if (cached) {
+  if (cached && !DEBUG) {
     log("[MangaDex]", "🗃️ Returning cached data");
     return cached;
   }
