@@ -1,5 +1,6 @@
 const readingTime = require("reading-time");
 const { DateTime } = require("luxon");
+const { getFromCache, setIntoCache } = require("./utils/cache");
 
 function postsByYear(collection) {
   const posts = collection.getFilteredByTag("blog-post").reverse();
@@ -179,6 +180,12 @@ function getSimilarPosts(collection, path, categories) {
 }
 
 function getRecentMedia(collection) {
+  const cached = getFromCache("recentMedia");
+
+  if (cached) {
+    return cached;
+  }
+
   const allMedia = collection.getAll()[0].data;
   const posts = collection.getFilteredByTag("blog-post");
 
@@ -240,6 +247,7 @@ function getRecentMedia(collection) {
       return nextDate.getTime() - prevDate.getTime();
     });
 
+  setIntoCache("recentMedia", recentMedia);
   return recentMedia;
 }
 
@@ -293,6 +301,12 @@ function sortByDate(collection, key) {
 }
 
 function addGenrePagesCollection(collectionApi) {
+  const cached = getFromCache("genreCollection");
+
+  if (cached) {
+    return cached;
+  }
+
   const allMedia = collectionApi.getAll()[0].data;
 
   const genreMap = {};
@@ -319,7 +333,11 @@ function addGenrePagesCollection(collectionApi) {
     }
   }
 
-  return Object.values(genreMap);
+  const genreList = Object.values(genreMap);
+
+  setIntoCache("genreCollection", genreList);
+
+  return genreList;
 }
 
 module.exports = {

@@ -7,8 +7,6 @@ permalink: /
 {% extends "layouts/base.html" %} {% block content %} {% include "components/header.html" %}
 
 <main>
-  <p>Hello, I'm Gary.</p>
-
   <p>
     I'm a <strong>technology enthusiast</strong> with a predilection for vintage programs; an
     <strong>artistic cognoscente</strong> who's dabbled in illustration, 3D and pixel art; and a
@@ -24,7 +22,7 @@ permalink: /
     <h2>Recent activity</h2>
 
     <ul class="recent-media">
-      {% for media in collections['recentMedia'] | limit(5)%}
+      {% for media in collections['recentMedia'] | limit(3)%}
         <li>
           <article>
             <header>
