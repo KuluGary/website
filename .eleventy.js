@@ -16,9 +16,6 @@ const {
   frequentTags,
   frequentMediaTags,
   sortByDate,
-  flattenItemArrays,
-  extractUniqueGenres,
-  filterByGenre,
   addGenrePagesCollection,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
