@@ -35,10 +35,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/css");
-  eleventyConfig.addPassthroughCopy("./src/js");
+  eleventyConfig.addPassthroughCopy("./src/js/*.js");
 
   eleventyConfig.addWatchTarget("./src/css");
-  eleventyConfig.addWatchTarget("./src/js");
+  eleventyConfig.addWatchTarget("./src/js/*.js");
 
   eleventyConfig.addFilter("formatDate", formatDate);
   eleventyConfig.addFilter("shareUrl", generateShareUrl);
