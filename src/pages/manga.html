@@ -8,17 +8,26 @@ permalink: /manga/
 	{% include "components/header.html" %}
 
 	<main>
+		<p>This is a comprehensive list of all my manga, organized by status.</p>
+
+		<p>Top genres:
+			{% for genre in manga | frequentMediaTags | limit(10) %}
+				{% if genre %}
+					<a href="/manga/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
 
 		{% if manga.reading and manga.reading.length > 0 %}
 			<section>
-				<h2 id="playing">Currently reading</h2>
+				<h2 id="playing">Currently reading ({{ manga.reading.length }})</h2>
 
 				<ul class="grid-list grid-col-5">
 					{% for manga in manga.reading %}
 						<li>
 							<article>
 								<figure>
-									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+									<img src="{{ manga.thumbnail }}"/>
 
 									<figcaption>
 										<a href="{{ manga.link }}">
@@ -41,7 +50,7 @@ permalink: /manga/
 						<li>
 							<article>
 								<figure>
-									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+									<img src="{{ manga.thumbnail }}"/>
 
 									<figcaption>
 										<a href="{{ manga.link }}">
@@ -58,13 +67,13 @@ permalink: /manga/
 
 		{% if manga.completed and manga.completed.length > 0 %}
 			<section>
-				<h2 id="completed">completed</h2>
+				<h2 id="completed">Completed ({{ manga.completed.length }})</h2>
 				<ul class="grid-list grid-col-5">
 					{% for manga in manga.completed %}
 						<li>
 							<article>
 								<figure>
-									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+									<img src="{{ manga.thumbnail }}"/>
 
 									<figcaption>
 										<a href="{{ manga.link }}">
@@ -79,15 +88,15 @@ permalink: /manga/
 			</section>
 		{% endif %}
 
-		{% if manga.on_hold and manga.on_hold.length > 0 %}
+		{% if manga.dropped and manga.dropped.length > 0 %}
 			<section>
-				<h2 id="played">played</h2>
+				<h2 id="played">Dropped ({{ manga.dropped.length }})</h2>
 				<ul class="grid-list grid-col-5">
-					{% for manga in manga.on_hold %}
+					{% for manga in manga.dropped %}
 						<li>
 							<article>
 								<figure>
-									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+									<img src="{{ manga.thumbnail }}"/>
 
 									<figcaption>
 										<a href="{{ manga.link }}">
@@ -110,7 +119,7 @@ permalink: /manga/
 						<li>
 							<article>
 								<figure>
-									<img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+									<img src="{{ manga.thumbnail }}"/>
 
 									<figcaption>
 										<a href="{{ manga.link }}">

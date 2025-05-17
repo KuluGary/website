@@ -187,7 +187,7 @@ function getRecentMedia(collection) {
   const movies = allMedia.movies || [];
   const music = allMedia.music || [];
   const shows = allMedia.shows || [];
-  const youtube = allMedia.youtube || [];
+  const videos = allMedia.videos || [];
 
   function getDate(element) {
     return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
@@ -199,7 +199,7 @@ function getRecentMedia(collection) {
     ...manga.reading,
     ...shows.watchlist,
     ...music.favourites,
-    ...youtube.favourites,
+    ...videos.favourites,
     ...posts,
   ]
     .map((element) => {
@@ -270,6 +270,58 @@ function frequentTags(posts) {
   return sortedTags;
 }
 
+function frequentMediaTags(media) {
+  const tagCount = {};
+
+  for (const category of Object.values(media)) {
+    for (const element of category) {
+      for (const tag of element.genres) {
+        tagCount[tag] = (tagCount[tag] || 0) + 1;
+      }
+    }
+  }
+
+  const sortedTags = Object.entries(tagCount)
+    .sort((a, b) => b[1] - a[1]) // sort by frequency descending
+    .map((entry) => ({ tag: entry[0], count: entry[1] }));
+
+  return sortedTags;
+}
+
+function sortByDate(collection, key) {
+  return collection.sort((a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime());
+}
+
+function addGenrePagesCollection(collectionApi) {
+  const allMedia = collectionApi.getAll()[0].data;
+
+  const genreMap = {};
+  for (const [mediaType, lists] of Object.entries(allMedia)) {
+    for (const list of Object.values(lists)) {
+      if (!Array.isArray(list)) continue;
+
+      for (const item of list) {
+        if (!item.genres) continue;
+
+        for (const genre of item.genres) {
+          const key = `${mediaType}:${genre}`;
+
+          if (!genreMap[key]) {
+            genreMap[key] = {
+              mediaType,
+              genre,
+              items: [],
+            };
+          }
+          genreMap[key].items.push(item);
+        }
+      }
+    }
+  }
+
+  return Object.values(genreMap);
+}
+
 module.exports = {
   postsByYear,
   formatDate,
@@ -285,5 +337,8 @@ module.exports = {
   getRecentMedia,
   formatNumber,
   frequentTags,
+  frequentMediaTags,
+  sortByDate,
+  addGenrePagesCollection,
   log,
 };

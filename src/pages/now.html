@@ -9,6 +9,8 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
   {% include "components/header.html" %}
 
   <main>
+    <p>This now page holds a general view into what I'm focused on at the moment. <a href="https://nownownow.com/about">What is a now page?</a>
+    </p>
     {% if games.playing and games.playing.length > 0 %}
       <section>
         <h2 id="recent-games">
@@ -32,13 +34,19 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             </li>
           {% endfor %}
         </ul>
+
+        <footer>
+          {% set lastGamePlayed = (games.playing | sortByDate("addedAt"))[0] %}
+          <p>Last game played is {{ lastGamePlayed.title }}, added {{ lastGamePlayed.addedAt | formatDate('MMMM dd, yyyy')}}.</p>
+          <p>You can see my whole game collection at <a href="/game">my games page</a>.</p>
+        </footer>
       </section>
     {% endif %}
 
     {% if manga.reading and manga.reading.length > 0 %}
       <section>
         <h2 id="recent-manga">
-          <a href="/manga/reading">Recent manga</a>
+          <a href="/manga#reading">Recent manga</a>
         </h2>
 
         <ul class="grid-list grid-col-5">
@@ -46,7 +54,7 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             <li>
               <article>
                 <figure>
-                  <img src="/assets/images/covers/manga/{{ manga.thumbnail }}"/>
+                  <img src="{{ manga.thumbnail }}"/>
 
                   <figcaption>
                     <a href="{{ manga.link }}">
@@ -58,13 +66,19 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             </li>
           {% endfor %}
         </ul>
+
+        <footer>
+          {% set lastMangaRead = (manga.reading | sortByDate("updatedAt"))[0] %}
+          <p>Last manga read is {{ lastMangaRead.title }}, added {{ lastMangaRead.updatedAt | formatDate('MMMM dd, yyyy')}}.</p>
+          <p>You can see my whole manga collection at <a href="/manga">my manga page</a>.</p>
+        </footer>
       </section>
     {% endif %}
 
     {% if shows.watchlist and shows.watchlist.length > 0 %}
       <section>
         <h2 id="recent-shows">
-          <a href="/shows/watchlist">Recent shows</a>
+          <a href="/shows#watchlist">Recent shows</a>
         </h2>
 
         <ul class="grid-list grid-col-5">
@@ -84,13 +98,18 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             </li>
           {% endfor %}
         </ul>
+        <footer>
+          {% set lastShowWatched = (shows.watchlist | sortByDate("addedAt"))[0] %}
+          <p>Last show watched is {{ lastShowWatched.title }}, added {{ lastShowWatched.addedAt | formatDate('MMMM dd, yyyy')}}.</p>
+          <p>You can see my whole show collection at <a href="/shows">my shows page</a>.</p>
+        </footer>
       </section>
     {% endif %}
 
     {% if movies.watchlist and movies.watchlist.length > 0 %}
       <section>
         <h2 id="recent-movies">
-          <a href="/movies/watchlist">Recent movies</a>
+          <a href="/movies#watchlist">Recent movies</a>
         </h2>
 
         <ul class="grid-list grid-col-5">
@@ -110,6 +129,12 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
             </li>
           {% endfor %}
         </ul>
+
+        <footer>
+          {% set lastMovieWatched = (movies.watchlist | sortByDate("addedAt"))[0] %}
+          <p>Last movie watched is {{ lastShowWatched.title }}, added {{ lastMovieWatched.addedAt | formatDate('MMMM dd, yyyy')}}.</p>
+          <p>You can see my whole show collection at <a href="/movies">my movies page</a>.</p>
+        </footer>
       </section>
     {% endif %}
   </main>

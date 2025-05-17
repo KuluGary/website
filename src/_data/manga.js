@@ -99,7 +99,7 @@ function formatManga(manga) {
     author: { name: author },
     rating,
     link: manga.attributes.links?.raw,
-    thumbnail: coverFileName,
+    thumbnail: `/assets/images/covers/manga/${coverFileName}`,
     updatedAt,
   };
 }
@@ -111,7 +111,9 @@ function formatManga(manga) {
  */
 async function downloadCover(url, fileName) {
   const buffer = await fetch(url).then((res) => res.buffer());
-  fs.writeFileSync(`${coverPath}/manga/${fileName}`, buffer);
+  const filePath = `${coverPath}/manga/${fileName}`;
+
+  if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, buffer);
 }
 
 /**

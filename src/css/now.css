@@ -1,5 +1,11 @@
 section {
-  padding-top: calc(var(--line-height) / 2);
+  & footer {
+    font-size: smaller;
+
+    & p {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .item-list li:has(.thumbnail) {

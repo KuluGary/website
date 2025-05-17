@@ -20,7 +20,7 @@ const PAGES = {
 /**
  * Extracts the genres and description from the game's profile page.
  * @param {puppeteer.Page} page - Puppeteer page instance for a game profile.
- * @returns {Promise<{ id: string, description: string, genres: Array<string> }>} Object containing description and genres.
+ * @returns {Promise<{ id: string, description: string, genres: Array<string>, developer: string }>} Object containing description and genres.
  */
 async function scrapeGameFromProfile(page) {
   try {
@@ -56,7 +56,20 @@ async function scrapeGameFromProfile(page) {
       return container.innerText.split(",").map((g) => g.trim());
     });
 
-    return { id, description, genres, image };
+    const developer = await page.evaluate(() => {
+      const label = Array.from(document.querySelectorAll("div > strong")).find(
+        (div) => div.textContent.trim() === "Developer:" || div.textContent.trim() === "Developers:"
+      );
+      if (!label) return;
+
+      const container = label.parentElement;
+      label.remove();
+      container.querySelector("br")?.remove();
+
+      return container.innerText;
+    });
+
+    return { id, description, genres, image, developer };
   } catch (error) {
     log("[HLTB]", "⚠️ Error scraping game profile");
     return { id: null, description: null, genres: [] };
@@ -197,7 +210,7 @@ async function scrapeGamesFromPage(page, url, status) {
     const profilePage = pages[pages.length - 1];
 
     await profilePage.bringToFront();
-    const { description, genres, id, image } = await scrapeGameFromProfile(profilePage);
+    const { description, genres, id, image, developer } = await scrapeGameFromProfile(profilePage);
     await profilePage.close();
 
     const extendedInfo = extendedListInfo.find((extendedGame) => id == String(extendedGame.game_id));
@@ -217,6 +230,7 @@ async function scrapeGamesFromPage(page, url, status) {
       completedAt: extendedInfo?.date_complete,
       playtime,
       rate,
+      author: { name: developer },
     });
     incrementProgress();
   }

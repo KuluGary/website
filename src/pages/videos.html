@@ -9,13 +9,14 @@ permalink: /video/
 	{% include "components/header.html" %}
 
 	<main>
+		<p>This is a comprehensive list of my favourite videos.</p>
 
-		{% if youtube.favourites and youtube.favourites.length > 0 %}
+		{% if videos.favourites and videos.favourites.length > 0 %}
 			<section>
 				<h2 id="playing">Favourite videos</h2>
 
 				<ul class="grid-list grid-cols-3">
-					{% for video in youtube.favourites %}
+					{% for video in videos.favourites %}
 						<li>
 							<article>
 								<figure>

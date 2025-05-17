@@ -3,6 +3,7 @@ const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const log = require("../js/utils/log");
 
+const DEBUG = false;
 const PLAYLISTS = {
   favourites: "79jHGYxWHmhXthpE0o8DIK",
 };
@@ -58,9 +59,9 @@ async function transformPlaylistItems(items) {
 
     playlist.push({
       id: track.id,
-      type: "Song",
+      type: "Music",
       title: track.name,
-      image: track.album.images[0]?.url || null,
+      thumbnail: track.album.images[0]?.url || null,
       author: {
         name: track.artists.map((a) => a.name).join(", "),
       },
@@ -95,7 +96,7 @@ async function getArtistGenres(artistId) {
  */
 module.exports = async function fetchSpotifyMusic() {
   const cached = getFromCache("music");
-  if (cached) {
+  if (cached && !DEBUG) {
     log("[Spotify]", "🗃️ Returning cached data");
     return cached;
   }

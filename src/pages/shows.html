@@ -1,0 +1,121 @@
+---
+title: Shows
+permalink: /shows/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+		<p>This is a comprehensive list of all my shows, organized by status.</p>
+
+		<p>Top genres:
+			{% for genre in shows | frequentMediaTags | limit(10) %}
+				{% if genre %}
+					<a href="/shows/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		{% if shows.watchlist and shows.watchlist.length > 0 %}
+			<section>
+				<h2 id="watchlist">Currently watching</h2>
+
+				<ul class="grid-list grid-col-5">
+					{% for show in shows.watchlist %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ show.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ show.link }}">
+											{{ show.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if shows.favourites and shows.favourites.length > 0 %}
+			<section>
+				<h2 id="favourites">Favourites</h2>
+				<ul class="grid-list grid-col-5">
+					{% for show in shows.favourites %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ show.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ show.link }}">
+											{{ show.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if shows.seen and shows.seen.length > 0 %}
+			<section>
+				<h2 id="seen">seen</h2>
+				<ul class="grid-list grid-col-5">
+					{% for show in shows.seen %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ show.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ show.link }}">
+											{{ show.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+
+		{% if shows.dropped and shows.dropped.length > 0 %}
+			<section>
+				<h2 id="dropped">dropped</h2>
+				<ul class="grid-list grid-col-5">
+					{% for show in shows.dropped %}
+						<li>
+							<article>
+								<figure>
+									<img src="{{ show.thumbnail }}"/>
+
+									<figcaption>
+										<a href="{{ show.link }}">
+											{{ show.title }}
+										</a>
+									</figcaption>
+								</figure>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endif %}
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

@@ -1,6 +1,6 @@
 ---
 title: Music
-permalink: /song/
+permalink: /music/
 ---
 
 {% extends "layouts/base.html" %}
@@ -9,21 +9,30 @@ permalink: /song/
 	{% include "components/header.html" %}
 
 	<main>
+		<p>This is a comprehensive list of all my games, organized by status.</p>
+
+		<p>Top genres:
+			{% for genre in music | frequentMediaTags | limit(10) %}
+				{% if genre %}
+					<a href="/music/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
 
 		{% if music.favourites and music.favourites.length > 0 %}
 			<section>
-				<h2 id="playing">Favourite songs</h2>
+				<h2 id="playing">Favourite music</h2>
 
 				<ul class="grid-list grid-col-4">
-					{% for song in music.favourites %}
+					{% for music in music.favourites %}
 						<li>
 							<article>
 								<figure>
-									<img src="{{ song.image }}"/>
+									<img src="{{ music.thumbnail }}"/>
 
 									<figcaption>
-										<a href="{{ song.link }}">
-											{{ song.title }}
+										<a href="{{ music.link }}">
+											{{ music.title }}
 										</a>
 									</figcaption>
 								</figure>

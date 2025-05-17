@@ -16,6 +16,10 @@
     padding-left: var(--line-height);
     margin-top: var(--line-height);
 
+    & article {
+      margin: 0;
+    }
+
     ul.stats {
       list-style: none;
       margin: 0;
@@ -63,6 +67,7 @@
       flex-wrap: wrap;
       height: 1lh;
       overflow: clip;
+      font-size: smaller;
 
       & li {
         margin: 0;

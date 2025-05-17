@@ -6,3 +6,4 @@ node_modules
 *.sh
 bin
 lib
+src/js/utils/_test

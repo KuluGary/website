@@ -616,9 +616,11 @@ label:has(.theme-switcher) {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-block: var(--line-height);
 
   & li {
     height: 100%;
+    margin: 0;
 
     & article {
       position: relative;

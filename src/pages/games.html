@@ -8,6 +8,15 @@ permalink: /game/
 	{% include "components/header.html" %}
 
 	<main>
+		<p>This is a comprehensive list of all my games, organized by status.</p>
+
+		<p>Top genres:
+			{% for genre in games | frequentMediaTags | limit(10) %}
+				{% if genre %}
+					<a href="/games/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
 
 		{% if games.playing and games.playing.length > 0 %}
 			<section>
@@ -58,7 +67,7 @@ permalink: /game/
 
 		{% if games.completed and games.completed.length > 0 %}
 			<section>
-				<h2 id="completed">completed</h2>
+				<h2 id="completed">Completed</h2>
 				<ul class="grid-list grid-col-5">
 					{% for game in games.completed %}
 						<li>
@@ -81,7 +90,7 @@ permalink: /game/
 
 		{% if games.played and games.played.length > 0 %}
 			<section>
-				<h2 id="played">played</h2>
+				<h2 id="played">Played</h2>
 				<ul class="grid-list grid-col-5">
 					{% for game in games.played %}
 						<li>
@@ -104,7 +113,7 @@ permalink: /game/
 
 		{% if games.retired and games.retired.length > 0 %}
 			<section>
-				<h2 id="retired">retired</h2>
+				<h2 id="retired">Retired</h2>
 				<ul class="grid-list grid-col-5">
 					{% for game in games.retired %}
 						<li>
@@ -127,7 +136,7 @@ permalink: /game/
 
 		{% if games.backlog and games.backlog.length > 0 %}
 			<section>
-				<h2 id="backlog">backlog</h2>
+				<h2 id="backlog">Backlog</h2>
 				<ul class="grid-list grid-col-5">
 					{% for game in games.completed %}
 						<li>

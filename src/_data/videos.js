@@ -101,7 +101,7 @@ async function getCollection() {
   const allVideos = {};
   try {
     for (const [playlistName, playlistId] of Object.entries(PLAYLISTS)) {
-      log("[YouTube]", `🔍 Scraping ${playlistName}`);
+      log("[Videos]", `🔍 Scraping ${playlistName}`);
 
       allVideos[playlistName] = await scrapePlaylist(playlistId);
     }
@@ -117,17 +117,17 @@ async function getCollection() {
  * @returns {Promise<Object>} Scraped YouTube data.
  */
 module.exports = async function fetchYoutubeVideos() {
-  const cached = getFromCache("youtube");
+  const cached = getFromCache("videos");
   if (cached && !DEBUG) {
-    log("[YouTube]", "🗃️ Returning cached data");
+    log("[Videos]", "🗃️ Returning cached data");
     return cached;
   }
 
-  log("[YouTube]", "💻 Starting fresh scrape");
+  log("[Videos]", "💻 Starting fresh scrape");
   const data = await getCollection();
-  setIntoCache("youtube", data);
-  saveTestData("youtube.json", data);
-  log("[YouTube]", "✔️ Scraping complete");
+  setIntoCache("videos", data);
+  saveTestData("videos.json", data);
+  log("[Videos]", "✔️ Scraping complete");
 
   return data;
 };

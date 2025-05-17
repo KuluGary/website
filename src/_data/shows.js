@@ -34,16 +34,11 @@ async function scrapeShowPage(page, url, status) {
 
   for (const element of elements) {
     try {
-      const [titleEl, linkEl, imageEl] = await Promise.all([
-        element.$(".titles h3"),
-        element.$("a"),
-        element.$("img.real"),
-      ]);
+      const [titleEl, linkEl] = await Promise.all([element.$(".titles h3"), element.$("a")]);
 
-      const [title, link, imageSrc, originalTitle, id, date_created, date_added] = await Promise.all([
+      const [title, link, originalTitle, id, date_created, date_added] = await Promise.all([
         titleEl.evaluate((el) => el.innerText),
         linkEl.evaluate((el) => el.href),
-        imageEl.evaluate((el) => el.src),
         element.evaluate((el) => el.getAttribute("data-title")),
         element.evaluate((el) => el.getAttribute("data-list-item-id")),
         element.evaluate((el) => el.getAttribute("data-released")),
@@ -58,7 +53,7 @@ async function scrapeShowPage(page, url, status) {
       const profilePage = pages[pages.length - 1];
 
       await profilePage.bringToFront();
-      const { description, genres } = await scrapeShowProfile(profilePage);
+      const { description, genres, imageSrc } = await scrapeShowProfile(profilePage);
       await profilePage.close();
 
       const safeName = sanitizeFilename(originalTitle);
@@ -73,11 +68,11 @@ async function scrapeShowPage(page, url, status) {
         link,
         thumbnail: imagePath,
         createdAt: date_created,
-        updatedAt: date_added,
+        addedAt: date_added,
       });
       incrementProgress();
-    } catch (innerErr) {
-      log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${innerErr.message}`);
+    } catch (err) {
+      log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${err.message}`);
     }
   }
 
@@ -89,11 +84,15 @@ async function scrapeShowPage(page, url, status) {
 /**
  * Extracts the description and genres for a show
  * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
- * @returns {Promise<{ description: string, genres: Array<string> }>} Object containing the description and genres of a show
+ * @returns {Promise<{ description: string, genres: Array<string>, imageSrc: string }>} Object containing the description and genres of a show
  */
 async function scrapeShowProfile(page) {
+  await delay(1000);
   const descriptionSelector = await page.waitForSelector("#overview");
   const description = await descriptionSelector.evaluate((el) => el.innerText);
+
+  const imageSelector = await page.waitForSelector("img.real");
+  const imageSrc = await imageSelector.evaluate((el) => el.src);
 
   const genres = await page.evaluate(() => {
     const genreSelector = Array.from(document.querySelectorAll("span[itemprop='genre']"));
@@ -103,7 +102,7 @@ async function scrapeShowProfile(page) {
     return genreSelector.map((genreElement) => genreElement.innerText.trim());
   });
 
-  return { description, genres };
+  return { description, genres, imageSrc };
 }
 
 /**
@@ -111,12 +110,12 @@ async function scrapeShowProfile(page) {
  */
 async function downloadImage(folder, url, fileName) {
   const dir = path.join("src/" + coverPath, folder);
-  fs.mkdirSync(dir, { recursive: true });
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
   const fullPath = path.join(dir, `${fileName}.jpg`);
   const buffer = await fetch(url).then((res) => res.buffer());
 
-  fs.writeFileSync(fullPath, buffer);
+  if (!fs.existsSync(fullPath)) fs.writeFileSync(fullPath, buffer);
   return `${coverPath}/${folder}/${fileName}.jpg`;
 }
 
@@ -169,7 +168,7 @@ module.exports = async function fetchTraktShows() {
   const collection = await getCollection();
   setIntoCache("shows", collection);
   saveTestData("shows.json", collection);
-
   log("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
+
   return collection;
 };

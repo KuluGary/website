@@ -14,6 +14,12 @@ const {
   getRecentMedia,
   formatNumber,
   frequentTags,
+  frequentMediaTags,
+  sortByDate,
+  flattenItemArrays,
+  extractUniqueGenres,
+  filterByGenre,
+  addGenrePagesCollection,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -46,10 +52,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("similarPosts", getSimilarPosts);
   eleventyConfig.addFilter("formatNumber", formatNumber);
   eleventyConfig.addFilter("frequentTags", frequentTags);
+  eleventyConfig.addFilter("frequentMediaTags", frequentMediaTags);
+  eleventyConfig.addFilter("sortByDate", sortByDate);
   eleventyConfig.addFilter("log", log);
 
   eleventyConfig.addCollection("postsByYear", postsByYear);
   eleventyConfig.addCollection("recentMedia", getRecentMedia);
+  eleventyConfig.addCollection("genrePages", addGenrePagesCollection);
 
   eleventyConfig.setLibrary(
     "md",
