@@ -18,7 +18,7 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
     {% set sectionTitle = "Currently playing" %}
     {% include "components/media-list.html" %}
 
-    {% set media = manga.reading %}
+    {% set media = manga.reading | filterMangaOnlySafe %}
     {% set mediaListGrid = "grid-list grid-col-5" %}
     {% set href = "/manga/status/reading" %}
     {% set sectionTitle = "Currently reading" %}
