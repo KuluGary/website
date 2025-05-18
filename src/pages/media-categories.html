@@ -1,0 +1,29 @@
+---
+pagination:
+  data: collections.mediaCategories
+  size: 1
+  alias: categoryGroup
+permalink: "/{{ categoryGroup.mediaType | slugify }}/status/{{ categoryGroup.category | slugify }}/"
+eleventyComputed:
+  title: '"{{ categoryGroup.mediaType | unslugify }}" in "{{ categoryGroup.category | unslugify }}"'
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+	<main>
+		{% set media = categoryGroup.items %}
+		{% set mediaListGrid = "grid-list grid-col-3" if categoryGroup.mediaType === "videos" else ("grid-list grid-col-4" if categoryGroup.mediaType === "music" else "grid-list grid-col-5") %}
+		{% set href = "/{{ categoryGroup.mediaType }}/status/{{ categoryGroup.category }}" %}
+		{% set sectionTitle = title %}
+
+		{% include "components/media-list.html" %}
+
+	</main>
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

@@ -10,129 +10,31 @@ permalink: /manga/
 	<main>
 		<p>This is a comprehensive list of all my manga, organized by status.</p>
 
-		<p>Top genres:
-			{% for genre in manga | frequentMediaTags | limit(10) %}
-				{% if genre %}
-					<a href="/manga/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
-				{% endif %}
-			{% endfor %}
-		</p>
+		{% set media = manga %}
+		{% set mediaType = "manga" %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
 
-		{% if manga.reading and manga.reading.length > 0 %}
-			<section>
-				<h2 id="playing">Currently reading ({{ manga.reading.length }})</h2>
+		{% include "components/media-tag-list.html" %}
 
-				<ul class="grid-list grid-col-5">
-					{% for manga in manga.reading %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ manga.thumbnail }}"/>
+		{% set media = manga.reading | filterMangaOnlySafe %}
+		{% set href = "/manga/status/reading" %}
+		{% set sectionTitle = "Currently reading" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ manga.link }}">
-											{{ manga.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = manga.favourite | filterMangaOnlySafe %}
+		{% set href = "/manga/status/favourite" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
 
-		{% if manga.favourite and manga.favourite.length > 0 %}
-			<section>
-				<h2 id="favourites">Favourites</h2>
-				<ul class="grid-list grid-col-5">
-					{% for manga in manga.favourite %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ manga.thumbnail }}"/>
+		{% set media = manga.completed | filterMangaOnlySafe %}
+		{% set href = "/manga/status/completed" %}
+		{% set sectionTitle = "Completed" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ manga.link }}">
-											{{ manga.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if manga.completed and manga.completed.length > 0 %}
-			<section>
-				<h2 id="completed">Completed ({{ manga.completed.length }})</h2>
-				<ul class="grid-list grid-col-5">
-					{% for manga in manga.completed %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ manga.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ manga.link }}">
-											{{ manga.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if manga.dropped and manga.dropped.length > 0 %}
-			<section>
-				<h2 id="played">Dropped ({{ manga.dropped.length }})</h2>
-				<ul class="grid-list grid-col-5">
-					{% for manga in manga.dropped %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ manga.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ manga.link }}">
-											{{ manga.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if manga.dropped and manga.dropped.length > 0 %}
-			<section>
-				<h2 id="dropped">Dropped</h2>
-				<ul class="grid-list grid-col-5">
-					{% for manga in manga.dropped %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ manga.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ manga.link }}">
-											{{ manga.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = manga.dropped | filterMangaOnlySafe %}
+		{% set href = "/manga/status/dropped" %}
+		{% set sectionTitle = "Dropped" %}
+		{% include "components/media-list.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

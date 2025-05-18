@@ -11,29 +11,11 @@ permalink: /video/
 	<main>
 		<p>This is a comprehensive list of my favourite videos.</p>
 
-		{% if videos.favourites and videos.favourites.length > 0 %}
-			<section>
-				<h2 id="playing">Favourite videos</h2>
-
-				<ul class="grid-list grid-cols-3">
-					{% for video in videos.favourites %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ video.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ video.link }}">
-											{{ video.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set mediaListGrid = "grid-list grid-col-3" %}
+		{% set media = videos.favourites %}
+		{% set href = "/videos/status/favourites" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
 
 	</main>
 

@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const fetch = require("node-fetch");
 const delay = require("../js/utils/delay");
@@ -277,11 +277,11 @@ module.exports = async function fetchHLTBGames() {
     return cached;
   }
 
-  log("[HLTB]", "🎮 Starting fresh scrape");
+  time("[HLTB]", "🎮 Starting fresh scrape");
   const collection = await getCollection();
   setIntoCache("games", collection);
   saveTestData("games.json", collection);
-  log("[HLTB]", "✔️ Scraping complete");
+  timeEnd("[HLTB]", "✔️ Scraping complete");
 
   return collection;
 };

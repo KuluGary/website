@@ -1,0 +1,7 @@
+<p>Top genres:
+			{% for genre in media | frequentMediaTags | limit(10) %}
+		{% if genre %}
+			<a href="/{{ mediaType }}/genre/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
+		{% endif %}
+	{% endfor %}
+</p>

@@ -3,7 +3,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
@@ -164,11 +164,11 @@ module.exports = async function fetchTraktMovies() {
     return cached;
   }
 
-  log("[Trakt.tv/Movies]", "🎞️ Starting fresh scrape");
+  time("[Trakt.tv/Movies]", "🎞️ Starting fresh scrape");
   const collection = await getCollection();
   setIntoCache("movies", collection);
   saveTestData("movies.json", collection);
-  log("[Trakt.tv/Movies]", "✔️ Scraping complete");
+  timeEnd("[Trakt.tv/Movies]", "✔️ Scraping complete");
 
   return collection;
 };

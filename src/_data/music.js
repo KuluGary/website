@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 
 const DEBUG = false;
 const PLAYLISTS = {
@@ -101,7 +101,7 @@ module.exports = async function fetchSpotifyMusic() {
     return cached;
   }
 
-  log("[Spotify]", "🎵 Starting fresh scrape");
+  time("[Spotify]", "🎵 Starting fresh scrape");
   await authenticateSpotify();
 
   const collection = {};
@@ -114,6 +114,6 @@ module.exports = async function fetchSpotifyMusic() {
   setIntoCache("music", collection);
   saveTestData("music.json", collection);
 
-  log("[Spotify]", "✔️ Scraping completey");
+  timeEnd("[Spotify]", "✔️ Scraping completey");
   return collection;
 };

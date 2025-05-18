@@ -2,7 +2,7 @@ const { default: puppeteer } = require("puppeteer");
 const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const delay = require("../js/utils/delay");
@@ -164,11 +164,11 @@ module.exports = async function fetchTraktShows() {
     return cached;
   }
 
-  log("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
+  time("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
   const collection = await getCollection();
   setIntoCache("shows", collection);
   saveTestData("shows.json", collection);
-  log("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
+  timeEnd("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
 
   return collection;
 };

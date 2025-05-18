@@ -146,6 +146,11 @@
         "url": "https://addons.mozilla.org/firefox/addon/tree-style-tab/",
         "title": "Tree Style Tab",
         "description": "to display browser tabs in a tree fashion."
+      },
+      {
+        "url": "https://afinestart.me/",
+        "title": "A fine start",
+        "description": "to improve my browser's home screen."
       }
     ]
   }

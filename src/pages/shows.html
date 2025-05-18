@@ -10,106 +10,31 @@ permalink: /shows/
 	<main>
 		<p>This is a comprehensive list of all my shows, organized by status.</p>
 
-		<p>Top genres:
-			{% for genre in shows | frequentMediaTags | limit(10) %}
-				{% if genre %}
-					<a href="/shows/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
-				{% endif %}
-			{% endfor %}
-		</p>
+		{% set media = shows %}
+		{% set mediaType = "shows" %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
 
-		{% if shows.watchlist and shows.watchlist.length > 0 %}
-			<section>
-				<h2 id="watchlist">Currently watching</h2>
+		{% include "components/media-tag-list.html" %}
 
-				<ul class="grid-list grid-col-5">
-					{% for show in shows.watchlist %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ show.thumbnail }}"/>
+		{% set media = shows.watchlist %}
+		{% set href = "/shows/status/watching" %}
+		{% set sectionTitle = "Currently watching" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ show.link }}">
-											{{ show.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = shows.favourites %}
+		{% set href = "/shows/status/favourites" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
 
-		{% if shows.favourites and shows.favourites.length > 0 %}
-			<section>
-				<h2 id="favourites">Favourites</h2>
-				<ul class="grid-list grid-col-5">
-					{% for show in shows.favourites %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ show.thumbnail }}"/>
+		{% set media = shows.seen %}
+		{% set href = "/shows/status/seen" %}
+		{% set sectionTitle = "Seen" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ show.link }}">
-											{{ show.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if shows.seen and shows.seen.length > 0 %}
-			<section>
-				<h2 id="seen">seen</h2>
-				<ul class="grid-list grid-col-5">
-					{% for show in shows.seen %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ show.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ show.link }}">
-											{{ show.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if shows.dropped and shows.dropped.length > 0 %}
-			<section>
-				<h2 id="dropped">dropped</h2>
-				<ul class="grid-list grid-col-5">
-					{% for show in shows.dropped %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ show.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ show.link }}">
-											{{ show.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = shows.dropped %}
+		{% set href = "/shows/status/dropped" %}
+		{% set sectionTitle = "Dropped" %}
+		{% include "components/media-list.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

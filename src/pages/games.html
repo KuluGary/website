@@ -8,154 +8,43 @@ permalink: /game/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my games, organized by status.</p>
+		<p>This is a comprehensive list of all my games, organized by href.<//games/status/p>
 
-		<p>Top genres:
-			{% for genre in games | frequentMediaTags | limit(10) %}
-				{% if genre %}
-					<a href="/games/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
-				{% endif %}
-			{% endfor %}
-		</p>
+		{% set media = games %}
+		{% set mediaType = "games" %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
 
-		{% if games.playing and games.playing.length > 0 %}
-			<section>
-				<h2 id="playing">Currently playing</h2>
+		{% include "components/media-tag-list.html" %}
 
-				<ul class="grid-list grid-col-5">
-					{% for game in games.playing %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
+		{% set media = games.playing %}
+		{% set href = "/games/status/playing" %}
+		{% set sectionTitle = "Currently playing" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = games.favourites %}
+		{% set href = "/games/status/favourites" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
 
-		{% if games.favourites and games.favourites.length > 0 %}
-			<section>
-				<h2 id="favourites">Favourites</h2>
-				<ul class="grid-list grid-col-5">
-					{% for game in games.favourites %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
+		{% set media = games.completed %}
+		{% set href = "/games/status/completed" %}
+		{% set sectionTitle = "Completed" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = games.played %}
+		{% set href = "/games/status/played" %}
+		{% set sectionTitle = "Played" %}
+		{% include "components/media-list.html" %}
 
-		{% if games.completed and games.completed.length > 0 %}
-			<section>
-				<h2 id="completed">Completed</h2>
-				<ul class="grid-list grid-col-5">
-					{% for game in games.completed %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
+		{% set media = games.backlog %}
+		{% set href = "/games/status/backlog" %}
+		{% set sectionTitle = "Backlog" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if games.played and games.played.length > 0 %}
-			<section>
-				<h2 id="played">Played</h2>
-				<ul class="grid-list grid-col-5">
-					{% for game in games.played %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if games.retired and games.retired.length > 0 %}
-			<section>
-				<h2 id="retired">Retired</h2>
-				<ul class="grid-list grid-col-5">
-					{% for game in games.retired %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if games.backlog and games.backlog.length > 0 %}
-			<section>
-				<h2 id="backlog">Backlog</h2>
-				<ul class="grid-list grid-col-5">
-					{% for game in games.completed %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ game.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ game.link }}">
-											{{ game.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = games.retired %}
+		{% set href = "/games/status/retired" %}
+		{% set sectionTitle = "Dropped" %}
+		{% include "components/media-list.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

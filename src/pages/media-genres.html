@@ -1,0 +1,29 @@
+---
+pagination:
+  data: collections.genrePages
+  size: 1
+  alias: genreGroup
+permalink: "/{{ genreGroup.mediaType | slugify }}/genre/{{ genreGroup.genre | slugify }}/"
+eleventyComputed:
+  title: '"{{ genreGroup.mediaType | unslugify }}" tagged "{{ genreGroup.genre | unslugify }}"'
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+	<main>
+		{% set media = genreGroup.items %}
+		{% set mediaListGrid = "grid-list grid-col-3" if genreGroup.mediaType === "Video" else ("grid-list grid-col-4" if genreGroup.mediaType === "Music" else "grid-list grid-col-5") %}
+		{% set href = "/{{ genreGroup.mediaType }}/genre/{{ genreGroup.genre }}" %}
+		{% set sectionTitle = title %}
+
+		{% include "components/media-list.html" %}
+
+	</main>
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

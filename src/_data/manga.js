@@ -4,7 +4,7 @@ const showdown = require("showdown");
 const sanitize = require("sanitize-html");
 const qs = require("querystring");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 
 const DEBUG = false;
@@ -15,7 +15,7 @@ const converter = new showdown.Converter();
 const ENDPOINTS = {
   MANGA_LIST: "https://api.mangadex.org/list/afb0fc3b-ad9c-44e4-ba9f-5e780f464ded",
   MANGA_BASE:
-    "https://api.mangadex.org/manga?limit=32&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
+    "https://api.mangadex.org/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
   FOLLOWS: "https://api.mangadex.org/user/follows/manga?limit=100",
   STATUS: "https://api.mangadex.org/manga/status",
 };
@@ -140,7 +140,7 @@ module.exports = async function fetchMangaDex() {
 
   await authenticate();
 
-  log("[MangaDex]", "💬 Starting fresh scrape");
+  time("[MangaDex]", "💬 Starting fresh scrape");
   const [followList, statusMap, favouriteList] = await Promise.all([
     fetchJSON(ENDPOINTS.FOLLOWS, headers),
     fetchJSON(ENDPOINTS.STATUS, headers),
@@ -168,7 +168,7 @@ module.exports = async function fetchMangaDex() {
 
   setIntoCache("manga", collection);
   saveTestData("manga.json", collection);
-  log("[MangaDex]", "✔️ Scraping complete");
+  timeEnd("[MangaDex]", "✔️ Scraping complete");
 
   return collection;
 };

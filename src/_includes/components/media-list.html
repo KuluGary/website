@@ -1,0 +1,27 @@
+{% if media and media.length > 0 %}
+	<section>
+		<h2>
+			<a href="{{ href }}">
+				{{ sectionTitle }} ({{ media.length }})
+			</a>
+		</h2>
+
+		<ul class="{{ mediaListGrid }}">
+			{% for game in media %}
+				<li>
+					<article>
+						<figure>
+							<img src="{{ game.thumbnail }}"/>
+
+							<figcaption>
+								<a href="{{ game.link }}">
+									{{ game.title }}
+								</a>
+							</figcaption>
+						</figure>
+					</article>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+{% endif %}

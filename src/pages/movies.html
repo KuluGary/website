@@ -10,106 +10,31 @@ permalink: /movie/
 	<main>
 		<p>This is a comprehensive list of all my movies, organized by status.</p>
 
-		<p>Top genres:
-			{% for genre in movies | frequentMediaTags | limit(10) %}
-				{% if genre %}
-					<a href="/movies/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
-				{% endif %}
-			{% endfor %}
-		</p>
+		{% set media = movies %}
+		{% set mediaType = "manga" %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
 
-		{% if movies.watchlist and movies.watchlist.length > 0 %}
-			<section>
-				<h2 id="watchlist">Currently watching</h2>
+		{% include "components/media-tag-list.html" %}
 
-				<ul class="grid-list grid-col-5">
-					{% for movie in movies.watchlist %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ movie.thumbnail }}"/>
+		{% set media = movies.watchlist %}
+		{% set href = "/games/status/watchlist" %}
+		{% set sectionTitle = "Currently watching" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ movie.link }}">
-											{{ movie.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = movies.favourites %}
+		{% set href = "/games/status/favourites" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
 
-		{% if movies.favourites and movies.favourites.length > 0 %}
-			<section>
-				<h2 id="favourites">Favourites</h2>
-				<ul class="grid-list grid-col-5">
-					{% for movie in movies.favourites %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ movie.thumbnail }}"/>
+		{% set media = movies.seen %}
+		{% set href = "/games/status/seen" %}
+		{% set sectionTitle = "Seen" %}
+		{% include "components/media-list.html" %}
 
-									<figcaption>
-										<a href="{{ movie.link }}">
-											{{ movie.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if movies.seen and movies.seen.length > 0 %}
-			<section>
-				<h2 id="seen">seen</h2>
-				<ul class="grid-list grid-col-5">
-					{% for movie in movies.seen %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ movie.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ movie.link }}">
-											{{ movie.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
-		{% if movies.dropped and movies.dropped.length > 0 %}
-			<section>
-				<h2 id="dropped">dropped</h2>
-				<ul class="grid-list grid-col-5">
-					{% for movie in movies.dropped %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ movie.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ movie.link }}">
-											{{ movie.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
+		{% set media = movies.dropped %}
+		{% set href = "/games/status/dropped" %}
+		{% set sectionTitle = "Dropped" %}
+		{% include "components/media-list.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

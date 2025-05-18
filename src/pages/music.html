@@ -11,38 +11,15 @@ permalink: /music/
 	<main>
 		<p>This is a comprehensive list of all my games, organized by status.</p>
 
-		<p>Top genres:
-			{% for genre in music | frequentMediaTags | limit(10) %}
-				{% if genre %}
-					<a href="/music/{{ genre.tag | slugify }}">#{{ genre.tag | slugify }}</a>
-				{% endif %}
-			{% endfor %}
-		</p>
+		{% set media = music %}
+		{% set mediaType = "music" %}
+		{% set mediaListGrid = "grid-list grid-col-4" %}
+		{% include "components/media-tag-list.html" %}
 
-		{% if music.favourites and music.favourites.length > 0 %}
-			<section>
-				<h2 id="playing">Favourite music</h2>
-
-				<ul class="grid-list grid-col-4">
-					{% for music in music.favourites %}
-						<li>
-							<article>
-								<figure>
-									<img src="{{ music.thumbnail }}"/>
-
-									<figcaption>
-										<a href="{{ music.link }}">
-											{{ music.title }}
-										</a>
-									</figcaption>
-								</figure>
-							</article>
-						</li>
-					{% endfor %}
-				</ul>
-			</section>
-		{% endif %}
-
+		{% set media = music.favourites %}
+		{% set href = "/music/status/favourites" %}
+		{% set sectionTitle = "Favourite music" %}
+		{% include "components/media-list.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

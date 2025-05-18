@@ -17,6 +17,7 @@ const {
   frequentMediaTags,
   sortByDate,
   addGenrePagesCollection,
+  addMediaCategoriesCollection,
 } = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -32,10 +33,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/css");
-  eleventyConfig.addPassthroughCopy("./src/js/*.js");
+  eleventyConfig.addPassthroughCopy("./src/js");
 
   eleventyConfig.addWatchTarget("./src/css");
-  eleventyConfig.addWatchTarget("./src/js/*.js");
+  eleventyConfig.addWatchTarget("./src/js");
 
   eleventyConfig.addFilter("formatDate", formatDate);
   eleventyConfig.addFilter("shareUrl", generateShareUrl);
@@ -56,6 +57,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("postsByYear", postsByYear);
   eleventyConfig.addCollection("recentMedia", getRecentMedia);
   eleventyConfig.addCollection("genrePages", addGenrePagesCollection);
+  eleventyConfig.addCollection("mediaCategories", addMediaCategoriesCollection);
 
   eleventyConfig.setLibrary(
     "md",

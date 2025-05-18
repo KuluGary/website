@@ -340,6 +340,44 @@ function addGenrePagesCollection(collectionApi) {
   return genreList;
 }
 
+function addMediaCategoriesCollection(collectionApi) {
+  const cached = getFromCache("mediaCategories");
+
+  if (cached) {
+    return cached;
+  }
+
+  const allMedia = collectionApi.getAll()[0].data;
+  const categoryMap = {};
+
+  for (const [mediaType, lists] of Object.entries(allMedia)) {
+    for (const [category, list] of Object.entries(lists)) {
+      if (!Array.isArray(list)) continue;
+
+      for (const item of list) {
+        if (!item.type) continue;
+        const key = `${mediaType}:${category}`;
+
+        if (!categoryMap[key]) {
+          categoryMap[key] = {
+            mediaType,
+            category,
+            items: [],
+          };
+        }
+
+        categoryMap[key].items.push(item);
+      }
+    }
+  }
+
+  const categoryList = Object.values(categoryMap);
+
+  setIntoCache("mediaCategories", categoryList);
+
+  return categoryList;
+}
+
 module.exports = {
   postsByYear,
   formatDate,
@@ -358,5 +396,6 @@ module.exports = {
   frequentMediaTags,
   sortByDate,
   addGenrePagesCollection,
+  addMediaCategoriesCollection,
   log,
 };

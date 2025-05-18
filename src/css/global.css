@@ -667,19 +667,30 @@ label:has(.theme-switcher) {
   }
 }
 
-.grid-col-4 {
-  --column-amount: 4;
+.aspect-square,
+.grid-col-4 figure {
+  aspect-ratio: 1;
 }
 
-.aspect-square {
-  aspect-ratio: 1;
+.aspect-landscape,
+.grid-col-3 figure {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-portrait,
+.grid-col-5 figure {
+  aspect-ratio: 9 / 16;
+}
+
+.grid-col-4 {
+  --column-amount: 4;
 }
 
 .grid-col-5 {
   --column-amount: 5;
 }
 
-.grid-cols-3 {
+.grid-col-3 {
   --column-amount: 3;
 }
 

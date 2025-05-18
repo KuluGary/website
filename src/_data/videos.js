@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const { setIntoCache, getFromCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
-const log = require("../js/utils/log");
+const { log, time, timeEnd } = require("../js/utils/log");
 const fetch = require("node-fetch");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
@@ -123,11 +123,11 @@ module.exports = async function fetchYoutubeVideos() {
     return cached;
   }
 
-  log("[Videos]", "💻 Starting fresh scrape");
+  time("[Videos]", "💻 Starting fresh scrape");
   const data = await getCollection();
   setIntoCache("videos", data);
   saveTestData("videos.json", data);
-  log("[Videos]", "✔️ Scraping complete");
+  timeEnd("[Videos]", "✔️ Scraping complete");
 
   return data;
 };
