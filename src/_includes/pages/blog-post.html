@@ -62,7 +62,7 @@
   </main>
 
   <footer class="post-footer">
-    {% set postsList = collections["blog-post"] | similarPosts(page.url, tags) | limit(1) %}
+    {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(1) %}
 
     {% if postsList | length %}
       <h2>You may also like</h2>

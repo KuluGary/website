@@ -3,38 +3,45 @@ title: quizzes
 permalink: /quizzes/
 description: This is a dumping ground for results for personality quizzes I've done over the years.
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
-<h1>About this page</h1>
+{% block content %}
+  {% include "components/header.html" %}
 
-<p>This is a dumping ground for results for personality quizzes I've done over the years.</p>
+  <main>
+    <p>This is a dumping ground for results for personality quizzes I've done over the years.</p>
 
-<p>Availability for the quizz and/or results may very, as they've been linked while doing them and some don't work anymore.</p>
+    <p>Availability for the quizz and/or results may very, as they've been linked while doing them and some don't work anymore.</p>
 
-{% macro quizzItem(quizz) %}
-  <li>
-    {% if quizz.url %}
-      <a href="{{ quizz.url }}" target="_blank" rel="noopener noreferrer">{{ quizz.title }}</a>
-    {% else %}
-      {{ quizz.title }}
-    {% endif %}
+    {% macro quizzItem(quizz) %}
+      <li>
+        {% if quizz.url %}
+          <a href="{{ quizz.url }}" target="_blank" rel="noopener noreferrer">{{ quizz.title }}</a>
+        {% else %}
+          {{ quizz.title }}
+        {% endif %}
 
-    {% if quizz.children %}
-      <ul>
-        {% for item in quizz.children %}
-          {{ quizzItem(item) }}
-        {% endfor %}
+        {% if quizz.children %}
+          <ul>
+            {% for item in quizz.children %}
+              {{ quizzItem(item) }}
+            {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+    {% endmacro %}
+
+    <ul>
+      {% for quizz in quizzes %}
+        {{ quizzItem(quizz) }}
+      {% endfor %}
     </ul>
-  {% endif %}
-</li>
-{% endmacro %}
+  </main>
 
-<main>
-<ul>
-  {% for quizz in quizzes %}
-    {{ quizzItem(quizz) }}
-  {% endfor %}
-</ul>
-</main>
+  {% include "components/footer.html" %}
+{% endblock %}
 
-{% include "components/footer.html" %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

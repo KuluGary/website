@@ -16,22 +16,22 @@ permalink: /manga/
 
 		{% include "components/media-tag-list.html" %}
 
-		{% set media = manga.reading | filterMangaOnlySafe %}
+		{% set media = manga.reading | removeUnsafeManga %}
 		{% set href = "/manga/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list.html" %}
 
-		{% set media = manga.favourite | filterMangaOnlySafe %}
+		{% set media = manga.favourite | removeUnsafeManga %}
 		{% set href = "/manga/status/favourite" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list.html" %}
 
-		{% set media = manga.completed | filterMangaOnlySafe %}
+		{% set media = manga.completed | removeUnsafeManga %}
 		{% set href = "/manga/status/completed" %}
 		{% set sectionTitle = "Completed" %}
 		{% include "components/media-list.html" %}
 
-		{% set media = manga.dropped | filterMangaOnlySafe %}
+		{% set media = manga.dropped | removeUnsafeManga %}
 		{% set href = "/manga/status/dropped" %}
 		{% set sectionTitle = "Dropped" %}
 		{% include "components/media-list.html" %}

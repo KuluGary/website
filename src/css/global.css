@@ -617,10 +617,15 @@ label:has(.theme-switcher) {
 }
 
 .grid-list {
+  --grid-gap: 1rem;
   display: grid;
-  grid-template-columns: repeat(var(--column-amount), 1fr);
-  column-gap: 1rem;
-  row-gap: 1rem;
+
+  /* calculations, do not touch */
+  --grid-col-size-calc: calc((100% - var(--grid-gap) * var(--column-amount)) / var(--column-amount));
+  --grid-col-min-size-calc: min(100%, max(var(--grid-min-col-size), var(--grid-col-size-calc)));
+
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min-size-calc), 1fr));
+  gap: var(--grid-gap);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -688,17 +693,21 @@ label:has(.theme-switcher) {
 .aspect-portrait,
 .grid-col-5 figure {
   aspect-ratio: 9 / 16;
+  min-height: 200px;
 }
 
 .grid-col-4 {
+  --grid-min-col-size: 100px;
   --column-amount: 4;
 }
 
 .grid-col-5 {
+  --grid-min-col-size: 100px;
   --column-amount: 5;
 }
 
 .grid-col-3 {
+  --grid-min-col-size: 120px;
   --column-amount: 3;
 }
 

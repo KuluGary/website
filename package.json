@@ -14,12 +14,15 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@jgarber/eleventy-plugin-postcss": "^1.0.1",
     "chalk": "^4.1.1",
     "cli-progress": "^3.12.0",
     "fast-xml-parser": "^5.2.0",
     "flat-cache": "^6.1.8",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
+    "postcss-nesting": "^13.0.1",
+    "postcss-preset-env": "^10.1.6",
     "puppeteer": "^24.6.1",
     "querystring": "^0.2.1",
     "sanitize-html": "^2.17.0",
@@ -29,6 +32,8 @@
     "@11ty/eleventy-fetch": "^4.0.1",
     "@extractus/feed-extractor": "^7.1.0",
     "@photogabble/eleventy-plugin-word-stats": "^1.0.1",
-    "dotenv": "^16.4.5"
+    "autoprefixer": "^10.4.21",
+    "dotenv": "^16.4.5",
+    "postcss-nested": "^7.0.2"
   }
 }

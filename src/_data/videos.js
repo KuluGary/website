@@ -70,7 +70,7 @@ async function scrapePlaylist(playlistId) {
 
     videos.push({
       id: video.contentDetails.videoId,
-      type: "Video",
+      type: "Videos",
       title: video.snippet.title,
       description: video.snippet.description,
       link: `https://youtube.com/watch?v=${video.contentDetails.videoId}`,

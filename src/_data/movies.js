@@ -7,6 +7,7 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
+const { slugify } = require("../js/11ty/generic");
 
 const DEBUG = false;
 const TRAKT_USER = "kulugary";
@@ -56,7 +57,7 @@ async function scrapeMoviePage(page, url, status) {
       const { description, genres, imageSrc } = await scrapeMovieProfile(profilePage);
       await profilePage.close();
 
-      const safeName = sanitizeFilename(originalTitle);
+      const safeName = slugify(originalTitle);
       const imagePath = await downloadImage(status, imageSrc, safeName);
 
       movies.push({
@@ -117,18 +118,6 @@ async function downloadImage(folder, url, fileName) {
 
   if (!fs.existsSync(fullPath)) fs.writeFileSync(fullPath, buffer);
   return `${coverPath}/${folder}/${fileName}.jpg`;
-}
-
-/**
- * Sanitizes a filename for safe usage.
- */
-function sanitizeFilename(name) {
-  return (
-    name
-      ?.replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
-      .replace(/\s+/g, "-")
-      .trim() || "unknown"
-  );
 }
 
 async function getCollection() {

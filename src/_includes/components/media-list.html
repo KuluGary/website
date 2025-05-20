@@ -7,15 +7,15 @@
 		</h2>
 
 		<ul class="{{ mediaListGrid }}">
-			{% for game in media %}
+			{% for item in media %}
 				<li>
 					<article>
 						<figure>
-							<img src="{{ game.thumbnail }}"/>
+							<img src="{{ item.thumbnail }}"/>
 
 							<figcaption>
-								<a href="{{ game.link }}">
-									{{ game.title }}
+								<a href="{{ item.link }}">
+									{{ item.title }}
 								</a>
 							</figcaption>
 						</figure>
@@ -23,5 +23,13 @@
 				</li>
 			{% endfor %}
 		</ul>
+
+		{% if showFooter %}
+			<footer>
+				<p>
+					<a href="{{ href | getRootUrl }}">See more &raquo;</a>
+				</p>
+			</footer>
+		{% endif %}
 	</section>
 {% endif %}

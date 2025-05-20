@@ -1,6 +1,6 @@
 <h2>Tags</h2>
 <ul class="horizontal">
-  {% for tag in collection | uniqueTags %}
+  {% for tag in collection | getUniqueTags %}
     {% if tag != collection %}
       <li>
         <a href="/tags/{{ tag }}">

@@ -1,63 +1,73 @@
-const {
-  postsByYear,
-  formatDate,
-  filterMangaOnlySafe,
-  generateShareUrl,
-  uniqueTags,
-  unslugify,
-  generateSocialMediaImage,
-  limit,
-  collectionStats,
-  excludeFromList,
-  log,
-  getSimilarPosts,
-  getRecentMedia,
-  formatNumber,
-  frequentTags,
-  frequentMediaTags,
-  sortByDate,
-  addGenrePagesCollection,
-  addMediaCategoriesCollection,
-} = require("./src/js/eleventyConfig");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const wordStats = require("@photogabble/eleventy-plugin-word-stats");
+const {
+  formatDate,
+  limit,
+  unslugify,
+  formatNumber,
+  sortByDate,
+  getRootUrl,
+  generateSocialMediaImage,
+  log,
+} = require("./src/js/11ty/generic");
+const {
+  getPostsByYear,
+  getPostsWithoutCurrent,
+  getSimilarPosts,
+  getFrequentTags,
+  getCollectionStats,
+  getUniqueTags,
+  getShareUrl,
+} = require("./src/js/11ty/blog");
+const {
+  getFrequentMediaTags,
+  getRecentMedia,
+  getMediaCategories,
+  getMediaGenres,
+  removeUnsafeManga,
+} = require("./src/js/11ty/media");
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
   eleventyConfig.addPlugin(wordStats);
   eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(require("@jgarber/eleventy-plugin-postcss"));
 
   eleventyConfig.addPassthroughCopy("./src/assets");
-  eleventyConfig.addPassthroughCopy("./src/css");
   eleventyConfig.addPassthroughCopy("./src/js");
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
 
+  /** 11ty generic */
   eleventyConfig.addFilter("formatDate", formatDate);
-  eleventyConfig.addFilter("shareUrl", generateShareUrl);
-  eleventyConfig.addFilter("filterMangaOnlySafe", filterMangaOnlySafe);
-  eleventyConfig.addFilter("uniqueTags", uniqueTags);
-  eleventyConfig.addFilter("unslugify", unslugify);
-  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
-  eleventyConfig.addFilter("limit", limit);
-  eleventyConfig.addFilter("collectionStats", collectionStats);
-  eleventyConfig.addFilter("excludeFromList", excludeFromList);
-  eleventyConfig.addFilter("similarPosts", getSimilarPosts);
-  eleventyConfig.addFilter("formatNumber", formatNumber);
-  eleventyConfig.addFilter("frequentTags", frequentTags);
-  eleventyConfig.addFilter("frequentMediaTags", frequentMediaTags);
   eleventyConfig.addFilter("sortByDate", sortByDate);
+  eleventyConfig.addFilter("formatNumber", formatNumber);
+  eleventyConfig.addFilter("getRootUrl", getRootUrl);
+  eleventyConfig.addFilter("unslugify", unslugify);
+  eleventyConfig.addFilter("limit", limit);
+  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
   eleventyConfig.addFilter("log", log);
 
-  eleventyConfig.addCollection("postsByYear", postsByYear);
+  /** 11ty blog */
+  eleventyConfig.addCollection("getPostsByYear", getPostsByYear);
+  eleventyConfig.addFilter("getShareUrl", getShareUrl);
+  eleventyConfig.addFilter("getUniqueTags", getUniqueTags);
+  eleventyConfig.addFilter("getCollectionStats", getCollectionStats);
+  eleventyConfig.addFilter("getPostsWithoutCurrent", getPostsWithoutCurrent);
+  eleventyConfig.addFilter("getFrequentTags", getFrequentTags);
+  eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
+
+  /** 11ty media */
+  eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
+  eleventyConfig.addFilter("getFrequentMediaTags", getFrequentMediaTags);
   eleventyConfig.addCollection("recentMedia", getRecentMedia);
-  eleventyConfig.addCollection("genrePages", addGenrePagesCollection);
-  eleventyConfig.addCollection("mediaCategories", addMediaCategoriesCollection);
+  eleventyConfig.addCollection("genrePages", getMediaGenres);
+  eleventyConfig.addCollection("mediaCategories", getMediaCategories);
 
   eleventyConfig.setLibrary(
     "md",

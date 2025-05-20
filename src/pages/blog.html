@@ -21,7 +21,7 @@ description: These are my essays, tutorials, and long-form write-ups.
       <section>
         <h2>{{ year }}</h2>
 
-        {% set postStats = items | collectionStats %}
+        {% set postStats = items | getCollectionStats %}
         <p>{{postStats.totalItems}} posts made in {{year}}. <a href="{{ postStats.longestItem.item.url }}">
             {{ postStats.longestItem.item.data.title }}</a> is the longest post with {{ postStats.longestItem.wordCount }} words.</p>
 
