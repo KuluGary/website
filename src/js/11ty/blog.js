@@ -1,3 +1,5 @@
+const readingTime = require("reading-time");
+
 module.exports = {
   getPostsByYear,
   getShareUrl,

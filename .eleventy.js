@@ -54,7 +54,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */
-  eleventyConfig.addCollection("getPostsByYear", getPostsByYear);
+  eleventyConfig.addCollection("postsByYear", getPostsByYear);
   eleventyConfig.addFilter("getShareUrl", getShareUrl);
   eleventyConfig.addFilter("getUniqueTags", getUniqueTags);
   eleventyConfig.addFilter("getCollectionStats", getCollectionStats);

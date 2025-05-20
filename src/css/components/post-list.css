@@ -72,6 +72,11 @@ ul.post-list .post-tags li {
   margin: 0;
 }
 
+ul.post-list h2 > a {
+  color: var(--secondary-color) !important;
+  text-decoration: underline;
+}
+
 ul.post-list .post-tags a {
   text-decoration-thickness: 1px;
 }
