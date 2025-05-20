@@ -1,5 +1,3 @@
-const { getFromCache, setIntoCache } = require("../utils/cache");
-
 module.exports = {
   removeUnsafeManga,
   getRecentMedia,
@@ -23,12 +21,6 @@ function removeUnsafeManga(mangaList) {
  * @returns An array of media and posts
  */
 function getRecentMedia(collection) {
-  const cached = getFromCache("recentMedia");
-
-  if (cached) {
-    return cached;
-  }
-
   const allMedia = collection.getAll()[0].data;
   const posts = collection.getFilteredByTag("blog-post");
 
@@ -90,7 +82,6 @@ function getRecentMedia(collection) {
       return nextDate.getTime() - prevDate.getTime();
     });
 
-  setIntoCache("recentMedia", recentMedia);
   return recentMedia;
 }
 
@@ -123,12 +114,6 @@ function getFrequentMediaTags(media) {
  * @returns An array of categories based on media
  */
 function getMediaCategories(collectionApi) {
-  const cached = getFromCache("mediaCategories");
-
-  if (cached) {
-    return cached;
-  }
-
   const allMedia = collectionApi.getAll()[0].data;
   const categoryMap = {};
 
@@ -155,8 +140,6 @@ function getMediaCategories(collectionApi) {
 
   const categoryList = Object.values(categoryMap);
 
-  setIntoCache("mediaCategories", categoryList);
-
   return categoryList;
 }
 
@@ -166,12 +149,6 @@ function getMediaCategories(collectionApi) {
  * @returns An array of media elements by genre
  */
 function getMediaGenres(collectionApi) {
-  const cached = getFromCache("genreCollection");
-
-  if (cached) {
-    return cached;
-  }
-
   const allMedia = collectionApi.getAll()[0].data;
 
   const genreMap = {};
@@ -199,8 +176,6 @@ function getMediaGenres(collectionApi) {
   }
 
   const genreList = Object.values(genreMap);
-
-  setIntoCache("genreCollection", genreList);
 
   return genreList;
 }
