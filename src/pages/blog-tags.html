@@ -3,6 +3,12 @@ pagination:
   data: collections
   size: 1
   alias: tag
+  filter:
+    - blog-post
+    - genrePages
+    - mediaCategories
+    - postsByYear
+    - recentMedia
 permalink: /tags/{{tag}}.html
 eleventyComputed:
   title: tagged "{{ tag | unslugify }}"

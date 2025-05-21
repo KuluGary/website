@@ -89,13 +89,10 @@ async function scrapeGameFromList(game) {
     const timeString = el.innerText;
     if (!timeString) return undefined;
 
-    // Only consider the part before the slash
     const [primaryPart] = timeString.split("/").map((part) => part.trim());
 
-    // If primaryPart is "--", return undefined
     if (primaryPart === "--") return undefined;
 
-    // Match hours and minutes
     const hoursMatch = primaryPart.match(/(\d+)h/);
     const minutesMatch = primaryPart.match(/(\d+)m/);
 
@@ -139,7 +136,7 @@ async function fetchExtendedGameData(list, cookies) {
   const body = {
     user_id: userId,
     toggleType: "Single List",
-    lists: [getListNameId(list)], // all lists you want
+    lists: [getListNameId(list)],
     set_playstyle: "comp_all",
     name: "",
     platform: "",
@@ -272,6 +269,7 @@ async function getCollection() {
  */
 module.exports = async function fetchHLTBGames() {
   const cached = getFromCache("games");
+
   if (cached && !DEBUG) {
     log("[HLTB]", "🗃️ Returning cached data");
     return cached;

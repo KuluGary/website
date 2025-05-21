@@ -1,4 +1,3 @@
-const puppeteer = require("puppeteer");
 const { setIntoCache, getFromCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const { log, time, timeEnd } = require("../js/utils/log");
@@ -11,10 +10,10 @@ const PLAYLISTS = {
 };
 
 /**
- * Handles scraping detailed info for a video
+ * Handles fetching detailed info for a video
  * @param {string} videoId id of the video to fetch information for
  */
-async function scrapeVideoDetails(videoId) {
+async function fetchVideoDetails(videoId) {
   const url = new URL("https://www.googleapis.com/youtube/v3/videos");
   url.searchParams.append("part", "contentDetails");
   url.searchParams.append("part", "snippet");
@@ -39,12 +38,11 @@ async function scrapeVideoDetails(videoId) {
 }
 
 /**
- * Handles scraping of all videos on a user's playlist page.
- * @param {puppeteer.Page} page - Puppeteer page instance.
- * @param {string} url - The URL of the user's playlist page.
- * @returns {Promise<Object[]>} Array of video objects.
+ * Handles fetching of all videos on a user's playlist page.
+ * @param {string} playlistId - The ID of the playlist to fetch
+ * @return {Array<Object>} array of video elements
  */
-async function scrapePlaylist(playlistId) {
+async function fetchPlaylist(playlistId) {
   const videos = [];
 
   const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
@@ -65,7 +63,7 @@ async function scrapePlaylist(playlistId) {
   startProgress(items.length);
 
   for (const video of items) {
-    const { rate, views, duration, tags } = await scrapeVideoDetails(video.contentDetails.videoId);
+    const { rate, views, duration, tags } = await fetchVideoDetails(video.contentDetails.videoId);
     incrementProgress();
 
     videos.push({
@@ -103,7 +101,7 @@ async function getCollection() {
     for (const [playlistName, playlistId] of Object.entries(PLAYLISTS)) {
       log("[Videos]", `🔍 Scraping ${playlistName}`);
 
-      allVideos[playlistName] = await scrapePlaylist(playlistId);
+      allVideos[playlistName] = await fetchPlaylist(playlistId);
     }
 
     return allVideos;

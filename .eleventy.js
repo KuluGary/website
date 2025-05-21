@@ -38,7 +38,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(require("@jgarber/eleventy-plugin-postcss"));
 
   eleventyConfig.addPassthroughCopy("./src/assets");
-  eleventyConfig.addPassthroughCopy("./src/js");
+  eleventyConfig.addPassthroughCopy("./src/js/*.js");
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
