@@ -617,12 +617,11 @@ label:has(.theme-switcher) {
 }
 
 .grid-list {
-  --grid-gap: 1rem;
   display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, var(--column-size, 118px));
+  grid-template-columns: repeat(auto-fit, minmax(var(--column-size), 1fr));
+  gap: 1rem;
+  justify-content: center;
 
-  gap: var(--grid-gap);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -677,24 +676,16 @@ label:has(.theme-switcher) {
   }
 }
 
-.grid-list.grid-col-5 figure {
-  aspect-ratio: 9 / 16;
+.grid-list.grid-col-5 {
+  --column-size: 118px;
 }
 
 .grid-list.grid-col-4 {
   --column-size: 152px;
-
-  & figure {
-    aspect-ratio: 1;
-  }
 }
 
 .grid-list.grid-col-3 {
   --column-size: 208px;
-
-  & figure {
-    aspect-ratio: 16 / 9;
-  }
 }
 
 .recent-activity {
