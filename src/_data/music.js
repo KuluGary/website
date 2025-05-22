@@ -3,9 +3,11 @@ const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const { log, time, timeEnd } = require("../js/utils/log");
 
-const DEBUG = false;
 const PLAYLISTS = {
   favourites: "79jHGYxWHmhXthpE0o8DIK",
+};
+const OPTIONS = {
+  cache: true,
 };
 
 const headers = {};
@@ -96,7 +98,7 @@ async function getArtistGenres(artistId) {
  */
 module.exports = async function fetchSpotifyMusic() {
   const cached = getFromCache("music");
-  if (cached && !DEBUG) {
+  if (cached && OPTIONS.cache) {
     log("[Spotify]", "🗃️ Returning cached data");
     return cached;
   }

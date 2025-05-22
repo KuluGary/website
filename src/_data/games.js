@@ -6,7 +6,6 @@ const fetch = require("node-fetch");
 const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
-const DEBUG = false;
 const HLTB_USER = "KuluGary";
 const PAGES = {
   playing: `https://howlongtobeat.com/user/${HLTB_USER}/games/playing/1`,
@@ -15,6 +14,11 @@ const PAGES = {
   played: `https://howlongtobeat.com/user/${HLTB_USER}/games/custom2/1`,
   completed: `https://howlongtobeat.com/user/${HLTB_USER}/games/completed/1`,
   retired: `https://howlongtobeat.com/user/${HLTB_USER}/games/retired/1`,
+};
+const OPTIONS = {
+  cache: true,
+  headless: true,
+  logErrors: false,
 };
 
 /**
@@ -163,7 +167,7 @@ async function fetchExtendedGameData(list, cookies) {
       Cookie: cookies,
     },
     body: JSON.stringify(body),
-  }).catch((err) => DEBUG && console.error(err));
+  }).catch((err) => OPTIONS.logErrors && console.error(err));
 
   if (!response.ok) {
     const text = await response.text();
@@ -243,7 +247,7 @@ async function scrapeGamesFromPage(page, url, status) {
  */
 async function getCollection() {
   const browser = await puppeteer.launch({
-    headless: !DEBUG,
+    headless: OPTIONS.headless,
     args: [
       "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
       "--disable-features=site-per-process",
@@ -270,7 +274,7 @@ async function getCollection() {
 module.exports = async function fetchHLTBGames() {
   const cached = getFromCache("games");
 
-  if (cached && !DEBUG) {
+  if (cached && OPTIONS.cache) {
     log("[HLTB]", "🗃️ Returning cached data");
     return cached;
   }

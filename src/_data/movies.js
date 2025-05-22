@@ -9,13 +9,16 @@ const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 const { slugify } = require("../js/11ty/generic");
 
-const DEBUG = false;
 const TRAKT_USER = "kulugary";
 const PAGES = {
   favourites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=movie&sort=released%2Casc`,
   dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=movie&sort=rank%2Casc`,
   watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=movie&sort=rank%2Casc`,
   seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=movie&sort=rank%2Casc`,
+};
+const OPTIONS = {
+  cache: true,
+  headless: true,
 };
 
 const coverPath = "/assets/images/covers/movies";
@@ -122,7 +125,7 @@ async function downloadImage(folder, url, fileName) {
 
 async function getCollection() {
   const browser = await puppeteer.launch({
-    headless: !DEBUG,
+    headless: OPTIONS.headless,
     args: [
       "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
       "--disable-features=site-per-process",
@@ -148,7 +151,7 @@ async function getCollection() {
  */
 module.exports = async function fetchTraktMovies() {
   const cached = getFromCache("movies");
-  if (cached && !DEBUG) {
+  if (cached && OPTIONS.cache) {
     log("[Trakt.tv/Movies]", "🗃️ Returning cached data");
     return cached;
   }

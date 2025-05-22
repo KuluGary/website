@@ -1,71 +1,86 @@
 .header {
   border: 1px solid var(--text-color);
   margin-bottom: calc(var(--line-height) * 2);
-}
 
-.header .logo-row {
-  display: flex;
-  align-items: center;
-  gap: var(--line-height);
-  padding: calc(var(--line-height) / 2);
-}
+  & .logo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--line-height);
+    padding: calc(var(--line-height) / 2);
 
-.header .logo-row h1 {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  font-size: 2rem;
-  line-height: calc(2 * var(--line-height));
-  text-transform: uppercase;
-}
+    h1 {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      font-size: 2rem;
+      line-height: calc(2 * var(--line-height));
+      text-transform: uppercase;
 
-.header .logo-row h1::before {
-  content: "";
-  margin: 0;
-}
+      &::before {
+        content: "";
+        margin: 0;
+      }
+    }
 
-.header .logo-row > img {
-  width: auto;
-  height: auto;
-  display: inline;
-  height: 70px;
-  width: 70px;
-  margin: 0px;
-}
+    & > img {
+      width: auto;
+      height: auto;
+      display: inline;
+      height: 70px;
+      width: 70px;
+      margin: 0px;
+    }
 
-header .logo-row a {
-  text-decoration: none;
-  margin: 0px;
-  background-color: transparent;
-}
+    & a {
+      text-decoration: none;
+      margin: 0px;
+      background-color: transparent;
+      @media (width <= 290px) {
+        display: block;
+        margin-inline: auto;
+        text-align: center;
+      }
 
-header .logo-row a > * {
-  color: var(--background-color);
-}
+      & > * {
+        color: var(--background-color);
+      }
+    }
 
-header .logo-row svg path {
-  fill: var(--background-color);
-}
+    & svg {
+      @media (width <= 290px) {
+        display: none;
+      }
 
-.header nav {
-  margin: 0;
-  padding-inline: calc(var(--line-height) / 2);
-}
+      & path {
+        fill: var(--background-color);
+      }
+    }
+  }
 
-.header nav a {
-  line-height: calc(2 * var(--line-height));
-}
+  & nav {
+    margin: 0;
+    padding-inline: calc(var(--line-height) / 2);
 
-.header ul,
-.header li {
-  margin: 0;
-}
+    & a {
+      line-height: calc(2 * var(--line-height));
+    }
+  }
 
-.header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: right;
-  flex-wrap: wrap;
+  & ul,
+  li {
+    margin: 0;
+  }
+
+  & ul.bar-separated {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+
+    @media (width <= 640px) {
+      justify-content: center;
+    }
+  }
 }
 
 header *:has(h1) {

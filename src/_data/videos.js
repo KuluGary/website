@@ -4,9 +4,11 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const fetch = require("node-fetch");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
-const DEBUG = false;
 const PLAYLISTS = {
   favourites: "FLYZ470OLAQ3k2sAcPDX4erg",
+};
+const OPTIONS = {
+  cache: true,
 };
 
 /**
@@ -116,7 +118,7 @@ async function getCollection() {
  */
 module.exports = async function fetchYoutubeVideos() {
   const cached = getFromCache("videos");
-  if (cached && !DEBUG) {
+  if (cached && OPTIONS.cache) {
     log("[Videos]", "🗃️ Returning cached data");
     return cached;
   }
