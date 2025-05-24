@@ -34,6 +34,7 @@
     "@photogabble/eleventy-plugin-word-stats": "^1.0.1",
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.5",
-    "postcss-nested": "^7.0.2"
+    "postcss-nested": "^7.0.2",
+    "rss-parser": "^3.13.0"
   }
 }

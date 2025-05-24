@@ -1,0 +1,47 @@
+---
+title: Webcomics
+permalink: /webcomics/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+		<p>This is a comprehensive list of all my webcomics, organized by status.</p>
+
+		{% set media = webcomics %}
+		{% set mediaType = "webcomic" %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
+
+		{% include "components/media-tag-list.html" %}
+
+		{% set media = webcomics.reading %}
+		{% set href = "/webcomic/status/reading" %}
+		{% set sectionTitle = "Currently reading" %}
+		{% include "components/media-list.html" %}
+
+		{% set media = webcomics.favourites %}
+		{% set href = "/webcomic/status/favourites" %}
+		{% set sectionTitle = "Favourites" %}
+		{% include "components/media-list.html" %}
+
+		{% set media = webcomics.completed %}
+		{% set href = "/webcomics/status/completed" %}
+		{% set sectionTitle = "Completed" %}
+		{% include "components/media-list.html" %}
+
+		{% set media = webcomics.dropped %}
+		{% set href = "/webcomics/status/dropped" %}
+		{% set sectionTitle = "dropped" %}
+		{% include "components/media-list.html" %}
+
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

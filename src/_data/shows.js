@@ -24,9 +24,67 @@ const OPTIONS = {
 const coverPath = "/assets/images/covers/shows";
 
 /**
- * Scrapes a single Trakt show list page.
+ * Main entry point for module: scrapes and caches shows data.
+ * @returns {Promise<Object>} Scraped shows data.
  */
-async function scrapeShowPage(page, url, status) {
+module.exports = async function fetchTraktShows() {
+  const cached = getFromCache("shows");
+  if (cached && OPTIONS.cache) {
+    log("[Trakt.tv/Shows]", "🗃️ Returning cached data");
+    return cached;
+  }
+
+  time("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
+  const collection = await getCollection();
+  setIntoCache("shows", collection);
+  saveTestData("shows.json", collection);
+  timeEnd("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
+
+  return collection;
+};
+
+/**
+ * Fetches show collection
+ * @returns shows collection
+ */
+async function getCollection() {
+  const browser = await puppeteer.launch({
+    headless: OPTIONS.headless,
+    args: [
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "--disable-features=site-per-process",
+    ],
+  });
+
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1080, height: 1024 });
+
+  const collection = {};
+  for (const [status, url] of Object.entries(PAGES)) {
+    log("[Trakt.tv/Shows]", `🔍 Scraping ${status}`);
+    collection[status] = await scrapeShowListPage(page, url, status);
+  }
+
+  await browser.close();
+  return collection;
+}
+
+/**
+ * Constructs Trakt URL by status and type
+ * @param {string} status
+ * @param {string} type
+ */
+function constructShowUrl(status, type) {
+  return `https://trakt.tv/users/${TRAKT_USER}/${status}?display=${type}&sort=released%2Casc`;
+}
+
+/**
+ * Scrapes a single Trakt show list page.
+ * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
+ * @param {string} url URL of the page to go to
+ * @param {string} status status type of the show to fetch
+ */
+async function scrapeShowListPage(page, url, status) {
   const browser = page.browser();
 
   await page.goto(url).catch(() => null);
@@ -57,7 +115,7 @@ async function scrapeShowPage(page, url, status) {
       const profilePage = pages[pages.length - 1];
 
       await profilePage.bringToFront();
-      const { description, genres, imageSrc } = await scrapeShowProfile(profilePage);
+      const { description, genres, imageSrc } = await scrapeShowProfilePage(profilePage);
       await profilePage.close();
 
       const safeName = slugify(originalTitle);
@@ -90,7 +148,7 @@ async function scrapeShowPage(page, url, status) {
  * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
  * @returns {Promise<{ description: string, genres: Array<string>, imageSrc: string }>} Object containing the description and genres of a show
  */
-async function scrapeShowProfile(page) {
+async function scrapeShowProfilePage(page) {
   await delay(1000);
   const descriptionSelector = await page.waitForSelector("#overview");
   const description = await descriptionSelector.evaluate((el) => el.innerText);
@@ -122,45 +180,3 @@ async function downloadImage(folder, url, fileName) {
   if (!fs.existsSync(fullPath)) fs.writeFileSync(fullPath, buffer);
   return `${coverPath}/${folder}/${fileName}.jpg`;
 }
-
-async function getCollection() {
-  const browser = await puppeteer.launch({
-    headless: OPTIONS.headless,
-    args: [
-      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-      "--disable-features=site-per-process",
-    ],
-  });
-
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1024 });
-
-  const collection = {};
-  for (const [status, url] of Object.entries(PAGES)) {
-    log("[Trakt.tv/Shows]", `🔍 Scraping ${status}`);
-    collection[status] = await scrapeShowPage(page, url, status);
-  }
-
-  await browser.close();
-  return collection;
-}
-
-/**
- * Main entry point for module: scrapes and caches shows data.
- * @returns {Promise<Object>} Scraped shows data.
- */
-module.exports = async function fetchTraktShows() {
-  const cached = getFromCache("shows");
-  if (cached && OPTIONS.cache) {
-    log("[Trakt.tv/Shows]", "🗃️ Returning cached data");
-    return cached;
-  }
-
-  time("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
-  const collection = await getCollection();
-  setIntoCache("shows", collection);
-  saveTestData("shows.json", collection);
-  timeEnd("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
-
-  return collection;
-};

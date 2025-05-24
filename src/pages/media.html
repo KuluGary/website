@@ -19,8 +19,14 @@ description: Check the different media I'm into at the moment.
 		{% set sectionTitle = "Favourite games" %}
 		{% include "components/media-list.html" %}
 
+		{% set media = webcomics.favourites | limit(5) %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
+		{% set href = "/webcomics/status/favourites" %}
+		{% set sectionTitle = "Favourite webcomics" %}
+		{% include "components/media-list.html" %}
+
 		{% set media = manga.favourite | removeUnsafeManga | limit(5) %}
-		{% set href = "/manga/status/favourites" %}
+		{% set href = "/manga/status/favourite" %}
 		{% set sectionTitle = "Favourite manga" %}
 		{% include "components/media-list.html" %}
 
@@ -28,7 +34,6 @@ description: Check the different media I'm into at the moment.
     {% set href = "/shows/status/favourites" %}
     {% set sectionTitle = "Favourite shows" %}
     {% include "components/media-list.html" %}
-
 
     {% set media = movies.favourites | limit(5) %}
     {% set href = "/movies/status/favourites" %}

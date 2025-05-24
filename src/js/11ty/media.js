@@ -30,6 +30,7 @@ function getRecentMedia(collection) {
   const music = allMedia.music || [];
   const shows = allMedia.shows || [];
   const videos = allMedia.videos || [];
+  const webcomics = allMedia.webcomics || [];
 
   function getDate(element) {
     return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
@@ -42,6 +43,7 @@ function getRecentMedia(collection) {
     ...shows.watchlist,
     ...music.favourites,
     ...videos.favourites,
+    ...webcomics.reading,
     ...posts,
   ]
     .map((element) => {

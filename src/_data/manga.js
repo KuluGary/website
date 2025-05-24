@@ -15,6 +15,7 @@ const ENDPOINTS = {
   MANGA_LIST: "https://api.mangadex.org/list/afb0fc3b-ad9c-44e4-ba9f-5e780f464ded",
   MANGA_BASE:
     "https://api.mangadex.org/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
+  CHAPTER_BASE: "https://api.mangadex.org/chapter",
   FOLLOWS: "https://api.mangadex.org/user/follows/manga?limit=100",
   STATUS: "https://api.mangadex.org/manga/status",
 };
@@ -68,23 +69,30 @@ async function fetchMangaDetails(mangaRefs) {
   return data.data;
 }
 
+async function fetchLatestChapter(chapterId) {
+  const url = `${ENDPOINTS.CHAPTER_BASE}/${chapterId}`;
+  const data = await fetchJSON(url, headers);
+
+  return data;
+}
+
 /**
  * Converts raw API manga data into a formatted object.
  * @param {Object} manga - Raw MangaDex API manga object.
  * @returns {Object}
  */
-function formatManga(manga) {
+async function formatManga(manga) {
   const id = manga.id;
   const title = manga.attributes.title.en || "Untitled";
   const descriptionHtml = converter.makeHtml(manga.attributes.description.en || "");
   const description = sanitize(descriptionHtml, { allowedTags: ["p"], disallowedTagsMode: "discard" });
+  const latestChapter = await fetchLatestChapter(manga.attributes.latestUploadedChapter);
 
   const author = manga.relationships.find((r) => r.type === "author")?.attributes?.name || "Unknown";
   const genres = manga.attributes.tags
     .filter((tag) => tag.attributes.group === "genre")
     .map((tag) => tag.attributes?.name?.en);
 
-  const updatedAt = manga.attributes.updatedAt;
   const rating = manga.attributes.contentRating;
 
   const coverArt = manga.relationships.find((r) => r.type === "cover_art")?.attributes?.fileName;
@@ -103,7 +111,7 @@ function formatManga(manga) {
     rating,
     link: manga.attributes.links?.raw,
     thumbnail: `/assets/images/covers/manga/${coverFileName}`,
-    updatedAt,
+    updatedAt: latestChapter.data?.attributes?.publishAt ?? manga.attributes.updatedAt,
   };
 }
 
@@ -158,16 +166,16 @@ module.exports = async function fetchMangaDex() {
   const followManga = await fetchMangaDetails(followList.data);
   const favouriteManga = await fetchMangaDetails(favouriteList.data.relationships);
 
-  followManga.forEach((manga) => {
+  for (const manga of followManga) {
     const status = statusMap.statuses[manga.id];
     if (status) {
-      collection[status].push(formatManga(manga));
+      collection[status].push(await formatManga(manga));
     }
-  });
+  }
 
-  favouriteManga.forEach((manga) => {
-    collection.favourite.push(formatManga(manga));
-  });
+  for (const manga of favouriteManga) {
+    collection.favourite.push(await formatManga(manga));
+  }
 
   setIntoCache("manga", collection);
   saveTestData("manga.json", collection);
