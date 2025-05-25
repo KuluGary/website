@@ -143,6 +143,29 @@ async function fetchJSON(url, headers = {}) {
 }
 
 /**
+ * Fetches and parses JSON with pagination.
+ * @param {string} url
+ * @param {Object} headers
+ * @returns {Promise<Object>}
+ */
+async function fetchAllPaginated(url, headers = {}) {
+  const limit = 100;
+  let offset = 0;
+  let allData = [];
+  let hasMore = true;
+
+  while (hasMore) {
+    const paginatedUrl = `${url}&limit=${limit}&offset=${offset}`;
+    const response = await fetchJSON(paginatedUrl, headers);
+    allData = allData.concat(response.data);
+    offset += limit;
+    hasMore = response.total ? offset < response.total : response.data.length === limit;
+  }
+
+  return allData;
+}
+
+/**
  * Main entry point for module: scrapes and caches manga data.
  * @returns {Promise<Object>} Scraped manga data.
  */
@@ -157,9 +180,9 @@ module.exports = async function fetchMangaDex() {
 
   time("[MangaDex]", "💬 Starting fresh scrape");
   const [followList, statusMap, favouriteList] = await Promise.all([
-    fetchJSON(ENDPOINTS.FOLLOWS, headers),
+    fetchAllPaginated(ENDPOINTS.FOLLOWS, headers),
     fetchJSON(ENDPOINTS.STATUS, headers),
-    fetchJSON(ENDPOINTS.MANGA_LIST),
+    fetchAllPaginated(ENDPOINTS.MANGA_LIST),
   ]);
 
   const collection = { favourite: [] };
