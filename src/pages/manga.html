@@ -16,22 +16,32 @@ permalink: /manga/
 
 		{% include "components/media-tag-list.html" %}
 
-		{% set media = manga.reading | removeUnsafeManga %}
+		{% set media = manga.reading %}
 		{% set href = "/manga/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = manga.favourite | removeUnsafeManga %}
+		{% set media = manga.plan_to_read %}
+		{% set href = "/manga/status/plan_to_read" %}
+		{% set sectionTitle = "Plan to read" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = manga.favourite %}
 		{% set href = "/manga/status/favourite" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = manga.completed | removeUnsafeManga %}
+		{% set media = manga.completed %}
 		{% set href = "/manga/status/completed" %}
 		{% set sectionTitle = "Completed" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = manga.dropped | removeUnsafeManga %}
+		{% set media = manga.on_hold %}
+		{% set href = "/manga/status/on_hold" %}
+		{% set sectionTitle = "On hold" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = manga.dropped %}
 		{% set href = "/manga/status/dropped" %}
 		{% set sectionTitle = "Dropped" %}
 		{% include "components/media-list-section.html" %}

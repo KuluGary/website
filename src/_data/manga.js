@@ -16,7 +16,8 @@ const ENDPOINTS = {
   MANGA_BASE:
     "https://api.mangadex.org/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
   CHAPTER_BASE: "https://api.mangadex.org/chapter",
-  FOLLOWS: "https://api.mangadex.org/user/follows/manga?limit=100",
+  FOLLOWS:
+    "https://api.mangadex.org/user/follows/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&includes[]=manga",
   STATUS: "https://api.mangadex.org/manga/status",
 };
 
@@ -24,6 +25,7 @@ const AUTH_URL = "https://auth.mangadex.org/realms/mangadex/protocol/openid-conn
 
 const OPTIONS = {
   cache: true,
+  logError: false,
 };
 
 let headers = {
@@ -65,8 +67,8 @@ async function fetchMangaDetails(mangaRefs) {
     .map((r) => `&ids[]=${r.id}`)
     .join("");
   const url = `${ENDPOINTS.MANGA_BASE}${ids}`;
-  const data = await fetchJSON(url, headers);
-  return data.data;
+  const response = await fetchJSON(url, headers);
+  return response.data;
 }
 
 async function fetchLatestChapter(chapterId) {
@@ -121,7 +123,9 @@ async function formatManga(manga) {
  * @param {string} fileName - The name to save the image as.
  */
 async function downloadCover(url, fileName) {
-  const buffer = await fetch(url).then((res) => res.buffer());
+  const buffer = await fetch(url)
+    .then((res) => res.buffer())
+    .catch((err) => OPTIONS.logError && console.error(err));
   const filePath = `${coverPath}/manga/${fileName}`;
 
   if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, buffer);
