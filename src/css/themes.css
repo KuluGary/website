@@ -98,22 +98,22 @@ html[data-theme="grayscale"] {
 
 html[data-theme="cherry-blosom"] {
   color-scheme: light;
-  --text-color: #460827;
+  --text-color: #113d6a;
   --text-color-alt: #a70355;
-  --background-color: #ffe8ec;
-  --background-color-alt: #fccdd7;
-  --primary-color: #a70355;
-  --secondary-color: #7122aa;
+  --background-color: #eddad1;
+  --background-color-alt: #ab3c61;
+  --primary-color: #eddad1;
+  --secondary-color: #ab3c61;
   --tertiary-color: #d60076;
 }
 
 html[data-theme="dark-blue"] {
   color-scheme: dark;
-  --text-color: #c9d1d9;
+  --text-color: #faf8cd;
   --text-color-alt: #bfc6ce;
-  --background-color: #252931;
-  --background-color-alt: #383d48;
-  --primary-color: #5f9fd4;
+  --background-color: #263b53;
+  --background-color-alt: #31455c;
+  --primary-color: #fbbc55;
   --secondary-color: #37c3b7;
   --tertiary-color: #ff4680;
 }
