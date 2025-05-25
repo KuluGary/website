@@ -16,9 +16,15 @@
 
 		{% if item.author %}
 			<li>
-				<a rel="author" href="{{ item.author.link }}">
-					{{ item.author.name }}
-				</a>
+				{% if item.author.link %}
+					<a rel="author" href="{{ item.author.link }}">
+						{{ item.author.name }}
+					</a>
+				{% else %}
+					<cite class="author">
+						{{ item.author.name }}
+					</cite>
+				{% endif %}
 			</li>
 		{% endif %}
 

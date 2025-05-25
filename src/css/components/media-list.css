@@ -134,6 +134,11 @@
       & > * {
         text-wrap: nowrap;
       }
+
+      & cite.author {
+        font-style: normal;
+        color: var(--secondary-color);
+      }
     }
 
     &::before {
@@ -183,7 +188,7 @@
     & .description {
       font-size: smaller;
       overflow: hidden;
-      margin-top: calc(var(--line-height) / 2);
+      margin-top: 0;
 
       display: -webkit-box;
       -webkit-box-orient: vertical;
