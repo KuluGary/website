@@ -218,7 +218,7 @@ async function scrapeGamesFromPage(page, url, status) {
 
     games.push({
       id,
-      type: "Game",
+      type: "games",
       title,
       description,
       genres,

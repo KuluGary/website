@@ -70,7 +70,7 @@ async function fetchPlaylist(playlistId) {
 
     videos.push({
       id: video.contentDetails.videoId,
-      type: "Videos",
+      type: "videos",
       title: video.snippet.title,
       description: video.snippet.description,
       link: `https://youtube.com/watch?v=${video.contentDetails.videoId}`,

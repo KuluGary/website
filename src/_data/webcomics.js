@@ -43,7 +43,7 @@ function formatComicObject(comicObject) {
 
   return {
     id: latestItem.id ?? latestItem.guid,
-    type: "Webcomics",
+    type: "webcomics",
     title: comicObject.title,
     description: comicObject.description,
     genres: [],

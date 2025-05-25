@@ -123,7 +123,7 @@ async function scrapeShowListPage(page, url, status) {
 
       shows.push({
         id,
-        type: "Show",
+        type: "shows",
         title,
         description,
         genres,

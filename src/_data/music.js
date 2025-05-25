@@ -61,7 +61,7 @@ async function transformPlaylistItems(items) {
 
     playlist.push({
       id: track.id,
-      type: "Music",
+      type: "music",
       title: track.name,
       thumbnail: track.album.images[0]?.url || null,
       author: {

@@ -11,7 +11,7 @@
 
 	<ul class="stats bar-separated">
 		<li>
-			<a href="/{{ item.type | slugify }}">{{ item.type }}</a>
+			<a href="/{{ item.type | slugify }}">{{ item.type | unslugify }}</a>
 		</li>
 
 		{% if item.author %}

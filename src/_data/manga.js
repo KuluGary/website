@@ -103,7 +103,7 @@ async function formatManga(manga) {
 
   return {
     id,
-    type: "Manga",
+    type: "manga",
     title,
     description,
     genres,

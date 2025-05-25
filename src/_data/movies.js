@@ -65,7 +65,7 @@ async function scrapeMoviePage(page, url, status) {
 
       movies.push({
         id,
-        type: "Movie",
+        type: "movies",
         title,
         description,
         genres,
