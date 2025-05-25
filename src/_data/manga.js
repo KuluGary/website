@@ -6,6 +6,7 @@ const qs = require("querystring");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
+const { chunkArray } = require("../js/utils/array");
 
 const coverPath = "src/assets/images/covers";
 
@@ -14,10 +15,10 @@ const converter = new showdown.Converter();
 const ENDPOINTS = {
   MANGA_LIST: "https://api.mangadex.org/list/afb0fc3b-ad9c-44e4-ba9f-5e780f464ded",
   MANGA_BASE:
-    "https://api.mangadex.org/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
+    "https://api.mangadex.org/manga?includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
   CHAPTER_BASE: "https://api.mangadex.org/chapter",
   FOLLOWS:
-    "https://api.mangadex.org/user/follows/manga?limit=100&offset=0&includes[]=cover_art&includes[]=artist&includes[]=author&includes[]=manga",
+    "https://api.mangadex.org/user/follows/manga?&includes[]=cover_art&includes[]=artist&includes[]=author&includes[]=manga",
   STATUS: "https://api.mangadex.org/manga/status",
 };
 
@@ -62,15 +63,25 @@ async function authenticate() {
  * @returns {Promise<Object[]>}
  */
 async function fetchMangaDetails(mangaRefs) {
-  const ids = mangaRefs
-    .filter((r) => r.type === "manga")
-    .map((r) => `&ids[]=${r.id}`)
-    .join("");
-  const url = `${ENDPOINTS.MANGA_BASE}${ids}`;
-  const response = await fetchJSON(url, headers);
-  return response.data;
+  const ids = mangaRefs.filter((r) => r.type === "manga").map((r) => r.id);
+  const chunks = chunkArray(ids, 100);
+  const allData = [];
+
+  for (const chunk of chunks) {
+    const idsQuery = chunk.map((id) => `ids[]=${id}`).join("&");
+    const url = `${ENDPOINTS.MANGA_BASE}&${idsQuery}&limit=${chunk.length}`;
+    const response = await fetchJSON(url, headers);
+    allData.push(...response.data);
+  }
+
+  return allData;
 }
 
+/**
+ * Fetches the latest chapter for a specific manga
+ * @param {string} chapterId
+ * @returns {Object}
+ */
 async function fetchLatestChapter(chapterId) {
   const url = `${ENDPOINTS.CHAPTER_BASE}/${chapterId}`;
   const data = await fetchJSON(url, headers);
@@ -182,7 +193,7 @@ module.exports = async function fetchMangaDex() {
   const [followList, statusMap, favouriteList] = await Promise.all([
     fetchAllPaginated(ENDPOINTS.FOLLOWS, headers),
     fetchJSON(ENDPOINTS.STATUS, headers),
-    fetchAllPaginated(ENDPOINTS.MANGA_LIST),
+    fetchJSON(ENDPOINTS.MANGA_LIST),
   ]);
 
   const collection = { favourite: [] };
@@ -190,7 +201,7 @@ module.exports = async function fetchMangaDex() {
     collection[status] = [];
   }
 
-  const followManga = await fetchMangaDetails(followList.data);
+  const followManga = await fetchMangaDetails(followList);
   const favouriteManga = await fetchMangaDetails(favouriteList.data.relationships);
 
   for (const manga of followManga) {
