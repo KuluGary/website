@@ -17,7 +17,7 @@ listButtons.forEach((listButton) => {
 });
 
 function setMediaSectionPreference() {
-  const preference = localStorage.getItem("media-list-preference");
+  const preference = localStorage.getItem("media-list-preference") ?? "grid";
 
   if (preference === "grid") {
     mediaSections.forEach((mediaSection) => mediaSection.classList.add(`media-grid`));
@@ -31,4 +31,5 @@ function setMediaSectionPreference() {
     gridButtons.forEach((gridButton) => gridButton.removeAttribute("disabled"));
   }
 }
+
 setMediaSectionPreference();
