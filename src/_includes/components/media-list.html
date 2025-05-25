@@ -1,35 +1,8 @@
-{% if media and media.length > 0 %}
-	<section>
-		<h2>
-			<a href="{{ href }}">
-				{{ sectionTitle }} ({{ media.length }})
-			</a>
-		</h2>
-
-		<ul class="{{ mediaListGrid }}">
-			{% for item in media %}
-				<li>
-					<article>
-						<figure>
-							<img src="{{ item.thumbnail }}"/>
-
-							<figcaption>
-								<a href="{{ item.link }}">
-									{{ item.title }}
-								</a>
-							</figcaption>
-						</figure>
-					</article>
-				</li>
-			{% endfor %}
-		</ul>
-
-		{% if showFooter %}
-			<footer>
-				<p>
-					<a href="{{ href | getRootUrl }}">See more &raquo;</a>
-				</p>
-			</footer>
-		{% endif %}
-	</section>
-{% endif %}
+<ul class="{{ mediaListGrid }} media-section">
+	{% for item in media %}
+		<li>
+			{% include "components/media-list-thumbnail.html" %}
+			{% include "components/media-list-description.html" %}
+		</li>
+	{% endfor %}
+</ul>

@@ -19,7 +19,7 @@ permalink: /music/
 		{% set media = music.favourites %}
 		{% set href = "/music/status/favourites" %}
 		{% set sectionTitle = "Favourite music" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 	</main>
 
 	{% include "components/footer.html" %}
@@ -28,4 +28,9 @@ permalink: /music/
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
 {% endblock %}

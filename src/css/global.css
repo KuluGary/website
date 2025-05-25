@@ -399,6 +399,12 @@ textarea {
   appearance: none;
 }
 
+button:disabled {
+  color: var(--text-color-alt);
+  border-color: var(--text-color-alt);
+  cursor: not-allowed;
+}
+
 select {
   border: var(--border-thickness) solid var(--text-color);
   padding: calc(var(--line-height) / 2 - var(--border-thickness)) calc(1ch - var(--border-thickness));
@@ -463,7 +469,7 @@ button:hover {
   background: var(--background-color-alt);
 }
 
-button:active {
+button:active:not(:disabled) {
   transform: translate(2px, 2px);
 }
 
@@ -616,122 +622,34 @@ label:has(.theme-switcher) {
   border-width: 0;
 }
 
-.grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, var(--column-size));
-  gap: 1rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:has(#grid-toggle, #list-toggle) {
+    display: flex;
+    align-items: center;
 
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-block: var(--line-height);
-
-  @media (width <= 690px) {
-    grid-template-columns: repeat(auto-fit, minmax(var(--column-size), 1fr));
-    justify-content: center;
-  }
-
-  & li {
-    height: 100%;
-    margin: 0;
-
-    & article {
-      position: relative;
+    & > * {
       margin: 0;
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      overflow: hidden;
+    }
+  }
+
+  & div:has(#grid-toggle, #list-toggle) {
+    margin-left: auto;
+  }
+
+  & button {
+    background-color: transparent;
+    height: 1lh;
+    width: 1lh;
+    padding: 0;
+
+    & svg {
+      width: 100%;
       height: 100%;
-
-      & figure {
-        margin: 0;
-        height: 100%;
-        width: 100%;
-
-        & img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-        }
-
-        & figcaption {
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          background-color: rgba(0, 0, 0, 0.75);
-          text-align: center;
-          padding: 0.125rem;
-          font-style: normal;
-          font-size: 0.85rem;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: clip;
-
-          & a {
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.grid-list.grid-col-5 {
-  --column-size: 118px;
-
-  & figure {
-    aspect-ratio: 9/16;
-  }
-}
-
-.grid-list.grid-col-4 {
-  --column-size: 152px;
-
-  & figure {
-    aspect-ratio: 1;
-  }
-}
-
-.grid-list.grid-col-3 {
-  --column-size: 208px;
-
-  & figure {
-    aspect-ratio: 16/9;
-  }
-}
-
-.recent-activity {
-  * {
-    margin: 0;
-  }
-
-  h2 {
-    margin-block: 1.5rem;
-  }
-
-  article {
-    margin-block-end: 1.8rem;
-
-    & h3 {
-      line-height: 1.5;
-      margin-block: 0.5ch;
-    }
-
-    & aside {
-      font-size: 0.85rem;
-
-      & .media-type {
-        color: var(--tertiary-color);
-      }
-    }
-
-    & ul > li {
-      color: var(--primary-color);
-      font-size: 0.85rem;
     }
   }
 }

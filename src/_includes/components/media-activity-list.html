@@ -1,0 +1,76 @@
+<ul class="recent-media">
+	{% for item in media %}
+		<li>
+			<article>
+				<header>
+					<h3>
+						<a href="{{ item.link }}">
+							{{ item.title }}
+						</a>
+					</h3>
+					<time datetime="{{ item.date }}">
+						{{ item.date | formatDate('MMMM dd, yyyy')}}</time>
+				</header>
+
+				<ul class="stats bar-separated">
+					<li>
+						<a href="/{{ item.type | slugify }}">{{ item.type }}</a>
+					</li>
+
+					{% if item.author %}
+						<li>
+							<a rel="author" href="{{ item.author.link }}">
+								{{ item.author.name }}
+							</a>
+						</li>
+					{% endif %}
+
+					{% if item.type === "Post" %}
+						<li>
+							{% set postStats = item.post | wordStats %}
+
+							<p class="post-stats">~{{postStats}}</p>
+						</li>
+					{% endif %}
+
+					{% if item.views %}
+						<li>
+							<span>{{ item.views | formatNumber('compact') }} views</span>
+						</li>
+					{% endif %}
+
+					{% if item.platform %}
+						<li>
+							<span>{{ item.platform }}</span>
+						</li>
+					{% endif %}
+
+					{% if item.rate and item.type === "Video" %}
+						<li>
+							<span>{{ item.rate | formatNumber('compact') }} likes</span>
+						</li>
+					{% endif %}
+
+					{% if item.tags and item.tags.length > 0 %}
+						<li>
+							<ul class="tags">
+								{% for tag in item.tags %}
+									<li>
+										<a href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
+									</li>
+								{%- endfor -%}
+							</ul>
+						</li>
+					{% endif %}
+
+				</ul>
+
+				{% if item.description %}
+					<div class="description">
+						{{ item.description | safe }}
+					</div>
+				{% endif %}
+			</article>
+		</li>
+	{% endfor %}
+</ul>

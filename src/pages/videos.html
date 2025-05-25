@@ -15,7 +15,7 @@ permalink: /videos/
 		{% set media = videos.favourites %}
 		{% set href = "/videos/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 	</main>
 
@@ -25,4 +25,9 @@ permalink: /videos/
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
 {% endblock %}

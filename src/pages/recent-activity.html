@@ -1,0 +1,55 @@
+---
+title: recent activity
+pagination:
+  data: collections.recentMedia
+  size: 5
+permalink: "/recent-activity/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+
+		<section class="recent-activity">
+			<h1>Recent activity page {{ pagination.pageNumber + 1 }}
+				{% include "components/media-list-buttons.html" %}
+			</h1>
+
+			{% set media = pagination.items %}
+			{% set mediaListGrid = "grid-list grid-col-5" %}
+			{% include "components/media-list.html" %}
+		</section>
+	</main>
+
+	<nav aria-labelledby="my-pagination">
+		<ul class="horizontal">
+			<li>
+				{% if pagination.href.previous %}
+					<a href="{{ pagination.href.previous }}">&laquo; Prev</a>
+				{% else %}&laquo; Prev{% endif %}
+			</li>
+			<li>
+				{% if pagination.href.next %}
+					<a href="{{ pagination.href.next }}">Next &raquo;</a>
+				{% else %}Next &raquo;{% endif %}
+			</li>
+		</ul>
+	</nav>
+
+	{% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/recent-activity.css">
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+	<link rel="stylesheet" href="/css/components/recent-media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
+{% endblock %}

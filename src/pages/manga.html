@@ -19,22 +19,22 @@ permalink: /manga/
 		{% set media = manga.reading | removeUnsafeManga %}
 		{% set href = "/manga/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.favourite | removeUnsafeManga %}
 		{% set href = "/manga/status/favourite" %}
 		{% set sectionTitle = "Favourites" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.completed | removeUnsafeManga %}
 		{% set href = "/manga/status/completed" %}
 		{% set sectionTitle = "Completed" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.dropped | removeUnsafeManga %}
 		{% set href = "/manga/status/dropped" %}
 		{% set sectionTitle = "Dropped" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 	</main>
 
 	{% include "components/footer.html" %}
@@ -43,4 +43,9 @@ permalink: /manga/
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
 {% endblock %}

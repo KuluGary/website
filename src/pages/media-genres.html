@@ -12,12 +12,12 @@ eleventyComputed:
 {% block content %}
 	{% include "components/header.html" %}
 	<main>
-		{% set media = genreGroup.items %}
+		{% set media = genreGroup.items | uniqueById %}
 		{% set mediaListGrid = "grid-list grid-col-3" if genreGroup.mediaType === "Video" else ("grid-list grid-col-4" if genreGroup.mediaType === "Music" else "grid-list grid-col-5") %}
 		{% set href = "/{{ genreGroup.mediaType }}/genre/{{ genreGroup.genre }}" %}
 		{% set sectionTitle = title %}
 
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 	</main>
 	{% include "components/footer.html" %}
@@ -26,4 +26,9 @@ eleventyComputed:
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
 {% endblock %}

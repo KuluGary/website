@@ -5,16 +5,7 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const defaultData = require("../js//utils/_default_data/webcomics");
 
 const PAGES = {
-  reading: [
-    "https://beyondcanon.com/story/feed?type=rss",
-    "https://www.webtoons.com/en/challenge/countdown-to-countdown/rss?title_no=316884",
-    "https://killsixbilliondemons.com/feed/",
-    "https://www.webtoons.com/en/slice-of-life/batman-wayne-family-adventures/rss?title_no=3180",
-    "https://www.webtoons.com/en/comedy/not-so-shoujo-love-story/rss?title_no=2189",
-    "https://www.paranatural.net/comic/rss",
-    "https://www.starimpactcomic.com/comic/rss",
-    "https://www.webtoons.com/en/challenge/nerd-and-jock/rss?title_no=135963",
-  ],
+  reading: ["https://beyondcanon.com/story/feed?type=rss", "https://killsixbilliondemons.com/feed/"],
   favourites: [
     "https://piperka.net/s/rss/4379", // Homestuck
     "https://killsixbilliondemons.com/feed/",
@@ -26,6 +17,12 @@ const PAGES = {
     "https://piperka.net/s/rss/7979", // 17776
     "https://www.webtoons.com/en/challenge/punderworld/rss?title_no=312584",
     "https://backcomic.com/rss.xml",
+    "https://www.webtoons.com/en/slice-of-life/batman-wayne-family-adventures/rss?title_no=3180",
+    "https://www.webtoons.com/en/challenge/countdown-to-countdown/rss?title_no=316884",
+    "https://www.paranatural.net/comic/rss",
+    "https://www.webtoons.com/en/comedy/not-so-shoujo-love-story/rss?title_no=2189",
+    "https://www.starimpactcomic.com/comic/rss",
+    "https://www.webtoons.com/en/challenge/nerd-and-jock/rss?title_no=135963",
   ],
   completed: [
     "https://www.neversatisfiedcomic.com/comic/rss",

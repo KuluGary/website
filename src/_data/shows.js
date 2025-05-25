@@ -150,7 +150,7 @@ async function scrapeShowListPage(page, url, status) {
  */
 async function scrapeShowProfilePage(page) {
   await delay(1000);
-  const descriptionSelector = await page.waitForSelector("#overview");
+  const descriptionSelector = await page.waitForSelector("#tagline + #overview");
   const description = await descriptionSelector.evaluate((el) => el.innerText);
 
   const imageSelector = await page.waitForSelector("img.real");

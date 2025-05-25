@@ -11,6 +11,7 @@ const {
   sortByDate,
   getRootUrl,
   generateSocialMediaImage,
+  uniqueById,
   log,
 } = require("./src/js/11ty/generic");
 const {
@@ -51,6 +52,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
+  eleventyConfig.addFilter("uniqueById", uniqueById);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */

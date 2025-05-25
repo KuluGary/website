@@ -1,0 +1,21 @@
+{% if media and media.length > 0 %}
+	<section>
+		<h2>
+			<a href="{{ href }}">
+				{{ sectionTitle }} ({{ media.length }})
+			</a>
+
+			{% include "components/media-list-buttons.html" %}
+		</h2>
+
+		{% include "components/media-list.html" %}
+
+		{% if showFooter %}
+			<footer>
+				<p>
+					<a href="{{ href | getRootUrl }}">See more &raquo;</a>
+				</p>
+			</footer>
+		{% endif %}
+	</section>
+{% endif %}

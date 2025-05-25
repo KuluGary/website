@@ -19,32 +19,32 @@ permalink: /games/
 		{% set media = games.playing %}
 		{% set href = "/games/status/playing" %}
 		{% set sectionTitle = "Currently playing" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = games.favourites %}
 		{% set href = "/games/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = games.completed %}
 		{% set href = "/games/status/completed" %}
 		{% set sectionTitle = "Completed" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = games.played %}
 		{% set href = "/games/status/played" %}
 		{% set sectionTitle = "Played" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = games.backlog %}
 		{% set href = "/games/status/backlog" %}
 		{% set sectionTitle = "Backlog" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 
 		{% set media = games.retired %}
 		{% set href = "/games/status/retired" %}
 		{% set sectionTitle = "Dropped" %}
-		{% include "components/media-list.html" %}
+		{% include "components/media-list-section.html" %}
 	</main>
 
 	{% include "components/footer.html" %}
@@ -53,4 +53,9 @@ permalink: /games/
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
 {% endblock %}

@@ -9,6 +9,7 @@ module.exports = {
   unslugify,
   limit,
   generateSocialMediaImage,
+  uniqueById,
   log,
 };
 
@@ -118,4 +119,8 @@ function generateSocialMediaImage(imageSrc) {
   if (imageSrc.startsWith("https://")) return imageSrc;
 
   return `https://kulugary.neocities.org${imageSrc}`;
+}
+
+function uniqueById(array) {
+  return array.filter((obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i);
 }
