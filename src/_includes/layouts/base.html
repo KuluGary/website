@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
     <link rel="canonical" href="{{metadata.url}}{{ page.url }}">
 
@@ -18,34 +18,34 @@
 
     <!-- Webmentions -->
     <link rel="pingback" href="https://webmention.io/kulugary.neocities.org/xmlrpc/">
-    <link rel="webmention" href="https://webmention.io/kulugary.neocities.org/webmention/"/>
+    <link rel="webmention" href="https://webmention.io/kulugary.neocities.org/webmention/">
 
     <!-- SEO -->
     <title>{{ title or metadata.title }}</title>
-    <meta name="description" content="{{ description or metadata.description }}"/>
-    <meta name="robots" content="index, follow"/>
-    <meta name="generator" content="Eleventy"/>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="robots" content="index, follow">
+    <meta name="generator" content="Eleventy">
     {% block head %}{% endblock %}
 
     <!-- Open Graph -->
-    <meta property="og:locale" content="es_ES"/>
-    <meta property="og:site_name" content="{{ metadata.title }}"/>
-    <meta property="og:type" content="{{ogtype or 'website'}}"/>
-    <meta property="og:url" content="{{metadata.url}}{{page.url}}"/>
-    <meta property="og:image" content="{{ image | generateSocialMediaImage }}"/>
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="{{ metadata.title }}">
+    <meta property="og:type" content="{{ogtype or 'website'}}">
+    <meta property="og:url" content="{{metadata.url}}{{page.url}}">
+    <meta property="og:image" content="{{ image | generateSocialMediaImage }}">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@KuluGary"/>
-    <meta name="twitter:title" content="{{ title or metadata.title }}"/>
-    <meta name="twitter:description" content="{{ description or metadata.description }}"/>
-    <meta name="twitter:image" content="{{ image | generateSocialMediaImage }}"/>
+    <meta name="twitter:site" content="@KuluGary">
+    <meta name="twitter:title" content="{{ title or metadata.title }}">
+    <meta name="twitter:description" content="{{ description or metadata.description }}">
+    <meta name="twitter:image" content="{{ image | generateSocialMediaImage }}">
 
     <!-- Favicon Meta -->
     <link rel="apple-touch-icon" sizes="100x100" href="/assets/images/cap-light.ico">
     <link rel="shortcut icon" href="/assets/images/cap-light.ico" type="image/x-icon"
-    media="(prefers-color-scheme: light)"/>
+    media="(prefers-color-scheme: light)">
     <link rel="shortcut icon" href="/assets/images/cap-dark.ico" type="image/x-icon"
-    media="(prefers-color-scheme: dark)"/>
+    media="(prefers-color-scheme: dark)">
 
     <!-- Assets, 3rd party scripts, etc -->
     <link rel="stylesheet" href="{{ " /css/global.css" | url }}">
