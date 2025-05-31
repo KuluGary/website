@@ -100,5 +100,10 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
+    data: {
+      site: {
+        url: "https://kulugary.neocities.org",
+      },
+    },
   };
 };
