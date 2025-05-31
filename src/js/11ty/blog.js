@@ -8,6 +8,7 @@ module.exports = {
   getPostsWithoutCurrent,
   getFrequentTags,
   getSimilarPosts,
+  getWebmentionsByUrl,
 };
 
 /**
@@ -222,4 +223,8 @@ function getSimilarPosts(collection, path, categories) {
     .sort((a, b) => {
       return _getSimilarCategories(b.data.tags, categories) - _getSimilarCategories(a.data.tags, categories);
     });
+}
+
+function getWebmentionsByUrl(webmentions, url) {
+  return webmentions.filter((entry) => entry["wm-target"] === url);
 }

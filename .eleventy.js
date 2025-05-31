@@ -23,6 +23,7 @@ const {
   getCollectionStats,
   getUniqueTags,
   getShareUrl,
+  getWebmentionsByUrl,
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
@@ -65,6 +66,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getPostsWithoutCurrent", getPostsWithoutCurrent);
   eleventyConfig.addFilter("getFrequentTags", getFrequentTags);
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
+  eleventyConfig.addFilter("webmentionsByUrl", getWebmentionsByUrl);
 
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
