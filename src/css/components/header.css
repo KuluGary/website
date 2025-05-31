@@ -8,7 +8,7 @@
     gap: var(--line-height);
     padding: calc(var(--line-height) / 2);
 
-    h1 {
+    h2 {
       margin: 0;
       padding: 0;
       background-color: transparent;
@@ -83,7 +83,7 @@
   }
 }
 
-header *:has(h1) {
+header *:has(h2) {
   background-color: var(--text-color);
   color: var(--background-color);
 }
