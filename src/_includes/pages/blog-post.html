@@ -5,7 +5,7 @@
   {% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
   {% set nextPost = collections['blog-post'] | getNextCollectionItem %}
 
-  <main id="main-content" class="main-content">
+  <main id="main-content" class="main-content h-entry">
     <article>
       <nav>
         {% if nextPost %}
@@ -16,7 +16,7 @@
         {% endif %}
       </nav>
 
-      <h1>{{title}}</h1>
+      <h1 class="p-name">{{title}}</h1>
 
       <div class="post-subtitle">
         <p class="post-date">Written: {{date|formatDate("LLLL dd, yyyy")}}</p>
@@ -57,7 +57,7 @@
         </section>
       {% endif %}
 
-      <div>{{ content | safe }}</div>
+      <div class="e-content">{{ content | safe }}</div>
     </article>
   </main>
 
