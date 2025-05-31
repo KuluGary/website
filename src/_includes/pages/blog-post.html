@@ -62,13 +62,13 @@
   </main>
 
   <footer class="post-footer">
-    {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(1) %}
+    {# {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(1) %}
 
     {% if postsList | length %}
       <h2>You may also like</h2>
 
       {% include "components/post-list.html" %}
-    {% endif %}
+    {% endif %} #}
 
     <h2 class="share-title">Share:</h2>
 
@@ -78,9 +78,9 @@
 {% endblock %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css"/>
-  <link rel="stylesheet" href="/css/components/post-list.css"/>
-  <link rel="stylesheet" href="/css/blog-post.css"/>
+  <link rel="stylesheet" href="/css/components/header.css">
+  <link rel="stylesheet" href="/css/components/post-list.css">
+  <link rel="stylesheet" href="/css/blog-post.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <link
     href="https://npm.elemecdn.com/prism-themes/themes/prism-vs.css"
