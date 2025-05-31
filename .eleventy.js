@@ -3,6 +3,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const wordStats = require("@photogabble/eleventy-plugin-word-stats");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {
   formatDate,
   limit,
@@ -37,6 +38,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(wordStats);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(require("@jgarber/eleventy-plugin-postcss"));
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/js/*.js");

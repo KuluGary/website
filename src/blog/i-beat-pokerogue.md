@@ -7,13 +7,14 @@ description: After playing for about a week, I've finally beaten PokéRogue.
 thumb:
   url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
   alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
-images:
-  - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
-    alt: The main menu of PokéRogue
-  - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_06_32-PokéRogue.png"
-    alt: Eternamax Eternatus is defeated.
-  - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_07_13-PokéRogue.png"
-    alt: A textbox showing that Endless mode has been unlocked.
+postmedia:
+  images:
+    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
+      alt: The main menu of PokéRogue
+    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_06_32-PokéRogue.png"
+      alt: Eternamax Eternatus is defeated.
+    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_07_13-PokéRogue.png"
+      alt: A textbox showing that Endless mode has been unlocked.
 ---
 
 I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a week. For those who don't know, it's a [roguelite](https://store.steampowered.com/tags/en/Roguelite/) Pokémon fangame where you go from level 1 to 200 fighting wild Pokémon and trainers, in a never-ending gameplay loop.

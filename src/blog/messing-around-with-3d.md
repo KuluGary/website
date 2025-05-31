@@ -5,9 +5,10 @@ tags: ["blog-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-12-09-messing-around-with-3d/1.gif"
   alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
-images:
-  - url: "/assets/images/gallery/2023-12-09-messing-around-with-3d/1.gif"
-    alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
+postmedia:
+  images:
+    - url: "/assets/images/gallery/2023-12-09-messing-around-with-3d/1.gif"
+      alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
 ---
 
 ![Claire, the protagonist, flying around a low-res 3D world](https://cdn.akamai.steamstatic.com/steam/apps/1055540/ss_0e864bf975bb71f238de6861fc8fd3d6ed6e4ce8.1920x1080.jpg?t=1701219411 "Claire, the protagonist, flying around a low-res 3D world"){.float-right}

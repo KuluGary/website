@@ -5,11 +5,12 @@ tags: ["blog-post", "game_dev"]
 thumb:
   url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/1.gif"
   alt: A dark animated image of a dungeon layout being re-generated periodically.
-images:
-  - url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/1.gif"
-    alt: A dark animated image of a dungeon layout being re-generated periodically.
-  - url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/2.png"
-    alt: A grey scene with the Godot logo in the middle and four door-openings at each cardinal direction.
+postmedia:
+  images:
+    - url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/1.gif"
+      alt: A dark animated image of a dungeon layout being re-generated periodically.
+    - url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/2.png"
+      alt: A grey scene with the Godot logo in the middle and four door-openings at each cardinal direction.
 ---
 
 I like rogue-likes, and procedural generation is a fascinating subject to me.

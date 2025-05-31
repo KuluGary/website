@@ -73,7 +73,7 @@ function getRecentMedia(collection) {
         date: element.date,
         tags: element.data.tags.filter((tag) => tag !== "blog-post"),
         author: { name: "Gary" },
-        description: element.description,
+        description: element.data.description,
         post: element,
       };
     })

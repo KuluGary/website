@@ -1,7 +1,3 @@
-document.querySelectorAll("pre code").forEach((block) => {
-  hljs.highlightElement(block);
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const splideElement = document.querySelector(".splide");
 

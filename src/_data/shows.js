@@ -70,15 +70,6 @@ async function getCollection() {
 }
 
 /**
- * Constructs Trakt URL by status and type
- * @param {string} status
- * @param {string} type
- */
-function constructShowUrl(status, type) {
-  return `https://trakt.tv/users/${TRAKT_USER}/${status}?display=${type}&sort=released%2Casc`;
-}
-
-/**
  * Scrapes a single Trakt show list page.
  * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
  * @param {string} url URL of the page to go to

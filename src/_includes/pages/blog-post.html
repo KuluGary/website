@@ -34,19 +34,19 @@
         </ul>
       </div>
 
-      {% if videos or images%}
+      {% if postmedia.videos or postmedia.images%}
         <section class="splide" aria-label="Gallery carousel">
           <div class="splide__track">
             <ul class="splide__list">
-              {% if images %}
-                {% for item in images %}
+              {% if postmedia.images %}
+                {% for item in postmedia.images %}
                   <li class="splide__slide">
                     <img src="{{item.url}}" alt="{{item.alt}}"/>
                   </li>
                 {% endfor %}
               {% endif %}
-              {% if videos %}
-                {% for item in videos %}
+              {% if postmedia.videos %}
+                {% for item in postmedia.videos %}
                   <li class="splide__slide">
                     {{ item.url | safe }}
                   </li>
@@ -83,16 +83,19 @@
   <link rel="stylesheet" href="/css/blog-post.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dirtysea.min.css"
-  media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+    href="https://npm.elemecdn.com/prism-themes/themes/prism-vs.css"
+    rel="stylesheet"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/3024.min.css"
-  media="(prefers-color-scheme: dark)"/>
+    href="https://npm.elemecdn.com/prism-themes/themes/prism-material-dark.css"
+    rel="stylesheet"
+    media="(prefers-color-scheme: dark)"/>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/3024.min.css"
+    media="(prefers-color-scheme: dark)"/>
 {% endblock %}
 {% block script %}
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
   <script src="/js/blog-post.js" defer></script>
 {% endblock %}
