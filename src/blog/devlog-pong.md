@@ -29,7 +29,7 @@ In this article I want to go into some of the more interesting parts I found whi
 
 The ball is the most important part of the fame, and it has a few interesting this. In particular, the colliding and bouncing logic.
 
-```
+```gdscript
 func _change_direction(body):
 	if not body is Ball:
 		collision_sound.play()
@@ -56,7 +56,7 @@ What would happen is that the ball would move back and forth, in a straight line
 
 In the pong game there's two kinds of paddles, the player's and the opponent's. The player's is simpler, since what I did was follow the mouse's position in the y-axis as long as there's a minimum distance (to avoid _jittering_).
 
-```
+```gdscript
 func _physics_process(delta):
 	velocity = Vector2(velocity.x, global_position.direction_to(get_global_mouse_position()).y) * speed
 
@@ -70,7 +70,7 @@ The opponent's paddle has to have a rudimentary AI. It's very easy to make it fo
 
 The point is that it does follow the ball, but it does so based on a `Timer` node whose wait time is random.
 
-```
+```gdscript
 func _physics_process(delta):
 	velocity = Vector2(velocity.x, global_position.direction_to(target).y) * speed
 

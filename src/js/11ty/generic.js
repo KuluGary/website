@@ -11,6 +11,7 @@ module.exports = {
   generateSocialMediaImage,
   uniqueById,
   log,
+  mergeArrays,
 };
 
 /**
@@ -123,4 +124,8 @@ function generateSocialMediaImage(imageSrc) {
 
 function uniqueById(array) {
   return array.filter((obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i);
+}
+
+function mergeArrays(array1, array2) {
+  return [...array1, ...array2];
 }

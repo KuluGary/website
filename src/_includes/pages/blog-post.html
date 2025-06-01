@@ -7,15 +7,6 @@
 
   <main id="main-content" class="main-content h-entry">
     <article>
-      <nav>
-        {% if nextPost %}
-          <a class="nxt-btn" href="{{ nextPost.url }}">&laquo; Next</a>
-        {% endif %}
-        {% if previousPost %}
-          <a class="prev-btn" href="{{ previousPost.url }}">Prev &raquo;</a>
-        {% endif %}
-      </nav>
-
       <h1 class="p-name">{{title}}</h1>
 
       <div class="post-subtitle">
@@ -62,17 +53,36 @@
   </main>
 
   <footer class="post-footer">
-    {# {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(1) %}
+    <nav>
+      {% if nextPost %}
+        <p>Next:
+        <a class="nxt-btn" href="{{ nextPost.url }}">
+            {{ nextPost.data.title }}</a>
+        </p>
+      {% endif %}
+      {% if previousPost %}
+        <p>Previous:
+          <a class="prev-btn" href="{{ previousPost.url }}">
+            {{ previousPost.data.title }}</a>
+        </p>
+      {% endif %}
+    </nav>
+    {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(3) %}
 
-    {% if postsList | length %}
-      <h2>You may also like</h2>
+    {% if postsList.length > 0 %}
+      <section>
+        <p>More like this:</p>
+        <ul>
+          {% for post in postsList %}
+            <li>
+              <a href="{{ post.url }}">{{post.data.title}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
 
-      {% include "components/post-list.html" %}
-    {% endif %} #}
-
-    <h2 class="share-title">Share:</h2>
-
-    {% include "components/share-buttons.html" %}
+    {% include "components/webmentions.html" %}
 
   </footer>
 {% endblock %}

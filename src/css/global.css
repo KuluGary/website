@@ -102,23 +102,7 @@ h6::before {
 }
 
 hr {
-  position: relative;
-  display: block;
-  height: var(--line-height);
-  margin: calc(var(--line-height) * 1.5) 0;
-  border: none;
-  color: var(--text-color);
-}
-
-hr:after {
-  display: block;
-  content: "";
-  position: absolute;
-  top: calc(var(--line-height) / 2 - var(--border-thickness));
-  left: 0;
-  width: 100%;
-  border-top: calc(var(--border-thickness) * 3) double var(--text-color);
-  height: 0;
+  border: 1px solid var(--text-color);
 }
 
 a:link,

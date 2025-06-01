@@ -9,6 +9,10 @@ module.exports = {
   getFrequentTags,
   getSimilarPosts,
   getWebmentionsByUrl,
+  isOwnWebmention,
+  size,
+  webmentionsByType,
+  readableDateFromISO,
 };
 
 /**
@@ -68,6 +72,12 @@ function getShareUrl(pageUrl, site, title, tags) {
       redditUrl.searchParams.append("title", title);
 
       url = redditUrl;
+      break;
+    case "bluesky":
+      const bskyUrl = new URL("https://bsky.app/intent/compose");
+      bskyUrl.searchParams.append("text", `${title}: ${pageUrl}`);
+
+      url = bskyUrl;
       break;
   }
 
@@ -226,5 +236,28 @@ function getSimilarPosts(collection, path, categories) {
 }
 
 function getWebmentionsByUrl(webmentions, url) {
+  console.log(url);
   return webmentions.filter((entry) => entry["wm-target"] === url);
+}
+
+function isOwnWebmention(webmention) {
+  const urls = ["https://sia.codes", "https://twitter.com/thegreengreek"];
+
+  const authorUrl = webmention.author ? webmention.author.url : false;
+
+  // check if a given URL is part of this site.
+
+  return authorUrl && urls.includes(authorUrl);
+}
+
+function size(mentions) {
+  return !mentions ? 0 : mentions.length;
+}
+
+function webmentionsByType(mentions, mentionType) {
+  return mentions.filter((entry) => entry["wm-property"] === mentionType);
+}
+
+function readableDateFromISO(dateStr, formatStr = "dd LLL yyyy 'at' hh:mma") {
+  return DateTime.fromISO(dateStr).toFormat(formatStr);
 }

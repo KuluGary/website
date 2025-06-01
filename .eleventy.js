@@ -14,6 +14,7 @@ const {
   generateSocialMediaImage,
   uniqueById,
   log,
+  mergeArrays,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -24,6 +25,10 @@ const {
   getUniqueTags,
   getShareUrl,
   getWebmentionsByUrl,
+  isOwnWebmention,
+  readableDateFromISO,
+  size,
+  webmentionsByType,
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
@@ -56,6 +61,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
   eleventyConfig.addFilter("uniqueById", uniqueById);
+  eleventyConfig.addFilter("mergeArrays", mergeArrays);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */
@@ -66,14 +72,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getPostsWithoutCurrent", getPostsWithoutCurrent);
   eleventyConfig.addFilter("getFrequentTags", getFrequentTags);
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
-  eleventyConfig.addFilter("webmentionsByUrl", getWebmentionsByUrl);
+  eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
+  eleventyConfig.addFilter("isOwnWebmention", isOwnWebmention);
+  eleventyConfig.addFilter("size", size);
+  eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
+  eleventyConfig.addFilter("readableDateFromISO", readableDateFromISO);
 
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
   eleventyConfig.addFilter("getFrequentMediaTags", getFrequentMediaTags);
-  eleventyConfig.addCollection("recentMedia", getRecentMedia);
-  eleventyConfig.addCollection("genrePages", getMediaGenres);
-  eleventyConfig.addCollection("mediaCategories", getMediaCategories);
+  // eleventyConfig.addCollection("recentMedia", getRecentMedia);
+  // eleventyConfig.addCollection("genrePages", getMediaGenres);
+  // eleventyConfig.addCollection("mediaCategories", getMediaCategories);
 
   eleventyConfig.setLibrary(
     "md",
