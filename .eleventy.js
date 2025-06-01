@@ -81,9 +81,9 @@ module.exports = function (eleventyConfig) {
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
   eleventyConfig.addFilter("getFrequentMediaTags", getFrequentMediaTags);
-  // eleventyConfig.addCollection("recentMedia", getRecentMedia);
-  // eleventyConfig.addCollection("genrePages", getMediaGenres);
-  // eleventyConfig.addCollection("mediaCategories", getMediaCategories);
+  eleventyConfig.addCollection("recentMedia", getRecentMedia);
+  eleventyConfig.addCollection("genrePages", getMediaGenres);
+  eleventyConfig.addCollection("mediaCategories", getMediaCategories);
 
   eleventyConfig.setLibrary(
     "md",
