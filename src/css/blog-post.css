@@ -65,9 +65,10 @@ article .splide iframe {
   }
 }
 
-.share-buttons {
+svg + .share-buttons {
   margin-left: auto;
 }
+
 .share-button {
   text-decoration: none;
   margin-left: auto;
