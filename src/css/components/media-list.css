@@ -37,6 +37,17 @@
             height: 100%;
           }
 
+          &:not(:has(img)) {
+            display: grid;
+            place-content: center;
+          }
+
+          & > svg {
+            & g {
+              fill: var(--background-color-alt);
+            }
+          }
+
           & figcaption {
             position: absolute;
             bottom: 0;

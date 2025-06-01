@@ -1,6 +1,10 @@
 <article class="media-grid">
 	<figure>
-		<img src="{{ item.thumbnail }}"/>
+		{% if item.thumbnail %}
+			<img src="{{ item.thumbnail }}"/>
+		{% else %}
+			{% include "components/hat-icon.html" %}
+		{% endif %}
 
 		<figcaption>
 			<a href="{{ item.link }}">
