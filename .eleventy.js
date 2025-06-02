@@ -29,6 +29,7 @@ const {
   readableDateFromISO,
   size,
   webmentionsByType,
+  filterOwnWebmentions,
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
@@ -74,7 +75,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("isOwnWebmention", isOwnWebmention);
-  eleventyConfig.addFilter("size", size);
+  eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
   eleventyConfig.addFilter("readableDateFromISO", readableDateFromISO);
 

@@ -1,8 +1,8 @@
 {% set mentions = webmentions | getWebmentionsByUrl(metadata.url + page.url) %}
 
 <section class="webmentions">
-	{% set reposts = mentions | webmentionsByType('repost-of') %}
-	{% set likes = mentions | webmentionsByType('like-of') %}
+	{% set reposts = mentions | webmentionsByType('repost-of') | filterOwnWebmentions %}
+	{% set likes = mentions | webmentionsByType('like-of') | filterOwnWebmentions %}
 	{% set replies = mentions | webmentionsByType('in-reply-to')  %}
 
 	{% set repostsSize = reposts.length %}

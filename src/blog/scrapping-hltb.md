@@ -1,7 +1,7 @@
 ---
 title: Scrapping HLTB
 date: 2024-11-15
-tags: ["blog-post", "development"]
+tags: ["blog-post", "development", "web-dev", "webscraping"]
 description: The game tracking platform How Long To Beat doesn't have a public facing API, so I've made a JS script to scrap my public profile for my Now page.
 ---
 

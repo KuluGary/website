@@ -1,7 +1,7 @@
 ---
 title: Roguelike prototype
 date: 2023-04-13
-tags: ["blog-post", "game_dev"]
+tags: ["blog-post", "development", "game-dev"]
 thumb:
   url: https://img.youtube.com/vi/XwVtgIe1eQk/sddefault.jpg
   alt: lorem

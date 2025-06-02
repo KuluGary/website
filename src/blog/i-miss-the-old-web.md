@@ -2,7 +2,7 @@
 title: I miss the old web
 date: 2024-04-01
 lang: en
-tags: ["blog-post", "development"]
+tags: ["blog-post", "development", "web-dev", "rambling"]
 description: There was a time when surfing the web was fun. It wasn't because you needed to keep up with the news, it wasn't because you needed to be connected to everyone 24/7. Nowadays, you make your website as a "portfolio", because companies look at what you do online to check if you're valuable to them. Do you miss the old web?.
 ---
 

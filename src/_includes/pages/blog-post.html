@@ -9,21 +9,25 @@
     <article>
       <h1 class="p-name">{{title}}</h1>
 
-      <div class="post-subtitle">
-        <p class="post-date">Written: {{date|formatDate("LLLL dd, yyyy")}}</p>
-        <span class="post-divider">|</span>
-        <p class="post-stats">~{{content|wordStats}}</p>
-        <span class="post-divider">|</span>
-        <ul class="post-tags">
-          {%- for tag in tags -%}
-            {% if tag != "blog-post" %}
-              <li>
-                <a href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
-              </li>
-            {% endif %}
-          {%- endfor -%}
-        </ul>
-      </div>
+      <ul class="post-subtitle">
+        <li class="post-date">
+          Written: {{date|formatDate("LLLL dd, yyyy")}}
+        </li>
+        <li class="post-stats">
+          ~{{content|wordStats}}
+        </li>
+        <li>
+          <ul class="post-tags">
+            {%- for tag in tags -%}
+              {% if tag != "blog-post" %}
+                <li>
+                  <a href="/tags/{{ tag }}">#{{ tag | unslugify }}</a>
+                </li>
+              {% endif %}
+            {%- endfor -%}
+          </ul>
+        </li>
+      </ul>
 
       {% if postmedia.videos or postmedia.images%}
         <section class="splide" aria-label="Gallery carousel">
@@ -52,7 +56,7 @@
     </article>
   </main>
 
-  <footer class="post-footer">
+  <footer id="post-footer" class="post-footer">
     <nav>
       {% if nextPost %}
         <p>Next:

@@ -39,7 +39,7 @@ function getRecentMedia(collection) {
   const recentMedia = [
     ...games.favourites,
     ...movies.watchlist,
-    ...manga.reading,
+    ...removeUnsafeManga(manga.reading),
     ...shows.watchlist,
     ...music.favourites,
     ...videos.favourites,

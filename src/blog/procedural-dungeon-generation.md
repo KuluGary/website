@@ -1,7 +1,7 @@
 ---
 title: Procedural dungeon generation
 date: 2023-11-28
-tags: ["blog-post", "game_dev"]
+tags: ["blog-post", "development", "game-dev"]
 thumb:
   url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/1.gif"
   alt: A dark animated image of a dungeon layout being re-generated periodically.

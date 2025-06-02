@@ -10,9 +10,9 @@ module.exports = {
   getSimilarPosts,
   getWebmentionsByUrl,
   isOwnWebmention,
-  size,
   webmentionsByType,
   readableDateFromISO,
+  filterOwnWebmentions,
 };
 
 /**
@@ -75,7 +75,7 @@ function getShareUrl(pageUrl, site, title, tags) {
       break;
     case "bluesky":
       const bskyUrl = new URL("https://bsky.app/intent/compose");
-      bskyUrl.searchParams.append("text", `${title}: ${pageUrl}`);
+      bskyUrl.searchParams.append("text", `${title} ${tags.map((tag) => `#${tag}`).join(" ")} ${pageUrl}`);
 
       url = bskyUrl;
       break;
@@ -226,12 +226,16 @@ function _getSimilarCategories(categoriesA, categoriesB) {
  * @returns A list of posts ordered by similarity
  */
 function getSimilarPosts(collection, path, categories) {
+  const allowedCategories = categories.filter((v) => v !== "blog-post");
+
   return collection
     .filter((post) => {
-      return _getSimilarCategories(post.data.tags, categories) >= 1 && post.data.page.url !== path;
+      return _getSimilarCategories(post.data.tags, allowedCategories) >= 1 && post.data.page.url !== path;
     })
     .sort((a, b) => {
-      return _getSimilarCategories(b.data.tags, categories) - _getSimilarCategories(a.data.tags, categories);
+      return (
+        _getSimilarCategories(b.data.tags, allowedCategories) - _getSimilarCategories(a.data.tags, allowedCategories)
+      );
     });
 }
 
@@ -241,17 +245,22 @@ function getWebmentionsByUrl(webmentions, url) {
 }
 
 function isOwnWebmention(webmention) {
-  const urls = ["https://sia.codes", "https://twitter.com/thegreengreek"];
+  const urls = [
+    "https://kulugary.neocities.org",
+    "https://bsky.app/profile/kulugary.itch.io",
+    "https://kulugary.tumblr.com/",
+    "https://indiepocalypse.social/@kulugary",
+    "https://github.com/KuluGary",
+    "https://www.reddit.com/user/KuluGary/",
+  ];
 
   const authorUrl = webmention.author ? webmention.author.url : false;
-
-  // check if a given URL is part of this site.
 
   return authorUrl && urls.includes(authorUrl);
 }
 
-function size(mentions) {
-  return !mentions ? 0 : mentions.length;
+function filterOwnWebmentions(webmentions) {
+  return webmentions.filter((webmention) => !isOwnWebmention(webmention));
 }
 
 function webmentionsByType(mentions, mentionType) {

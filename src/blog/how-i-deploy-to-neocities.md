@@ -1,7 +1,7 @@
 ---
 title: How I deploy to Neocities
 date: 2024-11-14
-tags: ["blog-post", "development"]
+tags: ["blog-post", "development", "web-dev", "site-development"]
 description: Part of my workflow when writing to this site is building the static files and uploading them to Neocities, so I made a sh script to automate it.
 ---
 

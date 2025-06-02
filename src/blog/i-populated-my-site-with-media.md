@@ -2,7 +2,7 @@
 title: I populated my site with media
 lang: en
 date: 2025-05-29
-tags: ["blog-post", "development", "webscraping"]
+tags: ["blog-post", "development", "webscraping", "web-dev", "site-development"]
 description: Previously, my site was only populated with content I hand crafted. Now, I've started pulling from some services to populate it with my favourite media.
 ---
 

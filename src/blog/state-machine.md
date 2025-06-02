@@ -1,7 +1,7 @@
 ---
 title: State machine
 date: 2024-02-26
-tags: ["blog-post", "game_dev"]
+tags: ["blog-post", "development", "game-dev"]
 thumb:
   url: https://img.youtube.com/vi/svhFr0xmTLQ/hqdefault.jpg
   alt: lorem
