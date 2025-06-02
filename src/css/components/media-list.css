@@ -1,7 +1,7 @@
 .media-section.media-grid {
   &.grid-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, var(--column-size));
+    grid-template-columns: repeat(var(--column-amount), 1fr);
     gap: 1rem;
 
     list-style: none;
@@ -75,6 +75,7 @@
   }
 
   &.grid-list.grid-col-5 {
+    --column-amount: 5;
     --column-size: 118px;
 
     & figure {
@@ -83,6 +84,7 @@
   }
 
   &.grid-list.grid-col-4 {
+    --column-amount: 4;
     --column-size: 152px;
 
     & figure {
@@ -91,6 +93,7 @@
   }
 
   &.grid-list.grid-col-3 {
+    --column-amount: 3;
     --column-size: 208px;
 
     & figure {
