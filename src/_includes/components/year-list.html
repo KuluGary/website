@@ -1,0 +1,5 @@
+<p>Posts by year:
+  {% for year, _ in collections['postsByYear'] %}
+		<a href="#posts-{{ year }}">{{ year }}</a>
+	{% endfor %}
+</p>
