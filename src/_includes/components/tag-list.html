@@ -1,12 +1,5 @@
-<h2>Tags</h2>
-<ul class="horizontal">
-  {% for tag in collection | getUniqueTags %}
-    {% if tag != collection %}
-      <li>
-        <a href="/tags/{{ tag }}">
-          #{{ tag | unslugify }}
-        </a>
-      </li>
-    {% endif %}
-  {%- endfor %}
-</ul>
+<p>Top tags:
+  {% for item in collection | getFrequentTags | limit(6) %}
+    <a href="/tags/{{ item.tag | slugify }}">#{{ item.tag }}</a>
+  {% endfor %}
+</p>

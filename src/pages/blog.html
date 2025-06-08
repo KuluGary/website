@@ -23,13 +23,7 @@ description: These are my essays, tutorials, and long-form write-ups.
       {% endfor %}
     </ul>
 
-    <ul class="horizontal">
-      {% for item in collection | getFrequentTags %}
-        <li>
-          <a href="/tags/{{ item.tag | slugify }}">{{ item.tag | unslugify }} ({{ item.count }})</a>
-        </li>
-      {% endfor %}
-    </ul>
+    {% include "components/tag-list.html" %}
 
     {% for year, items in collections['postsByYear'] %}
       <section id="posts-{{ year }}">
