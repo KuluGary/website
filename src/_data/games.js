@@ -49,7 +49,7 @@ async function scrapeGameFromProfile(page) {
 
     const genres = await page.evaluate(() => {
       const label = Array.from(document.querySelectorAll("div > strong")).find(
-        (div) => div.textContent.trim() === "Genres:"
+        (div) => div.textContent.trim() === "Genres:" || div.textContent.trim() === "Genre:"
       );
       if (!label) return [];
 
