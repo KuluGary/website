@@ -10,11 +10,15 @@ function _initializeCache() {
   cache.load(cacheId);
 }
 
+/**
+ * Returns an object from cache by the key
+ * @param {string} cacheKey key of the cache object to obtain
+ * @returns the requested object saved into cache
+ */
 function getFromCache(cacheKey) {
-  _initializeCache();
-
+  if (!cache) _initializeCache();
   const cachedItem = cache.getKey(cacheKey);
-  if (cachedItem) {
+  if (cachedItem?.data) {
     const ttl = Math.floor(cachedItem.ttl - Date.now() / 1000);
 
     if (ttl > 0) {
@@ -24,6 +28,12 @@ function getFromCache(cacheKey) {
   return;
 }
 
+/**
+ * Persist data into cache by key
+ * @param {string} cacheKey key of the cache object to persist
+ * @param {any} cacheData data to persist into cache storage
+ * @param {number} daysToAdd customizable TTL
+ */
 function setIntoCache(cacheKey, cacheData, daysToAdd) {
   if (!cache) _initializeCache();
 
@@ -35,6 +45,16 @@ function setIntoCache(cacheKey, cacheData, daysToAdd) {
   cache.save();
 }
 
+/**
+ * Removes an object from cache by its key
+ * @param {string} cacheKey key of the object to remove from cache
+ */
+function removeFromCache(cacheKey) {
+  if (!cache) return;
+
+  cache.removeKey(cacheKey);
+}
+
 function getTTL(daysToAdd = 7) {
   const nowInSeconds = Math.floor(Date.now() / 1000);
   const secondsInDay = 86400;
@@ -44,4 +64,5 @@ function getTTL(daysToAdd = 7) {
 module.exports = {
   getFromCache,
   setIntoCache,
+  removeFromCache,
 };

@@ -19,6 +19,7 @@ const PAGES = {
 const OPTIONS = {
   cache: true,
   headless: true,
+  logErrors: false,
 };
 
 const coverPath = "/assets/images/covers/movies";
@@ -76,7 +77,7 @@ async function scrapeMoviePage(page, url, status) {
       });
       incrementProgress();
     } catch (err) {
-      log("[Trakt.tv/Movies]", `⚠️ Skipped one element in ${status}: ${err.message}`);
+      if (OPTIONS.logErrors) log("[Trakt.tv/Movies]", `⚠️ Skipped one element in ${status}: ${err.message}`);
     }
   }
 

@@ -9,27 +9,35 @@ pagination:
     - mediaCategories
     - postsByYear
     - recentMedia
+    - all
 permalink: /tags/{{tag}}.html
 eleventyComputed:
   title: tagged "{{ tag | unslugify }}"
 ---
+{% extends "layouts/base.html" %}
 
-{% include "components/header.html" %}
+{% block content %}
+  {% include "components/header.html" %}
 
-<main>
-  <h2>Tagged "{{tag | unslugify}}"</h2>
+  <main>
+    <h2>Tagged "{{tag | unslugify}}"</h2>
 
-  <p>This is everything tagged <strong>{{ tag | unslugify }}</strong> found in this website.</p>
+    <p>This is everything tagged <strong>{{ tag | unslugify }}</strong> found in this website.</p>
 
-  <p>Last updated: {{ collections[tag] | getNewestCollectionItemDate | formatDate }}.</p>
+    {% set postDate = collections[tag] | getNewestCollectionItemDate %}
+    <p>Last updated: <time datetime="{{ postDate | formatDate('yyyy-LL-dd') }}">{{ postDate | formatDate('MMMM dd, yyyy') }}</time>.</p>
 
-  <ul>
     {% set taglist = collections[tag] %}
-    {% for post in taglist | reverse %}
-      <li>
-        <time datetime="{{ post.date | formatDate('yyyy-LL-dd') }}">{{ post.date | formatDate }}</time>: <a href="{{ post.url }}">{{ post.data.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</main>
-{% include "components/footer.html" %}
+    {% set postsList = taglist | reverse %}
+
+    {% include "components/post-list.html" %}
+  </main>
+
+  {% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+  <link rel="stylesheet" href="/css/components/post-list.css">
+{% endblock %}

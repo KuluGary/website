@@ -240,7 +240,6 @@ function getSimilarPosts(collection, path, categories) {
 }
 
 function getWebmentionsByUrl(webmentions, url) {
-  console.log(url);
   return webmentions.filter((entry) => entry["wm-target"] === url);
 }
 

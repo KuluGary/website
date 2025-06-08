@@ -19,6 +19,7 @@ const PAGES = {
 const OPTIONS = {
   cache: true,
   headless: true,
+  logErrors: false,
 };
 
 const coverPath = "/assets/images/covers/shows";
@@ -125,7 +126,7 @@ async function scrapeShowListPage(page, url, status) {
       });
       incrementProgress();
     } catch (err) {
-      log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${err.message}`);
+      if (OPTIONS.logErrors) log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${err.message}`);
     }
   }
 

@@ -1,3 +1,5 @@
+const { getFromCache, setIntoCache, removeFromCache } = require("../utils/cache");
+
 module.exports = {
   removeUnsafeManga,
   getRecentMedia,
