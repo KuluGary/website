@@ -30,3 +30,7 @@
 .site-footer .under-construction img {
   display: inline-block;
 }
+
+a:has(#eleventy-badge, #nunjucks-badge) {
+  text-decoration: none;
+}
