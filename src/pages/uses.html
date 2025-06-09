@@ -13,7 +13,7 @@ description: This is a uses page, which includes a list of tools, applications, 
     <p>This is a <a href="https://uses.tech/">uses page</a>, which includes a list of <strong>tools</strong>, <strong>applications</strong>, <strong>hardware</strong> and <strong>services</strong> that I use frequently.</p>
 
     {% for category in uses %}
-      <section>
+      <section id="{{ category.title | slugify }}">
         <h2>{{ category.title }}</h2>
         <p>{{ category.description }}</p>
 
@@ -21,7 +21,7 @@ description: This is a uses page, which includes a list of tools, applications, 
           {% for item in category.children %}
             <dt>
               {% if item.url %}
-                <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>: 
+                <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>:
               {% else %}
                 <strong>{{ item.title }}</strong>:
               {% endif %}

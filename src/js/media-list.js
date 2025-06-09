@@ -7,6 +7,8 @@ gridButtons.forEach((gridButton) => {
     localStorage.setItem("media-list-preference", "grid");
     setMediaSectionPreference();
   });
+
+  gridButton.setAttribute("data-javascript", true);
 });
 
 listButtons.forEach((listButton) => {
@@ -14,19 +16,21 @@ listButtons.forEach((listButton) => {
     localStorage.setItem("media-list-preference", "list");
     setMediaSectionPreference();
   });
+
+  listButton.setAttribute("data-javascript", true);
 });
 
 function setMediaSectionPreference() {
-  const preference = localStorage.getItem("media-list-preference") ?? "grid";
+  const preference = localStorage.getItem("media-list-preference") ?? "list";
 
   if (preference === "grid") {
-    mediaSections.forEach((mediaSection) => mediaSection.classList.add(`media-grid`));
-    mediaSections.forEach((mediaSection) => mediaSection.classList.remove(`media-list`));
+    mediaSections.forEach((mediaSection) => mediaSection.classList.add("media-grid"));
+    mediaSections.forEach((mediaSection) => mediaSection.classList.remove("media-list"));
     gridButtons.forEach((gridButton) => gridButton.setAttribute("disabled", true));
     listButtons.forEach((listButton) => listButton.removeAttribute("disabled"));
   } else if (preference === "list") {
-    mediaSections.forEach((mediaSection) => mediaSection.classList.add(`media-list`));
-    mediaSections.forEach((mediaSection) => mediaSection.classList.remove(`media-grid`));
+    mediaSections.forEach((mediaSection) => mediaSection.classList.add("media-list"));
+    mediaSections.forEach((mediaSection) => mediaSection.classList.remove("media-grid"));
     listButtons.forEach((listButton) => listButton.setAttribute("disabled", true));
     gridButtons.forEach((gridButton) => gridButton.removeAttribute("disabled"));
   }

@@ -100,28 +100,6 @@ h6 {
   & div:has(#grid-toggle, #list-toggle) {
     margin-left: auto;
   }
-
-  & button {
-    background-color: transparent;
-    height: 1lh;
-    width: 1lh;
-    padding: 0;
-    border: var(--border-thickness) solid var(--primary-color);
-
-    &:disabled {
-      opacity: 0.65;
-      border: var(--border-thickness) solid var(--primary-color);
-    }
-
-    & svg {
-      width: 100%;
-      height: 100%;
-
-      & path:not(:first-of-type) {
-        stroke: var(--primary-color);
-      }
-    }
-  }
 }
 
 hr {

@@ -4,20 +4,20 @@
     "description": "This are the physical devices I use for work and / or entertainment on the daily.",
     "children": [
       {
-        "title": "Main PC",
+        "title": "Main computer",
         "description": "Intel Core i7-10700, 16GB RAM, 1TB + 500GB storage."
       },
       {
-        "title": "14\" 2023 MacBook Pro",
-        "description": "Apple M2 Pro, 16 GB RAM, 500GB storage."
+        "title": "Work computer",
+        "description": "14\" 2023 MacBook M2 Pro, 16 GB RAM, 500GB storage."
       },
       {
         "title": "Mobile Phone",
         "description": "Android 12, 3GB RAM, 16GB ROM."
       },
       {
-        "title": "Huion NEW 1060PLUS",
-        "description": "graphic tablet."
+        "title": "Graphic tablet",
+        "description": "Huion NEW 1060PLUS."
       }
     ]
   },
@@ -151,6 +151,16 @@
         "url": "https://afinestart.me/",
         "title": "A fine start",
         "description": "to improve my browser's home screen."
+      },
+      {
+        "url": "https://addons.mozilla.org/firefox/addon/clearurls/",
+        "title": "ClearURLs",
+        "description": "to remove tracking URL params."
+      },
+      {
+        "url": "https://addons.mozilla.org/firefox/addon/view-page-archive/",
+        "title": "Web archives",
+        "description": "to view older versions of a website."
       }
     ]
   }
