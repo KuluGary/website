@@ -27,7 +27,6 @@ const {
   getWebmentionsByUrl,
   isOwnWebmention,
   readableDateFromISO,
-  size,
   webmentionsByType,
   filterOwnWebmentions,
 } = require("./src/js/11ty/blog");

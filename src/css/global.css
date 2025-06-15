@@ -25,6 +25,10 @@
   box-sizing: border-box;
 }
 
+* + * {
+  margin-top: var(--line-height);
+}
+
 html {
   display: flex;
   width: 100%;
@@ -279,7 +283,7 @@ ol ul,
 ol ol,
 ul ol,
 ul ul {
-  padding: 0 0 0 3ch;
+  padding: 0 0 0 2ch;
   margin: 0;
 }
 
@@ -610,4 +614,30 @@ label:has(.theme-switcher) {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & .title {
+    margin-top: 0;
+    all: unset;
+    font-weight: 600;
+
+    &:is(h1, h2, h3, h4, h5, h6)::before {
+      display: none;
+    }
+  }
+
+  > li {
+    position: relative;
+    padding-left: var(--line-height);
+    margin-top: var(--line-hegith);
+    overflow: clip;
+
+    & article {
+    }
+  }
 }

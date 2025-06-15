@@ -132,6 +132,7 @@
     position: relative;
     padding-left: var(--line-height);
     margin-top: var(--line-height);
+    overflow: clip;
 
     & article {
       margin: 0;

@@ -1,6 +1,8 @@
 {% set mentions = webmentions | getWebmentionsByUrl(metadata.url + page.url) %}
 
 <section class="webmentions">
+	<p>To reply to this post, send a <a href="https://indieweb.org/Webmention">Webmention</a> and it will show up here after the site rebuilds next time.</p>
+
 	{% set reposts = mentions | webmentionsByType('repost-of') | filterOwnWebmentions %}
 	{% set likes = mentions | webmentionsByType('like-of') | filterOwnWebmentions %}
 	{% set replies = mentions | webmentionsByType('in-reply-to')  %}

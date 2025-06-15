@@ -59,7 +59,11 @@
 				<ul class="tags">
 					{% for tag in (item.tags or item.genres) %}
 						<li>
-							<a href="/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+							{% if item.type === "Post" %}
+								<a href="/tags/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+							{% else %}
+								<a href="/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+							{% endif %}
 						</li>
 					{%- endfor -%}
 				</ul>

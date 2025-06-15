@@ -1,0 +1,60 @@
+---
+title: colophon
+permalink: /colophon/
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+	<main>
+		<p>This site is made with a variety of tools. The source for this site is available in <a href="https://github.com/KuluGary/website">its repository</a>.</p>
+
+		<ul>
+			<li>The frontend is made with <a  href="https://www.11ty.dev/">11ty</a> as its static site generator and <a  href="https://mozilla.github.io/nunjucks/">Nunjucks</a> as its templating engine.<ul>
+					<li>The design uses vanilla CSS with some minimal post-processing.<ul>
+							<li>The fonts are system fonts and the font stacks are inspired by <a href="https://modernfontstacks.com/">Modern Font Stacks</a>.</li>
+							<li>The site uses postcss at buildtime to optimize and post-process the CSS.<ul>
+									<li>
+										<a  href="https://cssnano.github.io/cssnano/">cssnano</a> to minify the CSS for better performance.</li>
+									<li>
+										<a  href="https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media#readme">postcss-custom-media</a> to simplify the responsive CSS declarations.</li>
+									<li>
+										<a href="https://github.com/postcss/postcss-media-minmax#readme">postcss-media-minmax</a> as a polyfill to support <a  href="https://drafts.csswg.org/mediaqueries/#mq-range-context">CSS Media Queries Level 4</a>
+									</li>
+									<li>
+										<a href="https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme">postcss-nesting</a> lets you nest style rules inside each other, following the <a  href="https://www.w3.org/TR/css-nesting-1/">CSS Nesting specification</a>.</li>
+									<li>
+										<a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme">postcss-preset-env</a> polyfills modern CSS into most something most browsers can interpet.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>The data is populated through <a href="https://www.11ty.dev/docs/data-global/">global data files</a> from different services, which are re-fetched at buildtime.<ul>
+							<li>The games list is obtained from <a href="https://howlongtobeat.com/">How Long To Beat</a>.</li>
+							<li>The movies and show list is obtained from <a href="https://trakt.tv/">Trakt.tv</a>.</li>
+							<li>The manga list is obtained from <a href="https://mangadex.org/">MangaDex</a>.</li>
+							<li>The music list is obtained from <a href="https://open.spotify.com/">Spotify</a>.</li>
+							<li>The video list is obtained from <a href="https://www.youtube.com/">YouTube</a>.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>The site is inspired by some fellow authors:<ul>
+					<li>
+						<a href="https://photogabble.co.uk/">PhotoGabble</a>, for features such as this colophon or some 11ty plugins.</li>
+					<li>
+						<a href="https://www.coryd.dev/">Cory Dransfeldt</a>, for inspiring the media and recent activity sections.</li>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</main>
+{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/css/components/header.css"/>
+<link rel="stylesheet" href="/css/components/footer.css"/>
+{% endblock %}

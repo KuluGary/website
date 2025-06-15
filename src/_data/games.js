@@ -22,6 +22,27 @@ const OPTIONS = {
 };
 
 /**
+ * Main entry point for module: scrapes and caches game data.
+ * @returns {Promise<Object>} Scraped game data.
+ */
+module.exports = async function fetchHLTBGames() {
+  const cached = getFromCache("games");
+
+  if (cached && OPTIONS.cache) {
+    log("[HLTB]", "🗃️ Returning cached data");
+    return cached;
+  }
+
+  time("[HLTB]", "🎮 Starting fresh scrape");
+  const collection = await getCollection();
+  setIntoCache("games", collection);
+  saveTestData("games.json", collection);
+  timeEnd("[HLTB]", "✔️ Scraping complete");
+
+  return collection;
+};
+
+/**
  * Extracts the genres and description from the game's profile page.
  * @param {puppeteer.Page} page - Puppeteer page instance for a game profile.
  * @returns {Promise<{ id: string, description: string, genres: Array<string>, developer: string }>} Object containing description and genres.
@@ -44,6 +65,7 @@ async function scrapeGameFromProfile(page) {
       timeout: 2000,
     });
     const image = await imageSelector.evaluate((el) => el.getAttribute("src"));
+    const imgSrcSet = getImageSrcSet(image);
 
     const description = await descriptionSelector.evaluate((el) => el.innerText);
 
@@ -78,6 +100,19 @@ async function scrapeGameFromProfile(page) {
     log("[HLTB]", "⚠️ Error scraping game profile");
     return { id: null, description: null, genres: [] };
   }
+}
+
+async function getImageSrcSet(imgSrc) {
+  const srcSet = {};
+
+  for (const size of [50, 100, 200, 250]) {
+    const imgUrl = new URL(imgSrc);
+    imgUrl.searchParams.set("width", size);
+
+    srcSet[size] = imgUrl.toString();
+  }
+
+  return srcSet;
 }
 
 /**
@@ -115,6 +150,11 @@ async function scrapeGameFromList(game) {
   return { title, link, platform, playtime, rate };
 }
 
+/**
+ * Extracts cookies from HTTP request
+ * @param {puppeteer.Page} page - Puppeteer page instance
+ * @returns HTTP request cookies
+ */
 async function extractCookies(page) {
   const client = await page.target().createCDPSession();
   const cookies = (await client.send("Network.getAllCookies")).cookies;
@@ -266,24 +306,3 @@ async function getCollection() {
   await browser.close();
   return collection;
 }
-
-/**
- * Main entry point for module: scrapes and caches game data.
- * @returns {Promise<Object>} Scraped game data.
- */
-module.exports = async function fetchHLTBGames() {
-  const cached = getFromCache("games");
-
-  if (cached && OPTIONS.cache) {
-    log("[HLTB]", "🗃️ Returning cached data");
-    return cached;
-  }
-
-  time("[HLTB]", "🎮 Starting fresh scrape");
-  const collection = await getCollection();
-  setIntoCache("games", collection);
-  saveTestData("games.json", collection);
-  timeEnd("[HLTB]", "✔️ Scraping complete");
-
-  return collection;
-};
