@@ -82,24 +82,15 @@ article .splide iframe {
 .social-media {
   display: flex;
   column-gap: 1ch;
-  margin-bottom: var(--line-height);
+  margin-block: calc(var(--line-height) / 2);
 
   & > * {
     margin: 0;
   }
 }
 
-svg + .share-buttons {
-  margin-left: auto;
-}
-
-.share-button {
-  text-decoration: none;
-  margin-left: auto;
-}
-
 .post-footer {
-  --footer-separation: calc(var(--line-height) * 1.5);
+  --footer-separation: var(--line-height);
 
   margin-top: var(--footer-separation);
   border-top: var(--border-thickness) solid var(--text-color);
@@ -111,7 +102,7 @@ svg + .share-buttons {
     column-gap: var(--line-height);
     row-gap: calc(var(--line-height) / 2);
     justify-content: space-between;
-    margin-top: calc(var(--line-height) / 2);
+    margin-top: var(--footer-separation);
 
     p {
       margin-bottom: 0;
@@ -125,7 +116,6 @@ svg + .share-buttons {
         &:has(.prev-btn) {
           grid-column: 2;
           text-align: right;
-          border: 1px solid red;
         }
       }
     }
@@ -137,6 +127,10 @@ svg + .share-buttons {
 
   & section {
     margin-top: 0;
+  }
+
+  & .share-buttons {
+    margin-block: calc(var(--line-height) / 2);
   }
 }
 

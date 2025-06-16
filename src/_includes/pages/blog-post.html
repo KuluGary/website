@@ -59,32 +59,18 @@
   <footer id="post-footer" class="post-footer">
     <nav>
       {% if nextPost %}
-        <p>Next:
-        <a class="nxt-btn" href="{{ nextPost.url }}">
-            {{ nextPost.data.title }}</a>
+        <p>
+          <a class="nxt-btn" href="{{ nextPost.url }}">
+           ◄ {{ nextPost.data.title }}</a>
         </p>
       {% endif %}
       {% if previousPost %}
-        <p>Previous:
+        <p>
           <a class="prev-btn" href="{{ previousPost.url }}">
-            {{ previousPost.data.title }}</a>
+            {{ previousPost.data.title }} ►</a>
         </p>
       {% endif %}
     </nav>
-    {% set postsList = collections["blog-post"] | getSimilarPosts(page.url, tags) | limit(3) %}
-
-    {% if postsList.length > 0 %}
-      <section>
-        <p>More like this:</p>
-        <ul>
-          {% for post in postsList %}
-            <li>
-              <a href="{{ post.url }}">{{post.data.title}}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
 
     {% include "components/webmentions.html" %}
 
