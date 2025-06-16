@@ -94,7 +94,10 @@ article .splide iframe {
 
   margin-top: var(--footer-separation);
   border-top: var(--border-thickness) solid var(--text-color);
-  font-size: smaller;
+
+  @media (--viewport-desktop) {
+    font-size: smaller;
+  }
 
   & nav {
     display: grid;
@@ -107,16 +110,30 @@ article .splide iframe {
     p {
       margin-bottom: 0;
       padding: 0;
+
+      &:has(.prev-btn) {
+        grid-column: 2;
+        text-align: right;
+      }
     }
 
-    @media (--viewport-tablet) {
+    @media (--viewport-mobile) {
+      display: block;
+
       & p {
-        margin-block: 0;
+        margin-block: 0.5ch;
 
         &:has(.prev-btn) {
-          grid-column: 2;
-          text-align: right;
+          text-align: left;
         }
+
+        &::before {
+          content: attr(data-btn-type) ": ";
+        }
+      }
+
+      & .navigation-button-icon {
+        display: none;
       }
     }
   }

@@ -59,15 +59,17 @@
   <footer id="post-footer" class="post-footer">
     <nav>
       {% if nextPost %}
-        <p>
+        <p data-btn-type="Next">
           <a class="nxt-btn" href="{{ nextPost.url }}">
-           ◄ {{ nextPost.data.title }}</a>
+            <span class="navigation-button-icon">◄</span>
+            {{ nextPost.data.title }}</a>
         </p>
       {% endif %}
       {% if previousPost %}
-        <p>
+        <p data-btn-type="Previous">
           <a class="prev-btn" href="{{ previousPost.url }}">
-            {{ previousPost.data.title }} ►</a>
+            {{ previousPost.data.title }}
+            <span class="navigation-button-icon">►</span></a>
         </p>
       {% endif %}
     </nav>
