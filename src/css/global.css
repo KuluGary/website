@@ -108,6 +108,7 @@ hr {
 a:link,
 a:visited {
   color: var(--secondary-color);
+  font-weight: bold;
 }
 
 h1 > a:link,
