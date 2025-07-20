@@ -40,6 +40,7 @@ const {
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
   eleventyConfig.addPlugin(wordStats);
   eleventyConfig.addPlugin(pluginRss);

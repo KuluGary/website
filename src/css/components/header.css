@@ -1,6 +1,6 @@
 .header {
-  border: 1px solid var(--text-color);
-  margin-bottom: calc(var(--line-height) * 2);
+  border: 2px solid var(--text-color);
+  margin-bottom: var(--line-height);
 
   & .logo-row {
     display: flex;
