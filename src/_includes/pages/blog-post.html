@@ -14,7 +14,7 @@
           Written: {{date|formatDate("LLLL dd, yyyy")}}
         </li>
         <li class="post-stats">
-          ~{{content|wordStats}}
+          ~{{ content | timeToRead }}
         </li>
         <li>
           <ul class="post-tags">
@@ -83,15 +83,11 @@
   <link rel="stylesheet" href="/css/components/header.css">
   <link rel="stylesheet" href="/css/components/post-list.css">
   <link rel="stylesheet" href="/css/blog-post.css">
+  <link rel="stylesheet" href="/css/prism/grayscale.css">
+  <link rel="stylesheet" href="/css/prism/cherry-blosom.css">
+  <link rel="stylesheet" href="/css/prism/dark-blue.css">
+  <link rel="stylesheet" href="/css/prism/dark-grayscale.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-  <link
-    href="https://npm.elemecdn.com/prism-themes/themes/prism-vs.css"
-    rel="stylesheet"
-    media="(prefers-color-scheme: light)"/>
-  <link
-    href="https://npm.elemecdn.com/prism-themes/themes/prism-material-dark.css"
-    rel="stylesheet"
-    media="(prefers-color-scheme: dark)"/>
 {% endblock %}
 {% block script %}
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>

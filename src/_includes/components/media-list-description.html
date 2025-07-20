@@ -30,9 +30,9 @@
 
 		{% if item.type === "Post" %}
 			<li>
-				{% set postStats = item.post | wordStats %}
+				{% set postStats = item.post.content | timeToRead %}
 
-				<p class="post-stats">~{{postStats}}</p>
+				<p class="post-stats">~{{postStats}} read</p>
 			</li>
 		{% endif %}
 

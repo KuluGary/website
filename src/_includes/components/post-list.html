@@ -1,6 +1,6 @@
 <ul class="post-list">
   {% for post in postsList %}
-    {% set postStats = post | wordStats %}
+    {% set postStats = post.content | timeToRead %}
     <li>
       <article>
         <header>
@@ -14,7 +14,7 @@
 
         <ul class="stats bar-separated">
           <li>
-            <p class="post-stats">~{{postStats}}</p>
+            <p class="post-stats">~{{postStats}} read</p>
           </li>
 
           <li>

@@ -2,6 +2,7 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const timeToRead = require("eleventy-plugin-time-to-read");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {
   formatDate,
@@ -36,13 +37,12 @@ const {
   getMediaGenres,
   removeUnsafeManga,
 } = require("./src/js/11ty/media");
-const wordcount = require("./src/js/11ty/wordcount");
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
-  eleventyConfig.addGlobalData("rootURL", "https://kulugary.neocities.org");
-  eleventyConfig.addPlugin(wordcount);
+  eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
+  eleventyConfig.addPlugin(timeToRead);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(require("@jgarber/eleventy-plugin-postcss"));
   eleventyConfig.addPlugin(syntaxHighlight);

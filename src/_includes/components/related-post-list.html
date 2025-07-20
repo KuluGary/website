@@ -1,6 +1,6 @@
 <ul class="post-list">
   {% for post in postsList %}
-    {% set postStats = post | wordStats %}
+    {% set postStats = post.content | timeToRead %}
     <li>
       <article>
         <header>
@@ -10,7 +10,7 @@
           <time datetime="{{ post.date | formatDate('yyyy-LL-dd') }}">{{ post.date | formatDate }}</time>
         </header>
         <div class="post-subtitle">
-          <p class="post-stats">~{{postStats}}</p>
+          <p class="post-stats">~{{postStats}} read</p>
         </div>
       </article>
     </li>
