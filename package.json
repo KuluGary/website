@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@csstools/postcss-global-data": "^3.0.0",
     "@jgarber/eleventy-plugin-postcss": "^1.0.1",
@@ -41,6 +41,7 @@
     "@sindresorhus/slugify": "^2.2.1",
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.5",
+    "jsdom": "^26.1.0",
     "memoize": "^10.1.0",
     "postcss-nested": "^7.0.2",
     "rss-parser": "^3.13.0"
