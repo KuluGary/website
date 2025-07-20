@@ -26,7 +26,7 @@ html[data-theme="grayscale"] {
   code[class*="language-"]::-moz-selection,
   code[class*="language-"] ::-moz-selection {
     color: #282828; /* fg0 */
-    background: #a89984; /* bg4 */
+    background: #eee8df; /* bg4 */
   }
 
   pre[class*="language-"]::selection,
@@ -46,7 +46,7 @@ html[data-theme="grayscale"] {
 
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
-    background: #f9f5d7; /* bg0_h */
+    background: #faf3e6; /* bg0_h */
   }
 
   /* Inline code */
