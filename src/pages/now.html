@@ -12,6 +12,29 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 		<p>This now page holds a general view into what I'm focused on at the moment. <a href="https://nownownow.com/about">What is a now page?</a>
 		</p>
 
+		<h2>Current Status</h2>
+		{% set currentStatus = status.entry[0] %}
+
+		<article id="current-status">
+			<header>
+				<p>{{currentStatus.title}}</p>
+				<time datetime="{{ currentStatus.published | formatDate('yyyy-LL-dd') }}">{{ currentStatus.published | isoStringToRelativeTime }}</time>
+			</header>
+
+			<ul class="subtitle bar-separated">
+				<li>
+					<a href="/status">Status</a>
+				</li>
+				<li>
+					<a href="{{currentStatus.author.uri}}">{{currentStatus.author.name}}</a>
+				</li>
+				<li>
+					<a href="{{currentStatus.link["@_href"]}}">status.cafe</a>
+				</li>
+			</ul>
+
+		</article>
+
 		{% set media = games.playing %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 		{% set href = "/games/status/playing" %}

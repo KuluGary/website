@@ -12,6 +12,7 @@ module.exports = {
   uniqueById,
   log,
   mergeArrays,
+  isoStringToRelativeTime,
 };
 
 /**
@@ -25,6 +26,19 @@ function formatDate(date, format = "dd/LL/yyyy") {
   return DateTime.fromJSDate(typeof date === "string" ? new Date(date) : date, {
     zone: "utc",
   }).toFormat(String(format));
+}
+
+/**
+ * Converts an ISO 8601 date string to a human-readable relative time string.
+ *
+ * Uses Luxon's `DateTime.fromISO` and `toRelative()` to produce strings like
+ * "3 hours ago", "in 2 days", etc.
+ *
+ * @param {string} isoString - The ISO 8601 date string to convert.
+ * @returns {string | null} A relative time string (e.g., "2 days ago") or `null` if the input is invalid.
+ */
+function isoStringToRelativeTime(isoString) {
+  return DateTime.fromISO(isoString, { zone: "utc", locale: "en-US" }).toRelative();
 }
 
 /**

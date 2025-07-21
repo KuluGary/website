@@ -15,6 +15,7 @@ const {
   uniqueById,
   log,
   mergeArrays,
+  isoStringToRelativeTime,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -55,6 +56,7 @@ module.exports = function (eleventyConfig) {
 
   /** 11ty generic */
   eleventyConfig.addFilter("formatDate", formatDate);
+  eleventyConfig.addFilter("isoStringToRelativeTime", isoStringToRelativeTime);
   eleventyConfig.addFilter("sortByDate", sortByDate);
   eleventyConfig.addFilter("formatNumber", formatNumber);
   eleventyConfig.addFilter("getRootUrl", getRootUrl);
