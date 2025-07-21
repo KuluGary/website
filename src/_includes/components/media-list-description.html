@@ -1,10 +1,14 @@
 <article class="media-description recent-media">
 	<header>
-		<h3>
-			<a href="{{ item.link }}">
-				{{ item.title }}
-			</a>
-		</h3>
+		{% if item.type != "Status" %}
+			<h3>
+				<a href="{{ item.link }}">
+					{{ item.title }}
+				</a>
+			</h3>
+		{% else %}
+			<p>{{ item.title }}</p>
+		{% endif %}
 		<time datetime="{{ item.date or item.createdAt or item.updatedAt or item.addedAt }}">
 			{{ (item.date or item.createdAt or item.updatedAt or item.addedAt) | formatDate('MMMM dd, yyyy')}}</time>
 	</header>
@@ -25,6 +29,12 @@
 						{{ item.author.name }}
 					</cite>
 				{% endif %}
+			</li>
+		{% endif %}
+
+		{% if item.type === "Status" %}
+			<li>
+				<a href="{{ item.link }}">status.cafe</a>
 			</li>
 		{% endif %}
 

@@ -171,10 +171,20 @@
 
       align-items: center;
 
+      & p {
+        margin-block: 0;
+      }
+
       & time {
         color: var(--text-color-alt);
         margin: 0;
         font-size: smaller;
+      }
+    }
+
+    & .stats:is(:last-child) {
+      & > li {
+        margin-block-end: 0;
       }
     }
 

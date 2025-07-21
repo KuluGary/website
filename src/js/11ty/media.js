@@ -2,7 +2,7 @@ const { getFromCache, setIntoCache, removeFromCache } = require("../utils/cache"
 
 module.exports = {
   removeUnsafeManga,
-  getRecentMedia,
+  getRecentActivity,
   getFrequentMediaTags,
   getMediaCategories,
   getMediaGenres,
@@ -22,71 +22,83 @@ function removeUnsafeManga(mangaList) {
  * @param {Object} collection - Eleventy API Object
  * @returns An array of media and posts
  */
-function getRecentMedia(collection) {
-  const allMedia = collection.getAll()[0].data;
+function getRecentActivity(collection) {
+  const allCollections = collection.getAll()[0].data;
   const posts = collection.getFilteredByTag("blog-post");
 
-  const games = allMedia.games || [];
-  const manga = allMedia.manga || [];
-  const movies = allMedia.movies || [];
-  const music = allMedia.music || [];
-  const shows = allMedia.shows || [];
-  const videos = allMedia.videos || [];
-  const webcomics = allMedia.webcomics || [];
+  const games = allCollections.games || [];
+  const manga = allCollections.manga || [];
+  const movies = allCollections.movies || [];
+  const music = allCollections.music || [];
+  const shows = allCollections.shows || [];
+  const videos = allCollections.videos || [];
+  const webcomics = allCollections.webcomics || [];
+  const status = allCollections.status.entry || [];
 
   function getDate(element) {
     return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
   }
 
-  const recentMedia = [
-    ...games.favourites,
-    ...movies.watchlist,
+  function formatMedia(media) {
+    return media.map((element) => ({
+      id: element.id,
+      type: element.type,
+      title: element.title,
+      link: element.link,
+      tags: element.genres ?? element.tags ?? [],
+      thumbnail: element.thumbnail,
+      author: element.author,
+      platform: element.platform,
+      views: element.views,
+      rate: element.rate,
+      date: getDate(element),
+      playtime: element.playtime,
+      description: element.description,
+    }));
+  }
+
+  function formatPosts(posts) {
+    return posts.map((element) => ({
+      id: element.id,
+      type: "Post",
+      title: element.data.title,
+      link: element.url,
+      date: element.date,
+      tags: element.data.tags.filter((tag) => tag !== "blog-post"),
+      author: { name: "Gary" },
+      description: element.data.description,
+      post: element,
+    }));
+  }
+
+  function formatStatus(status) {
+    return status.map((element) => ({
+      id: element.id,
+      type: "Status",
+      date: element.published,
+      link: element.link["@_href"],
+      title: `${element.emoji} ${element.content["#text"]}`,
+    }));
+  }
+
+  const recentActivity = [
+    ...formatMedia(games.favourites),
+    ...formatMedia(movies.watchlist),
     // ...removeUnsafeManga(manga.reading),
-    ...shows.watchlist,
+    ...formatMedia(shows.watchlist),
     // ...music.favourites,
-    ...videos.favourites,
-    ...webcomics.reading,
-    ...posts,
-  ]
-    .map((element) => {
-      if (element.type) {
-        return {
-          id: element.id,
-          type: element.type,
-          title: element.title,
-          link: element.link,
-          tags: element.genres ?? element.tags ?? [],
-          thumbnail: element.thumbnail,
-          author: element.author,
-          platform: element.platform,
-          views: element.views,
-          rate: element.rate,
-          date: getDate(element),
-          playtime: element.playtime,
-          description: element.description,
-        };
-      }
+    ...formatMedia(videos.favourites),
+    ...formatMedia(webcomics.reading),
+    ...formatPosts(posts),
+    ...formatStatus(status),
+  ].sort((a, b) => {
+    const prevDate = new Date(a.date);
+    const nextDate = new Date(b.date);
 
-      return {
-        id: element.id,
-        type: "Post",
-        title: element.data.title,
-        link: element.url,
-        date: element.date,
-        tags: element.data.tags.filter((tag) => tag !== "blog-post"),
-        author: { name: "Gary" },
-        description: element.data.description,
-        post: element,
-      };
-    })
-    .sort((a, b) => {
-      const prevDate = new Date(a.date);
-      const nextDate = new Date(b.date);
+    return nextDate.getTime() - prevDate.getTime();
+  });
 
-      return nextDate.getTime() - prevDate.getTime();
-    });
-
-  return recentMedia;
+  return recentActivity;
 }
 
 /**

@@ -4,7 +4,7 @@ const { saveTestData } = require("../js/utils/save");
 const { parseXML } = require("../js/utils/xml");
 
 const OPTIONS = {
-  cache: false,
+  cache: true,
 };
 
 const FEED_URL = "https://status.cafe/users/kulugary.atom";

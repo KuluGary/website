@@ -33,7 +33,7 @@ const {
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
-  getRecentMedia,
+  getRecentActivity,
   getMediaCategories,
   getMediaGenres,
   removeUnsafeManga,
@@ -84,7 +84,7 @@ module.exports = function (eleventyConfig) {
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
   eleventyConfig.addFilter("getFrequentMediaTags", getFrequentMediaTags);
-  eleventyConfig.addCollection("recentMedia", getRecentMedia);
+  eleventyConfig.addCollection("recentActivity", getRecentActivity);
   eleventyConfig.addCollection("genrePages", getMediaGenres);
   eleventyConfig.addCollection("mediaCategories", getMediaCategories);
 

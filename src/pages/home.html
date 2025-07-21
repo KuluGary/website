@@ -24,7 +24,7 @@ permalink: /
     <section class="recent-activity">
       <h2><a href="/recent-activity">Recent activity</a> {% include "components/media-list-buttons.html" %}</h2>
 
-      {% set media = collections['recentMedia'] | limit(5) %}
+      {% set media = collections['recentActivity'] | limit(5) %}
       {% set mediaListGrid = "grid-list grid-col-5" %}
       {% include "components/media-list.html" %}
     </section>
