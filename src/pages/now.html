@@ -17,7 +17,7 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 
 		<article id="current-status">
 			<header>
-				<p>{{currentStatus.title}}</p>
+				<p>{{currentStatus.content["#text"]}}</p>
 				<time datetime="{{ currentStatus.published | formatDate('yyyy-LL-dd') }}">{{ currentStatus.published | isoStringToRelativeTime }}</time>
 			</header>
 
