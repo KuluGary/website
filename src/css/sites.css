@@ -1,3 +1,18 @@
+dd,
+dt {
+  position: relative;
+  padding-left: var(--line-height);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 1ch;
+    background-color: var(--background-color-alt);
+  }
+}
+
 dt {
   margin-top: var(--line-height);
 }
@@ -5,4 +20,9 @@ dt {
 dd {
   margin-inline: 0;
   margin-top: calc(var(--line-height) / 2);
+
+  &::before {
+    margin-top: calc(var(--line-height) * -1);
+    height: calc(100% + var(--line-height));
+  }
 }

@@ -40,6 +40,9 @@ html[data-theme="dark-grayscale"] {
     margin: 0.5em 0;
     overflow: auto;
     background: #1e1e1e;
+    border-radius: 0.3em;
+
+    border: var(--border-thickness) solid var(--background-color-alt);
   }
 
   :not(pre) > code[class*="language-"] {
