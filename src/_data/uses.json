@@ -4,20 +4,16 @@
     "description": "This are the physical devices I use for work and / or entertainment on the daily.",
     "children": [
       {
-        "title": "Main computer",
-        "description": "Intel Core i7-10700, 16GB RAM, 1TB + 500GB storage."
+        "title": "Windows 10 custom computer",
+        "description": "My main personal computer. It has an Intel Core i7-10700 with 16GB RAM and 1TB + 500GB storage."
       },
       {
-        "title": "Work computer",
-        "description": "14\" 2023 MacBook M2 Pro, 16 GB RAM, 500GB storage."
+        "title": "14\" 2023 MacBook M2 Pro",
+        "description": "The computer provided by my current employers; I use it only while on the job."
       },
       {
-        "title": "Mobile Phone",
-        "description": "Android 12, 3GB RAM, 16GB ROM."
-      },
-      {
-        "title": "Graphic tablet",
-        "description": "Huion NEW 1060PLUS."
+        "title": "Android 12 phone",
+        "description": "My personal phone I use mostly to browse the web, take calls and be available while away from my computer."
       }
     ]
   },
@@ -28,67 +24,52 @@
       {
         "url": "https://www.mozilla.org/",
         "title": "Firefox",
-        "description": "to browse the web."
+        "description": "This is my current browser of choice. I have it customised with some extensions you can check out further in this page."
       },
       {
         "url": "https://godotengine.org/",
         "title": "Godot",
-        "description": "to make videogames."
+        "description": "Godot is my current favourite game engine. After having tried RPG Maker and Game Maker Studio, I've been tinkering with Godot for a while and enjoyed it greatly."
       },
       {
         "url": "https://vscodium.com/",
         "title": "VSCodium",
-        "description": "to write code."
+        "description": "A fork of VSCode, VSCodium is everything I would want in a code editor. I've used VSCode since I started coding professionally, and I've never thought of using anything else."
       },
       {
         "url": "https://www.gimp.org/",
         "title": "GIMP",
-        "description": "to make and edit photos and images."
+        "description": "I don't have a lot of experience with GIMP. I grew up using a cracked version of Photoshop for everything I needed, but I've been wanting to use more of GIMP instead of supporting Adobe."
       },
       {
         "url": "https://inkscape.org/",
         "title": "Inkscape",
-        "description": "to make vector graphics."
+        "description": "Like with GIMP, Inkscape is an alternative to Adobe (in this case, Illustrator) that I've been trying to familiarize myself with."
       },
       {
         "url": "https://krita.org/",
         "title": "Krita",
-        "description": "to make digital art."
+        "description": "I've tried a few illustration programs in my life -Photoshop, Paint Tool Sai, Clip Studio Paint -and now I've been practicing and loving Krita."
       },
       {
         "url": "https://www.blender.org/",
         "title": "Blender",
-        "description": "to make 3D models."
+        "description": "Blender is a standard for a reason. I first tried to learn 3D with Blender when I was a teen, and now I've been tinkering with it again for a few years and still want to learn more."
       },
       {
         "url": "https://libresprite.github.io/#!/",
         "title": "Libresprite",
-        "description": "to make pixel art."
+        "description": "An open source alternative to Asesprite, Libresprite is everything I need whenever I am making any kind of pixel art for my games."
       },
       {
         "url": "https://www.libreoffice.org/",
         "title": "LibreOffice",
-        "description": "for creative writing."
+        "description": "I've been using LibreOffice for years, ever since I pivoted away from Microsoft Word, and I've never looked back."
       },
       {
         "url": "https://obsproject.com/es/",
         "title": "OBS",
-        "description": "to make screen recordings and livestreams."
-      },
-      {
-        "url": "https://www.foxit.com/pdf-reader/",
-        "title": "Foxit PDF Reader",
-        "description": "to read PDFs."
-      },
-      {
-        "url": "https://www.oo-software.com/en/shutup10",
-        "title": "O&O ShutUp10++",
-        "description": "to have control over which Windows 10/11 functions to enable."
-      },
-      {
-        "url": "https://www.oo-software.com/en/ooappbuster",
-        "title": "O&O AppBuster",
-        "description": "to remove bloatware apps in your Windows 10/11 installation."
+        "description": "OBS is a standard in the video capturing scene and is what I use any time I need to make a small showcase of my games."
       }
     ]
   },
@@ -99,32 +80,32 @@
       {
         "url": "https://duckduckgo.com/",
         "title": "DuckDuckGo",
-        "description": "to surf the web privately."
+        "description": "With the enshittification of Google, I've been using DuckDuckGo as my main browser for a while and it fills almost any need I have."
       },
       {
         "url": "https://32bit.cafe/",
         "title": "@32bit.cafe RSS",
-        "description": "to manage my RSS feed."
+        "description": "I had wanted a RSS reader for years but only when I discovered this one I started to use it daily."
       },
       {
         "url": "https://archive.org/",
         "title": "Internet archive",
-        "description": "to browse through a ditital library."
+        "description": "If you like libraries, the Internet Archive is a dream come true. I've found more obscure media here than in any other place in the Internet."
       },
       {
         "url": "https://web.archive.org/",
         "title": "Wayback machine",
-        "description": "to browse preserved websites."
+        "description": "I'm a nostalgic person, and whenever I want to remind myself of how the Internet used to be I go to the Wayback Machine."
       },
       {
         "url": "https://www.webdesignmuseum.org/",
         "title": "Web design museum",
-        "description": "to browse old-school website designs."
+        "description": "I like websites, and I prefer old-school and Y2K design trends so I find myself browsing the Web design museum for inspritation."
       },
       {
         "url": "https://neocities.org/",
         "title": "Neocities",
-        "description": "to host static websites (like this one)."
+        "description": "I've hosted my blog in Vercel, Netlify and other services and now I like to keep it simple and use Neocities."
       }
     ]
   },
@@ -135,32 +116,22 @@
       {
         "url": "https://ublockorigin.com/",
         "title": "uBlock origin",
-        "description": "to block invasive ads."
+        "description": "Navigating the web today is impossible with an add blocker, and uBlock origin is recommended for a reason."
       },
       {
         "url": "https://bitwarden.com/",
         "title": "bitwarden",
-        "description": "to manage my passwords."
+        "description": "If you want to secure your accounts, you have to use complex passwords and other key systems, and Bitwarden is a very complete and ease to use vault and password manager."
       },
       {
         "url": "https://addons.mozilla.org/firefox/addon/tree-style-tab/",
         "title": "Tree Style Tab",
-        "description": "to display browser tabs in a tree fashion."
+        "description": "I tend to have lots of tabs open, and I prefer the vertical layout of Tree Style Tab over the standard horizontal one."
       },
       {
         "url": "https://afinestart.me/",
         "title": "A fine start",
-        "description": "to improve my browser's home screen."
-      },
-      {
-        "url": "https://addons.mozilla.org/firefox/addon/clearurls/",
-        "title": "ClearURLs",
-        "description": "to remove tracking URL params."
-      },
-      {
-        "url": "https://addons.mozilla.org/firefox/addon/view-page-archive/",
-        "title": "Web archives",
-        "description": "to view older versions of a website."
+        "description": "I never knew I wanted the ability to completely customize the links in my browser's home page until I got recommended A fine start."
       }
     ]
   }

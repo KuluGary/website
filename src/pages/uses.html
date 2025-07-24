@@ -20,9 +20,9 @@ description: This is a uses page, which includes a list of tools, applications, 
           {% for item in category.children %}
             <dt>
               {% if item.url %}
-                <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>:
+                <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
               {% else %}
-                <strong>{{ item.title }}</strong>:
+                <strong>{{ item.title }}</strong>
               {% endif %}
 
             </dt>
