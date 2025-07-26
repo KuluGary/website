@@ -9,7 +9,7 @@
     padding: 0;
     margin-block: var(--line-height);
 
-    @media (width <= 690px) {
+    @media (--viewport-mobile) {
       grid-template-columns: repeat(auto-fit, minmax(var(--column-size), 1fr));
       justify-content: center;
     }
@@ -230,6 +230,8 @@
 h1,
 h2,
 h3 {
+  text-wrap: balance;
+
   & button {
     display: none;
     background-color: transparent;
@@ -254,6 +256,18 @@ h3 {
 
     &[data-javascript="true"] {
       display: inline;
+
+      @media (--viewport-mobile) {
+        display: block;
+      }
+    }
+  }
+
+  @media (--viewport-mobile) {
+    & div:has(#grid-toggle, #list-toggle) {
+      display: flex;
+      flex-wrap: no-wrap;
+      column-gap: 0.5ch;
     }
   }
 }
