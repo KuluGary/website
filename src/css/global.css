@@ -77,9 +77,16 @@ h6 {
   padding: 0.5ch;
   color: var(--primary-color);
 
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+
   @media (--viewport-mobile) {
     font-size: 1.25rem;
-    padding: 1ch;
+  }
+
+  &:has(a) {
+    grid-template-columns: auto auto 1fr;
   }
 
   &::before {
