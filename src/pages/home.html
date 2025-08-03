@@ -22,11 +22,16 @@ permalink: /
     </p>
 
     <section class="recent-activity">
-      <h2><a href="/recent-activity">Recent activity</a> {% include "components/media-list-buttons.html" %}</h2>
+      <h2><a href="/recent-activity">Recent activity</a></h2>
 
       {% set media = collections['recentActivity'] | limit(5) %}
-      {% set mediaListGrid = "grid-list grid-col-5" %}
-      {% include "components/media-list.html" %}
+      <ul class="media-section media-list">
+        {% for item in media %}
+          <li>
+            {% include "components/media-list-description.html" %}
+          </li>
+        {% endfor %}
+      </ul>
     </section>
   </main>
   {% include "components/footer.html" %}
@@ -37,8 +42,4 @@ permalink: /
   <link rel="stylesheet" href="/css/components/footer.css" />
   <link rel="stylesheet" href="/css/home.css" />
   <link rel="stylesheet" href="/css/components/media-list.css"/>
-{% endblock %}
-
-{% block script %}
-  <script src="/js/media-list.js" defer></script>
 {% endblock %}

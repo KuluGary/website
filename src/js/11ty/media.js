@@ -1,5 +1,3 @@
-const { getFromCache, setIntoCache, removeFromCache } = require("../utils/cache");
-
 module.exports = {
   removeUnsafeManga,
   getRecentActivity,
@@ -27,23 +25,29 @@ function getRecentActivity(collection) {
   const posts = collection.getFilteredByTag("blog-post");
 
   const games = allCollections.games || [];
-  const manga = allCollections.manga || [];
+  // const manga = allCollections.manga || [];
   const movies = allCollections.movies || [];
-  const music = allCollections.music || [];
+  // const music = allCollections.music || [];
   const shows = allCollections.shows || [];
   const videos = allCollections.videos || [];
   const webcomics = allCollections.webcomics || [];
   const status = allCollections.status.entry || [];
 
   function getDate(element) {
-    return element.addedAt || element.updatedAt || element.completedAt || element.createdAt || element.data.date;
+    return (
+      element.addedAt ||
+      element.updatedAt ||
+      element.completedAt ||
+      element.createdAt ||
+      element.data.date
+    );
   }
 
   function formatMedia(media) {
     return media.map((element) => ({
       id: element.id,
       type: element.type,
-      title: element.title,
+      title: element?.latestItemTitle ?? element.title,
       link: element.link,
       tags: element.genres ?? element.tags ?? [],
       thumbnail: element.thumbnail,
@@ -130,7 +134,7 @@ function getFrequentMediaTags(media) {
  * @returns An array of categories based on media
  */
 function getMediaCategories(collectionApi) {
-  const allMedia = collectionApi.getAll()[0].data;
+  const allMedia = collectionApi.getAll()[0]?.data;
   const categoryMap = {};
 
   for (const [mediaType, lists] of Object.entries(allMedia)) {

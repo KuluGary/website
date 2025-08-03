@@ -8,7 +8,7 @@
 							{{ item.title }}
 						</a>
 					</h3>
-					<time datetime="{{ item.date }}">
+					<time datetime="{{ item.date | formatDate('yyyy-LL-dd') }}">
 						{{ item.date | formatDate('MMMM dd, yyyy')}}</time>
 				</header>
 

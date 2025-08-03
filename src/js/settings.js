@@ -18,10 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cachedFontSize) fontSizePicker.value = cachedFontSize;
 
   resetButton.addEventListener("click", handleResetForm);
-  themePicker.addEventListener("change", (e) => handleChangeTheme(e.target.value));
-  fontPicker.addEventListener("change", (e) => handleChangeFontStack(e.target.value));
-  contentWidthPicker.addEventListener("change", (e) => handleChangeContentWidth(e.target.value));
-  fontSizePicker.addEventListener("change", (e) => handleChangeFontSize(e.target.value));
+  themePicker.addEventListener("change", (e) =>
+    handleChangeTheme(e.target.value)
+  );
+  fontPicker.addEventListener("change", (e) =>
+    handleChangeFontStack(e.target.value)
+  );
+  contentWidthPicker.addEventListener("change", (e) =>
+    handleChangeContentWidth(e.target.value)
+  );
+  fontSizePicker.addEventListener("change", (e) =>
+    handleChangeFontSize(e.target.value)
+  );
 
   function setDefaultTheme() {
     if (cachedTheme) {
@@ -37,21 +45,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setDefaultFontSize() {
     if (cachedFontSize) {
-      const fontSizeRadio = fontSizePicker.querySelector(`[value=${cachedFontSize}]`);
+      const fontSizeRadio = fontSizePicker.querySelector(
+        `[value=${cachedFontSize}]`
+      );
       fontSizeRadio.checked = true;
     }
   }
 
   function setDefaultContentWidth() {
     if (cachedContentWidth) {
-      const contentWidthRadio = contentWidthPicker.querySelector(`[value=${cachedContentWidth}]`);
+      const contentWidthRadio = contentWidthPicker.querySelector(
+        `[value=${cachedContentWidth}]`
+      );
       contentWidthRadio.checked = true;
     }
   }
 
   function handleChangeTheme(newTheme) {
     localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    const isReduced =
+      window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+      window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+    if (!document.startViewTransition || isReduced)
+      return document.documentElement.setAttribute("data-theme", newTheme);
+
+    document.startViewTransition(() => {
+      document.documentElement.setAttribute("data-theme", newTheme);
+    });
   }
 
   function handleChangeFontStack(newFont) {

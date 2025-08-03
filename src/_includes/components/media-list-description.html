@@ -9,7 +9,7 @@
 		{% else %}
 			<p>{{ item.title }}</p>
 		{% endif %}
-		<time datetime="{{ item.date or item.createdAt or item.updatedAt or item.addedAt }}">
+		<time datetime="{{ (item.date or item.createdAt or item.updatedAt or item.addedAt) | formatDate('yyyy-LL-dd') }}">
 			{{ (item.date or item.createdAt or item.updatedAt or item.addedAt) | formatDate('MMMM dd, yyyy')}}</time>
 	</header>
 
