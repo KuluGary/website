@@ -12,6 +12,18 @@ eleventyComputed:
 {% block content %}
 	{% include "components/header.html" %}
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: categoryGroup.mediaType,
+				link: "/" + categoryGroup.mediaType,
+				active: true
+			}, {
+				label: categoryGroup.category,
+				link: categoryGroup.mediaType + "/status/" + categoryGroup.category
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
+
 		{% set media = categoryGroup.items | uniqueById %}
 		{% set mediaListGrid = "grid-list grid-col-3" if categoryGroup.mediaType === "videos" else ("grid-list grid-col-4" if categoryGroup.mediaType === "music" else "grid-list grid-col-5") %}
 		{% set href = "/{{ categoryGroup.mediaType }}/status/{{ categoryGroup.category }}" %}

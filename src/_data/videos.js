@@ -2,7 +2,11 @@ const { setIntoCache, getFromCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const { log, time, timeEnd } = require("../js/utils/log");
 const fetch = require("node-fetch");
-const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
+const {
+  startProgress,
+  incrementProgress,
+  stopProgress,
+} = require("../js/utils/cli-progress");
 
 const PLAYLISTS = {
   favourites: "FLYZ470OLAQ3k2sAcPDX4erg",
@@ -11,32 +15,34 @@ const OPTIONS = {
   cache: true,
 };
 
-/**
- * Handles fetching detailed info for a video
- * @param {string} videoId id of the video to fetch information for
- */
-async function fetchVideoDetails(videoId) {
+async function fetchAllVideoDetails(videos) {
+  const videoIds = videos
+    .map((video) => video.contentDetails.videoId)
+    .join(",");
+
   const url = new URL("https://www.googleapis.com/youtube/v3/videos");
   url.searchParams.append("part", "contentDetails");
   url.searchParams.append("part", "snippet");
   url.searchParams.append("part", "statistics");
-  url.searchParams.append("id", videoId);
+  url.searchParams.append("id", videoIds);
   url.searchParams.append("key", process.env.YOUTUBE_API_KEY);
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Error en la petición: ${response.status} ${response.statusText}`
+    );
   }
 
   const data = await response.json();
-  const [items] = data.items || [];
 
-  return {
-    rate: items?.statistics?.likeCount,
-    views: items?.statistics?.viewCount,
-    duration: items?.contentDetails?.duration,
-    tags: items?.snippet?.tags,
-  };
+  return data.items.map((item) => ({
+    id: item?.id,
+    rate: item?.statistics?.likeCount,
+    views: item?.statistics?.viewCount,
+    duration: item?.contentDetails?.duration,
+    tags: item?.snippet?.tags,
+  }));
 }
 
 /**
@@ -56,7 +62,9 @@ async function fetchPlaylist(playlistId) {
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Error en la petición: ${response.status} ${response.statusText}`
+    );
   }
 
   const data = await response.json();
@@ -64,28 +72,36 @@ async function fetchPlaylist(playlistId) {
   const items = data.items || [];
   startProgress(items.length);
 
-  for (const video of items) {
-    const { rate, views, duration, tags } = await fetchVideoDetails(video.contentDetails.videoId);
-    incrementProgress();
+  const videoDetails = await fetchAllVideoDetails(items);
 
-    videos.push({
-      id: video.contentDetails.videoId,
-      type: "videos",
-      title: video.snippet.title,
-      description: video.snippet.description,
-      link: `https://youtube.com/watch?v=${video.contentDetails.videoId}`,
-      thumbnail: video.snippet.thumbnails.standard?.url,
-      createdAt: video.contentDetails.videoPublishedAt,
-      updatedAt: video.snippet.publishedAt,
-      author: {
-        name: video.snippet.videoOwnerChannelTitle,
-        link: `https://youtube.com/channel/${video.snippet.videoOwnerChannelId}`,
-      },
-      rate,
-      views,
-      duration,
-      tags,
-    });
+  try {
+    for (const video of items) {
+      const videoDetail = videoDetails.find(
+        (detail) => detail.id === video.contentDetails.videoId
+      );
+      incrementProgress();
+
+      videos.push({
+        id: video.contentDetails.videoId,
+        type: "videos",
+        title: video.snippet.title,
+        description: video.snippet.description,
+        link: `https://youtube.com/watch?v=${video.contentDetails.videoId}`,
+        thumbnail: video.snippet.thumbnails.standard?.url,
+        createdAt: video.contentDetails.videoPublishedAt,
+        updatedAt: video.snippet.publishedAt,
+        author: {
+          name: video.snippet.videoOwnerChannelTitle,
+          link: `https://youtube.com/channel/${video.snippet.videoOwnerChannelId}`,
+        },
+        rate: videoDetail?.rate,
+        views: videoDetail?.views,
+        duration: videoDetail?.duration,
+        tags: videoDetail?.tags,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
 
   stopProgress();
