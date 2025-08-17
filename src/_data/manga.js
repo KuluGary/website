@@ -13,7 +13,8 @@ const coverPath = "src/assets/images/covers";
 const converter = new showdown.Converter();
 
 const ENDPOINTS = {
-  MANGA_LIST: "https://api.mangadex.org/list/afb0fc3b-ad9c-44e4-ba9f-5e780f464ded",
+  MANGA_LIST:
+    "https://api.mangadex.org/list/afb0fc3b-ad9c-44e4-ba9f-5e780f464ded",
   MANGA_BASE:
     "https://api.mangadex.org/manga?includes[]=cover_art&includes[]=artist&includes[]=author&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica",
   CHAPTER_BASE: "https://api.mangadex.org/chapter",
@@ -22,7 +23,8 @@ const ENDPOINTS = {
   STATUS: "https://api.mangadex.org/manga/status",
 };
 
-const AUTH_URL = "https://auth.mangadex.org/realms/mangadex/protocol/openid-connect/token";
+const AUTH_URL =
+  "https://auth.mangadex.org/realms/mangadex/protocol/openid-connect/token";
 
 const OPTIONS = {
   cache: true,
@@ -32,6 +34,54 @@ const OPTIONS = {
 let headers = {
   Accept: "application/json",
   "Content-Type": "application/json",
+};
+
+/**
+ * Main entry point for module: scrapes and caches manga data.
+ * @returns {Promise<Object>} Scraped manga data.
+ */
+module.exports = async function fetchMangaDex() {
+  const cached = getFromCache("manga");
+  if (cached && OPTIONS.cache) {
+    log("[MangaDex]", "🗃️ Returning cached data");
+    return cached;
+  }
+
+  await authenticate();
+
+  time("[MangaDex]", "💬 Starting fresh scrape");
+  const [followList, statusMap, favouriteList] = await Promise.all([
+    fetchAllPaginated(ENDPOINTS.FOLLOWS, headers),
+    fetchJSON(ENDPOINTS.STATUS, headers),
+    fetchJSON(ENDPOINTS.MANGA_LIST),
+  ]);
+
+  const collection = { favourite: [] };
+  for (const status of Object.values(statusMap.statuses)) {
+    collection[status] = [];
+  }
+
+  const followManga = await fetchMangaDetails(followList);
+  const favouriteManga = await fetchMangaDetails(
+    favouriteList.data.relationships
+  );
+
+  for (const manga of followManga) {
+    const status = statusMap.statuses[manga.id];
+    if (status) {
+      collection[status].push(await formatManga(manga));
+    }
+  }
+
+  for (const manga of favouriteManga) {
+    collection.favourite.push(await formatManga(manga));
+  }
+
+  setIntoCache("manga", collection);
+  saveTestData("manga.json", collection);
+  timeEnd("[MangaDex]", "✔️ Scraping complete");
+
+  return collection;
 };
 
 /**
@@ -97,18 +147,28 @@ async function fetchLatestChapter(chapterId) {
 async function formatManga(manga) {
   const id = manga.id;
   const title = manga.attributes.title.en || "Untitled";
-  const descriptionHtml = converter.makeHtml(manga.attributes.description.en || "");
-  const description = sanitize(descriptionHtml, { allowedTags: ["p"], disallowedTagsMode: "discard" });
-  const latestChapter = await fetchLatestChapter(manga.attributes.latestUploadedChapter);
+  const descriptionHtml = converter.makeHtml(
+    manga.attributes.description.en || ""
+  );
+  const description = sanitize(descriptionHtml, {
+    allowedTags: ["p"],
+    disallowedTagsMode: "discard",
+  });
+  const latestChapter = await fetchLatestChapter(
+    manga.attributes.latestUploadedChapter
+  );
 
-  const author = manga.relationships.find((r) => r.type === "author")?.attributes?.name || "Unknown";
+  const author =
+    manga.relationships.find((r) => r.type === "author")?.attributes?.name ||
+    "Unknown";
   const genres = manga.attributes.tags
     .filter((tag) => tag.attributes.group === "genre")
     .map((tag) => tag.attributes?.name?.en);
 
   const rating = manga.attributes.contentRating;
 
-  const coverArt = manga.relationships.find((r) => r.type === "cover_art")?.attributes?.fileName;
+  const coverArt = manga.relationships.find((r) => r.type === "cover_art")
+    ?.attributes?.fileName;
   const coverFileName = `${coverArt}.256.jpg`;
   const coverUrl = `https://uploads.mangadex.org/covers/${manga.id}/${coverFileName}`;
 
@@ -124,7 +184,8 @@ async function formatManga(manga) {
     rating,
     link: manga.attributes.links?.raw,
     thumbnail: `/assets/images/covers/manga/${coverFileName}`,
-    updatedAt: latestChapter.data?.attributes?.publishAt ?? manga.attributes.updatedAt,
+    updatedAt:
+      latestChapter.data?.attributes?.publishAt ?? manga.attributes.updatedAt,
   };
 }
 
@@ -170,54 +231,10 @@ async function fetchAllPaginated(url, headers = {}) {
     const response = await fetchJSON(paginatedUrl, headers);
     allData = allData.concat(response.data);
     offset += limit;
-    hasMore = response.total ? offset < response.total : response.data.length === limit;
+    hasMore = response.total
+      ? offset < response.total
+      : response.data.length === limit;
   }
 
   return allData;
 }
-
-/**
- * Main entry point for module: scrapes and caches manga data.
- * @returns {Promise<Object>} Scraped manga data.
- */
-module.exports = async function fetchMangaDex() {
-  const cached = getFromCache("manga");
-  if (cached && OPTIONS.cache) {
-    log("[MangaDex]", "🗃️ Returning cached data");
-    return cached;
-  }
-
-  await authenticate();
-
-  time("[MangaDex]", "💬 Starting fresh scrape");
-  const [followList, statusMap, favouriteList] = await Promise.all([
-    fetchAllPaginated(ENDPOINTS.FOLLOWS, headers),
-    fetchJSON(ENDPOINTS.STATUS, headers),
-    fetchJSON(ENDPOINTS.MANGA_LIST),
-  ]);
-
-  const collection = { favourite: [] };
-  for (const status of Object.values(statusMap.statuses)) {
-    collection[status] = [];
-  }
-
-  const followManga = await fetchMangaDetails(followList);
-  const favouriteManga = await fetchMangaDetails(favouriteList.data.relationships);
-
-  for (const manga of followManga) {
-    const status = statusMap.statuses[manga.id];
-    if (status) {
-      collection[status].push(await formatManga(manga));
-    }
-  }
-
-  for (const manga of favouriteManga) {
-    collection.favourite.push(await formatManga(manga));
-  }
-
-  setIntoCache("manga", collection);
-  saveTestData("manga.json", collection);
-  timeEnd("[MangaDex]", "✔️ Scraping complete");
-
-  return collection;
-};

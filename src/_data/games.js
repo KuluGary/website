@@ -4,7 +4,11 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const fetch = require("node-fetch");
 const delay = require("../js/utils/delay");
-const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
+const {
+  startProgress,
+  incrementProgress,
+  stopProgress,
+} = require("../js/utils/cli-progress");
 
 const HLTB_USER = "KuluGary";
 const PAGES = {
@@ -51,7 +55,10 @@ async function scrapeGameFromProfile(page) {
   try {
     const url = page.url();
     const id = url.split("/").at(-1);
-    const descriptionSelector = await page.waitForSelector(".GameSummary_profile_info__HZFQu", { timeout: 6000 });
+    const descriptionSelector = await page.waitForSelector(
+      ".GameSummary_profile_info__HZFQu",
+      { timeout: 6000 }
+    );
     const readMore = await descriptionSelector
       .waitForSelector("#profile_summary_more", { timeout: 2000 })
       .catch(() => null);
@@ -61,17 +68,24 @@ async function scrapeGameFromProfile(page) {
       await readMore.evaluate((el) => el.remove());
     }
 
-    const imageSelector = await page.waitForSelector(`.GameSideBar_game_image__ozUTt > img:nth-child(1)`, {
-      timeout: 2000,
-    });
+    const imageSelector = await page.waitForSelector(
+      `.GameSideBar_game_image__ozUTt > img:nth-child(1)`,
+      {
+        timeout: 2000,
+      }
+    );
     const image = await imageSelector.evaluate((el) => el.getAttribute("src"));
-    const imgSrcSet = getImageSrcSet(image);
+    // const imgSrcSet = getImageSrcSet(image); @TODO: implement
 
-    const description = await descriptionSelector.evaluate((el) => el.innerText);
+    const description = await descriptionSelector.evaluate(
+      (el) => el.innerText
+    );
 
     const genres = await page.evaluate(() => {
       const label = Array.from(document.querySelectorAll("div > strong")).find(
-        (div) => div.textContent.trim() === "Genres:" || div.textContent.trim() === "Genre:"
+        (div) =>
+          div.textContent.trim() === "Genres:" ||
+          div.textContent.trim() === "Genre:"
       );
       if (!label) return [];
 
@@ -84,7 +98,9 @@ async function scrapeGameFromProfile(page) {
 
     const developer = await page.evaluate(() => {
       const label = Array.from(document.querySelectorAll("div > strong")).find(
-        (div) => div.textContent.trim() === "Developer:" || div.textContent.trim() === "Developers:"
+        (div) =>
+          div.textContent.trim() === "Developer:" ||
+          div.textContent.trim() === "Developers:"
       );
       if (!label) return;
 
@@ -102,6 +118,16 @@ async function scrapeGameFromProfile(page) {
   }
 }
 
+/**
+ * Generates a set of image URLs with different widths for use in `srcset`.
+ *
+ * The function takes a base image URL and appends a `width` query parameter
+ * with multiple predefined values, returning an object where each key is
+ * the width and each value is the corresponding URL string.
+ *
+ * @param {string} imgSrc - The base image URL.
+ * @returns {Promise<Object<number, string>>} A mapping of width values to image URLs.
+ */
 async function getImageSrcSet(imgSrc) {
   const srcSet = {};
 
@@ -193,25 +219,31 @@ async function fetchExtendedGameData(list, cookies) {
     currentUserHome: false,
   };
 
-  const response = await fetch(`https://howlongtobeat.com/api/user/${userId}/games/list`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
-      Accept: "*/*",
-      "Accept-Language": "en-US,en;q=0.9",
-      Referer: `https://howlongtobeat.com/user/KuluGary/games/playing/1`,
-      Origin: "https://howlongtobeat.com",
-      DNT: "1",
-      Connection: "keep-alive",
-      Cookie: cookies,
-    },
-    body: JSON.stringify(body),
-  }).catch((err) => OPTIONS.logErrors && console.error(err));
+  const response = await fetch(
+    `https://howlongtobeat.com/api/user/${userId}/games/list`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
+        Accept: "*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        Referer: `https://howlongtobeat.com/user/KuluGary/games/playing/1`,
+        Origin: "https://howlongtobeat.com",
+        DNT: "1",
+        Connection: "keep-alive",
+        Cookie: cookies,
+      },
+      body: JSON.stringify(body),
+    }
+  ).catch((err) => OPTIONS.logErrors && console.error(err));
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Failed to fetch extended game data: ${response.status}\n${text}`);
+    throw new Error(
+      `Failed to fetch extended game data: ${response.status}\n${text}`
+    );
   }
 
   const { data } = await response.json();
@@ -230,11 +262,15 @@ async function scrapeGamesFromPage(page, url, status) {
   await page.goto(url).catch(() => null);
   await delay(1000);
 
-  const acceptCookies = await page.waitForSelector("#onetrust-accept-btn-handler", { timeout: 1000 }).catch(() => null);
+  const acceptCookies = await page
+    .waitForSelector("#onetrust-accept-btn-handler", { timeout: 1000 })
+    .catch(() => null);
   if (acceptCookies) await acceptCookies.click();
 
   await page.waitForSelector("#user_games");
-  const gameElements = await page.$$("#user_games > div > div > div > div:not(:first-of-type)");
+  const gameElements = await page.$$(
+    "#user_games > div > div > div > div:not(:first-of-type)"
+  );
   startProgress(gameElements.length);
 
   const games = [];
@@ -242,7 +278,9 @@ async function scrapeGamesFromPage(page, url, status) {
   const extendedListInfo = await fetchExtendedGameData(status, cookies);
 
   for (const game of gameElements) {
-    const { link, platform, title, playtime, rate } = await scrapeGameFromList(game);
+    const { link, platform, title, playtime, rate } = await scrapeGameFromList(
+      game
+    );
     const newPage = await browser.newPage();
     await newPage.goto(link).catch(() => null);
     await delay(2000);
@@ -251,10 +289,13 @@ async function scrapeGamesFromPage(page, url, status) {
     const profilePage = pages[pages.length - 1];
 
     await profilePage.bringToFront();
-    const { description, genres, id, image, developer } = await scrapeGameFromProfile(profilePage);
+    const { description, genres, id, image, developer } =
+      await scrapeGameFromProfile(profilePage);
     await profilePage.close();
 
-    const extendedInfo = extendedListInfo.find((extendedGame) => id == String(extendedGame.game_id));
+    const extendedInfo = extendedListInfo.find(
+      (extendedGame) => id == String(extendedGame.game_id)
+    );
 
     games.push({
       id,

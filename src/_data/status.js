@@ -34,7 +34,17 @@ async function getFeed() {
       ...res.feed,
       entry: res.feed.entry.map((entry) => ({
         ...entry,
-        emoji: entry.title.match(/(\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g),
+        emoji: entry.title.match(
+          /(\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g
+        ),
+        content: {
+          ...entry.content,
+          "#text": decodeNumericEntities(entry.content["#text"]),
+        },
       })),
     }));
+}
+
+function decodeNumericEntities(str) {
+  return str.replace(/&#(\d+);/g, (_, num) => String.fromCharCode(num));
 }
