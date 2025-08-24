@@ -1,6 +1,6 @@
 ---
-title: My First Steps with Storybook
-lang: es
+title: My first steps with Storybook
+lang: en
 date: 2025-08-23
 tags:
   ["blog-post", "development", "web-dev", "storybook", "nextjs", "turborepo"]

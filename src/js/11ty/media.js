@@ -86,13 +86,13 @@ function getRecentActivity(collection) {
   }
 
   const recentActivity = [
-    ...formatMedia(games.favourites),
-    ...formatMedia(movies.watchlist),
+    // ...formatMedia(games.favourites),
+    // ...formatMedia(movies.watchlist),
     // ...removeUnsafeManga(manga.reading),
-    ...formatMedia(shows.watchlist),
+    // ...formatMedia(shows.watchlist),
     // ...music.favourites,
-    ...formatMedia(videos.favourites),
-    ...formatMedia(webcomics.reading),
+    // ...formatMedia(videos.favourites),
+    // ...formatMedia(webcomics.reading),
     ...formatPosts(posts),
     ...formatStatus(status),
   ].sort((a, b) => {
