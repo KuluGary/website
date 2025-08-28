@@ -81,26 +81,18 @@ function getRecentActivity(collection) {
       type: "Status",
       date: element.published,
       link: element.link["@_href"],
-      title: `${element.emoji} ${element.content["#text"]}`,
+      title: element.title,
     }));
   }
 
-  const recentActivity = [
-    // ...formatMedia(games.favourites),
-    // ...formatMedia(movies.watchlist),
-    // ...removeUnsafeManga(manga.reading),
-    // ...formatMedia(shows.watchlist),
-    // ...music.favourites,
-    // ...formatMedia(videos.favourites),
-    // ...formatMedia(webcomics.reading),
-    ...formatPosts(posts),
-    ...formatStatus(status),
-  ].sort((a, b) => {
-    const prevDate = new Date(a.date);
-    const nextDate = new Date(b.date);
+  const recentActivity = [...formatPosts(posts), ...formatStatus(status)].sort(
+    (a, b) => {
+      const prevDate = new Date(a.date);
+      const nextDate = new Date(b.date);
 
-    return nextDate.getTime() - prevDate.getTime();
-  });
+      return nextDate.getTime() - prevDate.getTime();
+    }
+  );
 
   return recentActivity;
 }

@@ -20,8 +20,9 @@ description: status
         <li>
           <article id="current-status">
             <header>
-              <p>{{currStatus.emoji | join}}
-                {{currStatus.content["#text"]}}</p>
+              <p>
+                {{currStatus.title}}
+              </p>
               <time datetime="{{ currStatus.published | formatDate('yyyy-LL-dd') }}">{{ currStatus.published | isoStringToRelativeTime }}</time>
             </header>
 

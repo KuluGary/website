@@ -34,13 +34,9 @@ async function getFeed() {
       ...res.feed,
       entry: res.feed.entry.map((entry) => ({
         ...entry,
-        emoji: entry.title.match(
-          /(\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g
+        title: decodeNumericEntities(
+          entry.title.replace("kulugary", "").trim()
         ),
-        content: {
-          ...entry.content,
-          "#text": decodeNumericEntities(entry.content["#text"]),
-        },
       })),
     }));
 }
