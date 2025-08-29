@@ -5,7 +5,8 @@ pagination:
   alias: genreGroup
 permalink: "/{{ genreGroup.mediaType | slugify }}/genre/{{ genreGroup.genre | slugify }}/"
 eleventyComputed:
-  title: '"{{ genreGroup.mediaType | unslugify }}" tagged "{{ genreGroup.genre | unslugify }}"'
+  title: '{{ genreGroup.mediaType | unslugify }} tagged {{ genreGroup.genre | unslugify }}'
+	description: These are my {{ genreGroup.mediaType | unslugify }} in my {{ genreGroup.genre | unslugify }} list.
 ---
 {% extends "layouts/base.html" %}
 
