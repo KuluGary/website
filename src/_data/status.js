@@ -13,7 +13,7 @@ module.exports = async function fetchStatus() {
   const cached = getFromCache("status");
 
   if (cached && OPTIONS.cache) {
-    log("[status.cafe]", "😀 Returning cached data");
+    log("[status.cafe]", "🗃️ Returning cached data");
     return cached;
   }
 

@@ -211,24 +211,26 @@ details {
   padding: calc(var(--line-height) - var(--border-thickness)) 1ch;
   margin-bottom: var(--line-height);
 
-  & ::marker {
-    display: inline-block;
-    content: "▶";
-    margin: 0;
-  }
-
   & summary {
     font-weight: var(--font-weight-medium);
     cursor: pointer;
+
+    &::marker {
+      display: inline-block;
+      content: "▶";
+      margin: 0;
+    }
   }
 
   &[open] {
+    border: 1px solid red;
+
     & summary {
       margin-bottom: var(--line-height);
-    }
 
-    & ::marker {
-      content: "▼";
+      &::marker {
+        content: "▼";
+      }
     }
   }
 

@@ -185,7 +185,30 @@ article .splide iframe {
       }
     }
   }
+
   & svg {
     margin: 0;
+  }
+
+  & .webmentions-details {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    padding-top: 1ch;
+
+    & summary {
+      border-bottom: var(--border-thickness) solid var(--text-color-alt);
+      padding-bottom: var(--line-height);
+    }
+
+    & ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      & li {
+        vertical-align: center;
+      }
+    }
   }
 }

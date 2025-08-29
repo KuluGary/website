@@ -36,4 +36,26 @@
 
 	<p>To reply to this post, send a <a href="https://indieweb.org/Webmention">Webmention</a> and it will show up here after the site rebuilds next time.</p>
 
+	{% if mentions.length > 0 %}
+		<details class="webmentions-details">
+			<summary> Check webmentions</summary>
+
+			{% for mention in mentions %}
+				<ul>
+					{% if mention["like-of"] %}
+						<li>
+							<a href="{{ mention.author.url }}">{{ mention.author.name }}</a> liked <a href="{{ mention.url }}">this post</a>.
+					</li>
+					{% endif %}
+
+					{% if mention["repost-of"] %}
+						<li>
+							<a href="{{ mention.author.url }}">{{ mention.author.name }}</a> shared <a href="{{ mention.url }}">this post</a>.
+					</li>
+					{% endif %}
+				</ul>
+			{% endfor %}
+		</details>
+	{% endif %}
+
 </section>

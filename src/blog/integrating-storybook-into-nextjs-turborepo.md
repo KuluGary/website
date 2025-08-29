@@ -21,7 +21,7 @@ We chose Turborepo to manage our apps since we needed a shared ecosystem of comp
 
 We set up Storybook as a new Turborepo app (`apps/storybook`) alongside our two main Next.js ones. This kept configurations isolated while letting us import from `packages` to build our Stories.
 
-Our first Story was for the `Button` primitie component:
+Our first Story was for the `Button` primitive component:
 
 ```tsx
 import type { Meta, StoryObj } from "@storybook/nextjs";
@@ -142,7 +142,6 @@ Many of our components depend on backend data. In Storybook, pointing to live AP
 - **Provide React Query context** with a global `QueryClientProvider`.
 
   ```tsx
-  // preview.tsx
   import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
   const queryClient = new QueryClient({
@@ -162,34 +161,33 @@ Many of our components depend on backend data. In Storybook, pointing to live AP
 
 - **Mock backend calls** using Mock Service Worker (MSW).
 
-```tsx
-// mocks/authHandlers.ts
-import { HttpResponse, http } from "msw";
-import { unauthenticatedSession } from "@storybook/mocks/session";
+  ```tsx
+  import { HttpResponse, http } from "msw";
+  import { unauthenticatedSession } from "@storybook/mocks/session";
 
-export const authHandlers = [
-  http.get("/api/auth/session", () => {
-    return HttpResponse.json(unauthenticatedSession, { status: 200 });
-  }),
-];
-```
+  export const authHandlers = [
+    http.get("/api/auth/session", () => {
+      return HttpResponse.json(unauthenticatedSession, { status: 200 });
+    }),
+  ];
+  ```
 
-Then, enable it globally in `preview.tsx`:
+  Then, enable it globally in `preview.tsx`:
 
-```tsx
-import { initialize, mswLoader } from "msw-storybook-addon";
-import { authHandlers } from "../src/mocks/handlers/authHandlers";
+  ```tsx
+  import { initialize, mswLoader } from "msw-storybook-addon";
+  import { authHandlers } from "../src/mocks/handlers/authHandlers";
 
-initialize();
+  initialize();
 
-export const parameters = {
-  msw: {
-    handlers: [...authHandlers],
-  },
-};
+  export const parameters = {
+    msw: {
+      handlers: [...authHandlers],
+    },
+  };
 
-export const loaders = [mswLoader];
-```
+  export const loaders = [mswLoader];
+  ```
 
 This let us simulate responses (e.g., logged-in user vs. error state) and test components without touching real APIs.
 
