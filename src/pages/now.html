@@ -17,17 +17,13 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 
 		<article id="current-status">
 			<header>
-				<p>{{currentStatus.emoji}}
-					{{currentStatus.content["#text"]}}</p>
+				<p>{{currentStatus.title}}</p>
 				<time datetime="{{ currentStatus.published | formatDate('yyyy-LL-dd') }}">{{ currentStatus.published | isoStringToRelativeTime }}</time>
 			</header>
 
 			<ul class="subtitle bar-separated">
 				<li>
 					<a href="/status">Status</a>
-				</li>
-				<li>
-					<a href="{{currentStatus.author.uri}}">{{currentStatus.author.name}}</a>
 				</li>
 				<li>
 					<a href="{{currentStatus.link["@_href"]}}">status.cafe</a>
