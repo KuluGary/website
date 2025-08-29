@@ -7,21 +7,21 @@ tags:
 description: For a long time I wanted to deepen my knowledge of Storybook, and thanks to a series of needs at work I finally had the chance.
 ---
 
-At our startup, UI testing was minimal. That was fine during MVP, but as the platform grew, so did the need for maintainability. That’s when I remembered this [talk by Kevin Yank](https://kevinyank.com/posts/help-storybook-is-eating-all-our-tests/) where he describes how Culture Amp used Storybook for nearly every test case.
+At our startup, UI testing was minimal. This was fine during MVP, but as the platform grew in size and userbase, so did the need for increased maintainability. A few weeks ago I remembered this [talk by Kevin Yank](https://kevinyank.com/posts/help-storybook-is-eating-all-our-tests/) where he describes how Culture Amp uses Storybook for nearly every test case.
 
-During the holiday season, my Project Manager scheduled a couple of weeks for technical debt, and I spent a few days implementing Storybook.
+During this last holiday season, my project manager scheduled a couple of weeks to tackle technical debt, and one of the things I had to do was implement Storybook into our existing codebase.
 
 ## What is Storybook
 
-Think of Storybook as a sandbox where each component lives independently. Instead of launching your entire Next.js app to test a button, you can preview and tweak it instantly in isolation.
+You can think of Storybook as a sandbox where each component lives independently from each other. Instead of lauching a whole Next.js app to test some UI components, you can preview them and tweak them in isolation.
 
 ## Adding Storybook to a Turborepo
 
-We chose Turborepo to manage our apps since they needed to share components, hooks, API calls, and providers. Turborepo gave us scalability, with a `packages/ui` folder for shared components and `packages/lib` for API configs, integrations, and utils.
+We chose Turborepo to manage our apps since we needed a shared ecosystem of components, hooks, API calls and providers. Turborepo gave us scalability with a `packages/ui` folder for shared UI elements and `packages/lib` for API configs, integrations and utils.
 
-We integrated Storybook as a new Turborepo app (`apps/storybook`), just like our main Next.js apps. This kept configurations isolated while letting us import from `packages` to build Stories.
+We set up Storybook as a new Turborepo app (`apps/storybook`) alongside our two main Next.js ones. This kept configurations isolated while letting us import from `packages` to build our Stories.
 
-Our first Story was for the `Button` primitive component:
+Our first Story was for the `Button` primitie component:
 
 ```tsx
 import type { Meta, StoryObj } from "@storybook/nextjs";
@@ -61,7 +61,7 @@ export const Playground: Story = {
 
 ## Adding NextAuth support
 
-Many of our components depend on user state. Without NextAuth, stories would break or show meaningless output. We solved this by setting up a custom session provider for Storybook:
+Many of our components depend on user state, and without NextAuth they would break or show meaningless output. We solved this by setting up a custom session privder for Storybook:
 
 ```tsx
 import { unauthenticatedSession } from "@storybook/mocks/session";
@@ -87,14 +87,11 @@ export default function NextAuthDecorator({
 }
 ```
 
-With this decorator, we can preview components from different user POVs. For example, our **PlanCard** shows different actions for admins vs. users, and we can swap sessions instantly without creating test accounts.
+With this decorator, we can preview components from different user POVs. For example, our **PlanCard** shows different available actions for admins vs. users, so we can swap sessions instantly without creating a new test account for each user type.
 
 ```tsx
-import { useState } from "react";
-
 import NextAuthDecorator from "@storybook/decorators/NextAuthDecorator";
 import { sessionOptions } from "@storybook/mocks/session";
-import { FormProvider, useForm } from "react-hook-form";
 import AddServiceButton from "@platform/ui/components/projects/business-add-service/AddServiceButton";
 
 export default {
@@ -120,11 +117,11 @@ export const Default = (args: { session?: keyof typeof sessionOptions }) => {
 
 ## Adding add-ons to Storybook
 
-Once the technical setup was done, I focused on what I wanted to achieve in the first place: easier design collaboration and testing business logic in isolation.
+Once the technical setup was done, I focused back on what I wanted to achieve in the first place: easier design collacoration and testing business logic in isolation.
 
 ### Design collaboration
 
-Using the `@storybook/addon-designs`, we can link Figma directly inside Storybook. Designers can now review UI from a single interface:
+Using the `@storybook/addon-designs`, we can link and display Figma files directly inside Storybook. Our designers can now review UI compliance from a single interface:
 
 ```tsx
 export const Playground: Story = {
@@ -140,30 +137,30 @@ export const Playground: Story = {
 
 ### Data & API simulation
 
-Many of our components depend on backend data. In Storybook, pointing to live APIs is brittle and slow and takes away control over the data we want to test with. Instead, we:
+Many of our components depend on backend data. In Storybook, pointing to live APIs is brittle and slow and takes away control over the data we want to perform our tests with. Instead, we:
 
-1. **Provide React Query context** with a global `QueryClientProvider`.
+- **Provide React Query context** with a global `QueryClientProvider`.
 
-```tsx
-// preview.tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+  ```tsx
+  // preview.tsx
+  import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: false },
-  },
-});
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+    },
+  });
 
-export const decorators = [
-  (Story) => (
-    <QueryClientProvider client={queryClient}>
-      <Story />
-    </QueryClientProvider>
-  ),
-];
-```
+  export const decorators = [
+    (Story) => (
+      <QueryClientProvider client={queryClient}>
+        <Story />
+      </QueryClientProvider>
+    ),
+  ];
+  ```
 
-2. **Mock backend calls** using Mock Service Worker (MSW).
+- **Mock backend calls** using Mock Service Worker (MSW).
 
 ```tsx
 // mocks/authHandlers.ts
@@ -198,7 +195,7 @@ This let us simulate responses (e.g., logged-in user vs. error state) and test c
 
 ## Adding internationalization
 
-Our app relies heavily on `next-intl`. Without i18n, Storybook would render keys like `auth.login.button` instead of translated text. The fix was to reuse the same i18n provider inside Storybook:
+Our app relies heavily on `next-intl`. Without i18n, Storybook would render keys like `auth.login.button` instead of translated text. The fix was to reuse the same 18n provider we use on our apps inside Storybook:
 
 ```tsx
 import LocaleProvider from "@platform/lib/client-only/providers/locale-provider.storybook";

@@ -16,6 +16,7 @@ const {
   log,
   mergeArrays,
   isoStringToRelativeTime,
+  objToArray,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -62,9 +63,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getRootUrl", getRootUrl);
   eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("limit", limit);
-  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
+  eleventyConfig.addFilter(
+    "generateSocialMediaImage",
+    generateSocialMediaImage
+  );
   eleventyConfig.addFilter("uniqueById", uniqueById);
   eleventyConfig.addFilter("mergeArrays", mergeArrays);
+  eleventyConfig.addFilter("objToArray", objToArray);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */

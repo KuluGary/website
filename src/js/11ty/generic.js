@@ -13,6 +13,7 @@ module.exports = {
   log,
   mergeArrays,
   isoStringToRelativeTime,
+  objToArray,
 };
 
 /**
@@ -38,7 +39,10 @@ function formatDate(date, format = "dd/LL/yyyy") {
  * @returns {string | null} A relative time string (e.g., "2 days ago") or `null` if the input is invalid.
  */
 function isoStringToRelativeTime(isoString) {
-  return DateTime.fromISO(isoString, { zone: "utc", locale: "en-US" }).toRelative();
+  return DateTime.fromISO(isoString, {
+    zone: "utc",
+    locale: "en-US",
+  }).toRelative();
 }
 
 /**
@@ -49,7 +53,9 @@ function isoStringToRelativeTime(isoString) {
  * @returns {Array<Object>} A new array sorted by the specified date property in descending order.
  */
 function sortByDate(collection, key) {
-  return collection.sort((a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime());
+  return collection.sort(
+    (a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime()
+  );
 }
 
 /**
@@ -129,7 +135,8 @@ function log(any) {
  * @returns {string} A full URL to the social media image. Defaults to a fallback image if none is provided.
  */
 function generateSocialMediaImage(imageSrc) {
-  if (!imageSrc) return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
+  if (!imageSrc)
+    return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
 
   if (imageSrc.startsWith("https://")) return imageSrc;
 
@@ -137,9 +144,15 @@ function generateSocialMediaImage(imageSrc) {
 }
 
 function uniqueById(array) {
-  return array.filter((obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i);
+  return array.filter(
+    (obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i
+  );
 }
 
 function mergeArrays(array1, array2) {
   return [...array1, ...array2];
+}
+
+function objToArray(obj) {
+  return Object.entries(obj);
 }
