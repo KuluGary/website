@@ -6,8 +6,7 @@ pagination:
 permalink: "/{{ categoryGroup.mediaType | slugify }}/status/{{ categoryGroup.category | slugify }}/"
 eleventyComputed:
   title: '{{ categoryGroup.mediaType | unslugify }} in {{ categoryGroup.category | unslugify }}'
-	description: These are my {{ categoryGroup.mediaType | unslugify }} in my {{ categoryGroup.category | unslugify }} list.
-
+  description: 'These are my {{ categoryGroup.mediaType | unslugify }} in my {{ categoryGroup.category | unslugify }} list.'
 ---
 {% extends "layouts/base.html" %}
 
