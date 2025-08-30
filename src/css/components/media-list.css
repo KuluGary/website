@@ -215,6 +215,12 @@
       }
     }
 
+    &:not(:has(.stats)) {
+      & .description {
+        margin-top: 1ch;
+      }
+    }
+
     & .description {
       font-size: smaller;
       overflow: hidden;
