@@ -4,36 +4,47 @@
     "description": "My first ever experience in an online community was in a tight-knit RPG Maker subforum of an emulation website.",
     "children": [
       {
-        "date": "26-01-2010",
+        "date": "2010-01-26",
         "url": "https://www.emudesc.com/threads/pokemon-police.195944/",
-        "title": "Pokémon Police"
+        "title": "Pokémon Police",
+        "description": "One of the first prototype games I've ever shared online was a Pokémon fangame, inspired by Pokémon Ranger."
       },
       {
-        "date": "02-04-2010",
+        "date": "2010-04-02",
         "url": "https://www.emudesc.com/threads/sonic-the-hedgehog-6-feathuring-rpg.214204/",
-        "title": "Sonic the Hedgehog 6 (feathuring RPG)"
+        "title": "Sonic the Hedgehog 6 (feathuring RPG)",
+        "description": "This was a Sonic the Hedgehog fangame prototype that didn't get too far into development."
       },
       {
-        "date": "23-08-2010",
+        "date": "2010-08-23",
         "url": "https://www.emudesc.com/threads/freedom-fighters-sonic-the-hedgehog.252399/",
-        "title": "Freedom Fighters 【Sonic the Hedgehog】✗"
+        "title": "Freedom Fighters 【Sonic the Hedgehog】✗",
+        "description": "A Sonic fangame inspired by the Archie comics, Sonic Underground and the Sonic Nebulous fangame."
       },
       {
-        "date": "28-11-2010",
+        "date": "2010-11-28",
         "url": "https://www.emudesc.com/threads/rpg-tactico-isometrico-multiplataforma.276937/",
-        "title": "RPG Táctico Isométrico [Multiplataforma]"
+        "title": "RPG Táctico Isométrico [Multiplataforma]",
+        "description": "My first game prototype not based on an existing franchise, but instead a first try to implement a turn-based tactical battle system into RPG Maker."
       },
       {
-        "date": "30-12-2010",
+        "date": "2010-12-30",
         "url": "https://www.emudesc.com/threads/ambientacion-y-armonia.285390/",
-        "title": "Ambientación y Armonía"
+        "title": "Ambientación y Armonía",
+        "description": "A series of guides and tutorials on how to apply environmentmental VFX into RPG Maker."
       },
       {
-        "date": "30-01-2011",
+        "date": "2011-01-30",
         "url": "https://www.emudesc.com/threads/cry-of-fate.293758/",
-        "title": "◊ Cry of Fate ◊"
+        "title": "◊ Cry of Fate ◊",
+        "description": "First iteration shared of a basic turn-based RPG I first came up with around december of 2010."
       },
-      { "date": "20-02-2011", "url": "https://www.emudesc.com/threads/cry-of-fate.299203/", "title": "Cry of Fate" }
+      {
+        "date": "2011-02-20",
+        "url": "https://www.emudesc.com/threads/cry-of-fate.299203/",
+        "title": "Cry of Fate",
+        "description": "A second iteration of my previous RPG idea, this time with a playable demo."
+      }
     ]
   },
   {
@@ -41,9 +52,10 @@
     "description": "I've written a few articles for a digital magazine at a RPG Maker forum.",
     "children": [
       {
-        "date": "24-11-2011 to 26-02-2014",
+        "date": ["2011-11-24", "2014-02-26"],
         "url": "https://universomaker.foroactivo.com/h2-revista",
-        "title": "Revista Universo Maker"
+        "title": "Revista Universo Maker",
+        "description": "Around april 2011, a friend and I made a RPG Maker forum using Foroactivo. Later that year, the staff at that forum made a zine talking about the spanish-speaking RPG Maker scene."
       }
     ]
   },
@@ -52,41 +64,58 @@
     "description": "I first discovered I liked roleplaying games at a system-agnostic narrative fantasy forum around 2011.",
     "children": [
       {
-        "date": "10-06-2011",
+        "date": "2011-06-10",
         "url": "https://www.dofus.com/es/foro/29-leonera-rolista/197292-rp-travesia-lokal",
-        "title": "La travesía de Lokal"
+        "title": "La travesía de Lokal",
+        "description": "As a teen I played a lot of both Dofus and Wakfu, and after a friend shared a RP they posted onto their forums, I decided I wanted to try my hand at it too."
       },
       {
-        "date": "11-12-2012",
+        "date": "2012-12-11",
         "url": "https://cuentosdenoreth.foroactivo.com/t3660-tristan-de-tincoras",
-        "title": "Tristán de Tincoras"
+        "title": "Tristán de Tincoras",
+        "description": "The first character sheet I made in the Cuentos de Noreth forum. To this day I still use this character in my creative writing."
       },
-      { "date": "16-12-2012", "url": "https://cuentosdenoreth.foroactivo.com/t3681-gwaew", "title": "Gwaew" },
       {
-        "date": "26-05-2013",
+        "date": "2012-12-16",
+        "url": "https://cuentosdenoreth.foroactivo.com/t3681-gwaew",
+        "title": "Gwaew",
+        "description": "I Cuentos de Noreth, it was customary to write a short story called Hijra as an introduction to your character and writing style."
+      },
+      {
+        "date": "2013-05-26",
         "url": "https://cuentosdenoreth.foroactivo.com/t4587-ament-fordye",
-        "title": "Ament Fordye"
+        "title": "Ament Fordye",
+        "desc": "The second character I made in Cuentos de Noreth. This would become a very beloved character, and is still one of the protagonists of some of the stories I'm working on."
       },
-      { "date": "28-05-2013", "url": "https://cuentosdenoreth.foroactivo.com/t4589-sentencia", "title": "Sentencia" },
       {
-        "date": "04-02-2013",
+        "date": "2013-05-28",
+        "url": "https://cuentosdenoreth.foroactivo.com/t4589-sentencia",
+        "title": "Sentencia",
+        "description": "The Hijra for my second character, which served the same function as both backstory and training the character voice."
+      },
+      {
+        "date": "2013-02-04",
         "url": "https://cuentosdenoreth.foroactivo.com/t4006-la-tumba-del-heroe",
-        "title": "La tumba del héroe"
+        "title": "La tumba del héroe",
+        "description": "First campaign I DMed as, which lasted a few months and introduced me to narrative-driven collaborative TTRPGing."
       },
       {
-        "date": "30-08-2013",
+        "date": "2013-08-30",
         "url": "https://cuentosdenoreth.foroactivo.com/t4807-la-casa-del-lobo",
-        "title": "La casa del lobo"
+        "title": "La casa del lobo",
+        "description": "A short story featuring my Ament character, which served as a starting point for future campaigns."
       },
       {
-        "date": "14-04-2014",
+        "date": "2014-04-15",
         "url": "https://cuentosdenoreth.foroactivo.com/t5140-la-orden-de-los-bravos",
-        "title": "La Orden de los Bravos"
+        "title": "La Orden de los Bravos",
+        "description": "A campaign I played in, which also served as an introduction to a faction one of my character was aligned with."
       },
       {
-        "date": "18-05-2014",
+        "date": "2014-05-18",
         "url": "https://cuentosdenoreth.foroactivo.com/t5185-el-mal-menor",
-        "title": "El mal menor"
+        "title": "El mal menor",
+        "description": "A short story inspired by the Witcher III trailer."
       }
     ]
   },
@@ -95,37 +124,43 @@
     "description": "In the long years I've been on the internet, I've shared my art on a few different platforms.",
     "children": [
       {
-        "date": "16-06-2011",
+        "date": "2011-06-16",
         "url": "https://www.dofus.com/es/foro/1060-museos-galerias/199229-gal-museo-brisantino",
-        "title": "Museo Brisantino"
+        "title": "Museo Brisantino",
+        "description": "The first art I shared online was for my and my friend's characters in the Dofus game."
       },
 
       {
-        "date": "18-10-2011",
+        "date": "2011-10-18",
         "url": "https://www.dofus.com/es/foro/1060-museos-galerias/393314-gal-galeria-tymador",
-        "title": "Galería de un Tymador"
+        "title": "Galería de un Tymador",
+        "description": "A second post sharing my and my friends' OCs in the Dofus forums."
       },
       {
-        "date": "08-06-2015",
+        "date": "2015-06-08",
         "url": "https://www.wakfu.com/es/foro/113-fan-art/119238-gal-galeria-brisant",
-        "title": "Galería de Brisant"
+        "title": "Galería de Brisant",
+        "description": "After years of playing Dofus with my friend, Ankama Games launched a sequel called Wakfu which I play to this day. Naturally, I also started to draw our characters in that game."
       },
       {
-        "date": "19-01-2016",
+        "date": "2016-01-19",
         "url": "https://www.wakfu.com/es/foro/113-fan-art/129765-gal-chibis-dopeul",
-        "title": "Chibis Dopeul"
+        "title": "Chibis Dopeul",
+        "description": "After playing Wakfu for a while, my friends and I created a guild and I made some art of the adventures we had."
       },
 
       {
-        "date": "08-04-2012 to 01-01-2019",
+        "date": ["2012-04-08", "01-01-2019"],
         "url": "https://www.deviantart.com/kulugary/gallery/all",
-        "title": "Deviantart gallery"
+        "title": "Deviantart gallery",
+        "description": "I used to use Deviantart to share all of my art. It has some really old fanart and some more recent art I made."
       },
 
       {
-        "date": "01-06-2015 to 05-11-2018",
+        "date": ["2015-06-01", "2018-11-05"],
         "url": "https://www.deviantart.com/kulugary/gallery/all",
-        "title": "Tumblr gallery"
+        "title": "Tumblr gallery",
+        "description": "Tumblr is my favourite social media, and a lot of it has to do with the thriving art community. I made a blog there with all the art I made in recent years."
       }
     ]
   }

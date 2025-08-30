@@ -18,7 +18,7 @@
 			<a href="/{{ item.type | slugify }}">{{ item.type | unslugify }}</a>
 		</li>
 
-		{% if item.author %}
+		{% if item.author and item.type !== "Post" %}
 			<li>
 				{% if item.author.link %}
 					<a rel="author" href="{{ item.author.link }}">

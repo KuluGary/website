@@ -17,6 +17,7 @@ const {
   mergeArrays,
   isoStringToRelativeTime,
   objToArray,
+  isArray,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -70,6 +71,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("uniqueById", uniqueById);
   eleventyConfig.addFilter("mergeArrays", mergeArrays);
   eleventyConfig.addFilter("objToArray", objToArray);
+  eleventyConfig.addFilter("isArray", isArray);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */

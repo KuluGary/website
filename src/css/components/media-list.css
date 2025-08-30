@@ -175,10 +175,15 @@
         margin-block: 0;
       }
 
-      & time {
+      & time,
+      & time + span:has(+ time) {
         color: var(--text-color-alt);
         margin: 0;
         font-size: smaller;
+      }
+
+      & div:has(time + span + time) {
+        margin: 0;
       }
     }
 

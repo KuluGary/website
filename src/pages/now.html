@@ -1,7 +1,7 @@
 ---
 title: now
 permalink: /now/
-description: This is both a now page and an archive of sorts for the stuff I'm into or i've been into in the past.
+description: This now page holds a general view into what I'm focused on at the moment.
 ---
 {% extends "layouts/base.html" %}
 
@@ -9,7 +9,7 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This now page holds a general view into what I'm focused on at the moment. <a href="https://nownownow.com/about">What is a now page?</a>
+		<p>{{ description }} <a href="https://nownownow.com/about">What is a now page?</a>
 		</p>
 
 		<h2>Current Status</h2>
@@ -18,7 +18,7 @@ description: This is both a now page and an archive of sorts for the stuff I'm i
 		<article id="current-status">
 			<header>
 				<p>{{currentStatus.title}}</p>
-				<time datetime="{{ currentStatus.published | formatDate('yyyy-LL-dd') }}">{{ currentStatus.published | isoStringToRelativeTime }}</time>
+				<time datetime="{{ currentStatus.published | formatDate('yyyy-LL-dd') }}">{{ currentStatus.published | formatDate('MMMM dd, yyyy') }}</time>
 			</header>
 
 			<ul class="subtitle bar-separated">

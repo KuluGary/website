@@ -14,6 +14,7 @@ module.exports = {
   mergeArrays,
   isoStringToRelativeTime,
   objToArray,
+  isArray,
 };
 
 /**
@@ -155,4 +156,8 @@ function mergeArrays(array1, array2) {
 
 function objToArray(obj) {
   return Object.entries(obj);
+}
+
+function isArray(element) {
+  return Array.isArray(element);
 }

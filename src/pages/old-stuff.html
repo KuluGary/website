@@ -2,6 +2,7 @@
 title: old stuff
 permalink: /old-stuff/
 description: This Is some of the earliest stuff I've shared on the Internet. In here you can find a lot of abandoned and / or shelved stuff I've done or attempted in the past.
+layout: layouts/base.html
 ---
 
 {% include "components/header.html" %}
@@ -20,10 +21,28 @@ description: This Is some of the earliest stuff I've shared on the Internet. In 
       <h2>{{ category.title }}</h2>
       <p>{{ category.description }}</p>
 
-      <ul>
+      <ul class="media-section media-list">
         {% for item in category.children %}
           <li>
-            {{ item.date }}: <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            <article class="media-description recent-media">
+              <header>
+                <h3>
+                  <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+                </h3>
+
+                {% if item.date | isArray %}
+                  <div>
+                    <time datetime="{{ item.date[0] | formatDate('yyyy-LL-dd') }}">{{ item.date[0] | formatDate('dd, MMM yyyy') }}</time>
+                    <span>to</span>
+                    <time datetime="{{ item.date[1] | formatDate('yyyy-LL-dd') }}">{{ item.date[1] | formatDate('dd, MMM yyyy') }}</time>
+                  </div>
+                {% else %}
+                  <time datetime="{{ item.date | formatDate('yyyy-LL-dd') }}">{{ item.date | formatDate('dd, MMM yyyy') }}</time>
+                {% endif %}
+              </header>
+
+              <div class="description">{{ item.description | safe }}</div>
+            </article>
           </li>
         {% endfor %}
       </ul>
@@ -32,3 +51,9 @@ description: This Is some of the earliest stuff I've shared on the Internet. In 
 </main>
 
 {% include "components/footer.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+  <link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
