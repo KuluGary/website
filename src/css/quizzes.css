@@ -12,7 +12,6 @@
 }
 .quizz-image-list > h2 {
   grid-column: 1 / -1;
-  outline: 1px solid red;
 }
 
 .quizz-image-list > a,

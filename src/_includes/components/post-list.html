@@ -17,6 +17,12 @@
             <p class="post-stats">~{{postStats}} read</p>
           </li>
 
+          {% if post.data.lang %}
+            <li>
+              {{ post.data.lang | getFlagEmoji }}
+            </li>
+          {% endif %}
+
           <li>
             <ul class="tags">
               {%- for tag in post.data.tags -%}

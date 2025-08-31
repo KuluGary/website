@@ -63,7 +63,7 @@ html[data-font-stack="antique"] {
     "URW Bookman L", "Georgia Pro", Georgia, serif;
 }
 
-html[data-font-stack="didone"] {
+html[data-font-stack="didone"]e {
   --font-family: Didot, "Bodoni MT", "Noto Serif Display", "URW Palladio L",
     P052, Sylfaen, serif;
 }

@@ -1,3 +1,4 @@
+const getEmojiByLanguageCode = require("get-emoji-by-language-code");
 const readingTime = require("reading-time");
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
   webmentionsByType,
   readableDateFromISO,
   filterOwnWebmentions,
+  getFlagEmoji,
 };
 
 /**
@@ -28,7 +30,9 @@ function getPostsByYear(collection) {
   const uniqueYears = [...new Set(years)];
 
   const postsByYear = uniqueYears.reduce((prev, year) => {
-    const filteredposts = posts.filter((post) => post.date.getFullYear() === year);
+    const filteredposts = posts.filter(
+      (post) => post.date.getFullYear() === year
+    );
 
     return [...prev, [year, filteredposts]];
   }, []);
@@ -75,7 +79,10 @@ function getShareUrl(pageUrl, site, title, tags) {
       break;
     case "bluesky":
       const bskyUrl = new URL("https://bsky.app/intent/compose");
-      bskyUrl.searchParams.append("text", `${title} ${tags.map((tag) => `#${tag}`).join(" ")} ${pageUrl}`);
+      bskyUrl.searchParams.append(
+        "text",
+        `${title} ${tags.map((tag) => `#${tag}`).join(" ")} ${pageUrl}`
+      );
 
       url = bskyUrl;
       break;
@@ -155,11 +162,16 @@ function getCollectionStats(collection) {
     }
   );
 
-  stats.avgWords = stats.totalItems > 0 ? numberFormatter.format(stats.totalWords / stats.totalItems) : 0;
+  stats.avgWords =
+    stats.totalItems > 0
+      ? numberFormatter.format(stats.totalWords / stats.totalItems)
+      : 0;
 
   stats.totalWords = numberFormatter.format(stats.totalWords);
   stats.totalItems = numberFormatter.format(stats.totalItems);
-  stats.longestItem.wordCount = numberFormatter.format(stats.longestItem.wordCount);
+  stats.longestItem.wordCount = numberFormatter.format(
+    stats.longestItem.wordCount
+  );
 
   stats.byYear = Array.from(stats.byYear.values())
     .map((year) => {
@@ -167,7 +179,10 @@ function getCollectionStats(collection) {
         ...year,
         totalWords: numberFormatter.format(year.totalWords),
         totalItems: numberFormatter.format(year.totalItems),
-        avgWords: year.totalItems > 0 ? numberFormatter.format(year.totalWords / year.totalItems) : 0,
+        avgWords:
+          year.totalItems > 0
+            ? numberFormatter.format(year.totalWords / year.totalItems)
+            : 0,
       };
     })
     .sort((a, b) => a.year - b.year);
@@ -230,11 +245,15 @@ function getSimilarPosts(collection, path, categories) {
 
   return collection
     .filter((post) => {
-      return _getSimilarCategories(post.data.tags, allowedCategories) >= 1 && post.data.page.url !== path;
+      return (
+        _getSimilarCategories(post.data.tags, allowedCategories) >= 1 &&
+        post.data.page.url !== path
+      );
     })
     .sort((a, b) => {
       return (
-        _getSimilarCategories(b.data.tags, allowedCategories) - _getSimilarCategories(a.data.tags, allowedCategories)
+        _getSimilarCategories(b.data.tags, allowedCategories) -
+        _getSimilarCategories(a.data.tags, allowedCategories)
       );
     });
 }
@@ -268,4 +287,8 @@ function webmentionsByType(mentions, mentionType) {
 
 function readableDateFromISO(dateStr, formatStr = "dd LLL yyyy 'at' hh:mma") {
   return DateTime.fromISO(dateStr).toFormat(formatStr);
+}
+
+function getFlagEmoji(languageCode) {
+  return getEmojiByLanguageCode(languageCode);
 }

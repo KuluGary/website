@@ -223,8 +223,6 @@ details {
   }
 
   &[open] {
-    border: 1px solid red;
-
     & summary {
       margin-bottom: var(--line-height);
 

@@ -32,6 +32,7 @@ const {
   readableDateFromISO,
   webmentionsByType,
   filterOwnWebmentions,
+  getFlagEmoji,
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
@@ -87,6 +88,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
   eleventyConfig.addFilter("readableDateFromISO", readableDateFromISO);
+  eleventyConfig.addFilter("getFlagEmoji", getFlagEmoji);
 
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
