@@ -45,7 +45,7 @@
 				<p class="post-stats">~{{postStats}} read</p>
 			</li>
 			<li>
-				{{ item.post.data.lang }}
+				{{ item.post.data.lang | getFlagEmoji }}
 			</li>
 		{% endif %}
 
