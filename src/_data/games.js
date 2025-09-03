@@ -4,11 +4,8 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
 const fetch = require("node-fetch");
 const delay = require("../js/utils/delay");
-const {
-  startProgress,
-  incrementProgress,
-  stopProgress,
-} = require("../js/utils/cli-progress");
+const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
+const pLimit = require("p-limit");
 
 const HLTB_USER = "KuluGary";
 const PAGES = {
@@ -55,90 +52,66 @@ async function scrapeGameFromProfile(page) {
   try {
     const url = page.url();
     const id = url.split("/").at(-1);
-    const descriptionSelector = await page.waitForSelector(
-      ".GameSummary_profile_info__HZFQu",
-      { timeout: 6000 }
-    );
-    const readMore = await descriptionSelector
-      .waitForSelector("#profile_summary_more", { timeout: 2000 })
-      .catch(() => null);
 
-    if (readMore) {
-      await readMore.click();
-      await readMore.evaluate((el) => el.remove());
-    }
-
-    const imageSelector = await page.waitForSelector(
-      `.GameSideBar_game_image__ozUTt > img:nth-child(1)`,
-      {
-        timeout: 2000,
-      }
-    );
-    const image = await imageSelector.evaluate((el) => el.getAttribute("src"));
-    // const imgSrcSet = getImageSrcSet(image); @TODO: implement
-
-    const description = await descriptionSelector.evaluate(
-      (el) => el.innerText
-    );
-
-    const genres = await page.evaluate(() => {
-      const label = Array.from(document.querySelectorAll("div > strong")).find(
-        (div) =>
-          div.textContent.trim() === "Genres:" ||
-          div.textContent.trim() === "Genre:"
-      );
-      if (!label) return [];
-
-      const container = label.parentElement;
-      label.remove();
-      container.querySelector("br")?.remove();
-
-      return container.innerText.split(",").map((g) => g.trim());
+    await page.waitForSelector(".GameSummary_profile_info__HZFQu", {
+      timeout: 10000, // allow slower loads
     });
 
-    const developer = await page.evaluate(() => {
-      const label = Array.from(document.querySelectorAll("div > strong")).find(
-        (div) =>
-          div.textContent.trim() === "Developer:" ||
-          div.textContent.trim() === "Developers:"
+    // Expand "Read More" if present
+    if (await page.$("#profile_summary_more")) {
+      await page.click("#profile_summary_more").catch(() => null);
+
+      // Instead of waiting for the button to disappear, wait for description to grow
+      await page
+        .waitForFunction(
+          () => {
+            const el = document.querySelector(".GameSummary_profile_info__HZFQu");
+            return el && el.innerText.length > 200; // assume expanded text is longer
+          },
+          { timeout: 5000 }
+        )
+        .catch(() => null); // if timeout, continue anyway
+    }
+
+    // Extract in one go
+    const { description, image, genres, developer } = await page.evaluate(() => {
+      const descriptionEl = document.querySelector(".GameSummary_profile_info__HZFQu");
+      const description = descriptionEl ? descriptionEl.innerText.trim() : null;
+
+      const imageEl = document.querySelector(".GameSideBar_game_image__ozUTt > img");
+      const image = imageEl ? imageEl.src : null;
+
+      let genres = [];
+      const genreLabel = Array.from(document.querySelectorAll("div > strong")).find((el) =>
+        ["Genres:", "Genre:"].includes(el.textContent.trim())
       );
-      if (!label) return;
+      if (genreLabel) {
+        const container = genreLabel.parentElement;
+        genres = container.innerText
+          .replace("Genres:", "")
+          .replace("Genre:", "")
+          .split(",")
+          .map((g) => g.trim())
+          .filter(Boolean);
+      }
 
-      const container = label.parentElement;
-      label.remove();
-      container.querySelector("br")?.remove();
+      let developer = null;
+      const devLabel = Array.from(document.querySelectorAll("div > strong")).find((el) =>
+        ["Developer:", "Developers:"].includes(el.textContent.trim())
+      );
+      if (devLabel) {
+        const container = devLabel.parentElement;
+        developer = container.innerText.replace("Developer:", "").replace("Developers:", "").trim();
+      }
 
-      return container.innerText;
+      return { description, image, genres, developer };
     });
 
     return { id, description, genres, image, developer };
   } catch (error) {
-    log("[HLTB]", "⚠️ Error scraping game profile");
-    return { id: null, description: null, genres: [] };
+    log("[HLTB]", "⚠️ Error scraping game profile", error);
+    return { id: null, description: null, genres: [], image: null, developer: null };
   }
-}
-
-/**
- * Generates a set of image URLs with different widths for use in `srcset`.
- *
- * The function takes a base image URL and appends a `width` query parameter
- * with multiple predefined values, returning an object where each key is
- * the width and each value is the corresponding URL string.
- *
- * @param {string} imgSrc - The base image URL.
- * @returns {Promise<Object<number, string>>} A mapping of width values to image URLs.
- */
-async function getImageSrcSet(imgSrc) {
-  const srcSet = {};
-
-  for (const size of [50, 100, 200, 250]) {
-    const imgUrl = new URL(imgSrc);
-    imgUrl.searchParams.set("width", size);
-
-    srcSet[size] = imgUrl.toString();
-  }
-
-  return srcSet;
 }
 
 /**
@@ -219,31 +192,25 @@ async function fetchExtendedGameData(list, cookies) {
     currentUserHome: false,
   };
 
-  const response = await fetch(
-    `https://howlongtobeat.com/api/user/${userId}/games/list`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
-        Accept: "*/*",
-        "Accept-Language": "en-US,en;q=0.9",
-        Referer: `https://howlongtobeat.com/user/KuluGary/games/playing/1`,
-        Origin: "https://howlongtobeat.com",
-        DNT: "1",
-        Connection: "keep-alive",
-        Cookie: cookies,
-      },
-      body: JSON.stringify(body),
-    }
-  ).catch((err) => OPTIONS.logErrors && console.error(err));
+  const response = await fetch(`https://howlongtobeat.com/api/user/${userId}/games/list`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
+      Accept: "*/*",
+      "Accept-Language": "en-US,en;q=0.9",
+      Referer: `https://howlongtobeat.com/user/KuluGary/games/playing/1`,
+      Origin: "https://howlongtobeat.com",
+      DNT: "1",
+      Connection: "keep-alive",
+      Cookie: cookies,
+    },
+    body: JSON.stringify(body),
+  }).catch((err) => OPTIONS.logErrors && console.error(err));
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(
-      `Failed to fetch extended game data: ${response.status}\n${text}`
-    );
+    throw new Error(`Failed to fetch extended game data: ${response.status}\n${text}`);
   }
 
   const { data } = await response.json();
@@ -259,63 +226,105 @@ async function fetchExtendedGameData(list, cookies) {
 async function scrapeGamesFromPage(page, url, status) {
   const browser = page.browser();
 
-  await page.goto(url).catch(() => null);
-  await delay(1000);
+  await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
 
-  const acceptCookies = await page
-    .waitForSelector("#onetrust-accept-btn-handler", { timeout: 1000 })
-    .catch(() => null);
+  const acceptCookies = await page.waitForSelector("#onetrust-accept-btn-handler", { timeout: 1500 }).catch(() => null);
   if (acceptCookies) await acceptCookies.click();
 
   await page.waitForSelector("#user_games");
-  const gameElements = await page.$$(
-    "#user_games > div > div > div > div:not(:first-of-type)"
-  );
+  const gameElements = await page.$$("#user_games > div > div > div > div:not(:first-of-type)");
   startProgress(gameElements.length);
 
-  const games = [];
   const cookies = await extractCookies(page);
+
   const extendedListInfo = await fetchExtendedGameData(status, cookies);
 
-  for (const game of gameElements) {
-    const { link, platform, title, playtime, rate } = await scrapeGameFromList(
-      game
-    );
-    const newPage = await browser.newPage();
-    await newPage.goto(link).catch(() => null);
-    await delay(2000);
+  const baseGames = await Promise.all(gameElements.map((game) => scrapeGameFromList(game)));
 
-    const pages = await browser.pages();
-    const profilePage = pages[pages.length - 1];
+  const limit = pLimit(5);
 
-    await profilePage.bringToFront();
-    const { description, genres, id, image, developer } =
-      await scrapeGameFromProfile(profilePage);
-    await profilePage.close();
+  const games = await Promise.all(
+    baseGames.map((base) =>
+      limit(async () => {
+        const extendedInfo = extendedListInfo.find(
+          (ext) => String(ext.game_id) === String(base.link.split("/").at(-1))
+        );
 
-    const extendedInfo = extendedListInfo.find(
-      (extendedGame) => id == String(extendedGame.game_id)
-    );
+        // Already have most data from API, only open profile if missing description
+        let description = extendedInfo?.profile_summary;
+        let genres = extendedInfo?.profile_genres || [];
+        let developer = extendedInfo?.profile_developer;
+        let image = extendedInfo?.image_url;
 
-    games.push({
-      id,
-      type: "games",
-      title,
-      description,
-      genres,
-      platform,
-      link,
-      thumbnail: image,
-      updatedAt: extendedInfo?.date_updated,
-      addedAt: extendedInfo?.date_added,
-      startedAt: extendedInfo?.date_start,
-      completedAt: extendedInfo?.date_complete,
-      playtime,
-      rate,
-      author: { name: developer },
-    });
-    incrementProgress();
-  }
+        if (!description || !genres.length || !developer) {
+          const newPage = await browser.newPage();
+          await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
+          const profileData = await scrapeGameFromProfile(newPage);
+          await newPage.close();
+
+          description = description || profileData.description;
+          genres = genres.length ? genres : profileData.genres;
+          developer = developer || profileData.developer;
+          image = image || profileData.image;
+        }
+
+        incrementProgress();
+
+        return {
+          id: extendedInfo?.game_id || base.link.split("/").at(-1),
+          type: "games",
+          title: base.title,
+          description,
+          genres,
+          platform: base.platform,
+          link: base.link,
+          thumbnail: image,
+          updatedAt: extendedInfo?.date_updated,
+          addedAt: extendedInfo?.date_added,
+          startedAt: extendedInfo?.date_start,
+          completedAt: extendedInfo?.date_complete,
+          playtime: base.playtime,
+          rate: base.rate,
+          author: { name: developer },
+        };
+      })
+    )
+  );
+
+  // for (const game of gameElements) {
+  //   const { link, platform, title, playtime, rate } = await scrapeGameFromList(game);
+  //   const newPage = await browser.newPage();
+  //   await newPage.goto(link).catch(() => null);
+  //   await delay(2000);
+
+  //   const pages = await browser.pages();
+  //   const profilePage = pages[pages.length - 1];
+
+  //   await profilePage.bringToFront();
+  //   const { description, genres, id, image, developer } = await scrapeGameFromProfile(profilePage);
+  //   await profilePage.close();
+
+  //   const extendedInfo = extendedListInfo.find((extendedGame) => id == String(extendedGame.game_id));
+
+  //   games.push({
+  //     id,
+  //     type: "games",
+  //     title,
+  //     description,
+  //     genres,
+  //     platform,
+  //     link,
+  //     thumbnail: image,
+  //     updatedAt: extendedInfo?.date_updated,
+  //     addedAt: extendedInfo?.date_added,
+  //     startedAt: extendedInfo?.date_start,
+  //     completedAt: extendedInfo?.date_complete,
+  //     playtime,
+  //     rate,
+  //     author: { name: developer },
+  //   });
+  //   incrementProgress();
+  // }
 
   stopProgress();
 
