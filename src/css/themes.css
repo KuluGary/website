@@ -84,7 +84,8 @@ html[data-font-size="large"] {
 
 /* #region Color theme settings */
 
-html, /* If there's no color theme selected */
+html:not([data-theme]),
+html[data-theme=""],
 html[data-theme="grayscale"] {
   color-scheme: light;
   --text-color: #343131;
@@ -130,15 +131,16 @@ html[data-theme="dark-grayscale"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
+  html:not([data-theme]),
+  html[data-theme=""] {
     color-scheme: dark;
-    --text-color: #c5c8c6;
-    --text-color-alt: #666;
-    --background-color: #1d1f21;
-    --background-color-alt: #373b41;
-    --primary-color: #81a2be;
-    --secondary-color: #de935f;
-    --tertiary-color: #b5bd68;
+    --text-color: #bfbfbf;
+    --text-color-alt: #bfbfbfa6;
+    --background-color: #1a2735;
+    --background-color-alt: #25323f;
+    --primary-color: #37c3b7;
+    --secondary-color: #fbbc55;
+    --tertiary-color: #ff4680;
   }
 }
 /* #endregion */
