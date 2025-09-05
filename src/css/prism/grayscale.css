@@ -1,4 +1,5 @@
-html, /* If there's no color theme selected */
+html:not([data-theme]),
+html[data-theme=""],
 html[data-theme="grayscale"] {
   code[class*="language-"],
   pre[class*="language-"] {
