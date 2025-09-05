@@ -109,8 +109,8 @@ html[data-theme="cherry-blosom"] {
 
 html[data-theme="dark-blue"] {
   color-scheme: dark;
-  --text-color: #faf8cd;
-  --text-color-alt: #909a90;
+  --text-color: #bfbfbf;
+  --text-color-alt: #bfbfbfa6;
   --background-color: #1a2735;
   --background-color-alt: #25323f;
   --primary-color: #37c3b7;
