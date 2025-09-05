@@ -1,6 +1,6 @@
 ---
 title: KuluGary's site
-description: An old web personal site
+description: Welcome! I'm the webmaster of this little corner of the web. I tinker with retro tech, dabble in art from pixels to polygons, and experiment with making games. This site is my playground for sharing projects, experiments and odd curiosities.
 permalink: /
 ---
 
@@ -11,35 +11,33 @@ permalink: /
 
   <main>
     <p>
-      I'm a <strong>technology enthusiast</strong> with a predilection for vintage programs; an
-      <strong>artistic cognoscente</strong> who's dabbled in illustration, 3D and pixel art; and a
-      <strong>neophyte humanist</strong> with a growing regard for the social sciences.
+      Welcome! I'm the webmaster of this little corner of the web. I tinker with <a href="/tags/development">retro tech</a>, <a href="/old-stuff#art">dabble in art</a> from pixels to
+      polygons, and experiment with <a href="/tags/game-dev">making games</a>. This site is my playground for sharing projects, experiments and odd
+      curiosities.
     </p>
 
-    <p>
-      This site is for personal use and as such, both it's content and form are subject to change sporadically and
-      frequently.
-    </p>
+    <p>The content of this website is a living entity, and as such it's subject to change sporadically and frequently.</p>
 
     <section class="recent-activity">
-      <h2><a href="/recent-activity">Recent activity</a></h2>
+      <h2>
+        <a href="/recent-activity">Recent activity</a>
+      </h2>
 
       {% set media = collections['recentActivity'] | limit(5) %}
       <ul class="media-section media-list">
         {% for item in media %}
-          <li>
-            {% include "components/media-list-description.html" %}
-          </li>
+          <li>{% include "components/media-list-description.html" %}</li>
         {% endfor %}
       </ul>
     </section>
   </main>
+
   {% include "components/footer.html" %}
 {% endblock %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css" />
-  <link rel="stylesheet" href="/css/components/footer.css" />
-  <link rel="stylesheet" href="/css/home.css" />
+  <link rel="stylesheet" href="/css/components/header.css"/>
+  <link rel="stylesheet" href="/css/components/footer.css"/>
+  <link rel="stylesheet" href="/css/home.css"/>
   <link rel="stylesheet" href="/css/components/media-list.css"/>
 {% endblock %}

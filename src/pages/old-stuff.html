@@ -17,7 +17,7 @@ layout: layouts/base.html
   <p>By the nature of it, a lot of the content here is in <em>spanish</em>, and I cannot promise the links will stay up indefinetely.</p>
 
   {% for category in oldstuff %}
-    <section>
+    <section id="{{ category.title | slugify }}">
       <h2>{{ category.title }}</h2>
       <p>{{ category.description }}</p>
 

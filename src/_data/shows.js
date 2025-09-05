@@ -5,9 +5,9 @@ const fs = require("fs");
 const { log, time, timeEnd } = require("../js/utils/log");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
-const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 const { slugify } = require("../js/11ty/generic");
+const pLimit = require("p-limit");
 
 const TRAKT_USER = "kulugary";
 const PAGES = {
@@ -79,60 +79,63 @@ async function getCollection() {
 async function scrapeShowListPage(page, url, status) {
   const browser = page.browser();
 
-  await page.goto(url).catch(() => null);
-  await page.waitForSelector("#sortable-grid").catch(() => null);
+  await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
 
-  const shows = [];
-  const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
+  const elements = await page.$$("#sortable-grid .grid-item, .grid .grid-item");
+  if (!elements.length) return [];
+
   startProgress(elements.length);
 
-  for (const element of elements) {
-    try {
+  // Extract base info
+  const baseShows = await Promise.all(
+    elements.map(async (element) => {
       const [titleEl, linkEl] = await Promise.all([element.$(".titles h3"), element.$("a")]);
-
       const [title, link, originalTitle, id, date_created, date_added] = await Promise.all([
-        titleEl.evaluate((el) => el.innerText),
-        linkEl.evaluate((el) => el.href),
+        titleEl?.evaluate((el) => el.innerText).catch(() => null),
+        linkEl?.evaluate((el) => el.href).catch(() => null),
         element.evaluate((el) => el.getAttribute("data-title")),
         element.evaluate((el) => el.getAttribute("data-list-item-id")),
         element.evaluate((el) => el.getAttribute("data-released")),
         element.evaluate((el) => el.getAttribute("data-added")),
       ]);
+      return { title, link, originalTitle, id, date_created, date_added };
+    })
+  );
 
-      const newPage = await browser.newPage();
-      newPage.goto(link);
-      await delay(2000);
+  const limit = pLimit(5);
 
-      const pages = await browser.pages();
-      const profilePage = pages[pages.length - 1];
+  const shows = await Promise.all(
+    baseShows.map((base) =>
+      limit(async () => {
+        if (!base.link) return null;
 
-      await profilePage.bringToFront();
-      const { description, genres, imageSrc } = await scrapeShowProfilePage(profilePage);
-      await profilePage.close();
+        const newPage = await browser.newPage();
+        await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
+        const { description, genres, imageSrc } = await scrapeShowProfilePage(newPage);
+        await newPage.close();
 
-      const safeName = slugify(originalTitle);
-      const imagePath = await downloadImage(status, imageSrc, safeName);
+        const safeName = slugify(base.originalTitle || base.title);
+        const imagePath = await downloadImage(status, imageSrc, safeName);
 
-      shows.push({
-        id,
-        type: "shows",
-        title,
-        description,
-        genres,
-        link,
-        thumbnail: imagePath,
-        createdAt: date_created,
-        addedAt: date_added,
-      });
-      incrementProgress();
-    } catch (err) {
-      if (OPTIONS.logErrors) log("[Trakt.tv/Shows]", `⚠️ Skipped one element in ${status}: ${err.message}`);
-    }
-  }
+        incrementProgress();
+
+        return {
+          id: base.id,
+          type: "shows",
+          title: base.title,
+          description,
+          genres,
+          link: base.link,
+          thumbnail: imagePath,
+          createdAt: base.date_created,
+          addedAt: base.date_added,
+        };
+      })
+    )
+  );
 
   stopProgress();
-
-  return shows;
+  return shows.filter(Boolean);
 }
 
 /**
@@ -141,20 +144,12 @@ async function scrapeShowListPage(page, url, status) {
  * @returns {Promise<{ description: string, genres: Array<string>, imageSrc: string }>} Object containing the description and genres of a show
  */
 async function scrapeShowProfilePage(page) {
-  await delay(1000);
-  const descriptionSelector = await page.waitForSelector("#tagline + #overview");
-  const description = await descriptionSelector.evaluate((el) => el.innerText);
+  const description = await page.$eval("#tagline + #overview", (el) => el.innerText).catch(() => null);
+  const imageSrc = await page.$eval("img.real", (el) => el.src).catch(() => null);
 
-  const imageSelector = await page.waitForSelector("img.real");
-  const imageSrc = await imageSelector.evaluate((el) => el.src);
-
-  const genres = await page.evaluate(() => {
-    const genreSelector = Array.from(document.querySelectorAll("span[itemprop='genre']"));
-
-    if (!genreSelector) return [];
-
-    return genreSelector.map((genreElement) => genreElement.innerText.trim());
-  });
+  const genres = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("span[itemprop='genre']")).map((el) => el.innerText.trim())
+  );
 
   return { description, genres, imageSrc };
 }

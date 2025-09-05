@@ -2,10 +2,10 @@ const { default: puppeteer } = require("puppeteer");
 const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
+const pLimit = require("p-limit");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { log, time, timeEnd } = require("../js/utils/log");
 const { saveTestData } = require("../js/utils/save");
-const delay = require("../js/utils/delay");
 const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 const { slugify } = require("../js/11ty/generic");
 
@@ -30,97 +30,94 @@ const coverPath = "/assets/images/covers/movies";
 async function scrapeMoviePage(page, url, status) {
   const browser = page.browser();
 
-  await page.goto(url).catch(() => null);
+  await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
+
   await page.waitForSelector("#sortable-grid").catch(() => null);
 
-  const movies = [];
-  const elements = await page.$$("#sortable-grid .grid-item").catch(() => null);
+  const elements = await page.$$("#sortable-grid .grid-item, .grid .grid-item");
+  if (!elements.length) return [];
+
   startProgress(elements.length);
 
-  for (const element of elements) {
-    try {
+  const baseMovies = await Promise.all(
+    elements.map(async (element) => {
       const [titleEl, linkEl] = await Promise.all([element.$(".titles h3"), element.$("a")]);
-
       const [title, link, originalTitle, id, date_created, date_added] = await Promise.all([
-        titleEl.evaluate((el) => el.innerText),
-        linkEl.evaluate((el) => el.href),
+        titleEl?.evaluate((el) => el.innerText).catch(() => null),
+        linkEl?.evaluate((el) => el.href).catch(() => null),
         element.evaluate((el) => el.getAttribute("data-title")),
         element.evaluate((el) => el.getAttribute("data-list-item-id")),
         element.evaluate((el) => el.getAttribute("data-released")),
         element.evaluate((el) => el.getAttribute("data-added")),
       ]);
+      return { title, link, originalTitle, id, date_created, date_added };
+    })
+  );
 
-      const newPage = await browser.newPage();
-      newPage.goto(link);
-      await delay(2000);
+  const limit = pLimit(5);
 
-      const pages = await browser.pages();
-      const profilePage = pages[pages.length - 1];
+  const movies = await Promise.all(
+    baseMovies.map((base) =>
+      limit(async () => {
+        const newPage = await browser.newPage();
+        await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
 
-      await profilePage.bringToFront();
-      const { description, genres, imageSrc } = await scrapeMovieProfile(profilePage);
-      await profilePage.close();
+        const { description, genres, imageSrc } = await scrapeMovieProfile(newPage);
+        await newPage.close();
 
-      const safeName = slugify(originalTitle);
-      const imagePath = await downloadImage(status, imageSrc, safeName);
+        const safeName = slugify(base.originalTitle || base.title);
+        const imagePath = await downloadImage(status, imageSrc, safeName);
 
-      movies.push({
-        id,
-        type: "movies",
-        title,
-        description,
-        genres,
-        link,
-        thumbnail: imagePath,
-        createdAt: date_created,
-        addedAt: date_added,
-      });
-      incrementProgress();
-    } catch (err) {
-      if (OPTIONS.logErrors) log("[Trakt.tv/Movies]", `⚠️ Skipped one element in ${status}: ${err.message}`);
-    }
-  }
+        incrementProgress();
+
+        return {
+          id: base.id,
+          type: "movies",
+          title: base.title,
+          description,
+          genres,
+          link: base.link,
+          thumbnail: imagePath,
+          createdAt: base.date_created,
+          addedAt: base.date_added,
+        };
+      })
+    )
+  );
 
   stopProgress();
-
-  return movies;
+  return movies.filter(Boolean);
 }
-
 /**
- * Extracts the description and genres for a movie
- * @param {puppeteer.Page} page Puppeteer page instance for a movie profile.
- * @returns {Promise<{ description: string, genres: Array<string>, imageSrc: string }>} Object containing the description and genres of a movie
+ * Extracts the description and genres for a movie.
  */
 async function scrapeMovieProfile(page) {
-  await delay(1000);
-  const descriptionSelector = await page.waitForSelector("#tagline + #overview");
-  const description = await descriptionSelector.evaluate((el) => el.innerText);
+  const description = await page.$eval("#tagline + #overview", (el) => el.innerText).catch(() => null);
+  const imageSrc = await page.$eval("img.real", (el) => el.src).catch(() => null);
 
-  const imageSelector = await page.waitForSelector("img.real");
-  const imageSrc = await imageSelector.evaluate((el) => el.src);
-
-  const genres = await page.evaluate(() => {
-    const genreSelector = Array.from(document.querySelectorAll("span[itemprop='genre']"));
-
-    if (!genreSelector) return [];
-
-    return genreSelector.map((genreElement) => genreElement.innerText.trim());
-  });
+  const genres = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("span[itemprop='genre']")).map((el) => el.innerText.trim())
+  );
 
   return { description, genres, imageSrc };
 }
 
 /**
- * Downloads and saves an image locally.
+ * Downloads and saves an image locally (skip if already exists).
  */
 async function downloadImage(folder, url, fileName) {
+  if (!url) return null;
+
   const dir = path.join("src/" + coverPath, folder);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
   const fullPath = path.join(dir, `${fileName}.jpg`);
-  const buffer = await fetch(url).then((res) => res.buffer());
 
-  if (!fs.existsSync(fullPath)) fs.writeFileSync(fullPath, buffer);
+  if (!fs.existsSync(fullPath)) {
+    const buffer = await fetch(url).then((res) => res.buffer());
+    fs.writeFileSync(fullPath, buffer);
+  }
+
   return `${coverPath}/${folder}/${fileName}.jpg`;
 }
 
@@ -146,10 +143,6 @@ async function getCollection() {
   return collection;
 }
 
-/**
- * Main entry point for module: scrapes and caches movies data.
- * @returns {Promise<Object>} Scraped movies data.
- */
 module.exports = async function fetchTraktMovies() {
   const cached = getFromCache("movies");
   if (cached && OPTIONS.cache) {
