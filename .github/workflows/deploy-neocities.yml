@@ -1,0 +1,25 @@
+name: "Deploy to Neocities"
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: "Deploy to Neocities"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm install
+      - name: Set commit metadata
+        run: |
+          echo "COMMIT_REF=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "REPOSITORY_URL=${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}" >> $GITHUB_ENV
+      - run: npx @11ty/eleventy
+      - uses: bcomnes/deploy-to-neocities@v1
+        with:
+          api_token: ${{ secrets.NEOCITIES_API_KEY }}
+          dist_dir: "_site/"
+          cleanup: false

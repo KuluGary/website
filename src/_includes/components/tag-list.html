@@ -1,5 +1,5 @@
 <p>Top tags:
   {% for item in collection | getFrequentTags | limit(6) %}
-    <a href="/tags/{{ item.tag | slugify }}">#{{ item.tag }}</a>
+    <a href="/blog/tags/{{ item.tag | slugify }}">#{{ item.tag }}</a>
   {% endfor %}
 </p>
