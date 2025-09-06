@@ -16,6 +16,7 @@ function _initializeCache() {
  * @returns the requested object saved into cache
  */
 function getFromCache(cacheKey) {
+  if (process.env.ENVIRONMENT !== "DEVELOPMENT") return;
   if (!cache) _initializeCache();
   const cachedItem = cache.getKey(cacheKey);
   if (cachedItem?.data) {
@@ -35,6 +36,7 @@ function getFromCache(cacheKey) {
  * @param {number} daysToAdd customizable TTL
  */
 function setIntoCache(cacheKey, cacheData, daysToAdd) {
+  if (process.env.ENVIRONMENT !== "DEVELOPMENT") return;
   if (!cache) _initializeCache();
 
   cache.setKey(cacheKey, {
