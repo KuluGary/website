@@ -6,7 +6,11 @@
   "scripts": {
     "start": "sh ./lib/start.sh",
     "commit": "sh ./lib/commit.sh",
-    "deploy": "sh ./lib/deploy.sh"
+    "post": "sh ./lib/add-post.sh",
+    "deploy": "sh ./lib/deploy.sh",
+    "build": "sh ./lib/build.sh",
+    "postbuild": "sh ./lib/send-webmentions",
+    "send-webmentions": "webmention _site/blog/feed.xml --limit 1 --send"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +42,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@extractus/feed-extractor": "^7.1.0",
     "@photogabble/eleventy-plugin-word-stats": "^1.0.1",
+    "@remy/webmention": "^1.5.0",
     "@sindresorhus/slugify": "^2.2.1",
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.5",
