@@ -18,6 +18,16 @@ jobs:
           echo "COMMIT_REF=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "REPOSITORY_URL=${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}" >> $GITHUB_ENV
       - run: npx @11ty/eleventy
+        env:
+          ROOT_URL: ${{ secrets.ROOT_URL }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_SECRET_KEY: ${{ secrets.SPOTIFY_SECRET_KEY }}
+          MANGADEX_USERNAME: ${{ secrets.MANGADEX_USERNAME }}
+          MANGADEX_PASSWORD: ${{ secrets.MANGADEX_PASSWORD }}
+          MANGADEX_CLIENT_ID: ${{ secrets.MANGADEX_CLIENT_ID }}
+          MANGADEX_CLIENT_SECRET: ${{ secrets.MANGADEX_CLIENT_SECRET }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          WEBMENTIONS_TOKEN: ${{ secrets.WEBMENTIONS_TOKEN }}
       - uses: bcomnes/deploy-to-neocities@v1
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
