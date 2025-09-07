@@ -1,6 +1,7 @@
 ---
-title: Videos
-permalink: /videos/
+title: My Video Favorites
+permalink: /media/videos/
+description: Browse a handpicked selection of favorite videos, memorable clips, and hidden gems worth revisiting.
 ---
 
 {% extends "layouts/base.html" %}
@@ -9,11 +10,11 @@ permalink: /videos/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of my favourite videos.</p>
+		<p>A curated playlist of videos I love, clips that stick with me, and a few hidden gems worth revisiting.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-3" %}
 		{% set media = videos.favourites %}
-		{% set href = "/videos/status/favourites" %}
+		{% set href = "/media/videos/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 

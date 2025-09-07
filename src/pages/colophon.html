@@ -1,6 +1,7 @@
 ---
-title: colophon
+title: Colophon
 permalink: /colophon/
+description: Discover how this site was built, including tools, technologies, and design choices behind the pages you explore.
 ---
 
 {% extends "layouts/base.html" %}
@@ -9,7 +10,11 @@ permalink: /colophon/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This site is made with a variety of tools. The source for this site is available in <a href="https://github.com/KuluGary/website">its repository</a>.</p>
+		{% include "components/stub.html" %}
+
+		<p>A peek behind the scenes: how this site is made, the tools and technologies I rely on, and the digital foundations that support it.</p>
+
+		<p>The source for this site is available in <a href="https://github.com/KuluGary/website">its repository</a>.</p>
 
 		<section>
 			<h2>The frontend</h2>

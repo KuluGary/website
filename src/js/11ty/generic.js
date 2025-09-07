@@ -15,6 +15,9 @@ module.exports = {
   isoStringToRelativeTime,
   objToArray,
   isArray,
+  generateSitemap,
+  makeLowercase,
+  makeUppercase,
 };
 
 /**
@@ -54,9 +57,7 @@ function isoStringToRelativeTime(isoString) {
  * @returns {Array<Object>} A new array sorted by the specified date property in descending order.
  */
 function sortByDate(collection, key) {
-  return collection.sort(
-    (a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime()
-  );
+  return collection.sort((a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime());
 }
 
 /**
@@ -118,7 +119,7 @@ function limit(array, limit = 0) {
  */
 function getRootUrl(url) {
   const rootUrl = url.split("/");
-  return `/${rootUrl.at(1)}`;
+  return `/${rootUrl.at(1)}/${rootUrl.at(2)}`;
 }
 
 /**
@@ -136,8 +137,7 @@ function log(any) {
  * @returns {string} A full URL to the social media image. Defaults to a fallback image if none is provided.
  */
 function generateSocialMediaImage(imageSrc) {
-  if (!imageSrc)
-    return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
+  if (!imageSrc) return `https://kulugary.neocities.org/assets/images/textures/social-share.jpg`;
 
   if (imageSrc.startsWith("https://")) return imageSrc;
 
@@ -145,9 +145,7 @@ function generateSocialMediaImage(imageSrc) {
 }
 
 function uniqueById(array) {
-  return array.filter(
-    (obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i
-  );
+  return array.filter((obj1, i, arr) => arr.findIndex((obj2) => obj2.id === obj1.id) === i);
 }
 
 function mergeArrays(array1, array2) {
@@ -160,4 +158,47 @@ function objToArray(obj) {
 
 function isArray(element) {
   return Array.isArray(element);
+}
+
+function generateSitemap(collectionApi) {
+  return collectionApi
+    .getAll()
+    .filter((page) => {
+      return (
+        page.url &&
+        !page.url.match(/\.(css|js|json|xml|txt|map)$/) &&
+        (page.url === "/blog/" || !page.url.startsWith("/blog/")) &&
+        !page.url.includes("/genre/") &&
+        !page.url.includes("/status/")
+      );
+    })
+    .sort((a, b) => {
+      const group = (url) => {
+        if (url === "/") return 0;
+        if (url === "/blog/") return 1;
+        if (url.startsWith("/blog/")) return 2;
+        return 3;
+      };
+
+      const groupA = group(a.url);
+      const groupB = group(b.url);
+
+      if (groupA !== groupB) {
+        return groupA - groupB;
+      }
+
+      if (groupA === 2) {
+        return (b.date || 0) - (a.date || 0);
+      }
+
+      return a.url.localeCompare(b.url);
+    });
+}
+
+function makeUppercase(string) {
+  return string.toUpperCase();
+}
+
+function makeLowercase(string) {
+  return string.toLowerCase();
 }

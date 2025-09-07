@@ -1,0 +1,67 @@
+---
+title: My Media Highlights
+permalink: /media/
+description: A curated collection of favorites spanning games, music, movies, shows, manga, webcomics, and videos.
+---
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+		<p>The highlights reel of my digital life. Favorites across every medium I explore, from games to music, comics to videos.</p>
+
+		{% set media = games.favourites | limit(5) %}
+		{% set showFooter = true %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
+		{% set href = "/media/games/status/favourites" %}
+		{% set sectionTitle = "Favourite games" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = webcomics.favourites | limit(5) %}
+		{% set mediaListGrid = "grid-list grid-col-5" %}
+		{% set href = "/media/webcomics/status/favourites" %}
+		{% set sectionTitle = "Favourite webcomics" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = manga.favourite | removeUnsafeManga | limit(5) %}
+		{% set href = "/media/manga/status/favourite" %}
+		{% set sectionTitle = "Favourite manga" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = shows.favourites | limit(5) %}
+		{% set href = "/media/shows/status/favourites" %}
+		{% set sectionTitle = "Favourite shows" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = movies.favourites | limit(5) %}
+		{% set href = "/media/movies/status/favourites" %}
+		{% set sectionTitle = "Favourite movies" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = music.favourites | limit(4) %}
+		{% set mediaListGrid = "grid-list grid-col-4" %}
+		{% set href = "/media/music/status/favourites" %}
+		{% set sectionTitle = "Favourite songs" %}
+		{% include "components/media-list-section.html" %}
+
+		{% set media = videos.favourites | limit(3) %}
+		{% set mediaListGrid = "grid-list grid-col-3" %}
+		{% set href = "/media/videos/status/favourites" %}
+		{% set sectionTitle = "Favourite videos" %}
+		{% include "components/media-list-section.html" %}
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/media-list.js" defer></script>
+{% endblock %}

@@ -1,13 +1,17 @@
 ---
-title: styleguide
+title: Style Guide
 permalink: /styleguide/
-description: styleguide
+description: Discover the visual and typographic style of this site, including fonts, colors, components, and layout patterns.
 ---
 {% extends "layouts/base.html" %}
 
 {% block content %}
   {% include "components/header.html" %}
   <main>
+    {% include "components/stub.html" %}
+    <p>A showcase of the design, typography, and visual styles that shape this site—colors, fonts, components, and layouts all in one place.</p>
+
+    <hr>
 
     <h1 id="headings">Headings</h1>
 
@@ -107,7 +111,7 @@ description: styleguide
     <code>
       <pre>// Loop through Divs using Javascript.
   var divs = document.querySelectorAll('div'), i;
-  
+
   for (i = 0; i < divs.length; ++i) {
     divs[i].style.color = "green";
   }</code></pre>

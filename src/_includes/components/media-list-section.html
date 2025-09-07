@@ -8,6 +8,10 @@
 			{% include "components/media-list-buttons.html" %}
 		</h2>
 
+		{% if sectionDescription %}
+			<p>{{ sectionDescription }}</p>
+		{% endif %}
+
 		{% include "components/media-list.html" %}
 
 		{% if showFooter %}

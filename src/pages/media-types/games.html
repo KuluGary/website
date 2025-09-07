@@ -1,6 +1,7 @@
 ---
-title: Games
-permalink: /games/
+title: My Gaming Shelf
+permalink: /media/games/
+description: 'Browse a curated collection of games: favorites, in-progress adventures, completed quests, and those waiting in the backlog.'
 ---
 {% extends "layouts/base.html" %}
 
@@ -8,7 +9,7 @@ permalink: /games/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my games, organized by status.</p>
+		<p>This is my gaming shelf, stacked with favorites, works-in-progress, completed quests, and a few titles left to gather dust. Sorted by category, but never quite finished.</p>
 
 		{% set media = games %}
 		{% set mediaType = "games" %}
@@ -17,32 +18,32 @@ permalink: /games/
 		{% include "components/media-tag-list.html" %}
 
 		{% set media = games.playing %}
-		{% set href = "/games/status/playing" %}
+		{% set href = "/media/games/status/playing" %}
 		{% set sectionTitle = "Currently playing" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = games.favourites %}
-		{% set href = "/games/status/favourites" %}
+		{% set href = "/media/games/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = games.completed %}
-		{% set href = "/games/status/completed" %}
+		{% set href = "/media/games/status/completed" %}
 		{% set sectionTitle = "Completed" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = games.played %}
-		{% set href = "/games/status/played" %}
+		{% set href = "/media/games/status/played" %}
 		{% set sectionTitle = "Played" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = games.backlog %}
-		{% set href = "/games/status/backlog" %}
+		{% set href = "/media/games/status/backlog" %}
 		{% set sectionTitle = "Backlog" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = games.retired %}
-		{% set href = "/games/status/retired" %}
+		{% set href = "/media/games/status/retired" %}
 		{% set sectionTitle = "Dropped" %}
 		{% include "components/media-list-section.html" %}
 	</main>

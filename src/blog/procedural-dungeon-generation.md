@@ -11,6 +11,7 @@ postmedia:
       alt: A dark animated image of a dungeon layout being re-generated periodically.
     - url: "/assets/images/gallery/2023-11-28-procedural-dungeon-generation/2.png"
       alt: A grey scene with the Godot logo in the middle and four door-openings at each cardinal direction.
+description: Recently I found an article about the dungeon generation in The Binding of Isaac, and I decided I wanted to try to implement it in Godot.
 ---
 
 I like rogue-likes, and procedural generation is a fascinating subject to me.

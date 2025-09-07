@@ -1,0 +1,50 @@
+---
+permalink: /sitemap/
+eleventyExcludeFromCollections: true
+layout: layouts/base.html
+title: Sitemap
+description: A complete map of the site. Explore every main page in one place.
+
+---
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<main>
+		<h2>{{ title }}</h2>
+		<p>All the corners of this site, neatly listed. Explore pages, blogs, media, and more from one handy spot.</p>
+
+		<ul class="media-section media-list">
+			{% for page in collections.sitemap %}
+				<li>
+
+					<article class="media-description recent-media">
+						<header>
+							<h3>
+								<a href="{{ page.url }}" target="_blank" rel="noopener noreferrer">{{ page.data.title}}</a>
+							</h3>
+							<time datetime="{{ page.date | formatDate('yyyy-LL-dd') }}">{{ page.date | formatDate('dd, MMM yyyy') }}</time>
+						</header>
+
+						<ul class="stats bar-separated">
+							<li>
+								<a href="{{ metadata.url }}{{ page.url | url }}">{{ page.url | url }}</a>
+							</li>
+						</ul>
+
+						<div class="description">{{ page.data.description | safe }}</div>
+					</article>
+
+				</li>
+			{% endfor %}
+		</ul>
+	</main>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<link rel="stylesheet" href="/css/components/media-list.css"/>
+{% endblock %}

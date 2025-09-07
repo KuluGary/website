@@ -1,7 +1,7 @@
 ---
-title: status
+title: My Status Updates
 permalink: /status/
-description: status
+description: "See what I'm currently up to: a live feed of thoughts, activities, and status updates."
 ---
 
 {% extends "layouts/base.html" %}
@@ -10,10 +10,8 @@ description: status
   {% include "components/header.html" %}
 
   <main>
-
-    A list of all my status over at <a href="http://status.cafe">status.cafe</a>.
-
     <h2>Status list</h2>
+    <p>A live glimpse at my status updates, straight from the digital soapbox.</p>
 
     <ul id="status-list">
       {% for currStatus in status.entry %}

@@ -1,6 +1,7 @@
 ---
-title: Manga
-permalink: /manga/
+title: My Manga Shelf
+permalink: /media/manga/
+description: 'Discover a personal manga collection: current reads, favorites, completed series, and titles on hold or dropped.'
 ---
 {% extends "layouts/base.html" %}
 
@@ -8,7 +9,7 @@ permalink: /manga/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my manga, organized by status.</p>
+		<p>Part bookshelf, part backlog. Manga I'm deep into, stories still on the horizon, favorites I've dog-eared, and series I've set aside for now.</p>
 
 		{% set media = manga %}
 		{% set mediaType = "manga" %}
@@ -17,32 +18,32 @@ permalink: /manga/
 		{% include "components/media-tag-list.html" %}
 
 		{% set media = manga.reading | removeUnsafeManga %}
-		{% set href = "/manga/status/reading" %}
+		{% set href = "/media/manga/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.plan_to_read | removeUnsafeManga %}
-		{% set href = "/manga/status/plan_to_read" %}
+		{% set href = "/media/manga/status/plan_to_read" %}
 		{% set sectionTitle = "Plan to read" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.favourite | removeUnsafeManga %}
-		{% set href = "/manga/status/favourite" %}
+		{% set href = "/media/manga/status/favourite" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.completed | removeUnsafeManga %}
-		{% set href = "/manga/status/completed" %}
+		{% set href = "/media/manga/status/completed" %}
 		{% set sectionTitle = "Completed" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.on_hold | removeUnsafeManga %}
-		{% set href = "/manga/status/on_hold" %}
+		{% set href = "/media/manga/status/on_hold" %}
 		{% set sectionTitle = "On hold" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.dropped | removeUnsafeManga %}
-		{% set href = "/manga/status/dropped" %}
+		{% set href = "/media/manga/status/dropped" %}
 		{% set sectionTitle = "Dropped" %}
 		{% include "components/media-list-section.html" %}
 	</main>

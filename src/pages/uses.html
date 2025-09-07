@@ -1,7 +1,7 @@
 ---
-title: uses
+title: My Toolkit
 permalink: /uses/
-description: This is a uses page, which includes a list of tools, applications, hardware and services that I use frequently.
+description: Discover the apps, hardware, and services I use daily to create, tinker, and explore.
 ---
 {% extends "layouts/base.html" %}
 
@@ -9,7 +9,8 @@ description: This is a uses page, which includes a list of tools, applications, 
   {% include "components/header.html" %}
 
   <main>
-    <p>This is a <a href="https://uses.tech/">uses page</a>, which includes a list of <strong>tools</strong>, <strong>applications</strong>, <strong>hardware</strong> and <strong>services</strong> that I use frequently.</p>
+    <p>This is a <a href="https://uses.tech/">uses page</a>.</p>
+    <p>A peek at my toolkit: the apps, hardware, services, and other tools I rely on every day.</p>
 
     {% for category in uses %}
       <section id="{{ category.title | slugify }}">

@@ -1,6 +1,7 @@
 ---
-title: Music
-permalink: /music/
+title: My Music Shelf
+permalink: /media/music/
+description: Explore a curated music collection spanning past and present favorites, albums, and tracks that linger in memory.
 ---
 
 {% extends "layouts/base.html" %}
@@ -9,7 +10,7 @@ permalink: /music/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my games, organized by status.</p>
+		<p>Favorites from past and present, albums that shaped my playlists, and tracks that still echo with a bit of yesterday.</p>
 
 		{% set media = music %}
 		{% set mediaType = "music" %}
@@ -17,7 +18,7 @@ permalink: /music/
 		{% include "components/media-tag-list.html" %}
 
 		{% set media = music.favourites %}
-		{% set href = "/music/status/favourites" %}
+		{% set href = "/media/music/status/favourites" %}
 		{% set sectionTitle = "Favourite music" %}
 		{% include "components/media-list-section.html" %}
 	</main>

@@ -163,8 +163,7 @@ table {
 th,
 td {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc((var(--line-height) / 2))
-    calc(1ch - var(--border-thickness) / 2)
+  padding: calc((var(--line-height) / 2)) calc(1ch - var(--border-thickness) / 2)
     calc((var(--line-height) / 2) - (var(--border-thickness)));
   line-height: var(--line-height);
   vertical-align: top;
@@ -384,8 +383,7 @@ input,
 button,
 textarea {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) / 2 - var(--border-thickness))
-    calc(1ch - var(--border-thickness));
+  padding: calc(var(--line-height) / 2 - var(--border-thickness)) calc(1ch - var(--border-thickness));
   margin: 0;
   font: inherit;
   font-weight: inherit;
@@ -408,8 +406,7 @@ button:disabled {
 
 select {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) / 2 - var(--border-thickness))
-    calc(1ch - var(--border-thickness));
+  padding: calc(var(--line-height) / 2 - var(--border-thickness)) calc(1ch - var(--border-thickness));
   font: inherit;
   font-weight: inherit;
   height: calc(var(--line-height) * 2);
@@ -536,22 +533,13 @@ label input {
   --grid-cells: 0;
   display: flex;
   gap: 1ch;
-  width: calc(
-    round(down, 100%, (1ch * var(--grid-cells)) - (1ch * var(--grid-cells) - 1))
-  );
+  width: calc(round(down, 100%, (1ch * var(--grid-cells)) - (1ch * var(--grid-cells) - 1)));
   margin-bottom: var(--line-height);
 }
 
 .grid > *,
 .grid > input {
-  flex: 0 0
-    calc(
-      round(
-        down,
-        (100% - (1ch * (var(--grid-cells) - 1))) / var(--grid-cells),
-        1ch
-      )
-    );
+  flex: 0 0 calc(round(down, (100% - (1ch * (var(--grid-cells) - 1))) / var(--grid-cells), 1ch));
 }
 
 .grid:has(> :last-child:nth-child(1)) {
@@ -698,4 +686,23 @@ code:not([class*="language-"]) {
 
   color: var(--secondary-color);
   border: var(--border-thickness) solid var(--background-color-alt);
+}
+
+.stub {
+  padding: 0.5rem 1rem;
+  background-color: var(--background-color-alt);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: var(--line-height);
+  width: fit-content;
+  margin-inline: auto;
+
+  & > * {
+    margin: 0;
+  }
+
+  & p:first-child {
+    font-weight: bolder;
+  }
 }

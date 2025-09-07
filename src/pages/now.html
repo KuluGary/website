@@ -1,7 +1,7 @@
 ---
-title: now
+title: What I'm Doing Now
 permalink: /now/
-description: This now page holds a general view into what I'm focused on at the moment.
+description: "See what I'm currently focused on: projects, experiments, and curiosities occupying my attention right now."
 ---
 {% extends "layouts/base.html" %}
 
@@ -9,8 +9,9 @@ description: This now page holds a general view into what I'm focused on at the 
 	{% include "components/header.html" %}
 
 	<main>
-		<p>{{ description }} <a href="https://nownownow.com/about">What is a now page?</a>
-		</p>
+		<p>This is a <a href="https://nownownow.com/about">now page</a>.</p>
+
+		<p>A snapshot of what I'm focused on right now: projects, experiments, and whatever's taking up my attention at the moment.</p>
 
 		<h2>Current Status</h2>
 		{% set currentStatus = status.entry[0] %}
@@ -29,30 +30,29 @@ description: This now page holds a general view into what I'm focused on at the 
 					<a href="{{currentStatus.link["@_href"]}}">status.cafe</a>
 				</li>
 			</ul>
-
 		</article>
 
 		{% set media = games.playing %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-		{% set href = "/games/status/playing" %}
+		{% set href = "/media/games/status/playing" %}
 		{% set sectionTitle = "Currently playing" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = manga.reading | removeUnsafeManga %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-		{% set href = "/manga/status/reading" %}
+		{% set href = "/media/manga/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = shows.watchlist %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-		{% set href = "/shows/status/watchlist" %}
+		{% set href = "/media/shows/status/watchlist" %}
 		{% set sectionTitle = "Currently watching" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = movies.watchlist %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-		{% set href = "/movies/status/watchlist" %}
+		{% set href = "/media/movies/status/watchlist" %}
 		{% set sectionTitle = "Currently watching" %}
 		{% include "components/media-list-section.html" %}
 	</main>

@@ -3,10 +3,10 @@ pagination:
   data: collections.mediaCategories
   size: 1
   alias: categoryGroup
-permalink: "/{{ categoryGroup.mediaType | slugify }}/status/{{ categoryGroup.category | slugify }}/"
+permalink: "/media/{{ categoryGroup.mediaType | slugify }}/status/{{ categoryGroup.category | slugify }}/"
 eleventyComputed:
-  title: '{{ categoryGroup.mediaType | unslugify }} in {{ categoryGroup.category | unslugify }}'
-  description: 'These are my {{ categoryGroup.mediaType | unslugify }} in my {{ categoryGroup.category | unslugify }} list.'
+  title: '{{ categoryGroup.category | unslugify }} {{ categoryGroup.mediaType | unslugify | makeLowercase }}'
+  description: 'Browse my carefully curated or ongoing {{ categoryGroup.category | unslugify | makeLowercase }} {{ categoryGroup.mediaType | unslugify | makeLowercase }} collection.'
 ---
 {% extends "layouts/base.html" %}
 
@@ -27,8 +27,9 @@ eleventyComputed:
 
 		{% set media = categoryGroup.items | uniqueById %}
 		{% set mediaListGrid = "grid-list grid-col-3" if categoryGroup.mediaType === "videos" else ("grid-list grid-col-4" if categoryGroup.mediaType === "music" else "grid-list grid-col-5") %}
-		{% set href = "/{{ categoryGroup.mediaType }}/status/{{ categoryGroup.category }}" %}
+		{% set href = "/media/{{ categoryGroup.mediaType }}/status/{{ categoryGroup.category }}" %}
 		{% set sectionTitle = title %}
+		{% set sectionDescription = 'Part shelf, part archive: here are my {{ categoryGroup.mediaType | unslugify | makeLowercase }} in the {{ categoryGroup.category | unslugify | makeLowercase }} list, carefully curated (or occasionally chaotic).' %}
 
 		{% include "components/media-list-section.html" %}
 

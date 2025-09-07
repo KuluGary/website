@@ -1,14 +1,16 @@
 ---
-title: Webcomics
-permalink: /webcomics/
+title: My Webcomic Shelf
+permalink: /media/webcomics/
+description: 'Explore a curated collection of webcomics: ongoing reads, favorite series, completed stories, and dropped titles.'
 ---
+
 {% extends "layouts/base.html" %}
 
 {% block content %}
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my webcomics, organized by status.</p>
+		<p>This is my webcomic corner. These are the webcomics I'm enjoying, keeping close, or have finished or abandoned along the way.</p>
 
 		{% set media = webcomics %}
 		{% set mediaType = "webcomic" %}
@@ -17,22 +19,22 @@ permalink: /webcomics/
 		{% include "components/media-tag-list.html" %}
 
 		{% set media = webcomics.reading %}
-		{% set href = "/webcomic/status/reading" %}
+		{% set href = "/media/webcomic/status/reading" %}
 		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = webcomics.favourites %}
-		{% set href = "/webcomic/status/favourites" %}
+		{% set href = "/media/webcomic/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = webcomics.completed %}
-		{% set href = "/webcomics/status/completed" %}
+		{% set href = "/media/webcomics/status/completed" %}
 		{% set sectionTitle = "Completed" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = webcomics.dropped %}
-		{% set href = "/webcomics/status/dropped" %}
+		{% set href = "/media/webcomics/status/dropped" %}
 		{% set sectionTitle = "dropped" %}
 		{% include "components/media-list-section.html" %}
 

@@ -3,10 +3,10 @@ pagination:
   data: collections.genrePages
   size: 1
   alias: genreGroup
-permalink: "/{{ genreGroup.mediaType | slugify }}/genre/{{ genreGroup.genre | slugify }}/"
+permalink: "/media/{{ genreGroup.mediaType | slugify }}/genre/{{ genreGroup.genre | slugify }}/"
 eleventyComputed:
-  title: '{{ genreGroup.mediaType | unslugify }} tagged {{ genreGroup.genre | unslugify }}'
-  description: 'These are my {{ genreGroup.mediaType | unslugify }} in my {{ genreGroup.genre | unslugify }} list.'
+  title: '{{ genreGroup.genre | unslugify }} {{ genreGroup.mediaType | unslugify | makeLowercase }}'
+  description: 'Explore {{ genreGroup.mediaType | unslugify }} in the {{ genreGroup.genre | unslugify | makeLowercase }} genre: a curated selection of themed picks.'
 ---
 {% extends "layouts/base.html" %}
 
@@ -27,8 +27,9 @@ eleventyComputed:
 
 		{% set media = genreGroup.items | uniqueById %}
 		{% set mediaListGrid = "grid-list grid-col-3" if genreGroup.mediaType === "Video" else ("grid-list grid-col-4" if genreGroup.mediaType === "Music" else "grid-list grid-col-5") %}
-		{% set href = "/{{ genreGroup.mediaType }}/genre/{{ genreGroup.genre }}" %}
+		{% set href = "/media/{{ genreGroup.mediaType }}/genre/{{ genreGroup.genre }}" %}
 		{% set sectionTitle = title %}
+		{% set sectionDescription = 'A curated collection of my {{ genreGroup.mediaType | unslugify | makeLowercase }} in the {{ genreGroup.genre | unslugify | makeLowercase }} genre. Anything that fit this mood or theme.' %}
 
 		{% include "components/media-list-section.html" %}
 

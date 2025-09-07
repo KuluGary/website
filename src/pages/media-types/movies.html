@@ -1,6 +1,7 @@
 ---
-title: Shows
-permalink: /shows/
+title: My Movie Shelf
+permalink: /media/movies/
+description: Explore a curated movie collection, from favorites and watchlist picks to films already seen or occasionally dropped.
 ---
 {% extends "layouts/base.html" %}
 
@@ -8,31 +9,31 @@ permalink: /shows/
 	{% include "components/header.html" %}
 
 	<main>
-		<p>This is a comprehensive list of all my shows, organized by status.</p>
+		<p>Favorites I treasure, a watchlist that keeps growing, films I've seen, and a few I've dropped along the way.</p>
 
-		{% set media = shows %}
-		{% set mediaType = "shows" %}
+		{% set media = movies %}
+		{% set mediaType = "movies" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 
 		{% include "components/media-tag-list.html" %}
 
-		{% set media = shows.watchlist %}
-		{% set href = "/shows/status/watching" %}
+		{% set media = movies.watchlist %}
+		{% set href = "/media/movies/status/watchlist" %}
 		{% set sectionTitle = "Currently watching" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = shows.favourites %}
-		{% set href = "/shows/status/favourites" %}
+		{% set media = movies.favourites %}
+		{% set href = "/media/movies/status/favourites" %}
 		{% set sectionTitle = "Favourites" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = shows.seen %}
-		{% set href = "/shows/status/seen" %}
+		{% set media = movies.seen %}
+		{% set href = "/media/movies/status/seen" %}
 		{% set sectionTitle = "Seen" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = shows.dropped %}
-		{% set href = "/shows/status/dropped" %}
+		{% set media = movies.dropped %}
+		{% set href = "/media/movies/status/dropped" %}
 		{% set sectionTitle = "Dropped" %}
 		{% include "components/media-list-section.html" %}
 	</main>

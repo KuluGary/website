@@ -2,8 +2,7 @@
 title: My first steps with Storybook
 lang: en
 date: 2025-08-23
-tags:
-  ["blog-post", "development", "web-dev", "storybook", "nextjs", "turborepo"]
+tags: ["blog-post", "development", "web-dev", "storybook", "nextjs", "turborepo"]
 description: For a long time I wanted to deepen my knowledge of Storybook, and thanks to a series of needs at work I finally had the chance.
 ---
 
@@ -215,9 +214,9 @@ Now components display actual strings ("Iniciar sesión" / "Login"), making desi
 
 ## Next steps
 
-Storybook began as a way to preview components in isolation, but it’s quickly becoming our UI hub. Next up:
+Storybook began as a way to preview components in isolation, but it's quickly becoming our UI hub. Next up:
 
-1. **Interaction testing** – script user flows (e.g., form validation) with Storybook’s testing utilities.
+1. **Interaction testing** – script user flows (e.g., form validation) with Storybook's testing utilities.
 2. **Accessibility checks** – add `@storybook/addon-a11y` to catch accessibility issues early.
 3. **Living documentation** – use `@storybook/addon-docs` to make stories double as dev & design docs.
 
@@ -225,6 +224,6 @@ Even though the team has shifted to other features, Storybook is now part of my 
 
 ---
 
-If you’re working in a startup or small team, Storybook can be a game-changer. Instead of juggling staging builds, backend mocks, and screenshots, you get a single space where components come to life.
+If you're working in a startup or small team, Storybook can be a game-changer. Instead of juggling staging builds, backend mocks, and screenshots, you get a single space where components come to life.
 
 Try setting up a single component in Storybook this week and you'll see the benefits immediately.
