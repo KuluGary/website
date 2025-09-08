@@ -29,8 +29,7 @@ eleventyComputed:
 		{% set mediaListGrid = "grid-list grid-col-3" if categoryGroup.mediaType === "videos" else ("grid-list grid-col-4" if categoryGroup.mediaType === "music" else "grid-list grid-col-5") %}
 		{% set href = "/media/{{ categoryGroup.mediaType }}/status/{{ categoryGroup.category }}" %}
 		{% set sectionTitle = title %}
-		{% set sectionDescription = 'Part shelf, part archive: here are my {{ categoryGroup.mediaType | unslugify | makeLowercase }} in the {{ categoryGroup.category | unslugify | makeLowercase }} list, carefully curated (or occasionally chaotic).' %}
-
+		{% set sectionDescription = "Part shelf, part archive: here are my " ~ (categoryGroup.mediaType | unslugify | makeLowercase) ~ " in the " ~ (categoryGroup.category | unslugify | makeLowercase) ~ " list, carefully curated (or occasionally chaotic)." %}
 		{% include "components/media-list-section.html" %}
 
 	</main>

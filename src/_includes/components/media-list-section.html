@@ -9,7 +9,7 @@
 		</h2>
 
 		{% if sectionDescription %}
-			<p>{{ sectionDescription }}</p>
+			<p>{{ sectionDescription | safe }}</p>
 		{% endif %}
 
 		{% include "components/media-list.html" %}
