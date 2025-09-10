@@ -1,7 +1,7 @@
 ---
 title: Colophon
 permalink: /colophon/
-description: Discover how this site was built, including tools, technologies, and design choices behind the pages you explore.
+description: Discover how this site was built. It includes both technologies and the philosophy behind it.
 ---
 
 {% extends "layouts/base.html" %}
@@ -10,36 +10,44 @@ description: Discover how this site was built, including tools, technologies, an
 	{% include "components/header.html" %}
 
 	<main>
-		{% include "components/stub.html" %}
+		<p>A <a href="https://indieweb.org/colophon">colophon</a> page explaining the tools, technologies and principles governing this website.</p>
 
-		<p>A peek behind the scenes: how this site is made, the tools and technologies I rely on, and the digital foundations that support it.</p>
-
-		<p>The source for this site is available in <a href="https://github.com/KuluGary/website">its repository</a>.</p>
+		<p>The source for this site is available in <a href="https://github.com/KuluGary/website">the Github repository</a>.</p>
 
 		<section>
-			<h2>The frontend</h2>
-			<p>The frontend is made with <a  href="https://www.11ty.dev/">11ty</a> and <a  href="https://mozilla.github.io/nunjucks/">Nunjucks</a> as its templating engine.</p>
+			<h2>Philosophy</h2>
 
-			<p>The site uses PostCSS to post-process some of the CSS.</p>
+			<p>When I started this website circa <a href="https://web.archive.org/web/20240413212637/https://kulugary.neocities.org/">2003</a>, I tried to build it in a way that aligned with my priorities:</p>
 
 			<ul>
-				<li>
-					<a  href="https://cssnano.github.io/cssnano/">cssnano</a> to minify the CSS for better performance.</li>
-				<li>
-					<a  href="https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media#readme">postcss-custom-media</a> to simplify the responsive CSS declarations.</li>
-				<li>
-					<a href="https://github.com/postcss/postcss-media-minmax#readme">postcss-media-minmax</a> as a polyfill to support <a  href="https://drafts.csswg.org/mediaqueries/#mq-range-context">CSS Media Queries Level 4</a>
-				</li>
-				<li>
-					<a href="https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting#readme">postcss-nesting</a> lets you nest style rules inside each other, following the <a  href="https://www.w3.org/TR/css-nesting-1/">CSS Nesting specification</a>.</li>
-				<li>
-					<a href="https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme">postcss-preset-env</a> polyfills modern CSS into most something most browsers can interpet.</li>
+				<li>Provide an accessible and inclusive reading experience for most people. This includes using <a href="https://web.dev/learn/html/semantic-html">semantic HTML</a> and try to be <a href="https://www.a11yproject.com/">a11y</a> compliant, minimize the weight of the site to decrease the data use, and create a welcoming atmosphere.</li>
+				<li>Make a personal website that reflects myself, my interests and my preferred aesthetics.</li>
+				<li>Learn and implement more IndieWeb protocols and create a site as independant from corporate or business owned platforms as possible.</li>
 			</ul>
+		</section>
 
-			<p>The fonts are system fonts and the font stacks are inspired by <a href="https://modernfontstacks.com/">Modern Font Stacks</a>.</p>
+		<section>
+			<h2>Technologies</h2>
 
-			<p>See more about the design in the <a href="/styleguide">styleguide page</a>.
+			<p>This website is staticly generated with <a href="https://www.11ty.dev/">11ty</a> and <a  href="https://mozilla.github.io/nunjucks/">Nunjucks</a>, and it uses both HTML template files and Markdown files.
 			</p>
+
+			<p>It uses basic CSS as much as is comfortable, but there's some downleveling of new CSS standards with <a href="https://postcss.org/">PostCSS</a>.</p>
+
+			<p>The site is hosted on <a href="https://neocities.org/">Neocities</a> as static HTML files and its repository is in <a href="https://github.com/KuluGary/website">Github</a>. The site is deployed through a <a href="https://github.com/KuluGary/website/blob/master/.github/workflows/deploy-neocities.yml">Github action</a>.</p>
+
+			<p>Webmentions are fetched from <a href="https://webmention.io/">webmention.io</a> and connected to social media with <a href="https://brid.gy/">brid.gy</a>. They are sent thanks to a bash script inspired by <a href="https://localghost.dev/blog/sending-webmentions-from-a-static-site/">localghost.dev</a> at buildtime.
+			</p>
+		</section>
+
+		<section>
+			<h2>Design</h2>
+
+			<p>The base template for the website layout is from <a href="https://owickstrom.github.io/the-monospace-web/">The Monospace Web</a>. At this point in time, it's been heavily modifided.</p>
+
+			<p>The site uses system fonts to minimize page size and loading times, and every option available at the <a href="/settings">settings page</a> is from <a href="https://modernfontstacks.com/">Modern Font Stacks</a>.</p>
+
+			<p>See more about the design in the <a href="/styleguide">styleguide page</a>.</p>
 		</section>
 
 		<section>
@@ -53,7 +61,7 @@ description: Discover how this site was built, including tools, technologies, an
 				<li>The manga list is obtained from <a href="https://mangadex.org/">MangaDex</a>.</li>
 				<li>The music list is obtained from <a href="https://open.spotify.com/">Spotify</a>.</li>
 				<li>The video list is obtained from <a href="https://www.youtube.com/">YouTube</a>.</li>
-				<li>The webcomics are obtained through a series of third-party sites</li>
+				<li>The webcomics are obtained through a series of third-party sites and manually compiled into a JSON file.</li>
 			</ul>
 		</section>
 
@@ -66,6 +74,8 @@ description: Discover how this site was built, including tools, technologies, an
 					<a href="https://photogabble.co.uk/">PhotoGabble</a>, for features such as this colophon or some 11ty plugins.</li>
 				<li>
 					<a href="https://www.coryd.dev/">Cory Dransfeldt</a>, for inspiring the media and recent activity sections.</li>
+				<li>
+					<a href="https://localghost.dev/">Sophie Koonin</a>, for inspiring improvements to my webmentions.</li>
 			</ul>
 		</section>
 	</main>

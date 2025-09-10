@@ -70,6 +70,26 @@
     ]
   },
   {
+    "title": "Blogs and personal sites",
+    "sites": [
+      {
+        "title": "Simon Dann's website",
+        "url": "https://photogabble.co.uk/",
+        "description": "Blog and general digital garden of the full stack programmer Simon Dann."
+      },
+      {
+        "title": "Cory Dransfeldt's website",
+        "url": "https://www.coryd.dev/",
+        "description": "Blog of the software developer Cory Dransfeldt where he writes about software development, technology and music."
+      },
+      {
+        "title": "Sophie Koonin's website",
+        "url": "https://localghost.dev/",
+        "description": "Sophie builds fun things out of HTML, CSS & JavaScript, and writes blog posts about tech and mental health."
+      }
+    ]
+  },
+  {
     "title": "Other",
     "sites": [
       {

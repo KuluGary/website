@@ -1,7 +1,7 @@
 ---
 title: What I'm Doing Now
 permalink: /now/
-description: "See what I'm currently focused on: projects, experiments, and curiosities occupying my attention right now."
+description: "See what I'm currently focused on at this moment."
 ---
 {% extends "layouts/base.html" %}
 
@@ -11,7 +11,7 @@ description: "See what I'm currently focused on: projects, experiments, and curi
 	<main>
 		<p>This is a <a href="https://nownownow.com/about">now page</a>.</p>
 
-		<p>A snapshot of what I'm focused on right now: projects, experiments, and whatever's taking up my attention at the moment.</p>
+		<p>Even though I'm a fulltime front-end developer for a start-up as a dayjob, I try to always be involved in some hobby or another. Here you can find a snapshot of what I'm focused at this point in time. </p>
 
 		<h2>Current Status</h2>
 		{% set currentStatus = status.entry[0] %}
@@ -38,10 +38,15 @@ description: "See what I'm currently focused on: projects, experiments, and curi
 		{% set sectionTitle = "Currently playing" %}
 		{% include "components/media-list-section.html" %}
 
+		{% set media = webcomics.reading %}
+		{% set href = "/media/webcomic/status/reading" %}
+		{% set sectionTitle = "Currently reading" %}
+		{% include "components/media-list-section.html" %}
+
 		{% set media = manga.reading | removeUnsafeManga %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 		{% set href = "/media/manga/status/reading" %}
-		{% set sectionTitle = "Currently reading" %}
+		{% set sectionTitle = "" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = shows.watchlist %}
@@ -50,10 +55,6 @@ description: "See what I'm currently focused on: projects, experiments, and curi
 		{% set sectionTitle = "Currently watching" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = webcomics.reading %}
-		{% set href = "/media/webcomic/status/reading" %}
-		{% set sectionTitle = "Currently reading" %}
-		{% include "components/media-list-section.html" %}
 	</main>
 
 	{% include "components/footer.html" %}

@@ -1,11 +1,12 @@
 {% if media and media.length > 0 %}
 	<section>
-		<h2>
-			<a href="{{ href }}">
-				{{ sectionTitle }} ({{ media.length }})
+		{% if sectionTitle != "" %}
+			<h2>
+				<a href="{{ href }}">
+					{{ sectionTitle }} ({{ media.length }})
 			</a>
-
-		</h2>
+			</h2>
+		{% endif %}
 
 		{% if sectionDescription %}
 			<p>{{ sectionDescription | safe }}</p>

@@ -1,111 +1,3 @@
-.media-section.media-grid {
-  &.grid-list {
-    display: grid;
-    grid-template-columns: repeat(var(--column-amount), 1fr);
-    gap: 1rem;
-
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-block: var(--line-height);
-
-    @media (--viewport-mobile) {
-      grid-template-columns: repeat(auto-fit, minmax(var(--column-size), 1fr));
-      justify-content: center;
-    }
-
-    & li {
-      height: 100%;
-      margin: 0;
-
-      & article {
-        position: relative;
-        margin: 0;
-        border: 1px solid var(--primary-color);
-        border-radius: 4px;
-        overflow: hidden;
-        height: 100%;
-
-        & figure {
-          margin: 0;
-          height: 100%;
-          width: 100%;
-
-          & img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-          }
-
-          &:not(:has(img)) {
-            display: grid;
-            place-content: center;
-          }
-
-          & > svg {
-            & g {
-              fill: var(--background-color-alt);
-            }
-          }
-
-          & figcaption {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            text-align: center;
-            padding: 0.125rem;
-            font-style: normal;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: clip;
-
-            & a {
-              text-decoration: none;
-
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.grid-list.grid-col-5 {
-    --column-amount: 5;
-    --column-size: 118px;
-
-    & figure {
-      aspect-ratio: 9/16;
-    }
-  }
-
-  &.grid-list.grid-col-4 {
-    --column-amount: 4;
-    --column-size: 152px;
-
-    & figure {
-      aspect-ratio: 1;
-    }
-  }
-
-  &.grid-list.grid-col-3 {
-    --column-amount: 3;
-    --column-size: 208px;
-
-    & figure {
-      aspect-ratio: 16/9;
-    }
-  }
-
-  & .media-description {
-    display: none;
-  }
-}
-
 .media-section.media-list {
   list-style: none;
   margin: 0;
@@ -131,8 +23,8 @@
   > li {
     position: relative;
     padding-left: var(--line-height);
-    margin-top: var(--line-height);
     overflow: clip;
+    margin-block: var(--line-height);
 
     & article {
       margin: 0;
@@ -237,6 +129,19 @@
     }
   }
 }
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  & + .media-section.media-list {
+    & > li {
+      margin-top: 0;
+    }
+  }
+} */
 
 h1,
 h2,
