@@ -7,7 +7,6 @@
     "start": "sh ./lib/start.sh",
     "commit": "sh ./lib/commit.sh",
     "post": "sh ./lib/add-post.sh",
-    "deploy": "sh ./lib/deploy.sh",
     "build": "sh ./lib/build.sh",
     "postbuild": "sh ./lib/send-webmentions",
     "send-webmentions": "webmention _site/blog/feed.xml --limit 1 --send"
