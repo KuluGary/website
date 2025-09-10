@@ -86,6 +86,11 @@
         "title": "Sophie Koonin's website",
         "url": "https://localghost.dev/",
         "description": "Sophie builds fun things out of HTML, CSS & JavaScript, and writes blog posts about tech and mental health."
+      },
+      {
+        "title": "the museum of alexandra",
+        "url": "https://xandra.cc/",
+        "description": "Alexandra's personal website is an inspiration in both style and the sheer amount of content shared. If you want inspiration to start your own personal site, be sure to check hers out."
       }
     ]
   },
@@ -96,11 +101,6 @@
         "title": "32-Bit cafe",
         "url": "https://32bit.cafe/",
         "description": "If you miss the old-school feel of the Internet before it was profitable for corporations, check out the info and resources provided by the 32-Bit cafe."
-      },
-      {
-        "title": "the museum of alexandra",
-        "url": "https://xandra.cc/",
-        "description": "Alexandra's personal website is an inspiration in both style and the sheer amount of content shared. If you want inspiration to start your own personal site, be sure to check hers out."
       },
       {
         "title": "Modern Font Stacks",
