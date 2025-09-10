@@ -1,0 +1,36 @@
+---
+title: Contact me
+description: Find where I am so we can chat.
+permalink: /contact/
+layout: layouts/base.html
+---
+
+{% block content %}
+
+	{% include "components/header.html" %}
+
+	<p>
+		When my personal site on <a href="https://www.netlify.com/">Netlify</a>, I used to have a contact form using their <a href="https://docs.netlify.com/manage/forms/setup/">serverless form handling</a>, but it was finnicky and ultimately something I don't need for a platform that is in essence a logbook for myself.
+	</p>
+
+	<p>Even though I appreciate forming part of communities (specially other fellow indie webmasters), I won't provide a way to directly contact me through this site.</p>
+
+	<p>If you still need to contact me in any way, you may do so through one of these social media accounts.</p>
+
+	<ul>
+		<li>Mastodon @<a href="https://indiepocalypse.social/@kulugary">indiepocalypse</a>.
+		</li>
+		<li>Bluesky @<a href="https://bsky.app/profile/kulugary.itch.io">kulugary.itch.io</a>.</li>
+		<li>Tumblr @<a href="https://kulugary.tumblr.com/">kulugary</a>.
+		</li>
+	</ul>
+
+	<p>If you want to contact me about a <a href="/blog">blog post</a>, you may send me a <a href="">webmention</a> about it and it will show up in it whenever the site is rebuilt (right now, once a week).</p>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css">
+	<link rel="stylesheet" href="/css/components/footer.css">
+{% endblock stylesheet %}

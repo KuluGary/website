@@ -2,36 +2,45 @@
   border-top: var(--border-thickness) solid var(--text-color-alt);
   margin-top: var(--line-height);
   font-size: smaller;
-}
 
-.site-footer img {
-  width: auto;
-  vertical-align: middle;
-}
+  & img {
+    width: auto;
+    vertical-align: middle;
+  }
 
-.site-footer .button-list {
-  margin-top: var(--line-height);
-  justify-content: center;
-  width: 100%;
-  row-gap: var(--line-height);
-}
+  & .button-list {
+    margin-top: var(--line-height);
+    justify-content: center;
+    width: 100%;
+    row-gap: var(--line-height);
+  }
 
-.site-footer .button-list li,
-.site-footer .footer-credits {
-  margin: 0;
-}
+  & .button-list li,
+  & .footer-credits {
+    margin: 0;
+  }
 
-.site-footer .footer-credits > * {
-  margin-top: var(--line-height);
-  max-width: 50ch;
-  margin-inline: auto;
-}
+  & .footer-credits > * {
+    margin-top: var(--line-height);
+    margin-inline: auto;
+  }
 
-.site-footer .made-with img,
-.site-footer .under-construction img {
-  display: inline-block;
-}
+  & .webring {
+    text-align: center;
+  }
 
-a:has(#eleventy-badge, #nunjucks-badge) {
-  text-decoration: none;
+  & .made-with,
+  & .under-construction,
+  & .contact {
+    max-width: 50ch;
+    margin-inline: auto;
+
+    & img {
+      display: inline-block;
+    }
+  }
+
+  a:has(#eleventy-badge, #nunjucks-badge) {
+    text-decoration: none;
+  }
 }

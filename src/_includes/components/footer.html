@@ -3,32 +3,13 @@
 {% endblock %}
 
 <footer class="site-footer">
-  <ul class="horizontal button-list">
-    <li>
-      <a href="/media/games/status/favourites">
-        <img src="/assets/images/buttons/stardew.gif" alt="A scene from the game Stardew Valley" width="96" height="56"/>
-      </a>
-    </li>
-    <li>
-      <a href="/media/games/status/favourites">
-        <img src="/assets/images/buttons/still-you.png" alt="A dialog box from the game Undertale" width="96" height="56"/>
-      </a>
-    </li>
-    <li>
-      <a href="/media/webcomics/status/favourites">
-        <img src="/assets/images/buttons/bro.gif" alt="A panel from the webcomic Homestuck" width="96" height="56"/>
-      </a>
-    </li>
-    <li>
-      <a href="/media/movies/status/favourites">
-        <img src="/assets/images/buttons/isengard.gif" alt="A scene from the movie Lord of the Rings" width="96" height="56"/>
-      </a>
-    </li>
-  </ul>
-
   <div class="footer-credits">
-    <div>You can chat with me on <a href="https://bsky.app/profile/kulugary.itch.io">Bluesky</a>, <a href="https://kulugary.tumblr.com/">Tumblr</a> or <a href="https://indiepocalypse.social/@kulugary">Mastodon</a>.
-    </div>
+
+    <p class="webring">
+      <a href="https://xn--sr8hvo.ws/previous">←</a>
+An <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
+<a href="https://xn--sr8hvo.ws/next">→</a>
+    </p>
 
     <p class="made-with">
       Made with
@@ -65,7 +46,30 @@
       formatDate('MMM dd, yyyy')}} on commit
       <a target="_blank" href="{{metadata.commit.url}}"
         >{{metadata.commit.ref}}</a
-      >. Check the <a href="/sitemap">sitemap</a>.
+      >. Check the <a href="/sitemap">sitemap</a> or <a href="/contact">contact me</a>.
     </p>
   </div>
+
+  <ul class="horizontal button-list">
+    <li>
+      <a href="/media/games/status/favourites">
+        <img src="/assets/images/buttons/stardew.gif" alt="A scene from the game Stardew Valley" width="96" height="56"/>
+      </a>
+    </li>
+    <li>
+      <a href="/media/games/status/favourites">
+        <img src="/assets/images/buttons/still-you.png" alt="A dialog box from the game Undertale" width="96" height="56"/>
+      </a>
+    </li>
+    <li>
+      <a href="/media/webcomics/status/favourites">
+        <img src="/assets/images/buttons/bro.gif" alt="A panel from the webcomic Homestuck" width="96" height="56"/>
+      </a>
+    </li>
+    <li>
+      <a href="/media/movies/status/favourites">
+        <img src="/assets/images/buttons/isengard.gif" alt="A scene from the movie Lord of the Rings" width="96" height="56"/>
+      </a>
+    </li>
+  </ul>
 </footer>
