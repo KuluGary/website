@@ -5,10 +5,7 @@ const { log, time, timeEnd } = require("../js/utils/log");
 const defaultData = require("../js//utils/_default_data/webcomics");
 
 const PAGES = {
-  reading: [
-    "https://beyondcanon.com/story/feed?type=rss",
-    "https://killsixbilliondemons.com/feed/",
-  ],
+  reading: ["https://beyondcanon.com/story/feed?type=rss", "https://killsixbilliondemons.com/feed/"],
   favourites: [
     "https://piperka.net/s/rss/4379", // Homestuck
     "https://killsixbilliondemons.com/feed/",
@@ -76,9 +73,7 @@ async function getCollection() {
 
   for (const [status, webcomics] of Object.entries(PAGES)) {
     for (const webcomic of webcomics) {
-      const json = await parseRSS(webcomic).catch(
-        (err) => OPTIONS.logErrors && console.error(err)
-      );
+      const json = await parseRSS(webcomic).catch((err) => OPTIONS.logErrors && console.error(err));
       const defaultValues = defaultData[webcomic];
 
       if (!collection[status]) collection[status] = [];

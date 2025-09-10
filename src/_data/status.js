@@ -34,9 +34,7 @@ async function getFeed() {
       ...res.feed,
       entry: res.feed.entry.map((entry) => ({
         ...entry,
-        title: decodeNumericEntities(
-          entry.title.replace("kulugary", "").trim()
-        ),
+        title: decodeNumericEntities(entry.title.replace("kulugary", "").trim()),
       })),
     }));
 }

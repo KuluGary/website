@@ -250,7 +250,6 @@ async function scrapeGamesFromPage(page, url, status) {
           (ext) => String(ext.game_id) === String(base.link.split("/").at(-1))
         );
 
-        // Already have most data from API, only open profile if missing description
         let description = extendedInfo?.profile_summary;
         let genres = extendedInfo?.profile_genres || [];
         let developer = extendedInfo?.profile_developer;
@@ -290,41 +289,6 @@ async function scrapeGamesFromPage(page, url, status) {
       })
     )
   );
-
-  // for (const game of gameElements) {
-  //   const { link, platform, title, playtime, rate } = await scrapeGameFromList(game);
-  //   const newPage = await browser.newPage();
-  //   await newPage.goto(link).catch(() => null);
-  //   await delay(2000);
-
-  //   const pages = await browser.pages();
-  //   const profilePage = pages[pages.length - 1];
-
-  //   await profilePage.bringToFront();
-  //   const { description, genres, id, image, developer } = await scrapeGameFromProfile(profilePage);
-  //   await profilePage.close();
-
-  //   const extendedInfo = extendedListInfo.find((extendedGame) => id == String(extendedGame.game_id));
-
-  //   games.push({
-  //     id,
-  //     type: "games",
-  //     title,
-  //     description,
-  //     genres,
-  //     platform,
-  //     link,
-  //     thumbnail: image,
-  //     updatedAt: extendedInfo?.date_updated,
-  //     addedAt: extendedInfo?.date_added,
-  //     startedAt: extendedInfo?.date_start,
-  //     completedAt: extendedInfo?.date_complete,
-  //     playtime,
-  //     rate,
-  //     author: { name: developer },
-  //   });
-  //   incrementProgress();
-  // }
 
   stopProgress();
 

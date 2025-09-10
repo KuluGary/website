@@ -2,11 +2,7 @@ const { setIntoCache, getFromCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
 const { log, time, timeEnd } = require("../js/utils/log");
 const fetch = require("node-fetch");
-const {
-  startProgress,
-  incrementProgress,
-  stopProgress,
-} = require("../js/utils/cli-progress");
+const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
 
 const PLAYLISTS = {
   favourites: "FLYZ470OLAQ3k2sAcPDX4erg",
@@ -16,9 +12,7 @@ const OPTIONS = {
 };
 
 async function fetchAllVideoDetails(videos) {
-  const videoIds = videos
-    .map((video) => video.contentDetails.videoId)
-    .join(",");
+  const videoIds = videos.map((video) => video.contentDetails.videoId).join(",");
 
   const url = new URL("https://www.googleapis.com/youtube/v3/videos");
   url.searchParams.append("part", "contentDetails");
@@ -29,9 +23,7 @@ async function fetchAllVideoDetails(videos) {
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(
-      `Error en la petición: ${response.status} ${response.statusText}`
-    );
+    throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
   }
 
   const data = await response.json();
@@ -62,9 +54,7 @@ async function fetchPlaylist(playlistId) {
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(
-      `Error en la petición: ${response.status} ${response.statusText}`
-    );
+    throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
   }
 
   const data = await response.json();
@@ -76,9 +66,7 @@ async function fetchPlaylist(playlistId) {
 
   try {
     for (const video of items) {
-      const videoDetail = videoDetails.find(
-        (detail) => detail.id === video.contentDetails.videoId
-      );
+      const videoDetail = videoDetails.find((detail) => detail.id === video.contentDetails.videoId);
       incrementProgress();
 
       videos.push({

@@ -12,7 +12,7 @@ pagination:
     - all
 permalink: /blog/tags/{{tag}}.html
 eleventyComputed:
-  title: Blog Posts Tagged {{ tag | unslugify | makeLowercase }}
+  title: Blog Posts Tagged {{ tag | unslugify }}
   description: 'Read blog posts tagged "{{ tag | unslugify }}": experiments, ideas, and curiosities organized under this theme.'
 ---
 {% extends "layouts/base.html" %}
@@ -21,10 +21,7 @@ eleventyComputed:
   {% include "components/header.html" %}
 
   <main>
-    <p>Posts tagged with "{{ tag | unslugify }}": experiments, thoughts, and curiosities that fall under this theme.</p>
-
-    {% set postDate = collections[tag] | getNewestCollectionItemDate %}
-    <p>Last updated: <time datetime="{{ postDate | formatDate('yyyy-LL-dd') }}">{{ postDate | formatDate('MMMM dd, yyyy') }}</time>.</p>
+    <h2>Blog Posts Tagged {{ tag | unslugify | makeLowercase }}</h2>
 
     {% set taglist = collections[tag] %}
     {% set postsList = taglist | reverse %}

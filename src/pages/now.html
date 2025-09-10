@@ -50,10 +50,9 @@ description: "See what I'm currently focused on: projects, experiments, and curi
 		{% set sectionTitle = "Currently watching" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = movies.watchlist %}
-		{% set mediaListGrid = "grid-list grid-col-5" %}
-		{% set href = "/media/movies/status/watchlist" %}
-		{% set sectionTitle = "Currently watching" %}
+		{% set media = webcomics.reading %}
+		{% set href = "/media/webcomic/status/reading" %}
+		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 	</main>
 

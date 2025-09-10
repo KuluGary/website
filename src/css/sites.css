@@ -20,6 +20,7 @@ dt {
 dd {
   margin-inline: 0;
   margin-top: calc(var(--line-height) / 2);
+  font-size: smaller;
 
   &::before {
     margin-top: calc(var(--line-height) * -1);

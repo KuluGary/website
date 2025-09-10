@@ -86,8 +86,10 @@ h6 {
   }
 
   &::before {
-    content: "░";
+    content: ">";
+    font-family: monospace;
     margin-right: 1ch;
+    font-size: larger;
   }
 
   &:has(#grid-toggle, #list-toggle) {

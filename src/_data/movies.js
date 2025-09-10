@@ -12,9 +12,9 @@ const { slugify } = require("../js/11ty/generic");
 const TRAKT_USER = "kulugary";
 const PAGES = {
   favourites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=movie&sort=released%2Casc`,
-  dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=movie&sort=rank%2Casc`,
   watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=movie&sort=rank%2Casc`,
-  seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=movie&sort=rank%2Casc`,
+  // dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=movie&sort=rank%2Casc`,
+  // seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=movie&sort=rank%2Casc`,
 };
 const OPTIONS = {
   cache: true,

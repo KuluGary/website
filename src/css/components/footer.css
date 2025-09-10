@@ -1,5 +1,6 @@
 .site-footer {
-  border-top: var(--border-thickness) solid var(--text-color);
+  border-top: var(--border-thickness) solid var(--text-color-alt);
+  margin-top: var(--line-height);
   font-size: smaller;
 }
 
