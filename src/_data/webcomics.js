@@ -48,7 +48,6 @@ function formatComicObject(comicObject) {
     description: comicObject.description,
     genres: [],
     link: latestItem.link,
-    thumbnail: comicObject.image?.url ?? "",
     addedAt: latestItem.pubDate ?? latestItem.isoDate,
     updatedAt: latestItem.pubDate ?? latestItem.isoDate,
     latestItemTitle: latestItem?.title?.trim().startsWith(comicObject.title)

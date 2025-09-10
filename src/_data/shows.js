@@ -22,8 +22,6 @@ const OPTIONS = {
   logErrors: false,
 };
 
-const coverPath = "/assets/images/covers/shows";
-
 /**
  * Main entry point for module: scrapes and caches shows data.
  * @returns {Promise<Object>} Scraped shows data.
@@ -65,7 +63,7 @@ async function getCollection() {
   const collection = {};
   for (const [status, url] of Object.entries(PAGES)) {
     log("[Trakt.tv/Shows]", `🔍 Scraping ${status}`);
-    collection[status] = await scrapeShowListPage(page, url, status);
+    collection[status] = await scrapeShowListPage(page, url);
   }
 
   await browser.close();
@@ -76,9 +74,8 @@ async function getCollection() {
  * Scrapes a single Trakt show list page.
  * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
  * @param {string} url URL of the page to go to
- * @param {string} status status type of the show to fetch
  */
-async function scrapeShowListPage(page, url, status) {
+async function scrapeShowListPage(page, url) {
   const browser = page.browser();
 
   await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
@@ -113,11 +110,8 @@ async function scrapeShowListPage(page, url, status) {
 
         const newPage = await browser.newPage();
         await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
-        const { description, genres, imageSrc } = await scrapeShowProfilePage(newPage);
+        const { description, genres } = await scrapeShowProfilePage(newPage);
         await newPage.close();
-
-        const safeName = slugify(base.originalTitle || base.title);
-        const imagePath = await downloadImage(status, imageSrc, safeName);
 
         incrementProgress();
 
@@ -128,7 +122,6 @@ async function scrapeShowListPage(page, url, status) {
           description,
           genres,
           link: base.link,
-          thumbnail: imagePath,
           createdAt: base.date_created,
           addedAt: base.date_added,
         };
@@ -147,25 +140,10 @@ async function scrapeShowListPage(page, url, status) {
  */
 async function scrapeShowProfilePage(page) {
   const description = await page.$eval("#tagline + #overview", (el) => el.innerText).catch(() => null);
-  const imageSrc = await page.$eval("img.real", (el) => el.src).catch(() => null);
 
   const genres = await page.evaluate(() =>
     Array.from(document.querySelectorAll("span[itemprop='genre']")).map((el) => el.innerText.trim())
   );
 
-  return { description, genres, imageSrc };
-}
-
-/**
- * Downloads and saves an image locally.
- */
-async function downloadImage(folder, url, fileName) {
-  const dir = path.join("src/" + coverPath, folder);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-  const fullPath = path.join(dir, `${fileName}.jpg`);
-  const buffer = await fetch(url).then((res) => res.buffer());
-
-  if (!fs.existsSync(fullPath)) fs.writeFileSync(fullPath, buffer);
-  return `${coverPath}/${folder}/${fileName}.jpg`;
+  return { description, genres };
 }

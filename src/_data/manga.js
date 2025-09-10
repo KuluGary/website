@@ -161,8 +161,6 @@ async function formatManga(manga) {
   const coverFileName = `${coverArt}.256.jpg`;
   const coverUrl = `https://uploads.mangadex.org/covers/${manga.id}/${coverFileName}`;
 
-  downloadCover(coverUrl, coverFileName);
-
   return {
     id,
     type: "manga",
@@ -172,23 +170,8 @@ async function formatManga(manga) {
     author: { name: author },
     rating,
     link: manga.attributes.links?.raw,
-    thumbnail: `/assets/images/covers/manga/${coverFileName}`,
     updatedAt: latestChapter.data?.attributes?.publishAt ?? manga.attributes.updatedAt,
   };
-}
-
-/**
- * Downloads and stores manga cover images locally.
- * @param {string} url - The URL of the cover image.
- * @param {string} fileName - The name to save the image as.
- */
-async function downloadCover(url, fileName) {
-  const buffer = await fetch(url)
-    .then((res) => res.buffer())
-    .catch((err) => OPTIONS.logError && console.error(err));
-  const filePath = `${coverPath}/manga/${fileName}`;
-
-  if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, buffer);
 }
 
 /**

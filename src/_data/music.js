@@ -63,7 +63,6 @@ async function transformPlaylistItems(items) {
       id: track.id,
       type: "music",
       title: track.name,
-      thumbnail: track.album.images[0]?.url || null,
       author: {
         name: track.artists.map((a) => a.name).join(", "),
       },

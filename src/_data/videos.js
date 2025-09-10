@@ -75,7 +75,6 @@ async function fetchPlaylist(playlistId) {
         title: video.snippet.title,
         description: video.snippet.description,
         link: `https://youtube.com/watch?v=${video.contentDetails.videoId}`,
-        thumbnail: video.snippet.thumbnails.standard?.url,
         createdAt: video.contentDetails.videoPublishedAt,
         updatedAt: video.snippet.publishedAt,
         author: {

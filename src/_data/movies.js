@@ -22,12 +22,10 @@ const OPTIONS = {
   logErrors: false,
 };
 
-const coverPath = "/assets/images/covers/movies";
-
 /**
  * Scrapes a single Trakt page for movie entries.
  */
-async function scrapeMoviePage(page, url, status) {
+async function scrapeMoviePage(page, url) {
   const browser = page.browser();
 
   await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
@@ -62,11 +60,8 @@ async function scrapeMoviePage(page, url, status) {
         const newPage = await browser.newPage();
         await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
 
-        const { description, genres, imageSrc } = await scrapeMovieProfile(newPage);
+        const { description, genres } = await scrapeMovieProfile(newPage);
         await newPage.close();
-
-        const safeName = slugify(base.originalTitle || base.title);
-        const imagePath = await downloadImage(status, imageSrc, safeName);
 
         incrementProgress();
 
@@ -77,7 +72,6 @@ async function scrapeMoviePage(page, url, status) {
           description,
           genres,
           link: base.link,
-          thumbnail: imagePath,
           createdAt: base.date_created,
           addedAt: base.date_added,
         };
@@ -93,32 +87,12 @@ async function scrapeMoviePage(page, url, status) {
  */
 async function scrapeMovieProfile(page) {
   const description = await page.$eval("#tagline + #overview", (el) => el.innerText).catch(() => null);
-  const imageSrc = await page.$eval("img.real", (el) => el.src).catch(() => null);
 
   const genres = await page.evaluate(() =>
     Array.from(document.querySelectorAll("span[itemprop='genre']")).map((el) => el.innerText.trim())
   );
 
-  return { description, genres, imageSrc };
-}
-
-/**
- * Downloads and saves an image locally (skip if already exists).
- */
-async function downloadImage(folder, url, fileName) {
-  if (!url) return null;
-
-  const dir = path.join("src/" + coverPath, folder);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-  const fullPath = path.join(dir, `${fileName}.jpg`);
-
-  if (!fs.existsSync(fullPath)) {
-    const buffer = await fetch(url).then((res) => res.buffer());
-    fs.writeFileSync(fullPath, buffer);
-  }
-
-  return `${coverPath}/${folder}/${fileName}.jpg`;
+  return { description, genres };
 }
 
 async function getCollection() {
@@ -138,7 +112,7 @@ async function getCollection() {
   const collection = {};
   for (const [status, url] of Object.entries(PAGES)) {
     log("[Trakt.tv/Movies]", `🔍 Scraping ${status}`);
-    collection[status] = await scrapeMoviePage(page, url, status);
+    collection[status] = await scrapeMoviePage(page, url);
   }
 
   await browser.close();

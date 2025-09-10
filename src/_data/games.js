@@ -74,12 +74,9 @@ async function scrapeGameFromProfile(page) {
     }
 
     // Extract in one go
-    const { description, image, genres, developer } = await page.evaluate(() => {
+    const { description, genres, developer } = await page.evaluate(() => {
       const descriptionEl = document.querySelector(".GameSummary_profile_info__HZFQu");
       const description = descriptionEl ? descriptionEl.innerText.trim() : null;
-
-      const imageEl = document.querySelector(".GameSideBar_game_image__ozUTt > img");
-      const image = imageEl ? imageEl.src : null;
 
       let genres = [];
       const genreLabel = Array.from(document.querySelectorAll("div > strong")).find((el) =>
@@ -104,10 +101,10 @@ async function scrapeGameFromProfile(page) {
         developer = container.innerText.replace("Developer:", "").replace("Developers:", "").trim();
       }
 
-      return { description, image, genres, developer };
+      return { description, genres, developer };
     });
 
-    return { id, description, genres, image, developer };
+    return { id, description, genres, developer };
   } catch (error) {
     log("[HLTB]", "⚠️ Error scraping game profile", error);
     return { id: null, description: null, genres: [], image: null, developer: null };
@@ -253,7 +250,6 @@ async function scrapeGamesFromPage(page, url, status) {
         let description = extendedInfo?.profile_summary;
         let genres = extendedInfo?.profile_genres || [];
         let developer = extendedInfo?.profile_developer;
-        let image = extendedInfo?.image_url;
 
         if (!description || !genres.length || !developer) {
           const newPage = await browser.newPage();
@@ -264,7 +260,6 @@ async function scrapeGamesFromPage(page, url, status) {
           description = description || profileData.description;
           genres = genres.length ? genres : profileData.genres;
           developer = developer || profileData.developer;
-          image = image || profileData.image;
         }
 
         incrementProgress();
@@ -277,7 +272,6 @@ async function scrapeGamesFromPage(page, url, status) {
           genres,
           platform: base.platform,
           link: base.link,
-          thumbnail: image,
           updatedAt: extendedInfo?.date_updated,
           addedAt: extendedInfo?.date_added,
           startedAt: extendedInfo?.date_start,
