@@ -1,7 +1,7 @@
 <article class="media-grid">
 	<figure>
 		{% if item.thumbnail %}
-			<img src="{{ item.thumbnail }}" alt="{{ item.title }}"/>
+			<img src="{{ item.thumbnail }}" alt="{{ item.title }}" loading="lazy"/>
 		{% else %}
 			{% include "components/hat-icon.html" %}
 		{% endif %}
