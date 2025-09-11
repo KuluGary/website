@@ -21,7 +21,7 @@
   }
 
   & .footer-credits > * {
-    margin-top: var(--line-height);
+    margin-block: calc(var(--line-height) * 0.75);
     margin-inline: auto;
   }
 
@@ -32,9 +32,8 @@
   & .made-with,
   & .under-construction,
   & .contact {
-    max-width: 50ch;
     margin-inline: auto;
-
+    width: fit-content;
     & img {
       display: inline-block;
     }

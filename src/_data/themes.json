@@ -5,6 +5,7 @@
   ],
   "dark": [
     { "id": "dark-blue", "label": "Dark Blue" },
-    { "id": "dark-grayscale", "label": "Dark Dawn" }
+    { "id": "dark-grayscale", "label": "Dark Dawn" },
+    { "id": "halloween", "label": "Halloween" }
   ]
 }

@@ -76,6 +76,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("isArray", isArray);
   eleventyConfig.addFilter("makeUppercase", makeUppercase);
   eleventyConfig.addFilter("makeLowercase", makeLowercase);
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */

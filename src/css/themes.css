@@ -130,6 +130,17 @@ html[data-theme="dark-grayscale"] {
   --tertiary-color: #b5bd68;
 }
 
+html[data-theme="halloween"] {
+  color-scheme: dark;
+  --text-color: #e6e6e6;
+  --text-color-alt: #666;
+  --background-color: #2b2833;
+  --background-color-alt: #423f48;
+  --primary-color: #e19157;
+  --secondary-color: #e19157;
+  --tertiary-color: #e19157;
+}
+
 @media (prefers-color-scheme: dark) {
   html:not([data-theme]),
   html[data-theme=""] {
