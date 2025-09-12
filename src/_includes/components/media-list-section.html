@@ -3,8 +3,11 @@
 		{% if sectionTitle != "" %}
 			<h2>
 				<a href="{{ href }}">
-					{{ sectionTitle }} ({{ media.length }})
-			</a>
+					{{ sectionTitle }}
+					{% if showMediaCount !== false %}
+						({{ media.length }})
+					{% endif %}
+				</a>
 			</h2>
 		{% endif %}
 

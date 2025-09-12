@@ -12,8 +12,9 @@ description: A curated collection of favorites spanning games, music, movies, sh
 	<main>
 		<p>A hall of fame of diverse mediums. This is a comprehensive list of my all-time favorite media that I both love and has inspired me creatively.</p>
 
-		{% set media = games.favourites | limit(5) %}
 		{% set showFooter = true %}
+		{% set showMediaCount = false %}
+		{% set media = games.favourites | limit(5) %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 		{% set href = "/media/games/status/favourites" %}
 		{% set sectionTitle = "Favourite games" %}

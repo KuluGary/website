@@ -38,15 +38,10 @@ description: "See what I'm currently focused on at this moment."
 		{% set sectionTitle = "Currently playing" %}
 		{% include "components/media-list-section.html" %}
 
-		{% set media = webcomics.reading %}
-		{% set href = "/media/webcomic/status/reading" %}
-		{% set sectionTitle = "Currently reading" %}
-		{% include "components/media-list-section.html" %}
-
-		{% set media = manga.reading | removeUnsafeManga %}
+		{% set media = manga.reading | removeUnsafeManga | mergeArrays(webcomics.reading) %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 		{% set href = "/media/manga/status/reading" %}
-		{% set sectionTitle = "" %}
+		{% set sectionTitle = "Currently reading" %}
 		{% include "components/media-list-section.html" %}
 
 		{% set media = shows.watchlist %}
