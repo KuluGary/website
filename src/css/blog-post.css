@@ -77,6 +77,11 @@ main.main-content {
         }
       }
     }
+
+    & img.prefers-media {
+      mix-blend-mode: exclusion;
+      filter: invert();
+    }
   }
 
   & .prose {
