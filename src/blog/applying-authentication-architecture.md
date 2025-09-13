@@ -2,7 +2,7 @@
 title: Applying authentication architecture
 lang: en
 date: 2025-09-13
-tags: ["blog-post", "development", "web-dev", "react", "architecture"]
+tags: ["blog-post", "development", "web-dev", "javascript", "authentication", "software-architecture"]
 description: To scale user access permissions based on role and attribute, we implemented ABAC permissions into our front-end application.
 ---
 

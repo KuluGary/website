@@ -35,6 +35,7 @@ main.main-content {
       }
 
       & .post-tags {
+        display: inline;
         list-style: none;
         gap: 1ch;
 
