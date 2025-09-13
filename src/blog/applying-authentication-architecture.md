@@ -124,4 +124,8 @@ What we've built so far is already maintainable and expressive, but there's room
 
 - Outsource permission management. Instead of living in a JSON file, permissions could be stored in a dashboard or policy service so non-developers can adjust them.
 
-- Use a library. Rolling your own system is a great learning exercise, but in production a library like [CASL](https://casl.js.org/v6/en).
+- Use a library. Rolling your own system is a great learning exercise, but in production a library like [CASL](https://casl.js.org/v6/en) would decrease maintenance time and delegate new features.
+
+## Final words
+
+That's where I landed for now. It's not the final word on permissions, but it's a pattern that feels maintainable without being over-engineered. Maybe in a year I'll swap it all out for something else, but that's half the fun of keeping a log like this.
