@@ -58,7 +58,7 @@ And a simple checker:
 ```js
 export const hasPermission = (user, permission) => {
   return user.roles.some((role) => {
-    PERMISSIONS[role].includes(permission);
+    return PERMISSIONS[role].includes(permission);
   });
 };
 ```
