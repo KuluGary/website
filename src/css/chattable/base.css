@@ -1,0 +1,245 @@
+body {
+  color: var(--text-color);
+}
+
+.msgWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.allMessages {
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size);
+  font-style: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 1rem;
+  color: var(--text-color);
+}
+
+.allMessages::after {
+  background-color: var(--background-color-alt);
+  content: "";
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 1ch;
+}
+
+.msgWrapper + .msgWrapper {
+  margin-top: 1ch;
+  margin-bottom: 1ch;
+}
+
+.allMessages::before {
+  content: attr(time);
+  position: static;
+  float: right;
+  color: var(--text-color-alt);
+}
+
+.allMessages.containsOnlyEmojis .emoji {
+  height: 50px;
+}
+
+.allMessages.pm {
+  padding-top: 26px;
+}
+
+.allMessages.pm:before {
+  content: "[Private Message]";
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 16px;
+  padding: 5px;
+  width: calc(100% - 10px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 8pt;
+  font-weight: bold;
+  color: #f33;
+}
+
+.msgWrapper:has(.recieved):before {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+blockquote {
+  background-color: #777;
+  color: #111;
+  border-color: #000;
+}
+
+#background {
+  background: var(--background-color);
+  scrollbar-color: #000 transparent;
+  scrollbar-width: thin;
+}
+
+#textInput {
+  border: 1px solid var(--text-color-alt);
+  padding: 1ch 0.75ch;
+}
+
+#input,
+#nameEntry {
+  color: var(--text-color);
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+#textInput,
+#input {
+  background-color: transparent;
+}
+
+#input:empty::before {
+  content: "Write a message...";
+  color: var(--text-color-alt);
+}
+
+.badge {
+  display: none;
+}
+
+.senderInfo:has(.mod, .owner, .beta):after {
+  content: " ";
+  height: 10pt;
+  width: 10pt;
+  background: transparent;
+  border-radius: 50%;
+  background-image: url(/media/verified.png);
+  background-size: 100% 100%;
+  margin-left: 5px;
+  filter: contrast(1.5);
+}
+
+.devTag {
+  display: none;
+}
+
+.senderInfo * {
+  text-decoration: none;
+}
+
+.senderInfo {
+  color: var(--secondary-color);
+  font-weight: 700;
+  text-decoration: underline;
+  /* font-style: italic; */
+}
+
+#timestamp {
+  display: none;
+}
+
+#top_banner {
+  display: none;
+}
+
+#replyBanner {
+  background-color: #333;
+  font-size: 10pt;
+}
+
+.ctxMenuOption {
+  background-color: #333 !important;
+  color: #aaa;
+  position: relative;
+}
+
+.ctxMenuOption:hover:after {
+  content: " ";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#ctxMenu {
+  background-color: #555 !important;
+}
+
+.msgBody {
+  margin-top: 1ch;
+}
+
+.msgBody a {
+  color: inherit !important;
+}
+
+#settings {
+  display: none;
+}
+
+#settingsMenu hr {
+  height: 2px;
+  width: 100%;
+  margin: auto;
+  background-color: #aaa;
+  border: none;
+}
+
+#is_typing {
+  display: none !important;
+}
+
+#emojiTrayToggle {
+  background-image: none;
+}
+
+#emojiTray {
+  color: var(--text-color);
+  display: none;
+}
+
+.pinned {
+  position: sticky;
+  top: 0;
+
+  z-index: 2;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: default;
+}
+
+.pinned:before {
+  all: unset !important;
+}
+
+.pinned > .allMessages {
+  box-shadow: 0 0 3px #000;
+  width: 100%;
+  transition: opacity 250ms ease;
+}
+
+.pinned:hover > .allMessages {
+  opacity: 0.25;
+}
+
+.pinned > .allMessages::after {
+  display: none;
+}
+
+.pinned:after {
+  display: inline-block;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  content: "📌";
+}

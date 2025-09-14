@@ -8,3 +8,4 @@ bin
 lib
 src/js/utils/_test
 .vscode
+.chattable-theme-cache.json

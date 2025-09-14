@@ -9,7 +9,6 @@
   }
 
   & .button-list {
-    margin-top: var(--line-height);
     justify-content: center;
     width: 100%;
     row-gap: var(--line-height);

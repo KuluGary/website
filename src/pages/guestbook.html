@@ -1,0 +1,39 @@
+---
+permalink: /guestbook/
+title: Guestbook
+layout: layouts/base.html
+---
+
+{% block content %}
+	{% include "components/header.html" %}
+
+	<iframe src="https://iframe.chat/embed?chat=13929684" id="chattable"></iframe>
+
+	{% include "components/footer.html" %}
+{% endblock content %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/components/header.css"/>
+	<link rel="stylesheet" href="/css/components/footer.css"/>
+	<style>
+		#chattable {
+			width: 100%;
+			border: none;
+			min-height: 40vw;
+		}
+	</style>
+{% endblock %}
+
+{% block script %}
+	<script src="https://iframe.chat/scripts/main.min.js"></script>
+	<script>
+		const theme = document.documentElement.dataset.theme || (
+			window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+			? "dark-blue"
+			: "grayscale");
+		const stack = document.documentElement.dataset.fontStack || "system-ui";
+		const size = document.documentElement.dataset.fontSize || "standard";
+
+		chattable.initialize({stylesheet: `/css/chattable/${theme}-${stack}-${size}.css`});
+	</script>
+{% endblock script %}

@@ -3,7 +3,7 @@
   { "id": "transitional", "label": "Transitional" },
   { "id": "old-style", "label": "Old Style" },
   { "id": "humanist", "label": "Humanist" },
-  { "id": "heometric-humanist", "label": "Geometric Humanist" },
+  { "id": "geometric-humanist", "label": "Geometric Humanist" },
   { "id": "classical-humanist", "label": "Classical Humanist" },
   { "id": "neo-grotesque", "label": "Neo-Grotesque" },
   { "id": "monospace-slab-serif", "label": "Monospace Slab Serif" },

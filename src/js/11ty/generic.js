@@ -1,4 +1,10 @@
 const { DateTime } = require("luxon");
+const fs = require("fs");
+const postcss = require("postcss");
+const postcssConfig = require("../../../postcss.config");
+const path = require("path");
+const { log: consoleLog, time, timeEnd } = require("../utils/log");
+const { startProgress, incrementProgress, stopProgress } = require("../utils/cli-progress");
 
 module.exports = {
   formatDate,
@@ -19,6 +25,7 @@ module.exports = {
   makeLowercase,
   makeUppercase,
   minutesToHoursMinutes,
+  generateChattableCSS,
 };
 
 /**
@@ -208,4 +215,72 @@ function minutesToHoursMinutes(totalMinutes) {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
   return `${hours}h ${minutes}m`;
+}
+
+async function generateChattableCSS() {
+  const themeCssPath = "src/css/themes.css";
+  const baseCssPath = "src/css/chattable/base.css";
+  const outDir = "_site/css/chattable";
+
+  // Cache file to store last modified time of theme.css
+  const cacheFile = ".chattable-theme-cache.json";
+
+  const themeCssStat = fs.statSync(themeCssPath);
+  const baseCssStat = fs.statSync(baseCssPath);
+
+  const latestMtime = Math.max(themeCssStat.mtimeMs, baseCssStat.mtimeMs);
+
+  let cachedTime = 0;
+  if (fs.existsSync(cacheFile)) {
+    try {
+      const cache = JSON.parse(fs.readFileSync(cacheFile, "utf8"));
+      cachedTime = cache.mtime || 0;
+    } catch {}
+  }
+
+  // Only rebuild if theme.css has changed
+  if (latestMtime <= cachedTime) {
+    consoleLog("[Chattable]", "Skipping generation.");
+    return;
+  }
+
+  time("[Chattable]", "Generating CSS...");
+
+  const themeCss = fs.readFileSync(themeCssPath, "utf8");
+  const baseCss = fs.readFileSync(baseCssPath, "utf8");
+
+  const themeBlocks = [...themeCss.matchAll(/html\[data-theme="([^"]+)"\]\s*{([^}]+)}/g)];
+
+  if (!themeBlocks.length) {
+    console.warn("No theme blocks found in themes.css");
+    return;
+  }
+
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const fontStackBlocks = [...themeCss.matchAll(/html\[data-font-stack="([^"]+)"\]\s*{([^}]+)}/g)];
+  const fontSizeBlocks = [...themeCss.matchAll(/html\[data-font-size="([^"]+)"\]\s*{([^}]+)}/g)];
+
+  startProgress(themeBlocks.length + fontStackBlocks + fontSizeBlocks);
+
+  // For each combination of theme × font-stack × font-size
+  for (const [, themeName, themeVars] of themeBlocks) {
+    for (const [, stackName, stackVars] of fontStackBlocks) {
+      for (const [, sizeName, sizeVars] of fontSizeBlocks) {
+        const rootCss = `:root {\n${themeVars}\n${stackVars}\n${sizeVars}\n}`;
+        const mergedCss = `${rootCss}\n${baseCss}`;
+
+        const result = await postcss(postcssConfig.plugins).process(mergedCss, { from: undefined });
+
+        const fileName = `${themeName}-${stackName}-${sizeName}.css`;
+        fs.writeFileSync(path.join(outDir, fileName), result.css, "utf8");
+        incrementProgress();
+      }
+    }
+  }
+
+  stopProgress();
+
+  fs.writeFileSync(cacheFile, JSON.stringify({ mtime: latestMtime }), "utf8");
+  timeEnd("[Chattable]", "✔️ Generation complete");
 }

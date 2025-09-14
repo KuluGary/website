@@ -22,6 +22,7 @@ const {
   makeLowercase,
   makeUppercase,
   minutesToHoursMinutes,
+  generateChattableCSS,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -79,8 +80,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("makeLowercase", makeLowercase);
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   eleventyConfig.addFilter("transformTime", minutesToHoursMinutes);
+  eleventyConfig.on("beforeBuild", generateChattableCSS);
   eleventyConfig.addFilter("log", log);
-
   /** 11ty blog */
   eleventyConfig.addCollection("postsByYear", getPostsByYear);
   eleventyConfig.addFilter("getShareUrl", getShareUrl);

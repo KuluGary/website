@@ -17,7 +17,7 @@ const PAGES = {
   retired: `https://howlongtobeat.com/user/${HLTB_USER}/games/retired/1`,
 };
 const OPTIONS = {
-  cache: false,
+  cache: true,
   headless: true,
   logErrors: false,
 };
