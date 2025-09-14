@@ -18,6 +18,7 @@ module.exports = {
   generateSitemap,
   makeLowercase,
   makeUppercase,
+  minutesToHoursMinutes,
 };
 
 /**
@@ -201,4 +202,10 @@ function makeUppercase(string) {
 
 function makeLowercase(string) {
   return string.toLowerCase();
+}
+
+function minutesToHoursMinutes(totalMinutes) {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return `${hours}h ${minutes}m`;
 }

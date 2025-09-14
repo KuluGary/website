@@ -61,6 +61,12 @@
 			</li>
 		{% endif %}
 
+		{% if item.playtime %}
+			<li>
+				<span>{{ item.playtime | transformTime }}</span>
+			</li>
+		{% endif %}
+
 		{% if item.rate and item.type === "Video" %}
 			<li>
 				<span>{{ item.rate | formatNumber('compact') }} likes</span>

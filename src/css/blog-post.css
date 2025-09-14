@@ -62,11 +62,12 @@ main.main-content {
 
     & .direct-link {
       opacity: 0;
-      font-size: 0.75rem;
       color: var(--clr-primary-main);
       font-family: var(--font-family-body);
       font-style: normal;
       text-decoration: none;
+      font-size: 1.25rem;
+      margin-inline-start: 0.5ch;
     }
 
     & h2:has(.direct-link),

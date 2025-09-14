@@ -21,6 +21,7 @@ const {
   generateSitemap,
   makeLowercase,
   makeUppercase,
+  minutesToHoursMinutes,
 } = require("./src/js/11ty/generic");
 const {
   getPostsByYear,
@@ -77,6 +78,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("makeUppercase", makeUppercase);
   eleventyConfig.addFilter("makeLowercase", makeLowercase);
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  eleventyConfig.addFilter("transformTime", minutesToHoursMinutes);
   eleventyConfig.addFilter("log", log);
 
   /** 11ty blog */
@@ -111,7 +113,7 @@ module.exports = function (eleventyConfig) {
       .use(markdownItAnchor, {
         permalink: true,
         permalinkClass: "direct-link",
-        permalinkSymbol: " 🔗",
+        permalinkSymbol: "#",
       })
       .use(markdownItAttrs)
   );
