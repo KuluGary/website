@@ -3,8 +3,8 @@ title: Settings
 permalink: /settings/
 description: "Personalize your experience: change font sizes, themes, and other display settings for this website."
 ---
-{% extends "layouts/base.html" %}
 
+{% extends "layouts/base.html" %}
 {% block content %}
   {% include "components/header.html" %}
 
@@ -14,14 +14,18 @@ description: "Personalize your experience: change font sizes, themes, and other 
 
     <p>
     This site intends to be accessible for all and I will try to make it so it respect your browser preferences, but if
-    I forgot something please feel free to contact me and I will correct it as soon as I'm able.
+    I forgot something please feel free to <a href="/contact">contact me</a> and I will correct it as soon as I'm able.
   </p>
 
     <p>
     The settings you input in this page will be stored in your
     <a href="https://developer.mozilla.org/es/docs/Web/API/Window/localStorage">Local Storage</a>, so it
     <strong> will not persist between browsers </strong> or devices.
-  </p>
+    </p>
+
+    <noscript>
+      In order to set preferences into Local Storage, this page uses Javascript. To be able to use this page, Javascript should be enabled.
+    </noscript>
 
     <form action="">
       <label for="theme-select">
@@ -56,16 +60,16 @@ description: "Personalize your experience: change font sizes, themes, and other 
 
       <fieldset id="font-size">
         <label for="font-size">
-          <input type="radio" value="small" name="font-size">
+          <input type="radio" value="small" name="font-size"/>
         Small
       </label>
         <label for="font-size">
-          <input type="radio" value="standard" name="font-size">
+          <input type="radio" value="standard" name="font-size"/>
         Medium
       </label>
 
         <label for="font-size">
-          <input type="radio" value="large" name="font-size">
+          <input type="radio" value="large" name="font-size"/>
         Large
       </label>
       </fieldset>
@@ -76,12 +80,12 @@ description: "Personalize your experience: change font sizes, themes, and other 
 
       <fieldset id="content-width">
         <label for="content-width">
-          <input type="radio" value="standard" name="content-width">
+          <input type="radio" value="standard" name="content-width"/>
         Standard
       </label>
 
         <label for="content-width">
-          <input type="radio" value="wide" name="content-width">
+          <input type="radio" value="wide" name="content-width"/>
         Wide
       </label>
       </fieldset>
@@ -92,13 +96,11 @@ description: "Personalize your experience: change font sizes, themes, and other 
 
   {% include "components/footer.html" %}
 {% endblock %}
-
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/settings.css"/>
   <link rel="stylesheet" href="/css/components/header.css"/>
   <link rel="stylesheet" href="/css/components/footer.css"/>
 {% endblock %}
-
 {% block script %}
   <script src="/js/settings.js"></script>
 {% endblock %}

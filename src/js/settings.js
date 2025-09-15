@@ -18,18 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cachedFontSize) fontSizePicker.value = cachedFontSize;
 
   resetButton.addEventListener("click", handleResetForm);
-  themePicker.addEventListener("change", (e) =>
-    handleChangeTheme(e.target.value)
-  );
-  fontPicker.addEventListener("change", (e) =>
-    handleChangeFontStack(e.target.value)
-  );
-  contentWidthPicker.addEventListener("change", (e) =>
-    handleChangeContentWidth(e.target.value)
-  );
-  fontSizePicker.addEventListener("change", (e) =>
-    handleChangeFontSize(e.target.value)
-  );
+  themePicker.addEventListener("change", (e) => handleChangeTheme(e.target.value));
+  fontPicker.addEventListener("change", (e) => handleChangeFontStack(e.target.value));
+  contentWidthPicker.addEventListener("change", (e) => handleChangeContentWidth(e.target.value));
+  fontSizePicker.addEventListener("change", (e) => handleChangeFontSize(e.target.value));
 
   function setDefaultTheme() {
     if (cachedTheme) {
@@ -45,18 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setDefaultFontSize() {
     if (cachedFontSize) {
-      const fontSizeRadio = fontSizePicker.querySelector(
-        `[value=${cachedFontSize}]`
-      );
+      const fontSizeRadio = fontSizePicker.querySelector(`[value=${cachedFontSize}]`);
       fontSizeRadio.checked = true;
     }
   }
 
   function setDefaultContentWidth() {
     if (cachedContentWidth) {
-      const contentWidthRadio = contentWidthPicker.querySelector(
-        `[value=${cachedContentWidth}]`
-      );
+      const contentWidthRadio = contentWidthPicker.querySelector(`[value=${cachedContentWidth}]`);
       contentWidthRadio.checked = true;
     }
   }
@@ -98,4 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.location.reload(true);
   }
+
+  document.querySelector("form").style.display = "block";
+  document.querySelector("noscript").style.display = "none";
 });

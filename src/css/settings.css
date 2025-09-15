@@ -3,6 +3,10 @@ label h3 {
   margin-top: var(--line-height);
 }
 
+form {
+  display: none;
+}
+
 #reset-button {
   display: block;
   margin-top: var(--line-height);
@@ -19,4 +23,17 @@ fieldset > label {
 
 fieldset > label + label {
   margin-block: var(--line-height);
+}
+
+noscript {
+  padding: 0.5rem 1rem;
+  background-color: var(--background-color-alt);
+  display: block;
+  width: fit-content;
+  max-width: 80%;
+  margin-inline: auto;
+}
+
+select {
+  margin-top: var(--line-height);
 }

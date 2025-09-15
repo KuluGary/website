@@ -43,6 +43,7 @@ body {
   position: static;
   float: right;
   color: var(--text-color-alt);
+  font-size: smaller;
 }
 
 .allMessages.containsOnlyEmojis .emoji {

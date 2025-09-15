@@ -7,6 +7,7 @@ layout: layouts/base.html
 {% block content %}
 	{% include "components/header.html" %}
 
+	<noscript>This guestbook is provided by <a href="https://iframe.chat/">Chattable</a>, and requires JavaScript to run. If you want to leave a comment enable Javascript, or <a href="/contact">contact me through other channels</a>!</noscript>
 	<iframe src="https://iframe.chat/embed?chat=13929684" id="chattable"></iframe>
 
 	{% include "components/footer.html" %}
@@ -15,18 +16,23 @@ layout: layouts/base.html
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
-	<style>
-		#chattable {
-			width: 100%;
-			border: none;
-			min-height: 40vw;
-		}
-	</style>
+	<link rel="stylesheet" href="/css/guestbook.css"/>
+
 {% endblock %}
 
 {% block script %}
 	<script src="https://iframe.chat/scripts/main.min.js"></script>
 	<script>
+		document
+			.querySelector("noscript")
+			.style
+			.display = "none";
+
+		document
+			.querySelector("#chattable")
+			.style
+			.display = "block"
+
 		const theme = document.documentElement.dataset.theme || (
 			window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 			? "dark-blue"
