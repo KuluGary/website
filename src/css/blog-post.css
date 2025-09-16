@@ -84,6 +84,11 @@ main.main-content {
       mix-blend-mode: exclusion;
       filter: invert();
     }
+
+    & img.width-auto {
+      width: auto;
+      margin-inline: auto;
+    }
   }
 
   & .prose {

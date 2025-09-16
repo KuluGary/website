@@ -90,6 +90,7 @@ blockquote {
 #textInput {
   border: 1px solid var(--text-color-alt);
   padding: 1ch 0.75ch;
+  width: 95%;
 }
 
 #input,
@@ -139,7 +140,6 @@ blockquote {
   color: var(--secondary-color);
   font-weight: 700;
   text-decoration: underline;
-  /* font-style: italic; */
 }
 
 #timestamp {
@@ -184,8 +184,26 @@ blockquote {
   color: inherit !important;
 }
 
-#settings {
-  display: none;
+:where(#settings) {
+  top: auto;
+  left: auto;
+  right: 0;
+  bottom: 30px;
+  width: fit-content;
+
+  background-image: none;
+}
+
+:where(#settings)::after {
+  top: inherit;
+  bottom: inherit;
+  height: inherit;
+  width: inherit;
+  color: var(--text-color-alt);
+  font-size: xx-large;
+  font-weight: 800;
+
+  content: "⁝";
 }
 
 #settingsMenu hr {

@@ -46,6 +46,8 @@ html[data-theme="dark-blue"] {
     position: relative;
     margin: 0.5em 0;
     padding: 1.25em 1em;
+    border: 1px solid var(--text-color-alt);
+    border-radius: 4px;
   }
 
   .language-css > code,
@@ -258,6 +260,7 @@ html[data-theme="dark-blue"] {
       position: relative;
       margin: 0.5em 0;
       padding: 1.25em 1em;
+      border: 1px solid var(--text-color-alt);
     }
 
     .language-css > code,
