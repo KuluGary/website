@@ -168,6 +168,25 @@ function isArray(element) {
   return Array.isArray(element);
 }
 
+/**
+ * Generates a filtered and sorted list of pages for use in a sitemap.
+ *
+ * This function:
+ * - Retrieves all pages from the Eleventy `collectionApi`.
+ * - Excludes assets (`.css`, `.js`, `.json`, `.xml`, `.txt`, `.map`).
+ * - Includes `/blog/` but excludes individual `/blog/...` posts.
+ * - Excludes pages under `/genre/` and `/status/`.
+ * - Sorts results into groups:
+ *   1. Home (`/`)
+ *   2. Blog index (`/blog/`)
+ *   3. Blog posts (`/blog/...`), sorted by descending `date`.
+ *   4. All other pages, sorted alphabetically by URL.
+ *
+ * @function generateSitemap
+ * @param {Object} collectionApi - The Eleventy collection API object.
+ * @param {Function} collectionApi.getAll - Returns all available pages.
+ * @returns {Array<Object>} A list of page objects filtered and sorted for sitemap inclusion.
+ */
 function generateSitemap(collectionApi) {
   return collectionApi
     .getAll()
@@ -217,6 +236,17 @@ function minutesToHoursMinutes(totalMinutes) {
   return `${hours}h ${minutes}m`;
 }
 
+/**
+ * Generates preprocessed CSS bundles for the "Chattable" UI.
+ *
+ * This function combines theme variables, font stacks, and font sizes
+ * from `themes.css` with base styles from `chattable/base.css`, then processes
+ * them with PostCSS. It outputs all combinations of
+ * `theme × font-stack × font-size` into `_site/css/chattable`.
+ *
+ * The function uses a cache file (`.chattable-theme-cache.json`)
+ * to avoid regenerating CSS unless the source files have changed.
+ */
 async function generateChattableCSS() {
   const themeCssPath = "src/css/themes.css";
   const baseCssPath = "src/css/chattable/base.css";
@@ -250,6 +280,8 @@ async function generateChattableCSS() {
   const baseCss = fs.readFileSync(baseCssPath, "utf8");
 
   const themeBlocks = [...themeCss.matchAll(/html\[data-theme="([^"]+)"\]\s*{([^}]+)}/g)];
+  const fontStackBlocks = [...themeCss.matchAll(/html\[data-font-stack="([^"]+)"\]\s*{([^}]+)}/g)];
+  const fontSizeBlocks = [...themeCss.matchAll(/html\[data-font-size="([^"]+)"\]\s*{([^}]+)}/g)];
 
   if (!themeBlocks.length) {
     console.warn("No theme blocks found in themes.css");
@@ -257,9 +289,6 @@ async function generateChattableCSS() {
   }
 
   fs.mkdirSync(outDir, { recursive: true });
-
-  const fontStackBlocks = [...themeCss.matchAll(/html\[data-font-stack="([^"]+)"\]\s*{([^}]+)}/g)];
-  const fontSizeBlocks = [...themeCss.matchAll(/html\[data-font-size="([^"]+)"\]\s*{([^}]+)}/g)];
 
   startProgress(themeBlocks.length + fontStackBlocks + fontSizeBlocks);
 

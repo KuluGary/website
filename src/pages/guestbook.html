@@ -6,9 +6,10 @@ layout: layouts/base.html
 
 {% block content %}
 	{% include "components/header.html" %}
-
-	<noscript>This guestbook is provided by <a href="https://iframe.chat/">Chattable</a>, and requires JavaScript to run. If you want to leave a comment enable Javascript, or <a href="/contact">contact me through other channels</a>!</noscript>
-	<iframe src="https://iframe.chat/embed?chat=13929684" id="chattable"></iframe>
+	<main>
+		<noscript>This guestbook is provided by <a href="https://iframe.chat/">Chattable</a>, and requires JavaScript to run. If you want to leave a comment enable Javascript, or <a href="/contact">contact me through other channels</a>!</noscript>
+		<iframe src="https://iframe.chat/embed?chat=13929684" id="chattable"></iframe>
+	</main>
 
 	{% include "components/footer.html" %}
 {% endblock content %}
