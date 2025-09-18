@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family: system-ui, sans-serif;
+  --line-height: 1.2rem;
+  --border-thickness: 2px;
+
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+  --font-size: 14px;
+
+  --border-small: 1px solid var(--text-color-alt);
+
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
+  font-weight: var(--font-weight-normal);
+  font-style: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-size: var(--font-size);
+}
+
+html {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-areas:
+    "header header header"
+    "aside main main"
+    "footer footer footer";
+  height: 100vh;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    grid-template-areas:
+      "header"
+      "aside"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  & > * {
+    padding: 0.25rem 1rem;
+  }
+
+  & > header {
+    grid-area: header;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline-end: 1rem;
+    border-block-end: var(--border-small);
+
+    & > svg:first-child {
+      height: 3rem;
+
+      & > g {
+        fill: var(--text-color);
+      }
+    }
+  }
+  & > main {
+    grid-area: main;
+
+    > * {
+      max-width: var(--main-content-width);
+    }
+  }
+
+  & > aside {
+    grid-area: aside;
+    border-inline-end: var(--border-small);
+
+    & h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border-block-end: var(--border-small);
+      color: var(--text-color-alt);
+    }
+  }
+
+  & > footer {
+    grid-area: footer;
+    font-size: smaller;
+    border-block-start: var(--border-small);
+
+    & img {
+      width: auto;
+      vertical-align: middle;
+    }
+
+    & .button-list {
+      list-style: none;
+      display: flex;
+      column-gap: 0.25rem;
+      margin-inline: 0;
+      padding-inline: 0;
+      justify-content: center;
+      width: 100%;
+      row-gap: var(--line-height);
+    }
+
+    & .button-list li,
+    & .footer-credits {
+      margin: 0;
+    }
+
+    & .footer-credits > * {
+      margin-block: calc(var(--line-height) * 0.75);
+      margin-inline: auto;
+    }
+
+    & .webring {
+      text-align: center;
+    }
+
+    & .made-with,
+    & .under-construction,
+    & .contact {
+      margin-inline: auto;
+      width: fit-content;
+      & img {
+        display: inline-block;
+      }
+    }
+
+    a:has(#eleventy-badge, #nunjucks-badge) {
+      text-decoration: none;
+    }
+  }
+
+  & ::-moz-selection {
+    color: var(--background-color);
+    background: var(--text-color);
+  }
+
+  & ::selection {
+    color: var(--background-color);
+    background: var(--text-color);
+  }
+}
