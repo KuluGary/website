@@ -33,6 +33,11 @@ html {
   @media screen and (max-width: 480px) {
     font-size: 14px;
   }
+
+  @supports (scrollbar-gutter: stable) {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
