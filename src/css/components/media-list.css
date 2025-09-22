@@ -115,13 +115,45 @@
 
     & .description {
       font-size: smaller;
-      overflow: hidden;
       margin-top: 0;
 
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      line-clamp: 2;
-      -webkit-line-clamp: 2;
+      & label {
+        width: fit-content;
+        margin-inline-start: auto;
+        color: var(--secondary-color);
+        text-decoration: underline;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      label {
+        display: inline;
+        &::after {
+          content: "See less";
+        }
+      }
+
+      &:not(:has(input:checked)) {
+        & label::after {
+          content: "See more";
+        }
+
+        & div {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          line-clamp: 2;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+
+      & input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
 
       & p:first-of-type {
         margin-top: 0;

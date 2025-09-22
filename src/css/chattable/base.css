@@ -28,8 +28,8 @@ body {
   content: "";
   height: 100%;
   left: 0;
-  top: 0;
   position: absolute;
+  top: 0;
   width: 1ch;
 }
 
