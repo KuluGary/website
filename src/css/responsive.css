@@ -37,9 +37,10 @@ body {
     "footer footer footer";
   height: 100vh;
   max-width: calc(var(--main-content-width) * 1.25);
-  border-inline: 1px solid var(--text-color-alt);
   margin: 0;
   margin-inline: auto;
+  border-top: 6px solid var(--secondary-color);
+  padding-top: 1rem;
 
   @media (max-width: 480px) {
     grid-template-areas:
@@ -62,16 +63,25 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-inline-end: 1rem;
-    border-block-end: var(--border-small);
 
-    & > svg:first-child {
-      height: 3rem;
+    & #main-avatar {
+      border: 2px solid var(--text-color);
+      aspect-ratio: 1;
+      display: grid;
+      place-content: center;
+      border-radius: 100vw;
+      margin-left: 1.5rem;
 
-      & > g {
-        fill: var(--text-color);
+      & > svg {
+        height: 4rem;
+
+        & > g {
+          fill: var(--text-color);
+        }
       }
     }
   }
+
   & > main {
     grid-area: main;
 
@@ -84,6 +94,17 @@ body {
     grid-area: aside;
     border-inline-end: var(--border-small);
 
+    #external-links {
+      margin-block: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1ch;
+
+      & a {
+        text-decoration: none;
+      }
+    }
+
     & h2 {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -95,7 +116,6 @@ body {
   & > footer {
     grid-area: footer;
     font-size: smaller;
-    border-block-start: var(--border-small);
 
     & img {
       width: auto;
