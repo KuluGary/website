@@ -72,7 +72,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: var(--line-height) 2ch;
+  padding: var(--line-height) calc(var(--line-height) * 1.5);
   max-width: var(--main-content-width);
   line-height: var(--line-height);
   overflow-x: hidden;
