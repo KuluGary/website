@@ -1,4 +1,5 @@
 main.main-content {
+  width: 100%;
   & article {
     & .post-subtitle {
       list-style: none;

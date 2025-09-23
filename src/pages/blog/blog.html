@@ -2,13 +2,12 @@
 title: 'The Blog'
 permalink: /blog/
 description: "A blog with experiments in progress, scattered notes, and the occasional odd trail of thought."
+layout: layouts/base.html
 ---
-{% extends "layouts/base.html" %}
 
 {% set collection = collections["blog-post"] %}
 
 {% block content %}
-  {% include "components/header.html" %}
 
   <main>
     <p>This blog is part workshop bench, part thought garden. Here you can find any ideas or experiments I'm currently working on.</p>
@@ -29,11 +28,8 @@ description: "A blog with experiments in progress, scattered notes, and the occa
     {% endfor %}
   </main>
 
-  {% include "components/footer.html" %}
 {% endblock %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css"/>
-  <link rel="stylesheet" href="/css/components/footer.css"/>
   <link rel="stylesheet" href="/css/components/post-list.css">
 {% endblock %}

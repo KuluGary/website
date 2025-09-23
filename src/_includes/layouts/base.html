@@ -52,6 +52,8 @@
     <!-- Assets, 3rd party scripts, etc -->
     <link rel="stylesheet" href="{{ " /css/global.css" | url }}">
     <link rel="stylesheet" href="{{ " /css/themes.css" | url }}">
+    <link rel="stylesheet" href="{{ " /css/components/header.css" | url }}">
+    <link rel="stylesheet" href="{{ " /css/components/footer.css" | url }}">
     {% block stylesheet %}{% endblock %}
     <script>
       const cachedTheme = localStorage.getItem("theme");
@@ -83,9 +85,62 @@
   </head>
 
   <body>
+    {% include "components/header.html" %}
+
+    <aside>
+      <section>
+        <h2>Status</h2>
+        {% set currentStatus = status.entry[0] %}
+        <p>{{currentStatus.title}}</p>
+      </section>
+
+      <section>
+        <h2>Navigation</h2>
+        <nav>
+          <ul>
+            <li>
+              <a href="/blog/">blog</a>
+            </li>
+            <li>
+              <a href="/now/">now</a>
+            </li>
+            <li>
+              <a href="/uses/">uses</a>
+            </li>
+            <li>
+              <a href="/sites/">sites</a>
+            </li>
+            <li>
+              <a href="/media/">media</a>
+            </li>
+            <li>
+              <a href="/sitemap">sitemap</a>
+            </li>
+            <li>
+              <a href="/settings/">settings</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>
+          Subscribe
+          </h2>
+
+        <ul>
+          <li>
+            <a href="/blog/feed.xml"><img class="rss-icon" height="14" width="14" src="/assets/images/buttons/feed-icon-14x14.png"/> blog feed</a>
+          </li>
+        </ul>
+      </section>
+    </aside>
+
     {% block content %}
       {{ content | safe }}
     {% endblock %}
+
+    {% include "components/footer.html" %}
   </body>
 
 </html>

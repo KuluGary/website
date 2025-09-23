@@ -1,7 +1,8 @@
-{% extends "layouts/base.html" %}
+---
+layout: layouts/base.html
+---
 
 {% block content %}
-  {% include "components/header.html" %}
   {% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
   {% set nextPost = collections['blog-post'] | getNextCollectionItem %}
 
@@ -80,7 +81,6 @@
 {% endblock %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/header.css">
   <link rel="stylesheet" href="/css/components/post-list.css">
   <link rel="stylesheet" href="/css/blog-post.css">
   <link rel="stylesheet" href="/css/prism/grayscale.css">

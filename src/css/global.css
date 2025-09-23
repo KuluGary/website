@@ -72,10 +72,55 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
+<<<<<<< Updated upstream
   padding: var(--line-height) 2ch;
+=======
+  padding: var(--line-height);
+>>>>>>> Stashed changes
   max-width: var(--main-content-width);
   line-height: var(--line-height);
   overflow-x: hidden;
+
+  display: grid;
+  grid-template-areas: "header header" "aside main" "footer footer";
+  grid-template-columns: 25% 1fr;
+  column-gap: var(--line-height);
+
+  & > header {
+    grid-area: header;
+  }
+
+  & > aside {
+    grid-area: aside;
+
+    border-inline-end: 1px solid var(--background-color-alt);
+    padding-inline-end: var(--line-height);
+    text-align: right;
+
+    & h2 {
+      background-color: transparent;
+      padding: 0;
+      color: var(--text-color-alt);
+      font-size: 0.8rem;
+      border-block-end: 1px solid var(--text-color-alt);
+
+      &::before {
+        content: "";
+      }
+    }
+
+    & ul {
+      list-style: none;
+    }
+  }
+
+  & > main {
+    grid-area: main;
+  }
+
+  & > footer {
+    grid-area: footer;
+  }
 
   @media (max-width: 480px) {
     padding: var(--line-height) 1ch;

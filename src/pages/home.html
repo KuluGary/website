@@ -2,10 +2,10 @@
 title: KuluGary's site
 description: Explore a personal corner of the web featuring tech, art and game experiments. A digital playground for projects and odd curiosities.
 permalink: /
+layout: layouts/base.html
 ---
 
-{% extends "layouts/base.html" %} {% block content %} {% include "components/header.html" %}
-
+{% block content %}
 <main>
   <p>
     Welcome! I'm the webmaster of this little corner of the internet. I tinker with
@@ -17,26 +17,47 @@ permalink: /
   <section id="start-exploring">
     <h2>Start exploring</h2>
 
-    <p>This website is handcrafted and curated by me. This is where you can start to explore its different corners, and find some stuff you may find entertaining.</p>
+    <p>
+      This website is handcrafted and curated by me. This is where you can start to explore its different corners, and
+      find some stuff you may find entertaining.
+    </p>
 
     <ul>
-      <li>The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've written {{ collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{ collections["blog-post"].length }} posts.</li>
-      <li>If you want to talk directly to me, you can do so through one of the appropriate channels listed in my <a href="/contact">/contact</a> page.</li>
-      <li>Want to change the look of this site? You can do so in the <a href="/settings">/settings</a> page. Right now, there are {{ themes["light"].length }} light themes and {{ themes["dark"].length }} dark themes as well as some further customization options.</li>
-      <li>Read about this page, how it's made and what purpose it serves at the <a href="/colophon">/colophon</a> page.</li>
-      <li>If you want more sites like this one, look in my <a href="/sites">/sites</a> page for my recommended, or find similar ones in <a href="https://xn--sr8hvo.ws">my webring</a>.</li>
+      <li>
+        The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've written {{
+        collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{
+        collections["blog-post"].length }} posts.
+      </li>
+      <li>
+        If you want to talk directly to me, you can do so through one of the appropriate channels listed in my
+        <a href="/contact">/contact</a> page.
+      </li>
+      <li>
+        Want to change the look of this site? You can do so in the <a href="/settings">/settings</a> page. Right now,
+        there are {{ themes["light"].length }} light themes and {{ themes["dark"].length }} dark themes as well as some
+        further customization options.
+      </li>
+      <li>
+        Read about this page, how it's made and what purpose it serves at the <a href="/colophon">/colophon</a> page.
+      </li>
+      <li>
+        If you want more sites like this one, look in my <a href="/sites">/sites</a> page for my recommended, or find
+        similar ones in <a href="https://xn--sr8hvo.ws">my webring</a>.
+      </li>
       <li>You can check out my most favourite media at the <a href="/media">/media</a> page.</li>
+      <li>Check my button collection at the <a href="/buttons">/buttons</a> page.</li>
       <li>You can leave a hello in the <a href="/guestbook">/guestbook</a>!</li>
     </ul>
 
-    <p>If you didn't find what you were looking for, you may have better luck checking out my <a href="/sitemap">Sitemap</a> for a full breakdown of all the relevant pages of my website.</p>
-
+    <p>
+      If you didn't find what you were looking for, you may have better luck checking out my
+      <a href="/sitemap">Sitemap</a> for a full breakdown of all the relevant pages of my website.
+    </p>
   </section>
 </main>
+{% endblock %}
 
-{% include "components/footer.html" %} {% endblock %} {% block stylesheet %}
-<link rel="stylesheet" href="/css/components/header.css" />
-<link rel="stylesheet" href="/css/components/footer.css" />
+{% block stylesheet %}
 <link rel="stylesheet" href="/css/home.css" />
 <link rel="stylesheet" href="/css/components/media-list.css" />
 {% endblock %}

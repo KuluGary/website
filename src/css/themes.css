@@ -175,11 +175,11 @@ html[data-theme="halloween"] {
 
 html:not([data-content-width]),
 html[data-content-width="standard"] {
-  --main-content-width: calc(min(80ch, round(down, 100%, 1ch)));
+  --main-content-width: calc(min(90ch, round(down, 100%, 1ch)));
 }
 
 html[data-content-width="wide"] {
-  --main-content-width: calc(min(120ch, round(down, 100%, 1ch)));
+  --main-content-width: calc(min(130ch, round(down, 100%, 1ch)));
 }
 
 /* #endregion */
