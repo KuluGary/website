@@ -95,6 +95,9 @@ html[data-theme="grayscale"] {
   --primary-color: #6d655f;
   --secondary-color: #a11e1a;
   --tertiary-color: #b35e15;
+
+  --background-color-linear: rgb(from var(--tertiary-color) r g b / 0.15);
+  --background-color-radial: rgb(from var(--tertiary-color) r g b / 0.18);
 }
 
 html[data-theme="cherry-blosom"] {
@@ -106,6 +109,9 @@ html[data-theme="cherry-blosom"] {
   --primary-color: #eddad1;
   --secondary-color: #ab3c61;
   --tertiary-color: #d60076;
+
+  --background-color-linear: rgb(from var(--secondary-color) r g b / 0.15);
+  --background-color-radial: rgb(from var(--secondary-color) r g b / 0.18);
 }
 
 html[data-theme="dark-blue"] {
@@ -117,6 +123,9 @@ html[data-theme="dark-blue"] {
   --primary-color: #37c3b7;
   --secondary-color: #fbbc55;
   --tertiary-color: #ff4680;
+
+  --background-color-linear: rgb(from var(--primary-color) r g b / 0.1);
+  --background-color-radial: rgb(from var(--primary-color) r g b / 0.13);
 }
 
 html[data-theme="dark-grayscale"] {
@@ -128,6 +137,9 @@ html[data-theme="dark-grayscale"] {
   --primary-color: #81a2be;
   --secondary-color: #de935f;
   --tertiary-color: #b5bd68;
+
+  --background-color-linear: rgb(from var(--tertiary-color) r g b / 0.1);
+  --background-color-radial: rgb(from var(--tertiary-color) r g b / 0.13);
 }
 
 html[data-theme="halloween"] {
@@ -139,6 +151,9 @@ html[data-theme="halloween"] {
   --primary-color: #e19157;
   --secondary-color: #e19157;
   --tertiary-color: #e19157;
+
+  --background-color-linear: rgb(from var(--primary-color) r g b / 0.15);
+  --background-color-radial: rgb(from var(--primary-color) r g b / 0.18);
 }
 
 @media (prefers-color-scheme: dark) {

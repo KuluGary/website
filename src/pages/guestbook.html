@@ -2,6 +2,7 @@
 permalink: /guestbook/
 title: Guestbook
 layout: layouts/base.html
+description: Here you can leave a little hello or message that can be seen by other people who visits this site.
 ---
 
 {% block content %}
@@ -24,11 +25,6 @@ layout: layouts/base.html
 {% block script %}
 	<script src="https://iframe.chat/scripts/main.min.js"></script>
 	<script>
-		document
-			.querySelector("noscript")
-			.style
-			.display = "none";
-
 		document
 			.querySelector("#chattable")
 			.style

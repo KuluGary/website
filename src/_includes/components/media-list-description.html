@@ -93,7 +93,15 @@
 
 	{% if item.description %}
 		<div class="description">
-			{{ item.description | safe }}
+			<input id="{{ item.id or item.title }}" type="checkbox" aria-hidden="true">
+
+			<div>{{ item.description | safe }}</div>
+
+			{% if item.description.length > 210 %}
+				<label for="{{ item.id or item.title}}" aria-hidden="true">
+					{# See more #}
+				</label>
+			{% endif %}
 		</div>
 	{% endif %}
 </article>
