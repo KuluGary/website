@@ -60,6 +60,9 @@
       const cachedFontStack = localStorage.getItem("font-stack");
       const cachedContentWidth = localStorage.getItem("content-width");
       const cachedFontSize = localStorage.getItem("font-size");
+      const cachedBackground = localStorage.getItem("background");
+
+      console.log({cachedBackground})
 
       if (cachedTheme !== null) 
         document
@@ -80,6 +83,11 @@
         document
           .documentElement
           .setAttribute("data-font-size", cachedFontSize)
+
+      if (cachedBackground !== null) 
+        document
+          .documentElement
+          .setAttribute("data-background", cachedBackground)
     </script>
     {% block script %}{% endblock %}
   </head>

@@ -95,9 +95,6 @@ html[data-theme="grayscale"] {
   --primary-color: #6d655f;
   --secondary-color: #a11e1a;
   --tertiary-color: #b35e15;
-
-  --background-color-linear: rgb(from var(--tertiary-color) r g b / 0.15);
-  --background-color-radial: rgb(from var(--tertiary-color) r g b / 0.18);
 }
 
 html[data-theme="cherry-blosom"] {
@@ -109,9 +106,6 @@ html[data-theme="cherry-blosom"] {
   --primary-color: #eddad1;
   --secondary-color: #ab3c61;
   --tertiary-color: #d60076;
-
-  --background-color-linear: rgb(from var(--secondary-color) r g b / 0.15);
-  --background-color-radial: rgb(from var(--secondary-color) r g b / 0.18);
 }
 
 html[data-theme="dark-blue"] {
@@ -123,9 +117,6 @@ html[data-theme="dark-blue"] {
   --primary-color: #37c3b7;
   --secondary-color: #fbbc55;
   --tertiary-color: #ff4680;
-
-  --background-color-linear: rgb(from var(--primary-color) r g b / 0.1);
-  --background-color-radial: rgb(from var(--primary-color) r g b / 0.13);
 }
 
 html[data-theme="dark-grayscale"] {
@@ -133,13 +124,10 @@ html[data-theme="dark-grayscale"] {
   --text-color: #c5c8c6;
   --text-color-alt: #666;
   --background-color: #1d1f21;
-  --background-color-alt: #373b41;
+  --background-color-alt: #2c2f34;
   --primary-color: #81a2be;
   --secondary-color: #de935f;
   --tertiary-color: #b5bd68;
-
-  --background-color-linear: rgb(from var(--tertiary-color) r g b / 0.1);
-  --background-color-radial: rgb(from var(--tertiary-color) r g b / 0.13);
 }
 
 html[data-theme="halloween"] {
@@ -151,9 +139,6 @@ html[data-theme="halloween"] {
   --primary-color: #e19157;
   --secondary-color: #e19157;
   --tertiary-color: #e19157;
-
-  --background-color-linear: rgb(from var(--primary-color) r g b / 0.15);
-  --background-color-radial: rgb(from var(--primary-color) r g b / 0.18);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -182,4 +167,57 @@ html[data-content-width="wide"] {
   --main-content-width: calc(min(130ch, round(down, 100%, 1ch)));
 }
 
+/* #endregion */
+
+/* #region Background pattern */
+html:not([data-background]),
+html[data-backgroun="flat"] {
+  background-image: none;
+}
+
+html[data-background="bricks"] {
+  --s: 50px; /* control the size*/
+  --c1: hsl(from var(--background-color) h s calc(l - 2.5));
+  --c2: var(--background-color);
+
+  &[data-theme="cherry-blosom"] {
+    --c1: #d899ad;
+  }
+
+  --c: #0000 75%, var(--c1) 0;
+  --g1: conic-gradient(at 78% 3%, var(--c));
+  --g2: conic-gradient(at 3% 78%, var(--c));
+
+  background: var(--g1), var(--g1) var(--s) var(--s), var(--g1) calc(2 * var(--s)) calc(2 * var(--s)),
+    var(--g1) calc(3 * var(--s)) calc(3 * var(--s)), var(--g2) 0 calc(3 * var(--s)), var(--g2) var(--s) 0,
+    var(--g2) calc(2 * var(--s)) var(--s), var(--g2) calc(3 * var(--s)) calc(2 * var(--s)) var(--c2);
+  background-size: calc(4 * var(--s)) calc(4 * var(--s));
+
+  & > body {
+    outline: 6px solid var(--c1);
+  }
+}
+
+html[data-background="alien"] {
+  --s: 120px; /* control the size*/
+  --c1: var(--background-color);
+  --c2: hsl(from var(--background-color) h s calc(l - 2.5));
+
+  &[data-theme="cherry-blosom"] {
+    --c2: #d899ad;
+  }
+
+  background: radial-gradient(var(--c1) 14%, var(--c2) 15% 30%, var(--c1) 31% 44%, var(--c2) 45% 60%, #0000 61%),
+    linear-gradient(45deg, #0000 46%, var(--c2) 0 54%, #0000 0),
+    linear-gradient(-45deg, #0000 46%, var(--c2) 0 54%, #0000 0) var(--c1);
+  background-size: var(--s) var(--s) !important;
+
+  & > body {
+    outline: 12px solid var(--c2);
+  }
+}
+
+html[data-background="darker"] {
+  background-color: hsl(from var(--background-color) h s calc(l - 2.5));
+}
 /* #endregion */

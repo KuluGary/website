@@ -3,16 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const cachedFontStack = localStorage.getItem("font-stack");
   const cachedContentWidth = localStorage.getItem("content-width");
   const cachedFontSize = localStorage.getItem("font-size");
+  const cachedBackground = localStorage.getItem("background");
 
   const themePicker = document.querySelector("#theme-select");
   const fontPicker = document.querySelector("#font-select");
   const contentWidthPicker = document.querySelector("#content-width");
   const fontSizePicker = document.querySelector("#font-size");
+  const backgroundPicker = document.querySelector("#background-select");
   const resetButton = document.querySelector("#reset-button");
 
   setDefaultTheme();
   setDefaultContentWidth();
   setDefaultFontSize();
+  setDefaultBackground();
   if (cachedFontStack) fontPicker.value = cachedFontStack;
   if (cachedContentWidth) contentWidthPicker.value = cachedContentWidth;
   if (cachedFontSize) fontSizePicker.value = cachedFontSize;
@@ -22,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fontPicker.addEventListener("change", (e) => handleChangeFontStack(e.target.value));
   contentWidthPicker.addEventListener("change", (e) => handleChangeContentWidth(e.target.value));
   fontSizePicker.addEventListener("change", (e) => handleChangeFontSize(e.target.value));
+  backgroundPicker.addEventListener("change", (e) => handleChangeBackground(e.target.value));
 
   function setDefaultTheme() {
     if (cachedTheme) {
@@ -46,6 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cachedContentWidth) {
       const contentWidthRadio = contentWidthPicker.querySelector(`[value=${cachedContentWidth}]`);
       contentWidthRadio.checked = true;
+    }
+  }
+
+  function setDefaultBackground() {
+    if (cachedBackground) {
+      backgroundPicker.value = cachedBackground;
+    } else {
+      backgroundPicker.value = "flat";
     }
   }
 
@@ -76,6 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleChangeFontSize(newSize) {
     localStorage.setItem("font-size", newSize);
     document.documentElement.setAttribute("data-font-size", newSize);
+  }
+
+  function handleChangeBackground(newBackground) {
+    localStorage.setItem("background", newBackground);
+    document.documentElement.setAttribute("data-background", newBackground);
   }
 
   function handleResetForm(e) {
