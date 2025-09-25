@@ -15,7 +15,7 @@ description: "Personalize your experience: change font sizes, themes, and other 
     <p>
     This site intends to be accessible for all and I will try to make it so it respect your browser preferences, but if
     I forgot something please feel free to <a href="/contact">contact me</a> and I will correct it as soon as I'm able.
-  </p>
+    </p>
 
     <p>
     The settings you input in this page will be stored in your
@@ -47,6 +47,8 @@ description: "Personalize your experience: change font sizes, themes, and other 
       <label for="font-select">
         <h3>Font stack:</h3>
       </label>
+
+      <p class="info">Font stacks are adapted from <a href="https://modernfontstacks.com/">Modern font stacks</a>.</p>
 
       <select id="font-select">
         {% for fontstack in fonts %}
@@ -89,6 +91,18 @@ description: "Personalize your experience: change font sizes, themes, and other 
         Wide
       </label>
       </fieldset>
+
+      <label for="background-select">
+        <h3>Background:</h3>
+      </label>
+
+      <p class="info">Backgrounds are from <a href="https://css-pattern.com/">CSS pattern</a>.</p>
+
+      <select id="background-select">
+        {% for background in backgrounds %}
+          <option value="{{background.id}}">{{background.label}}</option>
+        {% endfor %}
+      </select>
 
       <button id="reset-button">Reset</button>
     </form>

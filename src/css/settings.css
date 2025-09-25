@@ -9,7 +9,7 @@ form {
 
 #reset-button {
   display: block;
-  margin-top: var(--line-height);
+  margin-top: calc(var(--line-height) * 2);
 }
 
 fieldset {
@@ -23,6 +23,10 @@ fieldset > label {
 
 fieldset > label + label {
   margin-block: var(--line-height);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 noscript {
@@ -36,4 +40,12 @@ noscript {
 
 select {
   margin-top: var(--line-height);
+}
+
+.info + select {
+  margin-top: 0;
+}
+
+.info {
+  font-size: smaller;
 }
