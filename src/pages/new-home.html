@@ -4,18 +4,9 @@ permalink: /new-home/
 layout: layouts/responsive.html
 ---
 {% block content %}
-	<header>
-		<div id="main-avatar">
-			{% include "components/hat-icon.html" %}
-		</div>
-
-		<a href="/settings">
-			<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-				<path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/>
-				<path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
-			</svg>
-		</a>
-	</header>
+	<header></header>
+	<aside>
+	Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum rerum adipisci in consectetur, recusandae cupiditate doloremque ullam repellendus tenetur.</aside>
 	<main>
 		<p>
 			Welcome! I'm the webmaster of this little corner of the internet. I tinker with
@@ -27,7 +18,7 @@ layout: layouts/responsive.html
 		<section id="start-exploring">
 			<h2>Start exploring</h2>
 
-			<p>This website is handcrafted and curated by me. This is where you can start to explore its different corners, and find some stuff you may find entertaining.</p>
+			<hr>
 
 			<ul>
 				<li>The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've written {{ collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{ collections["blog-post"].length }} posts.</li>
@@ -44,7 +35,53 @@ layout: layouts/responsive.html
 	</main>
 
 	<aside class="side">
-		<section id="external-links">
+		<nav>
+			<ul>
+
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/blog">Blog</a>
+				</li>
+				<li>
+					<a href="/media">Media</a>
+				</li>
+				<li>
+					<a href="/contact">Contact</a>
+				</li>
+			</ul>
+		</nav>
+
+		<hr class="dashed">
+
+		<section id="new-posts">
+			<h2>New posts in {{ collections['postsByYear'][0][0] }}</h2>
+			<ul>
+				{% for post in collections['postsByYear'][0][1] %}
+					<li>
+						<a href="{{ post.url }}">{{ post.data.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+
+			<a id="rss-link" href="/blog/feed.xml">rss feed</a>
+		</section>
+
+		<hr class="dashed">
+
+		<section id="current-status">
+			<h2>Current status</h2>
+
+			<p>{{ status.entry[0].title }}</p>
+		</section>
+
+		<hr class="dashed">
+
+		<section id="elsewhere">
+			<h2>Elsewhere</h2>
+		</section>
+		{# <section id="external-links">
 			<a href="">
 				<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z"/>
 
@@ -64,64 +101,71 @@ layout: layouts/responsive.html
 					<title>Tumblr</title>
 				</svg>
 			</a>
-		</section>
+		</section> #}
 
-		<h2>Status</h2>
-		{% set currentStatus = status.entry[0] %}
+		{# <section id="status">
+			<h2>Status</h2>
+			{% set currentStatus = status.entry[0] %}
+			<article id="current-status">
+				<p>{{currentStatus.title}}</p>
+			</article>
+		</section> #}
 
-		<article id="current-status">
-			<p>{{currentStatus.title}}</p>
-		</article>
+		{# <nav>
+			<section>
+				<h2>Blog</h2>
+				<ul>
+					<li>
+						<a href="{{ collections['postsByYear'][0][1][0].url }}">Latest post</a>
+					</li>
+					<li>
+						<a href="/blog">All posts</a>
+					</li>
+				</ul>
+			</section>
 
-		<nav>
-			<h2>Blog</h2>
-			<ul>
-				<li>
-					<a href="{{ collections['postsByYear'][0][1][0].url }}">Latest post</a>
-				</li>
-				<li>
-					<a href="/blog">All posts</a>
-				</li>
-			</ul>
+			<section>
+				<h2>Slash pages</h2>
+				<ul>
+					<li>
+						<a href="/now">/now</a>
+					</li>
+					<li>
+						<a href="/colophon">/colophon</a>
+					</li>
+					<li>
+						<a href="/contact">/contact</a>
+					</li>
+					<li>
+						<a href="/uses">/uses</a>
+					</li>
+				</ul>
+			</section>
 
-			<h2>Slash pages</h2>
-			<ul>
-				<li>
-					<a href="/now">/now</a>
-				</li>
-				<li>
-					<a href="/colophon">/colophon</a>
-				</li>
-				<li>
-					<a href="/contact">/contact</a>
-				</li>
-				<li>
-					<a href="/uses">/uses</a>
-				</li>
-			</ul>
-
-			<h2>Media</h2>
-			<ul>
-				<li>
-					<a href="/media">Media highlights</a>
-				</li>
-				<li>
-					<a href="/media/games">Games</a>
-				</li>
-				<li>
-					<a href="/media/webcomics">Webcomics</a>
-				</li>
-				<li>
-					<a href="/media/shows">TV Shows</a>
-				</li>
-				<li>
-					<a href="/media/movies">Movies</a>
-				</li>
-				<li>
-					<a href="/media/manga">Manga</a>
-				</li>
-			</ul>
-		</nav>
+			<section>
+				<h2>Media</h2>
+				<ul>
+					<li>
+						<a href="/media">Media highlights</a>
+					</li>
+					<li>
+						<a href="/media/games">Games</a>
+					</li>
+					<li>
+						<a href="/media/webcomics">Webcomics</a>
+					</li>
+					<li>
+						<a href="/media/shows">TV Shows</a>
+					</li>
+					<li>
+						<a href="/media/movies">Movies</a>
+					</li>
+					<li>
+						<a href="/media/manga">Manga</a>
+					</li>
+				</ul>
+			</section>
+		</nav> #}
 	</aside>
 
 	{% include "components/footer.html" %}

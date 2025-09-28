@@ -1,5 +1,11 @@
-<p>Posts by year:
-  {% for year, _ in collections['postsByYear'] %}
-		<a href="#posts-{{ year }}">{{ year }}</a>
-	{% endfor %}
-</p>
+<section>
+	<h2>Posts by year</h2>
+
+	<ul>
+		{% for year, arr in collections["postsByYear"] %}
+			<li>
+				<a href="#posts-{{ year }}">{{ year }}</a> ({{arr.length}})
+			</li>
+		{% endfor %}
+	</ul>
+</section>

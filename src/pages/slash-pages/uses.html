@@ -37,6 +37,23 @@ description: Discover the apps, hardware, and services I use daily to create, ti
   {% include "components/footer.html" %}
 {% endblock %}
 
+{% set sidebar %}
+<div>
+  <section>
+    <h2>Table of contents</h2>
+    <ol>
+      {% for category in uses %}
+        <li>
+          <a href="{{ page.url }}#{{ category.title | slugify }}">{{category.title}}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
+
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/uses.css">
   <link rel="stylesheet" href="/css/components/header.css"/>

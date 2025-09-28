@@ -57,6 +57,39 @@ description: A curated collection of favorites spanning games, music, movies, sh
 	{% include "components/footer.html" %}
 {% endblock %}
 
+{% set sidebar %}
+<div>
+	<section>
+		<h2>Media</h2>
+
+		<ul>
+			<li>
+				<a href="/media/games">Games</a>
+			</li>
+			<li>
+				<a href="/media/webcomics">Webcomics</a>
+			</li>
+			<li>
+				<a href="/media/manga">Manga</a>
+			</li>
+			<li>
+				<a href="/media/shows">Shows</a>
+			</li>
+			<li>
+				<a href="/media/movies">Movies</a>
+			</li>
+			<li>
+				<a href="/media/music">Music</a>
+			</li>
+			<li>
+				<a href="/media/videos">Videos</a>
+			</li>
+		</ul>
+	</section>
+
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>

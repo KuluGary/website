@@ -11,11 +11,7 @@ description: 'Discover a personal manga collection: current reads, favorites, co
 	<main>
 		<p>My personal manga collection, including some series I find a must-read and some I'm still waiting for a chance to check out.</p>
 
-		{% set media = manga %}
-		{% set mediaType = "manga" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = manga.reading | removeUnsafeManga %}
 		{% set href = "/media/manga/status/reading" %}
@@ -50,6 +46,15 @@ description: 'Discover a personal manga collection: current reads, favorites, co
 
 	{% include "components/footer.html" %}
 {% endblock content %}
+
+{% set sidebar %}
+<div>
+	{% set media = manga %}
+	{% set mediaType = "manga" %}
+	{% include "components/media-tag-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>

@@ -1,64 +1,59 @@
 .header {
   border: 2px solid var(--text-color);
-  margin-bottom: var(--line-height);
+  height: 100%;
 
-  & *:has(h2) {
-    background-color: var(--text-color);
-    color: var(--background-color);
+  display: flex;
+  align-items: center;
+  gap: var(--line-height);
+  padding: calc(var(--line-height) / 2);
+  background-color: var(--text-color);
+  color: var(--background-color);
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    font-size: 2rem;
+    line-height: calc(2 * var(--line-height));
+    text-transform: uppercase;
+
+    &::before {
+      content: "";
+      margin: 0;
+    }
   }
 
-  & .logo-row {
-    display: flex;
-    align-items: center;
-    gap: var(--line-height);
-    padding: calc(var(--line-height) / 2);
+  & > img {
+    width: auto;
+    height: auto;
+    display: inline;
+    height: 70px;
+    width: 70px;
+    margin: 0px;
+  }
 
-    h2 {
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
-      font-size: 2rem;
-      line-height: calc(2 * var(--line-height));
-      text-transform: uppercase;
-
-      &::before {
-        content: "";
-        margin: 0;
-      }
+  & a {
+    text-decoration: none;
+    margin: 0px;
+    background-color: transparent;
+    @media (width <= 290px) {
+      display: block;
+      margin-inline: auto;
+      text-align: center;
     }
 
-    & > img {
-      width: auto;
-      height: auto;
-      display: inline;
-      height: 70px;
-      width: 70px;
-      margin: 0px;
+    & > * {
+      color: var(--background-color);
+    }
+  }
+
+  & svg {
+    @media (width <= 290px) {
+      display: none;
     }
 
-    & a {
-      text-decoration: none;
-      margin: 0px;
-      background-color: transparent;
-      @media (width <= 290px) {
-        display: block;
-        margin-inline: auto;
-        text-align: center;
-      }
-
-      & > * {
-        color: var(--background-color);
-      }
-    }
-
-    & svg {
-      @media (width <= 290px) {
-        display: none;
-      }
-
-      & path {
-        fill: var(--background-color);
-      }
+    & path {
+      fill: var(--background-color);
     }
   }
 

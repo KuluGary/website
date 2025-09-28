@@ -14,5 +14,13 @@
   {
     "id": "alien",
     "label": "Alien"
+  },
+  {
+    "id": "street",
+    "label": "Street"
+  },
+  {
+    "id": "circuit",
+    "label": "Circuit"
   }
 ]

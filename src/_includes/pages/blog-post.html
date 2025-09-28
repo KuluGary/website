@@ -1,13 +1,30 @@
----
-layout: layouts/base.html
----
+{% extends "layouts/base.html" %}
 
 {% block content %}
   {% set previousPost = collections['blog-post'] | getPreviousCollectionItem %}
   {% set nextPost = collections['blog-post'] | getNextCollectionItem %}
 
   <main id="main-content" class="main-content h-entry">
+
     <article>
+      {% set currentYear = date.getFullYear() %}
+      {% set breadcrumbs = [
+        {
+          label: "..",
+          link: "/",
+          active: true
+        }, {
+          label: "blog",
+          link: "/blog",
+          active: true
+        }, {
+          label: currentYear,
+          link: "/blog/#posts-" + date.getFullYear(),
+          active: true
+        }
+      ] %}
+      {% include "components/breadcrumbs.html" %}
+
       <h1 class="p-name">{{title}}</h1>
 
       <ul class="post-subtitle">
@@ -54,31 +71,48 @@ layout: layouts/base.html
       {% endif %}
 
       <div class="e-content">{{ content | safe }}</div>
+
+      <footer id="post-footer" class="post-footer">
+        <nav>
+          {% if nextPost %}
+            <p data-btn-type="Next">
+              <a class="nxt-btn" href="{{ nextPost.url }}">
+                <span class="navigation-button-icon">🡨</span>
+                {{ nextPost.data.title }}</a>
+            </p>
+          {% endif %}
+          {% if previousPost %}
+            <p data-btn-type="Previous">
+              <a class="prev-btn" href="{{ previousPost.url }}">
+                {{ previousPost.data.title }}
+                <span class="navigation-button-icon">🡪</span></a>
+            </p>
+          {% endif %}
+        </nav>
+
+        {% include "components/webmentions.html" %}
+
+      </footer>
     </article>
   </main>
 
-  <footer id="post-footer" class="post-footer">
-    <nav>
-      {% if nextPost %}
-        <p data-btn-type="Next">
-          <a class="nxt-btn" href="{{ nextPost.url }}">
-            <span class="navigation-button-icon">🡨</span>
-            {{ nextPost.data.title }}</a>
-        </p>
-      {% endif %}
-      {% if previousPost %}
-        <p data-btn-type="Previous">
-          <a class="prev-btn" href="{{ previousPost.url }}">
-            {{ previousPost.data.title }}
-            <span class="navigation-button-icon">🡪</span></a>
-        </p>
-      {% endif %}
-    </nav>
-
-    {% include "components/webmentions.html" %}
-
-  </footer>
 {% endblock %}
+
+{% set sidebar %}
+<div class="custom-sidebar">
+  <section class="section-toc">
+    <h2>Table of contents</h2>
+    {{ content | toc | safe }}
+  </section>
+
+  <section class="section-share">
+    <h2>Share this post</h2>
+
+    {% include "components/share-buttons.html" %}
+  </section>
+
+</div>
+{% endset %}
 
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/components/post-list.css">

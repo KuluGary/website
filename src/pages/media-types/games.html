@@ -11,11 +11,7 @@ description: A personal archive of games I've played, loved, set aside, or still
 	<main>
 		<p>My gaming shelf serves as an archive stacked with everything from loved games from my childhood to some I'm still waiting for a chance to try.</p>
 
-		{% set media = games %}
-		{% set mediaType = "games" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = games.playing %}
 		{% set href = "/media/games/status/playing" %}
@@ -57,6 +53,14 @@ description: A personal archive of games I've played, loved, set aside, or still
 	<link rel="stylesheet" href="/css/components/media-list.css"/>
 {% endblock %}
 
+{% set sidebar %}
+	<div>
+		{% set media = games %}
+		{% set mediaType = "games" %}
+		{% include "components/media-tag-list.html" %}
+		{% include "components/navbar/main-navigation.html" %}
+	</div>
+{% endset %}
 {% block script %}
 	<script src="/js/media-list.js" defer></script>
 {% endblock %}

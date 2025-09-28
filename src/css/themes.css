@@ -160,11 +160,11 @@ html[data-theme="halloween"] {
 
 html:not([data-content-width]),
 html[data-content-width="standard"] {
-  --main-content-width: calc(min(90ch, round(down, 100%, 1ch)));
+  --main-content-width: calc(min(90ch, round(down, 100vw, 1ch)));
 }
 
 html[data-content-width="wide"] {
-  --main-content-width: calc(min(130ch, round(down, 100%, 1ch)));
+  --main-content-width: calc(min(130ch, round(down, 100vw, 1ch)));
 }
 
 /* #endregion */
@@ -219,5 +219,39 @@ html[data-background="alien"] {
 
 html[data-background="darker"] {
   background-color: hsl(from var(--background-color) h s calc(l - 2.5));
+}
+
+html[data-background="street"] {
+  --s: 100px; /* control the size*/
+  --c1: var(--background-color);
+  --c2: hsl(from var(--background-color) h s calc(l - 2.5));
+
+  --_s: calc(2 * var(--s)) calc(2 * var(--s));
+  --_g: var(--_s) conic-gradient(at 40% 40%, #0000 75%, var(--c1) 0);
+  --_p: var(--_s) conic-gradient(at 20% 20%, #0000 75%, var(--c2) 0);
+  background: calc(0.9 * var(--s)) calc(0.9 * var(--s)) / var(--_p),
+    calc(-0.1 * var(--s)) calc(-0.1 * var(--s)) / var(--_p), calc(0.7 * var(--s)) calc(0.7 * var(--s)) / var(--_g),
+    calc(-0.3 * var(--s)) calc(-0.3 * var(--s)) / var(--_g),
+    conic-gradient(from 90deg at 20% 20%, var(--c2) 25%, var(--c1) 0) 0 0 / var(--s) var(--s);
+
+  & > body {
+    outline: 12px solid var(--c2);
+  }
+}
+
+html[data-background="circuit"] {
+  --s: 60px; /* control the size*/
+  --c1: var(--background-color);
+  --c2: hsl(from var(--background-color) h s calc(l - 2.5));
+
+  --c: #0000 71%, var(--c1) 0 79%, #0000 0;
+  --_s: calc(var(--s) / 2) / calc(2 * var(--s)) calc(2 * var(--s));
+  background: linear-gradient(45deg, var(--c)) calc(var(--s) / -2) var(--_s),
+    linear-gradient(135deg, var(--c)) calc(var(--s) / 2) var(--_s),
+    radial-gradient(var(--c1) 35%, var(--c2) 37%) 0 0 / var(--s) var(--s);
+
+  & > body {
+    outline: 12px solid var(--c2);
+  }
 }
 /* #endregion */

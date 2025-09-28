@@ -1,9 +1,8 @@
-{% set mentions = webmentions | getWebmentionsByUrl(metadata.url + page.url) %}
+{% set mentions = webmentions | getWebmentionsByUrl(metadata.url + page.url) | filterOwnWebmentions %}
 
 <section class="webmentions">
-
-	{% set reposts = mentions | webmentionsByType('repost-of') | filterOwnWebmentions %}
-	{% set likes = mentions | webmentionsByType('like-of') | filterOwnWebmentions %}
+	{% set reposts = mentions | webmentionsByType('repost-of') %}
+	{% set likes = mentions | webmentionsByType('like-of') %}
 	{% set replies = mentions | webmentionsByType('in-reply-to') %}
 
 	{% set repostsSize = reposts.length %}
@@ -29,16 +28,13 @@
 			{% endif %}
 
 		</div>
-		<div class="share-buttons">
-			{% include "components/share-buttons.html" %}
-		</div>
 	</section>
 
 	<p>To reply to this post, send a <a href="https://indieweb.org/Webmention">Webmention</a> and it will show up here after the site rebuilds next time.</p>
 
 	{% if mentions.length > 0 %}
 		<details class="webmentions-details">
-			<summary> Check webmentions</summary>
+			<summary> Mentions ({{ mentions.length }}):</summary>
 
 			{% for mention in mentions %}
 				<ul>

@@ -11,8 +11,6 @@ description: Explore a curated movie collection, from favorites and watchlist pi
 	<main>
 		<p>Even though I'm not the biggest movie buff, here are some of the movies that have fundamentally changed how I view creative writing and cinematography.</p>
 
-		{% set media = movies %}
-		{% set mediaType = "movies" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 
 		{% include "components/media-tag-list.html" %}
@@ -46,6 +44,15 @@ description: Explore a curated movie collection, from favorites and watchlist pi
 	<link rel="stylesheet" href="/css/components/footer.css"/>
 	<link rel="stylesheet" href="/css/components/media-list.css"/>
 {% endblock %}
+
+{% set sidebar %}
+<div>
+	{% set media = movies %}
+	{% set mediaType = "movies" %}
+	{% include "components/media-tag-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 
 {% block script %}
 	<script src="/js/media-list.js" defer></script>

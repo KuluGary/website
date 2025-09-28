@@ -1,5 +1,6 @@
 main {
   min-height: 55vh;
+  height: 100%;
 }
 
 #chattable {
@@ -7,6 +8,7 @@ main {
   border: none;
   min-height: 55vh;
   display: none;
+  height: 100%;
 }
 
 noscript {

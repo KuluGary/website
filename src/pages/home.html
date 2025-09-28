@@ -2,8 +2,8 @@
 title: KuluGary's site
 description: Explore a personal corner of the web featuring tech, art and game experiments. A digital playground for projects and odd curiosities.
 permalink: /
-layout: layouts/base.html
 ---
+{% extends "layouts/base.html" %}
 
 {% block content %}
 <main>
@@ -56,6 +56,13 @@ layout: layouts/base.html
   </section>
 </main>
 {% endblock %}
+
+{% set sidebar  %}
+  <div>
+    {% include "components/navbar/current-status.html" %}
+    {% include "components/navbar/main-navigation.html" %}
+  </div>
+{% endset %}
 
 {% block stylesheet %}
 <link rel="stylesheet" href="/css/home.css" />

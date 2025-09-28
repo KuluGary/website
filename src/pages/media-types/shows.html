@@ -11,11 +11,7 @@ description: Look a collection of my TV shows, including favorites and watchlist
 	<main>
 		<p>There are a few TV shows I love and rewatch all the time. In this list you can see what those are, and what I'm watching at the moment.</p>
 
-		{% set media = shows %}
-		{% set mediaType = "shows" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = shows.watchlist %}
 		{% set href = "/media/shows/status/watching" %}
@@ -40,6 +36,15 @@ description: Look a collection of my TV shows, including favorites and watchlist
 
 	{% include "components/footer.html" %}
 {% endblock content %}
+
+{% set sidebar %}
+<div>
+	{% set media = shows %}
+	{% set mediaType = "shows" %}
+	{% include "components/media-tag-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>

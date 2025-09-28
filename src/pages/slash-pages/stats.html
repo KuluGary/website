@@ -6,21 +6,19 @@ description: Explore interesting stats about my website and media collection, fr
 {% extends "layouts/base.html" %}
 
 {% block content %}
-  {% include "components/header.html" %}
-
-  {% include "components/stub.html" %}
-  <p>A glimpse at the numbers behind my digital life.</p>
-
-  <ul>
-    <li>I have made <strong>{{ collections["blog-post"].length }} posts</strong>.</li>
-    <li>I have completed <strong>{{ games["completed"].length }} games</strong>.
-    </li>
-    <li>I've watched <strong>{{ shows["seen"].length }} shows</strong>.
-    </li>
-    <li>I've watched <strong>{{ movies["seen"].length }} movies</strong>.
-    </li>
-  </ul>
-  {% include "components/footer.html" %}
+  <main>
+    {% include "components/stub.html" %}
+    <p>A glimpse at the numbers behind my digital life.</p>
+    <ul>
+      <li>I have made <strong>{{ collections["blog-post"].length }} posts</strong>.</li>
+      <li>I have completed <strong>{{ games["completed"].length }} games</strong>.
+      </li>
+      <li>I've watched <strong>{{ shows["seen"].length }} shows</strong>.
+      </li>
+      <li>I've watched <strong>{{ movies["seen"].length }} movies</strong>.
+      </li>
+    </ul>
+  </main>
 
 {% endblock %}
 

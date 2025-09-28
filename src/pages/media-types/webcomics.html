@@ -12,11 +12,7 @@ description: 'Explore a curated collection of webcomics: ongoing reads, favorite
 	<main>
 		<p>I've read webcomics since I started using the Internet, from small sprite-based comedies to humongous multimedia endeavors, the creative drive of creatives on the Internet is awe-inspiring. You can see what I love, read in the past or I'm reading currently.</p>
 
-		{% set media = webcomics %}
-		{% set mediaType = "webcomic" %}
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = webcomics.reading %}
 		{% set href = "/media/webcomic/status/reading" %}
@@ -42,6 +38,15 @@ description: 'Explore a curated collection of webcomics: ongoing reads, favorite
 
 	{% include "components/footer.html" %}
 {% endblock content %}
+
+{% set sidebar %}
+<div>
+	{% set media = webcomics %}
+	{% set mediaType = "webcomics" %}
+	{% include "components/media-tag-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>

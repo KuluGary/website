@@ -6,28 +6,27 @@ layout: layouts/base.html
 ---
 
 {% block content %}
+	<main>
 
-	{% include "components/header.html" %}
+		<p>
+			When this site was hosted on <a href="https://www.netlify.com/">Netlify</a>, I used to have a contact form using their <a href="https://docs.netlify.com/manage/forms/setup/">serverless form handling</a>; but it was finnicky to implement and not something I really wanted to deal with in the long run.
+		</p>
 
-	<p>
-		When this site was hosted on <a href="https://www.netlify.com/">Netlify</a>, I used to have a contact form using their <a href="https://docs.netlify.com/manage/forms/setup/">serverless form handling</a>; but it was finnicky to implement and not something I really wanted to deal with in the long run.
-	</p>
+		<p>If you need to contact me, you can do so through any of these channels:</p>
 
-	<p>If you need to contact me, you can do so through any of these channels:</p>
+		<ul>
+			<li>Leave a message in the <a href="/guestbook">/guestbook</a>.
+			</li>
+			<li>Mastodon @<a href="https://indiepocalypse.social/@kulugary">kulugary.indiepocalypse.social</a>.
+			</li>
+			<li>Bluesky @<a href="https://bsky.app/profile/kulugary.itch.io">kulugary.itch.io</a>.</li>
+			<li>Tumblr @<a href="https://kulugary.tumblr.com/">kulugary</a>.
+			</li>
+		</ul>
 
-	<ul>
-		<li>Leave a message in the <a href="/guestbook">/guestbook</a>.
-		</li>
-		<li>Mastodon @<a href="https://indiepocalypse.social/@kulugary">kulugary.indiepocalypse.social</a>.
-		</li>
-		<li>Bluesky @<a href="https://bsky.app/profile/kulugary.itch.io">kulugary.itch.io</a>.</li>
-		<li>Tumblr @<a href="https://kulugary.tumblr.com/">kulugary</a>.
-		</li>
-	</ul>
+		<p>If you want to leave a comment about a <a href="/blog">blog post</a>, you can send a webmention to it and it will show up in the next build.</p>
 
-	<p>If you want to leave a comment about a <a href="/blog">blog post</a>, you can send a webmention to it and it will show up in the next build.</p>
-
-	{% include "components/footer.html" %}
+	</main>
 {% endblock content %}
 
 {% block stylesheet %}

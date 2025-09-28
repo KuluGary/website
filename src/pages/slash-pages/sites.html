@@ -31,6 +31,23 @@ description: A handpicked list of websites I love, admire, and return to over th
   {% include "components/footer.html" %}
 {% endblock %}
 
+{% set sidebar %}
+<div>
+  <section>
+    <h2>Table of contents</h2>
+    <ol>
+      {% for category in sites %}
+        <li>
+          <a href="{{ page.url }}#{{ category.title | slugify }}">{{category.title}}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
+
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/sites.css">
   <link rel="stylesheet" href="/css/components/header.css"/>

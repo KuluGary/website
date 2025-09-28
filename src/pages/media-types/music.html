@@ -12,10 +12,7 @@ description: Explore a curated music collection spanning past and present favori
 	<main>
 		<p>My taste in music is eclectic, and I greatly favor indie music; original soundtracks from games, movies and shows; and 90s-2000s nostalgic songs from my childhood and teenage years. This is not a comprehensive list, but a few of my most listened-to.</p>
 
-		{% set media = music %}
-		{% set mediaType = "music" %}
 		{% set mediaListGrid = "grid-list grid-col-4" %}
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = music.favourites %}
 		{% set href = "/media/music/status/favourites" %}
@@ -25,6 +22,15 @@ description: Explore a curated music collection spanning past and present favori
 
 	{% include "components/footer.html" %}
 {% endblock content %}
+
+{% set sidebar %}
+<div>
+	{% set media = music %}
+	{% set mediaType = "music" %}
+	{% include "components/media-tag-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/components/header.css"/>

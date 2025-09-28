@@ -95,58 +95,19 @@
   <body>
     {% include "components/header.html" %}
 
-    <aside>
-      <section>
-        <h2>Status</h2>
-        {% set currentStatus = status.entry[0] %}
-        <p>{{currentStatus.title}}</p>
-      </section>
-
-      <section>
-        <h2>Navigation</h2>
-        <nav>
-          <ul>
-            <li>
-              <a href="/blog/">blog</a>
-            </li>
-            <li>
-              <a href="/now/">now</a>
-            </li>
-            <li>
-              <a href="/uses/">uses</a>
-            </li>
-            <li>
-              <a href="/sites/">sites</a>
-            </li>
-            <li>
-              <a href="/media/">media</a>
-            </li>
-            <li>
-              <a href="/sitemap">sitemap</a>
-            </li>
-            <li>
-              <a href="/settings/">settings</a>
-            </li>
-          </ul>
-        </nav>
-      </section>
-
-      <section>
-        <h2>
-          Subscribe
-          </h2>
-
-        <ul>
-          <li>
-            <a href="/blog/feed.xml"><img class="rss-icon" height="14" width="14" src="/assets/images/buttons/feed-icon-14x14.png"/> blog feed</a>
-          </li>
-        </ul>
-      </section>
-    </aside>
-
     {% block content %}
       {{ content | safe }}
     {% endblock %}
+
+    <aside>
+      {% if sidebar %}
+        {{ sidebar | safe }}
+      {% else %}
+        <div>
+          {% include "components/navbar/main-navigation.html" %}
+        </div>
+      {% endif %}
+    </aside>
 
     {% include "components/footer.html" %}
   </body>
