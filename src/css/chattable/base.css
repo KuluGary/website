@@ -262,3 +262,7 @@ blockquote {
   top: 2px;
   content: "📌";
 }
+
+#loadingScreen {
+  background-color: var(--background-color);
+}
