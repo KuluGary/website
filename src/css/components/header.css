@@ -1,97 +1,21 @@
 .header {
-  border: 2px solid var(--text-color);
-  height: 100%;
-
+  border-bottom: 1px solid var(--text-color-alt);
   display: flex;
   align-items: center;
-  gap: var(--line-height);
-  padding: calc(var(--line-height) / 2);
-  background-color: var(--text-color);
-  color: var(--background-color);
-
-  h2 {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    font-size: 2rem;
-    line-height: calc(2 * var(--line-height));
-    text-transform: uppercase;
-
-    &::before {
-      content: "";
-      margin: 0;
-    }
-  }
-
-  & > img {
-    width: auto;
-    height: auto;
-    display: inline;
-    height: 70px;
-    width: 70px;
-    margin: 0px;
-  }
+  column-gap: 1ch;
+  padding-block: calc(var(--line-height) / 2);
 
   & a {
-    text-decoration: none;
-    margin: 0px;
-    background-color: transparent;
-    @media (width <= 290px) {
-      display: block;
-      margin-inline: auto;
-      text-align: center;
-    }
-
-    & > * {
-      color: var(--background-color);
-    }
+    text-transform: uppercase;
+    font-size: small;
   }
 
   & svg {
-    @media (width <= 290px) {
-      display: none;
-    }
+    width: 30px;
+    height: 30px;
 
     & path {
-      fill: var(--background-color);
-    }
-  }
-
-  & nav {
-    margin: 0;
-    padding-inline: calc(var(--line-height) / 2);
-
-    & a {
-      line-height: calc(2 * var(--line-height));
-    }
-
-    & ul,
-    li {
-      margin: 0;
-    }
-
-    & ul.bar-separated {
-      list-style: none;
-      display: flex;
-      justify-content: right;
-      flex-wrap: wrap;
-
-      @media (--viewport-mobile) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-
-        & li {
-          > a {
-            display: block;
-            margin-inline: auto;
-          }
-
-          &::before {
-            content: "";
-            display: none;
-          }
-        }
-      }
+      fill: var(--secondary-color);
     }
   }
 }

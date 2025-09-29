@@ -52,7 +52,7 @@ body {
   display: grid;
   grid-template-areas: "header header" "main aside" "footer footer";
   grid-template-columns: 1fr 25%;
-  grid-template-rows: 100px 1fr auto;
+  grid-template-rows: auto 1fr auto;
   column-gap: var(--line-height);
   background: var(--background-color);
 

@@ -1,65 +1,80 @@
 /* #region Font families theme settings */
 
 html:not([data-font-stack]), /** If there is no selected font */
-html[data-font-stack="system-ui"] {
+html[data-font-stack="system-ui"],
+.font-system-ui {
   --font-family: system-ui, sans-serif;
 }
 
-html[data-font-stack="transitional"] {
+html[data-font-stack="transitional"],
+.font-transitional {
   --font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
 }
 
-html[data-font-stack="old-style"] {
+html[data-font-stack="old-style"],
+.font-old-style {
   --font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
 }
 
-html[data-font-stack="humanist"] {
+html[data-font-stack="humanist"],
+.font-humanist {
   --font-family: Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans", source-sans-pro, sans-serif;
 }
 
-html[data-font-stack="geometric-humanist"] {
+html[data-font-stack="geometric-humanist"],
+.font-geometric-humanist {
   --font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
 }
 
-html[data-font-stack="classical-humanist"] {
+html[data-font-stack="classical-humanist"],
+.font-classical-humanist {
   --font-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
 }
 
-html[data-font-stack="neo-grotesque"] {
+html[data-font-stack="neo-grotesque"],
+.font-neo-grotesque {
   --font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
 }
 
-html[data-font-stack="monospace-slab-serif"] {
+html[data-font-stack="monospace-slab-serif"],
+.font-monospace-slab-serif {
   --font-family: "Nimbus Mono PS", "Courier New", monospace;
 }
 
-html[data-font-stack="monospace-code"] {
+html[data-font-stack="monospace-code"],
+.font-monospace-code {
   --font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
 
-html[data-font-stack="industrial"] {
+html[data-font-stack="industrial"],
+.font-industrial {
   --font-family: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium", "Nimbus Sans Narrow", sans-serif-condensed,
     sans-serif;
 }
 
-html[data-font-stack="rounded-sans"] {
+html[data-font-stack="rounded-sans"],
+.font-rounded-sans {
   --font-family: ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa, Manjari, "Arial Rounded MT",
     "Arial Rounded MT Bold", Calibri, source-sans-pro, sans-serif;
 }
 
-html[data-font-stack="slab-serif"] {
+html[data-font-stack="slab-serif"],
+.font-slab-serif {
   --font-family: Rockwell, "Rockwell Nova", "Roboto Slab", "DejaVu Serif", "Sitka Small", serif;
 }
 
-html[data-font-stack="antique"] {
+html[data-font-stack="antique"],
+.font-antique {
   --font-family: Superclarendon, "Bookman Old Style", "URW Bookman", "URW Bookman L", "Georgia Pro", Georgia, serif;
 }
 
-html[data-font-stack="didone"]e {
+html[data-font-stack="didone"],
+.font-didone {
   --font-family: Didot, "Bodoni MT", "Noto Serif Display", "URW Palladio L", P052, Sylfaen, serif;
 }
 
-html[data-font-stack="handwritten"] {
+html[data-font-stack="handwritten"],
+.font-handwritten {
   --font-family: "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
 }
 
