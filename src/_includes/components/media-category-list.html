@@ -1,0 +1,10 @@
+<section>
+	<h2>Categories</h2>
+	<ul>
+		{% for category, _ in media | objToArray %}
+			<li>
+				<a href="/media/{{mediaType}}/status/{{category}}">{{ category | unslugify }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</section>
