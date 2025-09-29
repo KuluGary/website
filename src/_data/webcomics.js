@@ -39,28 +39,32 @@ const OPTIONS = {
 };
 
 function formatComicObject(comicObject) {
-  const latestItem = comicObject.items[0];
+  if (comicObject.items?.length) {
+    const latestItem = comicObject.items[0];
 
-  return {
-    id: latestItem.id ?? latestItem.guid,
-    type: "webcomics",
-    title: comicObject.title,
-    description: comicObject.description,
-    genres: [],
-    link: latestItem.link,
-    addedAt: latestItem.pubDate ?? latestItem.isoDate,
-    updatedAt: latestItem.pubDate ?? latestItem.isoDate,
-    latestItemTitle: latestItem?.title?.trim().startsWith(comicObject.title)
-      ? latestItem.title
-      : comicObject.title + " - " + latestItem.title,
-    author: {
-      name:
-        latestItem.author ??
-        latestItem.creator ??
-        latestItem["dc:creator"] ??
-        (comicObject.copyright && removeCopyrightYear(comicObject.copyright)),
-    },
-  };
+    return {
+      id: latestItem.id ?? latestItem.guid,
+      type: "webcomics",
+      title: comicObject.title,
+      description: comicObject.description,
+      genres: [],
+      link: latestItem.link,
+      addedAt: latestItem.pubDate ?? latestItem.isoDate,
+      updatedAt: latestItem.pubDate ?? latestItem.isoDate,
+      latestItemTitle: latestItem?.title?.trim().startsWith(comicObject.title)
+        ? latestItem.title
+        : comicObject.title + " - " + latestItem.title,
+      author: {
+        name:
+          latestItem.author ??
+          latestItem.creator ??
+          latestItem["dc:creator"] ??
+          (comicObject.copyright && removeCopyrightYear(comicObject.copyright)),
+      },
+    };
+  } else {
+    return null;
+  }
 }
 
 function removeCopyrightYear(str) {
