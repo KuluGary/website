@@ -34,8 +34,8 @@ const PAGES = {
 };
 
 const OPTIONS = {
-  cache: false,
-  logErrors: true,
+  cache: true,
+  logErrors: false,
 };
 
 function formatComicObject(comicObject) {
