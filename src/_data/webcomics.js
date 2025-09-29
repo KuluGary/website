@@ -34,37 +34,33 @@ const PAGES = {
 };
 
 const OPTIONS = {
-  cache: true,
-  logErrors: false,
+  cache: false,
+  logErrors: true,
 };
 
 function formatComicObject(comicObject) {
-  if (comicObject.items?.length) {
-    const latestItem = comicObject.items[0];
+  const latestItem = comicObject.items[0];
 
-    return {
-      id: latestItem.id ?? latestItem.guid,
-      type: "webcomics",
-      title: comicObject.title,
-      description: comicObject.description,
-      genres: [],
-      link: latestItem.link,
-      addedAt: latestItem.pubDate ?? latestItem.isoDate,
-      updatedAt: latestItem.pubDate ?? latestItem.isoDate,
-      latestItemTitle: latestItem?.title?.trim().startsWith(comicObject.title)
-        ? latestItem.title
-        : comicObject.title + " - " + latestItem.title,
-      author: {
-        name:
-          latestItem.author ??
-          latestItem.creator ??
-          latestItem["dc:creator"] ??
-          (comicObject.copyright && removeCopyrightYear(comicObject.copyright)),
-      },
-    };
-  } else {
-    return null;
-  }
+  return {
+    id: latestItem.id ?? latestItem.guid,
+    type: "webcomics",
+    title: comicObject.title,
+    description: comicObject.description,
+    genres: [],
+    link: latestItem.link,
+    addedAt: latestItem.pubDate ?? latestItem.isoDate,
+    updatedAt: latestItem.pubDate ?? latestItem.isoDate,
+    latestItemTitle: latestItem?.title?.trim().startsWith(comicObject.title)
+      ? latestItem.title
+      : comicObject.title + " - " + latestItem.title,
+    author: {
+      name:
+        latestItem.author ??
+        latestItem.creator ??
+        latestItem["dc:creator"] ??
+        (comicObject.copyright && removeCopyrightYear(comicObject.copyright)),
+    },
+  };
 }
 
 function removeCopyrightYear(str) {
@@ -76,12 +72,18 @@ async function getCollection() {
 
   for (const [status, webcomics] of Object.entries(PAGES)) {
     for (const webcomic of webcomics) {
-      const json = await parseRSS(webcomic).catch((err) => OPTIONS.logErrors && console.error(err));
-      const defaultValues = defaultData[webcomic];
+      try {
+        const json = await parseRSS(webcomic).catch((err) => OPTIONS.logErrors && console.error(err));
+        const defaultValues = defaultData[webcomic];
 
-      if (!collection[status]) collection[status] = [];
+        if (!collection[status]) collection[status] = [];
 
-      collection[status].push({ ...formatComicObject(json), ...defaultValues });
+        collection[status].push({ ...formatComicObject(json), ...defaultValues });
+      } catch (error) {
+        if (OPTIONS.logErrors) {
+          console.error(error);
+        }
+      }
     }
   }
 
