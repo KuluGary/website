@@ -81,7 +81,7 @@
 							{% if item.type === "Post" %}
 								<a href="/blog/tags/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
 							{% else %}
-								<a href="/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+								<a href="/media/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
 							{% endif %}
 						</li>
 					{%- endfor -%}

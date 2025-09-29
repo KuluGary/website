@@ -284,11 +284,6 @@ main.main-content {
   }
 }
 
-.breadcrumbs {
-  margin-top: 1ch;
-  font-size: smaller;
-}
-
 @media (--viewport-mobile) {
   .section-toc {
     display: none;

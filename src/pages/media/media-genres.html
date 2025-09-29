@@ -29,7 +29,7 @@ eleventyComputed:
 		{% set mediaListGrid = "grid-list grid-col-3" if genreGroup.mediaType === "Video" else ("grid-list grid-col-4" if genreGroup.mediaType === "Music" else "grid-list grid-col-5") %}
 		{% set href = "/media/{{ genreGroup.mediaType }}/genre/{{ genreGroup.genre }}" %}
 		{% set sectionTitle = title %}
-		{% set sectionDescription = 'A curated collection of my {{ genreGroup.mediaType | unslugify | makeLowercase }} in the {{ genreGroup.genre | unslugify | makeLowercase }} genre. Anything that fit this mood or theme.' %}
+		{% set sectionDescription = 'A curated collection of my ' ~ (genreGroup.mediaType | unslugify | makeLowercase) ~ ' in the ' ~ (genreGroup.genre | unslugify | makeLowercase) ~ ' genre. Anything that fit this mood or theme.' %}
 
 		{% include "components/media-list-section.html" %}
 
