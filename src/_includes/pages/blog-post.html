@@ -100,17 +100,21 @@
 
 {% set sidebar %}
 <div class="custom-sidebar">
-  <section class="section-toc">
-    <h2>Table of contents</h2>
-    {{ content | toc | safe }}
-  </section>
+  {% set toc = content | toc | safe %}
+
+  {% if toc.length > 0 %}
+    <section class="section-toc">
+      <h2>Table of contents</h2>
+      {{ content | toc | safe }}
+    </section>
+
+  {% endif %}
 
   <section class="section-share">
     <h2>Share this post</h2>
 
     {% include "components/share-buttons.html" %}
   </section>
-
 </div>
 {% endset %}
 
