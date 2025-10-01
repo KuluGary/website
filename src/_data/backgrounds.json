@@ -22,5 +22,9 @@
   {
     "id": "circuit",
     "label": "Circuit"
+  },
+  {
+    "id": "grid",
+    "label": "Grid"
   }
 ]

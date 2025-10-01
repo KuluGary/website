@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid var(--text-color-alt);
+  border-bottom: 1px solid var(--background-color-alt);
   display: flex;
   align-items: center;
   column-gap: 1ch;
@@ -8,6 +8,7 @@
   & a {
     text-transform: uppercase;
     font-size: small;
+    text-decoration: none;
   }
 
   & svg {
