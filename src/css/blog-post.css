@@ -139,7 +139,7 @@ main.main-content {
 & .post-footer {
   --footer-separation: var(--line-height);
 
-  margin-top: var(--footer-separation);
+  margin-block: var(--footer-separation);
   border-top: 1px solid var(--text-color-alt);
 
   @media (--viewport-tablet) {
@@ -272,9 +272,7 @@ main.main-content {
       }
 
       & ul {
-        list-style-type: none;
         margin: 0;
-        padding: 0;
 
         & li {
           vertical-align: center;

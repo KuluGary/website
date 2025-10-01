@@ -36,8 +36,8 @@
 		<details class="webmentions-details">
 			<summary> Mentions ({{ mentions.length }}):</summary>
 
-			{% for mention in mentions %}
-				<ul>
+			<ul>
+				{% for mention in mentions %}
 					{% if mention["like-of"] %}
 						<li>
 							<a href="{{ mention.author.url }}">{{ mention.author.name }}</a> liked <a href="{{ mention.url }}">this post</a>.
@@ -49,8 +49,8 @@
 							<a href="{{ mention.author.url }}">{{ mention.author.name }}</a> shared <a href="{{ mention.url }}">this post</a>.
 					</li>
 					{% endif %}
-				</ul>
-			{% endfor %}
+				{% endfor %}
+			</ul>
 		</details>
 	{% endif %}
 
