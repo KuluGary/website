@@ -1,30 +1,37 @@
-const { default: puppeteer } = require("puppeteer");
-const path = require("path");
 const fetch = require("node-fetch");
-const fs = require("fs");
+
 const { log, time, timeEnd } = require("../js/utils/log");
 const { getFromCache, setIntoCache } = require("../js/utils/cache");
 const { saveTestData } = require("../js/utils/save");
-const { startProgress, incrementProgress, stopProgress } = require("../js/utils/cli-progress");
-const { slugify } = require("../js/11ty/generic");
-const pLimit = require("p-limit");
 
 const TRAKT_USER = "kulugary";
-const PAGES = {
-  favourites: `https://trakt.tv/users/${TRAKT_USER}/favorites?display=show&sort=released%2Casc`,
-  watchlist: `https://trakt.tv/users/${TRAKT_USER}/watchlist?display=show&sort=rank%2Casc`,
-  // dropped: `https://trakt.tv/users/${TRAKT_USER}/lists/dropped?display=show&sort=rank%2Casc`,
-  // seen: `https://trakt.tv/users/${TRAKT_USER}/lists/seen?display=show&sort=rank%2Casc`,
+const TRAKT_API = "https://api.trakt.tv";
+
+const CLIENT_ID = process.env.TRAKT_CLIENT_ID;
+
+if (!CLIENT_ID) {
+  throw new Error("Missing TRAKT_CLIENT_ID env variable. Get one at https://trakt.tv/oauth/applications");
+}
+
+const headers = {
+  "Content-Type": "application/json",
+  "trakt-api-version": "2",
+  "trakt-api-key": CLIENT_ID,
 };
+
+const PAGES = {
+  favourites: `users/${TRAKT_USER}/favorites/shows?extended=full`,
+  watchlist: `users/${TRAKT_USER}/watchlist/shows?extended=full`,
+};
+
 const OPTIONS = {
   cache: true,
-  headless: true,
-  logErrors: false,
+  logErrors: true,
 };
 
 /**
- * Main entry point for module: scrapes and caches shows data.
- * @returns {Promise<Object>} Scraped shows data.
+ * Main entry point for module: fetches and caches shows data via Trakt API.
+ * @returns {Promise<Object>} Fetched shows data.
  */
 module.exports = async function fetchTraktShows() {
   const cached = getFromCache("shows");
@@ -33,117 +40,55 @@ module.exports = async function fetchTraktShows() {
     return cached;
   }
 
-  time("[Trakt.tv/Shows]", "🎞️ Starting fresh scrape");
+  time("[Trakt.tv/Shows]", "🎞️ Fetching via Trakt API");
   const collection = await getCollection();
   setIntoCache("shows", collection);
   saveTestData("shows.json", collection);
-  timeEnd("[Trakt.tv/Shows]", "✅ Scraped and cached show data");
+  timeEnd("[Trakt.tv/Shows]", "✅ API fetch and cache complete");
 
   return collection;
 };
 
 /**
- * Fetches show collection
+ * Fetches show collection using API
  * @returns shows collection
  */
 async function getCollection() {
-  const browser = await puppeteer.launch({
-    headless: OPTIONS.headless,
-    args: [
-      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-      "--disable-features=site-per-process",
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-    ],
-  });
-
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1024 });
-
   const collection = {};
-  for (const [status, url] of Object.entries(PAGES)) {
-    log("[Trakt.tv/Shows]", `🔍 Scraping ${status}`);
-    collection[status] = await scrapeShowListPage(page, url);
-  }
+  for (const [status, endpoint] of Object.entries(PAGES)) {
+    log("[Trakt.tv/Shows]", `🔍 Fetching ${status}`);
+    try {
+      const res = await fetch(`${TRAKT_API}/${endpoint}`, { headers });
+      const data = await res.json();
 
-  await browser.close();
+      collection[status] = normalizeShows(data);
+    } catch (err) {
+      if (OPTIONS.logErrors) console.error(`❌ Error fetching ${status}`, JSON.stringify(err));
+      collection[status] = [];
+    }
+  }
   return collection;
 }
 
 /**
- * Scrapes a single Trakt show list page.
- * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
- * @param {string} url URL of the page to go to
+ * Normalize API show items to a consistent structure
+ * @param {Array} items Trakt API response
  */
-async function scrapeShowListPage(page, url) {
-  const browser = page.browser();
+function normalizeShows(items) {
+  return items.map((item) => {
+    // Support both watchlist ({ show }) and favorites ({ type, show|movie })
+    const show = item.show || item.movie || item;
 
-  await page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => null);
-
-  const elements = await page.$$("#sortable-grid .grid-item, .grid .grid-item");
-  if (!elements.length) return [];
-
-  startProgress(elements.length);
-
-  // Extract base info
-  const baseShows = await Promise.all(
-    elements.map(async (element) => {
-      const [titleEl, linkEl] = await Promise.all([element.$(".titles h3"), element.$("a")]);
-      const [title, link, originalTitle, id, date_created, date_added] = await Promise.all([
-        titleEl?.evaluate((el) => el.innerText).catch(() => null),
-        linkEl?.evaluate((el) => el.href).catch(() => null),
-        element.evaluate((el) => el.getAttribute("data-title")),
-        element.evaluate((el) => el.getAttribute("data-list-item-id")),
-        element.evaluate((el) => el.getAttribute("data-released")),
-        element.evaluate((el) => el.getAttribute("data-added")),
-      ]);
-      return { title, link, originalTitle, id, date_created, date_added };
-    })
-  );
-
-  const limit = pLimit(5);
-
-  const shows = await Promise.all(
-    baseShows.map((base) =>
-      limit(async () => {
-        if (!base.link) return null;
-
-        const newPage = await browser.newPage();
-        await newPage.goto(base.link, { waitUntil: "domcontentloaded" });
-        const { description, genres } = await scrapeShowProfilePage(newPage);
-        await newPage.close();
-
-        incrementProgress();
-
-        return {
-          id: base.id,
-          type: "shows",
-          title: base.title,
-          description,
-          genres,
-          link: base.link,
-          createdAt: base.date_created,
-          addedAt: base.date_added,
-        };
-      })
-    )
-  );
-
-  stopProgress();
-  return shows.filter(Boolean);
-}
-
-/**
- * Extracts the description and genres for a show
- * @param {puppeteer.Page} page Puppeteer page instance for a show profile.
- * @returns {Promise<{ description: string, genres: Array<string>, imageSrc: string }>} Object containing the description and genres of a show
- */
-async function scrapeShowProfilePage(page) {
-  const description = await page.$eval("#tagline + #overview", (el) => el.innerText).catch(() => null);
-
-  const genres = await page.evaluate(() =>
-    Array.from(document.querySelectorAll("span[itemprop='genre']")).map((el) => el.innerText.trim())
-  );
-
-  return { description, genres };
+    return {
+      id: show.ids.trakt,
+      type: item.type || "show", // fallback
+      title: show.title,
+      year: show.year,
+      description: show.overview || "",
+      genres: show.genres || [],
+      link: show.ids.slug ? `https://trakt.tv/${item.type || "shows"}/${show.ids.slug}` : null,
+      createdAt: item.listed_at || null,
+      addedAt: item.listed_at || null,
+    };
+  });
 }
