@@ -282,6 +282,11 @@ main.main-content {
   }
 }
 
+iframe {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
 @media (--viewport-mobile) {
   .section-toc {
     display: none;
