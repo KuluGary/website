@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function mastodonShare(e) {
   let title = e.getAttribute("data-title");
+  let tags = e
+    .getAttribute("data-tags")
+    ?.split(",")
+    .map((e) => `#${e}`)
+    .join(" ");
   let preferredInstance = localStorage.getItem("preferredInstance") ?? "mastodon.social";
 
   const pageUrl = window.location.href;
@@ -38,7 +43,7 @@ function mastodonShare(e) {
     localStorage.setItem("preferredInstance", domain);
   }
 
-  let url = `https://${domain}/share?title=${title}&url=${pageUrl}`;
+  let url = `https://${domain}/share?title=${title}&url=${pageUrl}&text=${encodeURIComponent(tags)}`;
 
   window.open(url, "_blank");
 }
