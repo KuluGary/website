@@ -25,7 +25,7 @@ const PAGES = {
 };
 
 const OPTIONS = {
-  cache: false,
+  cache: true,
   logErrors: false,
 };
 

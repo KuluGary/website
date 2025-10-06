@@ -17,13 +17,14 @@ permalink: /
     <ul>
       <li>
       {% set postTags = collections["blog-post"] | getFrequentTags | limit(5) %}
+      {% set latestPost = collections["postsByYear"][0][1][0] %}
 
-        The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've written {{
+        The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've published {{
         collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{
-        collections["blog-post"].length }} posts. I mostly post about
+        collections["blog-post"].length }} posts. I mostly write about
         {% for item in collections["blog-post"] | getFrequentTags | limit(3) %}
           <a href="/blog/tags/{{ item.tag | slugify }}">{{ item.tag }}</a>{% if loop.last %}.{% else %}, {% endif %}
-        {% endfor %}
+        {% endfor %}The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
       </li>
 
       <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page.</li>
@@ -37,7 +38,7 @@ permalink: /
         there are {{ themes["light"].length + themes["dark"].length }} themes, {{ fonts.length }} font families and {{ backgrounds.length }} background patterns.
       </li>
       <li>
-        Read about this page, how it's made and what purpose it serves at the <a href="/colophon">/colophon</a> page.
+        Read about this page, how I made it and what purpose it serves at the <a href="/colophon">/colophon</a> page.
       </li>
       <li>
         If you want more sites like this one, look in my <a href="/sites">/sites</a> page for my recommended, or find

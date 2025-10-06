@@ -1,7 +1,12 @@
 ---
 title: 'The Blog'
-permalink: /blog/
 description: "A blog with experiments in progress, scattered notes, and the occasional odd trail of thought."
+pagination:
+  data: collections["blog-post"]
+  size: 5
+  alias: posts
+  reverse: true
+permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
 ---
 {% extends "layouts/base.html" %}
 
@@ -11,14 +16,43 @@ description: "A blog with experiments in progress, scattered notes, and the occa
   <main>
     <p>This blog is part workshop bench, part thought garden. Here you can find any ideas or experiments I'm currently working on.</p>
 
-    {% for year, items in collections['postsByYear'] %}
-      <section id="posts-{{ year }}">
-        <h2>{{ year }}</h2>
+    <section>
+      <h2>
+        {% if pagination.pageNumber > 0 %}
+          Posts page {{pagination.pageNumber + 1}}
+          {% else%}
+          New posts
+        {% endif %}
+      </h2>
 
-        {% set postsList = items %}
-        {% include "components/post-list.html" %}
-      </section>
-    {% endfor %}
+      {% set postsList = posts %}
+      {% include "components/post-list.html" %}
+    </section>
+
+    <nav id="blog-navigation">
+      <ul>
+        <li>
+          {% if pagination.href.previous %}
+            <a href="{{ pagination.href.previous }}">🡨</a>
+          {% endif %}
+        </li>
+        {%- for pageEntry in pagination.pages %}
+          <li>
+            {% if loop.index === pagination.pageNumber + 1 %}
+              <span>{{ loop.index }}</span>
+            {% else %}
+
+              <a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
+            {% endif %}
+          </li>
+        {%- endfor %}
+        <li>
+          {% if pagination.href.next %}
+            <a href="{{ pagination.href.next }}">🡪</a>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
   </main>
 {% endblock %}
 

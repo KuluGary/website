@@ -65,7 +65,11 @@ function isoStringToRelativeTime(isoString) {
  * @returns {Array<Object>} A new array sorted by the specified date property in descending order.
  */
 function sortByDate(collection, key) {
-  return collection.sort((a, b) => new Date(b[key]).getTime() - new Date(a[key]).getTime());
+  return collection.sort((a, b) => {
+    console.log(new Date(b[key]), new Date(a[key]), new Date(b[key]).getTime() - new Date(a[key]).getTime());
+
+    return new Date(b[key]).getTime() - new Date(a[key]).getTime();
+  });
 }
 
 /**

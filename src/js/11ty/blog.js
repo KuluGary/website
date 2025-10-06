@@ -15,6 +15,7 @@ module.exports = {
   readableDateFromISO,
   filterOwnWebmentions,
   getFlagEmoji,
+  getYearPages,
 };
 
 /**
@@ -30,9 +31,7 @@ function getPostsByYear(collection) {
   const uniqueYears = [...new Set(years)];
 
   const postsByYear = uniqueYears.reduce((prev, year) => {
-    const filteredposts = posts.filter(
-      (post) => post.date.getFullYear() === year
-    );
+    const filteredposts = posts.filter((post) => post.date.getFullYear() === year);
 
     return [...prev, [year, filteredposts]];
   }, []);
@@ -79,10 +78,7 @@ function getShareUrl(pageUrl, site, title, tags) {
       break;
     case "bluesky":
       const bskyUrl = new URL("https://bsky.app/intent/compose");
-      bskyUrl.searchParams.append(
-        "text",
-        `${title} ${tags.map((tag) => `#${tag}`).join(" ")} ${pageUrl}`
-      );
+      bskyUrl.searchParams.append("text", `${title} ${tags.map((tag) => `#${tag}`).join(" ")} ${pageUrl}`);
 
       url = bskyUrl;
       break;
@@ -162,16 +158,11 @@ function getCollectionStats(collection) {
     }
   );
 
-  stats.avgWords =
-    stats.totalItems > 0
-      ? numberFormatter.format(stats.totalWords / stats.totalItems)
-      : 0;
+  stats.avgWords = stats.totalItems > 0 ? numberFormatter.format(stats.totalWords / stats.totalItems) : 0;
 
   stats.totalWords = numberFormatter.format(stats.totalWords);
   stats.totalItems = numberFormatter.format(stats.totalItems);
-  stats.longestItem.wordCount = numberFormatter.format(
-    stats.longestItem.wordCount
-  );
+  stats.longestItem.wordCount = numberFormatter.format(stats.longestItem.wordCount);
 
   stats.byYear = Array.from(stats.byYear.values())
     .map((year) => {
@@ -179,10 +170,7 @@ function getCollectionStats(collection) {
         ...year,
         totalWords: numberFormatter.format(year.totalWords),
         totalItems: numberFormatter.format(year.totalItems),
-        avgWords:
-          year.totalItems > 0
-            ? numberFormatter.format(year.totalWords / year.totalItems)
-            : 0,
+        avgWords: year.totalItems > 0 ? numberFormatter.format(year.totalWords / year.totalItems) : 0,
       };
     })
     .sort((a, b) => a.year - b.year);
@@ -245,15 +233,11 @@ function getSimilarPosts(collection, path, categories) {
 
   return collection
     .filter((post) => {
-      return (
-        _getSimilarCategories(post.data.tags, allowedCategories) >= 1 &&
-        post.data.page.url !== path
-      );
+      return _getSimilarCategories(post.data.tags, allowedCategories) >= 1 && post.data.page.url !== path;
     })
     .sort((a, b) => {
       return (
-        _getSimilarCategories(b.data.tags, allowedCategories) -
-        _getSimilarCategories(a.data.tags, allowedCategories)
+        _getSimilarCategories(b.data.tags, allowedCategories) - _getSimilarCategories(a.data.tags, allowedCategories)
       );
     });
 }
@@ -291,4 +275,30 @@ function readableDateFromISO(dateStr, formatStr = "dd LLL yyyy 'at' hh:mma") {
 
 function getFlagEmoji(languageCode) {
   return getEmojiByLanguageCode(languageCode);
+}
+
+/**
+ * Groups all blog posts by year and returns them for Eleventy pagination.
+ * @param {Object} collectionApi - The Eleventy collection API.
+ * @returns {Array<{ year: number, items: Array<Object> }>}
+ */
+function getYearPages(collectionApi) {
+  // Get all full post objects (not just data)
+  const posts = collectionApi.getFilteredByTag("blog-post");
+
+  // Group by year
+  const grouped = posts.reduce((acc, post) => {
+    const year = post.date.getFullYear();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(post);
+    return acc;
+  }, {});
+
+  // Convert to array sorted newest-first
+  return Object.entries(grouped)
+    .sort((a, b) => b[0] - a[0]) // sort years descending
+    .map(([year, posts]) => ({
+      year: Number(year),
+      items: posts.sort((a, b) => b.date - a.date),
+    }));
 }

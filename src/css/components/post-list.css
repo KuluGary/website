@@ -105,3 +105,34 @@
     }
   }
 }
+
+#blog-navigation {
+  & ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: var(--line-height);
+    column-gap: var(--line-height);
+
+    & li {
+      font-size: smaller;
+
+      &:last-of-type {
+        text-align: right;
+      }
+
+      &:last-of-type,
+      &:first-of-type {
+        flex: 1;
+
+        & a {
+          text-decoration: none;
+        }
+      }
+
+      & .navigation-button-icon {
+        font-size: smaller;
+      }
+    }
+  }
+}

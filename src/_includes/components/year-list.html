@@ -4,7 +4,7 @@
 	<ul>
 		{% for year, arr in collections["postsByYear"] %}
 			<li>
-				<a href="#posts-{{ year }}">{{ year }}</a> ({{arr.length}})
+				<a href="/blog/year/{{ year }}">{{ year }}</a> ({{arr.length}})
 			</li>
 		{% endfor %}
 	</ul>

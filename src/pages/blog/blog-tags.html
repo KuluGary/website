@@ -10,12 +10,15 @@ pagination:
     - postsByYear
     - recentActivity
     - all
+    - yearPages
 permalink: /blog/tags/{{tag}}.html
 eleventyComputed:
   title: Blog Posts Tagged {{ tag | unslugify }}
   description: 'Read blog posts tagged "{{ tag | unslugify }}": experiments, ideas, and curiosities organized under this theme.'
 ---
 {% extends "layouts/base.html" %}
+
+{% set collection = collections["blog-post"] %}
 
 {% block content %}
   {% include "components/header.html" %}
@@ -31,6 +34,15 @@ eleventyComputed:
 
   {% include "components/footer.html" %}
 {% endblock %}
+
+{% set sidebar %}
+<div>
+  {% include "components/tag-list.html" %}
+  {% include "components/year-list.html" %}
+  {% include "components/navbar/main-navigation.html" %}
+  {% include "components/navbar/feeds.html" %}
+</div>
+{% endset %}
 
 {% block stylesheet %}
   <link rel="stylesheet" href="/css/components/header.css"/>

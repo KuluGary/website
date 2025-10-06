@@ -39,6 +39,7 @@ const {
   webmentionsByType,
   filterOwnWebmentions,
   getFlagEmoji,
+  getYearPages,
 } = require("./src/js/11ty/blog");
 const {
   getFrequentMediaTags,
@@ -84,8 +85,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("transformTime", minutesToHoursMinutes);
   eleventyConfig.on("beforeBuild", generateChattableCSS);
   eleventyConfig.addFilter("log", log);
+
   /** 11ty blog */
   eleventyConfig.addCollection("postsByYear", getPostsByYear);
+  eleventyConfig.addCollection("yearPages", getYearPages);
   eleventyConfig.addFilter("getShareUrl", getShareUrl);
   eleventyConfig.addFilter("getUniqueTags", getUniqueTags);
   eleventyConfig.addFilter("getCollectionStats", getCollectionStats);
