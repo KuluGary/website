@@ -1,0 +1,246 @@
+main {
+  --border-active: 1px solid var(--text-color-alt);
+  --border-inactive: 1px solid rgb(from var(--text-color-alt) r g b / 35%);
+
+  --cell-padding: calc(var(--line-height) / 4) calc(var(--line-height) / 2);
+
+  padding-inline: 0.5ch;
+
+  h2 {
+    &::before {
+      content: "";
+      display: none;
+    }
+  }
+
+  p {
+    font-size: smaller;
+  }
+
+  li {
+    font-size: smaller;
+  }
+
+  #header {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    gap: calc(var(--line-height) / 2);
+
+    & h2 {
+      grid-column: 1 / span 6;
+      grid-row: 1;
+
+      margin-bottom: 0;
+    }
+
+    & #name {
+      margin: 0;
+      grid-column: 1 / span 4;
+      grid-row: 2;
+    }
+
+    & #description {
+      grid-column: 1 / span 4;
+      grid-row: 3 / span 2;
+
+      & p:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    & #description,
+    & #name {
+      margin: 0;
+      padding: var(--cell-padding);
+      border: var(--border-active);
+    }
+
+    & #aspects {
+      grid-column: 5 / span 2;
+      grid-row: 2 / span 3;
+
+      & h2 {
+        margin-top: 0;
+        margin-bottom: calc(var(--line-height) / 2);
+      }
+
+      & ul {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+        row-gap: calc(var(--line-height) / 2);
+
+        & li {
+          border: var(--border-active);
+          padding: var(--cell-padding);
+          margin: 0;
+
+          &:last-of-type {
+            margin-bottom: 0;
+            border: var(--border-inactive);
+          }
+        }
+      }
+    }
+  }
+
+  #skills {
+    display: grid;
+    grid-template-rows: auto repeat(5, 1fr);
+
+    & > div {
+      display: grid;
+      grid-template-columns: auto repeat(5, 1fr);
+      column-gap: 1ch;
+
+      margin-bottom: 1ch;
+
+      font-size: small;
+      text-align: center;
+      vertical-align: center;
+
+      & .label {
+        font-size: small;
+        font-style: italic;
+        color: var(--text-color-alt);
+      }
+
+      & span:not(.label) {
+        height: 100%;
+        width: 100%;
+        border: var(--border-inactive);
+
+        min-height: 2lh;
+      }
+
+      &:nth-of-type(2) {
+        & :nth-child(2) {
+          border: var(--border-active);
+        }
+      }
+
+      &:nth-of-type(3) {
+        & :nth-child(n + 2):nth-child(-n + 3) {
+          border: var(--border-active);
+        }
+      }
+
+      &:nth-of-type(4) {
+        & :nth-child(n + 2):nth-child(-n + 4) {
+          border: var(--border-active);
+        }
+      }
+
+      &:nth-of-type(5) {
+        & :nth-child(n + 2):nth-child(-n + 5) {
+          border: var(--border-active);
+        }
+      }
+    }
+  }
+
+  #abilities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--line-height);
+
+    & p,
+    & ul {
+      border: var(--border-active);
+      min-height: 4lh;
+    }
+  }
+
+  #footer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr;
+    column-gap: var(--line-height);
+
+    #physical-stress {
+      grid-column: 1 / span 2;
+
+      & li:nth-of-type(n + 1):nth-of-type(-n + 1) {
+        &::before {
+          content: "◉";
+        }
+      }
+    }
+
+    #mental-stress {
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 1;
+
+      & li:nth-of-type(n + 1):nth-of-type(-n + 2) {
+        &::before {
+          content: "◉";
+        }
+      }
+    }
+
+    #physical-stress,
+    #mental-stress {
+      h2 {
+        margin-top: 0;
+      }
+      & ol {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0;
+        padding: 0;
+        list-style-type: none !important;
+        font-size: 1.75rem;
+
+        & li {
+          &::before {
+            content: "○";
+          }
+        }
+      }
+    }
+
+    #consequences {
+      grid-column: 3 / span 6;
+      grid-row: 1 / span 2;
+
+      display: grid;
+      gap: 1ch;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto repeat(2, 1fr);
+      grid-auto-flow: column;
+
+      height: 100%;
+
+      h2 {
+        grid-column: 1 / -1; /* spans both columns */
+        margin-top: 0;
+        margin-bottom: 0.5ch;
+      }
+
+      & ul {
+        display: contents; /* allows <li> to participate directly in parent grid */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & li {
+          margin: 0;
+          border: var(--border-active);
+          padding: var(--cell-padding);
+
+          &:nth-child(4) {
+            border: var(--border-inactive);
+          }
+        }
+      }
+    }
+  }
+
+  #credits {
+    font-size: small;
+    margin-block-start: calc(var(--line-height) * 2);
+  }
+}
