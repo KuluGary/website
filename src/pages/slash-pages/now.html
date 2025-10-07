@@ -6,8 +6,6 @@ description: "See what I'm currently focused on at this moment."
 {% extends "layouts/base.html" %}
 
 {% block content %}
-	{% include "components/header.html" %}
-
 	<main>
 		<p>This is a <a href="https://nownownow.com/about">now page</a>.</p>
 
@@ -52,13 +50,10 @@ description: "See what I'm currently focused on at this moment."
 
 	</main>
 
-	{% include "components/footer.html" %}
 {% endblock %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/css/now.css">
-	<link rel="stylesheet" href="/css/components/header.css"/>
-	<link rel="stylesheet" href="/css/components/footer.css"/>
 	<link rel="stylesheet" href="/css/components/post-list.css"/>
 	<link rel="stylesheet" href="/css/components/media-list.css"/>
 {% endblock %}

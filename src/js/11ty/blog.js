@@ -262,7 +262,7 @@ function isOwnWebmention(webmention) {
 }
 
 function filterOwnWebmentions(webmentions) {
-  return webmentions.filter((webmention) => !isOwnWebmention(webmention));
+  return webmentions.filter((webmention) => !!webmention.author.url && !isOwnWebmention(webmention));
 }
 
 function webmentionsByType(mentions, mentionType) {

@@ -206,16 +206,6 @@ main.main-content {
     margin-block: calc(var(--line-height) / 2);
   }
 
-  & .social-media {
-    display: flex;
-    column-gap: 1ch;
-    margin-block: calc(var(--line-height) / 2);
-
-    & > * {
-      margin: 0;
-    }
-  }
-
   & .webmentions {
     & .likes-and-reposts {
       & > ul {
@@ -264,11 +254,40 @@ main.main-content {
       & summary {
         border-bottom: none;
         margin-bottom: 0;
+
+        display: flex;
+        align-items: center;
+        column-gap: 0.5ch;
+
+        &::after {
+          content: "▶";
+          margin-left: 1rem;
+        }
+
+        & svg {
+          &:not(:first-of-type) {
+            margin-inline-start: 1.5ch;
+          }
+        }
+
+        &::marker {
+          display: none;
+          content: "";
+        }
+
+        &::-webkit-details-marker {
+          display: none;
+          content: "";
+        }
       }
 
       &[open] summary {
         padding-bottom: calc(var(--line-height) * 0.5);
         border-bottom: 1px solid var(--text-color-alt);
+
+        &::after {
+          content: "▼";
+        }
       }
 
       & ul {
