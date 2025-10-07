@@ -1,14 +1,14 @@
 main {
-  min-height: 55vh;
+  --chat-height: 65vh;
+  min-height: var(--chat-height);
   height: 100%;
 }
 
 #chattable {
   width: 100%;
   border: none;
-  min-height: 55vh;
+  height: var(--chat-height);
   display: none;
-  height: 100%;
 }
 
 noscript {
