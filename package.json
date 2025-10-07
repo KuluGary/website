@@ -8,6 +8,7 @@
     "commit": "sh ./lib/commit.sh",
     "post": "sh ./lib/add-post.sh",
     "build": "sh ./lib/build.sh",
+    "build:index": "npx -y pagefind --site _site",
     "postbuild": "sh ./lib/send-webmentions",
     "send-webmentions": "webmention _site/blog/feed.xml --limit 1 --send"
   },
@@ -26,6 +27,7 @@
     "flat-cache": "^6.1.8",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.1.6",
+    "pagefind": "^1.4.0",
     "postcss": "^8.5.5",
     "postcss-custom-media": "^11.0.6",
     "postcss-media-minmax": "^5.0.0",

@@ -136,3 +136,15 @@
     }
   }
 }
+
+#search {
+  border: 1px solid var(--text-color-alt);
+  min-height: 1.5lh;
+  padding-inline: 1ch;
+  color: var(--text-color-alt);
+  font-style: italic;
+  text-decoration: none;
+  font-weight: normal;
+  margin-top: var(--line-height);
+  margin-bottom: 0.5ch;
+}

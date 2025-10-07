@@ -58,6 +58,7 @@ permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 
 {% set sidebar %}
 <div>
+  <a id="search" href="/blog/search">Search...</a>
   {% include "components/tag-list.html" %}
   {% include "components/year-list.html" %}
   {% include "components/navbar/main-navigation.html" %}

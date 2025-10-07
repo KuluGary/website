@@ -1,0 +1,38 @@
+---
+title: Search
+permalink: /blog/search/
+description: Explore the site's archives and projects using the search tool. Find posts and entries by keyword.
+---
+
+{% extends "layouts/base.html" %}
+{% set collection = collections["blog-post"] %}
+
+{% block content %}
+	<main>
+		<h2>Search posts</h2>
+
+		<p>A small search tool for wandering through the site. Type anything in, and see what surfaces from the archives.</p>
+
+		<noscript>
+			The search here runs on <a href="https://pagefind.app/">Pagefind</a> and needs JavaScript to work.
+			If you're looking for something specific, try enabling it first.
+		</noscript>
+		<div id="search" class="search"></div>
+	</main>
+{% endblock content %}
+
+{% set sidebar %}
+<div>
+	{% include "components/tag-list.html" %}
+	{% include "components/year-list.html" %}
+	{% include "components/navbar/main-navigation.html" %}
+</div>
+{% endset %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/css/search.css">
+{% endblock %}
+
+{% block script %}
+	<script src="/pagefind/pagefind-ui.js" defer onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+{% endblock script %}
