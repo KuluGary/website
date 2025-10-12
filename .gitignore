@@ -9,6 +9,6 @@ lib
 src/js/utils/_test
 .vscode
 .chattable-theme-cache.json
-src/blog/.obsidian
-src/blog/templates
-_meta
+.obsidian/
+templates/
+_meta/

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang={{ lang or "eb" }}>
+	<head>
+		{% include "components/metadata.html" %}
+		<link rel="stylesheet" href="{{ " /css/themes.css" | url }}">
+		<link rel="stylesheet" href="{{ " /css/prose.css" | url }}">
+		<script>
+			const cachedTheme = localStorage.getItem("theme");
+			const cachedFontStack = localStorage.getItem("font-stack");
+			const cachedContentWidth = localStorage.getItem("content-width");
+			const cachedFontSize = localStorage.getItem("font-size");
+			const cachedBackground = localStorage.getItem("background");
+
+			if (cachedTheme !== null) 
+				document
+					.documentElement
+					.setAttribute("data-theme", cachedTheme)
+
+			if (cachedFontStack !== null) 
+				document
+					.documentElement
+					.setAttribute("data-font-stack", cachedFontStack)
+
+			if (cachedContentWidth !== null) 
+				document
+					.documentElement
+					.setAttribute("data-content-width", cachedContentWidth)
+
+			if (cachedFontSize !== null) 
+				document
+					.documentElement
+					.setAttribute("data-font-size", cachedFontSize)
+
+			if (cachedBackground !== null) 
+				document
+					.documentElement
+					.setAttribute("data-background", cachedBackground)
+		</script>
+	</head>
+	<body>
+		{% block content %}{% endblock content %}
+	</body>
+</html>
