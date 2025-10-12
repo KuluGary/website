@@ -8,7 +8,6 @@
     "commit": "sh ./lib/commit.sh",
     "post": "sh ./lib/add-post.sh",
     "build": "sh ./lib/build.sh",
-    "build:index": "npx -y pagefind --site _site",
     "postbuild": "sh ./lib/send-webmentions",
     "send-webmentions": "webmention _site/blog/feed.xml --limit 1 --send"
   },
