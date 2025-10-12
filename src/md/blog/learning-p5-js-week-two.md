@@ -8,6 +8,7 @@ tags:
   - p5js
   - learning
   - learning-p5js
+  - creative-coding
 description: "Week two of p5.js experiments: implementing the marching squares algorithm in JavaScript to generate procedural worlds from simple values."
 ---
 

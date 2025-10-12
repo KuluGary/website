@@ -47,4 +47,8 @@ html {
     font-size: 2.5rem;
     line-height: 1;
   }
+
+  p:has(.center) {
+    text-align: center;
+  }
 }

@@ -8,6 +8,7 @@ tags:
   - p5js
   - learning
   - learning-p5js
+  - creative-coding
 description: "Week one of p5.js experiments: a digital take on paper marbling, where geometry and color mix into flowing, unpredictable patterns."
 ---
 

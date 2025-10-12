@@ -51,6 +51,7 @@ const {
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setUseGitIgnore(true);
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
   eleventyConfig.addPlugin(timeToRead);
