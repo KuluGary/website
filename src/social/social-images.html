@@ -13,189 +13,170 @@ eleventyExcludeFromCollections: true
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="stylesheet" href="/css/themes.css">
 		<title>{{ post.data.title }}</title>
 		<style>
+
 			:root {
 				--w: 1200px;
 				--h: 630px;
-				--bg: #ffffff;
-				--text: #1b1f23;
-				--muted: #6a737d;
-				--accent: #2ea44f;
-				--danger: #cb2431;
-				--border: #e1e4e8;
-				--shadow: 0 4px 12px rgba(0,0,0,0.08);
+				--bg: var(--background-color);
+				--text: var(--text-color);
+				--muted: var(--text-color-alt);
+				--accent: var(--secondary-color);
+				--border: var(--text-color-alt);
+				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
 			}
 
 			body,
 			html {
 				height: 100%;
-			}
-			body {
 				margin: 0;
 				background: var(--bg);
-				font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 				color: var(--text);
+				font-family: var(--font-family);
 			}
 
 			.card {
 				width: var(--w);
 				height: var(--h);
+				background: var(--bg);
+				background-image: var(--texture);
+				background-size: 4px 4px;
+				display: flex;
+				flex-direction: column;
+				padding: 80px;
 				box-sizing: border-box;
-				border-radius: 16px;
-				background: #fff;
-				box-shadow: var(--shadow);
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
 				position: relative;
-			}
-
-			.top {
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
-			}
-
-			.left {
-				display: flex;
-				flex-direction: column;
-				gap: 16px;
-			}
-
-			.repo {
-				font-size: 24px;
-				font-weight: 500;
-				color: var(--muted);
+				overflow: hidden;
 			}
 
 			.title {
-				font-size: 60px;
+				font-size: 72px;
 				font-weight: 700;
 				line-height: 1.1;
+				max-width: 900px;
+				border-left: 6px solid var(--accent);
+				padding-left: 24px;
+				margin: 0 0 24px;
+				font-family: var(--font-family);
 
-				margin-block: 0;
 			}
 
-			.subtitle {
-				font-size: 32px;
-				font-weight: 400;
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				font-size: 20px;
+				font-family: var(--font-family);
 				color: var(--muted);
 			}
 
-			.stats {
-				display: flex;
-				align-items: center;
-				gap: 20px;
-				font-size: 22px;
-				color: var(--muted);
-				margin-top: 24px;
-			}
-
-			.stat {
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-
-			.diff {
-				font-size: 22px;
-				font-weight: 600;
-			}
-
-			.diff span:first-child {
+			.tag::before {
+				content: "#";
 				color: var(--accent);
-				margin-right: 6px;
-			}
-
-			.diff span:last-child {
-				color: var(--danger);
-			}
-
-			.avatar {
-				width: 120px;
-				height: 120px;
-				border-radius: 50%;
-				overflow: hidden;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			}
-
-			.avatar img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
+				margin-right: 4px;
 			}
 
 			.bottom {
 				display: flex;
 				align-items: center;
-				gap: 12px;
+				justify-content: space-between;
 				font-size: 22px;
 				color: var(--muted);
 				border-top: 1px solid var(--border);
-				padding-top: 20px;
+				padding-top: 24px;
+				margin-top: auto;
 			}
 
-			.bottom .avatar-small {
-				width: 44px;
-				height: 44px;
+			.meta {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.meta img {
+				width: 48px;
+				height: 48px;
 				border-radius: 50%;
-				overflow: hidden;
-			}
-
-			.bottom .avatar-small img {
-				width: 100%;
-				height: 100%;
 				object-fit: cover;
 			}
 
-			.username {
+			.meta .username {
 				font-weight: 600;
 				color: var(--text);
 			}
 
 			.footer-icon {
 				position: absolute;
-				bottom: 30px;
+				bottom: 40px;
 				right: 40px;
-				opacity: 0.15;
+				opacity: 0.08;
 			}
 
 			.footer-icon svg {
-				width: 48px;
-				height: 48px;
+				width: 60px;
+				height: 60px;
 				fill: var(--text);
 			}
 		</style>
+
+		<script>
+			const cachedTheme = localStorage.getItem("theme");
+			const cachedFontStack = localStorage.getItem("font-stack");
+			const cachedContentWidth = localStorage.getItem("content-width");
+			const cachedFontSize = localStorage.getItem("font-size");
+			const cachedBackground = localStorage.getItem("background");
+
+			if (cachedTheme !== null) 
+				document
+					.documentElement
+					.setAttribute("data-theme", cachedTheme)
+
+			if (cachedFontStack !== null) 
+				document
+					.documentElement
+					.setAttribute("data-font-stack", cachedFontStack)
+
+			if (cachedContentWidth !== null) 
+				document
+					.documentElement
+					.setAttribute("data-content-width", cachedContentWidth)
+
+			if (cachedFontSize !== null) 
+				document
+					.documentElement
+					.setAttribute("data-font-size", cachedFontSize)
+
+			if (cachedBackground !== null) 
+				document
+					.documentElement
+					.setAttribute("data-background", cachedBackground)
+		</script>
 	</head>
+
+	{% set mentions = webmentions | getWebmentionsByUrl(metadata.url + post.url) | filterOwnWebmentions %}
+
 	<body>
 		<div class="card">
-			{% set mentions = webmentions | getWebmentionsByUrl(metadata.url + post.url) | filterOwnWebmentions %}
+			<h1 class="title font-antique">{{ post.data.title }}</h1>
 
-			<div class="top">
-				<div class="left">
-					<div class="repo">{{ post.url }}</div>
-					<h1 class="title">
-						<strong>{{ post.data.title }}</strong>
-					</h1>
-
-					<div class="stats">
-						{% for tag in post.data.tags | limit(4) %}
-							<div class="stat"># {{ tag | unslugify | lower }}</div>
-						{% endfor %}
-						<div class="stat">💬 {{ mentions.length }} mentions</div>
-					</div>
-				</div>
-				<div class="avatar"></div>
+			<div class="tags font-monospace-code">
+				{% for tag in post.data.tags | limit(5) %}
+					{% if tag != "blog-post" %}
+						<div class="tag">{{ tag | unslugify | lower }}</div>
+					{% endif %}
+				{% endfor %}
+				<div class="stat">💬 {{ mentions.length }} mentions</div>
 			</div>
 
 			<div class="bottom">
-				<div class="avatar-small">
-					<img src="/assets/images/textures/social-share.jpg" alt="User avatar small"/>
+				<div class="meta">
+					<img src="/assets/images/textures/social-share.jpg" alt="Avatar"/>
+					<span class="username">{{ metadata.title }}</span>
+					<span>• {{ post.data.date | formatDate('LLLL dd, yyyy') }}</span>
 				</div>
-				<span>• {{ post.data.date | formatDate('LLLL dd, yyyy') }}</span>
 			</div>
-
 		</div>
 	</body>
 </html>
