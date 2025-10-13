@@ -106,7 +106,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getFlagEmoji", getFlagEmoji);
   eleventyConfig.addShortcode("openGraphScreenshotURL", function () {
     // URL Encode the page
-    const encodedURL = encodeURIComponent(metadata.url + "/social" + this.page.url);
+    const encodedURL = encodeURIComponent(metadata.url + "/social/" + this.page.url);
     // Generate a cache-busting key for quicker testing
     const cacheKey = `_${new Date().valueOf()}`;
     // Return the screenshot service's URL to add to the open graph tags.
