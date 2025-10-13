@@ -4,6 +4,7 @@ const markdownItAttrs = require("markdown-it-attrs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const timeToRead = require("eleventy-plugin-time-to-read");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const metadata = require("./src/_data/metadata");
 const pluginTOC = require("eleventy-plugin-toc");
 const {
   formatDate,
@@ -103,6 +104,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
   eleventyConfig.addFilter("readableDateFromISO", readableDateFromISO);
   eleventyConfig.addFilter("getFlagEmoji", getFlagEmoji);
+  eleventyConfig.addShortcode("openGraphScreenshotURL", function () {
+    // URL Encode the page
+    const encodedURL = encodeURIComponent(metadata.url + "/social" + this.page.url);
+    // Generate a cache-busting key for quicker testing
+    const cacheKey = `_${new Date().valueOf()}`;
+    // Return the screenshot service's URL to add to the open graph tags.
+    return `https://v1.screenshot.11ty.dev/${encodedURL}/opengraph/${cacheKey}`;
+  });
 
   /** 11ty media */
   eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
@@ -141,7 +150,7 @@ module.exports = function (eleventyConfig) {
     dataTemplateEngine: "njk",
     data: {
       site: {
-        url: "https://kulugary.neocities.org",
+        url: metadata.url,
       },
     },
   };

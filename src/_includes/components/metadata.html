@@ -31,13 +31,13 @@
 <meta property="og:site_name" content="{{ metadata.title }}">
 <meta property="og:type" content="{{ ogtype or 'website' }}">
 <meta property="og:url" content="{{metadata.url}}{{page.url}}">
-<meta property="og:image" content="{{ image | generateSocialMediaImage }}">
+<meta property="og:image" content="{% openGraphScreenshotURL %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@KuluGary">
 <meta name="twitter:title" content="{{ title or metadata.title }}">
 <meta name="twitter:description" content="{{ description or metadata.description }}">
-<meta name="twitter:image" content="{{ image | generateSocialMediaImage }}">
+<meta property="twitter:image" content="{% openGraphScreenshotURL %}">
 
 <!-- Favicon Meta -->
 <link rel="apple-touch-icon" sizes="100x100" href="/assets/images/cap-light.ico">
