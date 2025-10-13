@@ -4,58 +4,61 @@ description: Explore a personal corner of the web featuring tech, art and game e
 permalink: /
 ---
 
-{% extends "layouts/base.html" %} {% block content %}
-<main>
-  <p>
+{% extends "layouts/base.html" %}
+{% block content %}
+  <main>
+    <p>
     This website is handcrafted and curated by me. This is where you can start to explore its different corners, and
     find some stuff you may find entertaining.
   </p>
 
-  <section id="start-exploring">
-    <h2>Start exploring</h2>
+    <section id="start-exploring">
+      <h2>Start exploring</h2>
 
-    <ul>
-      <li>
-      {% set postTags = collections["blog-post"] | getFrequentTags | limit(5) %}
-      {% set latestPost = collections["postsByYear"][0][1][0] %}
+      <ul>
+        <li>
+          {% set postTags = collections["blog-post"] | getFrequentTags | limit(5) %}
+          {% set latestPost = collections["postsByYear"][0][1][0] %}
 
         The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've published {{
         collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{
         collections["blog-post"].length }} posts. I mostly write about
         {% for item in collections["blog-post"] | getFrequentTags | limit(3) %}
-          <a href="/blog/tags/{{ item.tag | slugify }}">{{ item.tag }}</a>{% if loop.last %}.{% else %}, {% endif %}
-        {% endfor %}The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
+            <a href="/blog/tags/{{ item.tag | slugify }}">{{ item.tag | unslugify | lower }}</a>
+            {% if loop.last %}.{% else %}, {% endif %}
+          {% endfor %}The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
       </li>
 
-      <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page.</li>
+        <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page.</li>
 
-      <li>
+        <li>
         If you want to talk directly to me, you can do so through one of the appropriate channels listed in my
         <a href="/contact">/contact</a> page, or leave a message in the <a href="/guestbook">/guestbook</a>!
       </li>
-      <li>
+        <li>
         Want to change the look of this site? You can do so in the <a href="/settings">/settings</a> page. Right now,
         there are {{ themes["light"].length + themes["dark"].length }} themes, {{ fonts.length }} font families and {{ backgrounds.length }} background patterns.
       </li>
-      <li>
+        <li>
         Read about this page, how I made it and what purpose it serves at the <a href="/colophon">/colophon</a> page.
       </li>
-      <li>
+        <li>
         If you want more sites like this one, look in my <a href="/sites">/sites</a> page for my recommended, or find
         similar ones in <a href="https://xn--sr8hvo.ws">my webring</a>.
       </li>
-      <li>You can check out my most favourite media at the <a href="/media">/media</a> page.</li>
-      <li>Check my button collection at the <a href="/buttons">/buttons</a> page.</li>
-    </ul>
+        <li>You can check out my most favourite media at the <a href="/media">/media</a> page.</li>
+        <li>Check my button collection at the <a href="/buttons">/buttons</a> page.</li>
+      </ul>
 
-    <p>
+      <p>
       If you didn't find what you were looking for, you may have better luck checking out my
       <a href="/sitemap">sitemap</a> for a full breakdown of all the relevant pages of my website.
     </p>
-  </section>
+    </section>
 
-</main>
-{% endblock %} {% set sidebar %}
+  </main>
+{% endblock %}
+{% set sidebar %}
 <div>
   <section id="about">
     <h2>About the owner</h2>
@@ -68,9 +71,11 @@ permalink: /
       experiments and odd curiosities.
     </p>
   </section>
-  {% include "components/navbar/current-status.html" %} {% include "components/navbar/main-navigation.html" %}
+  {% include "components/navbar/current-status.html" %}
+  {% include "components/navbar/main-navigation.html" %}
 </div>
-{% endset %} {% block stylesheet %}
-<link rel="stylesheet" href="/css/home.css" />
-<link rel="stylesheet" href="/css/components/media-list.css" />
+{% endset %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="/css/home.css"/>
+  <link rel="stylesheet" href="/css/components/media-list.css"/>
 {% endblock %}

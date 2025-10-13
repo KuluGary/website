@@ -48,6 +48,7 @@ const {
   getMediaGenres,
   removeUnsafeManga,
 } = require("./src/js/11ty/media");
+const { getStoriesGrouped } = require("./src/js/11ty/stories");
 require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
@@ -109,6 +110,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("recentActivity", getRecentActivity);
   eleventyConfig.addCollection("genrePages", getMediaGenres);
   eleventyConfig.addCollection("mediaCategories", getMediaCategories);
+
+  /** 11ty stories */
+  eleventyConfig.addCollection("storiesGrouped", getStoriesGrouped);
 
   eleventyConfig.setLibrary(
     "md",

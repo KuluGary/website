@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang={{ lang or "eb" }}>
+<html lang={{ lang or "es" }} data-background="darker">
 	<head>
 		{% include "components/metadata.html" %}
-		<link rel="stylesheet" href="{{ " /css/themes.css" | url }}">
-		<link rel="stylesheet" href="{{ " /css/prose.css" | url }}">
+		<link rel="stylesheet" href="{{ "/css/themes.css" | url }}">
+		<link rel="stylesheet" href="{{ "/css/stories.css" | url }}">
 		<script>
 			const cachedTheme = localStorage.getItem("theme");
 			const cachedFontStack = localStorage.getItem("font-stack");
@@ -16,28 +16,19 @@
 					.documentElement
 					.setAttribute("data-theme", cachedTheme)
 
-			if (cachedFontStack !== null) 
-				document
-					.documentElement
-					.setAttribute("data-font-stack", cachedFontStack)
-
-			if (cachedContentWidth !== null) 
-				document
-					.documentElement
-					.setAttribute("data-content-width", cachedContentWidth)
-
 			if (cachedFontSize !== null) 
 				document
 					.documentElement
 					.setAttribute("data-font-size", cachedFontSize)
-
-			if (cachedBackground !== null) 
-				document
-					.documentElement
-					.setAttribute("data-background", cachedBackground)
 		</script>
 	</head>
 	<body>
 		{% block content %}{% endblock content %}
+
+		{% if sidebar %}
+			<aside>
+				{{ sidebar | safe }}
+			</aside>
+		{% endif %}
 	</body>
 </html>

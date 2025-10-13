@@ -179,7 +179,7 @@ function isArray(element) {
  * - Retrieves all pages from the Eleventy `collectionApi`.
  * - Excludes assets (`.css`, `.js`, `.json`, `.xml`, `.txt`, `.map`).
  * - Includes `/blog/` but excludes individual `/blog/...` posts.
- * - Excludes pages under `/genre/` and `/status/` and `/prose/`.
+ * - Excludes pages under `/genre/` and `/status/` and `/stories/`.
  * - Sorts results into groups:
  *   1. Home (`/`)
  *   2. Blog index (`/blog/`)
@@ -201,7 +201,7 @@ function generateSitemap(collectionApi) {
         (page.url === "/blog/" || !page.url.startsWith("/blog/")) &&
         !page.url.includes("/genre/") &&
         !page.url.includes("/status/") &&
-        !page.url.includes("/prose/")
+        !page.url.includes("/stories/")
       );
     })
     .sort((a, b) => {

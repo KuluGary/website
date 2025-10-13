@@ -185,7 +185,7 @@ html[data-content-width="wide"] {
 /* #endregion */
 
 /* #region Background pattern */
-html[data-backgroun="flat"] {
+html[data-background="flat"] {
   background-image: none;
 }
 

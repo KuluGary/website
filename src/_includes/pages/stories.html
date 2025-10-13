@@ -1,0 +1,30 @@
+{% extends "layouts/stories.html" %}
+
+{% block content %}
+	<main id="main-content" class="main-content h-entry">
+
+		<article class="e-content font-transitional">
+			{{ content | safe }}
+		</article>
+	</main>
+
+{% endblock %}
+
+{% set sidebar %}
+{% set stories = collections.storiesGrouped %}
+
+{% for story in stories %}
+	{% if story.storyId === storyId %}
+		<ul>
+			<li>
+				<a href="/">Back</a>
+			</li>
+			{% for chapter in story.chapters %}
+				<li>
+					<a href="{{ chapter.url }}">{{ chapter.data.title }}</a>
+				</li>
+			</ul>
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+{% endset %}

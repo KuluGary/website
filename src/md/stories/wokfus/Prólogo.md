@@ -2,21 +2,24 @@
 title: Prólogo
 date: 2025-10-12
 lang: es
-bookChapter: 0
-bookTitle: Wokfus
+storyChapter: 0
+storyTitle: Wokfus
+tags:
+  - story
 description:
 eleventyComputed:
-  bookId: "{{ bookTitle | slugify }}"
-  permalink: "/prose/{{ bookId }}/{{ title | slugify }}/"
+  storyId: "{{ storyTitle | slugify }}"
+  permalink: "/stories/{{ storyId }}/{{ title | slugify }}/"
 ---
 
-{% if bookChapter > 0%}
+{% if storyChapter > 0%}
 
-Chapter {{ bookChapter }}
+Chapter {{ storyChapter }}
 
 {% endif %}
 
 # {{ title }}
+
 
 Estaba ya bien entrada la tarde. El viento fresco de finales de verano arrastraba un olor a frescura y humedad desde las estepas hasta la urbe. El olor a alcohol y heno siendo cortado por las precoces guadañas de los jóvenes campesinos llenaban el ambiente y eran vigorizantes para aquellos que volvían desde los montes boscosos con sus hachas melladas y leña partida. El calor del mediodía pegaba en la muralla exterior del puesto avanzado y los grandes bloques de piedra se coloreaban de un tono ocre.
 

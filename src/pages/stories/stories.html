@@ -1,0 +1,25 @@
+---
+title: Writing
+permalink: /stories/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	<main>
+		{% for story in collections.storiesGrouped %}
+			<section>
+				<h2>
+					<a href="/stories/{{ story.storyId }}/">{{ story.storyTitle }}</a>
+				</h2>
+
+				<ul>
+					{% for chapter in story.chapters %}
+						<li>
+							<a href="{{ chapter.url }}">{{ chapter.data.title }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		{% endfor %}
+	</main>
+{% endblock content %}

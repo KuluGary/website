@@ -1,0 +1,22 @@
+---
+pagination:
+  data: collections.storiesGrouped
+  size: 1
+  alias: story
+permalink: "/stories/{{ story.storyId }}/"
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	<main>
+		<h1>{{ story.storyTitle }}</h1>
+
+		<ul>
+			{% for chapter in story.chapters %}
+				<li>
+					<a href="{{ chapter.url }}">{{ chapter.data.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</main>
+{% endblock content %}
