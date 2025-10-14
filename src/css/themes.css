@@ -81,7 +81,6 @@ html[data-font-stack="handwritten"],
 /* #endregion */
 
 /* #region Font sizes theme settings */
-
 html[data-font-size="small"] {
   --font-size: 14px;
 }
@@ -98,7 +97,6 @@ html[data-font-size="large"] {
 /* #endregion */
 
 /* #region Color theme settings */
-
 html:not([data-theme]),
 html[data-theme=""],
 html[data-theme="grayscale"] {

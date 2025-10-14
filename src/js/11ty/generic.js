@@ -26,6 +26,7 @@ module.exports = {
   makeUppercase,
   minutesToHoursMinutes,
   generateChattableCSS,
+  getOpenGraphScreenshotURL,
 };
 
 /**
@@ -317,4 +318,17 @@ async function generateChattableCSS() {
 
   fs.writeFileSync(cacheFile, JSON.stringify({ mtime: latestMtime }), "utf8");
   timeEnd("[Chattable]", "✔️ Generation complete");
+}
+
+function getOpenGraphScreenshotURL() {
+  let encodedURL;
+
+  if (this.page.url.includes("/blog")) {
+    encodedURL = encodeURIComponent(metadata.url + "/social/" + this.page.url);
+  } else {
+    encodedURL = encodeURIComponent(metadata.url + "/social/");
+  }
+
+  const cacheKey = `_${new Date().valueOf()}`;
+  return `https://v1.screenshot.11ty.dev/${encodedURL}/opengraph/${cacheKey}`;
 }

@@ -1,0 +1,65 @@
+---
+permalink: /social/
+eleventyExcludeFromCollections: true
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark-blue">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="stylesheet" href="/css/themes.css">
+		<title>{{ post.data.title }}</title>
+		<style>
+			:root {
+				--w: 1200px;
+				--h: 630px;
+				--bg: var(--background-color);
+				--text: var(--text-color);
+				--muted: var(--text-color-alt);
+				--accent: var(--secondary-color);
+				--border: var(--text-color-alt);
+				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+			}
+
+			body,
+			html {
+				height: 100%;
+				margin: 0;
+				background: var(--bg);
+				color: var(--text);
+				font-family: var(--font-family);
+			}
+
+			.card {
+				width: var(--w);
+				height: var(--h);
+				background: var(--bg);
+				background-image: var(--texture);
+				background-size: 4px 4px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 80px;
+				box-sizing: border-box;
+				position: relative;
+				overflow: hidden;
+			}
+
+			svg {
+				height: 600px;
+				width: 600px;
+			}
+			svg g {
+				fill: var(--text-color);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="card">
+			{% include "components/hat-icon.html" %}
+		</div>
+	</body>
+</html>
