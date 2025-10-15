@@ -4,7 +4,7 @@
   <ol>
     {% for item in collection | getFrequentTags | limit(5) %}
       <li>
-        <a href="/blog/tags/{{ item.tag | slugify }}">#{{ item.tag }}</a> ({{item.count}})</li>
+        <a href="/blog/tags/{{ item.tag | slugify }}">#{{ item.tag | unslugify | lower }}</a> ({{item.count}})</li>
     {% endfor %}
   </ol>
 </section>
