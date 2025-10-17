@@ -79,9 +79,9 @@
 					{% for tag in (item.tags or item.genres) %}
 						<li>
 							{% if item.type === "Post" %}
-								<a href="/blog/tags/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+								<a href="/blog/tags/{{ tag | slugify }}">#{{ tag | unslugify | lower }}</a>
 							{% else %}
-								<a href="/media/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify }}</a>
+								<a href="/media/{{ item.type | slugify }}/genre/{{ tag | slugify }}">#{{ tag | unslugify | lower }}</a>
 							{% endif %}
 						</li>
 					{%- endfor -%}

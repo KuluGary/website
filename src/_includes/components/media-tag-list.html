@@ -6,7 +6,7 @@
 
 			{% if genre %}
 				<li>
-					<a href="/media/{{ mediaType }}/genre/{{ genre.tag | slugify }}">#{{ genre.tag }}</a>
+					<a href="/media/{{ mediaType }}/genre/{{ genre.tag | slugify }}">#{{ genre.tag | unslugify | lower }}</a>
 				</li>
 			{% endif %}
 		{% endfor %}
