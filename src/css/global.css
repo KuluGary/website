@@ -45,7 +45,6 @@ body {
   min-height: 100dvh;
   margin: 0;
   padding: var(--line-height);
-  padding-top: 0;
   width: var(--main-content-width);
   line-height: var(--line-height);
 
@@ -116,7 +115,8 @@ body {
   }
 
   @media (max-width: 480px) {
-    padding: var(--line-height) 1ch;
+    padding: 1ch;
+    padding-bottom: var(--line-height);
   }
 
   @media (--viewport-mobile) {
@@ -155,7 +155,7 @@ h6 {
   align-items: center;
 
   @media (--viewport-mobile) {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   &:has(a) {
@@ -409,7 +409,7 @@ ul.bar-separated > li {
   align-items: center;
 }
 
-ul.bar-separated > li + li::before {
+ul.bar-separated > li:not(:last-of-type)::after {
   content: "|";
   margin-left: var(--bar-gap);
   padding-right: var(--bar-gap);

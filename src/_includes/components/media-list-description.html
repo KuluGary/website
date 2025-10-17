@@ -98,9 +98,7 @@
 			<div>{{ item.description | safe }}</div>
 
 			{% if item.description.length > 210 %}
-				<label for="{{ item.id or item.title}}" aria-hidden="true">
-					{# See more #}
-				</label>
+				<label for="{{ item.id or item.title}}" aria-hidden="true"></label>
 			{% endif %}
 		</div>
 	{% endif %}

@@ -113,12 +113,17 @@
     justify-content: space-between;
     padding-inline: var(--line-height);
     column-gap: var(--line-height);
+    font-family: "Noto Sans Symbols", "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
 
     & li {
       font-size: smaller;
 
       &:last-of-type {
         text-align: right;
+      }
+
+      & span {
+        font-weight: bold;
       }
 
       &:last-of-type,
@@ -134,6 +139,10 @@
         font-size: smaller;
       }
     }
+
+    @media (--viewport-mobile) {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -147,4 +156,10 @@
   font-weight: normal;
   margin-top: var(--line-height);
   margin-bottom: 0.5ch;
+
+  @media (--viewport-mobile) {
+    display: block;
+    width: 100%;
+    padding-block: 1ch;
+  }
 }

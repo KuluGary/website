@@ -23,10 +23,9 @@ permalink: /
         The full list of my blog posts can be found at <a href="/blog">/blog</a>. So far, I've published {{
         collections["postsByYear"][0][1].length }} posts this year, and there's a total archive of {{
         collections["blog-post"].length }} posts. I mostly write about
-        {% for item in collections["blog-post"] | getFrequentTags | limit(3) %}
-            <a href="/blog/tags/{{ item.tag | slugify }}">{{ item.tag | unslugify | lower }}</a>
-            {% if loop.last %}.{% else %}, {% endif %}
-          {% endfor %}The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
+        <a href="/blog/tags/{{ postTags[0].tag | slugify }}">{{ postTags[0].tag | unslugify | lower }}</a>,
+        <a href="/blog/tags/{{ postTags[1].tag | slugify }}">{{ postTags[1].tag | unslugify | lower }}</a> and
+        <a href="/blog/tags/{{ postTags[2].tag | slugify }}">{{ postTags[2].tag | unslugify | lower }}</a>. The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
       </li>
 
         <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page.</li>

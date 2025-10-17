@@ -32,19 +32,29 @@
 
     & ul.stats {
       list-style: none;
-      margin: 0;
       padding: 0;
       display: flex;
-      flex-wrap: nowrap;
       justify-content: start;
 
-      & > * {
-        text-wrap: nowrap;
+      @media (--viewport-tablet) {
+        flex-wrap: nowrap;
+        margin: 0;
+
+        & > * {
+          text-wrap: nowrap;
+        }
       }
 
       & cite.author {
         font-style: normal;
         color: var(--secondary-color);
+      }
+
+      @media (--viewport-mobile) {
+        margin-block: 1ch;
+        & li {
+          margin-block: 0;
+        }
       }
     }
 
@@ -71,6 +81,7 @@
       & time + span:has(+ time) {
         color: var(--text-color-alt);
         margin: 0;
+        margin-inline-start: 1ch;
         font-size: smaller;
       }
 
@@ -122,16 +133,19 @@
         margin-inline-start: auto;
         color: var(--secondary-color);
         text-decoration: underline;
+        display: inline;
+        line-height: 2;
+
+        &::after {
+          content: "See less";
+        }
 
         &:hover {
           cursor: pointer;
         }
-      }
 
-      label {
-        display: inline;
-        &::after {
-          content: "See less";
+        @media (--viewport-mobile) {
+          display: inline-block;
         }
       }
 
@@ -149,6 +163,12 @@
         }
       }
 
+      &:is(:has(input:checked), &:not(:has(label))) {
+        div {
+          display: block; /* unclamped */
+        }
+      }
+
       & input[type="checkbox"] {
         position: absolute;
         opacity: 0;
@@ -158,6 +178,23 @@
       & p:first-of-type {
         margin-top: 0;
       }
+    }
+  }
+
+  & p {
+    font-size: smaller;
+  }
+}
+
+section:has(.media-section.media-list):has(footer) {
+  & p {
+    font-size: smaller;
+    margin-block: -1ch 1ch;
+  }
+
+  &:last-of-type {
+    & p {
+      margin-block-end: 2ch;
     }
   }
 }
