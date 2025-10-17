@@ -180,16 +180,14 @@
       }
     }
   }
-
-  & p {
-    font-size: smaller;
-  }
 }
 
 section:has(.media-section.media-list):has(footer) {
-  & p {
-    font-size: smaller;
-    margin-block: -1ch 1ch;
+  & > footer {
+    & p {
+      font-size: smaller;
+      margin-block: -1ch 1ch;
+    }
   }
 
   &:last-of-type {
