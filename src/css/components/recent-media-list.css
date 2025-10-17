@@ -1,6 +1,6 @@
 .recent-activity {
   & h2 {
-    margin-bottom: calc(var(--line-height) / 1);
+    margin-bottom: calc(var(--spacing-medium) / 1);
   }
 }
 
@@ -23,8 +23,8 @@
 
   > li {
     position: relative;
-    padding-left: var(--line-height);
-    margin-top: var(--line-height);
+    padding-left: var(--spacing-medium);
+    margin-top: var(--spacing-medium);
 
     & article {
       margin: 0;
@@ -61,13 +61,14 @@
       & time {
         color: var(--text-color-alt);
         margin: 0;
-        font-size: smaller;
+        font-size: var(--font-size-small);
       }
     }
 
     & .stats > li > * {
       display: inline-flex;
-      font-size: smaller;
+      font-size: var(--font-size-small);
+
       margin: 0;
       padding: 0;
     }
@@ -77,20 +78,21 @@
       flex-wrap: wrap;
       height: 1lh;
       overflow: clip;
-      font-size: smaller;
+      font-size: var(--font-size-small);
 
       & li {
         margin: 0;
       }
       & li + li {
-        margin-inline-start: calc(var(--line-height) / 2);
+        margin-inline-start: var(--spacing-xsmall);
       }
     }
 
     .description {
-      font-size: smaller;
+      font-size: var(--font-size-small);
+
       overflow: hidden;
-      margin-top: calc(var(--line-height) / 2);
+      margin-top: var(--spacing-xsmall);
 
       display: -webkit-box;
       -webkit-box-orient: vertical;

@@ -6,7 +6,7 @@
 
 article#current-status {
   position: relative;
-  padding-left: var(--line-height);
+  padding-left: var(--spacing-medium);
 
   header {
     display: flex;
@@ -16,15 +16,15 @@ article#current-status {
     & time {
       color: var(--text-color-alt);
       margin: 0;
-      font-size: smaller;
+      font-size: var(--font-size-small);
     }
 
     & > * {
-      margin-block: 0 calc(var(--line-height) / 2);
+      margin-block: 0 var(--spacing-xsmall);
     }
   }
   .subtitle {
-    font-size: smaller;
+    font-size: var(--font-size-small);
     margin: 0;
     padding: 0;
     justify-content: start;

@@ -1,6 +1,6 @@
 .header {
   border-bottom: 1px solid var(--background-color-alt);
-  padding-block-end: calc(var(--line-height) / 2);
+  padding-block-end: var(--spacing-xsmall);
 
   & a {
     display: flex;
@@ -9,7 +9,7 @@
 
     & .title {
       text-transform: uppercase;
-      font-size: small;
+      font-size: var(--font-size-small);
       text-decoration: none;
     }
 

@@ -4,20 +4,38 @@
 
 :root {
   --font-family: system-ui, sans-serif;
-  --line-height: 1.2rem;
+
   --border-thickness: 2px;
+
+  --spacing-xxsmall: 0.375rem;
+  --spacing-xsmall: 0.75rem;
+  --spacing-small: 1rem;
+  --spacing-medium: 1.2rem;
+  --spacing-large: 1.5rem;
+
+  --line-height-small: 1.1;
+  --line-height-medium: 1.5;
+  --line-height-large: 1.8;
+  --line-height-xlarge: 2;
 
   --font-weight-normal: 500;
   --font-weight-medium: 600;
   --font-weight-bold: 800;
-  --font-size: 14px;
+
+  --font-size-small: 0.8rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.2rem;
+
+  @media (--viewport-mobile) {
+    --font-size-small: 0.95rem;
+  }
 
   font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: var(--font-weight-normal);
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
-  font-size: var(--font-size);
+  font-size: var(--font-size-medium);
 }
 
 html {
@@ -44,16 +62,20 @@ body {
   position: relative;
   min-height: 100dvh;
   margin: 0;
-  padding: var(--line-height);
+  padding: var(--spacing-medium);
   width: var(--main-content-width);
-  line-height: var(--line-height);
+  line-height: var(--line-height-medium);
 
   display: grid;
   grid-template-areas: "header header" "main aside" "footer footer";
   grid-template-columns: 1fr 25%;
   grid-template-rows: auto 1fr auto;
-  column-gap: var(--line-height);
+  column-gap: var(--spacing-medium);
   background: var(--background-color);
+
+  &:has(> header) {
+    padding-top: var(--spacing-xsmall);
+  }
 
   & > * {
     width: 100%;
@@ -70,8 +92,9 @@ body {
 
     @media (--viewport-tablet) {
       border-inline-start: 1px solid var(--background-color-alt);
-      padding-inline-start: calc(var(--line-height) / 1.5);
-      font-size: smaller;
+      padding-inline-start: calc(var(--spacing-medium) / 1.5);
+      font-size: var(--font-size-small);
+
       & h2 {
         background-color: transparent;
         padding: 0;
@@ -101,7 +124,7 @@ body {
       }
 
       & p {
-        margin-block-end: calc(var(--line-height) / 2);
+        margin-block-end: var(--spacing-xsmall);
       }
     }
   }
@@ -116,7 +139,7 @@ body {
 
   @media (max-width: 480px) {
     padding: 1ch;
-    padding-bottom: var(--line-height);
+    padding-bottom: var(--spacing-medium);
   }
 
   @media (--viewport-mobile) {
@@ -143,8 +166,8 @@ h4,
 h5,
 h6 {
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height);
-  font-size: 1rem;
+  line-height: var(--line-height-small);
+  font-size: var(--font-size-medium);
   text-transform: uppercase;
   background-color: var(--background-color-alt);
   padding: 0.5ch;
@@ -153,10 +176,6 @@ h6 {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-
-  @media (--viewport-mobile) {
-    font-size: 1.1rem;
-  }
 
   &:has(a) {
     grid-template-columns: auto auto 1fr;
@@ -205,7 +224,7 @@ h2 > a:visited {
 }
 
 p {
-  margin-bottom: var(--line-height);
+  margin-bottom: var(--spacing-medium);
 }
 
 strong {
@@ -229,24 +248,24 @@ sub {
 
 table {
   position: relative;
-  top: calc(var(--line-height) / 2);
+  top: var(--spacing-xsmall);
   width: calc(round(down, 100%, 1ch));
   border-collapse: collapse;
-  margin: 0 0 calc(var(--line-height) * 2);
+  margin: 0 0 calc(var(--spacing-medium) * 2);
 }
 
 th,
 td {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc((var(--line-height) / 2)) calc(1ch - var(--border-thickness) / 2)
-    calc((var(--line-height) / 2) - (var(--border-thickness)));
-  line-height: var(--line-height);
+  padding: calc((var(--spacing-xsmall))) calc(1ch - var(--border-thickness) / 2)
+    calc((var(--spacing-xsmall)) - (var(--border-thickness)));
+  line-height: var(--line-height-medium);
   vertical-align: top;
   text-align: left;
 }
 
 table tbody tr:first-child > * {
-  padding-top: calc((var(--line-height) / 2) - var(--border-thickness));
+  padding-top: calc((var(--spacing-xsmall)) - var(--border-thickness));
 }
 
 th {
@@ -274,8 +293,8 @@ img {
 
 details {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) - var(--border-thickness)) 1ch;
-  margin-bottom: var(--line-height);
+  padding: calc(var(--spacing-medium) - var(--border-thickness)) 1ch;
+  margin-bottom: var(--spacing-medium);
 
   & summary {
     font-weight: var(--font-weight-medium);
@@ -290,7 +309,7 @@ details {
 
   &[open] {
     & summary {
-      margin-bottom: var(--line-height);
+      margin-bottom: var(--spacing-medium);
 
       &::marker {
         content: "▼";
@@ -306,7 +325,7 @@ details {
 pre {
   white-space: pre;
   overflow-x: auto;
-  margin: var(--line-height) 0;
+  margin: var(--spacing-medium) 0;
   overflow-y: hidden;
 }
 
@@ -324,7 +343,7 @@ code {
 }
 
 figure {
-  margin: calc(var(--line-height) * 2) 3ch;
+  margin: calc(var(--spacing-medium) * 2) 3ch;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -332,13 +351,13 @@ figure {
 figcaption {
   display: block;
   font-style: italic;
-  margin-top: var(--line-height);
+  margin-top: var(--spacing-medium);
 }
 
 ul,
 ol {
   padding: 0;
-  margin: 0 0 var(--line-height);
+  margin: 0 0 var(--spacing-medium);
 }
 
 ul {
@@ -364,7 +383,7 @@ ul.horizontal,
 ol.horizontal {
   list-style-type: none;
   display: inline-flex;
-  column-gap: var(--line-height);
+  column-gap: var(--spacing-medium);
   padding: 0;
   flex-wrap: wrap;
   margin-bottom: 0;
@@ -378,7 +397,7 @@ ol li:before {
 
 li {
   margin: 0;
-  margin-block: calc(var(--line-height) / 2);
+  margin-block: var(--spacing-xsmall);
   padding: 0;
 }
 
@@ -387,7 +406,7 @@ li::marker {
 }
 
 ::-webkit-scrollbar {
-  height: var(--line-height);
+  height: var(--spacing-medium);
 }
 
 ul.bar-separated,
@@ -443,23 +462,23 @@ ul.dot-separated ul {
 fieldset {
   border: none;
   padding-inline: 0;
-  padding-block: calc(var(--line-height) / 2);
+  padding-block: var(--spacing-xsmall);
 }
 
 input,
 button,
 textarea {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) / 2 - var(--border-thickness)) calc(1ch - var(--border-thickness));
+  padding: calc(var(--spacing-xsmall) - var(--border-thickness)) calc(1ch - var(--border-thickness));
   margin: 0;
   font: inherit;
   font-weight: inherit;
-  height: calc(var(--line-height) * 2);
+  height: calc(var(--spacing-medium) * 2);
   width: auto;
   overflow: visible;
   background: var(--background-color);
   color: var(--text-color);
-  line-height: normal;
+  line-height: var(--line-height-medium);
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
@@ -473,14 +492,14 @@ button:disabled {
 
 select {
   border: var(--border-thickness) solid var(--text-color);
-  padding: calc(var(--line-height) / 2 - var(--border-thickness)) calc(1ch - var(--border-thickness));
+  padding: calc(var(--spacing-xsmall) - var(--border-thickness)) calc(1ch - var(--border-thickness));
   font: inherit;
   font-weight: inherit;
-  height: calc(var(--line-height) * 2);
+  height: calc(var(--spacing-medium) * 2);
   width: auto;
   background: var(--background-color);
   color: var(--text-color);
-  line-height: normal;
+  line-height: var(--line-height-medium);
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
 }
@@ -491,7 +510,7 @@ input[type="radio"] {
   place-content: center;
   vertical-align: top;
   width: 2ch;
-  height: var(--line-height);
+  height: var(--spacing-medium);
   cursor: pointer;
 }
 
@@ -499,7 +518,7 @@ input[type="checkbox"]:checked:before,
 input[type="radio"]:checked:before {
   content: "";
   width: 1ch;
-  height: calc(var(--line-height) / 2);
+  height: var(--spacing-xsmall);
   background: var(--text-color);
 }
 
@@ -544,7 +563,7 @@ label {
   display: block;
   width: calc(round(down, 100%, 1ch));
   height: auto;
-  line-height: var(--line-height);
+  line-height: var(--line-height-medium);
   font-weight: var(--font-weight-medium);
   margin: 0;
 }
@@ -558,7 +577,7 @@ label input {
   position: relative;
   padding-left: 0;
   list-style-type: none;
-  line-height: var(--line-height);
+  line-height: var(--line-height-medium);
 }
 
 .tree ul {
@@ -575,7 +594,7 @@ label input {
 .tree ul li:before {
   position: absolute;
   display: block;
-  top: calc(var(--line-height) / 2);
+  top: var(--spacing-xsmall);
   left: 0;
   content: "";
   width: 1ch;
@@ -592,7 +611,7 @@ label input {
   top: 0;
   left: 0;
   content: "";
-  height: calc(var(--line-height) / 2);
+  height: var(--spacing-xsmall);
   border-left: var(--border-thickness) solid var(--text-color);
 }
 
@@ -601,7 +620,7 @@ label input {
   display: flex;
   gap: 1ch;
   width: calc(round(down, 100%, (1ch * var(--grid-cells)) - (1ch * var(--grid-cells) - 1)));
-  margin-bottom: var(--line-height);
+  margin-bottom: var(--spacing-medium);
 }
 
 .grid > *,
@@ -706,8 +725,8 @@ label:has(.theme-switcher) {
 
   > li {
     position: relative;
-    padding-left: var(--line-height);
-    margin-top: var(--line-height);
+    padding-left: var(--spacing-medium);
+    margin-top: var(--spacing-medium);
     overflow: clip;
   }
 }
@@ -717,7 +736,7 @@ label:has(.theme-switcher) {
   list-style-type: none;
   margin-bottom: 0;
   margin-top: 1ch;
-  font-size: smaller;
+  font-size: var(--font-size-small);
 
   & li {
     text-transform: lowercase;
@@ -748,7 +767,7 @@ code:not([class*="language-"]) {
   padding-inline: 0.5ch;
   line-height: 4ch;
   font-weight: normal;
-  font-size: smaller;
+  font-size: var(--font-size-small);
 
   color: var(--secondary-color);
   border: var(--border-thickness) solid var(--background-color-alt);
@@ -760,10 +779,10 @@ code:not([class*="language-"]) {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  column-gap: var(--line-height);
+  column-gap: var(--spacing-medium);
   width: fit-content;
   margin-inline: auto;
-  margin-block-start: var(--line-height);
+  margin-block-start: var(--spacing-medium);
 
   & > * {
     margin: 0;
@@ -778,7 +797,7 @@ blockquote {
   position: relative;
   font-style: italic;
   margin: 0;
-  padding-left: var(--line-height);
+  padding-left: var(--spacing-medium);
 
   &::before {
     content: "";

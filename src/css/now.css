@@ -1,6 +1,6 @@
 section {
   & footer {
-    font-size: smaller;
+    font-size: var(--font-size-small);
 
     & p {
       margin-bottom: 0;
@@ -12,7 +12,7 @@ section {
   --thumbnail-size: 48px;
   display: grid;
   grid-template-columns: var(--thumbnail-size) 1fr;
-  gap: calc(var(--line-height) / 2);
+  gap: var(--spacing-xsmall);
 }
 
 h2#recent-games > a,
@@ -34,24 +34,24 @@ h2#recent-manga > a {
 
 .item-list hgroup {
   display: flex;
-  column-gap: calc(var(--line-height) / 2);
+  column-gap: var(--spacing-xsmall);
 }
 
 .item-list div > p {
-  margin-block: calc(var(--line-height) / 2);
+  margin-block: var(--spacing-xsmall);
 }
 
 .post-date,
 .post-stats,
 .post-tags {
   display: inline-flex;
-  font-size: smaller;
+  font-size: var(--font-size-small);
   margin: 0;
   padding: 0;
 }
 
 .post-subtitle .post-divider {
-  margin-inline: calc(var(--line-height) / 2);
+  margin-inline: var(--spacing-xsmall);
 }
 
 .post-tags {
@@ -69,7 +69,7 @@ h2#recent-manga > a {
 
 article#current-status {
   position: relative;
-  padding-left: var(--line-height);
+  padding-left: var(--spacing-medium);
 
   header {
     display: flex;
@@ -79,15 +79,15 @@ article#current-status {
     & time {
       color: var(--text-color-alt);
       margin: 0;
-      font-size: smaller;
+      font-size: var(--font-size-small);
     }
 
     & > * {
-      margin-block: 0 calc(var(--line-height) / 2);
+      margin-block: 0 var(--spacing-xsmall);
     }
   }
   .subtitle {
-    font-size: smaller;
+    font-size: var(--font-size-small);
     margin: 0;
     padding: 0;
     justify-content: start;

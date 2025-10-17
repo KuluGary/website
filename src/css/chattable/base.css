@@ -12,7 +12,7 @@ body {
   font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: var(--font-weight-normal);
-  font-size: var(--font-size);
+  font-size: var(--font-size-medium);
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
   position: relative;
@@ -43,7 +43,7 @@ body {
   position: static;
   float: right;
   color: var(--text-color-alt);
-  font-size: smaller;
+  font-size: var(--font-size-small);
 }
 
 .allMessages.containsOnlyEmojis .emoji {
@@ -99,7 +99,7 @@ blockquote {
   border: none;
   outline: none;
   font-family: var(--font-family);
-  font-size: var(--font-size);
+  font-size: var(--font-size-medium);
 }
 
 #textInput,

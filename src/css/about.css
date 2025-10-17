@@ -2,7 +2,7 @@ main {
   --border-active: 1px solid var(--text-color-alt);
   --border-inactive: 1px solid rgb(from var(--text-color-alt) r g b / 35%);
 
-  --cell-padding: calc(var(--line-height) / 4) calc(var(--line-height) / 2);
+  --cell-padding: var(--spacing-xxsmall) var(--spacing-xsmall);
 
   padding-inline: 0.5ch;
 
@@ -14,18 +14,18 @@ main {
   }
 
   p {
-    font-size: smaller;
+    font-size: var(--font-size-small);
   }
 
   li {
-    font-size: smaller;
+    font-size: var(--font-size-small);
   }
 
   #header {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto auto auto 1fr;
-    gap: calc(var(--line-height) / 2);
+    gap: var(--spacing-xsmall);
 
     & h2 {
       grid-column: 1 / span 6;
@@ -62,7 +62,7 @@ main {
 
       & h2 {
         margin-top: 0;
-        margin-bottom: calc(var(--line-height) / 2);
+        margin-bottom: var(--spacing-xsmall);
       }
 
       & ul {
@@ -71,7 +71,7 @@ main {
         list-style: none;
         padding: 0;
         margin-bottom: 0;
-        row-gap: calc(var(--line-height) / 2);
+        row-gap: var(--spacing-xsmall);
 
         & li {
           border: var(--border-active);
@@ -98,12 +98,12 @@ main {
 
       margin-bottom: 1ch;
 
-      font-size: small;
+      font-size: var(--font-size-small);
       text-align: center;
       vertical-align: center;
 
       & .label {
-        font-size: small;
+        font-size: var(--font-size-small);
         font-style: italic;
         color: var(--text-color-alt);
       }
@@ -145,7 +145,7 @@ main {
   #abilities {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: var(--line-height);
+    column-gap: var(--spacing-medium);
 
     & p,
     & ul {
@@ -158,7 +158,7 @@ main {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr;
-    column-gap: var(--line-height);
+    column-gap: var(--spacing-medium);
 
     #physical-stress {
       grid-column: 1 / span 2;
@@ -240,7 +240,7 @@ main {
   }
 
   #credits {
-    font-size: small;
-    margin-block-start: calc(var(--line-height) * 2);
+    font-size: var(--font-size-small);
+    margin-block-start: calc(var(--spacing-medium) * 2);
   }
 }

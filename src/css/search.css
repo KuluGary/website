@@ -1,7 +1,7 @@
 #search {
   & form {
     & > * {
-      margin-block: calc(var(--line-height) / 2);
+      margin-block: var(--spacing-xsmall);
     }
   }
   & input,
@@ -11,7 +11,7 @@
 
   & .pagefind-ui__message {
     font-weight: var(--font-weight-bold);
-    line-height: var(--line-height);
+    line-height: var(--line-height-medium);
     font-size: 1rem;
     text-transform: uppercase;
     background-color: var(--background-color-alt);
@@ -46,7 +46,7 @@
 
       & .pagefind-ui__result-inner {
         position: relative;
-        padding-left: var(--line-height);
+        padding-left: var(--spacing-medium);
 
         &::before {
           content: "";
@@ -59,12 +59,12 @@
       }
 
       & .pagefind-ui__result-title {
-        margin-block: calc(var(--line-height) / 2);
+        margin-block: var(--spacing-xsmall);
       }
 
       & .pagefind-ui__result-excerpt {
         display: -webkit-box;
-        font-size: smaller;
+        font-size: var(--font-size-small);
         margin-top: 0;
         overflow: hidden;
         -webkit-box-orient: vertical;

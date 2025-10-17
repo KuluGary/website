@@ -18,8 +18,8 @@
 
   > li {
     position: relative;
-    padding-left: var(--line-height);
-    margin-top: var(--line-height);
+    padding-left: var(--spacing-medium);
+    margin-top: var(--spacing-medium);
     overflow: clip;
 
     & article {
@@ -42,6 +42,10 @@
         font-style: normal;
         color: var(--secondary-color);
       }
+
+      & li {
+        margin-block: var(--spacing-xxsmall);
+      }
     }
 
     &::before {
@@ -62,13 +66,14 @@
       & time {
         color: var(--text-color-alt);
         margin: 0;
-        font-size: smaller;
+        margin-inline-start: var(--spacing-xxsmall);
+        font-size: var(--font-size-small);
       }
     }
 
     & .stats > li > * {
       display: inline-flex;
-      font-size: smaller;
+      font-size: var(--font-size-small);
       margin: 0;
       padding: 0;
     }
@@ -78,19 +83,19 @@
       flex-wrap: wrap;
       height: 1lh;
       overflow: clip;
-      font-size: smaller;
+      font-size: var(--font-size-small);
 
       & li {
         margin: 0;
       }
 
       & li + li {
-        margin-inline-start: calc(var(--line-height) / 2);
+        margin-inline-start: var(--spacing-xsmall);
       }
     }
 
     & .description {
-      font-size: smaller;
+      font-size: var(--font-size-small);
       overflow: hidden;
       margin-top: 0;
 
@@ -111,12 +116,12 @@
     list-style: none;
     display: flex;
     justify-content: space-between;
-    padding-inline: var(--line-height);
-    column-gap: var(--line-height);
+    padding-inline: var(--spacing-medium);
+    column-gap: var(--spacing-medium);
     font-family: "Noto Sans Symbols", "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
 
     & li {
-      font-size: smaller;
+      font-size: var(--font-size-small);
 
       &:last-of-type {
         text-align: right;
@@ -136,7 +141,7 @@
       }
 
       & .navigation-button-icon {
-        font-size: smaller;
+        font-size: var(--font-size-small);
       }
     }
 
@@ -154,7 +159,7 @@
   font-style: italic;
   text-decoration: none;
   font-weight: normal;
-  margin-top: var(--line-height);
+  margin-top: var(--spacing-medium);
   margin-bottom: 0.5ch;
 
   @media (--viewport-mobile) {

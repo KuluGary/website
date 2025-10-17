@@ -18,12 +18,12 @@ main.main-content {
         &::before {
           content: "|";
           margin-inline: 1ch;
-          font-size: small;
+          font-size: var(--font-size-small);
         }
       }
 
       & .post-divider {
-        margin-inline: calc(var(--line-height) / 2);
+        margin-inline: var(--spacing-xsmall);
       }
 
       & .post-date,
@@ -34,7 +34,7 @@ main.main-content {
         padding: 0;
 
         @media (--viewport-tablet) {
-          font-size: smaller;
+          font-size: var(--font-size-small);
         }
       }
 
@@ -104,12 +104,12 @@ main.main-content {
 
   & .prose {
     font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-    margin-top: calc(var(--line-height) * 2);
+    margin-top: calc(var(--spacing-medium) * 2);
 
     & .chapter {
       display: block;
       font-size: 1rem;
-      line-height: 1;
+      line-height: var(--line-height-small);
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -147,21 +147,21 @@ main.main-content {
 }
 
 & .post-footer {
-  --footer-separation: var(--line-height);
+  --footer-separation: var(--spacing-medium);
   border-top: 1px solid var(--text-color-alt);
 
   @media (--viewport-tablet) {
     margin-block: var(--footer-separation);
-    font-size: smaller;
+    font-size: var(--font-size-small);
   }
 
   & nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: var(--line-height);
-    row-gap: calc(var(--line-height) / 2);
+    column-gap: var(--spacing-medium);
+    row-gap: var(--spacing-xsmall);
     justify-content: space-between;
-    margin-top: calc(var(--line-height) / 1.5);
+    margin-top: calc(var(--spacing-medium) / 1.5);
 
     & .nxt-btn {
       margin-right: auto;
@@ -204,7 +204,7 @@ main.main-content {
   }
 
   p {
-    margin-block: calc(var(--line-height) / 2);
+    margin-block: var(--spacing-xsmall);
   }
 
   & section {
@@ -212,7 +212,7 @@ main.main-content {
   }
 
   & .share-buttons {
-    margin-block: calc(var(--line-height) / 2);
+    margin-block: var(--spacing-xsmall);
   }
 
   & .webmentions {
@@ -291,7 +291,7 @@ main.main-content {
       }
 
       &[open] summary {
-        padding-bottom: calc(var(--line-height) * 0.5);
+        padding-bottom: calc(var(--spacing-medium) * 0.5);
         border-bottom: 1px solid var(--text-color-alt);
 
         &::after {
@@ -321,7 +321,7 @@ iframe {
   }
 
   .section-share {
-    margin-block-start: var(--line-height);
+    margin-block-start: var(--spacing-medium);
     & h2 {
       display: none;
     }

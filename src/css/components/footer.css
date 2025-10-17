@@ -1,6 +1,6 @@
 .site-footer {
   border-top: var(--border-thickness) solid var(--background-color-alt);
-  font-size: smaller;
+  font-size: var(--font-size-small);
 
   & img {
     width: auto;
@@ -10,7 +10,7 @@
   & .button-list {
     justify-content: center;
     width: 100%;
-    row-gap: var(--line-height);
+    row-gap: var(--spacing-medium);
   }
 
   & .button-list li,
@@ -19,7 +19,7 @@
   }
 
   & .footer-credits > * {
-    margin-block: calc(var(--line-height) * 0.75);
+    margin-block: calc(var(--spacing-medium) * 0.75);
     margin-inline: auto;
   }
 

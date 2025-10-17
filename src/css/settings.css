@@ -1,6 +1,6 @@
 label h3 {
   margin-bottom: 0;
-  margin-top: var(--line-height);
+  margin-top: var(--spacing-medium);
 }
 
 form {
@@ -9,12 +9,12 @@ form {
 
 #reset-button {
   display: block;
-  margin-top: calc(var(--line-height) * 2);
+  margin-top: calc(var(--spacing-medium) * 2);
 }
 
 fieldset {
   margin-top: 0;
-  margin-block: calc(var(--line-height) / 2);
+  margin-block: var(--spacing-xsmall);
 }
 
 fieldset > label {
@@ -22,7 +22,7 @@ fieldset > label {
 }
 
 fieldset > label + label {
-  margin-block: var(--line-height);
+  margin-block: var(--spacing-medium);
 
   &:last-of-type {
     margin-bottom: 0;
@@ -39,7 +39,7 @@ noscript {
 }
 
 select {
-  margin-top: var(--line-height);
+  margin-top: var(--spacing-medium);
 }
 
 .info + select {
@@ -47,5 +47,5 @@ select {
 }
 
 .info {
-  font-size: smaller;
+  font-size: var(--font-size-small);
 }

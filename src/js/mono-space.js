@@ -1,7 +1,7 @@
 function gridCellDimensions() {
   const element = document.createElement("div");
   element.style.position = "fixed";
-  element.style.height = "var(--line-height)";
+  element.style.height = "var(--spacing-medium)";
   element.style.width = "1ch";
   document.body.appendChild(element);
   const rect = element.getBoundingClientRect();

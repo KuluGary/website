@@ -22,9 +22,9 @@
 
   > li {
     position: relative;
-    padding-left: var(--line-height);
+    padding-left: var(--spacing-medium);
     overflow: clip;
-    margin-block: var(--line-height);
+    margin-block: var(--spacing-medium);
 
     & article {
       margin: 0;
@@ -56,6 +56,10 @@
           margin-block: 0;
         }
       }
+
+      & li {
+        margin-block: var(--spacing-xxsmall);
+      }
     }
 
     &::before {
@@ -82,7 +86,7 @@
         color: var(--text-color-alt);
         margin: 0;
         margin-inline-start: 1ch;
-        font-size: smaller;
+        font-size: var(--font-size-small);
       }
 
       & div:has(time + span + time) {
@@ -98,7 +102,7 @@
 
     & .stats > li > * {
       display: inline-flex;
-      font-size: smaller;
+      font-size: var(--font-size-small);
       margin: 0;
       padding: 0;
     }
@@ -108,13 +112,13 @@
       flex-wrap: wrap;
       height: 1lh;
       overflow: clip;
-      font-size: smaller;
+      font-size: var(--font-size-small);
 
       & li {
         margin: 0;
       }
       & li + li {
-        margin-inline-start: calc(var(--line-height) / 2);
+        margin-inline-start: var(--spacing-xsmall);
       }
     }
 
@@ -125,7 +129,7 @@
     }
 
     & .description {
-      font-size: smaller;
+      font-size: var(--font-size-small);
       margin-top: 0;
 
       & label {
@@ -134,7 +138,7 @@
         color: var(--secondary-color);
         text-decoration: underline;
         display: inline;
-        line-height: 2;
+        line-height: var(--line-height-xlarge);
 
         &::after {
           content: "See less";
@@ -185,7 +189,7 @@
 section:has(.media-section.media-list):has(footer) {
   & > footer {
     & p {
-      font-size: smaller;
+      font-size: var(--font-size-small);
       margin-block: -1ch 1ch;
     }
   }
