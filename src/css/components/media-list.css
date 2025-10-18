@@ -43,6 +43,10 @@
         & > * {
           text-wrap: nowrap;
         }
+
+        & li {
+          margin-block: var(--spacing-xxsmall);
+        }
       }
 
       & cite.author {
@@ -51,14 +55,11 @@
       }
 
       @media (--viewport-mobile) {
-        margin-block: 1ch;
+        margin-block: var(--spacing-xxsmall);
+
         & li {
           margin-block: 0;
         }
-      }
-
-      & li {
-        margin-block: var(--spacing-xxsmall);
       }
     }
 
@@ -129,8 +130,11 @@
     }
 
     & .description {
-      font-size: var(--font-size-small);
       margin-top: 0;
+
+      @media (--viewport-tablet) {
+        font-size: var(--font-size-small);
+      }
 
       & label {
         width: fit-content;
@@ -164,6 +168,11 @@
           line-clamp: 2;
           -webkit-line-clamp: 2;
           overflow: hidden;
+
+          @media (--viewport-mobile) {
+            line-clamp: 4;
+            -webkit-line-clamp: 4;
+          }
         }
       }
 

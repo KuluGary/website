@@ -26,9 +26,9 @@
   --font-size-medium: 1rem;
   --font-size-large: 1.2rem;
 
-  @media (--viewport-mobile) {
+  /* @media (--viewport-mobile) {
     --font-size-small: 0.95rem;
-  }
+  } */
 
   font-family: var(--font-family);
   font-optical-sizing: auto;

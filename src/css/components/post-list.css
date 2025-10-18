@@ -68,6 +68,7 @@
         margin: 0;
         margin-inline-start: var(--spacing-xxsmall);
         font-size: var(--font-size-small);
+        text-align: right;
       }
     }
 
@@ -95,14 +96,7 @@
     }
 
     & .description {
-      font-size: var(--font-size-small);
-      overflow: hidden;
       margin-top: 0;
-
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      line-clamp: 2;
-      -webkit-line-clamp: 2;
 
       & p:first-of-type {
         margin-top: 0;
@@ -153,8 +147,7 @@
 
 #search {
   border: 1px solid var(--text-color-alt);
-  min-height: 1.5lh;
-  padding-inline: 1ch;
+  padding: var(--spacing-xxsmall);
   color: var(--text-color-alt);
   font-style: italic;
   text-decoration: none;
@@ -165,6 +158,6 @@
   @media (--viewport-mobile) {
     display: block;
     width: 100%;
-    padding-block: 1ch;
+    margin-block: var(--spacing-xsmall) var(--spacing-large);
   }
 }
