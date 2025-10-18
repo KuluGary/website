@@ -32,6 +32,7 @@ main.main-content {
         display: inline-flex;
         margin: 0;
         padding: 0;
+        vertical-align: middle;
 
         @media (--viewport-tablet) {
           font-size: var(--font-size-small);

@@ -757,6 +757,10 @@ label:has(.theme-switcher) {
     &:last-of-type {
       font-weight: bolder;
     }
+
+    & a {
+      text-decoration: none;
+    }
   }
 }
 
