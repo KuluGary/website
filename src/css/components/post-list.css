@@ -91,12 +91,16 @@
       }
 
       & li + li {
-        margin-inline-start: var(--spacing-xsmall);
+        margin-inline-start: var(--spacing-xxsmall);
       }
     }
 
     & .description {
       margin-top: 0;
+
+      @media (--viewport-tablet) {
+        font-size: var(--font-size-small);
+      }
 
       & p:first-of-type {
         margin-top: 0;

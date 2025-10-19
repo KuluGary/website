@@ -119,7 +119,7 @@
         margin: 0;
       }
       & li + li {
-        margin-inline-start: var(--spacing-xsmall);
+        margin-inline-start: var(--spacing-xxsmall);
       }
     }
 
