@@ -15,7 +15,7 @@
 
 	<ul class="stats bar-separated">
 		<li>
-			<a href="/{{ item.type | slugify }}">{{ item.type | unslugify }}</a>
+			<a href="/media/{{ item.type | slugify }}">{{ item.type | unslugify }}</a>
 		</li>
 
 		{% if item.author and item.type !== "Post" %}

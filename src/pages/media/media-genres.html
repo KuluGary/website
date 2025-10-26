@@ -15,6 +15,14 @@ eleventyComputed:
 	<main>
 		{% set breadcrumbs = [
 			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media/",
+				active: true
+			}, {
 				label: genreGroup.mediaType | unslugify,
 				link: "/media/" + genreGroup.mediaType,
 				active: true

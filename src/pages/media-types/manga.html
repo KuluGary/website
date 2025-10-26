@@ -9,6 +9,21 @@ description: 'Discover a personal manga collection: current reads, favorites, co
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "manga",
+				link: "/media/manga"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
 		<p>My personal manga collection, including some series I find a must-read and some I'm still waiting for a chance to check out.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-5" %}

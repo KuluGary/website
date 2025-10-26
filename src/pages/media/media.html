@@ -10,6 +10,17 @@ description: A curated collection of favorites spanning games, music, movies, sh
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
 		<p>A hall of fame of diverse mediums. This is a comprehensive list of my all-time favorite media that I both love and has inspired me creatively.</p>
 
 		{% set showFooter = true %}

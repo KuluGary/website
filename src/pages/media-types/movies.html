@@ -9,11 +9,24 @@ description: Explore a curated movie collection, from favorites and watchlist pi
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "movies",
+				link: "/media/movies"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
 		<p>Even though I'm not the biggest movie buff, here are some of the movies that have fundamentally changed how I view creative writing and cinematography.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-5" %}
-
-		{% include "components/media-tag-list.html" %}
 
 		{% set media = movies.watchlist %}
 		{% set href = "/media/movies/status/watchlist" %}

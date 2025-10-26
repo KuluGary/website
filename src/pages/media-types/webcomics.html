@@ -10,7 +10,22 @@ description: 'Explore a curated collection of webcomics: ongoing reads, favorite
 	{% include "components/header.html" %}
 
 	<main>
-		<p>I've read webcomics since I started using the Internet, from small sprite-based comedies to humongous multimedia endeavors, the creative drive of creatives on the Internet is awe-inspiring. You can see what I love, read in the past or I'm reading currently.</p>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "webcomics",
+				link: "/media/webcomics"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
+		<p>I've read webcomics since I started using the Internet, from small sprite-based comedies to humongous multimedia endeavors, the creative drive of authors on the Internet is awe-inspiring. You can see what I love, read in the past or I'm reading currently.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-5" %}
 

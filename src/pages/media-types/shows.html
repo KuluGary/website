@@ -9,6 +9,21 @@ description: Look a collection of my TV shows, including favorites and watchlist
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "shows",
+				link: "/media/shows"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
 		<p>There are a few TV shows I love and rewatch all the time. In this list you can see what those are, and what I'm watching at the moment.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-5" %}

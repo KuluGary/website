@@ -10,6 +10,21 @@ description: Explore a curated music collection spanning past and present favori
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			}, {
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "music",
+				link: "/media/music"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
 		<p>My taste in music is eclectic, and I greatly favor indie music; original soundtracks from games, movies and shows; and 90s-2000s nostalgic songs from my childhood and teenage years. This is not a comprehensive list, but a few of my most listened-to.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-4" %}

@@ -9,6 +9,23 @@ description: A personal archive of games I've played, loved, set aside, or still
 	{% include "components/header.html" %}
 
 	<main>
+		{% set breadcrumbs = [
+			{
+				label: "~",
+				link: "/",
+				active: true
+			},
+			{
+				label: "media",
+				link: "/media",
+				active: true
+			}, {
+				label: "games",
+				link: "/media/games"
+			}
+		] %}
+		{% include "components/breadcrumbs.html" %}
+
 		<p>My gaming shelf serves as an archive stacked with everything from loved games from my childhood to some I'm still waiting for a chance to try.</p>
 
 		{% set mediaListGrid = "grid-list grid-col-5" %}

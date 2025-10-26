@@ -76,12 +76,11 @@ async function getCollection() {
  */
 function normalizeMovies(items) {
   return items.map((item) => {
-    // Support both watchlist ({ movie }) and favorites ({ type, show|movie })
     const movie = item.movie || item.show || item;
 
     return {
       id: movie.ids.trakt,
-      type: item.type || "movie", // fallback
+      type: "movies",
       title: movie.title,
       year: movie.year,
       description: movie.overview || "",

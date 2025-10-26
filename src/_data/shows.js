@@ -81,7 +81,7 @@ function normalizeShows(items) {
 
     return {
       id: show.ids.trakt,
-      type: item.type || "show", // fallback
+      type: "shows", // fallback
       title: show.title,
       year: show.year,
       description: show.overview || "",
