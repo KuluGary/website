@@ -134,7 +134,9 @@ eleventyExcludeFromCollections: true
 						<div class="tag">{{ tag | unslugify | lower }}</div>
 					{% endif %}
 				{% endfor %}
-				<div class="stat">💬 {{ mentions.length }} mentions</div>
+				{% if mentions.length > 0 %}
+					<div class="stat">💬 {{ mentions.length }} mentions</div>
+				{% endif %}
 			</div>
 
 			<div class="bottom">
