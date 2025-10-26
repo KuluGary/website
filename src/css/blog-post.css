@@ -1,9 +1,14 @@
 main.main-content {
   width: 100%;
   & article {
+    &:has(.post-subtitle) .e-content > p:first-of-type {
+      margin-top: var(--spacing-xsmall);
+    }
+
     & .post-subtitle {
       list-style: none;
       padding: 0;
+      margin-bottom: var(--spacing-xsmall);
 
       & ul {
         margin: 0;
