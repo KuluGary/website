@@ -173,6 +173,12 @@ main.main-content {
       margin-left: auto;
     }
 
+    & .prev-btn,
+    & .nxt-btn {
+      display: block;
+      text-wrap: balance;
+    }
+
     p {
       margin-block: 0;
       padding: 0;

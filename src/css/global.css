@@ -728,14 +728,14 @@ label:has(.theme-switcher) {
 }
 
 *:has(.breadcrumbs) > .breadcrumbs + * {
-  margin-top: var(--spacing-medium);
+  margin-top: var(--spacing-xsmall);
 }
 
 .breadcrumbs {
   display: flex;
   list-style-type: none;
   margin-bottom: 0;
-  margin-top: var(--spacing-medium);
+  margin-top: var(--spacing-xsmall);
   font-size: var(--font-size-small);
 
   & li {
