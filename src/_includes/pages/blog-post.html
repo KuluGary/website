@@ -54,7 +54,7 @@
               {% if postmedia.images %}
                 {% for item in postmedia.images %}
                   <li class="splide__slide">
-                    <img src="{{item.url}}" alt="{{item.alt}}"/>
+                    <img src="{{ item.url }}" alt="{{ item.alt }}"/>
                   </li>
                 {% endfor %}
               {% endif %}
@@ -77,7 +77,7 @@
           {% if nextPost %}
             <p data-btn-type="Next">
               <a class="nxt-btn" href="{{ nextPost.url }}">
-                <span class="navigation-button-icon">🡨</span>
+                <span class="navigation-button-icon">←</span>
                 {{ nextPost.data.title }}</a>
             </p>
           {% endif %}
@@ -85,7 +85,7 @@
             <p data-btn-type="Previous">
               <a class="prev-btn" href="{{ previousPost.url }}">
                 {{ previousPost.data.title }}
-                <span class="navigation-button-icon">🡪</span></a>
+                <span class="navigation-button-icon">→</span></a>
             </p>
           {% endif %}
         </nav>
