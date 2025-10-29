@@ -103,6 +103,19 @@ html[data-theme="grayscale"] {
   color-scheme: light;
   --text-color: #343131;
   --text-color-alt: #666;
+
+  --background-color: #d8d2cb;
+  --background-color-alt: #c8c2ba;
+
+  --primary-color: #6d655f;
+  --secondary-color: #002080;
+  --tertiary-color: #6d655f;
+}
+
+html[data-theme="dawn"] {
+  color-scheme: light;
+  --text-color: #343131;
+  --text-color-alt: #666;
   --background-color: #f8f2e4;
   --background-color-alt: #f6cab1;
   --primary-color: #6d655f;
@@ -229,8 +242,13 @@ html[data-background="alien"] {
   }
 }
 
-html[data-background="darker"] {
+html[data-background="darker"],
+html:not([data-background]) {
   background-color: hsl(from var(--background-color) h s calc(l - 2.5));
+
+  &[data-theme="grayscale"] {
+    background-color: var(--background-color-alt);
+  }
 }
 
 html[data-background="street"] {
@@ -267,8 +285,7 @@ html[data-background="circuit"] {
   }
 }
 
-html[data-background="grid"],
-html:not([data-background]) {
+html[data-background="grid"] {
   --s: 100px; /* control the size*/
   --c1: var(--background-color);
   --c2: hsl(from var(--background-color) h s calc(l - 2.5));

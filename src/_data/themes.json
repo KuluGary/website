@@ -1,6 +1,7 @@
 {
   "light": [
-    { "id": "grayscale", "label": "Dawn" },
+    { "id": "grayscale", "label": "Beige" },
+    { "id": "dawn", "label": "Dawn" },
     { "id": "cherry-blosom", "label": "Cherry Blosom" }
   ],
   "dark": [
