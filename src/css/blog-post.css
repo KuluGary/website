@@ -154,7 +154,7 @@ main.main-content {
 
 & .post-footer {
   --footer-separation: var(--spacing-medium);
-  border-top: 1px solid var(--text-color-alt);
+  border-top: 1px solid var(--background-color-alt);
 
   @media (--viewport-tablet) {
     margin-block: var(--footer-separation);
@@ -304,7 +304,7 @@ main.main-content {
 
       &[open] summary {
         padding-bottom: calc(var(--spacing-medium) * 0.5);
-        border-bottom: 1px solid var(--text-color-alt);
+        border-bottom: 2px solid var(--background-color-alt);
 
         &::after {
           content: "▼";
