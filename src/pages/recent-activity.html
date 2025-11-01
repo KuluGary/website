@@ -16,7 +16,6 @@ description: See the latest of my projects, thoughts, and updates in a single fe
 
 		<section class="recent-activity">
 			<h1>Recent activity page {{ pagination.pageNumber + 1 }}
-				{% include "components/media-list-buttons.html" %}
 			</h1>
 
 			<p>A running log of what I've been up to lately. It includes blog posts and status updates into one feed.</p>
@@ -25,22 +24,50 @@ description: See the latest of my projects, thoughts, and updates in a single fe
 			{% set mediaListGrid = "grid-list grid-col-5" %}
 			{% include "components/media-list.html" %}
 		</section>
-	</main>
 
-	<nav>
-		<ul class="horizontal">
-			<li>
-				{% if pagination.href.previous %}
-					<a href="{{ pagination.href.previous }}">&laquo; Prev</a>
-				{% else %}&laquo; Prev{% endif %}
-			</li>
-			<li>
-				{% if pagination.href.next %}
-					<a href="{{ pagination.href.next }}">Next &raquo;</a>
-				{% else %}Next &raquo;{% endif %}
-			</li>
-		</ul>
-	</nav>
+		<nav>
+			<ul>
+				<li>
+					{% if pagination.href.previous %}
+						<a href="{{ pagination.href.previous }}">
+              ←
+            </a>
+					{% endif %}
+				</li>
+				{%- for pageEntry in pagination.pages %}
+					<li>
+						{% if loop.index === pagination.pageNumber + 1 %}
+							<span>{{ loop.index }}</span>
+						{% else %}
+
+							<a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
+						{% endif %}
+					</li>
+				{%- endfor %}
+				<li>
+					{% if pagination.href.next %}
+						<a href="{{ pagination.href.next }}">
+              →
+            </a>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+		{# <nav>
+			<ul class="horizontal">
+				<li>
+					{% if pagination.href.previous %}
+						<a href="{{ pagination.href.previous }}">&laquo; Prev</a>
+					{% else %}&laquo; Prev{% endif %}
+				</li>
+				<li>
+					{% if pagination.href.next %}
+						<a href="{{ pagination.href.next }}">Next &raquo;</a>
+					{% else %}Next &raquo;{% endif %}
+				</li>
+			</ul>
+		</nav> #}
+	</main>
 
 	{% include "components/footer.html" %}
 {% endblock %}

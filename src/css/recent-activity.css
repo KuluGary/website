@@ -1,6 +1,41 @@
-nav {
+main nav {
   & ul {
-    width: 100%;
-    justify-content: center;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: var(--spacing-medium);
+    column-gap: var(--spacing-medium);
+    font-family: "Noto Sans Symbols", "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+    width: fit-content;
+    margin-inline: auto;
+
+    & li {
+      font-size: var(--font-size-small);
+
+      &:last-of-type {
+        text-align: right;
+      }
+
+      & span {
+        font-weight: bold;
+      }
+
+      &:last-of-type,
+      &:first-of-type {
+        flex: 1;
+
+        & a {
+          text-decoration: none;
+        }
+      }
+
+      & .navigation-button-icon {
+        font-size: var(--font-size-small);
+      }
+    }
+
+    @media (--viewport-mobile) {
+      margin-bottom: 0;
+    }
   }
 }
