@@ -2,7 +2,7 @@
 title: "Learning p5.js week four: Hilbert Curve"
 permalink: /blog/learning-p5-js-week-four/
 lang: en
-date: 2025-10-27
+date: 2025-11-01
 description: "Week four of p5.js sketches: Implementing the Hilbert curve algorithm to draw the classic infinite space-filling curve."
 tags:
   - blog-post

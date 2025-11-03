@@ -5,23 +5,30 @@
 }
 
 html {
+  margin: 0;
+  padding: 0;
+
   & body {
     position: relative;
     margin: 0;
-    margin-block: 1rem;
     padding: 0;
 
-    &:has(aside) {
-      display: grid;
-      grid-template-columns: 18rem var(--main-content-width) 18rem;
-      grid-template-areas: "left-aside main right-aside";
-      place-content: center;
-      column-gap: 1rem;
-      row-gap: 1rem;
+    @media (--viewport-desktop) {
+      margin-block: 1rem;
+      margin-inline: auto;
+      padding-inline: 1rem;
+      max-width: 65vw;
 
-      @media (--viewport-mobile) {
-        grid-template-columns: 1fr;
-        grid-template-areas: "left-aside" "main" "right-aside";
+      &:has(aside) {
+        --sidebar-col-size: 25%;
+
+        display: grid;
+        place-content: center;
+        column-gap: 1rem;
+        row-gap: 1rem;
+
+        grid-template-columns: var(--sidebar-col-size) 80ch var(--sidebar-col-size);
+        grid-template-areas: "left-aside main right-aside";
       }
     }
   }
@@ -29,23 +36,58 @@ html {
   & main {
     grid-area: main;
     background-color: var(--background-color);
-    width: var(--main-content-width);
     margin-inline: auto;
     font-family: "Times New Roman", serif;
     color: var(--text-color);
-    border: 1px solid var(--background-color-alt);
-    padding: 1rem;
+    padding: 1.5rem;
+
+    border-inline-start: 1ch dotted;
+
+    @media (--viewport-desktop) {
+      outline: thick double var(--text-color-alt);
+    }
   }
 
   aside {
     grid-area: right-aside;
     background-color: var(--background-color);
-    border: 1px solid var(--background-color-alt);
     height: fit-content;
+    border-left: 1ch dotted;
 
-    @media (--viewport-tablet) {
+    @media (--viewport-desktop) {
+      outline: thick double var(--text-color-alt);
       position: sticky;
       top: 1rem;
+      border-left: 3px solid var(--text-color);
+    }
+
+    section {
+      padding: 0.5rem 1rem;
+
+      & h2 {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--text-color-alt);
+        margin-inline: 1rem;
+        font-weight: bold;
+        margin: 0;
+        padding-bottom: 0.25rem;
+      }
+
+      & ol {
+        margin-block: 0;
+        margin-inline: calc(1ch + 0.5rem);
+        padding: 0;
+
+        @media (--viewport-tablet) {
+          padding-block: 0.5rem;
+        }
+      }
+
+      #home-backlink {
+        font-size: small;
+        text-decoration-thickness: 1px;
+      }
     }
   }
 
@@ -88,5 +130,11 @@ html {
 
   p:has(.center) {
     text-align: center;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
   }
 }
