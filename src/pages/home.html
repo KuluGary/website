@@ -28,7 +28,7 @@ permalink: /
         <a href="/blog/tags/{{ postTags[2].tag | slugify }}">{{ postTags[2].tag | unslugify | lower }}</a>. The latest post is <a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>.
       </li>
 
-        <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page.</li>
+        <li>Wanna know what I'm up to? Everything you may want to know is in the <a href="/now">/now</a> page, or you can check out my full publication history at my <a href="/recent-activity">/recent-activity</a> page.</li>
 
         <li>
         If you want to talk directly to me, you can do so through one of the appropriate channels listed in my
@@ -70,8 +70,25 @@ permalink: /
       experiments and odd curiosities.
     </p>
   </section>
+
   {% include "components/navbar/current-status.html" %}
   {% include "components/navbar/main-navigation.html" %}
+
+  <section>
+    <h2>Webrings</h2>
+
+    <p class="webring">
+      <a href="https://xn--sr8hvo.ws/previous">←</a>
+      <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a>
+      <a href="https://xn--sr8hvo.ws/next">→</a>
+    </p>
+
+    <p class="webring">
+      <a href="http://geekring.net/site/522/previous">←</a>
+      <a href="http://geekring.net/site/522/random">geekring.net</a>
+      <a href="http://geekring.net/site/522/next">→</a>
+    </p>
+  </section>
 </div>
 {% endset %}
 {% block stylesheet %}

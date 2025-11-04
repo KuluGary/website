@@ -2,7 +2,7 @@
 title: Recent Activity
 pagination:
   data: collections.recentActivity
-  size: 8
+  size: 6
 permalink: "/recent-activity/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 description: See the latest of my projects, thoughts, and updates in a single feed combining blog entries and status updates.
 ---
@@ -15,10 +15,13 @@ description: See the latest of my projects, thoughts, and updates in a single fe
 	<main>
 
 		<section class="recent-activity">
-			<h1>Recent activity page {{ pagination.pageNumber + 1 }}
-			</h1>
 
-			<p>A running log of what I've been up to lately. It includes blog posts and status updates into one feed.</p>
+			{% if pagination.pageNumber == 0 %}
+				<h1>Recent activity</h1>
+				<p>A running log of what I've been up to lately. It includes blog posts and status updates into one feed.</p>
+			{% else %}
+				<h1>Recent activity page {{ pagination.pageNumber + 1 }}</h1>
+			{% endif %}
 
 			{% set media = pagination.items %}
 			{% set mediaListGrid = "grid-list grid-col-5" %}
