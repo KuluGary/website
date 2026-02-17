@@ -1,0 +1,9 @@
+{
+	"layout": "blog-post.html",
+	"permalink": "blog/{{ page.fileSlug }}/",
+	"thumb": {
+		"base": "assets/thumb.webp",
+		"sm": "assets/thumb-sm.webp",
+		"lg": "assets/thumb-lg.webp"
+	}
+}

@@ -1,15 +1,23 @@
-module.exports = {
+import postCssNesting from "postcss-nesting";
+import autoprefixer from "autoprefixer";
+import postCssPresetEnv from "postcss-preset-env";
+import postCssGlobalData from "@csstools/postcss-global-data";
+import postCssCustomMedia from "postcss-custom-media";
+import postCssMediaMinmax from "postcss-media-minmax";
+import cssnano from "cssnano";
+
+export default {
   map: "inline",
   plugins: [
-    require("postcss-nesting"),
-    require("autoprefixer"),
-    require("postcss-preset-env"),
-    require("@csstools/postcss-global-data")({
+    postCssNesting,
+    autoprefixer,
+    postCssPresetEnv,
+    postCssGlobalData({
       files: ["src/css/variables.css"],
     }),
-    require("postcss-custom-media"),
-    require("postcss-media-minmax"),
-    require("cssnano")({
+    postCssCustomMedia,
+    postCssMediaMinmax,
+    cssnano({
       preset: "default",
     }),
   ],

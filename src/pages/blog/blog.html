@@ -1,41 +1,157 @@
 ---
-title: 'The Blog'
+title: "The Blog"
 description: "A blog with experiments in progress, scattered notes, and the occasional odd trail of thought."
 pagination:
-  data: collections["blog-post"]
-  size: 5
+  data: collections.blog
+  size: 8
   alias: posts
   reverse: true
 permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
+layout: base.html
+css:
+  - /css/pages/blog.css
 ---
-{% extends "layouts/base.html" %}
-
-{% set collection = collections["blog-post"] %}
 
 {% block content %}
   <main>
-    <p>This blog is part workshop bench, part thought garden. Here you can find any ideas or experiments I'm currently working on.</p>
-
-    <section>
-      <h2>
-        {% if pagination.pageNumber > 0 %}
-          Posts page {{pagination.pageNumber + 1}}
-          {% else%}
-          New posts
+    <section id="header">
+      <div>
+        {% if pagination.pageNumber == 0 %}
+          <p>newest</p>
         {% endif %}
-      </h2>
+        <h2>Articles</h2>
+        {% if pagination.pageNumber > 0 %}
+          <p>page {{ (pagination.pageNumber + 1) | pad(2)}}</p>
+        {% endif %}
+      </div>
+      <p>Part blog part thought garden; an eclectic assortment of write-ups.</p>
+    </section>
 
-      {% set postsList = posts %}
-      {% include "components/post-list.html" %}
+    {% include "components/navbar.html" %}
+
+    <section id="blog">
+      {% set isInitialPage = pagination.pageNumber == 0 %}
+
+      {% if isInitialPage %}
+        <article id="newest-article">
+          {% set newestPost = posts[0] %}
+
+          <h2>
+            <a href="{{ newestPost.url }}">{{ newestPost.data.title }}</a>
+          </h2>
+
+          <img src="{{ newestPost.url }}{{ newestPost.data.thumb.base }}" height="200" width="400" alt="">
+
+          <p class="post-description">{{ newestPost.data.description }}</p>
+
+          <div class="footer">
+            <p class="post-publication-date">Published {{ newestPost.date |formatDate("LLLL dd, yyyy")}} in </p>
+
+            <ul class="post-tags">
+              {%- for tag in newestPost.data.tags -%}
+                {% if tag != "blog-post" %}
+                  <li>
+                    <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+                  </li>
+                {% endif %}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </article>
+
+      {% endif %}
+
+      <ul id="post-list">
+        {% set postList = (posts | slice(1))if isInitialPage else 
+          posts %}
+
+        {% for post in postList %}
+          <li>
+            <img src="{{ post.url }}{{ post.data.thumb.sm }}" height="100" width="100" alt="">
+
+            <h3>
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+
+            <p>{{ post.data.description }}
+            </p>
+
+            <div class="footer">
+              <p class="post-publication-date">Published {{ post.date |formatDate("LLLL dd, yyyy")}} in </p>
+
+              <ul class="post-tags">
+                {%- for tag in post.data.tags -%}
+                  {% if tag != "blog-post" %}
+                    <li>
+                      <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+                    </li>
+                  {% endif %}
+                {%- endfor -%}
+              </ul>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <aside>
+        <section>
+          <h3>Most popular</h3>
+
+          <ol>
+            {% for post in collections["popularPosts"] | limit(3) %}
+              <li>
+                <h4>
+                  <a href="{{ post.url }}">{{ post.title }}</a>
+                </h4>
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
+        <section>
+          <h3>Popular tags</h3>
+
+          <dl>
+            {% for frequentTag in collections.frequentTags | limit(5) %}
+              <dt>
+                <a href="/blog/tags/{{ frequentTag.tag }}">{{frequentTag. tag }}</a>
+              </dt>
+              <dd>{{ frequentTag.count | pad(2) }}</dd>
+            {% endfor %}
+          </dl>
+        </section>
+
+        <section>
+          <h3>Posts in years</h3>
+
+          <dl>
+            {% for data in collections.postsByYear %}
+              <dt>
+                <a href="/blog/year/{{ data.year }}">{{ data.year }}</a>
+              </dt>
+              <dd>{{ data.items.length | pad(2) }}</dd>
+            {% endfor %}
+          </dl>
+        </section>
+
+        <section>
+          <h3>Subscribe</h3>
+
+          <ul>
+            <li>
+              <p>
+                <a href="">RSS feed</a>
+              </p>
+            </li>
+          </ul>
+        </section>
+      </aside>
     </section>
 
     <nav id="blog-navigation">
       <ul>
         <li>
           {% if pagination.href.previous %}
-            <a href="{{ pagination.href.previous }}">
-              ←
-            </a>
+            <a href="{{ pagination.href.previous }}"> ← </a>
           {% endif %}
         </li>
         {%- for pageEntry in pagination.pages %}
@@ -50,9 +166,7 @@ permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
         {%- endfor %}
         <li>
           {% if pagination.href.next %}
-            <a href="{{ pagination.href.next }}">
-              →
-            </a>
+            <a href="{{ pagination.href.next }}"> → </a>
           {% endif %}
         </li>
       </ul>
@@ -60,16 +174,6 @@ permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   </main>
 {% endblock %}
 
-{% set sidebar %}
-<div>
-  <a id="search" href="/blog/search">Search...</a>
-  {% include "components/tag-list.html" %}
-  {% include "components/year-list.html" %}
-  {% include "components/navbar/main-navigation.html" %}
-  {% include "components/navbar/feeds.html" %}
-</div>
-{% endset %}
-
 {% block stylesheet %}
-  <link rel="stylesheet" href="/css/components/post-list.css">
-{% endblock %}
+  <link rel="stylesheet" href="/pages/blog.css"/>
+{% endblock stylesheet %}

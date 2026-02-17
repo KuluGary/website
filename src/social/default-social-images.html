@@ -2,24 +2,23 @@
 permalink: /social/
 eleventyExcludeFromCollections: true
 ---
-
 <!doctype html>
 <html lang="en" data-theme="dark-blue">
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<link rel="stylesheet" href="/css/themes.css">
-		<title>{{ post.data.title }}</title>
+		<link rel="stylesheet" href="/css/variables.css">
+		<title>{{ metadata.title }}</title>
 		<style>
 			:root {
 				--w: 1200px;
 				--h: 630px;
-				--bg: var(--background-color);
-				--text: var(--text-color);
+				--bg: var(--clr-bg-main);
+				--text: var(--clr-text-main);
 				--muted: var(--text-color-alt);
-				--accent: var(--secondary-color);
+				--accent: var(--clr-accent-primary);
 				--border: var(--text-color-alt);
-				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.7) 1px, transparent 0);
 			}
 
 			body,
@@ -39,27 +38,96 @@ eleventyExcludeFromCollections: true
 				background-size: 4px 4px;
 				display: flex;
 				flex-direction: column;
-				align-items: center;
-				justify-content: center;
 				padding: 80px;
 				box-sizing: border-box;
 				position: relative;
 				overflow: hidden;
 			}
 
-			svg {
-				height: 600px;
-				width: 600px;
+			.title {
+				font-size: 72px;
+				font-weight: 700;
+				line-height: 1.1;
+				max-width: 900px;
+				border-left: 6px solid var(--accent);
+				padding-left: 24px;
+				margin: 0 0 24px;
+				font-family: var(--font-family-title);
+
 			}
-			svg g {
-				fill: var(--text-color);
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 12px;
+				font-size: 20px;
+				font-family: var(--font-family-main);
+			}
+
+			.tag::before {
+				content: "#";
+				color: var(--accent);
+				margin-right: 4px;
+			}
+
+			.bottom {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				font-size: 22px;
+				border-top: 1px solid var(--border);
+				padding-top: 24px;
+				margin-top: auto;
+			}
+
+			.meta {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.meta img {
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: var(--border-base);
+			}
+
+			.meta .username {
+				font-weight: 600;
+				color: var(--text);
+			}
+
+			.footer-icon {
+				position: absolute;
+				bottom: 40px;
+				right: 40px;
+				opacity: 0.08;
+			}
+
+			.footer-icon svg {
+				width: 60px;
+				height: 60px;
+				fill: var(--text);
 			}
 		</style>
 	</head>
 
 	<body>
 		<div class="card">
-			{% include "components/hat-icon.html" %}
+			<h1 class="title font-antique">{{ metadata.title }}</h1>
+
+			<div class="tags">
+				{{ metadata.description}}
+			</div>
+			<div class="bottom">
+				<div class="meta">
+					<img src="/assets/images/textures/social-share.jpg" alt="Avatar"/>
+					<span>{{ page.date | formatDate('LLLL dd, yyyy') }}</span>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

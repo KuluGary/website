@@ -4,40 +4,33 @@ pagination:
   size: 1
   alias: tag
   filter:
-    - blog-post
-    - genrePages
-    - story
-    - storiesGrouped
-    - mediaCategories
-    - postsByYear
-    - recentActivity
-    - all
-    - yearPages
+    - blog
 permalink: /blog/tags/{{tag}}.html
 eleventyComputed:
   title: Blog Posts Tagged {{ tag | unslugify }}
   description: 'Read blog posts tagged "{{ tag | unslugify }}": experiments, ideas, and curiosities organized under this theme.'
+layout: base.html
 ---
-{% extends "layouts/base.html" %}
+{# {% extends "layouts/base.html" %} #}
 
-{% set collection = collections["blog-post"] %}
+{# {% set collection = collections["blog-post"] %} #}
 
 {% block content %}
-  {% include "components/header.html" %}
+  {# {% include "components/header.html" %} #}
 
   <main>
-    <h2>Blog Posts Tagged {{ tag | unslugify | makeLowercase }}</h2>
+    <h2>Blog Posts Tagged {{ tag  }}</h2>
 
-    {% set taglist = collections[tag] %}
-    {% set postsList = taglist | reverse %}
+    {# {% set taglist = collections[tag] %} #}
+    {# {% set postsList = taglist | reverse %} #}
 
-    {% include "components/post-list.html" %}
+    {# {% include "components/post-list.html" %} #}
   </main>
 
-  {% include "components/footer.html" %}
+  {# {% include "components/footer.html" %} #}
 {% endblock %}
 
-{% set sidebar %}
+{# {% set sidebar %}
 <div>
   {% include "components/tag-list.html" %}
   {% include "components/year-list.html" %}
@@ -50,4 +43,4 @@ eleventyComputed:
   <link rel="stylesheet" href="/css/components/header.css"/>
   <link rel="stylesheet" href="/css/components/footer.css"/>
   <link rel="stylesheet" href="/css/components/post-list.css">
-{% endblock %}
+{% endblock %} #}

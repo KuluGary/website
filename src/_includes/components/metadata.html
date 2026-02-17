@@ -18,7 +18,7 @@
 <link rel="webmention" href="https://webmention.io/kulugary.neocities.org/webmention">
 
 <!-- SEO -->
-<title>{{ title or metadata.title }}</title>
+<title>{{ title or metadata.title }} • patchworks.site</title>
 <meta name="description" content="{{ description or metadata.description }}">
 <meta name="robots" content="index, follow">
 <meta name="generator" content="Eleventy">
@@ -31,13 +31,13 @@
 <meta property="og:site_name" content="{{ metadata.title }}">
 <meta property="og:type" content="{{ ogtype or 'website' }}">
 <meta property="og:url" content="{{metadata.url}}{{page.url}}">
-<meta property="og:image" content="{% openGraphScreenshotURL %}">
+{# <meta property="og:image" content="{% openGraphScreenshotURL %}"> #}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@KuluGary">
 <meta name="twitter:title" content="{{ title or metadata.title }}">
 <meta name="twitter:description" content="{{ description or metadata.description }}">
-<meta property="twitter:image" content="{% openGraphScreenshotURL %}">
+{# <meta property="twitter:image" content="{% openGraphScreenshotURL %}"> #}
 
 <!-- Favicon Meta -->
 <link rel="apple-touch-icon" sizes="100x100" href="/assets/images/cap-light.ico">

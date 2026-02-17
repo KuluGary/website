@@ -1,0 +1,28 @@
+---
+css:
+  - /css/reset.css
+  - /css/variables.css
+  - /css/layouts/base.css
+---
+
+<!DOCTYPE html>
+<html lang={{ lang or "en"}}>
+	<head>
+		{% include "components/metadata.html" %}
+
+		<!-- Assets, 3rd party scripts, etc -->
+		<link rel="stylesheet" href="{{ "/css/variables.css" | url }}">
+		<link rel="stylesheet" href="{{ "/css/base.css" | url }}">
+
+		{% for href in css %}
+			<link rel="stylesheet" href="{{ href }}">
+		{% endfor %}
+
+		{% block script %}{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+			{{ content | safe }}
+		{% endblock %}
+	</body>
+</html>

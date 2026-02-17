@@ -1,0 +1,121 @@
+---
+layout: base.html
+css:
+  - /css/prism-light.css
+  - /css/pages/blog-post.css
+---
+
+<header>
+	<h2>{{ metadata.title }}</h2>
+
+	{% include "components/navbar.html" %}
+</header>
+
+{% block content %}
+	{% set previousPost = collections.blog | getPreviousCollectionItem %}
+	{% set nextPost = collections.blog | getNextCollectionItem %}
+
+	<main id="main-content" class="main-content h-entry">
+		<article data-pagefind-body>
+
+			<header>
+				<h1 class="p-name">{{title}}</h1>
+				<p class="post-publication-date">Published {{ date | formatDate("LLLL dd, yyyy")}} in </p>
+
+				<ul class="post-tags">
+					{%- for tag in tags -%}
+						{% if tag != "blog-post" %}
+							<li>
+								<a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+							</li>
+						{% endif %}
+					{%- endfor -%}
+				</ul>
+
+			</header>
+
+			<nav>
+				{% set toc = content | toc | safe %}
+
+				<section>
+					<h2>Feeds</h2>
+
+					<p>A feed of blog posts similar to this one is available as a <a href="/blog/feed.xml">RSS Feed</a>.</p>
+				</section>
+
+				<section id="table-of-contents">
+					{% if toc.length > 0 %}
+						<h2>Table of contents</h2>
+						{{ content | toc | safe }}
+					{% endif %}
+				</section>
+			</nav>
+
+			<div id="content" class="e-content">
+				{{ content | safe }}
+			</div>
+
+			<aside></aside>
+
+			<footer id="post-footer" class="post-footer">
+
+				<nav>
+					{% if nextPost %}
+						<p data-btn-type="Next">
+							<a class="nxt-btn" href="{{ nextPost.url }}">
+                ←
+                {{ nextPost.data.title }}</a>
+						</p>
+					{% endif %}
+					{% if previousPost %}
+						<p data-btn-type="Previous">
+							<a class="prev-btn" href="{{ previousPost.url }}">
+								{{ previousPost.data.title }}
+                →</a>
+						</p>
+					{% endif %}
+				</nav>
+
+				<ul class="link-list">
+					<li>
+						<a href="/blog/search">Search</a>
+					</li>
+					<li>
+						<a href="/blog/search">Edit this page</a>
+					</li>
+					<li>
+						<a href="/blog/search">RSS Feed</a>
+					</li>
+				</ul>
+			</footer>
+		</article>
+	</main>
+
+{% endblock %}
+
+{% block script %}
+	<script>
+		const tocLinks = document.querySelectorAll("#table-of-contents a");
+		const headings = [...tocLinks].map(link => document.querySelector(link.getAttribute("href")));
+		const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				if (!entry.isIntersecting) 
+					return;
+				
+				tocLinks.forEach(link => link.classList.remove("active"));
+				const active = document.querySelector(`#table-of-contents a[href="#${entry.target.id}"]`);
+
+				if (active) 
+					active
+						.classList
+						.add("active");
+				}
+			);
+		}, {
+			rootMargin: "-10% 0px -30% 0px",
+			threshold: 0
+		});
+
+		headings.forEach(h => observer.observe(h));
+	</script>
+{% endblock %}

@@ -1,4 +1,0 @@
-{
-  "layout": "pages/blog-post.html",
-  "permalink": "/blog/{{ page.fileSlug }}/"
-}

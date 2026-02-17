@@ -1,0 +1,99 @@
+---
+title: Games
+pagination:
+  data: games
+  size: 20
+  reverse: true
+  alias: items
+permalink: "/games/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
+layout: base.html
+css:
+  - /css/pages/games.css
+---
+
+{% block content %}
+	<main>
+		<section id="header">
+			<div>
+				<h2>Games</h2>
+
+				{% if pagination.pageNumber > 0 %}
+					<p>page {{pagination.pageNumber + 1}}</p>
+				{% endif %}
+
+			</div>
+		</section>
+
+		{% include "components/navbar.html" %}
+
+		<section>
+			<ul id="game-list">
+				{% for game in items %}
+					<li>
+						{% set icon = game
+							.metadata
+							.icons["96x96"] or game
+							.metadata
+							.icons["184x69"] or game
+							.metadata
+							.icons["32x32"] %}
+
+						<div>
+							<div style="background-image:url('{{ icon }}')"></div>
+							<img style="background-image:url('{{ icon }}')" src="{{ icon }}" width="96" height="96" alt="{{ game.title }}">
+						</div>
+
+						<article>
+							<header>
+								<h3>
+									<a href="">
+										{{ game.title }}
+									</a>
+								</h3>
+
+								<p>{{ game.metadata.platforms }}</p>
+							</header>
+
+							{% if game.metadata.lastPlayed %}
+								<p>Last played {{ game.metadata.lastPlayed | formatDate("LLL MM, yyyy") }}</p>
+							{% endif %}
+
+							{% if game.timeSeconds %}
+								<p>Played for {{ game.timeSeconds | formatDuration }}</p>
+							{% endif %}
+
+							{% if game.achievements.length > 0 %}
+								<p>{{ game.achievements.length }} achievements unlocked</p>
+							{% endif %}
+						</article>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+
+		<nav id="blog-navigation">
+			<ul>
+				<li>
+					{% if pagination.href.previous %}
+						<a href="{{ pagination.href.previous }}"> ← </a>
+					{% endif %}
+				</li>
+				{%- for pageEntry in pagination.pages %}
+					<li>
+						{% if loop.index === pagination.pageNumber + 1 %}
+							<span>{{ loop.index }}</span>
+						{% else %}
+
+							<a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
+						{% endif %}
+					</li>
+				{%- endfor %}
+				<li>
+					{% if pagination.href.next %}
+						<a href="{{ pagination.href.next }}"> → </a>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+	</main>
+{% endblock content %}

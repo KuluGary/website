@@ -1,6 +1,6 @@
 ---
 pagination:
-  data: collections["blog-post"]
+  data: collections["blog"]
   size: 1
   alias: post
 eleventyComputed:
@@ -13,19 +13,18 @@ eleventyExcludeFromCollections: true
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<link rel="stylesheet" href="/css/themes.css">
+		<link rel="stylesheet" href="/css/variables.css">
 		<title>{{ post.data.title }}</title>
 		<style>
-
 			:root {
 				--w: 1200px;
 				--h: 630px;
-				--bg: var(--background-color);
-				--text: var(--text-color);
+				--bg: var(--clr-bg-main);
+				--text: var(--clr-text-main);
 				--muted: var(--text-color-alt);
-				--accent: var(--secondary-color);
+				--accent: var(--clr-accent-primary);
 				--border: var(--text-color-alt);
-				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+				--texture: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.7) 1px, transparent 0);
 			}
 
 			body,
@@ -59,7 +58,7 @@ eleventyExcludeFromCollections: true
 				border-left: 6px solid var(--accent);
 				padding-left: 24px;
 				margin: 0 0 24px;
-				font-family: var(--font-family);
+				font-family: var(--font-family-title);
 
 			}
 
@@ -69,8 +68,7 @@ eleventyExcludeFromCollections: true
 				align-items: center;
 				gap: 12px;
 				font-size: 20px;
-				font-family: var(--font-family);
-				color: var(--muted);
+				font-family: var(--font-family-main);
 			}
 
 			.tag::before {
@@ -84,7 +82,6 @@ eleventyExcludeFromCollections: true
 				align-items: center;
 				justify-content: space-between;
 				font-size: 22px;
-				color: var(--muted);
 				border-top: 1px solid var(--border);
 				padding-top: 24px;
 				margin-top: auto;
@@ -101,6 +98,7 @@ eleventyExcludeFromCollections: true
 				height: 48px;
 				border-radius: 50%;
 				object-fit: cover;
+				border: var(--border-base);
 			}
 
 			.meta .username {

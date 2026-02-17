@@ -1,157 +1,124 @@
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
-const markdownItAttrs = require("markdown-it-attrs");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const timeToRead = require("eleventy-plugin-time-to-read");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const metadata = require("./src/_data/metadata");
-const pluginTOC = require("eleventy-plugin-toc");
-const {
-  formatDate,
-  limit,
-  unslugify,
-  formatNumber,
-  sortByDate,
-  getRootUrl,
-  generateSocialMediaImage,
-  uniqueById,
-  log,
-  mergeArrays,
-  isoStringToRelativeTime,
-  objToArray,
-  isArray,
-  generateSitemap,
-  makeLowercase,
-  makeUppercase,
-  minutesToHoursMinutes,
-  generateChattableCSS,
-} = require("./src/js/11ty/generic");
-const {
-  getPostsByYear,
-  getPostsWithoutCurrent,
-  getSimilarPosts,
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import PostCSSPlugin from "@jgarber/eleventy-plugin-postcss";
+import dotenv from "dotenv";
+import timeToRead from "eleventy-plugin-time-to-read";
+import pluginTOC from "eleventy-plugin-toc";
+import markdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
+import string from "string";
+import {
+  comicsAmountByStatus,
+  filmsAmountByStatus,
+  gameAmountByStatus,
+  getBlogPosts,
   getFrequentTags,
-  getCollectionStats,
-  getUniqueTags,
-  getShareUrl,
-  getWebmentionsByUrl,
-  isOwnWebmention,
-  readableDateFromISO,
-  webmentionsByType,
+  getFrequentTagsByYear,
+  getGamesByLastPlayed,
+  getGamesByYear,
+  getPopularPosts,
+  getPostsByYear,
+} from "./src/js/11ty/collections.js";
+import {
   filterOwnWebmentions,
-  getFlagEmoji,
-  getYearPages,
-} = require("./src/js/11ty/blog");
-const {
-  getFrequentMediaTags,
-  getRecentActivity,
-  getMediaCategories,
-  getMediaGenres,
-  removeUnsafeManga,
-} = require("./src/js/11ty/media");
-const { getStoriesGrouped } = require("./src/js/11ty/stories");
-require("dotenv").config();
+  formatDate,
+  formatDuration,
+  formatWithOrdinal,
+  getSimilarPosts,
+  getWebmentionsByUrl,
+  limit,
+  pad,
+  slice,
+  sortByDate,
+  unslugify,
+  webmentionsByType,
+} from "./src/js/11ty/filters.js";
+import processThumbs from "./src/js/lib/process-imgs.js";
+import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.setUseGitIgnore(true);
-  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+dotenv.config();
+
+const slugify = (s) => string(s).slugify().toString();
+
+const mdOptions = {
+  html: true,
+  breaks: true,
+};
+
+const mdAnchorOpts = {
+  permalink: markdownItAnchor.permalink.linkInsideHeader({
+    symbol: "#",
+    class: "anchor-link",
+  }),
+  level: [1, 2, 3, 4],
+  slugify,
+};
+
+export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
-  eleventyConfig.addPlugin(timeToRead);
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(require("@jgarber/eleventy-plugin-postcss"));
-  eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(pluginTOC);
+  eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
 
+  eleventyConfig.addPassthroughCopy("./src/css");
+  eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/assets");
-  eleventyConfig.addPassthroughCopy("./src/js/*.js");
+  eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
 
-  /** 11ty generic */
-  eleventyConfig.addCollection("sitemap", generateSitemap);
+  eleventyConfig.addExtension("11ty.ts", { key: "11ty.js" });
+  eleventyConfig.addTemplateFormats("11ty.ts");
+
+  /** Filters */
   eleventyConfig.addFilter("formatDate", formatDate);
-  eleventyConfig.addFilter("isoStringToRelativeTime", isoStringToRelativeTime);
-  eleventyConfig.addFilter("sortByDate", sortByDate);
-  eleventyConfig.addFilter("formatNumber", formatNumber);
-  eleventyConfig.addFilter("getRootUrl", getRootUrl);
-  eleventyConfig.addFilter("unslugify", unslugify);
+  eleventyConfig.addFilter("formatWithOrdinal", formatWithOrdinal);
+  eleventyConfig.addFilter("formatDuration", formatDuration);
   eleventyConfig.addFilter("limit", limit);
-  eleventyConfig.addFilter("generateSocialMediaImage", generateSocialMediaImage);
-  eleventyConfig.addFilter("uniqueById", uniqueById);
-  eleventyConfig.addFilter("mergeArrays", mergeArrays);
-  eleventyConfig.addFilter("objToArray", objToArray);
-  eleventyConfig.addFilter("isArray", isArray);
-  eleventyConfig.addFilter("makeUppercase", makeUppercase);
-  eleventyConfig.addFilter("makeLowercase", makeLowercase);
-  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
-  eleventyConfig.addFilter("transformTime", minutesToHoursMinutes);
-  eleventyConfig.on("beforeBuild", generateChattableCSS);
-  eleventyConfig.addFilter("log", log);
-
-  /** 11ty blog */
-  eleventyConfig.addCollection("postsByYear", getPostsByYear);
-  eleventyConfig.addCollection("yearPages", getYearPages);
-  eleventyConfig.addFilter("getShareUrl", getShareUrl);
-  eleventyConfig.addFilter("getUniqueTags", getUniqueTags);
-  eleventyConfig.addFilter("getCollectionStats", getCollectionStats);
-  eleventyConfig.addFilter("getPostsWithoutCurrent", getPostsWithoutCurrent);
-  eleventyConfig.addFilter("getFrequentTags", getFrequentTags);
+  eleventyConfig.addFilter("sortByDate", sortByDate);
+  eleventyConfig.addFilter("slice", slice);
+  eleventyConfig.addFilter("pad", pad);
+  eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
-  eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
-  eleventyConfig.addFilter("isOwnWebmention", isOwnWebmention);
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
+  eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
+  eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
-  eleventyConfig.addFilter("readableDateFromISO", readableDateFromISO);
-  eleventyConfig.addFilter("getFlagEmoji", getFlagEmoji);
-  eleventyConfig.addShortcode("openGraphScreenshotURL", function () {
-    // URL Encode the page
-    const encodedURL = encodeURIComponent(metadata.url + "/social/" + this.page.url);
-    // Generate a cache-busting key for quicker testing
-    const cacheKey = `_${new Date().valueOf()}`;
-    // Return the screenshot service's URL to add to the open graph tags.
-    return `https://v1.screenshot.11ty.dev/${encodedURL}/opengraph/${cacheKey}`;
-  });
 
-  /** 11ty media */
-  eleventyConfig.addFilter("removeUnsafeManga", removeUnsafeManga);
-  eleventyConfig.addFilter("getFrequentMediaTags", getFrequentMediaTags);
-  eleventyConfig.addCollection("recentActivity", getRecentActivity);
-  eleventyConfig.addCollection("genrePages", getMediaGenres);
-  eleventyConfig.addCollection("mediaCategories", getMediaCategories);
+  /* Markdown */
+  eleventyConfig.setLibrary("md", markdownIt(mdOptions).use(markdownItAnchor, mdAnchorOpts));
 
-  /** 11ty stories */
-  eleventyConfig.addCollection("storiesGrouped", getStoriesGrouped);
+  /* Plugins */
+  eleventyConfig.addPlugin(pluginTOC);
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(timeToRead);
+  eleventyConfig.addPlugin(PostCSSPlugin);
+  eleventyConfig.addPlugin(postGraph, { limit: 1, sort: "desc", noLabels: true, noStyles: true });
 
-  eleventyConfig.setLibrary(
-    "md",
-    markdownIt({
-      html: true,
-      breaks: true,
-      linkify: true,
-    })
-      .use(markdownItAnchor, {
-        permalink: true,
-        permalinkClass: "direct-link",
-        permalinkSymbol: "#",
-      })
-      .use(markdownItAttrs)
-  );
+  /** Collections */
+  eleventyConfig.addCollection("blog", getBlogPosts);
+  eleventyConfig.addCollection("postsByYear", getPostsByYear);
+  eleventyConfig.addCollection("frequentTags", getFrequentTags);
+  eleventyConfig.addCollection("frequentTagsByYear", getFrequentTagsByYear);
+  eleventyConfig.addCollection("gameAmountByStatus", gameAmountByStatus);
+  eleventyConfig.addCollection("comicsAmountByStatus", comicsAmountByStatus);
+  eleventyConfig.addCollection("filmsAmountByStatus", filmsAmountByStatus);
+  eleventyConfig.addCollection("popularPosts", getPopularPosts);
+  eleventyConfig.addCollection("gamesByLastPlayed", getGamesByLastPlayed);
+  eleventyConfig.addCollection("gamesByYear", getGamesByYear);
+
+  /** Events */
+  eleventyConfig.on("beforeBuild", processThumbs);
 
   return {
     dir: {
       input: "src",
       includes: "_includes",
+      data: "data",
       output: "_site",
+      layouts: "_layouts",
     },
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    data: {
-      site: {
-        url: metadata.url,
-      },
-    },
   };
-};
+}

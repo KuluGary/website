@@ -1,0 +1,128 @@
+main {
+  max-width: var(--sizing-main-content);
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+& #header {
+  display: grid;
+  grid-template-areas: "title page" "title toc";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 75% 1fr;
+  row-gap: var(--spacing-xs);
+
+  margin-block-end: var(--spacing-lg);
+
+  & > div {
+    grid-area: title;
+    container-type: inline-size;
+  }
+
+  & h2 {
+    font-family: var(--font-family-title);
+    text-transform: uppercase;
+    font-size: max(4rem, 26.5cqw);
+    line-height: 0.9;
+    margin-block-start: var(--spacing-lg);
+  }
+
+  & #toc {
+    grid-area: toc;
+
+    & h3 {
+      text-transform: uppercase;
+      font-weight: var(--font-weight-bold);
+    }
+
+    & ol {
+      counter-reset: num;
+    }
+
+    & li {
+      counter-increment: num;
+
+      &::before {
+        content: counter(num) ") ";
+        color: var(--clr-accent-primary);
+      }
+    }
+  }
+
+  & > p {
+    grid-area: page;
+    font-family: var(--font-family-title);
+    text-transform: uppercase;
+    font-size: max(1.5rem, 8cqw);
+    color: var(--clr-accent-primary);
+    margin-block-start: var(--spacing-xs);
+  }
+}
+
+& #game-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-block: var(--spacing-md);
+
+  & > li {
+    display: grid;
+    grid-template-areas: "img content";
+    grid-template-columns: auto 1fr;
+    column-gap: var(--spacing-md);
+
+    & > article {
+      grid-area: content;
+    }
+
+    & > div {
+      grid-area: img;
+      display: grid;
+      align-items: center;
+      grid-template-rows: 1fr;
+      object-fit: contain;
+      overflow: hidden;
+
+      & > div {
+        filter: blur(8px);
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+        width: 96px;
+        height: 96px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      & img {
+        height: auto;
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+        z-index: 1;
+
+        background-color: var(--clr-accent-primary);
+        place-content: center;
+        text-align: center;
+      }
+    }
+  }
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--spacing-xl);
+  margin-block-start: var(--spacing-lg);
+
+  & li {
+    & img {
+      float: left;
+      object-fit: cover;
+      margin-inline-end: var(--spacing-md);
+    }
+
+    & .description {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      line-clamp: 7;
+      -webkit-box-orient: vertical;
+    }
+  } */
+}

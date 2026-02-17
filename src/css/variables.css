@@ -2,3 +2,103 @@
 @custom-media --viewport-tablet (min-width: 600px);
 @custom-media --viewport-laptop (min-width: 768px);
 @custom-media --viewport-desktop (min-width: 992px);
+
+:root {
+  /* Colors */
+  --clr-white: #efede3;
+  --clr-black: #302f2c;
+
+  --clr-red: #b83a2d;
+  --clr-orange: #f3701e;
+  --clr-green: #4e6851;
+  --clr-blue: #4b607f;
+  --clr-yellow: #fbc359;
+
+  --clr-bg-main: var(--clr-white);
+  --clr-accent-primary: var(--clr-red);
+  --clr-accent-secondary: var(--clr-yellow);
+  --clr-text-main: var(--clr-black);
+  --clr-border-main: var(--clr-black);
+  --clr-bg-header: var(--clr-accent-secondary);
+
+  /* Fonts  */
+  --font-family-system: system-ui, sans-serif;
+  --font-family-transitional: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  --font-family-humanist: Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans", source-sans-pro, sans-serif;
+  --font-family-neo-grotesque: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --font-family-industrial: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium", "Nimbus Sans Narrow",
+    sans-serif-condensed, sans-serif;
+  --font-family-monospace-code: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
+  --font-family-old-style: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  --font-family-maesiez: Maesiez, Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --font-family-lokanova: Lokanova, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --font-family-tusker-grotesk: TuskerGrotesk, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
+
+  --font-family-site-title: var(--font-family-maesiez);
+  --font-family-title: var(--font-family-tusker-grotesk);
+  --font-family-main: var(--font-family-transitional);
+
+  --font-size-xs: 0.7rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.15rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 1.45rem;
+  --font-size-3xl: 1.6rem;
+
+  --font-size-site-title: max(7rem, 15vw);
+  --font-size-site-description: max(3.25vw, var(--font-size-sm));
+
+  --font-weight-thin: 200;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /** Sizing */
+  --sizing-xs: 0.25rem;
+  --sizing-sm: 0.5rem;
+  --sizing-md: 0.75rem;
+  --sizing-lg: 1rem;
+  --sizing-base: 1.5rem;
+  --sizing-xl: 1.75rem;
+  --sizing-2xl: 2rem;
+  --sizing-3xl: 2.25rem;
+  --sizing-full: 100%;
+  --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
+
+  /** Spacing */
+  --spacing-xs: var(--sizing-xs);
+  --spacing-sm: var(--sizing-sm);
+  --spacing-md: var(--sizing-md);
+  --spacing-lg: var(--sizing-lg);
+  --spacing-base: var(--sizing-base);
+  --spacing-xl: var(--sizing-xl);
+  --spacing-2xl: var(--sizing-2xl);
+  --spacing-3xl: var(--sizing-3xl);
+
+  /* Border */
+  --border-base: 2px solid var(--clr-border-main);
+  --border-thick: 3px solid var(--clr-border-main);
+  --border-thin: 1px solid var(--clr-border-main);
+}
+
+@font-face {
+  font-family: "Maesiez";
+  src: url("/assets/fonts/MAESIEZ.ttf");
+}
+
+@font-face {
+  font-family: "Lokanova";
+  src: url("/assets/fonts/LokanovaStd.otf");
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("/assets/fonts/Anton.ttf.eot") format("eot"), url("/assets/fonts/Anton.ttf.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TuskerGrotesk";
+  src: url("/assets/fonts/TuskerGrotesk-5600Semibold.ttf");
+}

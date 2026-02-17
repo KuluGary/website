@@ -1,5 +1,22 @@
 ---
 pagination:
+  data: collections.postsByYear
+  size: 1
+  alias: yearGroup
+permalink: "/blog/year/{{ yearGroup.year }}/"
+eleventyComputed:
+  title: "Posts from {{ yearGroup.year }}"
+layout: base.html
+---
+
+{% block content %}
+	<main>
+		<h1>Posts from {{ yearGroup.year }}</h1>
+	</main>
+{% endblock content %}
+
+{# ---
+pagination:
   data: collections.yearPages
   size: 1
   alias: yearGroup
@@ -33,4 +50,4 @@ eleventyComputed:
 	<link rel="stylesheet" href="/css/components/header.css"/>
 	<link rel="stylesheet" href="/css/components/footer.css"/>
 	<link rel="stylesheet" href="/css/components/post-list.css">
-{% endblock %}
+{% endblock %} #}

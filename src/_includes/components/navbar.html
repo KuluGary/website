@@ -1,0 +1,39 @@
+{% set navigation = [
+	{
+		href: "/",
+		label: "Home",
+		enabled: true
+	}, {
+		href: "/blog/",
+		label: "Blog",
+		enabled: true
+	}, {
+		href: "/art/",
+		label: "Art",
+		enabled: false
+	}, {
+		href: "/writing/",
+		label: "Writing",
+		enabled: false
+	}
+] %}
+
+<nav id="main-navigation">
+	<ul>
+		{% for item in navigation %}
+			{% if page.url != item.href %}
+				<li>
+					{% if item.enabled %}
+						<a href="{{ item.href }}">{{ item.label }}</a>
+					{% else %}
+						<s>
+							<strong>{{ item.label }}</strong>
+						</s>
+					{% endif %}
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+
+	<p>Last update: {{ build.timestamp | formatDate('MMM dd, yyyy') }}</p>
+</nav>
