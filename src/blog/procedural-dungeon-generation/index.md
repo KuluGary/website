@@ -13,6 +13,7 @@ postmedia:
       alt: A grey scene with the Godot logo in the middle and four door-openings at each cardinal direction.
 description: Recently I found an article about the dungeon generation in The Binding of Isaac, and I decided I wanted to try to implement it in Godot.
 ---
+![A dark animated image of a dungeon layout being re-generated periodically](./assets/1.gif)
 
 I like rogue-likes, and procedural generation is a fascinating subject to me.
 

@@ -15,6 +15,10 @@ a {
   &:focus-within {
     color: var(--clr-link, var(--clr-accent-primary));
   }
+
+  &:has(s) {
+    cursor: not-allowed;
+  }
 }
 
 h1,

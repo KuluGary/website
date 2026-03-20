@@ -1,0 +1,330 @@
+/* GLOBAL RESET & BODY */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 1.25em/1.5 var(--font-family-comic-main);
+  min-height: 100vh;
+  padding: 2em;
+}
+
+/* MAIN NOTEBOOK */
+.notebook {
+  /* Variables for geometry */
+  --f: 0.5;
+  /* Fraction of line the hole occupies */
+  --b: 2lh;
+  /* Margin width (sidebar) */
+  --l: 2px;
+  /* Line thickness */
+  /* Color Palette */
+  --paper-color: #fffef5;
+  --line-color: #c5d1dc;
+  --margin-line-color: #e74c3c;
+  position: relative;
+  max-width: 50em;
+  margin: 0 auto;
+
+  /* Padding logic: Left padding accommodates the margin width */
+  padding: 2lh 3ch 2lh calc(var(--b) + 3ch);
+  border-radius: 0 8px 8px 0;
+  background:
+        /* 1. Left red margin line */ linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) var(--b),
+      var(--margin-line-color) var(--b),
+      var(--margin-line-color) calc(var(--b) + 2px),
+      rgba(0, 0, 0, 0) 0
+    ),
+    /* 2. Horizontal lines */
+      repeating-linear-gradient(
+        transparent 0,
+        transparent calc(1lh - 1px),
+        var(--line-color) calc(1lh - 1px),
+        var(--line-color) 1lh
+      ),
+    /* 3. Base paper color */ var(--paper-color);
+  mask: radial-gradient(calc(0.5 * var(--f) * 1lh) at calc(0.5 * var(--b)), #0000 calc(100% - 1px), red) 0 0/ 100% 1lh;
+  /* Paper shadow for depth */
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3), inset -2px 0 10px rgba(0, 0, 0, 0.05);
+  /* Slight rotation for natural feel */
+  transform: rotate(-0.5deg);
+  filter: drop-shadow(2px 2px 4px #000c);
+}
+
+/* DATE STAMP */
+.date-stamp {
+  position: absolute;
+  top: 1lh;
+  right: 2ch;
+  font-family: var(--font-family-comic-main);
+  font-size: 0.9em;
+  color: #7f8c8d;
+  transform: rotate(2deg);
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-md);
+}
+
+/* ADHESIVE TAPE */
+.tape {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  background: linear-gradient(135deg, rgba(255, 230, 150, 0.8) 0%, rgba(255, 220, 120, 0.9) 100%);
+  transform: rotate(-5deg);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.tape--top {
+  top: -10px;
+  left: 30%;
+}
+
+.tape--bottom {
+  bottom: -10px;
+  right: 20%;
+  transform: rotate(3deg);
+}
+
+/* STICKY NOTE (POST-IT) */
+.sticky-note {
+  position: relative;
+  margin: 1lh 0;
+  margin-left: 2ch;
+  padding: 1em;
+  width: fit-content;
+  max-width: 280px;
+  background: linear-gradient(135deg, #ffeb3b 0%, #fdd835 100%);
+  font-family: "Indie Flower", cursive;
+  font-size: 0.95em;
+  color: #333;
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), inset 0 -40px 40px rgba(0, 0, 0, 0.05);
+}
+
+.sticky-note--blue {
+  background: linear-gradient(135deg, #81d4fa 0%, #4fc3f7 100%);
+}
+
+.sticky-note--green {
+  background: linear-gradient(135deg, #c5e1a5 0%, #aed581 100%);
+}
+
+.sticky-note--pink {
+  background: linear-gradient(135deg, #f8bbd9 0%, #f48fb1 100%);
+}
+
+.sticky-note::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* PAPERCLIP */
+.paperclip {
+  position: absolute;
+  top: -15px;
+  right: 60px;
+  width: 20px;
+  height: 60px;
+  border: 3px solid #e74c3c;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  transform: rotate(10deg);
+  z-index: 25;
+}
+
+.paperclip::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 25px;
+  border: 3px solid #e74c3c;
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+}
+
+/* POLAROID PHOTO */
+.polaroid {
+  display: inline-block;
+  margin: 1lh;
+  padding: 10px 10px 40px 10px;
+  background: white;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  transform: rotate(var(--deg, 3deg));
+  max-width: 200px;
+}
+
+.polaroid img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  filter: sepia(20%) contrast(1.1);
+}
+
+.polaroid figcaption {
+  font-family: "Indie Flower", cursive;
+  text-align: center;
+  margin-top: 8px;
+  color: #555;
+}
+
+.polaroid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* TEXT STYLES & TYPOGRAPHY */
+.notebook h1 {
+  font-family: var(--font-family-comic-title);
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1.5lh;
+  margin-bottom: 0.5lh;
+  color: #2c3e50;
+  text-decoration: underline wavy #3498db;
+  text-underline-offset: 5px;
+}
+
+.notebook h2 {
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1.5lh;
+  margin-top: 1lh;
+  color: #34495e;
+}
+
+.notebook p {
+  margin-bottom: 1lh;
+  color: #2c3e50;
+  text-indent: 2ch;
+}
+
+.notebook .first-paragraph::first-letter {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #e74c3c;
+  line-height: 1.1;
+}
+
+/* Strikethrough effect */
+.deleted {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Highlight / Underline effect */
+.important {
+  background: linear-gradient(transparent 60%, #ffeb3b 60%, #ffeb3b 90%, transparent 90%);
+}
+
+/* Circled text */
+.circled {
+  border: 2px solid #e74c3c;
+  border-radius: 50%;
+  padding: 0 0.3em;
+}
+
+.notebook ul {
+  margin: 0.5lh 0 1lh 2ch;
+  list-style: none;
+}
+
+.notebook ul li::before {
+  content: "✦ ";
+  color: #3498db;
+}
+
+.notebook blockquote {
+  position: relative;
+  margin: 1lh 2ch;
+  padding: 0.5lh 1ch;
+  font-style: italic;
+  color: #666;
+  border-left: 3px solid #9b59b6;
+  background: rgba(155, 89, 182, 0.05);
+}
+
+.notebook blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -0.3lh;
+  left: -0.5ch;
+  font-size: 3em;
+  color: #9b59b6;
+  opacity: 0.3;
+}
+
+/* DOODLE AREA */
+.doodle-area {
+  position: relative;
+  margin: 1lh 0;
+  padding: 1em;
+  border: 2px dashed #bdc3c7;
+  border-radius: 5px;
+  min-height: 100px;
+  background: radial-gradient(circle at 20% 30%, #ff6b6b33 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, #4ecdc433 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, #ffe66d33 0%, transparent 35%);
+}
+
+.doodle-area::after {
+  content: "🎨 drawing area";
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.7em;
+  color: #bdc3c7;
+}
+
+/* PAGE NUMBER */
+.page-number {
+  text-align: center;
+  margin-top: 2lh;
+  font-family: "Indie Flower", cursive;
+  color: #95a5a6;
+}
+
+.page-number::before {
+  content: "— ";
+}
+
+.page-number::after {
+  content: " —";
+}
+
+/* FOOTER CREDIT */
+.credit {
+  text-align: center;
+  margin-top: 1lh;
+  padding-top: 1lh;
+  border-top: 2px dashed #c5d1dc;
+  font-family: "Indie Flower", cursive;
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+.credit a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.credit a:hover {
+  color: #e74c3c;
+  text-decoration: underline wavy;
+}

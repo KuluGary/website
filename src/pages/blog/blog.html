@@ -3,7 +3,7 @@ title: "The Blog"
 description: "A blog with experiments in progress, scattered notes, and the occasional odd trail of thought."
 pagination:
   data: collections.blog
-  size: 8
+  size: 4
   alias: posts
   reverse: true
 permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
@@ -32,38 +32,76 @@ css:
     <section id="blog">
       {% set isInitialPage = pagination.pageNumber == 0 %}
 
-      {% if isInitialPage %}
-        <article id="newest-article">
-          {% set newestPost = posts[0] %}
+      <aside>
+        <section id="about">
+          <h3>About</h3>
 
-          <h2>
-            <a href="{{ newestPost.url }}">{{ newestPost.data.title }}</a>
-          </h2>
+          {% set postTags = collections["frequentTags"] %}
 
-          <img src="{{ newestPost.url }}{{ newestPost.data.thumb.base }}" height="200" width="400" alt="">
+          <p>This blog is where I write about anything that piques my interest. Right now I write most about <a href="/blog/tags/{{ postTags[0].tag | slugify }}">{{ postTags[0].tag }}</a>,
+        <a href="/blog/tags/{{ postTags[1].tag | slugify }}">{{ postTags[1].tag }}</a> and
+        <a href="/blog/tags/{{ postTags[2].tag | slugify }}">{{ postTags[2].tag }}</a>.</p>
+        </section>
 
-          <p class="post-description">{{ newestPost.data.description }}</p>
+        <section id="featured-article">
+          {% set featuredBlogPost = collections.featuredBlogPosts[0] %}
 
-          <div class="footer">
-            <p class="post-publication-date">Published {{ newestPost.date |formatDate("LLLL dd, yyyy")}} in </p>
+          <p class="badge">Featured</p>
+          <h4>
+            <a href="{{ featuredBlogPost.metadata.url }}" target="_blank">{{ featuredBlogPost.title }}</a>
+          </h4>
 
-            <ul class="post-tags">
-              {%- for tag in newestPost.data.tags -%}
-                {% if tag != "blog-post" %}
-                  <li>
-                    <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
-                  </li>
-                {% endif %}
-              {%- endfor -%}
-            </ul>
+          <cite>by {{ featuredBlogPost.metadata.author }}</cite>
+
+          <div class="description">
+            {{ featuredBlogPost.metadata.summary | safe }}
           </div>
-        </article>
 
-      {% endif %}
+          <ul id="featured-blog-list">
+            {% for featuredBlog in blogroll | limit(4) %}
+              <li>
+                <a href="{{ featuredBlog.metadata.url }}" target="_blank">{{ featuredBlog.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </aside>
 
       <ul id="post-list">
         {% set postList = (posts | slice(1))if isInitialPage else 
           posts %}
+
+        {% if isInitialPage %}
+          <li>
+            <article id="newest-article">
+              {% set newestPost = posts[0] %}
+
+              <img src="{{ newestPost.url }}{{ newestPost.data.thumb.base }}" height="200" width="400" alt="">
+
+              <p class="tag">Newest</p>
+
+              <h2>
+                <a href="{{ newestPost.url }}">{{ newestPost.data.title }}</a>
+              </h2>
+
+              <p class="post-description">{{ newestPost.data.description }}</p>
+
+              <div class="footer">
+                <p class="post-publication-date">Published {{ newestPost.date |formatDate("LLLL dd, yyyy")}} in </p>
+
+                <ul class="post-tags">
+                  {%- for tag in newestPost.data.tags -%}
+                    {% if tag != "blog-post" %}
+                      <li>
+                        <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+                      </li>
+                    {% endif %}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </article>
+          </li>
+        {% endif %}
 
         {% for post in postList %}
           <li>
@@ -94,18 +132,18 @@ css:
       </ul>
 
       <aside>
-        <section>
-          <h3>Most popular</h3>
+        <section id="popular">
 
-          <ol>
-            {% for post in collections["popularPosts"] | limit(3) %}
-              <li>
-                <h4>
-                  <a href="{{ post.url }}">{{ post.title }}</a>
-                </h4>
-              </li>
-            {% endfor %}
-          </ol>
+          {% set post = collections["popularPosts"][0] %}
+
+          <p class="badge">Popular</p>
+
+          <h4>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </h4>
+
+          <p>{{ post.description | safe }}</p>
+
         </section>
         <section>
           <h3>Popular tags</h3>
@@ -139,7 +177,7 @@ css:
           <ul>
             <li>
               <p>
-                <a href="">RSS feed</a>
+                <a href="/blog/feed.xml">RSS feed</a>
               </p>
             </li>
           </ul>

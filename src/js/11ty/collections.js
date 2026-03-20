@@ -10,6 +10,10 @@ export function getBlogPosts(collectionApi) {
   return collectionApi.getFilteredByGlob("src/blog/**/index.md");
 }
 
+export function getArtPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/art/**/index.md");
+}
+
 /**
  * Groups all blog posts by year
  * @param {Eleventy.collection} collectionApi
@@ -198,6 +202,7 @@ export function getPopularPosts(collectionApi) {
       url: url,
       date: post.date,
       popularity,
+      description: post.data.description,
     };
   });
 
@@ -228,6 +233,11 @@ export function getGamesByLastPlayed(collectionApi) {
   });
 }
 
+/**
+ * Returns the list of games grouped by year
+ * @param {Eleventy.collection} collectionApi
+ * @returns {Array<Object>} List of games grouped by year
+ */
 export function getGamesByYear(collectionApi) {
   const allGames = collectionApi.getAll()[0].data.games;
 
@@ -250,4 +260,23 @@ export function getGamesByYear(collectionApi) {
         (a, b) => new Date(b.metadata.lastPlayed).getTime() - new Date(a.metadata.lastPlayed).getTime()
       ),
     }));
+}
+
+/**
+ * Returns a list of the blog posts in the blogroll
+ * @param {Eleventy.collection} collectionApi
+ * @returns {Array<Object>} List of all blog posts in the blogroll
+ */
+export function getFeaturedBlogPosts(collectionApi) {
+  const allBlogs = collectionApi.getAll()[0].data.blogroll;
+
+  const allBlogPosts = allBlogs.reduce((acc, curr) => {
+    const blogPosts = curr.blog_posts;
+
+    acc = acc.concat(blogPosts);
+
+    return acc;
+  }, []);
+
+  return allBlogPosts;
 }

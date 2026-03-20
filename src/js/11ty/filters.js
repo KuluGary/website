@@ -182,7 +182,7 @@ export function filterOwnWebmentions(webmentions) {
  * @returns list of webmentions filtered by post
  */
 export function getWebmentionsByUrl(webmentions, url) {
-  return webmentions.filter((entry) => entry["wm-target"] === url);
+  return webmentions.filter((entry) => entry["wm-target"].includes(url));
 }
 
 /**

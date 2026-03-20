@@ -1,4 +1,4 @@
-@custom-media --viewport-mobile (max-width: 600px);
+@custom-media --viewport-mobile (max-width: 300px);
 @custom-media --viewport-tablet (min-width: 600px);
 @custom-media --viewport-laptop (min-width: 768px);
 @custom-media --viewport-desktop (min-width: 992px);
@@ -35,10 +35,15 @@
   --font-family-lokanova: Lokanova, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   --font-family-tusker-grotesk: TuskerGrotesk, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
     monospace;
+  --font-family-851MkPOP: "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
+  --font-family-steppers: Steppers, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
+  --font-family-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
 
   --font-family-site-title: var(--font-family-maesiez);
   --font-family-title: var(--font-family-tusker-grotesk);
   --font-family-main: var(--font-family-transitional);
+  --font-family-comic-main: var(--font-family-851MkPOP);
+  --font-family-comic-title: var(--font-family-caveat);
 
   --font-size-xs: 0.7rem;
   --font-size-sm: 0.85rem;
@@ -101,4 +106,19 @@
 @font-face {
   font-family: "TuskerGrotesk";
   src: url("/assets/fonts/TuskerGrotesk-5600Semibold.ttf");
+}
+
+@font-face {
+  font-family: "851MkPOP";
+  src: url("/assets/fonts/851MkPOP_101.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Steppers";
+  src: url("/assets/fonts/Steppers.otf");
+}
+
+@font-face {
+  font-family: Caveat;
+  src: url("/assets/fonts/Caveat-VariableFont_wght.ttf") format("truetype");
 }

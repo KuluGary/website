@@ -96,10 +96,6 @@ const PERMISSIONS = {
 
 Now permissions can be a boolean or a callback. The `hasPermission` function just needs to handle both cases:
 
-<aside>
-  Aside 2
-</aside>
-
 ```js
 const hasPermission(user, resource, action, data) {
 	return user.roles.some(role => {

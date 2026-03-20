@@ -17,9 +17,15 @@ postmedia:
       alt: A textbox showing that Endless mode has been unlocked.
 ---
 
-I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a week. For those who don't know, it's a [roguelite](https://store.steampowered.com/tags/en/Roguelite/) Pokémon fangame where you go from level 1 to 200 fighting wild Pokémon and trainers, in a never-ending gameplay loop.
+I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a week. In my most recent run (and the only successful one), I've finally beaten the game.
 
-In my most recent run (and the only successful one), I've finally beaten the game.
+<aside style="--span:4">
+
+  [Pokérogue](https://pokerogue.net/) is a Pokémon fangame. It's a [roguelite](https://store.steampowered.com/tags/en/Roguelite/) browser game where you do Pokémon battles while progressing through different floors and catching wild Pokémon.
+
+  The appeal comes from unlocking new items and Pokémon you can start with in each run, and trying to either get to the end-game boss or as far as possible in a single run.
+
+</aside>
 
 I started the run with **Torchic**, **Magnemite** and **Magikarp**. Through the game, I ended up forming a team of **Blaziken**, **Magneton**, **Gyarados**, **Shiftry**, **Dusknoir** and **Seismitoad**. At one point, I got both the **Mega Bracelet**, and the **Blazikenite** and **Gyaradosite**.
 
@@ -33,8 +39,6 @@ This was my set-up:
 | SHIFTRY       | Leaf Blade   | Nasty Plot   | Sucker Punch  | Synthesis    |
 | DUSKNOIR      | Shadow Punch | Will-O-Wisp  | Thunder Punch | Payback      |
 | SEISMITOAD    | Hydro Pump   | Earth Power  | Hyper Voice   | Acid         |
-
-{.stat-table}
 
 The battle with **Eternatus** was tense. I've lost most of my team against its base form, and by the time I was facing **Eternamax Eternatus**, I had only **Magnezone**, **Dusknoir** and **Shiftry**. Early on I also lost **Shiftry** to a **Poison** move, but I clutched it with my remaining Pokémon.
 

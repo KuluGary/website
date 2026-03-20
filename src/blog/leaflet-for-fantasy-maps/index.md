@@ -6,16 +6,6 @@ tags: ["web-dev", "leaflet"]
 description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from installation to customization, discovering how to harness the full power of this robust map library. With detailed instructions and practical examples, acquire the necessary tools to transform your ideas into interactive maps.
 ---
 
-- [Preamble](#preamble)
-- [Leaflet.js](#leaflet.js)
-- [How to make the map](#how-to-make-the-map)
-- [Implementation](#4.-implementation)
-  - [Markers](#markers)
-- [Finishing](#finishing)
-- [Appendix](#appendix)
-
-## Preamble
-
 We've all seen it: When you buy a new book from any fantasy series -be it [The Lord of the Rings](https://en.wikipedia.org/wiki/The_Lord_of_the_Rings) or [The Witcher](https://en.wikipedia.org/wiki/The_Witcher) -, it oftens includes a detailed map to allow you to immerse yourself in the world and its locations.
 
 As it was expected, with the advent of the Internet and new ways to share stories, fantasy maps have evolved to adapt themselves to the new ecosystem. No need to go further than Netflix's The Witcher, where they took Andrzej Sapkowski's map of the Continent and gave it a [new layer of interactivity](https://www.witchernetflix.com/es/map/captured-by-nilfgaard).

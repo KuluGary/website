@@ -24,16 +24,16 @@ css:
 			<h2>Elsewhere</h2>
 			<ul>
 				<li>
-					<a href="#">Mastodon</a>
+					<a href="https://indiepocalypse.social/@kulugary">Mastodon</a>
 				</li>
 				<li>
-					<a href="#">Github</a>
+					<a href="https://github.com/KuluGary">Github</a>
 				</li>
 				<li>
-					<a href="#">Itch.io</a>
+					<a href="https://kulugary.itch.io/">Itch.io</a>
 				</li>
 				<li>
-					<a href="#">Bluesky</a>
+					<a href="https://bsky.app/profile/kulugary.itch.io">Bluesky</a>
 				</li>
 			</ul>
 		</section>
@@ -42,22 +42,34 @@ css:
 
 			<ul>
 				<li>
-					<a href="/now">Now</a>
+					<a href="#">
+						<s>Now</s>
+					</a>
 				</li>
 				<li>
-					<a href="/about">About</a>
+					<a href="/about">
+						About
+					</a>
 				</li>
 				<li>
-					<a href="/sites">Sites</a>
+					<a href="#">
+						<s>Sites</s>
+					</a>
 				</li>
 				<li>
-					<a href="/stats">Stats</a>
+					<a href="#">
+						<s>Stats</s>
+					</a>
 				</li>
 				<li>
-					<a href="/uses">Uses</a>
+					<a href="#">
+						<s>Uses</s>
+					</a>
 				</li>
 				<li>
-					<a href="/colophon">Colophon</a>
+					<a href="#">
+						<s>Colophon</s>
+					</a>
 				</li>
 			</ul>
 		</section>
@@ -65,7 +77,9 @@ css:
 			<h2>Contact me</h2>
 			<ul>
 				<li>
-					<a href="mailto:#">Email me</a>
+					<a href="#">
+						<s>Email me</s>
+					</a>
 				</li>
 				<li>
 					<a href="/guestbook">Sign the guestbook</a>
@@ -146,78 +160,6 @@ css:
 				{% endfor %}
 			</ul>
 		</section>
-
-		<section id="gaming">
-			{% set gameLimit = 3 %}
-			<h2>Latest games</h2>
-
-			<ul>
-				{% for game in collections.gamesByLastPlayed | limit(5) %}
-					<li>
-						{% set icon = game
-							.metadata
-							.icons["96x96"] or game
-							.metadata
-							.icons["184x69"] %}
-
-						<div class="game-cover-container">
-							<div style="background-image:url('{{ icon }}')"></div>
-							{% if game
-								.metadata
-								.icons["96x96"] %}
-								<img
-								class="game-cover"
-								style="background-image:url('{{ icon }}')"
-								src="{{ icon }}"
-								height="58"
-								width="58"
-								alt="{{ game.title }}"/>
-							{% endif %}
-
-							{% if game
-								.metadata
-								.icons["184x69"] %}
-								<img
-								style="background-image:url('{{ icon }}')"
-								class="game-cover"
-								src="{{ icon }}"
-								height="58"
-								width="154"
-								alt="{{ game.title }}"/>
-							{% endif %}
-						</div>
-
-						<h3>
-							<a href="">{{ game.title }}</a>
-						</h3>
-
-						<div class="flex-group">
-							{% if game.achievements.length > 0 %}
-								<p>{{ game.achievements.length }} achievement(s) unlocked</p>
-							{% endif %}
-							{% if game.achievements.length > 0 and game.metadata.platforms %}
-								<span>•</span>
-							{% endif %}
-							{% if game.metadata.platforms %}
-								<p>{{ game.metadata.platforms }}</p>
-							{% endif %}
-						</div>
-
-						<div class="flex-group">
-							{% if game.metadata.lastPlayed %}
-								<p>Last played {{ game.metadata.lastPlayed | formatDate("LLL, dd yyyy") }}</p>
-							{% endif %}
-							{% if game.metadata.lastPlayed and game.timeSeconds %}
-								<span>•</span>
-							{% endif %}
-							{% if game.timeSeconds %}
-								<p>Played for {{ game.timeSeconds | formatDuration }}</p>
-							{% endif %}
-						</div>
-					</li>
-				{% endfor %}
-			</ul>
-		</section>
 	</main>
 
 	<aside id="main-aside">
@@ -229,6 +171,36 @@ css:
 
 			<p>A software developer by trade, I have extensive experience with web development.</p>
 		</section>
+
+		<section id="now">
+			<h2>What I'm doing</h2>
+
+			<ul>
+				<li>
+					{% set latestGame = collections
+						.gamesByYear[0]
+						.items[0] %}
+
+					<p>
+						Playing {{ latestGame.title }}
+					</p>
+				</li>
+				<li>
+					{% set latestShow = shows.watchlist[0] %}
+
+					<p>
+						Watching {{ latestShow.title }}
+					</p>
+				</li>
+				<li>
+					{% set latestComic = manga[0] %}
+					<p>
+						Reading {{ latestComic.title }}
+					</p>
+				</li>
+			</ul>
+		</section>
+
 		<section id="statistics">
 			<h2>Site stats</h2>
 			<ul>
@@ -294,22 +266,6 @@ css:
 			</dl>
 		</section>
 
-		<section id="website-updates" class="stat-section">
-			<h2>
-				<span>{{ commits.length }}</span> site updates</h2>
-
-			<dl>
-				{% for item in commits | limit(4) %}
-					<dt>
-						<a href="https://github.com/KuluGary/website/commit/{{ item.hash }}" target="_blank">
-							{{ item.hash | limit(4) }}
-						</a>
-					</dt>
-					<dd>{{ item.date | formatDate("LLL, dd") }}</dd>
-				{% endfor %}
-			</dl>
-		</section>
-
 		{# <section id="gaming-stats">
 			{% set latestGames = collections.gamesByYear[0] %}
 			<h2>
@@ -327,5 +283,9 @@ css:
 		</section> #}
 
 	</aside>
-	<footer></footer>
+
+	<footer>
+		<p>© {{ currentYear }} Gary. <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> | <a href="https://github.com/KuluGary/website">src</a>.</p>
+		<p>Any and all opinions listed here are my own and not representative of anyone else.</p>
+	</footer>
 {% endblock content %}
