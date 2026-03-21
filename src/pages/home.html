@@ -8,7 +8,65 @@ css:
 ---
 
 {% block content %}
-	<header>
+	<header id="sitemast" role="banner">
+		<img src="/assets/images/header-1.png" alt="">
+		<img src="/assets/images/header-2.png" alt="">
+		<h1>
+			<a href="">{{ metadata.title }}</a>
+		</h1>
+	</header>
+
+	<nav>
+		<ul>
+			<li>
+				<a href="">Articles</a>
+			</li>
+			<li>
+				<a href="">Gallery</a>
+			</li>
+			<li>
+				<a href="">About</a>
+			</li>
+			<li>
+				<a href="">Writing</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main>
+		<section>
+			<h2>Welcome!</h2>
+
+			<p>This website is handcrafted and curated by me.</p>
+		</section>
+
+		{% set postList = collections["blog"] | reverse %}
+
+		{% for post in postList %}
+			<article>
+				<h3>
+					<a href="{{ post.url }}">{{ post.data.title }}</a>
+				</h3>
+
+				<div class="footer">
+					<p class="post-publication-date">Published <time datetime="{{ post.date }}">{{ post.date |formatDate("LLLL dd, yyyy")}}</time> in </p>
+
+					<ul class="post-tags">
+						{%- for tag in post.data.tags -%}
+							{% if tag != "blog-post" %}
+								<li>
+									<a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+								</li>
+							{% endif %}
+						{%- endfor -%}
+					</ul>
+				</div>
+				<p>{{ post.data.description }}</p>
+			</article>
+		{% endfor %}
+	</main>
+
+	{# <header>
 		<div>
 			<p id="site-title">{{ metadata.title }}</p>
 		</div>
@@ -228,29 +286,6 @@ css:
 				</li>
 			</ul>
 		</section>
-		{# <section id="mentions">
-			<h2>{{ webmentions.length }} interactions</h2>
-			{% for mention in webmentions | limit(5) %}
-				<p>
-					<a href="{{mention.url}}" target="_blank">{{ mention.author.name }}</a> on <time datetime="{{ mention["wm-received"] }}">{{ mention["wm-received"] | formatDate("LLL, dd") }}</time>
-				</p>
-			{% endfor %}
-		</section> #}
-		{# <section id="blog-stats">
-			{% set latestPosts = collections.postsByYear[0] %}
-			<h2>
-				<span>{{ latestPosts.items.length }}</span> articles in {{ latestPosts.year }}</h2>
-
-			<dl>
-				{% for tag, count in collections.frequentTagsByYear[latestPosts.year] %}
-					<dt>
-						<a href="/blog/tags/{{ tag }}">{{ tag | unslugify }}</a>
-					</dt>
-					<dd>{{ count | pad(2) }}</dd>
-				{% endfor %}
-			</dl>
-		</section> #}
-
 		<section id="blog-year-stats">
 			<h2>
 				<span>{{ collections.blog.length }}</span> articles in total
@@ -265,27 +300,10 @@ css:
 				{% endfor %}
 			</dl>
 		</section>
-
-		{# <section id="gaming-stats">
-			{% set latestGames = collections.gamesByYear[0] %}
-			<h2>
-				<span>{{ latestGames.items.length }}</span> games played in {{ latestGames.year }}</h2>
-
-			<dl>
-				{% for game in collections.gamesByLastPlayed | limit(latestGames.items.length) %}
-					<dt>
-						<a>{{ game.title}}</a>
-					</dt>
-					<dd>{{ game.metadata.lastPlayed | formatDate("LLL, dd") }}</dd>
-				{% endfor %}
-			</dl>
-
-		</section> #}
-
 	</aside>
 
 	<footer>
 		<p>© {{ currentYear }} Gary. <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> | <a href="https://github.com/KuluGary/website">src</a>.</p>
 		<p>Any and all opinions listed here are my own and not representative of anyone else.</p>
-	</footer>
+	</footer> #}
 {% endblock content %}

@@ -1,4 +1,97 @@
 body {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    [left] minmax(1em, 1fr)
+    [main] minmax(10em, 40em)
+    [right] minmax(10em, 1fr);
+  grid-template-rows: repeat(4, min-content) auto repeat(4, min-content);
+  grid-gap: 0 2em;
+}
+
+header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: relative;
+  height: 16vw;
+  font-size: 300%;
+  line-height: 1.1;
+  font-style: italic;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & h1 {
+    position: absolute;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    font-family: var(--font-family-title);
+  }
+
+  & img {
+    height: 100%;
+    mix-blend-mode: multiply;
+
+    & + img {
+      height: 60%;
+      margin-bottom: auto;
+    }
+  }
+
+  /* background: url("/assets/images/image.png") 0 100% / 45% auto no-repeat;
+  background-blend-mode: color-burn; */
+}
+
+nav {
+  grid-column: right;
+  position: sticky;
+  top: 0;
+  height: fit-content;
+
+  & ul {
+    text-align: right;
+    font-size: var(--font-size-lg);
+
+    & li {
+      margin-block: var(--spacing-xs);
+    }
+  }
+}
+
+main {
+  grid-column: main;
+  grid-row: 2 / -5;
+  padding: 3em 0 0;
+
+  & article {
+    & > * + * {
+      margin-block: var(--spacing-md);
+    }
+    & + article {
+      margin-block: var(--spacing-xl);
+    }
+    & h3 {
+      font-size: var(--font-size-3xl);
+      font-family: var(--font-family-title);
+
+      & a {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+      }
+    }
+    & .footer {
+      & * {
+        display: inline;
+      }
+    }
+  }
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* body {
   margin: 0 auto;
   max-width: var(--sizing-main-content);
 
@@ -354,7 +447,6 @@ body > #main-aside {
         border-bottom: 3px dotted var(--clr-text-main);
         flex: 1;
         margin-inline: var(--sizing-md);
-        /* min-width: 4ch; */
       }
     }
 
@@ -381,7 +473,6 @@ body > #main-aside {
             border-bottom: 3px dotted var(--clr-text-main);
             flex: 1;
             margin-inline: var(--sizing-md);
-            /* min-width: 4ch; */
           }
         }
       }
@@ -467,4 +558,4 @@ body > footer {
 
 img {
   mix-blend-mode: darken;
-}
+} */
