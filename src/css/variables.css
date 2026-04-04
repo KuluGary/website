@@ -4,6 +4,8 @@
 @custom-media --viewport-desktop (min-width: 992px);
 
 :root {
+  color-scheme: light dark;
+
   /* Colors */
   --clr-white: #efede3;
   --clr-black: #302f2c;
@@ -14,12 +16,12 @@
   --clr-blue: #4b607f;
   --clr-yellow: #fbc359;
 
-  --clr-bg-main: var(--clr-white);
-  --clr-accent-primary: var(--clr-red);
-  --clr-accent-secondary: var(--clr-yellow);
-  --clr-text-main: var(--clr-black);
-  --clr-border-main: var(--clr-black);
-  --clr-bg-header: var(--clr-accent-secondary);
+  --clr-bg-main: light-dark(#efede3, #030703);
+  --clr-text-main: light-dark(#302f2c, #d1cebb);
+  --clr-accent-primary: light-dark(#b83a2d, #0985ce);
+  --clr-accent-secondary: #fbc359;
+  --clr-border-main: light-dark(#302f2c, #dedec0);
+  --clr-bg-header: #fbc359;
 
   /* Fonts  */
   --font-family-system: system-ui, sans-serif;
@@ -39,6 +41,7 @@
   --font-family-steppers: Steppers, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
   --font-family-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
   --font-family-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  --font-family-fondamento: "Fondamento", "Times New Roman", serif;
 
   --font-family-site-title: var(--font-family-maesiez);
   --font-family-title: var(--font-family-ImFellDWPica);
@@ -47,12 +50,12 @@
   --font-family-comic-title: var(--font-family-caveat);
 
   --font-size-xs: 0.7rem;
-  --font-size-sm: 0.85rem;
+  --font-size-sm: 0.8em;
   --font-size-base: 1rem;
-  --font-size-lg: 1.15rem;
-  --font-size-xl: 1.3rem;
-  --font-size-2xl: 1.45rem;
-  --font-size-3xl: 1.6rem;
+  --font-size-lg: 1.33em;
+  --font-size-xl: 1.78em;
+  --font-size-2xl: 2.37em;
+  --font-size-3xl: 3.16em;
 
   --font-size-site-title: max(7rem, 15vw);
   --font-size-site-description: max(3.25vw, var(--font-size-sm));
@@ -61,19 +64,19 @@
   --font-weight-regular: 400;
   --font-weight-bold: 700;
 
-  /** Sizing */
+  /* Sizing */
   --sizing-xs: 0.25rem;
   --sizing-sm: 0.5rem;
   --sizing-md: 0.75rem;
-  --sizing-lg: 1rem;
-  --sizing-base: 1.5rem;
+  --sizing-base: 1rem;
+  --sizing-lg: 1.5rem;
   --sizing-xl: 1.75rem;
   --sizing-2xl: 2rem;
   --sizing-3xl: 2.25rem;
   --sizing-full: 100%;
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
 
-  /** Spacing */
+  /* Spacing */
   --spacing-xs: var(--sizing-xs);
   --spacing-sm: var(--sizing-sm);
   --spacing-md: var(--sizing-md);
@@ -87,6 +90,9 @@
   --border-base: 2px solid var(--clr-border-main);
   --border-thick: 3px solid var(--clr-border-main);
   --border-thin: 1px solid var(--clr-border-main);
+
+  /* Layout */
+  --main-grid-template-columns: [left] minmax(1em, 1fr) [main] minmax(10em, 40em) [right] minmax(10em, 1fr);
 }
 
 @font-face {
@@ -133,5 +139,17 @@
 @font-face {
   font-family: IMFellDWPica;
   src: url("/assets/fonts/IMFellDWPica-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Fondamento;
+  src: url("/assets/fonts/Fondamento-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Fondamento;
+  src: url("/assets/fonts/Fondamento-Italic.ttf") format("truetype");
   font-style: italic;
 }

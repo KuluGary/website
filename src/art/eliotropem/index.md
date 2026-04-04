@@ -1,4 +1,5 @@
 ---
 title: "Eliotrope(M)"
 date: 2021-10-25T07:33:20.854Z
+eleventyExcludeFromCollections: true
 ---

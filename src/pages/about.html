@@ -8,158 +8,42 @@ css:
 ---
 
 {% block content %}
-	<header>
-		<div>
-			<h2>THE <span>WEBMASTER</span></h2>
-		</div>
-		<p>Learn about the curator of this site.</p>
-	</header>
-
-	{% include "components/navbar.html" %}
-
 	<main>
 		<section>
 			<h2>Who is the webmaster?</h2>
+
+			<p>Hi, I'm Gary and I'm the curator, author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
 		</section>
 
 		<section>
 			<h2>Work</h2>
 
-			<p>My primary experience is build web applications, both client-facing and for internal management. I thrive with <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">back-of-the-front-end</a> development, specializing in business logic, integrating with internal and third-party APIs, and working with other IT profiles to ensure information safety and solid data contracts.</p>
+			<p>I work as a full-time web developer in both client-facing and management applications. I specialize in the <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">back-of-the-front-end</a>, integrating APIs, managing business logic and working with both designers and backend developers to ensure product quality.</p>
 
-			<p>Of the projects I've worked on, a few are:</p>
+			<p>Some of the projects I've worked on are:</p>
 
 			<ul>
-				<li>A platform to help retail stores to manage their digital content in each point-of-sale. The core system includes a dashboard to upload, manage and send the content to each display application.</li>
+				<li>A platform that allows establishments to automate the broadcast of all their own content (videos, audio, ...) and the brands they work with.</li>
 
-				<li>An application to be displayed in hotel lobbies to manage check-ins and check-outs. Displayed in kiosk mode in custom hardware.</li>
+				<li>An application to manage client's check-in in hotel lobbies through a web-application displayed in a kiosk.</li>
 
-				<li>A platform to create social media content. It connects freelance editors and filmers with clients, manages uploading and downloading content and provides a secure payment system.</li>
+				<li>A platform where clients can connect with freelance editors, film-makers and creatives to create on-demand content for social media.</li>
 			</ul>
 		</section>
 
 		<section>
 			<h2>Life on the Internet</h2>
 
-			<p>I've been on the Internet one way or another since the mid-2000s. Before social media was a centralized mess, I was lurking in some obscure gaming forums, where I first learned about game development.</p>
+			<p>I've been on the Internet one way or another since the mid-2000s. Before people congregated into centralized social medias, I was part of some obscure game-developer forums where I first started sharing my games.</p>
 
-			<p>I started overscoped games in RPG Maker when I was a teenager, from fangames to full-on fantasy epics that did not get more than a couple demos before being abandoned for another idea.</p>
+			<p>Around 2011 I first discover RP forums. There I started to create my first fiction stories with my partner, some of them which we're still working on to this day.</p>
 
-			<p>At some point I co-created an RPG Maker forum with some of my friends, which I moderated until the mid 2010s.</p>
+			<h3>Hobbies</h3>
 
-			<p>After that, I was invited to a RP forum by a friend. In there I first learned about TTRPGs.</p>
-		</section>
-		{#
-		<section id="skill-aspects">
-			<section id="aspects">
-				<h2>Aspects</h2>
-				<ul>
-					<li>Sees code as craft.</li>
-					<li>Creatively eclectic.</li>
-					<li>Prefers tools with personality.</li>
-					<li></li>
-				</ul>
-			</section>
-			<section id="skills">
-				<h2>Skills</h2>
-				<div>
-					<span class="label">+5</span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div>
-					<span class="label">+4</span>
-					<span>Web development</span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div>
-					<span class="label">+3</span>
-					<span>Creative Writing</span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div>
-					<span class="label">+2</span>
-					<span>Digital art</span>
-					<span>Game dev</span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div>
-					<span class="label">+1</span>
-					<span>Dev ops</span>
-					<span>Pixel Art</span>
-					<span>3D Modelling</span>
-					<span></span>
-					<span></span>
-				</div>
-			</section>
-		</section>
+			<p>I'm an eclectic person with a lot of interests, and I've shared quite a few of them with the Internet.</p>
 
-		<section id="abilities">
-			<section id="extras">
-				<h2>Extras</h2>
-
-				<ul>
-					<li>A cluttered digital workbench full of half-finished prototypes.</li>
-					<li>A small library of reference manuals, sketchpads, and browser tabs.</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>Stunts</h2>
-				<ul>
-					<li>Has advantage on brainstorming sessions after midnight</li>
-					<li>Can refactor code and redesign the UI simultaneously (at a cost).</li>
-				</ul>
-			</section>
-		</section>
-
-		<section id="footer">
-			<section id="physical-stress">
-				<h2>Physical stress</h2>
-
-				<ol>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ol>
-			</section>
-
-			<section id="mental-stress">
-				<h2>Mental stress</h2>
-
-				<ol>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ol>
-			</section>
-
-			<section id="consequences">
-				<h2>Consequences</h2>
-
-				<ul>
-					<li>Prone to redesigning things that already work.</li>
-					<li>Suffers mild existential dread when looking at old code.</li>
-					<li></li>
-					<li></li>
-				</ul>
-			</section>
+			<p>I've shared my <a href="https://www.deviantart.com/kulugary">art</a>, my <a href="https://kulugary.itch.io/">games</a>, some <a href="https://www.youtube.com/@kulugary/videos">videos</a>, some <a href="https://github.com/KuluGary">code</a> and lots of stuff I've yet to post. I have an archive of <a href="/old-stuff">old stuff</a> I've shared over the years, if you want to check it out.</p>
 
 		</section>
-
-		<p id="credits">Idea based on <a href="https://frills.dev/about/">Frills' blog</a>. Design based on the <a href="https://fate-srd.com/fate-core">FATE Core</a> TTRPG.</p> #}
 	</main>
 {% endblock content %}

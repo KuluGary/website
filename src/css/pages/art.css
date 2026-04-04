@@ -165,6 +165,7 @@ body {
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
   transform: rotate(var(--deg, 3deg));
   max-width: 200px;
+  color: #000;
 }
 
 .polaroid img {
@@ -178,7 +179,6 @@ body {
   font-family: "Indie Flower", cursive;
   text-align: center;
   margin-top: 8px;
-  color: #555;
 }
 
 .polaroid-list {
@@ -313,18 +313,34 @@ body {
   padding-top: 1lh;
   border-top: 2px dashed #c5d1dc;
   font-family: "Indie Flower", cursive;
-  font-size: 0.9em;
+  font-size: var(--font-size-xs);
   color: #7f8c8d;
 }
 
-.credit a {
-  color: #3498db;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
+.lightbox-wrapper,
+.lightbox-content {
+  max-height: 80svh;
+
+  & .lightbox-image {
+    max-height: 80vh;
+  }
 }
 
-.credit a:hover {
-  color: #e74c3c;
-  text-decoration: underline wavy;
+footer nav ul {
+  display: flex;
+  margin-inline: auto;
+  justify-content: center;
+  color: #7f8c8d;
+}
+
+& .censored {
+  div {
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+  }
+
+  img {
+    filter: blur(20px);
+  }
 }

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "sh ./lib/start.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npx pagefind --site '_site' --glob 'blog/*.{html}'"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "fast-xml-parser": "^5.3.3",
     "flat-cache": "^6.1.19",
     "markdown-it-anchor": "^9.2.0",
+    "pagefind": "^1.4.0",
     "string": "^3.3.3"
   },
   "devDependencies": {

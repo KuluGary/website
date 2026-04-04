@@ -8,302 +8,79 @@ css:
 ---
 
 {% block content %}
-	<header id="sitemast" role="banner">
-		<img src="/assets/images/header-1.png" alt="">
-		<img src="/assets/images/header-2.png" alt="">
-		<h1>
-			<a href="">{{ metadata.title }}</a>
-		</h1>
-	</header>
-
-	<nav>
-		<ul>
-			<li>
-				<a href="">Articles</a>
-			</li>
-			<li>
-				<a href="">Gallery</a>
-			</li>
-			<li>
-				<a href="">About</a>
-			</li>
-			<li>
-				<a href="">Writing</a>
-			</li>
-		</ul>
-	</nav>
 
 	<main>
 		<section>
-			<h2>Welcome!</h2>
+			<h2 class="heading-1">Welcome!</h2>
 
-			<p>This website is handcrafted and curated by me.</p>
-		</section>
-
-		{% set postList = collections["blog"] | reverse %}
-
-		{% for post in postList %}
-			<article>
-				<h3>
-					<a href="{{ post.url }}">{{ post.data.title }}</a>
-				</h3>
-
-				<div class="footer">
-					<p class="post-publication-date">Published <time datetime="{{ post.date }}">{{ post.date |formatDate("LLLL dd, yyyy")}}</time> in </p>
-
-					<ul class="post-tags">
-						{%- for tag in post.data.tags -%}
-							{% if tag != "blog-post" %}
-								<li>
-									<a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
-								</li>
-							{% endif %}
-						{%- endfor -%}
-					</ul>
-				</div>
-				<p>{{ post.data.description }}</p>
-			</article>
-		{% endfor %}
-	</main>
-
-	{# <header>
-		<div>
-			<p id="site-title">{{ metadata.title }}</p>
-		</div>
-		<div>
-			<p id="site-description">{{ metadata.description }}</p>
-		</div>
-	</header>
-
-	{% include "components/navbar.html" %}
-
-	<aside id="secondary-nav">
-		<section id="elsewhere">
-			<h2>Elsewhere</h2>
-			<ul>
-				<li>
-					<a href="https://indiepocalypse.social/@kulugary">Mastodon</a>
-				</li>
-				<li>
-					<a href="https://github.com/KuluGary">Github</a>
-				</li>
-				<li>
-					<a href="https://kulugary.itch.io/">Itch.io</a>
-				</li>
-				<li>
-					<a href="https://bsky.app/profile/kulugary.itch.io">Bluesky</a>
-				</li>
-			</ul>
-		</section>
-		<section id="sitemap">
-			<h2>Sitemap</h2>
-
-			<ul>
-				<li>
-					<a href="#">
-						<s>Now</s>
-					</a>
-				</li>
-				<li>
-					<a href="/about">
-						About
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<s>Sites</s>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<s>Stats</s>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<s>Uses</s>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<s>Colophon</s>
-					</a>
-				</li>
-			</ul>
-		</section>
-		<section id="contact">
-			<h2>Contact me</h2>
-			<ul>
-				<li>
-					<a href="#">
-						<s>Email me</s>
-					</a>
-				</li>
-				<li>
-					<a href="/guestbook">Sign the guestbook</a>
-				</li>
-			</ul>
-		</section>
-		<section id="webrings">
-			<h2>Webrings</h2>
-			<ul>
-				<li>
-					<a href="https://xn--sr8hvo.ws">IndieWeb Webring</a>
-				</li>
-
-				<li>
-					<a href="http://geekring.net/site/522/random">geekring.net</a>
-				</li>
-			</ul>
-		</section>
-		<section id="my-button">
-			<h2>Link to me</h2>
-
-			<img src="https://placehold.co/88x31" alt="" width="88" height="31">
-
-			<textarea>
-				{%- filter escape -%}
-					<a href=https://patchworks.site/ target=_blank><img src=https://patchworks.site/images/buttons/patchworks.gif width="88px" height="31px"/></a>
-				{%- endfilter -%}
-			</textarea>
-
-		</section>
-	</aside>
-
-	<main>
-		<section id="about">
 			<p>This is a curated and handcrafted personal website. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
-
-			{% set postTags = collections["frequentTags"] %}
-			{% set latestPost = collections["postsByYear"] %}
-
-			<p>The full list of my articles can be found at <a href="/blog">/blog</a>. I mostly write about
-        <a href="/blog/tags/{{ postTags[0].tag | slugify }}">{{ postTags[0].tag }}</a>,
-        <a href="/blog/tags/{{ postTags[1].tag | slugify }}">{{ postTags[1].tag }}</a> and
-        <a href="/blog/tags/{{ postTags[2].tag | slugify }}">{{ postTags[2].tag }}</a>.</p>
 		</section>
 
-		<section id="articles">
-			<h2>Newest Articles</h2>
+		<section>
+			<h2>Newest articles</h2>
 
-			<ul>
-				{% for post in collections["blog"] | sortByDate("date") | limit(5) %}
-					<li>
-						<article>
-							<h3>
-								<a href="{{post.url}}">
-									{{post.data.title}}
-								</a>
-							</h3>
+			{% set latestPost = (collections["blog"] | reverse | limit(1))[0] %}
 
-							{% if loop.index == 1 %}
-								<img src="{{ post.url }}{{ post.data.thumb.sm }}" height="100" width="100" alt="">
+			<p>These are some of my most recent posts, the latest which was published <time datetime="{{ latestPost.date }}">{{ latestPost.date | formatDate("DDD") }}</time>. See the full archive in its <a href="/blog">dedicated page</a>.
+			</p>
 
-								<div class="subtitle">
-									<p>Published {{ post.data.date | formatDate("MMM dd, yyyy") }} in</p>
+			{% for post in collections["blog"] | reverse | limit(3) %}
+				<article class="basic-article">
+					<h3>
+						<a href="{{ post.url }}">{{ post.data.title }}</a>
+					</h3>
 
-									<ul>
-										{% for tag in post.data.tags %}
-											<li>
-												<a href="/blog/{{tag}}">#{{ tag }}</a>
-											</li>
-										{% endfor %}
-									</ul>
-								</div>
-							{% endif %}
+					<p>{{ post.data.description }}</p>
+				</article>
+			{% endfor %}
+		</section>
 
-							<p>{{post.data.description}}</p>
-						</article>
-					</li>
-				{% endfor %}
-			</ul>
+		<hr class="separator-1">
+
+		<section>
+			<h2>Latest review</h2>
+
+			<p>From time to time I watch, read or play something that prompts me to write a review. Here are some of the latest.</p>
+
+			{% for game in collections["gamesWithReviews"] | limit(1) %}
+				<article class="basic-article">
+					<h3>
+						{{game.title}}
+					</h3>
+
+					{{ game.review.content | safe }}
+				</article>
+			{% endfor %}
 		</section>
 	</main>
-
-	<aside id="main-aside">
-		<section id="about">
-			<h2>About the author</h2>
-			<p id="pronouns">He/him</p>
-
-			<p>Born in the mid 90’s, spent most of my teens in online communities and forums.</p>
-
-			<p>A software developer by trade, I have extensive experience with web development.</p>
-		</section>
-
-		<section id="now">
-			<h2>What I'm doing</h2>
-
-			<ul>
-				<li>
-					{% set latestGame = collections
-						.gamesByYear[0]
-						.items[0] %}
-
-					<p>
-						Playing {{ latestGame.title }}
-					</p>
-				</li>
-				<li>
-					{% set latestShow = shows.watchlist[0] %}
-
-					<p>
-						Watching {{ latestShow.title }}
-					</p>
-				</li>
-				<li>
-					{% set latestComic = manga[0] %}
-					<p>
-						Reading {{ latestComic.title }}
-					</p>
-				</li>
-			</ul>
-		</section>
-
-		<section id="statistics">
-			<h2>Site stats</h2>
-			<ul>
-				<li>
-					<p>Created</p>
-					{% set firstCommit = (commits | reverse)[0] %}
-
-					<time datetime="{{ firstCommit.date }}">{{firstCommit.date | formatDate("LLL, yyyy")}}</time>
-				</li>
-
-				<li>
-					<p>Updated</p>
-					{% set latestCommit = commits[0] %}
-					<time datetime="{{ latestCommit.date }}">{{ latestCommit.date | formatDate("LLL, yyyy") }}</time>
-				</li>
-
-				<li>
-					<p>Interactions</p>
-					<p>{{ (webmentions | filterOwnWebmentions).length }}</p>
-				</li>
-
-				<li>
-					<p>Followers</p>
-					<p>0</p>
-				</li>
-			</ul>
-		</section>
-		<section id="blog-year-stats">
-			<h2>
-				<span>{{ collections.blog.length }}</span> articles in total
-			</h2>
-
-			<dl>
-				{% for data in collections.postsByYear %}
-					<dt>
-						<a href="/blog/year/{{ data.year }}">{{ data.year }}</a>
-					</dt>
-					<dd>{{ data.items.length | pad(2) }}</dd>
-				{% endfor %}
-			</dl>
-		</section>
-	</aside>
 
 	<footer>
-		<p>© {{ currentYear }} Gary. <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> | <a href="https://github.com/KuluGary/website">src</a>.</p>
-		<p>Any and all opinions listed here are my own and not representative of anyone else.</p>
-	</footer> #}
+		<div>
+			<p>
+				The illustrations used in this website are adapted from Unkashū (雲霞集) by Furuya Kōrin (古谷紅麟) from <a href="https://archive.org/details/unkashuyv1furu">The Internet Archive</a> and Hans Andersen's fairy tales by Robinson, William Heath from <a href="https://archive.org/details/hansandersensfai00ande/page/5/mode/2up">The Internet Archive</a>.
+				</p>
+		</div>
+
+		<div>
+			<p>This website is hand-crafted with <a href="https://www.11ty.dev/">Eleventy</a>, and is inspired by <a href="https://meyerweb.com/">meyerweb.com</a> and <a href="https://kizu.dev/">kizu.dev</a>.
+				</p>
+			<p>You can also find me elsewhere at my <a href="https://indiepocalypse.social/@kulugary">Mastodon</a>, <a href="https://bsky.app/profile/kulugary.itch.io">Blusky</a> or <a href="https://bsky.app/profile/kulugary.itch.io">Tumblr</a>.</p>
+		</div>
+
+		<div>
+			<p>Webrings:</p>
+			<ul class="unstyled">
+				<li>
+					<a href="https://xn--sr8hvo.ws/previous">←</a>
+					<a href="https://xn--sr8hvo.ws">IndieWeb Webring</a>
+					<a href="https://xn--sr8hvo.ws/next">→</a>
+				</li>
+				<li>
+					<a href="http://geekring.net/site/522/previous">←</a>
+					<a href="http://geekring.net/site/522/random">geekring.net</a>
+					<a href="http://geekring.net/site/522/next">→</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
 {% endblock content %}

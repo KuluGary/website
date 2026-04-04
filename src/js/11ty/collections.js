@@ -10,8 +10,22 @@ export function getBlogPosts(collectionApi) {
   return collectionApi.getFilteredByGlob("src/blog/**/index.md");
 }
 
+/**
+ * Returns a collection of all the art posts inside md/art
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of art posts
+ */
 export function getArtPosts(collectionApi) {
   return collectionApi.getFilteredByGlob("src/art/**/index.md");
+}
+
+/**
+ * Returns a collection of all the review posts inside md/reviews
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of review posts
+ */
+export function getReviewPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/reviews/**/index.md");
 }
 
 /**
@@ -279,4 +293,28 @@ export function getFeaturedBlogPosts(collectionApi) {
   }, []);
 
   return allBlogPosts;
+}
+
+/**
+ * Returns a list of games with their associated reviewws
+ * @param {Eleventy.collection} collectionApi
+ * @returns {Array<Object>} List of all games with their reviews
+ */
+export function getGamesWithReviews(collectionApi) {
+  const allReviews = getReviewPosts(collectionApi);
+  const allGames = getGamesByLastPlayed(collectionApi);
+
+  const gamesWithReviews = [];
+
+  for (const game of allGames) {
+    const gameId = game.id;
+
+    const review = allReviews.find((review) => review.data.entityId === gameId);
+
+    if (review) {
+      gamesWithReviews.push({ ...game, review });
+    }
+  }
+
+  return gamesWithReviews;
 }

@@ -11,7 +11,11 @@ export default {
   plugins: [
     postCssNesting,
     autoprefixer,
-    postCssPresetEnv,
+    postCssPresetEnv({
+      features: {
+        "cascade-layers": false,
+      },
+    }),
     postCssGlobalData({
       files: ["src/css/variables.css"],
     }),

@@ -10,7 +10,9 @@ import { DateTime, Duration } from "luxon";
 export function formatDate(date, format = "dd/LL/yyyy") {
   return DateTime.fromJSDate(typeof date === "string" ? new Date(date) : date, {
     zone: "utc",
-  }).toFormat(String(format));
+  })
+    .setLocale("en")
+    .toFormat(String(format));
 }
 
 /**

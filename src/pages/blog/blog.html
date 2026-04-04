@@ -3,7 +3,7 @@ title: "The Blog"
 description: "A blog with experiments in progress, scattered notes, and the occasional odd trail of thought."
 pagination:
   data: collections.blog
-  size: 4
+  size: 10
   alias: posts
   reverse: true
 permalink: "/blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
@@ -14,204 +14,57 @@ css:
 
 {% block content %}
   <main>
-    <section id="header">
-      <div>
-        {% if pagination.pageNumber == 0 %}
-          <p>newest</p>
-        {% endif %}
-        <h2>Articles</h2>
-        {% if pagination.pageNumber > 0 %}
-          <p>page {{ (pagination.pageNumber + 1) | pad(2)}}</p>
-        {% endif %}
-      </div>
-      <p>Part blog part thought garden; an eclectic assortment of write-ups.</p>
-    </section>
+    <h2>Thoughts by the author</h2>
 
-    {% include "components/navbar.html" %}
+    <p>This blog contains both fully articulated articles, informative resources and <em>microblog</em>-like updates.</p>
 
-    <section id="blog">
-      {% set isInitialPage = pagination.pageNumber == 0 %}
+    <p>You can get the RSS feed for this list <a href="/blog/feed.xml">here</a>, or search for a specific post <a href="/blog/search">here</a>.</p>
 
-      <aside>
-        <section id="about">
-          <h3>About</h3>
+    {% for post in posts %}
+      <article class="basic-article">
+        <h3>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h3>
 
-          {% set postTags = collections["frequentTags"] %}
+        <div class="basic-article-subtitle">Published <time datetime="{{ post.date }}">{{ post.date |formatDate("LLLL dd, yyyy")}}</time> in </div>
 
-          <p>This blog is where I write about anything that piques my interest. Right now I write most about <a href="/blog/tags/{{ postTags[0].tag | slugify }}">{{ postTags[0].tag }}</a>,
-        <a href="/blog/tags/{{ postTags[1].tag | slugify }}">{{ postTags[1].tag }}</a> and
-        <a href="/blog/tags/{{ postTags[2].tag | slugify }}">{{ postTags[2].tag }}</a>.</p>
-        </section>
-
-        <section id="featured-article">
-          {% set featuredBlogPost = collections.featuredBlogPosts[0] %}
-
-          <p class="badge">Featured</p>
-          <h4>
-            <a href="{{ featuredBlogPost.metadata.url }}" target="_blank">{{ featuredBlogPost.title }}</a>
-          </h4>
-
-          <cite>by {{ featuredBlogPost.metadata.author }}</cite>
-
-          <div class="description">
-            {{ featuredBlogPost.metadata.summary | safe }}
-          </div>
-
-          <ul id="featured-blog-list">
-            {% for featuredBlog in blogroll | limit(4) %}
-              <li>
-                <a href="{{ featuredBlog.metadata.url }}" target="_blank">{{ featuredBlog.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </section>
-      </aside>
-
-      <ul id="post-list">
-        {% set postList = (posts | slice(1))if isInitialPage else 
-          posts %}
-
-        {% if isInitialPage %}
-          <li>
-            <article id="newest-article">
-              {% set newestPost = posts[0] %}
-
-              <img src="{{ newestPost.url }}{{ newestPost.data.thumb.base }}" height="200" width="400" alt="">
-
-              <p class="tag">Newest</p>
-
-              <h2>
-                <a href="{{ newestPost.url }}">{{ newestPost.data.title }}</a>
-              </h2>
-
-              <p class="post-description">{{ newestPost.data.description }}</p>
-
-              <div class="footer">
-                <p class="post-publication-date">Published {{ newestPost.date |formatDate("LLLL dd, yyyy")}} in </p>
-
-                <ul class="post-tags">
-                  {%- for tag in newestPost.data.tags -%}
-                    {% if tag != "blog-post" %}
-                      <li>
-                        <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
-                      </li>
-                    {% endif %}
-                  {%- endfor -%}
-                </ul>
-              </div>
-            </article>
-          </li>
-        {% endif %}
-
-        {% for post in postList %}
-          <li>
-            <img src="{{ post.url }}{{ post.data.thumb.sm }}" height="100" width="100" alt="">
-
-            <h3>
-              <a href="{{ post.url }}">{{ post.data.title }}</a>
-            </h3>
-
-            <p>{{ post.data.description }}
-            </p>
-
-            <div class="footer">
-              <p class="post-publication-date">Published {{ post.date |formatDate("LLLL dd, yyyy")}} in </p>
-
-              <ul class="post-tags">
-                {%- for tag in post.data.tags -%}
-                  {% if tag != "blog-post" %}
-                    <li>
-                      <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
-                    </li>
-                  {% endif %}
-                {%- endfor -%}
-              </ul>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-
-      <aside>
-        <section id="popular">
-
-          {% set post = collections["popularPosts"][0] %}
-
-          <p class="badge">Popular</p>
-
-          <h4>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-          </h4>
-
-          <p>{{ post.description | safe }}</p>
-
-        </section>
-        <section>
-          <h3>Popular tags</h3>
-
-          <dl>
-            {% for frequentTag in collections.frequentTags | limit(5) %}
-              <dt>
-                <a href="/blog/tags/{{ frequentTag.tag }}">{{frequentTag. tag }}</a>
-              </dt>
-              <dd>{{ frequentTag.count | pad(2) }}</dd>
-            {% endfor %}
-          </dl>
-        </section>
-
-        <section>
-          <h3>Posts in years</h3>
-
-          <dl>
-            {% for data in collections.postsByYear %}
-              <dt>
-                <a href="/blog/year/{{ data.year }}">{{ data.year }}</a>
-              </dt>
-              <dd>{{ data.items.length | pad(2) }}</dd>
-            {% endfor %}
-          </dl>
-        </section>
-
-        <section>
-          <h3>Subscribe</h3>
-
-          <ul>
+        <ul class="tag-list unstyled">
+          {%- for tag in post.data.tags -%}
             <li>
-              <p>
-                <a href="/blog/feed.xml">RSS feed</a>
-              </p>
+              <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
             </li>
-          </ul>
-        </section>
-      </aside>
-    </section>
+          {%- endfor -%}
+        </ul>
 
-    <nav id="blog-navigation">
-      <ul>
-        <li>
-          {% if pagination.href.previous %}
-            <a href="{{ pagination.href.previous }}"> ← </a>
-          {% endif %}
-        </li>
-        {%- for pageEntry in pagination.pages %}
+        <p>{{ post.data.description }}</p>
+      </article>
+    {% endfor %}
+
+    <footer>
+      <nav id="blog-navigation">
+        <ul>
           <li>
-            {% if loop.index === pagination.pageNumber + 1 %}
-              <span>{{ loop.index }}</span>
-            {% else %}
-
-              <a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
+            {% if pagination.href.previous %}
+              <a href="{{ pagination.href.previous }}"> ← </a>
             {% endif %}
           </li>
-        {%- endfor %}
-        <li>
-          {% if pagination.href.next %}
-            <a href="{{ pagination.href.next }}"> → </a>
-          {% endif %}
-        </li>
-      </ul>
-    </nav>
+          {%- for pageEntry in pagination.pages %}
+            <li>
+              {% if loop.index === pagination.pageNumber + 1 %}
+                <span>{{ loop.index }}</span>
+              {% else %}
+
+                <a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
+              {% endif %}
+            </li>
+          {%- endfor %}
+          <li>
+            {% if pagination.href.next %}
+              <a href="{{ pagination.href.next }}"> → </a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
+    </footer>
   </main>
 {% endblock %}
-
-{% block stylesheet %}
-  <link rel="stylesheet" href="/pages/blog.css"/>
-{% endblock stylesheet %}

@@ -11,6 +11,8 @@ metadata:
     email: kululu.gary@gmail.com
 ---
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/assets/styles/feed.xsl" media="screen" ?>
+
 {% set postsList = collections.blog %}
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ metadata.language }}">
   <title type="text">{{ metadata.title }}</title>
@@ -34,6 +36,9 @@ metadata:
         <link href="{{ absolutePostUrl }}"/>
         <updated>{{ post.date | dateToRfc3339 }}</updated>
         <id>{{ absolutePostUrl }}</id>
+        <summary type="html">
+          {{ post.data.description }}
+        </summary>
         <content type="html">
           {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
         </content>

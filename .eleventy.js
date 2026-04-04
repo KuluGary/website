@@ -14,6 +14,7 @@ import {
   getFrequentTagsByYear,
   getGamesByLastPlayed,
   getGamesByYear,
+  getGamesWithReviews,
   getPopularPosts,
   getPostsByYear,
 } from "./src/js/11ty/collections.js";
@@ -49,6 +50,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
+  eleventyConfig.addWatchTarget("./src/art/**/*.md");
 
   eleventyConfig.addExtension("11ty.ts", { key: "11ty.js" });
   eleventyConfig.addTemplateFormats("11ty.ts");
@@ -96,6 +98,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("gamesByLastPlayed", getGamesByLastPlayed);
   eleventyConfig.addCollection("gamesByYear", getGamesByYear);
   eleventyConfig.addCollection("featuredBlogPosts", getFeaturedBlogPosts);
+  eleventyConfig.addCollection("gamesWithReviews", getGamesWithReviews);
+
   /** Events */
   eleventyConfig.on("beforeBuild", processThumbs);
 

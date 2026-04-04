@@ -2,7 +2,7 @@
 title: How I built my media tracker
 date: 2026-02-22
 tags: ["web-dev", "media"]
-description: This post is an overview of the architecture of my latest project, a personal media tracker.
+description: In order to manage all the media I interact with, I created a managed system which tracks and stores the information in an external database that I can later consume in any of my applications.
 ---
 
 Ever since I created this website, I’ve kept a few pages dedicated to tracking the media I consume. At first it was simple: a few handcrafted JSON files, manually updated, rendered through Eleventy.
@@ -60,12 +60,6 @@ The website is now just one consumer and not the be-all-end-all of media syncron
 ## Architectural Shape
 
 
-<aside style="--span:3">
-
-    In order to have a clean architecture I used a [domain drived design](https://en.wikipedia.org/wiki/Domain-driven_design) approach. I'm not super familiar with it, but it's something I've been meaning to delve into since a few months back and this worked as a reasonable excuse to try.
-
-</aside>
-
 The system follows a layered flow:
 
 ```
@@ -81,6 +75,12 @@ Repositories
 	↓
 Postgres
 ```
+
+<aside>
+
+    In order to have a clean architecture I used a [domain drived design](https://en.wikipedia.org/wiki/Domain-driven_design) approach. I'm not super familiar with it, but it's something I've been meaning to delve into since a few months back and this worked as a reasonable excuse to try.
+
+</aside>
 
 Each layer has a narrow responsibility.
 
@@ -111,13 +111,13 @@ Instead of encoding these hierarchies directly in schema tables, the system expr
 
 ## A Concrete Example: RetroAchievements
 
+Currently the tracker supports games through RetroAchievements and Steam. Let’s walk through RetroAchievements as a vertical slice.
+
 <aside style="--span:3">
 
   [RetroAchievements](https://retroachievements.org/) is a community-driven system to earn achievements in classic games. In this way, you can keep track of stuff like play time and completion percentage while retro gaming.
 
 </aside>
-
-Currently the tracker supports games through RetroAchievements and Steam. Let’s walk through RetroAchievements as a vertical slice.
 
 ### Fetching Data
 

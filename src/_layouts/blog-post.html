@@ -1,226 +1,126 @@
 ---
 layout: base.html
 css:
-  - /css/prism-light.css
   - /css/pages/blog-post.css
 ---
-
 {% block content %}
 	{% set previousPost = collections.blog | getPreviousCollectionItem %}
 	{% set nextPost = collections.blog | getNextCollectionItem %}
+	{% set toc = content | toc | safe %}
 
-	<main id="main-content" class="main-content h-entry">
-		<article data-pagefind-body>
-			<header>
-				<h1 class="p-name">{{title}}</h1>
+	<aside id="content-nav">
+		{% if toc.length > 0 %}
+			<h2>Table of content</h2>
+			{{ toc }}
+		{% endif %}
+	</aside>
 
-				<div class="accented-bar">
-					<a href="/blog">BLOG</a>
+	<main id="main-content" class="h-entry">
+		<header>
+			<h1 class="p-name">{{ title }}</h1>
+		</header>
 
-					<ul class="share">
-						<li>Share with: </li>
-						<li>
-							<button
-								title="Share to Mastodon"
-								data-title="{{title}}"
-								data-tags="{{ tags }}"
-								class="share-button"
-								id="mastodon-button"
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-									<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M7 13.5V9c0-3 5-3 5 0v3m5 1.5V9c0-3-5-3-5 0v3"/><path d="M8 17c7.5 1 13 0 13-4V9c0-5.5-4-6.5-6-6.5H9c-3 0-6.067 1-5.863 6.5c.074 1.987.036 4.385.363 7c1 8 10.5 5.5 12 5v-1.5S7.5 21 8 17"/></g>
-								</svg>
-							</a>
-						</li>
-						<li>
-							<a
-								title="Share to Bluesky"
-								data-title="{{title}}"
-								target="_blank"
-								class="share-button"
-								id="bluesky-button"
-								href="{{ [rootURL, page.url] | join | getShareUrl('bluesky', title, tags) }}"
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" d="M21.247 5.646c.068-1.031-.695-1.98-1.702-1.724c-3.68.933-6.648 5.997-7.545 7.755c-.896-1.758-3.865-6.822-7.545-7.755c-1.007-.255-1.77.693-1.702 1.724l.3 4.466c.151 2.28 2.116 4.014 4.41 3.894l.49-.036c-.039.007-2.904.518-3.39 1.981c-.658 1.983 1.28 3.408 1.28 3.408c.022.024 1.894 2.096 3.765.899c1.463-.71 2.393-4.01 2.393-4.01s.929 3.3 2.392 4.01c1.88 1.203 3.762-.896 3.764-.9c.016-.01 1.935-1.431 1.28-3.407c-.49-1.473-3.391-1.98-3.391-1.98l.493.035c2.293.12 4.258-1.615 4.41-3.894z"/></svg>
-							</a>
-						</li>
-						<li>
-							<a
-								title="Share to Tumblr"
-								class="share-button"
-								href="{{ [rootURL, page.url] | join | getShareUrl('tumblr', title, tags) }}"
-								target="_blank"
-								role="button"
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" d="M7.9 11.018h-.89c-.831 0-1.01-.168-1.01-1V8.266c0-.655-.012-.654.653-.975c1.706-.823 3.207-2.408 3.609-4.298c.109-.513.163-.77.302-.881c.14-.112.364-.112.813-.112h1.375c.477 0 .715 0 .863.146c.148.147.148.383.148.854v3.565c0 .831.179 1 1.01 1h1.86c.832 0 1.011.168 1.011 1v1.453c0 .832-.18 1-1.011 1h-1.86c-.832 0-1.01.169-1.01 1v4.242c0 1.76 1.56 2.34 2.932 1.733c.477-.212.484-.198.63.246l.575 1.75c.19.575.137.79-.394 1.095c-3.932 2.26-8.595.285-8.595-5.316v-3.75c0-.831-.179-1-1.01-1Z"/></svg>
-							</a>
-						</li>
-						<li>
-							<a
-								title="Share to Reddit"
-								class="share-button"
-								href="{{ [rootURL, page.url] | join | getShareUrl('reddit', title, tags) }}"
-								target="_blank"
-								role="button"
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.985 13.5a1.447 1.447 0 1 1-2.895 0a1.447 1.447 0 0 1 2.895 0m-8.528 1.447a1.447 1.447 0 1 0 0-2.894a1.447 1.447 0 0 0 0 2.894m.393 1.682a.75.75 0 0 0-.8 1.268l.345.218a6.75 6.75 0 0 0 7.202 0l.345-.217a.75.75 0 1 0-.8-1.27l-.345.218a5.25 5.25 0 0 1-5.602 0z"/><path fill="currentColor" fill-rule="evenodd" d="M19.96 1.75c-.873 0-1.636.479-2.038 1.188l-3.6-.739a.75.75 0 0 0-.841.442c-.411.966-1.027 2.431-1.542 3.685c-.182.444-.352.863-.495 1.225c-2.047.082-3.943.617-5.494 1.484a3.066 3.066 0 1 0-3.762 4.421q-.2.72-.201 1.491c0 2.142 1.209 4.012 3.025 5.317c1.818 1.307 4.29 2.091 6.988 2.091c2.697 0 5.17-.784 6.988-2.09c1.816-1.306 3.025-3.176 3.025-5.318c0-.514-.07-1.012-.2-1.49a3.066 3.066 0 1 0-3.762-4.422c-1.427-.797-3.145-1.314-5.003-1.456q.132-.326.28-.684c.418-1.021.906-2.185 1.294-3.103l3.018.62a2.343 2.343 0 1 0 2.32-2.662m-.842 2.342a.842.842 0 1 1 1.685 0a.842.842 0 0 1-1.685 0M12 9.04q.23 0 .46.009a1 1 0 0 1-.012.094l-.002.005l.003-.01l.029-.088c2.224.086 4.201.77 5.634 1.8c1.537 1.104 2.401 2.563 2.401 4.098c0 1.536-.865 2.995-2.4 4.1c-1.536 1.102-3.694 1.808-6.113 1.808s-4.577-.706-6.112-1.809c-1.537-1.104-2.401-2.563-2.401-4.099c0-1.535.864-2.994 2.4-4.098S9.582 9.039 12 9.039M1.75 10.605a1.566 1.566 0 0 1 2.947-.738c-.799.63-1.463 1.373-1.934 2.204a1.57 1.57 0 0 1-1.013-1.466m19.487 1.466c-.471-.83-1.135-1.575-1.934-2.204a1.566 1.566 0 1 1 1.934 2.204" clip-rule="evenodd"/></svg>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</header>
-
-			<nav>
-				{% set toc = content | toc | safe %}
-
-				<section>
-					<h2>Feeds</h2>
-
-					<p>A feed of blog posts similar to this one is available as a <a href="/blog/feed.xml">RSS Feed</a>.</p>
-				</section>
-
-				<section id="table-of-contents">
-					{% if toc.length > 0 %}
-						<h2>Table of contents</h2>
-						{{ content | toc | safe }}
-					{% endif %}
-				</section>
-			</nav>
-
-			<div id="content" class="e-content">
-				{{ content | safe }}
-			</div>
-
-			<footer id="post-footer" class="post-footer">
-				<section class="footer-content">
-					<time class="post-publication-date" datetime="{{ date | formatDate("dd-MM-yyyy") }}">Published {{ date | formatDate("LLLL dd, yyyy")}} in </time>
-
-					<ul class="post-tags">
-						{%- for tag in tags -%}
-							{% if tag != "blog-post" %}
-								<li>
-									<a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
-								</li>
-							{% endif %}
-						{%- endfor -%}
-					</ul>
-
-					<nav>
-						{% if nextPost %}
-							<p data-btn-type="Next">
-								<a class="nxt-btn" href="{{ nextPost.url }}">
-                ←
-                {{ nextPost.data.title }}</a>
-							</p>
-						{% endif %}
-						{% if previousPost %}
-							<p data-btn-type="Previous">
-								<a class="prev-btn" href="{{ previousPost.url }}">
-									{{ previousPost.data.title }}
-                →</a>
-							</p>
-						{% endif %}
-					</nav>
-
-					<ul class="link-list">
-						<li>
-							<a href="/blog/search">Search</a>
-						</li>
-						<li>
-							<a href="https://github.com/KuluGary/website/tree/master{{ page.url }}index.md" target="_blank">Edit this page</a>
-						</li>
-						<li>
-							<a href="/blog/feed.xml">RSS Feed</a>
-						</li>
-					</ul>
-				</section>
-				<section class="footer-interactions">
-					{% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
-					{% set reposts = mentions | webmentionsByType('repost-of') %}
-					{% set likes = mentions | webmentionsByType('like-of') %}
-					{% set replies = mentions | webmentionsByType('in-reply-to') %}
-					{% set repostsSize = reposts.length %}
-					{% set likesSize = likes.length %}
-					{% set repliesSize = replies.length %}
-
-					{% if likeSize > 0 or repostsSize > 0 or repliesSize > 0 %}
-
-						<p>◄</p>
-
-						<div>
-							{% if likesSize > 0 %}
-								<p>
-									<span>{{ likesSize }}</span> likes</p>
-							{% endif %}
-							{% if repostsSize > 0 %}
-								<p>
-									<span>{{ repostsSize }}</span> reposts</p>
-							{% endif %}
-							{% if repliesSize > 0 %}
-								<p>
-									<span>{{ repliesSize }}</span> replies</p>
-							{% endif %}
-						</div>
-					{% endif %}
-				</section>
-			</footer>
-
+		<article id="content" class="e-content">
+			{{ content | safe }}
 		</article>
-	</main>
 
+		<footer class="post-footer">
+			<section class="footer-data">
+				<p class="post-meta">
+					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
+						Published {{ date | formatDate("LLLL dd, yyyy") }}
+					</time>
+
+					in
+				</p>
+				<ul class="post-tags unstyled">
+					{% for tag in tags if tag != "blog-post" %}
+						<li>
+							<a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<nav class="post-nav">
+					{% if nextPost %}
+						<a href="{{ nextPost.url }}" class="next">
+									← {{ nextPost.data.title }}
+						</a>
+					{% endif %}
+					{% if previousPost %}
+						<a href="{{ previousPost.url }}" class="prev">
+							{{ previousPost.data.title }} →
+								</a>
+					{% endif %}
+				</nav>
+				<ul class="link-list">
+					<li>
+						<a href="/blog/search">Search</a>
+					</li>
+					<li>
+						<a href="https://github.com/KuluGary/website/tree/master{{ page.url }}index.md" target="_blank">
+									Edit
+								</a>
+					</li>
+					<li>
+						<a href="/blog/feed.xml">RSS</a>
+					</li>
+				</ul>
+			</section>
+
+			{% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
+			{% set reposts = mentions | webmentionsByType('repost-of') %}
+			{% set likes = mentions | webmentionsByType('like-of') %}
+			{% set replies = mentions | webmentionsByType('in-reply-to') %}
+
+			{% if likes.length or reposts.length or replies.length %}
+				<div class="interactions">
+					{% if likes.length %}
+						<p>{{ likes.length }} likes</p>
+					{% endif %}
+					{% if reposts.length %}
+						<p>{{ reposts.length }} reposts</p>
+					{% endif %}
+					{% if replies.length %}
+						<p>{{ replies.length }} replies</p>
+					{% endif %}
+				</div>
+			{% endif %}
+
+		</footer>
+	</main>
 {% endblock %}
 
 {% block script %}
 	<script>
-		const tocLinks = document.querySelectorAll("#table-of-contents a");
-		const headings = [...tocLinks].map(link => document.querySelector(link.getAttribute("href")));
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (!entry.isIntersecting) 
-					return;
-				
-				tocLinks.forEach(link => link.classList.remove("active"));
-				const active = document.querySelector(`#table-of-contents a[href="#${entry.target.id}"]`);
+		function addIntersectionObserverForToc() {
+			const tocLinks = document.querySelectorAll(".toc a");
+			const headings = [...tocLinks].map(link => document.querySelector(link.getAttribute("href")));
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) 
+						return;
+					
+					tocLinks.forEach(link => link.classList.remove("active"));
+					const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+					if (active) 
+						active
+							.classList
+							.add("active");
+					}
+				);
+			}, {
+				rootMargin: "-10% 0px -30% 0px",
+				threshold: 0
+			});
 
-				if (active) 
-					active
-						.classList
-						.add("active");
-				}
-			);
-		}, {
-			rootMargin: "-10% 0px -30% 0px",
-			threshold: 0
-		});
+			headings.forEach(h => observer.observe(h));
+		}
 
-		headings.forEach(h => observer.observe(h));
-
-		const mastodonButton = document.querySelector("#mastodon-button");
-
-		mastodonButton.addEventListener("click", (e) => {
-			let title = mastodonButton.getAttribute("data-title");
-			let tags = mastodonButton
-				.getAttribute("data-tags")
-				.split(",")
-				.map((e) => `#${e}`)
-				.join(" ");
-			let preferredInstance = localStorage.getItem("preferredInstance") ?? "mastodon.social";
-
-			const pageUrl = window.location.href;
-
-			let domain = prompt("Enter your Mastodon instance", preferredInstance);
-
-			if (domain == "" || domain == null) {
-				return;
-			}
-
-			if (preferredInstance !== domain) {
-				localStorage.setItem("preferredInstance", domain);
-			}
-
-			let url = `https://${domain}/share?title=${title}&url=${pageUrl}&text=${encodeURIComponent(tags)}`;
-
-			window.open(url, "_blank");
-		})
+		addIntersectionObserverForToc()
 	</script>
 {% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/css/prism-light.css" media="screen and (prefers-color-scheme: light)">
+	<link rel="stylesheet" href="/css/prism-dark.css" media="screen and (prefers-color-scheme: dark)">
+{% endblock css %}
