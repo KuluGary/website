@@ -1,4 +1,5 @@
 ---
 title: "[RIP&GOU] Showdown"
-date: 2021-10-25T07:33:22.961Z
+date: 2016-02-22T23:21:44.000Z
+eleventyExcludeFromCollections: true
 ---

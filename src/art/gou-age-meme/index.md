@@ -1,4 +1,5 @@
 ---
 title: "[GOU] Age meme"
-date: 2021-10-25T07:33:22.577Z
+date: 2016-02-22T23:15:40.000Z
+eleventyExcludeFromCollections: true
 ---

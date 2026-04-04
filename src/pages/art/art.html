@@ -28,7 +28,7 @@ css:
 
 			<p class="first-paragraph">Welcome to my sketchbook. You can find illustrations, sketches and doodles I've done over the years.</p>
 
-			<div class="sticky-note">Don't Forget: Meeting tomorrow! Be at the office by 2:00 PM.</div>
+			{# <div class="sticky-note">Don't Forget: Meeting tomorrow! Be at the office by 2:00 PM.</div> #}
 
 			<ul class="polaroid-list">
 				{% for art in artList %}
@@ -39,7 +39,6 @@ css:
 									<img class="fit" src="/art/{{ art.fileSlug }}/{{ art.data.image }}" alt="" >
 								</div>
 								<figure>
-									{{ art.data.title }}
 									{{ art.data.date |formatDate("dd-MM-yy") }}
 								</figure>
 

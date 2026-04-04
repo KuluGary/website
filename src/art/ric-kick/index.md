@@ -1,4 +1,5 @@
 ---
 title: "[RIC] Kick"
-date: 2021-10-25T07:33:22.868Z
+date: 2016-02-22T23:17:04.000Z
+eleventyExcludeFromCollections: true
 ---

@@ -1,5 +1,4 @@
 ---
 title: "Ogre & Ghost2"
-date: 2021-10-25T07:33:22.228Z
-eleventyExcludeFromCollections: true
+date: 2016-11-19T23:58:44.000Z
 ---

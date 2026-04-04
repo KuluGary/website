@@ -1,7 +1,5 @@
 ---
 title: "[RIC] Muscles"
-date: 2021-10-25T07:33:22.891Z
-tags:
-  - nsfw
+date: 2016-02-22T23:19:10.000Z
 eleventyExcludeFromCollections: true
 ---

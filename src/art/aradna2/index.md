@@ -1,5 +1,4 @@
 ---
 title: "Aradna2"
-date: 2015-10-25T07:33:21.918Z
-eleventyExcludeFromCollections: true
+date: 2016-09-04T21:04:04.000Z
 ---

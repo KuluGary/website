@@ -1,5 +1,4 @@
 ---
 title: "Ament2"
-date: 2021-10-25T07:33:21.898Z
-eleventyExcludeFromCollections: true
+date: 2016-09-04T21:15:22.000Z
 ---

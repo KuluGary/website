@@ -1,5 +1,5 @@
 ---
 title: "Riphus' Wardrobe"
-date: 2021-10-25T07:33:22.384Z
+date: 2016-03-22T17:25:44.000Z
 eleventyExcludeFromCollections: true
 ---

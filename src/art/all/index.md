@@ -1,5 +1,4 @@
 ---
 title: "All"
-date: 2021-10-25T07:33:20.823Z
-eleventyExcludeFromCollections: true
+date: 2018-06-07T01:00:06.000Z
 ---

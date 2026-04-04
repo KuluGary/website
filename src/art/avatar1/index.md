@@ -1,5 +1,5 @@
 ---
 title: "avatar1"
-date: 2021-10-25T07:33:21.052Z
+date: 2019-01-30T19:59:04.000Z
 eleventyExcludeFromCollections: true
 ---
