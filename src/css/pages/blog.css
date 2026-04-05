@@ -11,7 +11,7 @@ main {
   grid-row: 2 / -5;
 }
 
-& #blog-navigation {
+& .pagination {
   & ul {
     display: flex;
     justify-content: center;

@@ -41,30 +41,7 @@ css:
     {% endfor %}
 
     <footer>
-      <nav id="blog-navigation">
-        <ul>
-          <li>
-            {% if pagination.href.previous %}
-              <a href="{{ pagination.href.previous }}"> ← </a>
-            {% endif %}
-          </li>
-          {%- for pageEntry in pagination.pages %}
-            <li>
-              {% if loop.index === pagination.pageNumber + 1 %}
-                <span>{{ loop.index }}</span>
-              {% else %}
-
-                <a href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a>
-              {% endif %}
-            </li>
-          {%- endfor %}
-          <li>
-            {% if pagination.href.next %}
-              <a href="{{ pagination.href.next }}"> → </a>
-            {% endif %}
-          </li>
-        </ul>
-      </nav>
+      {% include "components/pagination.html" %}
     </footer>
   </main>
 {% endblock %}

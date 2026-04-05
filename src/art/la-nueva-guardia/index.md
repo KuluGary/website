@@ -1,4 +1,4 @@
 ---
 title: "La nueva guardia"
-date: 2012-04-9T22:01:00.000Z
+date: 2012-04-09T22:01:00.000Z
 ---

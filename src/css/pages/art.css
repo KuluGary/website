@@ -1,16 +1,3 @@
-/* GLOBAL RESET & BODY */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font: 1.25em/1.5 var(--font-family-comic-main);
-  min-height: 100vh;
-  padding: 2em;
-}
-
 /* MAIN NOTEBOOK */
 .notebook {
   /* Variables for geometry */
@@ -27,6 +14,7 @@ body {
   position: relative;
   max-width: 50em;
   margin: 0 auto;
+  font: 1.25em/1.5 var(--font-family-comic-main);
 
   /* Padding logic: Left padding accommodates the margin width */
   padding: 2lh 3ch 2lh calc(var(--b) + 3ch);
@@ -323,6 +311,25 @@ body {
 
   & .lightbox-image {
     max-height: 80vh;
+  }
+
+  & .lightbox-btn-close,
+  & .lightbox-btn-next,
+  & .lightbox-btn-previous {
+    background-size: 60%;
+    border: 0;
+  }
+
+  & .lightbox-btn-close {
+    background-image: url("/assets/images/icons/close.svg");
+  }
+
+  & .lightbox-btn-next {
+    background-image: url("/assets/images/icons/chevron-right.svg");
+  }
+
+  & .lightbox-btn-previous {
+    background-image: url("/assets/images/icons/chevron-right.svg");
   }
 }
 
