@@ -9,9 +9,9 @@ main {
   grid-template-areas: "title page" "title toc";
   grid-template-rows: auto 1fr;
   grid-template-columns: 75% 1fr;
-  row-gap: var(--spacing-xs);
+  row-gap: var(--size-1);
 
-  margin-block-end: var(--spacing-lg);
+  margin-block-end: var(--size-4);
 
   & > div {
     grid-area: title;
@@ -23,7 +23,7 @@ main {
     text-transform: uppercase;
     font-size: max(4rem, 26.5cqw);
     line-height: 0.9;
-    margin-block-start: var(--spacing-lg);
+    margin-block-start: var(--size-4);
   }
 
   & #toc {
@@ -31,7 +31,7 @@ main {
 
     & h3 {
       text-transform: uppercase;
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-7);
     }
 
     & ol {
@@ -54,21 +54,21 @@ main {
     text-transform: uppercase;
     font-size: max(1.5rem, 8cqw);
     color: var(--clr-accent-primary);
-    margin-block-start: var(--spacing-xs);
+    margin-block-start: var(--size-1);
   }
 }
 
 & #game-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
-  margin-block: var(--spacing-md);
+  gap: var(--size-3);
+  margin-block: var(--size-3);
 
   & > li {
     display: grid;
     grid-template-areas: "img content";
     grid-template-columns: auto 1fr;
-    column-gap: var(--spacing-md);
+    column-gap: var(--size-3);
 
     & > article {
       grid-area: content;
@@ -107,14 +107,14 @@ main {
   }
   /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: var(--spacing-xl);
-  margin-block-start: var(--spacing-lg);
+  gap: var(--size-5);
+  margin-block-start: var(--size-4);
 
   & li {
     & img {
       float: left;
       object-fit: cover;
-      margin-inline-end: var(--spacing-md);
+      margin-inline-end: var(--size-3);
     }
 
     & .description {

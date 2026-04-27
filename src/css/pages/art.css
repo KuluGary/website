@@ -54,7 +54,7 @@
   transform: rotate(2deg);
   display: flex;
   align-items: center;
-  column-gap: var(--spacing-md);
+  column-gap: var(--size-3);
 }
 
 /* ADHESIVE TAPE */
@@ -154,6 +154,11 @@
   transform: rotate(var(--deg, 3deg));
   max-width: 200px;
   color: #000;
+  transition: transform 150ms;
+
+  &:hover {
+    transform: rotate(0deg);
+  }
 }
 
 .polaroid img {
@@ -172,7 +177,7 @@
 .polaroid-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--size-4);
 }
 
 /* TEXT STYLES & TYPOGRAPHY */
@@ -301,7 +306,7 @@
   padding-top: 1lh;
   border-top: 2px dashed #c5d1dc;
   font-family: "Indie Flower", cursive;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-00);
   color: #7f8c8d;
 }
 

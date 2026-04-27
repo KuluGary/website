@@ -9,9 +9,7 @@ Ever since I created this website, I’ve kept a few pages dedicated to tracking
 
 <aside style="--span:4">
 
-The project’s full source code lives in its [GitHub repository](https://github.com/KuluGary/personal-media-tracker).
-
-If anything sparks questions, [feel free to reach out](/contact).
+The project’s full source code lives in its [GitHub repository](https://github.com/KuluGary/personal-media-tracker). If anything sparks questions, [feel free to reach out](/contact).
 
 </aside>
 
@@ -179,7 +177,7 @@ As seen here, a single client can retrieve multiple entities which often share a
 
 External APIs rarely agree on structure or vocabulary. Before persistence, responses are translated into a consistent internal format:
 
-```ts#4 title="RetroachievementsNormalizer.ts"
+```ts title="RetroachievementsNormalizer.ts"
 normalizeGame(data: RetroachievementsGameProgress): RetroachievementsNormalizedGame {
     return {
       kind: "game",

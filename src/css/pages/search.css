@@ -1,26 +1,11 @@
 @layer layout {
-  body {
-    position: relative;
-    display: grid;
-    grid-template-columns: var(--main-grid-template-columns);
-    grid-template-rows: repeat(4, min-content) auto repeat(4, min-content);
-    grid-gap: 0 2em;
-  }
-  main {
-    max-width: 40em;
-    margin-inline: auto;
-    grid-column: main;
-    grid-row: 2 / -5;
-  }
-
   #search {
     & form > * {
-      margin-block: var(--spacing-xsmall);
+      margin-block: var(--size-1);
     }
   }
-
   form {
-    margin-block: var(--spacing-2xl);
+    margin-block: var(--size-6);
   }
 }
 
@@ -32,20 +17,20 @@
     background-color: var(--clr-bg-main);
     border: var(--border-thin);
     font: inherit;
-    padding: var(--spacing-sm);
+    padding: var(--size-2);
   }
 
   & input {
     width: 100%;
-    margin-block-end: var(--spacing-md);
+    margin-block-end: var(--size-3);
   }
 }
 
 @layer components {
   & .pagefind-ui__message {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-base);
-    margin-block: var(--spacing-xl);
+    font-weight: var(--font-weight-7);
+    font-size: var(--font-size-1);
+    margin-block: var(--size-5);
 
     @media (--viewport-mobile) {
       font-size: 1.25rem;
@@ -67,7 +52,7 @@
 
       & .pagefind-ui__result-title {
         font-family: var(--font-family-title);
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-3);
 
         & a {
           color: inherit;
@@ -85,7 +70,7 @@
       }
 
       & + li {
-        margin-block-start: var(--spacing-3xl);
+        margin-block-start: var(--size-7);
       }
     }
   }

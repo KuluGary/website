@@ -1,128 +1,42 @@
-@custom-media --viewport-mobile (max-width: 300px);
-@custom-media --viewport-tablet (min-width: 600px);
-@custom-media --viewport-laptop (min-width: 768px);
-@custom-media --viewport-desktop (min-width: 992px);
+@import "./lib/fonts.openprops.css";
+@import "./lib/sizes.openprops.css";
+@import "./lib/borders.openprops.css";
 
 :root {
   color-scheme: light dark;
 
   /* Colors */
-  --clr-white: #efede3;
-  --clr-black: #302f2c;
-
-  --clr-red: #b83a2d;
-  --clr-orange: #f3701e;
-  --clr-green: #4e6851;
-  --clr-blue: #4b607f;
-  --clr-yellow: #fbc359;
-
   --clr-bg-main: light-dark(#efede3, #030703);
   --clr-text-main: light-dark(#302f2c, #d1cebb);
   --clr-accent-primary: light-dark(#b83a2d, #0985ce);
-  --clr-accent-secondary: #fbc359;
   --clr-border-main: light-dark(#302f2c, #dedec0);
-  --clr-bg-header: #fbc359;
 
   /* Fonts  */
-  --font-family-system: system-ui, sans-serif;
-  --font-family-transitional: Georgia Pro, Georgia, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  --font-family-humanist: Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans", source-sans-pro, sans-serif;
-  --font-family-neo-grotesque: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
-  --font-family-industrial: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium", "Nimbus Sans Narrow",
-    sans-serif-condensed, sans-serif;
-  --font-family-monospace-code: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
-    monospace;
-  --font-family-old-style: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
-  --font-family-maesiez: Maesiez, Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
-  --font-family-lokanova: Lokanova, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-  --font-family-tusker-grotesk: TuskerGrotesk, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
-    monospace;
-  --font-family-851MkPOP: "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
-  --font-family-steppers: Steppers, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
-  --font-family-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
-  --font-family-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  --font-family-fondamento: "Fondamento", "Times New Roman", serif;
+  --font-851MkPOP: "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
+  --font-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
+  --font-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
 
-  --font-family-site-title: var(--font-family-maesiez);
-  --font-family-title: var(--font-family-ImFellDWPica);
-  --font-family-main: var(--font-family-transitional);
-  --font-family-comic-main: var(--font-family-851MkPOP);
-  --font-family-comic-title: var(--font-family-caveat);
+  --font-family-main: var(--font-transitional);
+  --font-family-title: var(--font-ImFellDWPica);
 
-  --font-size-xs: 0.7rem;
-  --font-size-sm: 0.8em;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.33em;
-  --font-size-xl: 1.78em;
-  --font-size-2xl: 2.37em;
-  --font-size-3xl: 3.16em;
-
-  --font-size-site-title: max(7rem, 15vw);
-  --font-size-site-description: max(3.25vw, var(--font-size-sm));
-
-  --font-weight-thin: 200;
-  --font-weight-regular: 400;
-  --font-weight-bold: 700;
+  --font-family-comic-main: var(--font-851MkPOP);
+  --font-family-comic-title: var(--font-caveat);
 
   /* Sizing */
-  --sizing-xs: 0.25rem;
-  --sizing-sm: 0.5rem;
-  --sizing-md: 0.75rem;
-  --sizing-base: 1rem;
-  --sizing-lg: 1.5rem;
-  --sizing-xl: 1.75rem;
-  --sizing-2xl: 2rem;
-  --sizing-3xl: 2.25rem;
-  --sizing-full: 100%;
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
 
-  /* Spacing */
-  --spacing-xs: var(--sizing-xs);
-  --spacing-sm: var(--sizing-sm);
-  --spacing-md: var(--sizing-md);
-  --spacing-lg: var(--sizing-lg);
-  --spacing-base: var(--sizing-base);
-  --spacing-xl: var(--sizing-xl);
-  --spacing-2xl: var(--sizing-2xl);
-  --spacing-3xl: var(--sizing-3xl);
-
   /* Border */
-  --border-base: 2px solid var(--clr-border-main);
-  --border-thick: 3px solid var(--clr-border-main);
-  --border-thin: 1px solid var(--clr-border-main);
+  --border-thin: var(--border-size-1) solid var(--clr-border-main);
+  --border-base: var(--border-size-2) solid var(--clr-border-main);
+  --border-thick: var(--border-size-3) solid var(--clr-border-main);
 
   /* Layout */
   --main-grid-template-columns: [left] minmax(1em, 1fr) [main] minmax(10em, 40em) [right] minmax(10em, 1fr);
 }
 
 @font-face {
-  font-family: "Maesiez";
-  src: url("/assets/fonts/MAESIEZ.ttf");
-}
-
-@font-face {
-  font-family: "Lokanova";
-  src: url("/assets/fonts/LokanovaStd.otf");
-}
-
-@font-face {
-  font-family: "Anton";
-  src: url("/assets/fonts/Anton.ttf.eot") format("eot"), url("/assets/fonts/Anton.ttf.woff") format("woff");
-}
-
-@font-face {
-  font-family: "TuskerGrotesk";
-  src: url("/assets/fonts/TuskerGrotesk-5600Semibold.ttf");
-}
-
-@font-face {
   font-family: "851MkPOP";
   src: url("/assets/fonts/851MkPOP_101.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Steppers";
-  src: url("/assets/fonts/Steppers.otf");
 }
 
 @font-face {
@@ -139,17 +53,5 @@
 @font-face {
   font-family: IMFellDWPica;
   src: url("/assets/fonts/IMFellDWPica-Italic.ttf") format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: Fondamento;
-  src: url("/assets/fonts/Fondamento-Regular.ttf") format("truetype");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Fondamento;
-  src: url("/assets/fonts/Fondamento-Italic.ttf") format("truetype");
   font-style: italic;
 }

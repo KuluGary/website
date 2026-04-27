@@ -2,6 +2,8 @@
 layout: base.html
 css:
   - /css/pages/blog-post.css
+  - /css/lib/prism-light.css
+  - /css/lib/prism-dark.css
 ---
 {% block content %}
 	{% set previousPost = collections.blog | getPreviousCollectionItem %}
@@ -52,7 +54,7 @@ css:
 								</a>
 					{% endif %}
 				</nav>
-				<ul class="link-list">
+				<ul class="link-list unstyled">
 					<li>
 						<a href="/blog/search">Search</a>
 					</li>
