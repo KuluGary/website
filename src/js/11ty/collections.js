@@ -11,6 +11,15 @@ export function getBlogPosts(collectionApi) {
 }
 
 /**
+ * Returns a collection of all the journal posts inside md/journal
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of journal posts
+ */
+export function getJournalPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/journal/**/index.md");
+}
+
+/**
  * Returns a collection of all the art posts inside md/art
  * @param {Eleventy.collection} collectionApi
  * @returns a list of art posts
@@ -271,7 +280,7 @@ export function getGamesByYear(collectionApi) {
     .map(([year, games]) => ({
       year: Number(year),
       items: games.sort(
-        (a, b) => new Date(b.metadata.lastPlayed).getTime() - new Date(a.metadata.lastPlayed).getTime()
+        (a, b) => new Date(b.metadata.lastPlayed).getTime() - new Date(a.metadata.lastPlayed).getTime(),
       ),
     }));
 }

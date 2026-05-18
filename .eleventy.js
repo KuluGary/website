@@ -15,6 +15,7 @@ import {
   getGamesByLastPlayed,
   getGamesByYear,
   getGamesWithReviews,
+  getJournalPosts,
   getPopularPosts,
   getPostsByYear,
 } from "./src/js/11ty/collections.js";
@@ -87,6 +88,7 @@ export default async function (eleventyConfig) {
 
   /** Collections */
   eleventyConfig.addCollection("blog", getBlogPosts);
+  eleventyConfig.addCollection("journal", getJournalPosts);
   eleventyConfig.addCollection("art", getArtPosts);
   eleventyConfig.addCollection("postsByYear", getPostsByYear);
   eleventyConfig.addCollection("frequentTags", getFrequentTags);

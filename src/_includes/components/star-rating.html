@@ -1,0 +1,9 @@
+<ul class="unstyled tag-list">
+	{% for filled in range(0, curr) %}
+		<li>★</li>
+	{% endfor %}
+
+	{% for unfilled in range(0, 5 - curr) %}
+		<li>☆</li>
+	{% endfor %}
+</ul>

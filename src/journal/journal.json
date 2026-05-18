@@ -1,0 +1,4 @@
+{
+	"layout": "base.html",
+	"permalink": "journal/{{ page.fileSlug }}/"
+}

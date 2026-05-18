@@ -18,38 +18,9 @@ css:
 		{% block script %}{% endblock %}
 	</head>
 	<body>
-		<header id="sitemast" role="banner">
-			<picture>
-				<source media="(prefers-color-scheme: dark)" srcset="/assets/images/header-2-dark.png">
-				<source media="(prefers-color-scheme: light)" srcset="/assets/images/header-2.png">
-				<img src="/assets/images/header-2.png" alt="">
-			</picture>
-			<picture>
-				<source media="(prefers-color-scheme: dark)" srcset="/assets/images/header-1-dark.png">
-				<source media="(prefers-color-scheme: light)" srcset="/assets/images/header-1.png">
-				<img src="/assets/images/header-1.png" alt="">
-			</picture>
-			<p class="heading-1">
-				<a href="/">{{ metadata.title }}</a>
-			</p>
-		</header>
+		{% include "components/sitemast.html" %}
 
-		<nav id="sitenav">
-			<ul class="unstyled">
-				<li>
-					<a href="/blog">Articles</a>
-				</li>
-				<li>
-					<a href="/art">Gallery</a>
-				</li>
-				<li>
-					<a href="/about">About</a>
-				</li>
-				<li>
-					<a href="">Writing</a>
-				</li>
-			</ul>
-		</nav>
+		{% include "components/sitenav.html" %}
 
 		{% block content %}
 			{{ content | safe }}

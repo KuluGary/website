@@ -10,10 +10,20 @@ css:
 {% block content %}
 	<main class="main-grid">
 		<section>
-			<h2 class="heading-1">Welcome!</h2>
-
 			<p>This is a curated and handcrafted personal website. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
 		</section>
+
+		<section>
+			<h2>Journal</h2>
+
+			{% for post in collections["journal"] | reverse | limit(1) %}
+				<article class="basic-article">
+					<p>{{ post.content | safe }}</p>
+				</article>
+			{% endfor %}
+		</section>
+
+		<hr class="separator-1">
 
 		<section>
 			<h2>Newest articles</h2>
@@ -42,44 +52,23 @@ css:
 			<p>From time to time I watch, read or play something that prompts me to write a review. Here are some of the latest.</p>
 
 			{% for game in collections["gamesWithReviews"] | limit(1) %}
+				{% set review = game.review %}
+
 				<article class="basic-article">
 					<h3>
-						{{game.title}}
+						{{ game.title }}
 					</h3>
 
-					{{ game.review.content | safe }}
+					{% if review.data.rating %}
+						{% set curr = review.data.rating %}
+						{% include "components/star-rating.html" %}
+					{% endif %}
+
+					{{ review.content | safe }}
 				</article>
 			{% endfor %}
 		</section>
 	</main>
 
-	<footer>
-		<div>
-			<p>
-				The illustrations used in this website are adapted from Unkashū (雲霞集) by Furuya Kōrin (古谷紅麟) from <a href="https://archive.org/details/unkashuyv1furu">The Internet Archive</a> and Hans Andersen's fairy tales by Robinson, William Heath from <a href="https://archive.org/details/hansandersensfai00ande/page/5/mode/2up">The Internet Archive</a>.
-				</p>
-		</div>
-
-		<div>
-			<p>This website is hand-crafted with <a href="https://www.11ty.dev/">Eleventy</a>, and is inspired by <a href="https://meyerweb.com/">meyerweb.com</a> and <a href="https://kizu.dev/">kizu.dev</a>.
-				</p>
-			<p>You can also find me elsewhere at my <a href="https://indiepocalypse.social/@kulugary">Mastodon</a>, <a href="https://bsky.app/profile/kulugary.itch.io">Blusky</a> or <a href="https://bsky.app/profile/kulugary.itch.io">Tumblr</a>.</p>
-		</div>
-
-		<div>
-			<p>Webrings:</p>
-			<ul class="unstyled">
-				<li>
-					<a href="https://xn--sr8hvo.ws/previous">←</a>
-					<a href="https://xn--sr8hvo.ws">IndieWeb Webring</a>
-					<a href="https://xn--sr8hvo.ws/next">→</a>
-				</li>
-				<li>
-					<a href="http://geekring.net/site/522/previous">←</a>
-					<a href="http://geekring.net/site/522/random">geekring.net</a>
-					<a href="http://geekring.net/site/522/next">→</a>
-				</li>
-			</ul>
-		</div>
-	</footer>
+	{% include "components/main-footer.html" %}
 {% endblock content %}

@@ -76,6 +76,11 @@ body {
       grid-column: 1 / -1;
     }
 
+    #sitenav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+
     body,
     #content,
     .post-footer {
@@ -83,9 +88,8 @@ body {
     }
 
     #content-nav,
-    #sitenav,
     #main-content {
-      grid-row: 2;
+      grid-row: 3;
       grid-column: content;
     }
 
@@ -243,6 +247,12 @@ body {
       }
     }
 
+    #content-nav h2 {
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: var(--font-weight-1);
+    }
+
     h1,
     h2,
     h3,
@@ -250,7 +260,9 @@ body {
     h5 {
       & .anchor-link {
         font-size: 80%;
-        transition: transform 150ms, opacity 150ms;
+        transition:
+          transform 150ms,
+          opacity 150ms;
         display: inline-block;
         transform: translateX(-100%);
         opacity: 0;
