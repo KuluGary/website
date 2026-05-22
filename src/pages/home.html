@@ -64,7 +64,9 @@ css:
 						{% include "components/star-rating.html" %}
 					{% endif %}
 
-					{{ review.content | safe }}
+					<div>
+						{{ review.content | safe }}
+					</div>
 				</article>
 			{% endfor %}
 		</section>

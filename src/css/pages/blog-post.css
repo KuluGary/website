@@ -63,11 +63,12 @@ body {
   }
 }
 
-@media (--lg-n-above) {
+@media (--xl-n-above) {
   @layer layout {
     body {
       --content-article-width: 40rem;
       --content-grid: [content] var(--content-article-width) [aside] auto;
+
       display: grid;
       grid-template-columns: var(--main-grid-template-columns);
     }
@@ -181,7 +182,7 @@ body {
 
       & > * {
         margin-block: 0;
-        font-size: var(--font-size-0);
+        font-size: var(--font-size-1);
       }
     }
   }
@@ -201,7 +202,7 @@ body {
     }
 
     .post-footer .interactions {
-      font-size: var(--font-size-00);
+      font-size: var(--font-size-1);
     }
 
     .post-footer nav {

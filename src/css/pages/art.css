@@ -20,7 +20,8 @@
   padding: 2lh 3ch 2lh calc(var(--b) + 3ch);
   border-radius: 0 8px 8px 0;
   background:
-        /* 1. Left red margin line */ linear-gradient(
+        /* 1. Left red margin line */
+    linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) var(--b),
       var(--margin-line-color) var(--b),
@@ -28,7 +29,7 @@
       rgba(0, 0, 0, 0) 0
     ),
     /* 2. Horizontal lines */
-      repeating-linear-gradient(
+    repeating-linear-gradient(
         transparent 0,
         transparent calc(1lh - 1px),
         var(--line-color) calc(1lh - 1px),
@@ -37,7 +38,9 @@
     /* 3. Base paper color */ var(--paper-color);
   mask: radial-gradient(calc(0.5 * var(--f) * 1lh) at calc(0.5 * var(--b)), #0000 calc(100% - 1px), red) 0 0/ 100% 1lh;
   /* Paper shadow for depth */
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3), inset -2px 0 10px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    5px 5px 20px rgba(0, 0, 0, 0.3),
+    inset -2px 0 10px rgba(0, 0, 0, 0.05);
   /* Slight rotation for natural feel */
   transform: rotate(-0.5deg);
   filter: drop-shadow(2px 2px 4px #000c);
@@ -92,7 +95,9 @@
   font-size: 0.95em;
   color: #333;
   transform: rotate(-2deg);
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), inset 0 -40px 40px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    3px 3px 10px rgba(0, 0, 0, 0.2),
+    inset 0 -40px 40px rgba(0, 0, 0, 0.05);
 }
 
 .sticky-note--blue {
@@ -269,7 +274,8 @@
   border: 2px dashed #bdc3c7;
   border-radius: 5px;
   min-height: 100px;
-  background: radial-gradient(circle at 20% 30%, #ff6b6b33 0%, transparent 30%),
+  background:
+    radial-gradient(circle at 20% 30%, #ff6b6b33 0%, transparent 30%),
     radial-gradient(circle at 70% 60%, #4ecdc433 0%, transparent 25%),
     radial-gradient(circle at 50% 80%, #ffe66d33 0%, transparent 35%);
 }
@@ -306,7 +312,7 @@
   padding-top: 1lh;
   border-top: 2px dashed #c5d1dc;
   font-family: "Indie Flower", cursive;
-  font-size: var(--font-size-00);
+  font-size: var(--font-size-1);
   color: #7f8c8d;
 }
 

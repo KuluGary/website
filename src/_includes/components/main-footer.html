@@ -1,12 +1,15 @@
-<footer>
-	<hr>
+<footer id="sitefooter">
+	<hr class="separator-1">
 
 	<div>
-		<p>This website is hand-crafted with <a href="https://www.11ty.dev/">Eleventy</a> using only HTML and CSS (and some JavaScript); and the theme is inspired by both <a href="https://meyerweb.com/">meyerweb.com</a> and <a href="https://kizu.dev/">kizu.dev</a>.</p>
-		<p>The illustrations used in this website are adapted from Hans Andersen's fairy tales by Robinson, William Heath from <a href="https://archive.org/details/hansandersensfai00ande/page/5/mode/2up">The Internet Archive</a>.</p>
+		<p>This website is hand-crafted with <a href="https://www.11ty.dev/">Eleventy</a> using only HTML and CSS (and some JavaScript). The site was last built {{ commits[0].date | formatDate("LLLL dd, yyyy")}} on commit <a href="{{metadata.commit.url}}">{{metadata.commit.ref}}</a>.</p>
 	</div>
 
-	<div class="fit">
+	{# <div>
+		<p>This website does not store cookies or user data. JavaScript may be used for extra functionality like the <a href="/blog/search">search function</a>.</p>
+	</div> #}
+
+	{# <div class="fit">
 		<ul class="unstyled">
 			<li>
 				<a href="https://kulugary.tumblr.com/" target="_blank" class="icon-link">
@@ -38,14 +41,6 @@
 				</a>
 			</li>
 		</ul>
-
-		{# <p>You can also find me elsewhere at my <a href="https://indiepocalypse.social/@kulugary">Mastodon</a>, <a href="https://bsky.app/profile/kulugary.itch.io">Blusky</a> or <a href="https://bsky.app/profile/kulugary.itch.io">Tumblr</a>.</p> #}
-	</div>
-
-	<div>
-		<p>This website does not store cookies or user data. JavaScript may be used for extra functionality like the <a href="/blog/search">search function</a>.</p>
-
-		<p>The site was last built {{ commits[0].date | formatDate("LLLL dd, yyyy")}} on commit <a href="{{metadata.commit.url}}">{{metadata.commit.ref}}</a>.</p>
 	</div>
 
 	<div>
@@ -62,5 +57,5 @@
 				<a href="http://geekring.net/site/522/next" class="icon-link">→</a>
 			</li>
 		</ul>
-	</div>
+	</div> #}
 </footer>

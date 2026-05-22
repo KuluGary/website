@@ -6,8 +6,10 @@
   color-scheme: light dark;
 
   /* Colors */
-  --clr-bg-main: light-dark(#efede3, #030703);
-  --clr-text-main: light-dark(#302f2c, #d1cebb);
+  --clr-bg-main: light-dark(#efede3, #0b1217);
+  --clr-text-main: light-dark(#302f2c, #d5e9f3);
+  --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
+  --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
   --clr-accent-primary: light-dark(#b83a2d, #0985ce);
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
@@ -15,9 +17,10 @@
   --font-851MkPOP: "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
   --font-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
   --font-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  --font-PixelOperator: PixelOperator, var(--font-mono);
 
-  --font-family-main: var(--font-transitional);
-  --font-family-title: var(--font-ImFellDWPica);
+  --font-family-main: var(--font-PixelOperator);
+  --font-family-title: var(--font-PixelOperator);
 
   --font-family-comic-main: var(--font-851MkPOP);
   --font-family-comic-title: var(--font-caveat);
@@ -54,4 +57,16 @@
   font-family: IMFellDWPica;
   src: url("/assets/fonts/IMFellDWPica-Italic.ttf") format("truetype");
   font-style: italic;
+}
+
+@font-face {
+  font-family: PixelOperator;
+  src: url("/assets/fonts/PixelOperator.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PixelOperator;
+  src: url("/assets/fonts/PixelOperator-Bold.ttf") format("truetype");
+  font-weight: 700;
 }
