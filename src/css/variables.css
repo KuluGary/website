@@ -10,7 +10,7 @@
   --clr-text-main: light-dark(#302f2c, #d5e9f3);
   --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
-  --clr-accent-primary: light-dark(#b83a2d, #0985ce);
+  --clr-accent-primary: light-dark(#b83a2d, color(display-p3 0.45 0.74 1 / 1));
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */

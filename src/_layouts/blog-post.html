@@ -44,12 +44,12 @@ css:
 				</ul>
 				<nav class="post-nav">
 					{% if nextPost %}
-						<a href="{{ nextPost.url }}" class="next">
+						<a href="{{ nextPost.url }}" class="next unstyled">
 									← {{ nextPost.data.title }}
 						</a>
 					{% endif %}
 					{% if previousPost %}
-						<a href="{{ previousPost.url }}" class="prev">
+						<a href="{{ previousPost.url }}" class="prev unstyled">
 							{{ previousPost.data.title }} →
 								</a>
 					{% endif %}

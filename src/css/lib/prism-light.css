@@ -39,6 +39,7 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: hsl(230, 8%, 24%);
   font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  font-size: var(--font-size-0);
   direction: ltr;
   text-align: left;
   white-space: pre;

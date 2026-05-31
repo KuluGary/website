@@ -2,9 +2,15 @@ body {
   padding-inline: var(--size-4);
 }
 
-#content-nav a,
-.post-footer a {
+#content-nav a {
   color: inherit;
+  text-decoration-color: inherit;
+  text-decoration-thickness: 1px;
+
+  &:hover,
+  &:focus {
+    text-decoration-thickness: 2px;
+  }
 }
 
 .post-footer .post-meta {
@@ -169,13 +175,13 @@ body {
     .post-footer .interactions {
       position: relative;
       grid-column: aside;
-      margin-block-start: var(--size-2);
+      margin-block-start: var(--size-1);
       padding-inline-start: var(--size-2);
 
       &:before {
         content: "☜";
         position: absolute;
-        top: calc(var(--size-1) * -1);
+        top: var(--size-0);
         left: calc(var(--size-4) * -1);
         font-size: var(--font-size-4);
       }
