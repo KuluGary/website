@@ -2,15 +2,10 @@
 title: State machine
 date: 2024-02-26
 tags: ["game-dev"]
-thumb:
-  url: https://img.youtube.com/vi/svhFr0xmTLQ/hqdefault.jpg
-  alt: lorem
-postmedia:
-  videos:
-    - url: <iframe width="560" height="315" src="https://www.youtube.com/embed/svhFr0xmTLQ?si=ZeWx7lRKVW48aC3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  image: https://img.youtube.com/vi/svhFr0xmTLQ/hqdefault.jpg
 description: In my previous post I've made some basic point and click movement, but now I've implemented a state machine to keep track of the player's character state.
 ---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/svhFr0xmTLQ?si=ZeWx7lRKVW48aC3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 In my [previous post](/25-04-2024-point-and-click) I've made some basic point and click movement, but now I've implemented a state machine to keep track of the player's character state.
 

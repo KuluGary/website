@@ -1,7 +1,5 @@
 <nav class="pagination">
 	<ul class="unstyled">
-
-		{# Previous #}
 		{% if pagination.href.previous %}
 			<li>
 				<a href="{{ pagination.href.previous }}">←</a>
@@ -12,7 +10,6 @@
 		{% set total = pagination.pages.length %}
 		{% set delta = 2 %}
 
-		{# Always show first page #}
 		<li>
 			{% if current == 0 %}
 				<span>1</span>
@@ -21,12 +18,10 @@
 			{% endif %}
 		</li>
 
-		{# Left ellipsis #}
 		{% if current > delta + 1 %}
 			<li>...</li>
 		{% endif %}
 
-		{# Middle pages #}
 		{% for i in range(1, total - 1) %}
 			{% if i >= current - delta and i <= current + delta %}
 				<li>
@@ -39,12 +34,10 @@
 			{% endif %}
 		{% endfor %}
 
-		{# Right ellipsis #}
 		{% if current < total - delta - 2 %}
 			<li>...</li>
 		{% endif %}
 
-		{# Always show last page #}
 		{% if total > 1 %}
 			<li>
 				{% if current == total - 1 %}
@@ -55,12 +48,10 @@
 			</li>
 		{% endif %}
 
-		{# Next #}
 		{% if pagination.href.next %}
 			<li>
 				<a href="{{ pagination.href.next }}">→</a>
 			</li>
 		{% endif %}
-
 	</ul>
 </nav>

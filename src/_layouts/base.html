@@ -10,7 +10,6 @@ css:
 	<head>
 		{% include "components/metadata.html" %}
 
-		<!-- Assets, 3rd party scripts, etc -->
 		{% for href in css %}
 			<link rel="stylesheet" href="{{ href | url }}">
 		{% endfor %}
@@ -18,6 +17,7 @@ css:
 		{% block script %}{% endblock %}
 	</head>
 	<body>
+		{% include "components/skip-links.html" %}
 		{% include "components/sitemast.html" %}
 
 		{% include "components/sitenav.html" %}

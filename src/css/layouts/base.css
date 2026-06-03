@@ -252,6 +252,25 @@
 }
 
 @layer components {
+  #skip-links {
+    display: flex;
+    list-style-type: none;
+    column-gap: var(--size-4);
+    transform: translateY(-200%);
+    position: absolute;
+    top: 0;
+
+    & li {
+      padding: 0;
+      margin: 0;
+    }
+
+    &:focus,
+    &:focus-within {
+      transform: translateY(0%);
+    }
+  }
+
   #sitemast {
     text-align: center;
     line-height: 1.1;
@@ -299,7 +318,9 @@
       text-decoration-color: inherit;
     }
 
-    & * {
+    & .basic-article-subtitle,
+    & .basic-article-subtitle *,
+    & .tag-list * {
       margin-block: 0;
     }
 

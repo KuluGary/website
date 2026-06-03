@@ -41,6 +41,10 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 @media (--lg-n-below) {
   #content > aside {
     position: relative;

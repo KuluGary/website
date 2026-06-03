@@ -32,7 +32,7 @@ In practice that means: `theme × font-stack × font-size` which generates {{ (t
 
 Not something I'd ever do by hand. Instead, I added a `beforeBuild` function in Eleventy that spits them out for me. Whenever I change a theme file, the CSS set rebuilds and the guestbook stays in sync with the rest of the site.
 
-![CSS File generation diagram](/assets/images/blog/integrating-chattable-as-a-guestbook/01.png){.prefers-media .width-auto}
+![CSS File generation diagram](./assets/01.png)
 
 You can check out the full implementation [here](https://github.com/KuluGary/website/blob/master/src/js/11ty/generic.js#L250).
 

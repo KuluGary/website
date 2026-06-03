@@ -2,16 +2,10 @@
 title: Point and click
 date: 2024-04-25
 tags: ["game-dev"]
-thumb:
-  url: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
-  alt: lorem
-postmedia:
-  videos:
-    - url: <iframe width="560" height="315" src="https://www.youtube.com/embed/wbLRQ5w9ItA?si=N0hOrHbuXcpt2ZDH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  image: https://img.youtube.com/vi/wbLRQ5w9ItA/hqdefault.jpg
-
 description: As a continued effort to keep learning Godot, I've made a prototype system for omni-directional point and click movement system.
 ---
+
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/wbLRQ5w9ItA?si=N0hOrHbuXcpt2ZDH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 As a continued effort to keep learning Godot, I've made a prototype system for omni-directional point and click movement system.
 
