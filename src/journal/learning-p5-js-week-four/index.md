@@ -43,9 +43,3 @@ The algorithm scales with order so higher orders produce increasingly dense, wov
 - [Coding the Hilbert Curve](https://www.youtube.com/watch?v=dSK-MW-zuAc) by [The Coding Train](https://thecodingtrain.com/).
 - [One file JS program that draws Hilbert curve iteratively](https://github.com/marcin-chwedczuk/hilbert_curve) by [Marcin Chwedczuk](https://github.com/marcin-chwedczuk).
 - [Hilbert's Curve: Is infinite math useful?](https://www.youtube.com/watch?v=3s7h2MHQtxc&pp=0gcJCR0AztywvtLA) by [3Blue1Brown](https://www.youtube.com/@3blue1brown).
-
-## Outro
-
-This one is less about randomness and more about rhythm.
-
-After experimenting with procedural generation for the past few weeks, it's a breath of fresh air to work with something deterministic and geometric.

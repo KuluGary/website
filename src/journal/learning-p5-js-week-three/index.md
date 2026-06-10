@@ -38,9 +38,3 @@ Here’s the sketch in motion. Watch how the grid resolves itself into a coheren
 - [Wave Function Collapse algorithm](https://github.com/mxgmn/WaveFunctionCollapse) by [Maxim Gumin](https://github.com/mxgmn).
 - [Model Synthesis](https://paulmerrell.org/model-synthesis/) by [Paul Merrell](https://paulmerrell.org/).
 - [“Wave Function Collapse” in Processing](https://discourse.processing.org/t/wave-collapse-function-algorithm-in-processing/12983) at [The Processing Foundation](https://discourse.processing.org/).
-
-## Outro
-
-Another week down, and another step deeper into procedural generation following last time’s [Marching Squares](/blog/learning-p5-js-week-two).
-
-This one feels especially rewarding: seeing a blank grid gradually resolve into structure feels almost surreal. It’s easy to understand why so many of my favorite games use this kind of system: it’s order emerging from possibility.

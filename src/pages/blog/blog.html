@@ -14,9 +14,16 @@ css:
 
 {% block content %}
   <main id="main-content" class="main-grid">
-    <p>This blog contains both fully articulated articles, informative resources and <em>microblog</em>-like updates.</p>
+    <ul class="blog-actions unstyled">
+      <li>
+        <a href="/blog/search">Search</a>
+      </li>
+      <li>
+        <a href="/blog/feed.xml">RSS</a>
+      </li>
+    </ul>
 
-    <p>You can get the RSS feed for this list <a href="/blog/feed.xml">here</a>, or search for a specific post <a href="/blog/search">here</a>.</p>
+    <hr class="separator-1">
 
     {% for post in posts %}
       <article class="basic-article">

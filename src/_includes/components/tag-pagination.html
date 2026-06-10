@@ -1,0 +1,58 @@
+{% set baseUrl = page.url | split("/") | slice(0, 3) | join("/") %}
+<nav class="pagination">
+  <ul class="unstyled">
+    {% if not tag.isFirstPage %}
+      <li>
+        <a href="{{ baseUrl }}/{{ tag.tagName }}{% if tag.pageNumber > 1 %}/{{ tag.pageNumber }}{% endif %}/">←</a>
+      </li>
+    {% endif %}
+
+    {% set current = tag.pageNumber %}
+    {% set total = tag.totalPages %}
+    {% set delta = 2 %}
+
+    <li>
+      {% if current == 0 %}
+        <span>1</span>
+      {% else %}
+        <a href="{{ baseUrl }}/{{ tag.tagName }}/">1</a>
+      {% endif %}
+    </li>
+
+    {% if current > delta + 1 %}
+      <li>...</li>
+    {% endif %}
+
+    {% for i in range(1, total - 1) %}
+      {% if i >= current - delta and i <= current + delta %}
+        <li>
+          {% if i == current %}
+            <span>{{ i + 1 }}</span>
+          {% else %}
+            <a href="{{ baseUrl }}/{{ tag.tagName }}/{{ i + 1 }}/">{{ i + 1 }}</a>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if current < total - delta - 2 %}
+      <li>...</li>
+    {% endif %}
+
+    {% if total > 1 %}
+      <li>
+        {% if current == total - 1 %}
+          <span>{{ total }}</span>
+        {% else %}
+          <a href="{{ baseUrl }}/{{ tag.tagName }}/{{ total }}/">{{ total }}</a>
+        {% endif %}
+      </li>
+    {% endif %}
+
+    {% if not tag.isLastPage %}
+      <li>
+        <a href="{{ baseUrl }}/{{ tag.tagName }}/{{ tag.pageNumber + 2 }}/">→</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

@@ -2,15 +2,7 @@
 title: I'm playing Hades II
 date: 2024-05-27
 tags: ["gaming"]
-image: /assets/images/gallery/27-05-2024-im-playing-hades-II/thumb.jpg
 description: After playing for about a week, I've finally beaten PokéRogue.
-thumb:
-  url: "/assets/images/gallery/27-05-2024-im-playing-hades-II/thumb.jpg"
-  alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
-postmedia:
-  images:
-    - url: "/assets/images/gallery/27-05-2024-im-playing-hades-II/slide-1.webp"
-      alt: Promotional artwork for Hades II
 ---
 
 I've been playing Hades II since it dropped in early access some time ago. I've put around 100h on the original Hades, and about 1/3 of that in the new one.

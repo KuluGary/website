@@ -1,3 +1,11 @@
 #project-list dt {
   margin-block-start: var(--size-6);
 }
+
+dt {
+  font-weight: bold;
+}
+
+#uses > section + section {
+  margin-block-start: var(--size-8);
+}

@@ -19,7 +19,7 @@ Its 3D cousin, [marching cubes](https://en.wikipedia.org/wiki/Marching_cubes), i
 
 If you're curious about how that looks in practice, [Sebastian Lague’s video](https://www.youtube.com/watch?v=M3iI2l0ltbE) is a great deep dive into generating landscapes on the fly.
 
-## Notes
+## How It Works
 
 The script builds a grid of cells across the canvas like a chessboard, and assigns each corner a value based on a noise function.
 
@@ -35,20 +35,3 @@ It's a surprisingly compact algorithm for what it does. With just a few loops an
 
 - [Coding Marching Squares](https://www.youtube.com/watch?v=0ZONMNUKTfU) by [The Coding Train](https://thecodingtrain.com/).
 - [open-simplex-noise-js](https://github.com/joshforisha/open-simplex-noise-js) by [Josh Forisha](https://github.com/joshforisha).
-
-## How It Works
-
-Each frame begins with a grid of noise values, generated using OpenSimplex noise. These values act like a topographic map: higher numbers mean "solid ground", lower ones mean "empty space".
-
-The marching squares algorithm checks every cell in that grid and compares them to a threshold. Depending on which corners are above or below that threshold, the cell is assigned one of sixteen possible configurations. Each configuration defines how the contour line should pass through it.
-
-The program then connects these line segments across the grid, forming smooth boundaries that outline the noise field.
-The result is a shifting pattern that feels like terrain depending on how the parameters are tuned.
-
-Because the grid regenerates every frame, the shapes flow and evolve in real time, making the sketch feel less like static geometry and more like a moving landscape drawn by the code itself.
-
-## Outro
-
-Another week down and this one feels like a small step toward procedural generation.
-
-There's something satisfying about watching a blank canvas slowly fill with shape and structure, as if the algorithm itself is discovering the terrain one line at a time.

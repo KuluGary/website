@@ -9,6 +9,7 @@ import {
   gameAmountByStatus,
   getArtPosts,
   getBlogPosts,
+  getBlogTagPages,
   getFeaturedBlogPosts,
   getFrequentTags,
   getFrequentTagsByYear,
@@ -16,6 +17,7 @@ import {
   getGamesByYear,
   getGamesWithReviews,
   getJournalPosts,
+  getJournalTagPages,
   getPopularPosts,
   getPostsByYear,
 } from "./src/js/11ty/collections.js";
@@ -30,11 +32,11 @@ import {
   pad,
   slice,
   sortByDate,
+  split,
   unslugify,
   webmentionsByType,
 } from "./src/js/11ty/filters.js";
 import mdIt from "./src/js/lib/markdown-it.js";
-import processThumbs from "./src/js/lib/process-imgs.js";
 import getShareUrl from "./src/js/social-media.js";
 
 dotenv.config();
@@ -47,6 +49,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
   eleventyConfig.addPassthroughCopy("./src/art/**/assets");
+  eleventyConfig.addPassthroughCopy("./src/journal/**/assets");
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
@@ -63,6 +66,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("sortByDate", sortByDate);
   eleventyConfig.addFilter("slice", slice);
+  eleventyConfig.addFilter("split", split);
   eleventyConfig.addFilter("pad", pad);
   eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
@@ -101,9 +105,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("gamesByYear", getGamesByYear);
   eleventyConfig.addCollection("featuredBlogPosts", getFeaturedBlogPosts);
   eleventyConfig.addCollection("gamesWithReviews", getGamesWithReviews);
-
-  /** Events */
-  eleventyConfig.on("beforeBuild", processThumbs);
+  eleventyConfig.addCollection("blogTagPages", getBlogTagPages);
+  eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
 
   return {
     dir: {

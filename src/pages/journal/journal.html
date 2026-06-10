@@ -1,0 +1,60 @@
+---
+title: "Journal"
+description: "Small, bite-sized and spur-of-the-moment posts I may share from time to time."
+pagination:
+  data: collections.journal
+  size: 5
+  alias: posts
+  reverse: true
+permalink: "/journal/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
+layout: base.html
+css:
+  - /css/pages/journal.css
+---
+
+{% block content %}
+  <main  id="main-content" class="main-grid">
+
+    <ul class="journal-actions unstyled">
+      <li>
+        <a href="/journal/search">Search</a>
+      </li>
+      <li>
+        <a href="/journal/feed.xml">RSS</a>
+      </li>
+    </ul>
+
+    <hr class="separator-1">
+
+    {% for post in posts %}
+      <article class="basic-article">
+        {{post.content | safe}}
+
+        {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
+        <footer>
+          <p>Published <time datetime="{{post.date}}">{{post.date | formatDate("LLL dd yyyy")}}</time>
+          </p>
+
+          {% if mentions.length > 0 %}
+            <p>with {{mentions.length}} interactions</p>
+          {% endif %}
+
+          <p>in</p>
+
+          <ul>
+            {% for tag in post.data.tags %}
+              <li>
+                <a href="/journal/tags/{{ tag }}">{{ tag }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </footer>
+      </article>
+    {% endfor %}
+
+    <footer>
+      {% include "components/pagination.html" %}
+    </footer>
+  </main>
+  {% include "components/main-footer.html" %}
+{% endblock content %}

@@ -99,6 +99,17 @@ export function slice(arr, start, end) {
 }
 
 /**
+ * Splits a string into an array of substrings using a separator
+ *
+ * @param {string} str - The string to split
+ * @param {string} separator - The separator to use for splitting
+ * @returns {Array<string>} An array of substrings
+ */
+export function split(str, separator) {
+  return String(str).split(separator);
+}
+
+/**
  * Pads the number passed as an argument with N amount of 0
  * @param {number} number the number to be padded
  * @param {number} amount the amount of 0 to be padded with

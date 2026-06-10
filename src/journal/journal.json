@@ -1,4 +1,4 @@
 {
-	"layout": "base.html",
+	"layout": "blog-post.html",
 	"permalink": "journal/{{ page.fileSlug }}/"
 }

@@ -327,3 +327,111 @@ export function getGamesWithReviews(collectionApi) {
 
   return gamesWithReviews;
 }
+
+/**
+ * Helper function to chunk an array into smaller arrays
+ * @param {Array} array - The array to chunk
+ * @param {number} size - The size of each chunk
+ * @returns {Array<Array>} Array of chunks
+ */
+function chunk(array, size) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunks.push(array.slice(i, i + size));
+  }
+  return chunks;
+}
+
+/**
+ * Creates paginated blog tag pages - flattens double pagination into single layer
+ * Each entry represents one page of one tag
+ * @param {Eleventy.collection} collectionApi
+ * @returns {Array<Object>} Flattened array of tag pages with their posts
+ */
+export function getBlogTagPages(collectionApi) {
+  const blogPosts = getBlogPosts(collectionApi);
+  const paginationSize = 10;
+  const tagMap = [];
+
+  // Get unique list of tags from blog posts only
+  const tagSet = new Set();
+  blogPosts.forEach((post) => {
+    if (post.data.tags) {
+      post.data.tags.forEach((tag) => {
+        tagSet.add(tag);
+      });
+    }
+  });
+
+  // For each tag, get posts, sort by date, and create paginated entries
+  const tagArray = [...tagSet];
+  for (const tagName of tagArray) {
+    // Filter blog posts with this tag
+    const tagPosts = blogPosts.filter((post) => post.data.tags && post.data.tags.includes(tagName));
+
+    // Sort by date descending (newest first)
+    const sortedPosts = tagPosts.sort((a, b) => b.date - a.date);
+
+    // Chunk into pages
+    const pagedItems = chunk(sortedPosts, paginationSize);
+
+    // Create an entry for each page
+    for (let pageNumber = 0; pageNumber < pagedItems.length; pageNumber++) {
+      tagMap.push({
+        tagName: tagName,
+        pageNumber: pageNumber,
+        totalPages: pagedItems.length,
+        pageData: pagedItems[pageNumber],
+      });
+    }
+  }
+
+  return tagMap;
+}
+
+/**
+ * Creates paginated journal tag pages - flattens double pagination into single layer
+ * Each entry represents one page of one tag
+ * @param {Eleventy.collection} collectionApi
+ * @returns {Array<Object>} Flattened array of tag pages with their posts
+ */
+export function getJournalTagPages(collectionApi) {
+  const journalPosts = getJournalPosts(collectionApi);
+  const paginationSize = 10;
+  const tagMap = [];
+
+  // Get unique list of tags from journal posts only
+  const tagSet = new Set();
+  journalPosts.forEach((post) => {
+    if (post.data.tags) {
+      post.data.tags.forEach((tag) => {
+        tagSet.add(tag);
+      });
+    }
+  });
+
+  // For each tag, get posts, sort by date, and create paginated entries
+  const tagArray = [...tagSet];
+  for (const tagName of tagArray) {
+    // Filter journal posts with this tag
+    const tagPosts = journalPosts.filter((post) => post.data.tags && post.data.tags.includes(tagName));
+
+    // Sort by date descending (newest first)
+    const sortedPosts = tagPosts.sort((a, b) => b.date - a.date);
+
+    // Chunk into pages
+    const pagedItems = chunk(sortedPosts, paginationSize);
+
+    // Create an entry for each page
+    for (let pageNumber = 0; pageNumber < pagedItems.length; pageNumber++) {
+      tagMap.push({
+        tagName: tagName,
+        pageNumber: pageNumber,
+        totalPages: pagedItems.length,
+        pageData: pagedItems[pageNumber],
+      });
+    }
+  }
+
+  return tagMap;
+}

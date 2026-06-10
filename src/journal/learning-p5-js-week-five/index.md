@@ -34,7 +34,3 @@ The two closest distances are blended through a contrast function and mapped to 
 
 - [Coding Worley Noise](https://www.youtube.com/watch?v=4066MndcyCk) by [The Coding Train](https://thecodingtrain.com/).
 - [A Cellular Texture Basis Function](https://www.rhythmiccanvas.com/research/papers/worley.pdf) by **Steven Worley**.
-
-## Outro
-
-Noise is one of the most important parts of procedural generation. In my [Marching Squares](/blog/learning-p5-js-week-two) I used [OpenSimplex noise](https://en.wikipedia.org/wiki/OpenSimplex_noise) as part of the implementation, and this is but another card in the deck whenever noise is needed.

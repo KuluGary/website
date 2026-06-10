@@ -2,22 +2,12 @@
 title: I beat PokéRogue
 date: 2024-05-05
 tags: ["gaming"]
-image: /assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png
 description: After playing for about a week, I've finally beaten PokéRogue.
-thumb:
-  url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
-  alt: A pill-shaped placeholder character moving around a flat plane in a low-res 3D environment.
-postmedia:
-  images:
-    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_10_14-PokéRogue.png"
-      alt: The main menu of PokéRogue
-    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_06_32-PokéRogue.png"
-      alt: Eternamax Eternatus is defeated.
-    - url: "/assets/images/gallery/05-05-2024-i-beat-pokerogue/2024-05-05 22_07_13-PokéRogue.png"
-      alt: A textbox showing that Endless mode has been unlocked.
 ---
 
 I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a week. In my most recent run (and the only successful one), I've finally beaten the game.
+
+![The main menu of PokéRogue](/journal/{{page.fileSlug}}/assets/01.png)
 
 <aside style="--span:4">
 

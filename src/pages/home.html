@@ -14,11 +14,15 @@ css:
 		</section>
 
 		<section>
-			<h2>Journal</h2>
+			<h2>Newest journal entries</h2>
 
-			{% for post in collections["journal"] | reverse | limit(1) %}
+			{% for post in collections["journal"] | reverse | limit(3) %}
 				<article class="basic-article">
-					<p>{{ post.content | safe }}</p>
+					<h3>
+						<a href="{{ post.url }}" class="unstyled">{{ post.data.title }}</a>
+					</h3>
+
+					<p>{{ post.data.description }}</p>
 				</article>
 			{% endfor %}
 		</section>
