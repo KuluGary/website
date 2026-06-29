@@ -87,7 +87,12 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(timeToRead);
   eleventyConfig.addPlugin(PostCSSPlugin);
-  eleventyConfig.addPlugin(postGraph, { limit: 1, sort: "desc", noLabels: true, noStyles: true });
+  eleventyConfig.addPlugin(postGraph, {
+    limit: 1,
+    sort: "desc",
+    noLabels: true,
+    noStyles: true,
+  });
   eleventyConfig.addPlugin(pluginRss);
 
   /** Collections */

@@ -6,11 +6,12 @@
   color-scheme: light dark;
 
   /* Colors */
-  --clr-bg-main: light-dark(#f1ebe6, #1e1e1e);
-  --clr-text-main: light-dark(#181511, #dadada);
+  --clr-bg-main: light-dark(#fff3bc, #181511);
+  --clr-text-main: light-dark(#181511, #fff3bc);
   --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
-  --clr-accent-primary: light-dark(#b83a2d, color(display-p3 0.45 0.74 1 / 1));
+  --clr-accent-primary: #d53c3a;
+  --clr-accent-secondary: #f8b838;
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
