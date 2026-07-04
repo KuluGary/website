@@ -3,6 +3,7 @@ title: How I built my media tracker
 date: 2026-02-22
 tags: ["web-dev", "media"]
 description: In order to manage all the media I interact with, I created a managed system which tracks and stores the information in an external database that I can later consume in any of my applications.
+isTocAllowed: true
 ---
 
 Ever since I created this website, I’ve kept a few pages dedicated to tracking the media I consume. At first it was simple: a few handcrafted JSON files, manually updated, rendered through Eleventy.

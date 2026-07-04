@@ -35,20 +35,20 @@
       {
         "url": "https://godotengine.org/",
         "title": "Godot",
-        "description": "Godot is my current favourite game engine. After having tried RPG Maker and Game Maker Studio, I've been tinkering with Godot for a while and enjoyed it greatly.",
+        "description": "This is the game engine I use exclusively. I have experience with RPG Maker (2k3, XP, VX) and Game Maker (8, Studio) but now I only use Godot when making games. It's lightweight, open source, and has a Mono build so I can program in C#.",
         "enabled": true
       },
       {
         "url": "https://vscodium.com/",
         "title": "VSCodium",
-        "description": "A fork of VSCode, VSCodium is everything I would want in a code editor. I've used VSCode since I started coding professionally, and I've never thought of using anything else.",
+        "description": "VSCodium is a fork of Visual Studio Code with Microsoft's telemetry disabled. I've been using VS both professionally and for personal projects since around 2018, and I've never felt the need to change it. I also use this as an external editor for Godot.",
         "enabled": true
       },
       {
         "url": "https://www.gimp.org/",
         "title": "GIMP",
         "description": "I don't have a lot of experience with GIMP. I grew up using a cracked version of Photoshop for everything I needed, but I've been wanting to use more of GIMP instead of supporting Adobe.",
-        "enabled": true
+        "enabled": false
       },
       {
         "url": "https://inkscape.org/",
@@ -71,7 +71,7 @@
       {
         "url": "https://libresprite.github.io/#!/",
         "title": "Libresprite",
-        "description": "An open source alternative to Asesprite, Libresprite is everything I need whenever I am making any kind of pixel art for my games.",
+        "description": "LibreSprite is a free, community maintained fork of Aseprite. I used to make pixel art in an old copy of Photoshop when I was younger, but I've since moved on to Libresprite and greatly enjoyed the tools and user experience it provides.",
         "enabled": true
       },
       {

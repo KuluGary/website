@@ -183,11 +183,11 @@ img {
       padding-inline-start: var(--size-2);
 
       &:before {
-        content: "☜";
+        content: "»";
         position: absolute;
         top: var(--size-0);
-        left: calc(var(--size-4) * -1);
-        font-size: var(--font-size-4);
+        left: calc(var(--size-3) * -1);
+        font-size: var(--font-size-3);
       }
 
       & > * {

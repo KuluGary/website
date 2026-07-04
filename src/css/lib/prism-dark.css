@@ -18,7 +18,7 @@
     color: #d6e7ff;
     text-shadow: none;
     font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-    font-size: var(--font-size-0);
+    font-size: var(--font-size-1);
     line-height: 1.5;
     letter-spacing: 0.2px;
     white-space: pre;

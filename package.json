@@ -39,7 +39,6 @@
     "postcss-media-minmax": "^5.0.0",
     "postcss-nesting": "^13.0.2",
     "postcss-preset-env": "^10.5.0",
-    "sharp": "^0.34.5",
-    "typescript": "^5.9.3"
+    "sharp": "^0.34.5"
   }
 }

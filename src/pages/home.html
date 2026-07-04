@@ -9,9 +9,7 @@ css:
 
 {% block content %}
 	<main id="main-content" class="main-grid">
-		<section>
-			<p>This is a curated and handcrafted website. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
-		</section>
+		<p>This is a curated and handcrafted website. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
 
 		<section>
 			<h2>Newest journal entries</h2>
@@ -53,7 +51,7 @@ css:
 		<section>
 			<h2>Latest review</h2>
 
-			<p>From time to time I watch, read or play something that prompts me to write a review. Here are some of the latest.</p>
+			<p>From time to time I watch, read or play something that prompts me to write a review. Here is the latest:</p>
 
 			{% for game in collections["gamesWithReviews"] | limit(1) %}
 				{% set review = game.review %}

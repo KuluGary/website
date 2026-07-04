@@ -3,28 +3,30 @@
 @import "./lib/borders.openprops.css";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 
   /* Colors */
-  --clr-bg-main: light-dark(#fff3bc, #181511);
-  --clr-text-main: light-dark(#181511, #fff3bc);
+  --clr-bg-main: #101010;
+  --clr-text-main: #efefef;
   --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
-  --clr-accent-primary: #d53c3a;
-  --clr-accent-secondary: #f8b838;
+  --clr-accent-primary: #f7ff00;
+  --clr-accent-secondary: #00ffff;
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
-  --font-851MkPOP: "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
-  --font-caveat: Caveat, "851MkPOP", "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic, casual, cursive;
   --font-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   --font-PixelOperator: PixelOperator, var(--font-mono);
+  --font-gochi: GochiHand, var(--font-handwritten);
+  --font-flower: IndieFlower, var(--font-handwritten);
+  --font-bitcheese: Bitcheese, var(--font-flower);
+  --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
 
-  --font-family-main: var(--font-PixelOperator);
-  --font-family-title: var(--font-PixelOperator);
-
-  --font-family-comic-main: var(--font-851MkPOP);
-  --font-family-comic-title: var(--font-caveat);
+  --font-family-main: var(--font-mono);
+  --font-family-title: var(--font-patrick-hand);
+  --font-family-site-title: var(--font-bitcheese);
+  /* --font-family-comic-main: var(--font-851MkPOP);
+  --font-family-comic-title: var(--font-caveat); */
 
   /* Sizing */
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
@@ -39,35 +41,11 @@
 }
 
 @font-face {
-  font-family: "851MkPOP";
-  src: url("/assets/fonts/851MkPOP_101.ttf") format("truetype");
+  font-family: Bitcheese;
+  src: url("/assets/fonts/Bitcheese.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: Caveat;
-  src: url("/assets/fonts/Caveat-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: IMFellDWPica;
-  src: url("/assets/fonts/IMFellDWPica-Regular.ttf") format("truetype");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: IMFellDWPica;
-  src: url("/assets/fonts/IMFellDWPica-Italic.ttf") format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: PixelOperator;
-  src: url("/assets/fonts/PixelOperator.ttf") format("truetype");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: PixelOperator;
-  src: url("/assets/fonts/PixelOperator-Bold.ttf") format("truetype");
-  font-weight: 700;
+  font-family: PatrickHandSC;
+  src: url("/assets/fonts/PatrickHandSC-Regular.ttf") format("truetype");
 }

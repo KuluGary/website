@@ -10,12 +10,14 @@ css:
 	{% set nextPost = collections.blog | getNextCollectionItem %}
 	{% set toc = content | toc | safe %}
 
-	<aside id="content-nav">
-		{% if toc.length > 0 %}
-			<h2>Table of content</h2>
-			{{ toc }}
-		{% endif %}
-	</aside>
+	{% if isTocAllowed %}
+		<aside id="content-nav">
+			{% if toc.length > 0 %}
+				<h2>Table of content</h2>
+				{{ toc }}
+			{% endif %}
+		</aside>
+	{% endif %}
 
 	<main id="main-content" class="h-entry" data-pagefind-body>
 		<header>

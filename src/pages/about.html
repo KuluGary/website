@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: About
 description: Lorem ipsum
 permalink: /about/
 layout: /base.html
@@ -12,15 +12,13 @@ css:
 		<section>
 			<p>Hi, I'm Gary and I'm the curator, author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
 
-			<p>I've been on the Internet one way or another since the mid-2000s. Before people congregated into centralized social media, I started off as part of some obscure game-developer forums where I first shared my games.</p>
+			<p>I've been on the Internet one way or another since the mid-2000s. Before people congregated into centralized social media, I started off as part of some obscure game-dev forums where I first shared my games.</p>
 
-			<p>I'm an eclectic person with a lot of interests, some of which I shared online over the years. I've shared my <a href="https://www.deviantart.com/kulugary" target="_blank">art</a>, my <a href="https://kulugary.itch.io/" target="_blank">games</a>, <a href="https://www.youtube.com/@kulugary/videos" target="_blank">videos</a>, <a href="https://github.com/KuluGary" target="_blank">software</a> and lots of stuff I've yet to post.</p>
+			<p>Over the years I've shared my <a href="https://www.deviantart.com/kulugary" target="_blank">art</a>, my <a href="https://kulugary.itch.io/" target="_blank">games</a>, <a href="https://www.youtube.com/@kulugary/videos" target="_blank">videos</a> and <a href="https://github.com/KuluGary" target="_blank">code</a> in other places.</p>
 		</section>
 
 		<section id="uses">
 			<h2>Uses</h2>
-
-			<p>If you're interested in the stuff I use for work or hobbies, here's a more or less comprehensive list.</p>
 
 			{% for category in uses %}
 				{% if category.enabled %}

@@ -44,7 +44,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
 
-  eleventyConfig.addPassthroughCopy("./src/css");
   eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
@@ -55,9 +54,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/js");
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
   eleventyConfig.addWatchTarget("./src/art/**/*.md");
-
-  eleventyConfig.addExtension("11ty.ts", { key: "11ty.js" });
-  eleventyConfig.addTemplateFormats("11ty.ts");
 
   /** Filters */
   eleventyConfig.addFilter("formatDate", formatDate);
