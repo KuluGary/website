@@ -1,4 +1,0 @@
-{
-	"permalink": "art/{{ page.fileSlug }}/",
-	"image": "assets/index.png"
-}

@@ -10,18 +10,20 @@
   --clr-text-main: #efefef;
   --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
-  --clr-accent-primary: #f7ff00;
-  --clr-accent-secondary: #00ffff;
+  --clr-accent-primary: #c4b5fd;
+  --clr-accent-secondary: #fde047;
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
   --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
-  --font-gochi-hand: GochiHand, var(--font-serif);
+  --font-gochi-hand: GochiHand, var(--font-handwritten);
 
   --font-family-main: var(--font-mono);
   --font-family-title: var(--font-patrick-hand);
   --font-family-site-title: var(--font-mansalva);
-  --font-accent: var(--font-gochi-hand); /* Sizing */
+  --font-accent: var(--font-gochi-hand);
+
+  /* Sizing */
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
 
   /* Border */

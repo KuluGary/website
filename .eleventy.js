@@ -49,7 +49,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
-  eleventyConfig.addPassthroughCopy("./src/art/**/assets");
   eleventyConfig.addPassthroughCopy("./src/journal/**/assets");
 
   eleventyConfig.addWatchTarget("./src/css");
