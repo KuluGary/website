@@ -27,7 +27,7 @@ css:
     <hr class="separator-1 separator-tight">
 
     {% for post in posts %}
-      <article class="basic-article">
+      <article>
         {{post.content | safe}}
 
         {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
@@ -41,10 +41,10 @@ css:
 
           <p>in</p>
 
-          <ul>
+          <ul class="unstyled">
             {% for tag in post.data.tags %}
               <li>
-                <a href="/journal/tags/{{ tag }}">{{ tag }}</a>
+                <a href="/journal/tags/{{ tag }}">#{{ tag }}</a>
               </li>
             {% endfor %}
           </ul>

@@ -22,7 +22,7 @@
 
   & input {
     width: 100%;
-    margin-block-end: var(--size-3);
+    /* margin-block-end: var(--size-3); */
   }
 }
 
@@ -30,7 +30,7 @@
   & .pagefind-ui__message {
     font-weight: var(--font-weight-7);
     font-size: var(--font-size-1);
-    margin-block: var(--size-5);
+    /* margin-block: var(--size-5); */
 
     @media (--md-n-below) {
       font-size: 1.25rem;
@@ -39,7 +39,7 @@
     &::before {
       content: ">";
       font-family: monospace;
-      margin-right: 1ch;
+      /* margin-right: 1ch; */
       font-size: larger;
     }
   }
@@ -60,7 +60,7 @@
       }
 
       & .pagefind-ui__result-excerpt {
-        margin-block-start: 0;
+        /* margin-block-start: 0; */
         position: relative;
 
         &:before,
@@ -70,7 +70,7 @@
       }
 
       & + li {
-        margin-block-start: var(--size-7);
+        /* margin-block-start: var(--size-7); */
       }
     }
   }

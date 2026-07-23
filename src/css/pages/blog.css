@@ -1,0 +1,3 @@
+article:first-of-type {
+  margin-block-start: var(--spacing-loose);
+}

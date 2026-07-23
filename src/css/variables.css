@@ -15,20 +15,13 @@
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
-  --font-ImFellDWPica: IMFellDWPica, Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  --font-PixelOperator: PixelOperator, var(--font-mono);
-  --font-gochi: GochiHand, var(--font-handwritten);
-  --font-flower: IndieFlower, var(--font-handwritten);
-  --font-bitcheese: Bitcheese, var(--font-flower);
   --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
+  --font-gochi-hand: GochiHand, var(--font-serif);
 
   --font-family-main: var(--font-mono);
   --font-family-title: var(--font-patrick-hand);
-  --font-family-site-title: var(--font-bitcheese);
-  /* --font-family-comic-main: var(--font-851MkPOP);
-  --font-family-comic-title: var(--font-caveat); */
-
-  /* Sizing */
+  --font-family-site-title: var(--font-mansalva);
+  --font-accent: var(--font-gochi-hand); /* Sizing */
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));
 
   /* Border */
@@ -37,15 +30,18 @@
   --border-thick: var(--border-size-3) solid var(--clr-border-main);
 
   /* Layout */
-  --main-grid-template-columns: [left] minmax(1em, 1fr) [main] minmax(10em, 40em) [right] minmax(10em, 1fr);
-}
-
-@font-face {
-  font-family: Bitcheese;
-  src: url("/assets/fonts/Bitcheese.ttf") format("truetype");
+  --main-grid-template-columns: minmax(1em, 1fr) [main] minmax(10em, 40em) minmax(1em, 1fr);
+  --spacing-main: var(--size-7);
+  --spacing-tight: calc(var(--spacing-main) * 0.5);
+  --spacing-loose: calc(var(--spacing-main) * 1.5);
 }
 
 @font-face {
   font-family: PatrickHandSC;
-  src: url("/assets/fonts/PatrickHandSC-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/PatrickHandSC-Regular.subset.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: GochiHand;
+  src: url("/assets/fonts/GochiHand-Regular.subset.ttf") format("truetype");
 }

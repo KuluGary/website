@@ -11,8 +11,6 @@ main {
   grid-template-columns: 75% 1fr;
   row-gap: var(--size-1);
 
-  margin-block-end: var(--size-4);
-
   & > div {
     grid-area: title;
     container-type: inline-size;
@@ -23,7 +21,6 @@ main {
     text-transform: uppercase;
     font-size: max(4rem, 26.5cqw);
     line-height: 0.9;
-    margin-block-start: var(--size-4);
   }
 
   & #toc {
@@ -54,7 +51,7 @@ main {
     text-transform: uppercase;
     font-size: max(1.5rem, 8cqw);
     color: var(--clr-accent-primary);
-    margin-block-start: var(--size-1);
+    /* margin-block-start: var(--size-1); */
   }
 }
 
@@ -62,7 +59,7 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--size-3);
-  margin-block: var(--size-3);
+  /* margin-block: var(--size-3); */
 
   & > li {
     display: grid;

@@ -4,6 +4,7 @@ import syntaxHighlight from "@pborenstein/eleventy-md-syntax-highlight";
 import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
 import timeToRead from "eleventy-plugin-time-to-read";
+import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import pluginTOC from "eleventy-plugin-toc";
 import {
   gameAmountByStatus,
@@ -40,6 +41,7 @@ import mdIt from "./src/js/lib/markdown-it.js";
 import getShareUrl from "./src/js/social-media.js";
 
 dotenv.config();
+
 export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
@@ -88,6 +90,11 @@ export default async function (eleventyConfig) {
     sort: "desc",
     noLabels: true,
     noStyles: true,
+  });
+  eleventyConfig.addPlugin(subsetting, {
+    enabled: process.env.ELEVENTY_ENV !== "production",
+    dist: "_site/assets/fonts",
+    srcFiles: ["./src/assets/fonts/PatrickHandSC-Regular.ttf", "./src/assets/fonts/GochiHand-Regular.ttf"],
   });
   eleventyConfig.addPlugin(pluginRss);
 
