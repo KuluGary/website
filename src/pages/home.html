@@ -1,77 +1,36 @@
 ---
 title: Home
-description: Lorem ipsum
+description: This is a curated and handcrafted website; a patchwork of interests ranging from technology, art, literature and entertainment.
 permalink: /
-layout: /base.html
+layout: /home.html
 css:
   - /css/pages/home.css
 ---
 
 {% block content %}
-	<main id="main-content" class="main-grid">
-		<p>This is a curated and handcrafted website. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
-
-		<section>
-			<h2>Newest journal entries</h2>
-
-			{% for post in collections["journal"] | reverse | limit(3) %}
-				<article class="basic-article">
-					<h3>
-						<a href="{{ post.url }}" class="unstyled">{{ post.data.title }}</a>
-					</h3>
-
-					<p>{{ post.data.description }}</p>
-				</article>
-			{% endfor %}
-		</section>
-
-		<hr class="separator-1">
-
-		<section>
-			<h2>Newest articles</h2>
-
-			{% set latestPost = (collections["blog"] | reverse | limit(1))[0] %}
-
-			<p>These are some of my most recent posts, the latest which was published <time datetime="{{ latestPost.date }}">{{ latestPost.date | formatDate("DDD") }}</time>. See the full archive in its <a href="/blog">dedicated page</a>.
+	<main id="main-content">
+		<p>
+			<span class="font-accent">Welcome!</span> This is a curated and handcrafted website. This place is a patchwork of interests ranging from <strong>technology</strong>, <strong>art</strong>, <strong>literature</strong> and <strong>entertainment</strong>. Please look around and see if you find anything that catches your eye.
 			</p>
 
-			{% for post in collections["blog"] | reverse | limit(3) %}
-				<article class="basic-article">
-					<h3>
-						<a href="{{ post.url }}" class="unstyled">{{ post.data.title }}</a>
-					</h3>
+		<ul id="nav" class="unstyled">
+			<li>
+				<a href="/blog" class="font-accent">Blog</a>
+			</li>
+			<li>
+				<a href="/journal" class="font-accent">Journal</a>
+			</li>
+			<li>
+				<a href="/reviews" class="font-accent">Reviews</a>
+			</li>
+			<li>
+				<a href="/about" class="font-accent">About</a>
+			</li>
+		</ul>
 
-					<p>{{ post.data.description }}</p>
-				</article>
-			{% endfor %}
-		</section>
+		<p>Or, find me elsewhere.</p>
 
-		<hr class="separator-1">
-
-		<section>
-			<h2>Latest review</h2>
-
-			<p>From time to time I watch, read or play something that prompts me to write a review. Here is the latest:</p>
-
-			{% for game in collections["gamesWithReviews"] | limit(1) %}
-				{% set review = game.review %}
-
-				<article>
-					<h3>
-						{{ game.title }}
-					</h3>
-
-					{% if review.data.rating %}
-						{% set curr = review.data.rating %}
-						{% include "components/star-rating.html" %}
-					{% endif %}
-
-					<div>
-						{{ review.content | safe }}
-					</div>
-				</article>
-			{% endfor %}
-		</section>
+		{% include "components/social-icons.html" %}
 	</main>
 
 	{% include "components/main-footer.html" %}

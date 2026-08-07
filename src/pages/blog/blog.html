@@ -31,7 +31,7 @@ css:
           <a class="unstyled" href="{{ post.url }}">{{ post.data.title }}</a>
         </h2>
 
-        <div class="basic-article-subtitle">Published <time datetime="{{ post.date }}">{{ post.date |formatDate("LLLL dd, yyyy")}}</time> in </div>
+        {# <div class="basic-article-subtitle">Published <time datetime="{{ post.date }}">{{ post.date |formatDate("LLLL dd, yyyy")}}</time> in </div>
 
         <ul class="tag-list unstyled">
           {%- for tag in post.data.tags -%}
@@ -39,7 +39,7 @@ css:
               <a href="/blog/tags/{{ tag }}">#{{ tag | lower }}</a>
             </li>
           {%- endfor -%}
-        </ul>
+        </ul> #}
 
         <p>{{ post.data.description }}</p>
       </article>

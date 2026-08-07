@@ -1,16 +1,20 @@
 ---
 title: Summer 2026
 date: 2026-07-03
-tags: ["newsletter"]
+tags: ["newsletter", "personal"]
 description: What I've been up to these past few months.
 isTocAllowed: false
 ---
 
 This year's summer has been rough, huh?
 
-Here in Europe we've had one of the hottest seasons in recorded history. If you've kept with the news, you've probably read how lots of people have suffered from massive heatwaves that swept through the whole continent.
+Here in Europe we've beaten every major record related to heat in recorded history. I've you've kept up with the news, we've been having heatwaves consecutively all summer.
 
 Even though it's been hard, I've tried to keep active and work on stuff behind the scenes.
+
+## Website redesign
+
+I've had the itch to redesign this site for a while now. I think my first desig iterations go back to late last year, but until now I've not landed on an idea that I was content with.
 
 ## Summer Survival App
 

@@ -1,4 +1,5 @@
 {
 	"layout": "blog-post.html",
-	"permalink": "journal/{{ page.fileSlug }}/"
+	"permalink": "journal/{{ page.fileSlug }}/",
+	"category": "journal"
 }

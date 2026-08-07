@@ -1,0 +1,33 @@
+body {
+  width: clamp(10em, 100%, 40em);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+ul.frequent-topics {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-tight);
+  width: fit-content;
+}
+
+ul.frequent-topics a {
+  text-decoration: none;
+  font-style: normal;
+}
+
+ul#nav {
+  display: flex;
+  justify-content: center;
+  column-gap: var(--spacing-main);
+}
+
+ul#nav a {
+  font-size: var(--font-size-5);
+  font-style: normal;
+}

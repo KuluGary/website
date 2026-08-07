@@ -11,4 +11,10 @@ export default {
     name: "Gary Cuétara",
     email: "",
   },
+  social: {
+    bsky: "https://bsky.app/profile/kulugary.itch.io",
+    mastodon: "https://indiepocalypse.social/@kulugary",
+    itch: "https://kulugary.itch.io/",
+    github: "https://github.com/KuluGary",
+  },
 };

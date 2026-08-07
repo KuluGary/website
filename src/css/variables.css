@@ -21,7 +21,7 @@
   --font-family-main: var(--font-mono);
   --font-family-title: var(--font-patrick-hand);
   --font-family-site-title: var(--font-mansalva);
-  --font-accent: var(--font-gochi-hand);
+  --font-accent: var(--font-patrick-hand);
 
   /* Sizing */
   --sizing-main-content: calc(min(100ch, round(down, 100vw, 1ch)));

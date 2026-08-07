@@ -1,6 +1,6 @@
 ---
 title: About
-description: Lorem ipsum
+description: Hi, I'm Gary and I'm the curator, author and webmaster of this website.
 permalink: /about/
 layout: /base.html
 css:
@@ -10,15 +10,13 @@ css:
 {% block content %}
 	<main id="main-content" class="main-grid">
 		<section>
-			<p>Hi, I'm Gary and I'm the curator, author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
+			<p>Hi, I'm <span class="font-accent">Gary</span> and I'm the curator, author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
 
 			<p>I've been on the Internet one way or another since the mid-2000s. Before people congregated into centralized social media, I started off as part of some obscure forums where I first learned about game development.</p>
-
-			<p>Over the years I've shared my <a href="https://www.deviantart.com/kulugary" target="_blank">art</a>, my <a href="https://kulugary.itch.io/" target="_blank">games</a>, <a href="https://www.youtube.com/@kulugary/videos" target="_blank">videos</a> and <a href="https://github.com/KuluGary" target="_blank">code</a> in other places you can check out.</p>
 		</section>
 
 		<section id="uses">
-			<h2>Uses</h2>
+			<hr class="separator-1">
 
 			{% for category in uses %}
 				{% if category.enabled %}

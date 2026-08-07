@@ -8,6 +8,7 @@ import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import pluginTOC from "eleventy-plugin-toc";
 import {
   gameAmountByStatus,
+  getAllPosts,
   getArtPosts,
   getBlogPosts,
   getBlogTagPages,
@@ -114,6 +115,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("gamesWithReviews", getGamesWithReviews);
   eleventyConfig.addCollection("blogTagPages", getBlogTagPages);
   eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
+  eleventyConfig.addCollection("posts", getAllPosts);
 
   return {
     dir: {
