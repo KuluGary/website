@@ -1,4 +1,4 @@
-@layer layout {
+/* @layer layout {
   #search {
     & form > * {
       margin-block: var(--size-1);
@@ -22,7 +22,6 @@
 
   & input {
     width: 100%;
-    /* margin-block-end: var(--size-3); */
   }
 }
 
@@ -30,7 +29,6 @@
   & .pagefind-ui__message {
     font-weight: var(--font-weight-7);
     font-size: var(--font-size-1);
-    /* margin-block: var(--size-5); */
 
     @media (--md-n-below) {
       font-size: 1.25rem;
@@ -39,7 +37,6 @@
     &::before {
       content: ">";
       font-family: monospace;
-      /* margin-right: 1ch; */
       font-size: larger;
     }
   }
@@ -60,7 +57,6 @@
       }
 
       & .pagefind-ui__result-excerpt {
-        /* margin-block-start: 0; */
         position: relative;
 
         &:before,
@@ -70,7 +66,6 @@
       }
 
       & + li {
-        /* margin-block-start: var(--size-7); */
       }
     }
   }
@@ -83,4 +78,74 @@
     max-width: 80%;
     margin-inline: auto;
   }
+} */
+
+/* #search {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: #fff;
+  --pagefind-ui-text: #fff;
+  --pagefind-ui-background: #111;
+  --pagefind-ui-border: #fff;
+  --pagefind-ui-tag: #222;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0;
+  --pagefind-ui-font: inherit;
 }
+
+#search {
+  width: 100%;
+}
+
+#search .pagefind-ui__search-input {
+  background: var(--clr-bg-main);
+  color: var(--clr-text-main);
+  border: var(--border-thin);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-1);
+}
+
+#search .pagefind-ui__search-input::placeholder {
+  color: var(--clr-text-faint-1);
+  opacity: 1;
+}
+
+#search .pagefind-ui__message {
+  color: #fff;
+}
+
+#search .pagefind-ui__result {
+  border-top: 1px solid #fff;
+  padding: 2rem 0;
+}
+
+#search .pagefind-ui__result-title {
+  color: #fff;
+}
+
+#search .pagefind-ui__result-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+#search .pagefind-ui__result-link:hover {
+  text-decoration: underline;
+}
+
+#search .pagefind-ui__result-excerpt {
+  color: #aaa;
+}
+
+#search .pagefind-ui__result-excerpt mark {
+  background: #ffff00;
+  color: #000;
+}
+
+#search .pagefind-ui__drawer {
+  color: #fff;
+}
+
+#search .pagefind-ui__button {
+  color: #fff;
+  background: #111;
+  border-color: #fff;
+} */

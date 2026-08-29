@@ -9,47 +9,34 @@ pagination:
 permalink: "/journal/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
 layout: base.html
 css:
-  - /css/pages/journal.css
+  - /pagefind/pagefind-component-ui.css
+  - /css/lib/glightbox.min.css
+  - /css/pages/post.css
 ---
 
 {% block content %}
   <main  id="main-content" class="main-grid">
-
-    <ul class="journal-actions unstyled">
-      <li>
-        <a href="/journal/search">Search</a>
+    <ul class="blog-actions unstyled">
+      <li data-pf-theme="dark">
+        <pagefind-modal-trigger compact hide-shortcut ></pagefind-modal-trigger>
+        <pagefind-modal></pagefind-modal>
       </li>
       <li>
-        <a href="/journal/feed.xml">RSS</a>
+        <a href="/feed.xml">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-label="RSS Feed">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" d="M4 19a1 1 0 1 0 2 0a1 1 0 1 0-2 0M4 4a16 16 0 0 1 16 16M4 11a9 9 0 0 1 9 9"/>
+          </svg>
+
+          <title>RSS Feed</title>
+        </a>
       </li>
     </ul>
 
     <hr class="separator-1 separator-tight">
 
     {% for post in posts %}
-      <article>
-        {{post.content | safe}}
-
-        {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
-        <footer>
-          <p>Published <time datetime="{{post.date}}">{{post.date | formatDate("LLL dd yyyy")}}</time>
-          </p>
-
-          {% if mentions.length > 0 %}
-            <p>with {{mentions.length}} interactions</p>
-          {% endif %}
-
-          <p>in</p>
-
-          <ul class="unstyled">
-            {% for tag in post.data.tags %}
-              <li>
-                <a href="/journal/tags/{{ tag }}">#{{ tag }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </footer>
-      </article>
+      {% include "components/journal-blurb.html" %}
     {% endfor %}
 
     <footer>
@@ -58,3 +45,12 @@ css:
   </main>
   {% include "components/main-footer.html" %}
 {% endblock content %}
+
+{% block script %}
+  <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+  <script src="/js/lib/glightbox.min.js"></script>
+
+  <script type="text/javascript">
+    const lightbox = GLightbox({});
+  </script>
+{% endblock script %}

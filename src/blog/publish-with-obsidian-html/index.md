@@ -2,24 +2,9 @@
 title: Publish your notes with ObsidianHTML
 date: 2024-02-11
 lang: en
-tags: ["web-dev", "obsidian"]
-image: /assets/images/blog/2024-02-11-publish-with-obsidian-html/header.png
-imageAlt: Publish your notes with ObsidianHTML
-description: Thanks to the ObsidianHTML package, you can share your notes online.
+tags: ["web-dev"]
+description: Thanks to the ObsidianHTML package, you can convert your regular Obsidian vaults into fully fledged websites.
 ---
-
-![Publish your notes with ObsidianHTML](/assets/images/blog/2024-02-11-publish-with-obsidian-html/header.png "Publish your notes with ObsidianHTML")
-
-- [Preamble](#preamble)
-- [Preparing the environment](#preparing-the-environment)
-- [General introduction](#general-introduction)
-- [Default configuration](#default-configuration)
-  - [Public and private notes](#public-and-private-notes)
-- [Automation with bash](#automation-with-bash)
-- [Publishing online](#publishin-online)
-- [Appendix](#appendix)
-
-## Preamble
 
 For a while, I've been using the [Obsidian](https://obsidian.md/) tool to organize work documents, make charts for game development, or keep a series of notes for my role campaigns. This tool has been very useful thanks to its simple and dynamic [Markdown](https://www.markdownguide.org/tools/obsidian/) system, its great collection of [plugins](https://obsidian.md/plugins), and its ability to be customized through [with CSS](https://help.obsidian.md/Extending+Obsidian/CSS+snippets).
 

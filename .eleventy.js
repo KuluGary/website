@@ -40,6 +40,7 @@ import {
 } from "./src/js/11ty/filters.js";
 import mdIt from "./src/js/lib/markdown-it.js";
 import getShareUrl from "./src/js/social-media.js";
+import { generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 
 dotenv.config();
 
@@ -55,6 +56,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
+  eleventyConfig.addWatchTarget("./src/journal/**/*.md");
   eleventyConfig.addWatchTarget("./src/art/**/*.md");
 
   /** Filters */
@@ -77,8 +79,13 @@ export default async function (eleventyConfig) {
     const value = Math.random() * (max - min) + min;
     return Number(value.toFixed(decimals));
   });
+
   /* Markdown */
   eleventyConfig.setLibrary("md", mdIt);
+
+  /** Shortcodes */
+  eleventyConfig.addPairedNunjucksShortcode("gallery", generateGallery);
+  eleventyConfig.addPairedNunjucksShortcode("image", generateImage);
 
   /* Plugins */
   eleventyConfig.addPlugin(pluginTOC);
@@ -94,7 +101,14 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(subsetting, {
     enabled: process.env.ELEVENTY_ENV !== "production",
     dist: "_site/assets/fonts",
-    srcFiles: ["./src/assets/fonts/PatrickHandSC-Regular.ttf", "./src/assets/fonts/GochiHand-Regular.ttf"],
+    srcFiles: [
+      "./src/assets/fonts/PatrickHandSC-Regular.ttf",
+      "./src/assets/fonts/MapleMono-CN-Regular.ttf",
+      "./src/assets/fonts/MapleMono-Italic.woff2",
+      "./src/assets/fonts/MapleMono-Bold.woff2",
+      "./src/assets/fonts/MapleMono-Thin.woff2",
+      "./src/assets/fonts/MapleMono-ThinItalic.woff2",
+    ],
   });
   eleventyConfig.addPlugin(pluginRss);
 
@@ -102,6 +116,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("blog", getBlogPosts);
   eleventyConfig.addCollection("journal", getJournalPosts);
   eleventyConfig.addCollection("art", getArtPosts);
+  eleventyConfig.addCollection("posts", getAllPosts);
   eleventyConfig.addCollection("postsByYear", getPostsByYear);
   eleventyConfig.addCollection("frequentTags", getFrequentTags);
   eleventyConfig.addCollection("frequentTagsByYear", getFrequentTagsByYear);
@@ -115,7 +130,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("gamesWithReviews", getGamesWithReviews);
   eleventyConfig.addCollection("blogTagPages", getBlogTagPages);
   eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
-  eleventyConfig.addCollection("posts", getAllPosts);
 
   return {
     dir: {

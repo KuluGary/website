@@ -10,15 +10,15 @@
   --clr-text-main: #efefef;
   --clr-text-faint-1: hsl(from var(--clr-text-main) h s l / 0.6);
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
-  --clr-accent-primary: #c4b5fd;
+  --clr-accent-primary: #f97312;
   --clr-accent-secondary: #fde047;
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
   --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
-  --font-gochi-hand: GochiHand, var(--font-handwritten);
+  --font-maple-mono: MapleMono, var(--font-mono);
 
-  --font-family-main: var(--font-mono);
+  --font-family-main: var(--font-maple-mono);
   --font-family-title: var(--font-patrick-hand);
   --font-family-site-title: var(--font-mansalva);
   --font-accent: var(--font-patrick-hand);
@@ -44,6 +44,20 @@
 }
 
 @font-face {
-  font-family: GochiHand;
-  src: url("/assets/fonts/GochiHand-Regular.subset.ttf") format("truetype");
+  font-family: MapleMono;
+  src: url("/assets/fonts/MapleMono-CN-Regular.subset.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: MapleMono;
+  src: url("/assets/fonts/MapleMono-Italic.subset.woff2") format("woff");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: MapleMono;
+  src: url("/assets/fonts/MapleMono-Bold.subset.woff2") format("woff");
+  font-weight: bold;
 }

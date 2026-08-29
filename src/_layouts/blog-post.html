@@ -1,9 +1,10 @@
 ---
 layout: base.html
 css:
-  - /css/pages/blog-post.css
+  - /css/pages/post.css
   - /css/lib/prism-light.css
   - /css/lib/prism-dark.css
+  - /css/lib/glightbox.min.css
 ---
 {% block content %}
 	{% set previousPost = collections.blog | getPreviousCollectionItem %}
@@ -45,30 +46,25 @@ css:
 					{% endfor %}
 				</ul>
 				<nav class="post-nav">
-					{% if nextPost %}
-						<a href="{{ nextPost.url }}" class="next unstyled">
-									← {{ nextPost.data.title }}
-						</a>
-					{% endif %}
-					{% if previousPost %}
-						<a href="{{ previousPost.url }}" class="prev unstyled">
-							{{ previousPost.data.title }} →
+					<ul class="unstyled">
+						{% if nextPost %}
+							<li class="next">
+								<p>← Next</p>
+								<a href="{{ nextPost.url }}" class="unstyled">
+									{{ nextPost.data.title }}
 								</a>
-					{% endif %}
+							</li>
+						{% endif %}
+						{% if previousPost %}
+							<li class="prev">
+								<p>Previous →</p>
+								<a href="{{ previousPost.url }}" class="unstyled">
+									{{ previousPost.data.title }}
+								</a>
+							</li>
+						{% endif %}
+					</ul>
 				</nav>
-				<ul class="link-list unstyled">
-					<li>
-						<a href="/blog/search">Search</a>
-					</li>
-					<li>
-						<a href="https://github.com/KuluGary/website/tree/master{{ page.url }}index.md" target="_blank">
-									Edit
-								</a>
-					</li>
-					<li>
-						<a href="/blog/feed.xml">RSS</a>
-					</li>
-				</ul>
 			</section>
 
 			{% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
@@ -95,6 +91,8 @@ css:
 {% endblock %}
 
 {% block script %}
+	<script src="/js/lib/glightbox.min.js"></script>
+
 	<script>
 		function addIntersectionObserverForToc() {
 			const tocLinks = document.querySelectorAll(".toc a");
@@ -121,5 +119,6 @@ css:
 		}
 
 		addIntersectionObserverForToc()
+		const lightbox = GLightbox({});
 	</script>
 {% endblock %}

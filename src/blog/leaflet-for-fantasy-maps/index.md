@@ -3,7 +3,7 @@ title: Leaflet for Fantasy Maps
 date: 2023-12-22
 lang: en
 tags: ["web-dev", "leaflet"]
-description: Embark on fantasy map creation with Leaflet JS. Learn hands-on from installation to customization, discovering how to harness the full power of this robust map library. With detailed instructions and practical examples, acquire the necessary tools to transform your ideas into interactive maps.
+description: Fantasy maps are a cool way to polish your worldbuilding, and you can share them online with extra interactivity thanks the the LeafletJS library.
 ---
 
 We've all seen it: When you buy a new book from any fantasy series -be it [The Lord of the Rings](https://en.wikipedia.org/wiki/The_Lord_of_the_Rings) or [The Witcher](https://en.wikipedia.org/wiki/The_Witcher) -, it oftens includes a detailed map to allow you to immerse yourself in the world and its locations.

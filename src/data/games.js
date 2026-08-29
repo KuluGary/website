@@ -1,8 +1,9 @@
 import supabase from "../js/supabase.js";
 import { getFromCache, setIntoCache } from "../js/cache.js";
 import { saveTestData } from "../js/save.js";
+import { getCollectionsWithReviews } from "../js/reviews.js";
 
-export default async function () {
+export default async function ({ collections }) {
   const cached = getFromCache("games");
 
   if (cached) return cached;
@@ -25,7 +26,7 @@ export default async function () {
 						entity_metadata(data)
 					)
 				)
-			`
+			`,
     )
     .eq("kind", "game");
 
@@ -62,8 +63,10 @@ export default async function () {
       }),
   }));
 
-  setIntoCache("games", games);
-  saveTestData("games.json", games);
+  const gamesWithReview = await getCollectionsWithReviews(games);
 
-  return games;
+  setIntoCache("games", gamesWithReview);
+  saveTestData("games.json", gamesWithReview);
+
+  return gamesWithReview;
 }

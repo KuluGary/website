@@ -41,8 +41,6 @@ So, the first improvement is evident: centralize the rules.
 
 In the blog example, we can define a few concepts: subjects (users), roles, permissions, and actions. Role-based access control (RBAC) links them together: each user gets one or more roles, and each role comes with a set of permissions that decide which actions are allowed.
 
-![Role-based access control diagram](/assets/images/blog/implementing-abac-permissions/01.png){.prefers-media}
-
 Here's a minimal setup:
 
 ```js
@@ -78,8 +76,6 @@ This already improves things: no more hardcoded checks sprinkled across the code
 What if editors can only update their own posts? Or if readers shouldn't be able to see posts tagged as drafts? Roles alone can't answer those questions.
 
 Attribute-based access control (ABAC) expands the model by considering more than just roles. It factors in attributes of the subject (user), the object (post), the environment, and the policy itself.
-
-![Attribute-based access control diagram](/assets/images/blog/implementing-abac-permissions/02.png){.prefers-media}
 
 Here's a sketch:
 

@@ -1,26 +1,36 @@
 ---
 title: Summer 2026
 date: 2026-07-03
-tags: ["newsletter", "personal"]
+tags: ["personal"]
 description: What I've been up to these past few months.
 isTocAllowed: false
+draft: true
 ---
 
-This year's summer has been rough, huh?
+This summer's been rough, huh?
 
-Here in Europe we've beaten every major record related to heat in recorded history. I've you've kept up with the news, we've been having heatwaves consecutively all summer.
+Here in Europe we've beaten every major record related to heat in recorded history. If you've kept up with the news, we've been having heatwaves consecutively all summer.
 
 Even though it's been hard, I've tried to keep active and work on stuff behind the scenes.
 
 ## Website redesign
 
-I've had the itch to redesign this site for a while now. I think my first desig iterations go back to late last year, but until now I've not landed on an idea that I was content with.
+I've had the itch to redesign this site for a while now. I think my first iterations go back to late last year, but until now I had not landed on an idea that I was content with.
 
-## Summer Survival App
+{% gallery category, page.fileSlug %}
+screenshot-1.png | First iteration of this website
+screenshot-2.png | Second iteration of this website
+{% endgallery %}
 
-While browsing the web for resources to handle the heat, my partner and I found a website with a map of climate refuges around our city. We found it an excellent resource, but felt like it could be even more useful as a mobile app you can carry and check whenever you are out and about and need a place to cool off.
+In the end I went for something more minimalistic. I used [Hyperblam's docs](https://hyperblam.how/) and [Toby Fox's website](https://toby.fangamer.com/) for inspiration.
 
-Luckily, Barcelona has an [open data service](https://opendata-ajuntament.barcelona.cat/data/ca/dataset/xarxa-refugis-climatics) for the city that updates weekly with data about the refuges (and plenty of other things), so I was able to download that data, populate a map and package it into an application for Android phones.
+## Personal media tracker
+
+I've written a few articles about [my](http://localhost:8080/blog/i-populated-my-site-with-media/) [media tracker](http://localhost:8080/blog/how-i-built-my-media-tracker/) in the past, but since then I reworked it to become a CLI tool that is completely configurable and can synchronize specific sources. For example:
+
+`tracker sync youtube playlist-items --playlist "$YOUTUBE_PLAYLIST_ID"`
+
+With this I can self-host it easier and also share it with family and friends who want to use it.
 
 ## Game development
 

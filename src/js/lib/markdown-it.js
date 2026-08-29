@@ -1,12 +1,13 @@
 import markdownIt from "markdown-it";
 import markdownItAnchor from "markdown-it-anchor";
+import markdownItAttrs from "markdown-it-attrs";
 import string from "string";
 
 const slugify = (s) => string(s).slugify().toString();
 
 const mdIt = new markdownIt({
   html: true,
-  breaks: true,
+  breaks: false,
 })
   .disable("code")
   .use(markdownItAnchor, {
@@ -46,6 +47,11 @@ const mdIt = new markdownIt({
     ${rendered}
   </div>`;
     };
+  })
+  .use(markdownItAttrs, {
+    leftDelimiter: "{",
+    rightDelimiter: "}",
+    allowedAttributes: ["id", "class", /^data-.*$/],
   });
 
 export default mdIt;

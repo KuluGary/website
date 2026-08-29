@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="600" height="600">
+	<rect width="600" height="600" fill="#101010" />
+	<g fill="none" stroke="#efefef" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+
+		<!-- Sun -->
+		<circle cx="225" cy="220" r="85" />
+		<circle cx="195" cy="205" r="4" fill="#efefef" />
+		<circle cx="255" cy="205" r="4" fill="#efefef" />
+		<path d="M185 255 Q225 290 265 250" />
+		<path d="M225 120 L225 55" />
+		<path d="M135 145 L80 90" />
+		<path d="M315 145 L370 90" />
+		<path d="M105 220 L40 220" />
+		<path d="M345 220 L410 220" />
+		<path d="M140 295 L85 350" />
+		<path d="M310 295 L365 350" />
+		<path d="M225 320 L225 385" />
+
+		<!-- House body -->
+		<path d="M315 535 Q325 545 325 565 L325 1085" />
+		<path d="M325 1085 Q620 1095 950 1085" />
+		<path d="M950 1085 L955 555" />
+
+		<!-- Roof -->
+		<path d="M285 550 Q470 370 695 190 Q850 375 1010 550" />
+		<path d="M285 550 Q620 530 1010 550" />
+
+		<!-- Roof scribbles -->
+		<path d="M335 515 L685 225" />
+		<path d="M355 530 L720 230" />
+		<path d="M390 525 L750 250" />
+		<path d="M425 530 L775 275" />
+		<path d="M465 530 L805 300" />
+		<path d="M510 530 L835 330" />
+		<path d="M550 525 L865 355" />
+		<path d="M595 525 L895 390" />
+		<path d="M640 525 L925 425" />
+		<path d="M690 525 L955 460" />
+		<path d="M735 525 L980 500" />
+
+		<!-- Chimney -->
+		<path d="M825 345 L830 270 L900 275 L895 430" />
+		<path d="M830 270 Q865 260 900 275" />
+
+		<!-- Smoke -->
+		<path d="M865 260 Q840 225 875 195 Q910 165 885 135" />
+		<path d="M885 135 Q900 105 930 120 Q955 135 945 105" />
+		<path d="M945 105 Q960 75 995 95" />
+
+		<!-- Left window -->
+		<path d="M375 665 L525 650 L530 810 L380 815 Z" />
+		<path d="M452 660 L455 812" />
+		<path d="M378 740 L528 730" />
+
+		<!-- Right window -->
+		<path d="M750 660 L895 650 L900 805 L755 810 Z" />
+		<path d="M825 655 L827 808" />
+		<path d="M752 735 L898 730" />
+
+		<!-- Door -->
+		<path d="M570 1085 L565 825 Q625 805 690 825 L695 1085" />
+		<circle cx="650" cy="950" r="10" />
+		<path d="M580 850 L580 900" />
+		<path d="M590 850 L590 885" />
+
+		<!-- Tree -->
+		<path d="M145 1085 Q150 940 150 835" />
+		<path d="M190 1085 Q180 950 175 835" />
+		<path
+			d="M155 845 Q105 850 70 805 Q35 760 65 710 Q45 665 85 630 Q120 600 160 625 Q190 590 235 620 Q275 645 265 690 Q305 720 280 765 Q255 810 205 800" />
+		<path d="M80 735 L235 650" />
+		<path d="M70 775 L245 690" />
+		<path d="M95 800 L230 735" />
+
+		<!-- Flower -->
+		<path d="M1070 1085 Q1070 1000 1075 925" />
+		<path d="M1075 1000 Q1030 970 1005 940" />
+		<path d="M1075 1035 Q1120 1005 1150 975" />
+		<ellipse cx="1075" cy="875" rx="22" ry="55" />
+		<ellipse cx="1075" cy="875" rx="22" ry="55" transform="rotate(72 1075 875)" />
+		<ellipse cx="1075" cy="875" rx="22" ry="55" transform="rotate(144 1075 875)" />
+		<ellipse cx="1075" cy="875" rx="22" ry="55" transform="rotate(216 1075 875)" />
+		<ellipse cx="1075" cy="875" rx="22" ry="55" transform="rotate(288 1075 875)" />
+		<circle cx="1075" cy="875" r="15" fill="#efefef" />
+
+		<!-- Ground -->
+		<path d="M45 1090 Q180 1080 300 1090 Q430 1100 560 1088 Q700 1075 820 1090 Q1000 1105 1160 1090" />
+
+	</g>
+</svg>

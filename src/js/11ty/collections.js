@@ -45,9 +45,9 @@ export function getReviewPosts(collectionApi) {
 export function getAllPosts(collectionApi) {
   const blog = getBlogPosts(collectionApi);
   const journal = getJournalPosts(collectionApi);
-  const reviews = getGamesWithReviews(collectionApi);
+  const reviews = getReviewPosts(collectionApi);
 
-  return [...blog, ...journal, ...reviews].sort((a, b) => a.date < b.date);
+  return [...blog, ...journal, ...reviews].sort((a, b) => b.date - a.date);
 }
 
 /**
@@ -328,22 +328,17 @@ export function getFeaturedBlogPosts(collectionApi) {
  * @returns {Array<Object>} List of all games with their reviews
  */
 export function getGamesWithReviews(collectionApi) {
-  const allReviews = getReviewPosts(collectionApi);
   const allGames = getGamesByLastPlayed(collectionApi);
 
-  const gamesWithReviews = [];
+  const mappedGames = allGames
+    .filter((game) => !!game.review && !game.review.draft)
+    .map((game) => ({
+      ...game,
+      date: new Date(game.review.date),
+      category: "review",
+    }));
 
-  for (const game of allGames) {
-    const gameId = game.id;
-
-    const review = allReviews.find((review) => review.data.entityId === gameId);
-
-    if (review) {
-      gamesWithReviews.push({ ...game, review });
-    }
-  }
-
-  return gamesWithReviews;
+  return mappedGames;
 }
 
 /**

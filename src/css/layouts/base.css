@@ -24,7 +24,7 @@
   }
 
   ::selection {
-    background-color: var(--clr-selection-bg, var(--clr-accent-primary));
+    background-color: var(--clr-selection-bg, var(--clr-accent-secondary));
     color: var(--clr-selection, var(--clr-bg-main));
   }
 
@@ -70,12 +70,11 @@
 
   blockquote {
     font-family: var(--font-transitional);
-    font-size: 0.9rem;
     color: hsl(from var(--clr-text-main) h s l / 0.65);
-    margin: 1.5em 1em;
-    padding: 1em 2em;
+    padding-inline: 1em;
     font-style: italic;
     position: relative;
+    line-height: 2;
 
     &:before {
       content: "“";
@@ -95,6 +94,7 @@
   & hr {
     border: none;
     margin-block: var(--spacing-loose);
+    border-top: var(--border-size-1) solid currentColor;
 
     &.separator-1 {
       border-top: var(--border-size-2) solid var(--clr-text-faint-2);
@@ -167,7 +167,7 @@
 
   code,
   kbd {
-    font-family: var(--font-family-monospace-code);
+    font-family: var(--font-monospace-slab-serif);
   }
 
   img.pixelated,
@@ -177,34 +177,22 @@
 }
 
 @layer layout {
-  body:has(.main-grid) {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    width: 100%;
+    max-width: 40em;
+    box-sizing: border-box;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
     padding-inline: var(--spacing-main);
+  }
 
-    @media (--lg-n-above) {
-      position: relative;
-      display: grid;
-      grid-template-columns: var(--main-grid-template-columns);
-      grid-template-rows: repeat(4, min-content) auto repeat(4, min-content);
-      grid-gap: 0 2em;
-      padding-inline: 0;
-
-      & > #sitemast {
-        grid-column: main;
-      }
-
-      & > #sitenav {
-        grid-column: main;
-      }
-
-      & > main {
-        grid-column: main;
-        grid-row: 3 / -5;
-      }
-
-      & > footer {
-        grid-column: main;
-      }
-    }
+  .gscrollbar-fixer {
+    margin-right: auto !important;
   }
 
   h1,
@@ -221,7 +209,7 @@
   .heading-6,
   p,
   img,
-  summary,
+  details[open] summary,
   *:not(li) > ul,
   *:not(li) > ol,
   dl,
@@ -230,8 +218,20 @@
   video,
   iframe,
   pre,
-  dd {
+  dd,
+  figcaption,
+  blockquote {
     margin-block-end: var(--spacing-main);
+  }
+
+  p > img,
+  blockquote > p,
+  details:not([open]) p {
+    margin-block-end: 0;
+  }
+
+  img:has(+ figcaption) {
+    margin-block-end: var(--spacing-tight);
   }
 
   dt {
@@ -269,7 +269,7 @@
     margin-top: -0.1lh; /** Hacky solution for fitting the text spacing to the letters */
 
     @supports (text-box: trim-both) {
-      text-box: trim-both cap alphabetic;
+      /* text-box: trim-both cap alphabetic; */
       margin-top: 0;
     }
 
@@ -302,6 +302,11 @@
     font-family: var(--font-accent);
     font-size: var(--font-size-4);
     font-style: italic;
+  }
+
+  figcaption {
+    font-style: italic;
+    color: var(--clr-text-faint-1);
   }
 }
 
@@ -344,9 +349,8 @@
       margin-inline: auto;
     }
 
-    & img {
-      margin-inline: auto;
-      width: 10rem;
+    & svg {
+      max-width: 100%;
     }
   }
 
@@ -436,11 +440,40 @@
     color: var(--clr-text-faint-1);
 
     & hr {
-      margin-block-start: var(--spacing-tight);
+      margin-block: var(--spacing-tight) var(--spacing-main);
+    }
+
+    & p {
+      margin-block-end: var(--spacing-tight);
     }
 
     & ul {
       display: flex;
+      column-gap: var(--spacing-tight);
+      margin-bottom: 0;
+      width: fit-content;
+      margin-inline: auto;
+    }
+
+    & .social-icons {
+      column-gap: var(--spacing-tight);
+
+      & a {
+        color: var(--clr-text-faint-1);
+      }
+
+      & svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
+    }
+
+    & .webring a {
+      font-size: var(--font-size-1);
+      &::after {
+        content: "";
+        width: 0;
+      }
     }
   }
 

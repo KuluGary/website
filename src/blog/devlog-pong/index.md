@@ -4,9 +4,7 @@ title: >
 date: 2023-12-22
 lang: en
 tags: ["game-dev"]
-image: "/assets/images/blog/2023-12-24-devlog-pong/pong.png"
-imageAlt: Screenshot of the game Pong.
-description: In this Devlog I take on 'The 20 Games Challenge' to try to recreate the classic game - Pong. Gain insights into the coding challenge, design considerations, and the overall learning experience of crafting Pong within the constraints of the 20 Games Challenge.
+description: I wanted to take on 'The 20 Games Challenge' and I started off recreating the game Pong.
 ---
 
 Some time ago I discovered [The 20 Game Challenge](https://20_games_challenge.gitlab.io/how/), and since I wanted to learn to use Godot as my game dev engine of choice, I decided it good be a good idea to get familiar with it.

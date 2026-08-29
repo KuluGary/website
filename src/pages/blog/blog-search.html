@@ -5,10 +5,11 @@ permalink: /blog/search/
 layout: /base.html
 css:
   - /css/pages/search.css
+  - /pagefind/pagefind-component-ui.css
 ---
 
 {% block content %}
-	<main id="main-content" class="main-grid">
+	<main id="main-content" class="main-grid" data-pf-theme="dark">
 		<h2>Search posts</h2>
 
 		<p>A small search tool for finding blog articles. Type anything in, and see what surfaces from the archives.</p>
@@ -18,10 +19,12 @@ css:
 			If you're looking for something specific, try enabling it first.
 		</noscript>
 
-		<div id="search" class="search"></div>
+		<pagefind-modal-trigger></pagefind-modal-trigger>
+		<pagefind-modal></pagefind-modal>
+
 	</main>
 {% endblock content %}
 
 {% block script %}
-	<script src="/pagefind/pagefind-ui.js" defer onload="new PagefindUI({ element: '#search', showImages: false });"></script>
+	<script src="/pagefind/pagefind-component-ui.js" type="module"></script>
 {% endblock script %}

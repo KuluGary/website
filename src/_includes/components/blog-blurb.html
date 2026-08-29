@@ -1,0 +1,29 @@
+<article>
+	<h2>
+		<a class="unstyled" href="{{ post.url }}">{{ post.data.title }}</a>
+	</h2>
+
+	<p>{{ post.data.description }}</p>
+
+	<footer>
+		<p>Published <time datetime="{{post.date}}">{{post.date | formatDate("LLL dd yyyy")}}</time>
+		</p>
+
+		{% if mentions.length > 0 %}
+			<p>with {{mentions.length}} interactions</p>
+		{% endif %}
+
+		<p>in</p>
+
+		<ul class="unstyled">
+			<li>
+				<a href="/{{ post.data.category }}">#{{ post.data.category }}</a>
+			</li>
+			{% for tag in post.data.tags %}
+				<li>
+					<a href="/journal/tags/{{ tag }}">#{{ tag }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</footer>
+</article>
