@@ -3,6 +3,7 @@ title: >
   [Devlog] - The 20 Games Challenge: Pong
 date: 2023-12-22
 lang: en
+codify: true
 tags: ["game-dev"]
 description: I wanted to take on 'The 20 Games Challenge' and I started off recreating the game Pong.
 ---

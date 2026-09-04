@@ -3,6 +3,7 @@ title: My first steps with Storybook
 lang: en
 date: 2025-08-23
 tags: ["web-dev"]
+codify: true
 description: For a long time I wanted to deepen my knowledge of Storybook, and thanks to a series of needs at work I finally had the chance.
 ---
 

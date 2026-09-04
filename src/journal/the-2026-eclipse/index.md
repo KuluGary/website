@@ -2,6 +2,7 @@
 title: The 2026 eclipse
 date: 2026-08-13
 tags: ["personal"]
+lightbox: true
 description: We saw the solar eclipse from our balcony and we took some photos!
 ---
 {% set assets = "/journal/" + page.fileSlug + "/assets" %}

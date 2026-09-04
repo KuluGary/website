@@ -2,13 +2,10 @@
 layout: base.html
 css:
   - /css/pages/post.css
-  - /css/lib/prism-light.css
-  - /css/lib/prism-dark.css
-  - /css/lib/glightbox.min.css
 ---
 {% block content %}
-	{% set previousPost = collections.blog | getPreviousCollectionItem %}
-	{% set nextPost = collections.blog | getNextCollectionItem %}
+	{% set previousPost = collections.posts | getNextCollectionItem %}
+	{% set nextPost = collections.posts | getPreviousCollectionItem %}
 	{% set toc = content | toc | safe %}
 
 	{% if isTocAllowed %}
@@ -88,37 +85,4 @@ css:
 
 		</footer>
 	</main>
-{% endblock %}
-
-{% block script %}
-	<script src="/js/lib/glightbox.min.js"></script>
-
-	<script>
-		function addIntersectionObserverForToc() {
-			const tocLinks = document.querySelectorAll(".toc a");
-			const headings = [...tocLinks].map(link => document.querySelector(link.getAttribute("href")));
-			const observer = new IntersectionObserver(entries => {
-				entries.forEach(entry => {
-					if (!entry.isIntersecting) 
-						return;
-					
-					tocLinks.forEach(link => link.classList.remove("active"));
-					const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
-					if (active) 
-						active
-							.classList
-							.add("active");
-					}
-				);
-			}, {
-				rootMargin: "-10% 0px -30% 0px",
-				threshold: 0
-			});
-
-			headings.forEach(h => observer.observe(h));
-		}
-
-		addIntersectionObserverForToc()
-		const lightbox = GLightbox({});
-	</script>
 {% endblock %}

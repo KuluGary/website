@@ -3,7 +3,7 @@ title: Summer 2026
 date: 2026-07-03
 tags: ["personal"]
 description: What I've been up to these past few months.
-isTocAllowed: false
+lightbox: true
 draft: true
 ---
 
@@ -26,7 +26,7 @@ In the end I went for something more minimalistic. I used [Hyperblam's docs](htt
 
 ## Personal media tracker
 
-I've written a few articles about [my](http://localhost:8080/blog/i-populated-my-site-with-media/) [media tracker](http://localhost:8080/blog/how-i-built-my-media-tracker/) in the past, but since then I reworked it to become a CLI tool that is completely configurable and can synchronize specific sources. For example:
+I've written a few articles about my [media tracker](/blog/i-populated-my-site-with-media/) in the past, but since then I reworked it to become a CLI tool that is completely configurable and can synchronize specific sources. For example:
 
 `tracker sync youtube playlist-items --playlist "$YOUTUBE_PLAYLIST_ID"`
 

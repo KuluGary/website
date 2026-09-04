@@ -33,8 +33,14 @@ css:
 
 		<hr class="separator-1 separator-tight">
 
-		{% for post in posts %}
-			{% set category = post.data.category %}
+		<ul>
+			{% for post in posts %}
+				<li>
+					{{ post.date | formatDate("yyyy-MM-dd") }}:
+					<a href="{{ post.url or ('/reviews#' ~ (post.title | slugify)) }}" class="{{ "draft" if post.data.draft }}">
+						{{ post.title or post.data.title }}</a>
+				</li>
+				{# {% set category = post.data.category %}
 
 			{% if category == "blog" or category == "reviews" %}
 				{% include "components/blog-blurb.html" %}
@@ -42,9 +48,9 @@ css:
 
 			{% if category == "journal" %}
 				{% include "components/journal-blurb.html" %}
-			{% endif %}
-
-		{% endfor %}
+			{% endif %} #}
+			{% endfor %}
+		</ul>
 
 		<footer>
 			{% include "components/pagination.html" %}

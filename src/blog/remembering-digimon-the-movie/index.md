@@ -3,13 +3,14 @@ title: "Remembering Digimon: The Movie"
 date: 2026-08-25
 description: Reminiscing about an old movie from when I was a child.
 draft: true
+lightbox: true
 tags:
   - personal
 ---
 When we bought the VHS tape for this movie, I must have already seen bits and pieces of Digimon Adventure and Digimon Adventure 02 on TV. I remember putting it in the VHS player and being absolutely baffled when this showed up on screen…
 
 {% image category, page.fileSlug %}
-angela-anaconda.png | Angela Anaconda cosplaying as Taichi
+angela-anaconda.png
 {% endimage %}
 
 I thought “we must have bought a bootleg”! To this day, I don’t know what or who is Angela Anaconda… Anyway, right after that the actual Digimon: The Movie started playing, thankfully.
@@ -21,7 +22,7 @@ I’ll talk about them separately:
 ## Digimon Adventure
 
 {% image category, page.fileSlug %}
-digimon-adventure.png | Agumon is much more “monster-like” in this movie.
+digimon-adventure.png
 {% endimage %}
 
 This movie is set before the events of the first TV Show, and depicts the “first contact” of the protagonists with digital monsters.
@@ -35,7 +36,7 @@ In the end, this movie and the Digimon World game are what made me like more ani
 ## Digimon Adventure: Our War Game!
 
 {% image category, page.fileSlug %}
-our-war-game.png | The 2000s aesthetics are very strong in this movie.
+our-war-game.png
 {% endimage %}
 
 The other contender for my favourite short film of the three. The movie is set after the events of Digimon Adventure.
@@ -49,7 +50,7 @@ The final sequence of the fight, were the protagonist’s Digimon evolve into th
 ## Digimon Adventure 02: Hurricane Touchdown!!
 
 {% image category, page.fileSlug %}
-hurricane-touchdown.png | Wendigomon is such a creepy Digimon.
+hurricane-touchdown.png
 {% endimage %}
 
 This one is kinda weird. I was always less attached to the 02 cast of characters, and while the movie is as well made as the previous ones in term of animation, the story didn’t click as much with me. From what I know, it seems this short movie is the one that was most affected by the editing while converting it into a full-length film, so maybe that’s why.

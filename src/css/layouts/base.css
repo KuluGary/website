@@ -17,6 +17,10 @@
     scrollbar-color: var(--clr-text-main) var(--clr-bg-main);
   }
 
+  main * {
+    scrollbar-width: thin;
+  }
+
   p,
   li,
   dd {
@@ -121,8 +125,8 @@
       text-decoration-color: hsl(from var(--clr-accent-primary) h s l / 0.375);
       outline: none;
 
-      &[href^="http"]:not(.icon-link):after,
-      &[href^="https"]:not(.icon-link):after {
+      &[href^="http"]:not(.icon-link):not(.dead-link):after,
+      &[href^="https"]:not(.icon-link):not(.dead-link):after {
         content: url("/assets/images/icons/external-link-accent-hover.svg");
       }
     }
@@ -135,8 +139,8 @@
     text-underline-offset: 6px;
     line-height: var(--font-lineheight-2);
 
-    &[href^="http"]:not(.icon-link):after,
-    &[href^="https"]:not(.icon-link):after {
+    &[href^="http"]:not(.icon-link):not(.dead-link):after,
+    &[href^="https"]:not(.icon-link):not(.dead-link):after {
       content: url("/assets/images/icons/external-link.svg");
     }
 
@@ -147,8 +151,8 @@
     }
   }
 
-  a[href^="http"]:not(.icon-link):after,
-  a[href^="https"]:not(.icon-link):after {
+  a[href^="http"]:not(.icon-link):not(.dead-link):after,
+  a[href^="https"]:not(.icon-link):not(.dead-link):after {
     content: url("/assets/images/icons/external-link-accent.svg");
     display: inline-block;
     width: 12px;
@@ -209,6 +213,7 @@
   .heading-6,
   p,
   img,
+  picture,
   details[open] summary,
   *:not(li) > ul,
   *:not(li) > ol,
@@ -230,7 +235,9 @@
     margin-block-end: 0;
   }
 
-  img:has(+ figcaption) {
+  img:has(+ figcaption),
+  figure:has(picture + figcaption) img,
+  figure:has(a + figcaption) a img {
     margin-block-end: var(--spacing-tight);
   }
 
@@ -335,6 +342,7 @@
     line-height: 1.1;
     font-weight: var(--font-weight-7);
     margin-block: var(--spacing-loose) var(--spacing-tight);
+    height: fit-content;
 
     & > * {
       grid-area: 1 / 1;
@@ -527,5 +535,14 @@
     column-gap: var(--spacing-main);
     width: fit-content;
     margin-inline: auto;
+  }
+
+  .dead-link {
+    text-decoration: line-through;
+    opacity: 0.75;
+  }
+
+  .wayback-link {
+    text-decoration: none;
   }
 }

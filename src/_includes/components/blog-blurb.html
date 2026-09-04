@@ -1,5 +1,8 @@
 <article>
 	<h2>
+		{% if post.data.draft %}
+			<span>[Draft]</span>
+		{% endif %}
 		<a class="unstyled" href="{{ post.url }}">{{ post.data.title }}</a>
 	</h2>
 

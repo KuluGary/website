@@ -3,6 +3,7 @@ title: Leaflet for Fantasy Maps
 date: 2023-12-22
 lang: en
 tags: ["web-dev", "leaflet"]
+codify: true
 description: Fantasy maps are a cool way to polish your worldbuilding, and you can share them online with extra interactivity thanks the the LeafletJS library.
 ---
 

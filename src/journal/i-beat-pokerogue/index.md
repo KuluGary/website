@@ -9,14 +9,6 @@ I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a we
 
 ![The main menu of PokéRogue](/journal/{{page.fileSlug}}/assets/01.png)
 
-<aside style="--span:4">
-
-  [Pokérogue](https://pokerogue.net/) is a Pokémon fangame. It's a [roguelite](https://store.steampowered.com/tags/en/Roguelite/) browser game where you do Pokémon battles while progressing through different floors and catching wild Pokémon.
-
-  The appeal comes from unlocking new items and Pokémon you can start with in each run, and trying to either get to the end-game boss or as far as possible in a single run.
-
-</aside>
-
 I started the run with **Torchic**, **Magnemite** and **Magikarp**. Through the game, I ended up forming a team of **Blaziken**, **Magneton**, **Gyarados**, **Shiftry**, **Dusknoir** and **Seismitoad**. At one point, I got both the **Mega Bracelet**, and the **Blazikenite** and **Gyaradosite**.
 
 This was my set-up:

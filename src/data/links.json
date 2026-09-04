@@ -1,0 +1,1274 @@
+{
+  "https://casl.js.org/v6/en": {
+    "firstSeen": "2026-09-03T05:08:16.424Z",
+    "lastChecked": "2026-09-03T05:14:52.994Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260410160843/https://casl.js.org/v6/en/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://20_games_challenge.gitlab.io/how/": {
+    "firstSeen": "2026-09-03T05:08:16.429Z",
+    "lastChecked": "2026-09-03T05:14:53.671Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260823143630/https://20_games_challenge.gitlab.io/how/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://20_games_challenge.gitlab.io/challenge/": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:54.095Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260416201955/https://20_games_challenge.gitlab.io/challenge/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/The-20-Games-Challenge---01-Pong": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:54.664Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/The-20-Games-Challenge---02-Breakout": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:57.052Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://disqus.com/": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:58.334Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902000651/https://disqus.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.aleksandrhovhannisyan.com/blog/static-site-comments-github-issues/": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:58.483Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260301113849/https://www.aleksandrhovhannisyan.com/blog/static-site-comments-github-issues/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Webmention": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:58.553Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260830063101/https://en.wikipedia.org/wiki/Webmention",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Federation_(information_technology)": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:58.612Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260821023149/https://en.wikipedia.org/wiki/Federation_%28information_technology%29",
+    "error": null,
+    "result": "ok"
+  },
+  "https://webmention.io": {
+    "firstSeen": "2026-09-03T05:08:16.430Z",
+    "lastChecked": "2026-09-03T05:14:59.318Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829104233/https://webmention.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://brid.gy/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:14:59.546Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260827000510/https://brid.gy/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://bsky.app/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:00.415Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902214615/https://bsky.app/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.11ty.dev/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:00.620Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829152916/https://www.11ty.dev/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.11ty.dev/docs/data-global/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:00.716Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260826105757/https://www.11ty.dev/docs/data-global/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://rknight.me/blog/adding-webmentions-to-your-site/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:00.864Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260322035401/https://rknight.me/blog/adding-webmentions-to-your-site/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://jay.gooby.org/2021/01/15/getting-webmentions-and-bridgy-working": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:01.498Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260613211644/https://jay.gooby.org/2021/01/15/getting-webmentions-and-bridgy-working",
+    "error": null,
+    "result": "ok"
+  },
+  "https://bobmonsour.com/blog/adding-webmentions-to-my-site/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:01.615Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20251029111755/https://bobmonsour.com/blog/adding-webmentions-to-my-site/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://indiewebify.me/#send-webmentions": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:02.547Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260826224200/https://indiewebify.me/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://janmonschke.com/adding-webmentions-to-your-static-blog/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:02.669Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260825143257/https://janmonschke.com/adding-webmentions-to-your-static-blog/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://sia.codes/posts/webmentions-eleventy-in-depth/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:02.861Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260820025957/https://sia.codes/posts/webmentions-eleventy-in-depth/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://web.archive.org/web/20090618132232/http://www.fotolog.com/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:04.976Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20241117011515/https://web.archive.org/web/20090618132232/http://www.fotolog.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://32bit.cafe/linktous/": {
+    "firstSeen": "2026-09-03T05:08:16.431Z",
+    "lastChecked": "2026-09-03T05:15:05.848Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260711024538/https://32bit.cafe/linktous/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://neocities.org/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:06.057Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902223501/https://neocities.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://web.archive.org/web/20240522101420/https://kulugary.neocities.org/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:06.885Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/sites.json#L3": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:08.233Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://photogabble.co.uk/books/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:08.782Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260610222032/https://photogabble.co.uk/books/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.coryd.dev/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:09.720Z",
+    "status": 404,
+    "wayback": "https://web.archive.org/web/20260825210324/https://www.coryd.dev/",
+    "error": null,
+    "result": "dead"
+  },
+  "https://howlongtobeat.com/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:10.100Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902063157/https://howlongtobeat.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://trakt.tv/dashboard": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:12.222Z",
+    "status": null,
+    "wayback": null,
+    "error": "fetch failed",
+    "result": "unknown"
+  },
+  "https://mangadex.org/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:13.162Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260824144612/https://mangadex.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:14.066Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902230933/https://www.youtube.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://open.spotify.com/": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:14.695Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260903013132/https://open.spotify.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://howlongtobeat.com/forum/thread/807/1": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:15.590Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260405184119/https://howlongtobeat.com/forum/thread/807/1",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.npmjs.com/package/puppeteer": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:16.024Z",
+    "status": 403,
+    "wayback": "https://web.archive.org/web/20260428051950/https://www.npmjs.com/package/puppeteer",
+    "error": null,
+    "result": "blocked"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/games.js#L88": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:17.076Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/games.js#L29": {
+    "firstSeen": "2026-09-03T05:08:16.432Z",
+    "lastChecked": "2026-09-03T05:15:18.322Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/games.js": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:19.233Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/shows.js": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:20.417Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://developers.google.com/youtube/v3?hl=es-419": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:21.407Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260509144835/https://developers.google.com/youtube/v3?hl=es-419",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/videos.js": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:21.959Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/manga.js": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:23.018Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/f78d2af512e84a37054dc0256ac767590bcec057/src/_data/music.js": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:23.834Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:25.238Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://iframe.chat": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:25.909Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260830081131/https://iframe.chat/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/website/blob/master/src/js/11ty/generic.js#L250": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:26.897Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://kevinyank.com/posts/help-storybook-is-eating-all-our-tests/": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:27.440Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260608025801/https://kevinyank.com/posts/help-storybook-is-eating-all-our-tests/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:27.787Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902205643/https://en.wikipedia.org/wiki/The_Lord_of_the_Rings",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/The_Witcher": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:29.022Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260826170655/https://en.wikipedia.org/wiki/The_Witcher",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.witchernetflix.com/es/map/captured-by-nilfgaard": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:29.621Z",
+    "status": null,
+    "wayback": "https://web.archive.org/web/20220110153327/https://www.witchernetflix.com/es/map/captured-by-nilfgaard",
+    "error": "fetch failed",
+    "result": "unknown"
+  },
+  "https://mapgenie.io/": {
+    "firstSeen": "2026-09-03T05:08:16.433Z",
+    "lastChecked": "2026-09-03T05:15:30.384Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260830203832/https://mapgenie.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:31.166Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902232301/https://leafletjs.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/examples/crs-simple/crs-simple.html": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:31.716Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260825122446/https://leafletjs.com/examples/crs-simple/crs-simple.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://azgaar.github.io/Fantasy-Map-Generator/": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:32.101Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829112113/https://azgaar.github.io/Fantasy-Map-Generator/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.reddit.com/r/FantasyMapGenerator/": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:33.616Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260815092513/https://www.reddit.com/r/FantasyMapGenerator/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://watabou.github.io/": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:34.615Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260807105925/https://watabou.github.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/examples/quick-start/": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:34.953Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829232648/https://leafletjs.com/examples/quick-start",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/reference.html#imageoverlay": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:35.274Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829234533/https://leafletjs.com/reference.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Raster_graphics": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:35.617Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829062843/https://en.wikipedia.org/wiki/Raster_graphics",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/GeoJSON": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:36.043Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260830020126/https://en.wikipedia.org/wiki/GeoJSON",
+    "error": null,
+    "result": "ok"
+  },
+  "https://mapgenie.io/skyrim/maps/skyrim": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:36.896Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260811205906/https://mapgenie.io/skyrim/maps/skyrim",
+    "error": null,
+    "result": "ok"
+  },
+  "https://game-icons.net/tags/building.html": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:37.430Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260813230315/https://game-icons.net/tags/building.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:38.034Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250308111952/https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/reference.html#divicon": {
+    "firstSeen": "2026-09-03T05:08:16.434Z",
+    "lastChecked": "2026-09-03T05:15:38.525Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829234533/https://leafletjs.com/reference.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/iatkin/leaflet-svgicon": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:39.670Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260131120317/https://github.com/iatkin/leaflet-svgicon",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/examples.html": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:40.993Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260825155912/https://leafletjs.com/examples.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://leafletjs.com/reference.html": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:41.035Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829234533/https://leafletjs.com/reference.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://watabou.itch.io/": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:41.308Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260820180634/https://watabou.itch.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=4066MndcyCk": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:42.299Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260224214306/https://www.youtube.com/watch?v=4066MndcyCk",
+    "error": null,
+    "result": "ok"
+  },
+  "https://thecodingtrain.com/": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:43.295Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829042104/https://thecodingtrain.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Worley_noise": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:43.648Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260721152816/https://en.wikipedia.org/wiki/Worley_noise",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Gradient_noise": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:46.242Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260823153941/https://en.wikipedia.org/wiki/Gradient_noise",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Distance": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:48.067Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902042955/https://en.wikipedia.org/wiki/Distance",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.rhythmiccanvas.com/research/papers/worley.pdf": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:48.771Z",
+    "status": null,
+    "wayback": "https://web.archive.org/web/20240116020032/http://www.rhythmiccanvas.com/research/papers/worley.pdf",
+    "error": "fetch failed",
+    "result": "unknown"
+  },
+  "https://en.wikipedia.org/wiki/Hilbert_curve": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:49.334Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260831135830/https://en.wikipedia.org/wiki/Hilbert_curve",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Geometric_continuity": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:54.123Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260831135840/https://en.wikipedia.org/wiki/Geometric_continuity",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Fractal_curve": {
+    "firstSeen": "2026-09-03T05:08:16.435Z",
+    "lastChecked": "2026-09-03T05:15:54.511Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260831025702/https://en.wikipedia.org/wiki/Fractal_curve",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Space-filling_curve": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:15:54.909Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260825062559/https://en.wikipedia.org/wiki/Space-filling_curve",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=dSK-MW-zuAc": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:15:56.053Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260808055620/https://www.youtube.com/watch?v=dSK-MW-zuAc",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/marcin-chwedczuk/hilbert_curve": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:15:57.042Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20230101011747/https://github.com/marcin-chwedczuk/hilbert_curve",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/marcin-chwedczuk": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:15:57.988Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20251128065814/https://github.com/marcin-chwedczuk",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=3s7h2MHQtxc&pp=0gcJCR0AztywvtLA": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:15:59.076Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/@3blue1brown": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:00.507Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260831133544/https://www.youtube.com/@3blue1brown",
+    "error": null,
+    "result": "ok"
+  },
+  "https://p5js.org/": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:00.584Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902185702/https://p5js.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=p7IGZTjC008": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:01.573Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260803133050/https://www.youtube.com/watch?v=p7IGZTjC008",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Paper_marbling": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:02.894Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260817153259/https://en.wikipedia.org/wiki/Paper_marbling",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Aqueous_solution": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:03.767Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260806050543/https://en.wikipedia.org/wiki/Aqueous_solution",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Marble": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:04.169Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829023011/https://en.wikipedia.org/wiki/Marble",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Stone": {
+    "firstSeen": "2026-09-03T05:08:16.436Z",
+    "lastChecked": "2026-09-03T05:16:04.940Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260815141216/https://en.wikipedia.org/wiki/Stone",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/@TheCodingTrain": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:06.997Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260827100344/https://www.youtube.com/@TheCodingTrain",
+    "error": null,
+    "result": "ok"
+  },
+  "https://blog.amandaghassaei.com/2022/10/25/digital-marbling/": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:08.068Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20251208043042/https://blog.amandaghassaei.com/2022/10/25/digital-marbling/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://amandaghassaei.com/": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:09.069Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260808222148/https://amandaghassaei.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://people.csail.mit.edu/jaffer/Marbling/": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:09.551Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260710051445/https://people.csail.mit.edu/jaffer/Marbling/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://people.csail.mit.edu/jaffer/": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:09.893Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260826084943/https://people.csail.mit.edu/jaffer/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=rI_y2GAlQFM": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:10.567Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250902114019/https://www.youtube.com/watch?v=rI_y2GAlQFM",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Model_synthesis": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:10.630Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260711230902/https://en.wikipedia.org/wiki/Model_synthesis",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Constraint_solving": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:11.121Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260724211535/https://en.wikipedia.org/wiki/Constraint_solving",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Algorithm": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:11.181Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829082444/https://en.wikipedia.org/wiki/Algorithm",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Procedural_generation": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:11.242Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829185245/https://en.wikipedia.org/wiki/Procedural_generation",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Video_game_industry": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:11.303Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829215439/https://en.wikipedia.org/wiki/Video_game_industry",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/mxgmn/WaveFunctionCollapse": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:12.676Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829000025/https://github.com/mxgmn/WaveFunctionCollapse",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/mxgmn": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:13.160Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260816105723/https://github.com/mxgmn",
+    "error": null,
+    "result": "ok"
+  },
+  "https://paulmerrell.org/model-synthesis/": {
+    "firstSeen": "2026-09-03T05:08:16.437Z",
+    "lastChecked": "2026-09-03T05:16:15.442Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260524225523/https://paulmerrell.org/model-synthesis/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://paulmerrell.org/": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:16.141Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260524225539/https://paulmerrell.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://discourse.processing.org/t/wave-collapse-function-algorithm-in-processing/12983": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:16.628Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250910132404/https://discourse.processing.org/t/wave-collapse-function-algorithm-in-processing/12983",
+    "error": null,
+    "result": "ok"
+  },
+  "https://discourse.processing.org/": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:17.080Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260727203418/https://discourse.processing.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=0ZONMNUKTfU": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:17.795Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260502215955/https://www.youtube.com/watch?v=0ZONMNUKTfU",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Marching_squares": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:17.855Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260808051033/https://en.wikipedia.org/wiki/Marching_squares",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Contour_lines": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:17.914Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260318200843/https://en.wikipedia.org/wiki/Contour_lines",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Scalar_field": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:17.974Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260822064541/https://en.wikipedia.org/wiki/Scalar_field",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Array_data_structure": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:18.033Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902021239/https://en.wikipedia.org/wiki/Array_data_structure",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Marching_cubes": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:18.091Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260726010549/https://en.wikipedia.org/wiki/Marching_cubes",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.minecraft.net": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:18.284Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260721143519/https://minecraft.net/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://terraria.org": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:18.581Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260822213843/https://terraria.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=M3iI2l0ltbE": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:19.244Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260604123533/https://www.youtube.com/watch?v=M3iI2l0ltbE",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/joshforisha/open-simplex-noise-js": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:20.151Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260228180906/https://github.com/joshforisha/open-simplex-noise-js",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/joshforisha": {
+    "firstSeen": "2026-09-03T05:08:16.438Z",
+    "lastChecked": "2026-09-03T05:16:20.583Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260809213819/https://github.com/joshforisha",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Daniel_Shiffman": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:20.677Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260216231827/https://en.wikipedia.org/wiki/Daniel_Shiffman",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/c/TheCodingTrain/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:21.477Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260728195752/https://www.youtube.com/c/TheCodingTrain",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Processing": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:21.536Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829032142/https://en.wikipedia.org/wiki/Processing",
+    "error": null,
+    "result": "ok"
+  },
+  "https://p5js.org/reference/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:21.609Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902185702/https://p5js.org/reference/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://editor.p5js.org/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:21.833Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260827132919/https://editor.p5js.org/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.npmjs.com/package/p5": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:22.934Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250801053026/https://www.npmjs.com/package/p5",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian.md/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:23.002Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260901124809/https://obsidian.md/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.markdownguide.org/tools/obsidian/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:23.287Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260810172035/https://www.markdownguide.org/tools/obsidian/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian.md/plugins": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:24.441Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260509192902/https://obsidian.md/plugins",
+    "error": null,
+    "result": "ok"
+  },
+  "https://help.obsidian.md/Extending+Obsidian/CSS+snippets": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:25.463Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260310065251/https://help.obsidian.md/Extending+Obsidian/CSS+snippets",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian.md/publish": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:25.516Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260816140640/https://obsidian.md/publish",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian-html.github.io/": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:25.561Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260218002026/https://obsidian-html.github.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian-html.github.io/instructions/tutorials/tutorial-installation-on-windows.html": {
+    "firstSeen": "2026-09-03T05:08:16.439Z",
+    "lastChecked": "2026-09-03T05:16:25.606Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20241125135514/https://obsidian-html.github.io/instructions/tutorials/tutorial-installation-on-windows.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian-html.github.io/configurations/modules/filter-on-metadata.html": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:25.660Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20241127004324/https://obsidian-html.github.io/configurations/modules/filter-on-metadata.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://obsidian-html.github.io/configurations/modes/filtering-notes.html": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:25.706Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260218002043/https://obsidian-html.github.io/configurations/modes/filtering-notes.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.netlify.com/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:25.844Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902174520/https://www.netlify.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://docs.netlify.com/get-started/#deploy-a-project-to-netlify": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:26.232Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250701213554/https://docs.netlify.com/get-started/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/obsidian-html/obsidian-html/issues/759": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:26.875Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20241125153025/https://github.com/obsidian-html/obsidian-html/issues/759",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/mozilla/nunjucks/issues/416": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.097Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20200918111022/https://github.com/mozilla/nunjucks/issues/416",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/mozilla/nunjucks/issues/416#issuecomment-206335032": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.205Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20200918111022/https://github.com/mozilla/nunjucks/issues/416",
+    "error": null,
+    "result": "ok"
+  },
+  "https://mozilla.github.io/nunjucks/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.380Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260827015547/https://mozilla.github.io/nunjucks/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://hyperblam.how/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.424Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260809144900/https://hyperblam.how/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://toby.fangamer.com/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.524Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260827041236/https://toby.fangamer.com/",
+    "error": null,
+    "result": "ok"
+  },
+  "http://localhost:8080/blog/i-populated-my-site-with-media/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:28.527Z",
+    "status": null,
+    "wayback": null,
+    "error": "fetch failed",
+    "result": "unknown"
+  },
+  "http://localhost:8080/blog/how-i-built-my-media-tracker/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:29.037Z",
+    "status": null,
+    "wayback": null,
+    "error": "fetch failed",
+    "result": "unknown"
+  },
+  "https://neocities.org/cli": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:29.413Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829142012/https://neocities.org/cli",
+    "error": null,
+    "result": "ok"
+  },
+  "https://pokerogue.net/": {
+    "firstSeen": "2026-09-03T05:08:16.440Z",
+    "lastChecked": "2026-09-03T05:16:29.467Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260831163653/https://pokerogue.net/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://store.steampowered.com/tags/en/Roguelite/": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:30.008Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260731004644/https://store.steampowered.com/tags/en/Roguelite/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://store.steampowered.com/app/1055540/A_Short_Hike/": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:30.429Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260811030213/https://store.steampowered.com/app/1055540/A_Short_Hike/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Digimon_World": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:30.490Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260730074304/https://en.wikipedia.org/wiki/Digimon_World",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=Mg_V27arKdg&pp=ygUSYSBzaG9ydCBoaWtlIGdvZG90": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:31.246Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=WBoApONC7bM&pp=ygUSM2QgcGl4ZWwgYXJ0IGdvZG90": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:32.173Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=qRAeiwTA7qs&pp=ygUSM2QgcGl4ZWwgYXJ0IGdvZG90": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:33.210Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://docs.godotengine.org/en/stable/tutorials/3d/resolution_scaling.html": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:33.827Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829065409/https://docs.godotengine.org/en/stable/tutorials/3d/resolution_scaling.html",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=1DRy5An_6DU": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:34.530Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260222002742/https://www.youtube.com/watch?v=1DRy5An_6DU",
+    "error": null,
+    "result": "ok"
+  },
+  "https://store.steampowered.com/app/113200/The_Binding_of_Isaac/": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:34.869Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260829232519/https://store.steampowered.com/app/113200/The_Binding_of_Isaac/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.boristhebrave.com/2020/09/12/dungeon-generation-in-binding-of-isaac/": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:37.249Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260728191046/https://www.boristhebrave.com/2020/09/12/dungeon-generation-in-binding-of-isaac/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://kulugary.itch.io/procedural-dungeon-generator": {
+    "firstSeen": "2026-09-03T05:08:16.441Z",
+    "lastChecked": "2026-09-03T05:16:37.608Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20251216133456/https://kulugary.itch.io/procedural-dungeon-generator",
+    "error": null,
+    "result": "ok"
+  },
+  "https://kulugary.itch.io/": {
+    "firstSeen": "2026-09-03T05:08:16.442Z",
+    "lastChecked": "2026-09-03T05:16:37.869Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250826085651/https://kulugary.itch.io/",
+    "error": null,
+    "result": "ok"
+  },
+  "https://github.com/KuluGary/procedural-dungeon-generator": {
+    "firstSeen": "2026-09-03T05:08:16.442Z",
+    "lastChecked": "2026-09-03T05:16:38.394Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260128124656/https://github.com/KuluGary/procedural-dungeon-generator",
+    "error": null,
+    "result": "ok"
+  },
+  "https://www.youtube.com/watch?v=axMNUTmFEDA&list=PL2-ArCpIQtjELkyLKec8BaVVCeunuHSK9": {
+    "firstSeen": "2026-09-03T05:08:16.442Z",
+    "lastChecked": "2026-09-03T05:16:39.050Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20250221093342/https://www.youtube.com/watch?v=axMNUTmFEDA&list=PL2-ArCpIQtjELkyLKec8BaVVCeunuHSK9",
+    "error": null,
+    "result": "ok"
+  },
+  "https://howlongtobeat.com/user/KuluGary": {
+    "firstSeen": "2026-09-03T05:08:16.442Z",
+    "lastChecked": "2026-09-03T05:16:39.593Z",
+    "status": 200,
+    "wayback": null,
+    "error": null,
+    "result": "ok"
+  },
+  "https://pptr.dev/": {
+    "firstSeen": "2026-09-03T05:08:16.442Z",
+    "lastChecked": "2026-09-03T05:16:40.136Z",
+    "status": 200,
+    "wayback": "https://web.archive.org/web/20260902213642/https://pptr.dev/",
+    "error": null,
+    "result": "ok"
+  }
+}

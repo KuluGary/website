@@ -3,6 +3,7 @@ title: I populated my site with media
 lang: en
 date: 2025-05-29
 tags: ["web-dev", "changelog"]
+codify: true
 description: Previously, my site was only populated with content I hand crafted. Now, I've started pulling from some services to populate it with my favourite media.
 ---
 

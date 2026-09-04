@@ -3,6 +3,7 @@ title: I added webmentions to my site
 lang: en
 date: 2025-06-02
 tags: ["web-dev", "changelog"]
+codify: true
 description: After looking for ways to add interactivity with my blog posts, I decided to add Webmentions to my site.
 ---
 
@@ -19,7 +20,7 @@ To fulfill all these requirements, I started to look around the web. Enter [Webm
 
 ## Webmentions
 
-Paraphrasing W3C, webmentions are a way for a website to be notified whenever another site links to it –hence, _web mentions_. In this way, instead of having a centralized service to keep track of interactions, it allows a [federated](<https://en.wikipedia.org/wiki/Federation_(information_technology)>) approach in which instead of forcing the user to interact with my platform, I simply get notified whenever they do it in any external site.
+Paraphrasing W3C, webmentions are a way for a website to be notified whenever another site links to it –hence, _web mentions_. In this way, instead of having a centralized service to keep track of interactions, it allows a [federated](https://en.wikipedia.org/wiki/Federation_(information_technology)) approach in which instead of forcing the user to interact with my platform, I simply get notified whenever they do it in any external site.
 
 ### Webmention io
 

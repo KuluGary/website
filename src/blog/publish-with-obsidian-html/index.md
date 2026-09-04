@@ -2,6 +2,7 @@
 title: Publish your notes with ObsidianHTML
 date: 2024-02-11
 lang: en
+codify: true
 tags: ["web-dev"]
 description: Thanks to the ObsidianHTML package, you can convert your regular Obsidian vaults into fully fledged websites.
 ---

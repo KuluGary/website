@@ -7,6 +7,10 @@ iframe {
   max-width: 100%;
 }
 
+img {
+  height: auto;
+}
+
 article img,
 article video,
 article iframe {
@@ -46,7 +50,25 @@ table {
   max-width: 100%;
 }
 
-figure figcaption {
+figure {
+  margin: 1.5rem 0;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+/* figure figcaption {
   text-align: center;
 }
 
@@ -63,7 +85,7 @@ figure.scale-half img {
 
 figure.pixelated {
   image-rendering: pixelated;
-}
+} */
 
 #content-nav a {
   color: inherit;
@@ -480,5 +502,14 @@ mark {
       font-style: italic;
       font-weight: var(--font-weight-1);
     }
+  }
+
+  *.caption-small figcaption {
+    font-size: 0.9rem;
+  }
+
+  a.draft {
+    color: var(--clr-text-faint-1);
+    text-decoration-color: var(--clr-text-faint-1);
   }
 }

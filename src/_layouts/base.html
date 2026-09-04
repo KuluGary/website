@@ -10,11 +10,30 @@ css:
 	<head>
 		{% include "components/metadata.html" %}
 
+		<!-- Stylesheets -->
 		{% for href in css %}
 			<link rel="stylesheet" href="{{ href | url }}">
 		{% endfor %}
 
-		{% block script %}{% endblock %}
+		{% if lightbox %}
+			<link rel="stylesheet" href="/css/lib/glightbox.min.css">
+		{% endif %}
+
+		{% if codify %}
+			<link rel="stylesheet" href="/css/lib/prism-dark.css" media="(prefers-color-scheme: dark)">
+			<link rel="stylesheet" href="/css/lib/prism-light.css" media="(prefers-color-scheme: light)">
+		{% endif %}
+
+		{% if lightbox %}
+			<script src="/js/lib/glightbox.min.js"></script>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					const lightbox = GLightbox({});
+				});
+			</script>
+		{% endif %}
+
 	</head>
 	<body>
 		{% include "components/skip-links.html" %}

@@ -2,6 +2,7 @@
 title: Recursive Loops in Nunjucks
 date: 2024-10-20
 tags: ["web-dev", "nunjucks"]
+codify: true
 description: Learn to recursively generate HTML markup with Nunjucks using a static JSON file.
 ---
 

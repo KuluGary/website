@@ -5,6 +5,7 @@ import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
 import timeToRead from "eleventy-plugin-time-to-read";
 import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import pluginTOC from "eleventy-plugin-toc";
 import {
   gameAmountByStatus,
@@ -58,6 +59,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
   eleventyConfig.addWatchTarget("./src/journal/**/*.md");
   eleventyConfig.addWatchTarget("./src/art/**/*.md");
+  eleventyConfig.addWatchTarget("./src/data");
 
   /** Filters */
   eleventyConfig.addFilter("formatDate", formatDate);
@@ -84,14 +86,20 @@ export default async function (eleventyConfig) {
   eleventyConfig.setLibrary("md", mdIt);
 
   /** Shortcodes */
-  eleventyConfig.addPairedNunjucksShortcode("gallery", generateGallery);
-  eleventyConfig.addPairedNunjucksShortcode("image", generateImage);
+  eleventyConfig.addPairedNunjucksAsyncShortcode("gallery", generateGallery);
+  eleventyConfig.addPairedNunjucksAsyncShortcode("image", generateImage);
 
   /* Plugins */
   eleventyConfig.addPlugin(pluginTOC);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(timeToRead);
   eleventyConfig.addPlugin(PostCSSPlugin);
+  // eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+  //   formats: ["avif", "webp", "jpeg", "gif"],
+  //   sharpOptions: {
+  //     animated: true,
+  //   },
+  // });
   eleventyConfig.addPlugin(postGraph, {
     limit: 1,
     sort: "desc",

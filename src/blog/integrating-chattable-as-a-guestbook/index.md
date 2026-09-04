@@ -4,6 +4,7 @@ description: "I wanted to add a /guestbook page into this site for a while and f
 lang: en
 date: 2025-09-16
 tags: ["web-dev", "changelog"]
+codify: true
 ---
 
 It's pretty common in the indie web to have a [/guestbook](/guestbook), a little corner where visitors can leave a message for others to read. I'd been meaning to add one for a while, but I wanted something that felt native to the site: no external service pages, and styling that wouldn't clash with the rest of the site.
