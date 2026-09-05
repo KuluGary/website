@@ -409,9 +409,15 @@ mark {
       grid-template-columns: var(--content-grid);
     }
 
-    .post-footer .footer-data {
+    .post-footer .footer-data,
+    .post-footer .translations-nav {
       grid-column: content;
       text-align: right;
+    }
+
+    .post-footer .translations-nav * {
+      display: inline;
+      width: fit-content;
     }
 
     .post-footer .post-nav > ul {

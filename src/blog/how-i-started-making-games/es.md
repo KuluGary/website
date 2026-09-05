@@ -1,6 +1,6 @@
 ---
-title: How I started making games
-description: The story of how I first discovered game-making, and my first steps into the game-dev world.
+title: Cómo empece a hacer videojuegos
+description: La historia de cómo descubrí la creación de videojuegos, y mis primeros pasos en su desarrollo.
 date: 2026-08-22
 lightbox: true
 draft: true
@@ -8,17 +8,18 @@ tags:
   - personal
   - game-dev
 ---
-During the summer break of one of my last years of middle-school, the phone rang. One of my friends wanted to get together and make a videogame.
 
-At that point in time I already loved playing videogames, but I didn’t know you could *make them yourself*. I excitedly said yes and my group of friends and I started going to the library with my laptop and got to design a game. “Design a game” may be an exaggeration… at first, we just drew characters and levels in a notebook, and after that we spent hours deciding what game engine to use.
+Durante las vacaciones de verano de uno de mis últimos años de primaria sonó el teléfono. Uno de mis amigos quería que nos juntáramos e hiciéramos un videojuego.
 
-I remember I had a Dragon Ball book, and in that book there was a very small passage about how people were making Dragon Ball games using the MUGEN engine.
+A esas alturas ya me encantaban los juegos, pero no sabía que *se podían hacer por uno mismo*. Dije que sí con entusiasmo y con mi grupo de amigos comenzamos a ir a la biblioteca con mi portátil y nos pusimos a diseñar un juego. “Diseñar un juego” puede que sea una exageración… de primeras, nos pusimos a dibujar personajes y niveles en una libreta, y después pasamos horas decidiendo que motor de juegos usar.
+
+Recordé que tenía un libro de Dragon Ball, y en ese libro había un pasaje pequeñito sobre cómo había gente usando el motor MUGEN para hacer juegos de Dragon Ball.
 
 {% image category, postSlug %}
-db.jpg | | max-w-half
+db.jpg
 {% endimage %}
 
-> […] With the “M.U.G.E.N.” program (a 2D fighting game “maker”, which allows importing fighters and giving them any attributes we want), fans have created a fighting game based on “Dragon Ball AF”, where you can select Super Saiyan 5 Goku or Super Saiyan 4 Gohan […].
+> […] Con el programa “M.U.G.E.N.” (un “creador” de juegos de lucha en 2D, que permite importar nuestros propios luchadores y dotarlos de los atributos que queramos) los fans han creado un juego de lucha basado en “Dragon Ball AF”, donde se puede seleccionar a Goku súper saiyano 5 o Gohan Súper Saiyano 4 [...].
 
 My friends and I downloaded it and “made some games” (in reality, we just downloaded the engine and some characters people already created…). We had fun, but using ready-made assets didn’t feel like “making a game”. After that I vividly remember we went to the mall, and downloaded Blender on McDonald’s wi-fi but the UI was so confusing we couldn’t even delete the default cube.
 

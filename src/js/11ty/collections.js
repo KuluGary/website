@@ -1,13 +1,35 @@
 import Eleventy from "@11ty/eleventy";
 import { getFromCache, setIntoCache } from "../cache.js";
 
+const BLOG_POST_GLOB = "src/blog/**/*.md";
+const DEFAULT_LANG = "en";
+
+function getPostLang(post) {
+  if (post.data.lang) return post.data.lang;
+
+  const inputPath = (post.inputPath || "").replace(/\\/g, "/");
+  const fileName = inputPath.split("/").at(-1) || "";
+  const fileSlug = fileName.replace(/\.[^.]+$/, "");
+
+  return fileSlug === "index" ? DEFAULT_LANG : fileSlug;
+}
+
 /**
- * Returns a collection of all the blog posts inside md/blog
+ * Returns all language variants of blog posts inside src/blog.
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of blog posts
+ */
+export function getAllBlogPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob(BLOG_POST_GLOB);
+}
+
+/**
+ * Returns the default-language blog posts inside src/blog.
  * @param {Eleventy.collection} collectionApi
  * @returns a list of blog posts
  */
 export function getBlogPosts(collectionApi) {
-  return collectionApi.getFilteredByGlob("src/blog/**/index.md");
+  return getAllBlogPosts(collectionApi).filter((post) => getPostLang(post) === DEFAULT_LANG);
 }
 
 /**

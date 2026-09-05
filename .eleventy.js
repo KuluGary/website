@@ -9,6 +9,7 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import pluginTOC from "eleventy-plugin-toc";
 import {
   gameAmountByStatus,
+  getAllBlogPosts,
   getAllPosts,
   getArtPosts,
   getBlogPosts,
@@ -25,11 +26,13 @@ import {
   getPostsByYear,
 } from "./src/js/11ty/collections.js";
 import {
+  filterByLang,
   filterOwnWebmentions,
   formatDate,
   formatDuration,
   formatWithOrdinal,
   getSimilarPosts,
+  getTranslations,
   getWebmentionsByUrl,
   limit,
   pad,
@@ -65,6 +68,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("formatDate", formatDate);
   eleventyConfig.addFilter("formatWithOrdinal", formatWithOrdinal);
   eleventyConfig.addFilter("formatDuration", formatDuration);
+  eleventyConfig.addFilter("filterByLang", filterByLang);
   eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("sortByDate", sortByDate);
   eleventyConfig.addFilter("slice", slice);
@@ -72,6 +76,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("pad", pad);
   eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
+  eleventyConfig.addFilter("getTranslations", getTranslations);
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
@@ -122,6 +127,7 @@ export default async function (eleventyConfig) {
 
   /** Collections */
   eleventyConfig.addCollection("blog", getBlogPosts);
+  eleventyConfig.addCollection("blogAll", getAllBlogPosts);
   eleventyConfig.addCollection("journal", getJournalPosts);
   eleventyConfig.addCollection("art", getArtPosts);
   eleventyConfig.addCollection("posts", getAllPosts);
@@ -153,3 +159,7 @@ export default async function (eleventyConfig) {
     dataTemplateEngine: "njk",
   };
 }
+
+
+
+

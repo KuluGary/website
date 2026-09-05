@@ -17,7 +17,7 @@ Even though it's been hard, I've tried to keep active and work on stuff behind t
 
 I've had the itch to redesign this site for a while now. I think my first iterations go back to late last year, but until now I had not landed on an idea that I was content with.
 
-{% gallery category, page.fileSlug %}
+{% gallery category, postSlug %}
 screenshot-1.png | First iteration of this website
 screenshot-2.png | Second iteration of this website
 {% endgallery %}

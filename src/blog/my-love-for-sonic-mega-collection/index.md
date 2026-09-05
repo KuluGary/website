@@ -13,7 +13,7 @@ In the early 2000s, with limited access to the Internet and only the biggest nam
 
 That’s why I remember one day going to the game store at the mall, and finding Sonic Mega Collection while browsing the used games bin. At that point in time I’d already played Sonic games, both in the GameCube and older systems such as the Mega Drive and Game Gear, but it had been a while since and this collection included games I’d never even heard of.
 
-{% gallery category, page.fileSlug %}
+{% gallery category, postSlug %}
 mean-bean.jpg
 flicky.jpg
 {% endgallery %}

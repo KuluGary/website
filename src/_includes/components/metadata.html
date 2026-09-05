@@ -3,6 +3,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
 <link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+{% if category == "blog" and postSlug %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ metadata.url }}{{ page.url }}">
+  {% set translations = collections.blogAll | getTranslations(postSlug, page.url) %}
+  {% for translation in translations %}
+    <link rel="alternate" hreflang="{{ translation.data.lang }}" href="{{ metadata.url }}{{ translation.url }}">
+  {% endfor %}
+{% endif %}
 
 <!-- Feeds -->
 <link rel="alternate" href="{{ metadata.feedUrl }}" type="application/atom+xml" title="{{ metadata.title }}">

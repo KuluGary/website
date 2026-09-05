@@ -4,8 +4,11 @@ css:
   - /css/pages/post.css
 ---
 {% block content %}
-	{% set previousPost = collections.posts | getNextCollectionItem %}
-	{% set nextPost = collections.posts | getPreviousCollectionItem %}
+	{% set currentLang = lang or "en" %}
+	{% set postsInLanguage = collections.blogAll | filterByLang(currentLang) %}
+	{% set previousPost = postsInLanguage | getPreviousCollectionItem %}
+	{% set nextPost = postsInLanguage | getNextCollectionItem %}
+	{% set translations = collections.blogAll | getTranslations(postSlug, page.url) %}
 	{% set toc = content | toc | safe %}
 
 	{% if isTocAllowed %}
@@ -27,6 +30,20 @@ css:
 		</article>
 
 		<footer class="post-footer">
+			{% if translations.length > 0 %}
+				<section class="translations-nav">
+					<p>Read also in </p>
+					<ul class="unstyled">
+						{% for translation in translations %}
+							<li>
+								<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}">
+									{{ translation.data.lang | upper }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</section>
+			{% endif %}
 			<section class="footer-data">
 				<p class="post-meta">
 					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
@@ -43,10 +60,11 @@ css:
 					{% endfor %}
 				</ul>
 				<nav class="post-nav">
+
 					<ul class="unstyled">
 						{% if nextPost %}
 							<li class="next">
-								<p>← Next</p>
+								<p>&larr; Next</p>
 								<a href="{{ nextPost.url }}" class="unstyled">
 									{{ nextPost.data.title }}
 								</a>
@@ -54,7 +72,7 @@ css:
 						{% endif %}
 						{% if previousPost %}
 							<li class="prev">
-								<p>Previous →</p>
+								<p>Previous &rarr;</p>
 								<a href="{{ previousPost.url }}" class="unstyled">
 									{{ previousPost.data.title }}
 								</a>

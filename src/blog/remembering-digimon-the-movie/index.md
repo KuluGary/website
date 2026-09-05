@@ -9,7 +9,7 @@ tags:
 ---
 When we bought the VHS tape for this movie, I must have already seen bits and pieces of Digimon Adventure and Digimon Adventure 02 on TV. I remember putting it in the VHS player and being absolutely baffled when this showed up on screen…
 
-{% image category, page.fileSlug %}
+{% image category, postSlug %}
 angela-anaconda.png
 {% endimage %}
 
@@ -21,7 +21,7 @@ I’ll talk about them separately:
 
 ## Digimon Adventure
 
-{% image category, page.fileSlug %}
+{% image category, postSlug %}
 digimon-adventure.png
 {% endimage %}
 
@@ -35,7 +35,7 @@ In the end, this movie and the Digimon World game are what made me like more ani
 
 ## Digimon Adventure: Our War Game!
 
-{% image category, page.fileSlug %}
+{% image category, postSlug %}
 our-war-game.png
 {% endimage %}
 
@@ -49,7 +49,7 @@ The final sequence of the fight, were the protagonist’s Digimon evolve into th
 
 ## Digimon Adventure 02: Hurricane Touchdown!!
 
-{% image category, page.fileSlug %}
+{% image category, postSlug %}
 hurricane-touchdown.png
 {% endimage %}
 
