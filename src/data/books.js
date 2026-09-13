@@ -7,6 +7,8 @@ export default async function () {
 
   if (cached) return cached;
 
+  return [];
+
   const { data, error } = await supabase
     .from("entities")
     .select(

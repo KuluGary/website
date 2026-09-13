@@ -5,38 +5,15 @@ import { DateTime, Duration } from "luxon";
  *
  * @param {Date|string} date - The date to format. Can be a JavaScript Date object or a date string.
  * @param {string} [format="dd/LL/yyyy"] - The format string following Luxon's formatting tokens.
+ * @param {string} [locale="en"] - The locale to use for the date generation.
  * @returns {string} The formatted date string.
  */
-export function formatDate(date, format = "dd/LL/yyyy") {
+export function formatDate(date, format = "dd/LL/yyyy", locale = "en") {
   return DateTime.fromJSDate(typeof date === "string" ? new Date(date) : date, {
     zone: "utc",
   })
-    .setLocale("en")
+    .setLocale(locale)
     .toFormat(String(format));
-}
-
-/**
- * Formats a date as `MMM D{ordinal}` (e.g. "DEC 2nd").
- *
- * This function uses Luxon for date formatting and applies a manual
- * English ordinal suffix (`st`, `nd`, `rd`, `th`) since Luxon does not
- * support ordinal dates.
- *
- * @param {Date | string} date A JavaScript `Date` object or a date string parsable by `new Date()`.
- *
- * @returns {string} A formatted date string like "DEC 2nd".
- */
-export function formatWithOrdinal(date) {
-  function ordinal(n) {
-    const suffixes = ["th", "st", "nd", "rd"];
-    const v = n % 100;
-    return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
-  }
-
-  const jsDate = typeof date === "string" ? new Date(date) : date;
-  const dt = DateTime.fromJSDate(jsDate);
-
-  return `${dt.toFormat("LLL").toUpperCase()} ${ordinal(dt.day)}`;
 }
 
 /**
@@ -229,4 +206,3 @@ export function getTranslations(collection, postSlug, currentUrl) {
     .filter((post) => post.data.postSlug === postSlug && post.url !== currentUrl)
     .sort((a, b) => a.data.lang.localeCompare(b.data.lang));
 }
-

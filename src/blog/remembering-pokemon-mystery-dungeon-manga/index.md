@@ -7,9 +7,9 @@ tags:
 description: Reminiscing about an obscure Pokémon tie-in manga from my childhood.
 draft: true
 ---
-When I was a kid, I loved magazines. I was lucky and where I lived there where a lot of corner kiosks, and they sold gaming and cartoon magazines. I ended up having a lot of them, both player guides and gaming news.
+When I was a kid, I was a real fan of videogame and cartoon magazines. I was lucky and my neighborhood was full of kiosks and they always had lots of them on sale. I ended up collecting quite a lot, both player guides and gaming news.
 
-One thing I still own to this day and I remember fondly is a small supplement that came with the Jetix Magazine. It was Pokémon Mystery Dungeon: Ginji's Rescue Team –or ポケモン不思議のダンジョンギンジの救助隊 in the original japanese. Unlike the manga I was used to reading which was all in tankōbon, this came in little A6 booklets with a single chapter on each.
+One collectibe I still own to this day and I remember fondly is a small supplement that came with the Jetix Magazine. It was Pokémon Mystery Dungeon: Ginji's Rescue Team –or ポケモン不思議のダンジョンギンジの救助隊 in the original japanese. Unlike the manga I was used to reading which came in tankōbon, these were made into little A6 booklets with a single chapter on each.
 
 At that point in time, I had played other Pokémon games but not Mystery Dungeon, so it was a big shock that the protagonist and friends were Pokémon! Unlike most Pokémon games where the story is fairly straightforward, this manga depicted personal stakes and a big mystery. How can a human be transformed into a Pokémon and transported into their world!?
 

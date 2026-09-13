@@ -41,11 +41,7 @@ css:
 
 		<ul>
 			{% for post in collections.posts | limit(5) %}
-				<li>
-					{% set category = post.category or post.data.category %}
-					{{ post.date | formatDate("yyyy-MM-dd") }}:  <a href="{{ post.url or ('/reviews#' ~ (post.title | slugify)) }}">
-						{{ post.title or post.data.title }}</a> [{{category}}]
-				</li>
+				{% include "components/post-list-item.html" %}
 			{% endfor %}
 		</ul>
 

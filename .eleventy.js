@@ -30,7 +30,6 @@ import {
   filterOwnWebmentions,
   formatDate,
   formatDuration,
-  formatWithOrdinal,
   getSimilarPosts,
   getTranslations,
   getWebmentionsByUrl,
@@ -66,7 +65,6 @@ export default async function (eleventyConfig) {
 
   /** Filters */
   eleventyConfig.addFilter("formatDate", formatDate);
-  eleventyConfig.addFilter("formatWithOrdinal", formatWithOrdinal);
   eleventyConfig.addFilter("formatDuration", formatDuration);
   eleventyConfig.addFilter("filterByLang", filterByLang);
   eleventyConfig.addFilter("limit", limit);
@@ -159,7 +157,3 @@ export default async function (eleventyConfig) {
     dataTemplateEngine: "njk",
   };
 }
-
-
-
-

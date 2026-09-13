@@ -7,7 +7,7 @@ lightbox: true
 tags:
   - gaming
 ---
-Hoy en día puedes conseguir la mayoría de jueguos clásicos de Sonic the Hedgehog en una de las chorrocientas compilaciones que SEGA ha sacado, ambas tiras de cómics en cualquier tienda online de libros, y arte conceptual e ilustraciones en una de las muchas comunidades de fans bien mantenidas.
+Hoy en día puedes conseguir la mayoría de juegos clásicos de Sonic the Hedgehog en una de las chorrocientas compilaciones que SEGA ha sacado, ambas tiras de cómics en cualquier tienda online de libros, y arte conceptual e ilustraciones en una de las muchas comunidades de fans bien mantenidas.
 
 A principios de los 2000, con acceso a Internet limitado y solo las obras más famosas siendo importadas del extranjero, solo podías jugar los juegos en consolas originales y encontrar arte en tiendas especializadas.
 

@@ -7,6 +7,8 @@ export default async function () {
 
   if (cached) return cached;
 
+  return [];
+
   const { data, error } = await supabase
     .from("entities")
     .select(
@@ -15,7 +17,7 @@ export default async function () {
         title,
         kind,
         entity_metadata(data)
-      `
+      `,
     )
     .eq("kind", "manga");
 

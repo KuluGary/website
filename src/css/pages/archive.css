@@ -1,0 +1,12 @@
+[data-pf-theme="dark"] {
+  --pf-text: var(--clr-text-main);
+  --pf-text-secondary: var(--clr-text-faint-1);
+  --pf-text-muted: var(--clr-text-faint-1);
+  --pf-background: var(--clr-bg-main);
+  --pf-border: var(--clr-text-faint-1);
+  --pf-border-focus: var(--clr-text-main);
+  --pf-hover: transparent;
+  --pf-mark: var(--clr-accent-secondary);
+  --pf-outline-focus: none;
+  --pf-font: var(--font-family-main);
+}

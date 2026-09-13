@@ -18,4 +18,4 @@ Secret Bases allowed you to carve a private space out of the world, and have a b
 
 Aside from that, you could visit your friend’s Secret Bases. If you connected two games together, the  Secret Bases from the other person would also be copied into your cartridge. Then you could go and visit them, and it would be decorated as they had it when you connected. Even more, inside would be an NPC you could battle, and it had the Pokémon party of the secret base’s owner. It’s like having a small fragment of your friends soul, forever trapped inside your game…
 
-It’s was a primitive way of doing it for today’s standards, but as someone who didn’t experience anything like it before, it was a very fun feature.
+It was a primitive way of doing it for today’s standards, but as someone who didn’t experience anything like it before, it was a very fun feature.
