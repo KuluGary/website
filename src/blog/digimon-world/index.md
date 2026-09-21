@@ -32,7 +32,7 @@ metalgreymon.png | Such a cool-looking monster.
 
 But all this is not to say I hate the game. Actually, I like it a lot! I feel like it has a unique charm, both aesthetically and mechanically. It feels like one of those games where there would be a ton of urban legends… “Hey! Did you know you could get MetalEtemon if you open the mysterious door in the forest!?”… And I like those kind of games.
 
-The complexity of the mechanics also feeds into the mystique of the world. There’s no easily discoverable “formula” to get the strongest monster every time. As a kid, you’ll trust you instincts and sometimes you’ll get an awesome dinosaur and sometimes you’ll get an undespowered slime. I think that’s kind of fun.
+The complexity of the mechanics also feeds into the mystique of the world. There’s no easily discoverable “formula” to get the strongest monster every time. As a kid, you’ll trust you instincts and sometimes you’ll get an awesome dinosaur and sometimes you’ll get an underpowered slime. I think that’s kind of fun.
 
 But even with all that, the main issue kid-me had with this game… Is that it’s impossible. I don’t mean it’s hard or confusing or the final boss is too challenging… I mean I could not complete it.
 

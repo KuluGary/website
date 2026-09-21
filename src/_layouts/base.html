@@ -10,9 +10,12 @@ css:
 	<head>
 		{% include "components/metadata.html" %}
 
-		<!-- Stylesheets -->
 		{% for href in css %}
 			<link rel="stylesheet" href="{{ href | url }}">
+		{% endfor %}
+
+		{% for src in js %}
+			<script src="{{ src | url }}"></script>
 		{% endfor %}
 
 		{% if lightbox %}
@@ -42,6 +45,5 @@ css:
 		{% block content %}
 			{{ content | safe }}
 		{% endblock %}
-
 	</body>
 </html>

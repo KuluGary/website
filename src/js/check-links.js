@@ -29,12 +29,9 @@ async function fetchUrl(url, method) {
 }
 
 async function checkUrl(url) {
-  // Try HEAD first.
   try {
     const result = await fetchUrl(url, "HEAD");
 
-    // Some servers don't support HEAD.
-    // Try GET instead.
     if (result.status === 405) {
       console.log(`HEAD returned 405, trying GET: ${url}`);
 

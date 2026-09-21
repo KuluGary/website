@@ -90,6 +90,11 @@ figure.pixelated img {
   }
 }
 
+span.sub {
+  font-style: italic;
+  color: var(--clr-text-faint-1);
+}
+
 .post-footer .post-meta {
   display: inline;
   margin-inline-start: auto;
@@ -196,14 +201,15 @@ mark {
   }
 }
 
-@media (--lg-n-above) {
-  .gallery,
-  *:has(> .grid-item) {
-    display: grid;
+.gallery,
+*:has(> .grid-item) {
+  margin-block-end: var(--spacing-main);
+  display: grid;
+  gap: var(--spacing-tight);
+
+  @media (--lg-n-above) {
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-tight);
     max-width: 100%;
-    margin-block-end: var(--spacing-main);
   }
 }
 

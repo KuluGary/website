@@ -19,3 +19,15 @@ export function getLang(page, lang) {
 
   return fileSlug === "index" ? DEFAULT_LANG : fileSlug;
 }
+
+export function getPostLayout(lang) {
+  switch (lang) {
+    case "es":
+      return "post-es.html";
+    case "jp":
+      return "post-jp.html";
+    case "en":
+    default:
+      return "post-en.html";
+  }
+}

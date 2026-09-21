@@ -3,22 +3,16 @@ layout: base.html
 ---
 {% block content %}
 	{% set currentLang = lang or "en" %}
-	{% set postsInLanguage = collections.blogAll | filterByLang(currentLang) %}
-	{% set previousPost = postsInLanguage | getPreviousCollectionItem %}
-	{% set nextPost = postsInLanguage | getNextCollectionItem %}
-	{% set translations = collections.blogAll | getTranslations(postSlug, page.url) %}
-	{% set toc = content | toc | safe %}
+	{% set postsInLanguage = collections.postsWithTranslations | filterByLang(currentLang) %}
+	{% set previousPost = postsInLanguage | getNextCollectionItem %}
+	{% set nextPost = postsInLanguage | getPreviousCollectionItem %}
+	{% set translations = collections.postsWithTranslations | getTranslations(postSlug, page.url) %}
 
-	{% if isTocAllowed %}
-		<aside id="content-nav">
-			{% if toc.length > 0 %}
-				<h2>Índice</h2>
-				{{ toc }}
-			{% endif %}
-		</aside>
-	{% endif %}
-
-	<main id="main-content" class="h-entry" data-pagefind-body>
+	<main
+	id="main-content"
+	class="h-entry"
+		{% if not draft %}data-pagefind-body{% endif %}
+	>
 		<header>
 			<h1 class="p-name">{{ title }}</h1>
 		</header>
@@ -34,9 +28,7 @@ layout: base.html
 					<ul class="unstyled">
 						{% for translation in translations %}
 							<li>
-								<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}">
-									{{ translation.data.lang | upper }}
-								</a>
+								<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}">{{ translation.data.lang | upper }}</a>
 							</li>
 						{% endfor %}
 					</ul>
@@ -45,7 +37,7 @@ layout: base.html
 			<section class="footer-data">
 				<p class="post-meta">
 					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
-						Publicado el {{ date | formatDate("dd MMM yyyy") }}
+						Publicado el {{ date | formatDate("dd MMM yyyy", lang) }}
 					</time>
 
 					en

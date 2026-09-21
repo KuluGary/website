@@ -1,17 +1,13 @@
-{% set translations = collections.blogAll | getTranslations(post.data.postSlug, post.url) %}
+{% set translations = collections.postsWithTranslations | getTranslations(post.data.postSlug, post.url) %}
 
 <li>
-	{{ post.date | formatDate("yyyy-MM-dd") }}:
-					<a href="{{ post.url or ('/reviews#' ~ (post.title | slugify)) }}" class="{{ "draft" if post.data.draft }}">
-		{{ post.title or post.data.title }}</a>
-
+	<time datetime="{{ post.date }}">{{ post.date | formatDate("yyyy-MM-dd") }}:</time>
+	<a href="{{ post.url or ('/reviews#' ~ (post.title | slugify)) }}" class="{{ "draft" if post.data.draft }}">{{ post.title or post.data.title }}</a>
 	{% if translations.length > 0 %}
 		<ul class="unstyled translation-list">
 			{% for translation in translations %}
 				<li>
-					<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}" class={{ "draft" if post.data.draft }}>
-						{{ translation.data.lang | upper }}
-					</a>
+					<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}" class={{ "draft" if post.data.draft }}>{{ translation.data.lang | upper }}</a>
 				</li>
 			{% endfor %}
 		</ul>

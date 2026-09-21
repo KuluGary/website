@@ -11,7 +11,6 @@ metadata:
     email: kululu.gary@gmail.com
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="/assets/styles/feed.xsl" media="screen" ?>
 
 {% set postsList = collections.posts %}
 
@@ -29,41 +28,41 @@ metadata:
     <email>{{ metadata.author.email }}</email>
   </author>
   <generator uri="https://www.11ty.dev/">Eleventy.js</generator>
-  {%- for post in postsList %}
-    {%- if loop.index0 "<" 10 -%}
-      {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+  {% for post in postsList %}
+    {% if loop.index0 < 10 %}
+      {% set absolutePostUrl %}
+      {{ post.url | url | absoluteUrl(metadata.url) }}
+      {% endset %}
+
       {% set category = post.data.category or post.category %}
 
       {% if category == "blog" or category == "journal" %}
+
+        {% set translations = collections.blogAll | getTranslations(post.data.postSlug, post.url) %}
+
         <entry>
           <title>{{ post.data.title }}</title>
+
           <link href="{{ absolutePostUrl }}"/>
+          {% if translations.length > 0 %}
+            {% for translation in translations %}
+              {% set absoluteTranslationUrl = translation.url | url | absoluteUrl(metadata.url) %}
+
+              <link rel="alternate"
+                hreflang="{{ translation.data.lang }}"
+                type="text/html"
+                href="{{ absoluteTranslationUrl }}"/>
+            {% endfor %}
+          {% endif %}
+
           <updated>{{ post.date | dateToRfc3339 }}</updated>
           <id>{{ absolutePostUrl }}</id>
 
-          <summary type="html">
-            {{ post.data.description }}
-          </summary>
           <content type="html">
-            {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+            {{ post.content | htmlToAbsoluteUrls(absolutePostUrl) }}
           </content>
         </entry>
       {% endif %}
-
-      {% if category == "review" %}
-        <entry>
-          <title>{{ post.title }}</title>
-          <link href="{{ absolutePostUrl }}"/>
-          <updated>{{ post.date | dateToRfc3339 }}</updated>
-          <id>{{ post.entityId }}</id>
-          <summary type="html">
-            {{ post.review.description }}
-          </summary>
-          <content type="html">
-            {{ post.review.content | htmlToAbsoluteUrls(absolutePostUrl) }}
-          </content>
-        </entry>
-      {% endif %}
-    {%- endif -%}
-  {%- endfor %}
+    {% endif %}
+  {% endfor %}
 </feed>

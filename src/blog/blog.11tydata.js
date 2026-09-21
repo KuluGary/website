@@ -1,4 +1,4 @@
-import { getLang, getPostSlug, DEFAULT_LANG } from "../js/i18n.js";
+import { getLang, getPostSlug, DEFAULT_LANG, getPostLayout } from "../js/i18n.js";
 
 export default {
   category: "blog",
@@ -9,9 +9,7 @@ export default {
     layout: ({ page, lang }) => {
       const language = getLang(page, lang);
 
-      if (language === "es") return "post-es.html";
-
-      return "post-en.html";
+      return getPostLayout(language);
     },
     permalink: ({ draft, lang, page }) => {
       const baseUrl = draft ? "/drafts" : "/blog";

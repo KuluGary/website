@@ -3,10 +3,10 @@ layout: base.html
 ---
 {% block content %}
 	{% set currentLang = lang or "en" %}
-	{% set postsInLanguage = collections.blogAll | filterByLang(currentLang) %}
+	{% set postsInLanguage = collections.postsWithTranslations | filterByLang(currentLang) %}
 	{% set previousPost = postsInLanguage | getPreviousCollectionItem %}
 	{% set nextPost = postsInLanguage | getNextCollectionItem %}
-	{% set translations = collections.blogAll | getTranslations(postSlug, page.url) %}
+	{% set translations = collections.postsWithTranslations | getTranslations(postSlug, page.url) %}
 
 	<main
 	id="main-content"
@@ -24,13 +24,11 @@ layout: base.html
 		<footer class="post-footer">
 			{% if translations.length > 0 %}
 				<section class="translations-nav">
-					<p>Read also in </p>
+					<p>他の言語で読む</p>
 					<ul class="unstyled">
 						{% for translation in translations %}
 							<li>
-								<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}">
-									{{ translation.data.lang | upper }}
-								</a>
+								<a href="{{ translation.url }}" hreflang="{{ translation.data.lang }}">{{ translation.data.lang | upper }}</a>
 							</li>
 						{% endfor %}
 					</ul>
@@ -38,11 +36,7 @@ layout: base.html
 			{% endif %}
 			<section class="footer-data">
 				<p class="post-meta">
-					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
-						Published {{ date | formatDate("LLLL dd, yyyy") }}
-					</time>
-
-					in
+					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">{{ date | formatDate("yyyy年LLLL月dd日", lang) }}に公開</time>
 				</p>
 				<ul class="post-tags unstyled">
 					{% for tag in tags if tag != "blog-post" %}
@@ -56,7 +50,7 @@ layout: base.html
 					<ul class="unstyled">
 						{% if nextPost %}
 							<li class="next">
-								<p>&larr; Next</p>
+								<p>次の記事 →</p>
 								<a href="{{ nextPost.url }}" class="unstyled">
 									{{ nextPost.data.title }}
 								</a>
@@ -64,7 +58,7 @@ layout: base.html
 						{% endif %}
 						{% if previousPost %}
 							<li class="prev">
-								<p>Previous &rarr;</p>
+								<p>前の記事 →</p>
 								<a href="{{ previousPost.url }}" class="unstyled">
 									{{ previousPost.data.title }}
 								</a>
@@ -82,17 +76,18 @@ layout: base.html
 			{% if likes.length or reposts.length or replies.length %}
 				<div class="interactions">
 					{% if likes.length %}
-						<p>{{ likes.length }} likes</p>
+						<p>{{ likes.length }}件のいいね</p>
 					{% endif %}
 					{% if reposts.length %}
-						<p>{{ reposts.length }} reposts</p>
+						<p>{{ reposts.length }}件の再投稿</p>
 					{% endif %}
 					{% if replies.length %}
-						<p>{{ replies.length }} replies</p>
+						<p>{{ replies.length }}件の返信</p>
 					{% endif %}
 				</div>
 			{% endif %}
 
 		</footer>
 	</main>
+
 {% endblock %}

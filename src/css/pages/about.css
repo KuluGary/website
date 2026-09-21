@@ -1,5 +1,6 @@
 dt {
-  font-weight: bold;
+  color: var(--clr-accent-tertiary);
+  font-weight: var(--font-weight-6);
 }
 
 img {

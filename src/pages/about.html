@@ -9,6 +9,54 @@ css:
 
 {% block content %}
 	<main id="main-content">
+		<dl>
+			<dt>Who are you, then?</dt>
+			<dd>Hi, I’m <em>Gary</em> and I’m the author and webmaster of <a href="/">{{ metadata.title }}</a>.</dd>
+
+			<dt>What exactly is this website?</dt>
+			<dd>
+				<a href="/">{{ metadata.title }}</a> is a personal site and blog where I write in sometimes.
+			 </dd>
+
+			<dt>Why does this website exist?</dt>
+			<dd>I’ve had some form of personal website for more than ten years. First at <a href="https://www.blogger.com/">blogger.com</a>, but also a few on <a href="https://www.tumblr.com/">tumblr.com</a>. I’ve always felt inclined to share my thoughts and stuff I’ve made online, and this place is an extension of that.</dd>
+
+			<dt>What do you actually do all day?</dt>
+			<dd>I write software for a living, and when I’m off-work I play videogames, write programs, watch TV and do a bit of game-dev.</dd>
+
+			<dt>Why should I care?</dt>
+			<dd> You probably shouldn’t.</dd>
+
+			<dt>Why is there no [obvious feature] in this site?</dt>
+			<dd>I’ve intentionally kept this site without much bloat. I prefer to not have too many features I have to make sure keep running correctly.</dd>
+
+			<dt>What do you write about?</dt>
+			<dd>I don’t have a specific topic I adhere to, but I mostly write about gaming, tech and personal stuff.</dd>
+
+			<dt>Why don’t you just post this stuff on [social network]?</dt>
+			<dd>I don’t like social media. I have accounts where I need them, but in general I don’t like posting there.</dd>
+
+			<dt>What’s the worst thing you’ve made?</dt>
+			<dd>
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&" target="_blank">Probably this</a>.
+			</dd>
+
+			<dt>Why don’t you update this more often?</dt>
+			<dd>I only post when I feel like I have an interesting topic to talk about.</dd>
+
+			<dt>Can I contact you?</dt>
+
+			<dd>Absolutely not. Ok, <a href="/contact">fine</a>.
+			</dd>
+
+			<dt>Anything else?</dt>
+			<dd></dd>
+		</dl>
+	</main>
+{% endblock content %}
+
+{# {% block content %}
+	<main id="main-content">
 		<section>
 			<img src="/assets/images/raccoon.gif" width="280px" height="184px" alt="">
 			<p>Hi, I'm <span class="font-accent">Gary</span> and I'm the author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
@@ -47,4 +95,4 @@ css:
 	</main>
 
 	{% include "components/main-footer.html" %}
-{% endblock content %}
+{% endblock content %} #}

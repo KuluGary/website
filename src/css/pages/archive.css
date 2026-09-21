@@ -10,3 +10,7 @@
   --pf-outline-focus: none;
   --pf-font: var(--font-family-main);
 }
+
+li {
+  text-wrap: balance;
+}

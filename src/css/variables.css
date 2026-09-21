@@ -12,14 +12,17 @@
   --clr-text-faint-2: hsl(from var(--clr-text-main) h s l / 0.2);
   --clr-accent-primary: #f97312;
   --clr-accent-secondary: #fde047;
+  --clr-accent-tertiary: #c4b5fd;
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
   --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
+  --font-zen-kurenaido: ZenKurenaido, var(--font-handwritten);
   --font-maple-mono: MapleMono, var(--font-mono);
 
   --font-family-main: var(--font-maple-mono);
   --font-family-title: var(--font-patrick-hand);
+  --font-family-title-jp: var(--font-zen-kurenaido);
   --font-family-site-title: var(--font-mansalva);
   --font-accent: var(--font-patrick-hand);
 
@@ -60,4 +63,9 @@
   font-family: MapleMono;
   src: url("/assets/fonts/MapleMono-Bold.subset.woff2") format("woff");
   font-weight: bold;
+}
+
+@font-face {
+  font-family: ZenKurenaido;
+  src: url("/assets/fonts/ZenKurenaido-Regular.subset.ttf") format("truetype");
 }

@@ -12,6 +12,10 @@ function escapeHtml(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+function isGif(filename) {
+  return path.extname(filename).toLowerCase() === ".gif";
+}
+
 function getSourcePath(section, fileSlug, filename) {
   return path.join(process.cwd(), "src", section, fileSlug, "assets", filename);
 }
@@ -27,6 +31,11 @@ async function generateOptimizedImage(section, fileSlug, filename) {
     throw new Error(`Image not found: ${sourcePath}`);
   }
 
+  // Keep GIFs as-is so animated GIFs remain animated.
+  if (isGif(filename)) {
+    return null;
+  }
+
   const outputDir = path.join(process.cwd(), "_site", section, fileSlug, "assets");
 
   const urlPath = `/${section}/${fileSlug}/assets/`;
@@ -36,6 +45,24 @@ async function generateOptimizedImage(section, fileSlug, filename) {
     formats: ["avif", "webp", "jpeg"],
     outputDir,
     urlPath,
+  });
+}
+
+function generateGifHtml(originalUrl, alt) {
+  return `<img
+      src="${escapeAttribute(originalUrl)}"
+      alt="${escapeAttribute(alt)}"
+      loading="lazy"
+      decoding="async"
+    >`;
+}
+
+function generateOptimizedHtml(metadata, alt, sizes) {
+  return Image.generateHTML(metadata, {
+    alt,
+    loading: "lazy",
+    decoding: "async",
+    ...(sizes ? { sizes } : {}),
   });
 }
 
@@ -66,12 +93,9 @@ export async function generateGallery(content, section, fileSlug) {
     .map((image) => {
       const originalUrl = getOriginalUrl(section, fileSlug, image.filename);
 
-      const imageHtml = Image.generateHTML(image.metadata, {
-        alt: image.alt,
-        loading: "lazy",
-        decoding: "async",
-        sizes: "(max-width: 700px) calc(100vw - 2rem), 360px",
-      });
+      const imageHtml = image.metadata
+        ? generateOptimizedHtml(image.metadata, image.alt, "(max-width: 700px) calc(100vw - 2rem), 360px")
+        : generateGifHtml(originalUrl, image.alt);
 
       return `<a
   href="${escapeAttribute(originalUrl)}"
@@ -93,11 +117,7 @@ export async function generateImage(content, section, fileSlug) {
 
   const originalUrl = getOriginalUrl(section, fileSlug, filename);
 
-  const imageHtml = Image.generateHTML(metadata, {
-    alt: description,
-    loading: "lazy",
-    decoding: "async",
-  });
+  const imageHtml = metadata ? generateOptimizedHtml(metadata, description) : generateGifHtml(originalUrl, description);
 
   return `<figure class="${escapeAttribute(className)}">
   <a href="${escapeAttribute(originalUrl)}" class="glightbox">
@@ -107,6 +127,5 @@ export async function generateImage(content, section, fileSlug) {
       ? `
     <figcaption>${escapeHtml(description)}</figcaption>`
       : ""
-  }
-</figure>`;
+  }</figure>`;
 }

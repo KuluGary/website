@@ -1,7 +1,7 @@
 import Eleventy from "@11ty/eleventy";
 import { getFromCache, setIntoCache } from "../cache.js";
+import { getLang } from "../i18n.js";
 
-const BLOG_POST_GLOB = "src/blog/**/*.md";
 const DEFAULT_LANG = "en";
 
 function getPostLang(post) {
@@ -20,7 +20,7 @@ function getPostLang(post) {
  * @returns a list of blog posts
  */
 export function getAllBlogPosts(collectionApi) {
-  return collectionApi.getFilteredByGlob(BLOG_POST_GLOB);
+  return collectionApi.getFilteredByGlob("src/blog/**/*.md");
 }
 
 /**
@@ -33,12 +33,21 @@ export function getBlogPosts(collectionApi) {
 }
 
 /**
+ * Returns all language variants of journal posts inside src/journal.
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of blog posts
+ */
+export function getAllJournalPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/journal/**/*.md");
+}
+
+/**
  * Returns a collection of all the journal posts inside md/journal
  * @param {Eleventy.collection} collectionApi
  * @returns a list of journal posts
  */
 export function getJournalPosts(collectionApi) {
-  return collectionApi.getFilteredByGlob("src/journal/**/index.md");
+  return getAllJournalPosts(collectionApi).filter((post) => getPostLang(post) == DEFAULT_LANG);
 }
 
 /**
@@ -70,6 +79,18 @@ export function getAllPosts(collectionApi) {
   const reviews = getReviewPosts(collectionApi);
 
   return [...blog, ...journal, ...reviews].sort((a, b) => b.date - a.date);
+}
+
+/**
+ * Returns all markdown posts including translations
+ * @param {Eleventy.collection} collectionApi
+ * @return a list of posts
+ */
+export function getAllPostsWithTranslations(collectionApi) {
+  const blog = getAllBlogPosts(collectionApi);
+  const journal = getAllJournalPosts(collectionApi);
+
+  return [...blog, ...journal].sort((a, b) => b.date - a.date);
 }
 
 /**

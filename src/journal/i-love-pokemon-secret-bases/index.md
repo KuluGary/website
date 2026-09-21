@@ -5,7 +5,6 @@ description: Thinking about an obscure mechanic in Pokémon games.
 draft: true
 tags:
   - gaming
-  - personal
 ---
 
 {% image category, page.fileSlug %}

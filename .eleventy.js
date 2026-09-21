@@ -1,16 +1,15 @@
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import PostCSSPlugin from "@jgarber/eleventy-plugin-postcss";
 import syntaxHighlight from "@pborenstein/eleventy-md-syntax-highlight";
+import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
-import timeToRead from "eleventy-plugin-time-to-read";
-import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import pluginTOC from "eleventy-plugin-toc";
 import {
   gameAmountByStatus,
   getAllBlogPosts,
+  getAllJournalPosts,
   getAllPosts,
+  getAllPostsWithTranslations,
   getArtPosts,
   getBlogPosts,
   getBlogTagPages,
@@ -41,9 +40,9 @@ import {
   unslugify,
   webmentionsByType,
 } from "./src/js/11ty/filters.js";
+import { generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 import mdIt from "./src/js/lib/markdown-it.js";
 import getShareUrl from "./src/js/social-media.js";
-import { generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 
 dotenv.config();
 
@@ -93,9 +92,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPairedNunjucksAsyncShortcode("image", generateImage);
 
   /* Plugins */
-  eleventyConfig.addPlugin(pluginTOC);
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(timeToRead);
   eleventyConfig.addPlugin(PostCSSPlugin);
   // eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
   //   formats: ["avif", "webp", "jpeg", "gif"],
@@ -119,6 +116,7 @@ export default async function (eleventyConfig) {
       "./src/assets/fonts/MapleMono-Bold.woff2",
       "./src/assets/fonts/MapleMono-Thin.woff2",
       "./src/assets/fonts/MapleMono-ThinItalic.woff2",
+      "./src/assets/fonts/ZenKurenaido-Regular.ttf",
     ],
   });
   eleventyConfig.addPlugin(pluginRss);
@@ -127,8 +125,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("blog", getBlogPosts);
   eleventyConfig.addCollection("blogAll", getAllBlogPosts);
   eleventyConfig.addCollection("journal", getJournalPosts);
+  eleventyConfig.addCollection("journalAll", getAllJournalPosts);
   eleventyConfig.addCollection("art", getArtPosts);
   eleventyConfig.addCollection("posts", getAllPosts);
+  eleventyConfig.addCollection("postsWithTranslations", getAllPostsWithTranslations);
   eleventyConfig.addCollection("postsByYear", getPostsByYear);
   eleventyConfig.addCollection("frequentTags", getFrequentTags);
   eleventyConfig.addCollection("frequentTagsByYear", getFrequentTagsByYear);

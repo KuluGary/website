@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="content">
-						<xsl:value-of select="atom:summary" disable-output-escaping="yes"/>
+<xsl:value-of select="atom:content" disable-output-escaping="yes"/>
 					</div>
 				</div>
 			</xsl:for-each>
