@@ -38,7 +38,7 @@ metadata:
 
       {% if category == "blog" or category == "journal" %}
 
-        {% set translations = collections.blogAll | getTranslations(post.data.postSlug, post.url) %}
+        {% set translations = collections.postsWithTranslations | getTranslations(post.data.postSlug, post.url) %}
 
         <entry>
           <title>{{ post.data.title }}</title>
@@ -60,6 +60,16 @@ metadata:
 
           <content type="html">
             {{ post.content | htmlToAbsoluteUrls(absolutePostUrl) }}
+            {% if translations.length > 0 %}
+              &lt;hr&gt;
+              &lt;p&gt;
+                &lt;strong&gt;Translations:&lt;/strong&gt;
+                {% for translation in translations %}
+                {% set absoluteTranslationUrl = translation.url | url | absoluteUrl(metadata.url) %}
+                  &lt;a href="{{ absoluteTranslationUrl }}" hreflang="{{ translation.data.lang }}"&gt;{{ translation.data.lang | upper }}&lt;/a&gt;{% if not loop.last %} · {% endif %}
+              {% endfor %}
+              &lt;/p&gt;
+            {% endif %}
           </content>
         </entry>
       {% endif %}
