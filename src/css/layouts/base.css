@@ -490,19 +490,20 @@
 
   #sitefooter {
     color: var(--clr-text-faint-1);
+    text-align: center;
+    font-size: small;
+
+    & > * {
+      margin-block-end: var(--spacing-tight);
+    }
 
     & hr {
       margin-block: var(--spacing-tight) var(--spacing-main);
     }
 
-    & p {
-      margin-block-end: var(--spacing-tight);
-    }
-
     & ul {
       display: flex;
       column-gap: var(--spacing-tight);
-      margin-bottom: 0;
       width: fit-content;
       margin-inline: auto;
     }
@@ -521,7 +522,6 @@
     }
 
     & .webring a {
-      font-size: var(--font-size-1);
       &::after {
         content: "";
         width: 0;

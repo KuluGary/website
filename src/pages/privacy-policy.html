@@ -1,0 +1,42 @@
+---
+title: Privacy policy
+permalink: /privacy-policy/
+layout: base.html
+---
+
+{% block content %}
+	<main id="main-content">
+		<h1>Privacy Policy</h1>
+
+		<p>This website is a static website generated with <a href="https://www.11ty.dev/" target="_blank">Eleventy</a> and hosted by <a href="https://www.netlify.com/" target="_blank">Netlify</a>.</p>
+
+		<p>I do not collect personal information through this website. I do not use user accounts, contact forms, advertising, or third-party analytics.</p>
+
+		<h2>Hosting</h2>
+
+		<p>This website is hosted by Netlify. When you visit the website, Netlify may process technical information associated with your request, such as your IP address, browser, device, and the pages or resources you request. This processing is part of providing and securing the hosting service.</p>
+
+		<p>For more information, please see <a href="https://www.netlify.com/privacy/" target="_blank">Netlify's Privacy Statement</a>.</p>
+
+		<h2>Third-party content</h2>
+
+		<p>Some articles may contain embedded content from third-party services, such as YouTube or Twitter. When such content is loaded, the relevant third party may receive information about your browser and request, and may use cookies or similar technologies according to its own privacy policy.</p>
+
+		<p>I do not control the privacy practices of these third-party services.</p>
+
+		<h2>Fonts</h2>
+
+		<p>This website uses locally hosted font files. Your browser downloads these files directly from this website. The website does not request fonts directly from Google Fonts.</p>
+
+		<h2>External links</h2>
+
+		<p>Articles may contain links to external websites. When you follow one of these links, the external website's own privacy policy applies.</p>
+
+		<h2>Changes to this policy</h2>
+
+		<p>We may update this Privacy Policy if the website or the services it uses change. The current version will always be published on this page.</p>
+
+		<p class="sub">Last update: <time datetime="{{ page.date }}">{{ page.date | formatDate("MMMM dd, yyyy") }}</time>
+		</p>
+	</main>
+{% endblock content %}
