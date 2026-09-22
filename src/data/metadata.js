@@ -5,8 +5,8 @@ export default {
   },
   title: "gary.place",
   description: "A digital workshop featuring tech, art and game development.",
-  url: "https://kulugary.neocities.org",
-  feedUrl: "https://kulugary.neocities.org/blog/feed.xml",
+  url: "https://gary.place",
+  feedUrl: "https://gary.place/feed.xml",
   author: {
     name: "Gary Cuétara",
     email: "",

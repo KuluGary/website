@@ -1,0 +1,13 @@
+form {
+  width: fit-content;
+  margin-inline: auto;
+  margin-block-end: var(--spacing-main);
+}
+
+label {
+  display: block;
+}
+
+textarea {
+  min-width: 34ch;
+}

@@ -44,55 +44,8 @@ css:
 			<dt>Why don’t you update this more often?</dt>
 			<dd>I only post when I feel like I have an interesting topic to talk about.</dd>
 
-			<dt>Can I contact you?</dt>
-
-			<dd>Absolutely not. Ok, <a href="/contact">fine</a>.
-			</dd>
-
 			<dt>Anything else?</dt>
-			<dd></dd>
+			<dd>This website is written by hand for humans eyes, and I truly hope you find something that helps or entertains you here. If you do and want to chat about it, you can <a href="/contact">contact me</a> and I will try to respond in a timely manner.</dd>
 		</dl>
 	</main>
 {% endblock content %}
-
-{# {% block content %}
-	<main id="main-content">
-		<section>
-			<img src="/assets/images/raccoon.gif" width="280px" height="184px" alt="">
-			<p>Hi, I'm <span class="font-accent">Gary</span> and I'm the author and webmaster of <a href="/">{{ metadata.title }}</a>.</p>
-
-			<p>I've been on the Internet one way or another since the mid-2000s. Before people congregated into centralized social media, I started off as part of some obscure forums where I first learned about game development.</p>
-		</section>
-
-		<section id="uses">
-			<hr class="separator-1">
-
-			{% for category in uses %}
-				{% if category.enabled %}
-					<section>
-						<p>{{ category.description }}</p>
-
-						<dl>
-							{% for item in category.children %}
-								{% if item.enabled %}
-									<dt>
-										{% if item.url %}
-											<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
-										{% else %}
-											<strong>{{ item.title }}</strong>
-										{% endif %}
-
-									</dt>
-									<dd>{{ item.description }}</dd>
-								{% endif %}
-							{% endfor %}
-						</dl>
-					</section>
-				{% endif %}
-			{% endfor %}
-
-		</section>
-	</main>
-
-	{% include "components/main-footer.html" %}
-{% endblock content %} #}

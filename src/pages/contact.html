@@ -1,0 +1,47 @@
+---
+title: Contact
+layout: base.html
+permalink: /contact/
+css:
+  - /css/pages/contact.css
+---
+
+{% block content %}
+	<main id="main-content">
+		<h1>Contact</h1>
+
+		<p>You can send a message through this form. If not, you can just <a href="mailto:">send me an e-mail.</a>
+		</p>
+
+		<p>I will <em>NEVER</em> use this e-mail for <em>ANY</em> other purpose other than to email you in response. Check my <a href="/privacy-policy">Privacy Policy</a> for more info.</p>
+
+		<form name="contact" method="POST" data-netlify="true">
+			<input type="hidden" name="form-name" value="contact">
+
+			<p style="display:none">
+				<label>
+      Don't fill this out:
+      <input name="bot-field" tabindex="-1" autocomplete="off">
+				</label>
+			</p>
+
+			<p>
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required>
+			</p>
+
+			<p>
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" required>
+			</p>
+
+			<p>
+				<label for="message">Message</label>
+				<textarea id="message" name="message" rows="6" required></textarea>
+			</p>
+
+			<button type="submit">Send message</button>
+		</form>
+	</main>
+
+{% endblock content %}

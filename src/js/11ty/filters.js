@@ -150,6 +150,7 @@ export function filterOwnWebmentions(webmentions) {
   function isOwnWebmention(webmention) {
     const urls = [
       "https://kulugary.neocities.org",
+      "https://gary.place",
       "https://bsky.app/profile/kulugary.itch.io",
       "https://kulugary.tumblr.com/",
       "https://indiepocalypse.social/@kulugary",
