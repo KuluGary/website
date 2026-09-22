@@ -12,7 +12,7 @@ export default {
     email: "",
   },
   social: {
-    bsky: "https://bsky.app/profile/kulugary.itch.io",
+    bsky: "https://bsky.app/profile/gary.place",
     mastodon: "https://indiepocalypse.social/@kulugary",
     itch: "https://kulugary.itch.io/",
     github: "https://github.com/KuluGary",
