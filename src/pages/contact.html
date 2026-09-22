@@ -15,7 +15,12 @@ css:
 
 		<p>I will <em>NEVER</em> use this e-mail for <em>ANY</em> other purpose other than to email you in response. Check my <a href="/privacy-policy">Privacy Policy</a> for more info.</p>
 
-		<form name="contact" method="POST" data-netlify="true">
+		<form
+			name="contact"
+			method="POST"
+			data-netlify="true"
+			netlify-honeypot="bot-field"
+		>
 			<input type="hidden" name="form-name" value="contact">
 
 			<p style="display:none">
@@ -24,6 +29,8 @@ css:
       <input name="bot-field" tabindex="-1" autocomplete="off">
 				</label>
 			</p>
+
+			<input type="hidden" name="subject" value="New message from gary.place">
 
 			<p>
 				<label for="name">Name</label>
