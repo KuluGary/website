@@ -17,52 +17,7 @@ css:
 	</main>
 {% endblock content %}
 
-<template id="custom-guestbook-comments">
-	<style>
-		.comment-list {
-			font-size: large;
-			color: var(--clr-text-main);
-			padding: 10px;
-			background: var(--clr-bg-main);
-			box-sizing: border-box;
-			min-height: 45px;
-			border-radius: 0;
-		}
-	</style>
-</template>
-<template id="custom-guestbook-form">
-	<style>
-		form div {
-			margin-bottom: var(--spacing-main);
-		}
-		button,
-		input,
-		textarea {
-			background-color: var(--clr-bg-main);
-			border: var(--border-size-1) solid var(--clr-text-main);
-			font-family: var(--font-family-main);
-			padding: 0.25rem 0.5rem;
-			font-size: var(--font-size-1);
-		}
-
-		textarea {
-			resize: vertical;
-		}
-
-		button:focus,
-		button:focus-within,
-		input:focus,
-		input:focus-within,
-		textarea:focus,
-		textarea:focus-within {
-			outline: var(--border-size-1) solid var(--clr-text-main);
-
-		}
-		label {
-			font-weight: 100;
-		}
-	</style>
-</template>
+{% include "components/guestbook-styling.html" %}
 
 {% block script %}
 	<script type="module" src="https://static.webweav.ing/guestbook-latest.js"></script>

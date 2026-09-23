@@ -1,0 +1,61 @@
+<template id="custom-guestbook-comments">
+	<style>
+		.comment-list {
+			font-size: large;
+			color: var(--clr-text-main);
+			padding: var(--spacing-tight);
+			background: var(--clr-bg-main);
+			font-family: var(--font-family-main);
+			box-sizing: border-box;
+			min-height: 45px;
+			border-radius: 0;
+		}
+
+		div.text {
+			margin-top: var(--spacing-tight);
+		}
+
+		span.author {
+			margin-right: 0.25rem;
+		}
+
+		span.timestamp {
+			font-size: 0.75rem;
+		}
+	</style>
+</template>
+<template id="custom-guestbook-form">
+	<style>
+		form div {
+			margin-bottom: var(--spacing-main);
+		}
+
+		button,
+		input,
+		textarea {
+			background-color: var(--clr-bg-main);
+			border: var(--border-size-1) solid var(--clr-text-main);
+			font-family: var(--font-family-main);
+			padding: 0.25rem 0.5rem;
+			font-size: var(--font-size-1);
+		}
+
+		textarea {
+			resize: vertical;
+			min-height: 6lh;
+		}
+
+		button:focus,
+		button:focus-within,
+		input:focus,
+		input:focus-within,
+		textarea:focus,
+		textarea:focus-within {
+			outline: var(--border-size-1) solid var(--clr-text-main);
+
+		}
+		label {
+			font-weight: 100;
+		}
+	</style>
+</template>
