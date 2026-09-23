@@ -1,0 +1,271 @@
+:root {
+  --csstools-color-scheme--light: ;
+  color-scheme: dark;
+  --text-color: #bfbfbf;
+  --text-color-alt: hsla(0, 0%, 75%, 0.651);
+  --background-color: #1a2735;
+  --background-color-alt: #25323f;
+  --primary-color: #37c3b7;
+  --secondary-color: #fbbc55;
+  --tertiary-color: #ff4680;
+  --font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --font-size: 16px;
+}
+body {
+  color: #bfbfbf;
+  color: var(--text-color);
+}
+.msgWrapper {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+}
+.allMessages {
+  color: #bfbfbf;
+  color: var(--text-color);
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    Noto Sans,
+    sans-serif;
+  font-family: var(--font-family);
+  font-feature-settings: tabular-nums lining-nums;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-size: var(--font-size);
+  font-style: normal;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: var(--font-weight-normal);
+  height: 100%;
+  overflow: hidden;
+  padding-left: 1rem;
+  position: relative;
+  width: 100%;
+}
+.allMessages:after {
+  background-color: #25323f;
+  background-color: var(--background-color-alt);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1ch;
+}
+.msgWrapper + .msgWrapper {
+  margin-bottom: 1ch;
+  margin-top: 1ch;
+}
+.allMessages:before {
+  color: hsla(0, 0%, 75%, 0.651);
+  color: var(--text-color-alt);
+  content: attr(time);
+  float: right;
+  font-size: smaller;
+  position: static;
+}
+.allMessages.containsOnlyEmojis .emoji {
+  height: 50px;
+}
+.allMessages.pm {
+  padding-top: 26px;
+}
+.allMessages.pm:before {
+  align-items: center;
+  color: #f33;
+  content: "[Private Message]";
+  display: flex;
+  font-size: 8pt;
+  font-weight: 700;
+  height: 16px;
+  justify-content: flex-end;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: calc(100% - 10px);
+}
+.msgWrapper:has(.recieved):before {
+  margin-left: 0;
+  margin-right: 15px;
+}
+blockquote {
+  background-color: #777;
+  border-color: #000;
+  color: #111;
+}
+#background {
+  background: #1a2735;
+  background: var(--background-color);
+  scrollbar-color: #000 transparent;
+  scrollbar-width: thin;
+}
+#textInput {
+  border: 1px solid hsla(0, 0%, 75%, 0.651);
+  border: 1px solid var(--text-color-alt);
+  padding: 1ch 0.75ch;
+  width: 95%;
+}
+#input,
+#nameEntry {
+  border: none;
+  color: #bfbfbf;
+  color: var(--text-color);
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    Noto Sans,
+    sans-serif;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-size: var(--font-size);
+  outline: none;
+}
+#input,
+#textInput {
+  background-color: transparent;
+}
+#input:empty:before {
+  color: hsla(0, 0%, 75%, 0.651);
+  color: var(--text-color-alt);
+  content: "Write a message...";
+}
+.badge {
+  display: none;
+}
+.senderInfo:has(.mod, .owner, .beta):after {
+  background: transparent;
+  background-image: url(/media/verified.png);
+  background-size: 100% 100%;
+  border-radius: 50%;
+  content: " ";
+  filter: contrast(1.5);
+  height: 10pt;
+  margin-left: 5px;
+  width: 10pt;
+}
+.devTag {
+  display: none;
+}
+.senderInfo * {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+.senderInfo {
+  color: #fbbc55;
+  color: var(--secondary-color);
+  font-weight: 700;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+#timestamp,
+#top_banner {
+  display: none;
+}
+#replyBanner {
+  background-color: #333;
+  font-size: 10pt;
+}
+.ctxMenuOption {
+  background-color: #333 !important;
+  color: #aaa;
+  position: relative;
+}
+.ctxMenuOption:hover:after {
+  background-color: rgba(0, 0, 0, 0.25);
+  content: " ";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#ctxMenu {
+  background-color: #555 !important;
+}
+.msgBody {
+  margin-top: 1ch;
+}
+.msgBody a {
+  color: inherit !important;
+}
+:where(#settings) {
+  background-image: none;
+  bottom: 30px;
+  left: auto;
+  right: 0;
+  top: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+:where(#settings):after {
+  bottom: inherit;
+  color: hsla(0, 0%, 75%, 0.651);
+  color: var(--text-color-alt);
+  content: "⁝";
+  font-size: xx-large;
+  font-weight: 800;
+  height: inherit;
+  top: inherit;
+  width: inherit;
+}
+#settingsMenu hr {
+  background-color: #aaa;
+  border: none;
+  height: 2px;
+  margin: auto;
+  width: 100%;
+}
+#is_typing {
+  display: none !important;
+}
+#emojiTrayToggle {
+  background-image: none;
+}
+#emojiTray {
+  color: #bfbfbf;
+  color: var(--text-color);
+  display: none;
+}
+.pinned {
+  border-radius: 5px;
+  cursor: default;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.pinned:before {
+  all: unset !important;
+}
+.pinned > .allMessages {
+  box-shadow: 0 0 3px #000;
+  transition: opacity 0.25s ease;
+  width: 100%;
+}
+.pinned:hover > .allMessages {
+  opacity: 0.25;
+}
+.pinned > .allMessages:after {
+  display: none;
+}
+.pinned:after {
+  content: "📌";
+  display: inline-block;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+#loadingScreen {
+  background-color: #1a2735;
+  background-color: var(--background-color);
+}

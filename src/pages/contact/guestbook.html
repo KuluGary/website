@@ -1,0 +1,69 @@
+---
+title: Guestbook
+permalink: /guestbook/
+layout: base.html
+css:
+  - /css/pages/guestbook.css
+---
+
+{% block content %}
+	<main id="main-content">
+		<h1>Guestbook</h1>
+
+		<p>Thank you for stopping by! You can leave a message or comment in the box below.</p>
+
+		<guestbook-form guestbook="https://webweav.ing/websites/jehw9cvfrq/guestbook"></guestbook-form>
+		<guestbook-comments guestbook="https://webweav.ing/websites/jehw9cvfrq/guestbook"></guestbook-comments>
+	</main>
+{% endblock content %}
+
+<template id="custom-guestbook-comments">
+	<style>
+		.comment-list {
+			font-size: large;
+			color: var(--clr-text-main);
+			padding: 10px;
+			background: var(--clr-bg-main);
+			box-sizing: border-box;
+			min-height: 45px;
+			border-radius: 0;
+		}
+	</style>
+</template>
+<template id="custom-guestbook-form">
+	<style>
+		form div {
+			margin-bottom: var(--spacing-main);
+		}
+		button,
+		input,
+		textarea {
+			background-color: var(--clr-bg-main);
+			border: var(--border-size-1) solid var(--clr-text-main);
+			font-family: var(--font-family-main);
+			padding: 0.25rem 0.5rem;
+			font-size: var(--font-size-1);
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		button:focus,
+		button:focus-within,
+		input:focus,
+		input:focus-within,
+		textarea:focus,
+		textarea:focus-within {
+			outline: var(--border-size-1) solid var(--clr-text-main);
+
+		}
+		label {
+			font-weight: 100;
+		}
+	</style>
+</template>
+
+{% block script %}
+	<script type="module" src="https://static.webweav.ing/guestbook-latest.js"></script>
+{% endblock script %}
