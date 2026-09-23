@@ -54,6 +54,7 @@ ul#nav {
   display: flex;
   justify-content: center;
   column-gap: var(--spacing-main);
+  flex-wrap: wrap;
 }
 
 ul#nav a {

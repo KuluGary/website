@@ -585,6 +585,8 @@
     column-gap: var(--spacing-main);
     width: fit-content;
     margin-inline: auto;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .dead-link {
