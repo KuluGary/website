@@ -508,9 +508,16 @@
       margin-inline: auto;
 
       &.sitemap {
-        & li:not(:first-of-type)::before {
-          content: "|";
-          margin-right: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        & li {
+          white-space: nowrap;
+
+          &:not(:first-of-type)::before {
+            content: "|";
+            margin-right: 0.5rem;
+          }
         }
       }
     }
