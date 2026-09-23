@@ -506,6 +506,13 @@
       column-gap: var(--spacing-tight);
       width: fit-content;
       margin-inline: auto;
+
+      &.sitemap {
+        & li:not(:first-of-type)::before {
+          content: "|";
+          margin-right: 0.5rem;
+        }
+      }
     }
 
     & .social-icons {
