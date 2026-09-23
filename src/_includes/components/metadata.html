@@ -5,7 +5,7 @@
 <link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
 {% if category == "blog" and postSlug %}
   <link rel="alternate" hreflang="{{ lang }}" href="{{ metadata.url }}{{ page.url }}">
-  {% set translations = collections.blogAll | getTranslations(postSlug, page.url) %}
+  {% set translations = collections.postsWithTranslations | getTranslations(postSlug, page.url) %}
   {% for translation in translations %}
     <link rel="alternate" hreflang="{{ translation.data.lang }}" href="{{ metadata.url }}{{ translation.url }}">
   {% endfor %}

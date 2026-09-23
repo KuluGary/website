@@ -5,31 +5,21 @@ import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
 import {
-  gameAmountByStatus,
   getAllBlogPosts,
   getAllJournalPosts,
   getAllPosts,
   getAllPostsWithTranslations,
-  getArtPosts,
   getBlogPosts,
   getBlogTagPages,
-  getFeaturedBlogPosts,
-  getFrequentTags,
-  getFrequentTagsByYear,
-  getGamesByLastPlayed,
-  getGamesByYear,
-  getGamesWithReviews,
   getJournalPosts,
   getJournalTagPages,
-  getPopularPosts,
-  getPostsByYear,
+  getPostTagPages,
 } from "./src/js/11ty/collections.js";
 import {
   filterByLang,
   filterOwnWebmentions,
   formatDate,
   formatDuration,
-  getSimilarPosts,
   getTranslations,
   getWebmentionsByUrl,
   limit,
@@ -42,7 +32,6 @@ import {
 } from "./src/js/11ty/filters.js";
 import { generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 import mdIt from "./src/js/lib/markdown-it.js";
-import getShareUrl from "./src/js/social-media.js";
 
 dotenv.config();
 
@@ -59,7 +48,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/js");
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
   eleventyConfig.addWatchTarget("./src/journal/**/*.md");
-  eleventyConfig.addWatchTarget("./src/art/**/*.md");
   eleventyConfig.addWatchTarget("./src/data");
 
   /** Filters */
@@ -72,17 +60,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("split", split);
   eleventyConfig.addFilter("pad", pad);
   eleventyConfig.addFilter("unslugify", unslugify);
-  eleventyConfig.addFilter("getSimilarPosts", getSimilarPosts);
   eleventyConfig.addFilter("getTranslations", getTranslations);
-  eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
-  eleventyConfig.addFilter("getShareUrl", getShareUrl);
-  eleventyConfig.addFilter("randomBetween", (_, min, max, decimals = 3) => {
-    const value = Math.random() * (max - min) + min;
-    return Number(value.toFixed(decimals));
-  });
 
   /* Markdown */
   eleventyConfig.setLibrary("md", mdIt);
@@ -94,12 +75,6 @@ export default async function (eleventyConfig) {
   /* Plugins */
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(PostCSSPlugin);
-  // eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-  //   formats: ["avif", "webp", "jpeg", "gif"],
-  //   sharpOptions: {
-  //     animated: true,
-  //   },
-  // });
   eleventyConfig.addPlugin(postGraph, {
     limit: 1,
     sort: "desc",
@@ -124,24 +99,13 @@ export default async function (eleventyConfig) {
   /** Collections */
   eleventyConfig.addCollection("blog", getBlogPosts);
   eleventyConfig.addCollection("blogAll", getAllBlogPosts);
+  eleventyConfig.addCollection("blogTagPages", getBlogTagPages);
   eleventyConfig.addCollection("journal", getJournalPosts);
   eleventyConfig.addCollection("journalAll", getAllJournalPosts);
-  eleventyConfig.addCollection("art", getArtPosts);
+  eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
   eleventyConfig.addCollection("posts", getAllPosts);
   eleventyConfig.addCollection("postsWithTranslations", getAllPostsWithTranslations);
-  eleventyConfig.addCollection("postsByYear", getPostsByYear);
-  eleventyConfig.addCollection("frequentTags", getFrequentTags);
-  eleventyConfig.addCollection("frequentTagsByYear", getFrequentTagsByYear);
-  eleventyConfig.addCollection("gameAmountByStatus", gameAmountByStatus);
-  // eleventyConfig.addCollection("comicsAmountByStatus", comicsAmountByStatus);
-  // eleventyConfig.addCollection("filmsAmountByStatus", filmsAmountByStatus);
-  eleventyConfig.addCollection("popularPosts", getPopularPosts);
-  eleventyConfig.addCollection("gamesByLastPlayed", getGamesByLastPlayed);
-  eleventyConfig.addCollection("gamesByYear", getGamesByYear);
-  eleventyConfig.addCollection("featuredBlogPosts", getFeaturedBlogPosts);
-  eleventyConfig.addCollection("gamesWithReviews", getGamesWithReviews);
-  eleventyConfig.addCollection("blogTagPages", getBlogTagPages);
-  eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
+  eleventyConfig.addCollection("postTagPages", getPostTagPages);
 
   return {
     dir: {

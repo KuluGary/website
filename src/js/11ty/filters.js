@@ -111,37 +111,6 @@ export function unslugify(slug) {
 }
 
 /**
- * Filters categories based on two arrays
- * @param {Array<string>} categoriesA
- * @param {Array<string>} categoriesB
- * @returns An array of tags
- */
-function _getSimilarCategories(categoriesA, categoriesB) {
-  return categoriesA.filter(Set.prototype.has, new Set(categoriesB)).length;
-}
-
-/**
- * Gets posts with similar content based on tags
- * @param {Array<Object>} collection - An array of post objects
- * @param {string} path - The current URL route
- * @param {Array<string>} categories - Current tags
- * @returns A list of posts ordered by similarity
- */
-export function getSimilarPosts(collection, path, categories) {
-  const allowedCategories = categories;
-
-  return collection
-    .filter((post) => {
-      return _getSimilarCategories(post.data.tags, allowedCategories) >= 1 && post.data.page.url !== path;
-    })
-    .sort((a, b) => {
-      return (
-        _getSimilarCategories(b.data.tags, allowedCategories) - _getSimilarCategories(a.data.tags, allowedCategories)
-      );
-    });
-}
-
-/**
  * Filters a list of webmentions to exclude ones made by owner
  * @param {object} webmentions list of webmentions
  * @returns list of webmentions without the owned owns
