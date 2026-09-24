@@ -30,10 +30,26 @@
 	<style>
 		form {
 			line-height: 1.8;
+			max-width: 34ch;
+			margin-inline: auto;
 		}
 
 		form div {
 			margin-bottom: var(--spacing-main);
+		}
+
+		form div:has(textarea) {
+			margin-bottom: var(--spacing-tight);
+		}
+
+		form div:has(input[type="hidden"]) {
+			margin: 0;
+		}
+
+		form > p {
+			font-size: 0.75rem;
+			font-style: italic;
+			margin-top: 0;
 		}
 
 		button,
@@ -60,6 +76,7 @@
 			outline: var(--border-size-1) solid var(--clr-text-main);
 
 		}
+
 		label {
 			font-weight: 100;
 			margin-bottom: 0;
