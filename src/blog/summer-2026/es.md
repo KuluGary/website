@@ -1,10 +1,9 @@
 ---
 title: Verano 2026
-date: 2026-07-03
-tags: ["personal"]
+date: 2026-09-25
+tags: personal
 description: A qué me he dedicado estos últimos meses.
 lightbox: true
-draft: true
 ---
 
 Este verano ha sido duro, ¿eh?

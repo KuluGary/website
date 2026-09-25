@@ -1,10 +1,9 @@
 ---
 title: "Summer 2026"
-date: "2026-09-12"
-draft: true
-lightbox: true
-description:
+date: 2026-09-25
 tags: personal
+description: What I’ve been up to these past months.
+lightbox: true
 ---
 
 This summer’s been rough, huh?
