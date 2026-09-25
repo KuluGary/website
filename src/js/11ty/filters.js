@@ -123,6 +123,7 @@ export function filterOwnWebmentions(webmentions) {
       "https://bsky.app/profile/kulugary.itch.io",
       "https://kulugary.tumblr.com/",
       "https://indiepocalypse.social/@kulugary",
+      "https://tilde.zone/@gary",
       "https://github.com/KuluGary",
       "https://www.reddit.com/user/KuluGary/",
     ];

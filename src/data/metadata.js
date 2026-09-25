@@ -14,7 +14,7 @@ export default {
   social: {
     bsky: "https://bsky.app/profile/gary.place",
     tumblr: "https://kulugary.tumblr.com/",
-    mastodon: "https://indiepocalypse.social/@kulugary",
+    mastodon: "https://tilde.zone/@gary",
     itch: "https://kulugary.itch.io/",
     github: "https://github.com/KuluGary",
   },
