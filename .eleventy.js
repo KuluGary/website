@@ -23,6 +23,7 @@ import {
   getTranslations,
   getWebmentionsByUrl,
   limit,
+  optimizeRssImages,
   pad,
   slice,
   sortByDate,
@@ -64,6 +65,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
+  eleventyConfig.addFilter("rssImages", optimizeRssImages);
 
   /* Markdown */
   eleventyConfig.setLibrary("md", mdIt);

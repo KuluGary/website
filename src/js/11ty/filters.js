@@ -177,3 +177,22 @@ export function getTranslations(collection, postSlug, currentUrl) {
     .filter((post) => post.data.postSlug === postSlug && post.url !== currentUrl)
     .sort((a, b) => a.data.lang.localeCompare(b.data.lang));
 }
+
+export function optimizeRssImages(html, siteUrl) {
+  return html.replace(
+    /<picture>[\s\S]*?<img\b([^>]*?)data-rss-src=["']([^"']+)["']([^>]*)>[\s\S]*?<\/picture>/gi,
+    (match, before, rssSrc, after) => {
+      const widthMatch = match.match(/\bwidth=["'](\d+)["']/i);
+      const heightMatch = match.match(/\bheight=["'](\d+)["']/i);
+      const altMatch = match.match(/\balt=["']([^"']*)["']/i);
+
+      const width = widthMatch?.[1] || "960";
+      const height = heightMatch?.[1] || "";
+      const alt = altMatch?.[1] || "";
+
+      const src = new URL(rssSrc, siteUrl).href;
+
+      return `<img src="${src}" width="${width}"${height ? ` height="${height}"` : ""} alt="${alt}">`;
+    },
+  );
+}

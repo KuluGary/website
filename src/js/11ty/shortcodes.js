@@ -58,12 +58,20 @@ function generateGifHtml(originalUrl, alt) {
 }
 
 function generateOptimizedHtml(metadata, alt, sizes) {
-  return Image.generateHTML(metadata, {
+  const html = Image.generateHTML(metadata, {
     alt,
     loading: "lazy",
     decoding: "async",
     ...(sizes ? { sizes } : {}),
   });
+
+  const rssImage = metadata.jpeg?.find((image) => image.width === 960);
+
+  if (!rssImage) {
+    return html;
+  }
+
+  return html.replace("<img", `<img data-rss-src="${escapeAttribute(rssImage.url)}"`);
 }
 
 export async function generateGallery(content, section, fileSlug) {

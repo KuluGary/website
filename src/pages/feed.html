@@ -8,7 +8,7 @@ metadata:
   url: https://gary.place/
   author:
     name: Gary
-    email: kululu.gary@gmail.com
+    email: webmaster@gary.place
 ---
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -59,7 +59,7 @@ metadata:
           <id>{{ absolutePostUrl }}</id>
 
           <content type="html">
-            {{ post.content | htmlToAbsoluteUrls(absolutePostUrl) }}
+            {{ post.content | htmlToAbsoluteUrls(absolutePostUrl) | rssImages(metadata.url) }}
             {% if translations.length > 0 %}
               &lt;hr&gt;
               &lt;p&gt;
