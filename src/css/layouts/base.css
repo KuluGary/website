@@ -27,6 +27,11 @@
     line-height: 1.8;
   }
 
+  ruby,
+  ruby rt {
+    font-family: var(--font-family-main);
+  }
+
   ::selection {
     background-color: var(--clr-selection-bg, var(--clr-accent-secondary));
     color: var(--clr-selection, var(--clr-bg-main));
@@ -151,13 +156,15 @@
     }
   }
 
-  a[href^="http"]:not(.icon-link):not(.dead-link):after,
-  a[href^="https"]:not(.icon-link):not(.dead-link):after {
-    content: url("/assets/images/icons/external-link-accent.svg");
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-inline-start: var(--size-1);
+  a[href^="http"]:not(.icon-link):not(.dead-link),
+  a[href^="https"]:not(.icon-link):not(.dead-link) {
+    &:after {
+      content: url("/assets/images/icons/external-link-accent.svg");
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-inline-start: var(--size-1);
+    }
   }
 
   b {
