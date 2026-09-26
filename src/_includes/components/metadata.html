@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
 <link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
-{% if category == "blog" and postSlug %}
+{% if category == "blog" or category == "journal" and postSlug %}
   <link rel="alternate" hreflang="{{ lang }}" href="{{ metadata.url }}{{ page.url }}">
   {% set translations = collections.postsWithTranslations | getTranslations(postSlug, page.url) %}
   {% for translation in translations %}
@@ -29,15 +29,13 @@
 <meta name="description" content="{{ description or metadata.description }}">
 <meta name="robots" content="index, follow">
 <meta name="generator" content="Eleventy">
-<meta name="google-site-verification" content="xULo7_JtwlfOf_P0hysPJ3EBWclFKJKFVSwNKdg-9iw"/>
-<meta name="msvalidate.01" content="802BD66EC72E67842A67F72519F1BACA"/>
 {% block head %}{% endblock %}
 
 <!-- Open Graph -->
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="{{ metadata.title }}">
 <meta property="og:type" content="{{ ogtype or 'website' }}">
-<meta property="og:url" content="{{metadata.url}}{{page.url}}">
+<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
 {# <meta property="og:image" content="{% openGraphScreenshotURL %}"> #}
 
 <meta name="twitter:card" content="summary_large_image">
