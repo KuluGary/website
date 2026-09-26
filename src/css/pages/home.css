@@ -15,11 +15,9 @@
 
   & img {
     display: block;
-    width: 352px;
-    height: 352px;
-    max-width: 100%;
+    width: min(352px, 100%);
+    height: auto;
     margin-inline: auto;
-    mix-blend-mode: normal;
   }
 
   & a {
