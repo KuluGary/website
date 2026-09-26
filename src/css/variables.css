@@ -23,7 +23,6 @@
   --font-family-main: var(--font-maple-mono);
   --font-family-title: var(--font-patrick-hand);
   --font-family-title-jp: var(--font-zen-kurenaido);
-  --font-family-site-title: var(--font-mansalva);
   --font-accent: var(--font-patrick-hand);
 
   /* Sizing */
@@ -61,8 +60,9 @@
 
 @font-face {
   font-family: MapleMono;
-  src: url("/assets/fonts/MapleMono-Bold.subset.woff2") format("woff");
+  src: url("/assets/fonts/MapleMono-Bold.subset.woff2") format("woff2");
   font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {

@@ -5,10 +5,12 @@ import postCssNesting from "postcss-nesting";
 import postCssPresetEnv from "postcss-preset-env";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
+import postCssImport from "postcss-import";
 
 export default {
   map: "inline",
   plugins: [
+    postCssImport(),
     postCssGlobalData({
       files: ["src/css/variables.css", "src/css/lib/media.openprops.css"],
     }),
@@ -18,7 +20,6 @@ export default {
     postCssPresetEnv({
       features: {
         "cascade-layers": false,
-        "custom-properties": true,
       },
     }),
     autoprefixer(),
