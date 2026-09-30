@@ -86,13 +86,12 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(subsetting, {
     enabled: process.env.ELEVENTY_ENV !== "production",
     dist: "_site/assets/fonts",
+    quiet: true,
     srcFiles: [
-      "./src/assets/fonts/PatrickHandSC-Regular.ttf",
-      "./src/assets/fonts/MapleMono-CN-Regular.ttf",
+      "./src/assets/fonts/PatrickHandSC-Regular.woff2",
+      "./src/assets/fonts/MapleMono-CN-Regular.woff2",
       "./src/assets/fonts/MapleMono-Italic.woff2",
       "./src/assets/fonts/MapleMono-Bold.woff2",
-      "./src/assets/fonts/MapleMono-Thin.woff2",
-      "./src/assets/fonts/MapleMono-ThinItalic.woff2",
       "./src/assets/fonts/ZenKurenaido-Regular.ttf",
     ],
   });
