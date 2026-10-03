@@ -8,7 +8,7 @@ tags:
 ---
 
 {% image category, page.fileSlug %}
-image.png | Image from wikidex.net | centered scale-150 pixelated
+image.png | Image from wikidex.net | | centered scale-150 pixelated
 {% endimage %}
 
 Do you remember Secret Bases from Pokémon Ruby, Sapphire and Emerald? Nowadays, with how good online connectivity is, “connecting” with your friends inside a videogame is a seamless process, but back then it wasn’t!
