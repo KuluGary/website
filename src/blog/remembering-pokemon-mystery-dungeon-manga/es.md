@@ -3,6 +3,7 @@ title: "Recordando Pokémon Mundo Misterioso: Equipo de Rescate de Ginji"
 date: 2026-08-24
 tags:
   - personal
+  - manga
   - gaming
 description: Rememorando acerca de un manga de Pokémon de mi infancia.
 draft: true
@@ -23,7 +24,7 @@ El primer capítulo, ¡*Los Pokémon al Rescate*!  (<span>ポケモンになっ�
 what.png | Este chico tiene ritmo.
 {% endimage %}
 
-El arte de este manga es muy chulo. A diferencia de otras versiones de estos personajes, el Sr. Makoto Mizobuchi consigue darles un aspecto intimidante e intenso a los Pokémon. Él es el mangaka responsable del manga de Pokémon Adventures también, y su experiencia queda clara en la calidad del dibujo.
+El arte de este manga es muy chulo. A diferencia de otras versiones de estos personajes, el Sr. Makoto Mizobuchi consigue darles un aspecto intimidante e intenso a los Pokémon. Después continuaría encargándose de varios otros mangas de Pokémon, testamento del buen trabajo que hizo en esta serie.
 
 {% image category, postSlug %}
 zapdos.png | Zapdos es bastante intimidante en este manga.

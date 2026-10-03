@@ -1,4 +1,5 @@
 import { getFromCache, setIntoCache } from "../js/cache.js";
+import { saveTestData } from "../js/save.js";
 
 export default async function () {
   const cached = getFromCache("webmentions");
@@ -6,12 +7,14 @@ export default async function () {
   if (cached) return cached;
 
   const response = await fetch(
-    `https://webmention.io/api/mentions.jf2?token=${process.env.WEBMENTIONS_TOKEN}&per-page=1000`
+    `https://webmention.io/api/mentions.jf2?token=${process.env.WEBMENTIONS_TOKEN}&per-page=1000`,
   );
 
   const body = await response.json();
   const webmentions = body.children;
 
   setIntoCache("webmentions", webmentions);
+  saveTestData("webmentions.json", webmentions);
+
   return webmentions;
 }

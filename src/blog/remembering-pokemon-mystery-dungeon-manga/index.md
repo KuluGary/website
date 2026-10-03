@@ -3,6 +3,7 @@ title: "Remembering Pokémon Mystery Dungeon: Ginji's Rescue Team"
 date: 2026-08-24
 tags:
   - personal
+  - manga
   - gaming
 description: Reminiscing about an obscure Pokémon tie-in manga from my childhood.
 draft: true
@@ -24,7 +25,7 @@ The first chapter of the manga, *Pokémon to the Rescue!* (<span>ポケモンに
 what.png | He really be twerking chicken-style.
 {% endimage %}
 
-The art on this manga is very cool. Unlike some other versions of these characters, Mr. Makoto Mizobuchi really accomplishes giving a threatening and intense look into the Pokémon. He is the mangaka behind the Pokémon Adventures manga too, and his experience shows in the quality of the artwork.
+The art on this manga is very cool. Unlike some other versions of these characters, Mr. Makoto Mizobuchi really accomplishes giving a threatening and intense look into the Pokémon. He then went to work on several other Pokémon spin-off manga, a testament of the job well-done in this series.
 
 {% image category, postSlug %}
 zapdos.png | Zapdos is really scary in this manga.
@@ -35,3 +36,7 @@ Even before playing the games, this manga left a big impression on me. I remembe
 After that I got to play Pokémon Mystery Dungeon: Red Rescue Team on my Game Boy Advance. I loved the game, but I must have restarted the personality quiz at least half a dozen times so I could get to play as Torchic.
 
 Is this manga why my favorite Pokémon of all time is this small fire chicken!?
+
+{% image category, postSlug %}
+chiken.gif | | width-auto
+{% endimage %}

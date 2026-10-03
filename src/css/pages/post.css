@@ -79,6 +79,11 @@ figure.pixelated img {
   image-rendering: pixelated;
 }
 
+img.width-auto,
+figure.width-auto img {
+  width: auto;
+}
+
 #content-nav a {
   color: inherit;
   text-decoration-color: inherit;
@@ -383,4 +388,8 @@ mark {
   *.caption-small figcaption {
     font-size: 0.9rem;
   }
+}
+
+#mention-list-details[open] {
+  grid-column: content;
 }
