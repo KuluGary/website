@@ -1,0 +1,16 @@
+---
+layout: plaintext.njk
+title: Archive
+permalink: /plain/archive/
+---
+
+<ul>
+	{% for post in collections.posts %}
+		<li>
+			<time datetime="{{ post.date }}">{{ post.date | formatDate("yyyy-MM-dd") }}:</time>
+			<a href="{{ post.url | replace('/blog/', '/plain/post/') | replace("/journal/", "/plain/post/") }}">
+				{{ post.data.title }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>

@@ -178,6 +178,12 @@ export function getTranslations(collection, postSlug, currentUrl) {
     .sort((a, b) => a.data.lang.localeCompare(b.data.lang));
 }
 
+/**
+ * Optimizes the images of an HTML block for RSS feeds
+ * @param {string} html - The HTML string to modify
+ * @param {string} siteUrl - The site URL to concatenate for the img URLs
+ * @returns {string} Optimized HTML for RSS feeds
+ */
 export function optimizeRssImages(html, siteUrl) {
   return html.replace(
     /<picture>[\s\S]*?<img\b([^>]*?)data-rss-src=["']([^"']+)["']([^>]*)>[\s\S]*?<\/picture>/gi,
@@ -194,5 +200,53 @@ export function optimizeRssImages(html, siteUrl) {
 
       return `<img src="${src}" width="${width}"${height ? ` height="${height}"` : ""} alt="${alt}">`;
     },
+  );
+}
+
+/**
+ * Optimizes the images of an HTML block for plaintext
+ * @param {string} html - The HTML string to modify
+ * @returns {string} Optimized HTML for plaintext
+ */
+export function plaintextHtml(html) {
+  return (
+    html
+      // Individual optimized images
+      .replace(
+        /<figure[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>\s*<picture>[\s\S]*?<img([^>]*)>[\s\S]*?<\/picture>\s*<\/a>([\s\S]*?)<\/figure>/g,
+        (_, imageUrl, imgAttributes, caption) => {
+          const alt = imgAttributes.match(/alt="([^"]*)"/)?.[1] ?? "";
+
+          return `<p><a href="${imageUrl}" aria-label="${alt}">Image: ${caption.trim() ?? alt}</a></p>`;
+        },
+      )
+
+      // Individual GIFs / non-optimized images
+      .replace(
+        /<figure[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>\s*<img([^>]*)>\s*<\/a>([\s\S]*?)<\/figure>/g,
+        (_, imageUrl, imgAttributes, caption) => {
+          const alt = imgAttributes.match(/alt="([^"]*)"/)?.[1] ?? "";
+
+          return `<p><a href="${imageUrl}" aria-label="${alt}">Image: ${caption.trim() ?? alt}</a></p>`;
+        },
+      )
+
+      // Galleries
+      .replace(/<div class="gallery">([\s\S]*?)<\/div>/g, (_, gallery) => {
+        const images = [];
+        const imagePattern = /<a[^>]*href="([^"]+)"[^>]*>[\s\S]*?<img([^>]*)>[\s\S]*?<\/a>/g;
+
+        let match;
+
+        while ((match = imagePattern.exec(gallery)) !== null) {
+          const imageUrl = match[1];
+          const imgAttributes = match[2];
+          const alt = imgAttributes.match(/alt="([^"]*)"/)?.[1] ?? "";
+
+          images.push(`<p><a href="${imageUrl}" aria-label="${alt}">Image: ${alt}</a></p>`);
+        }
+
+        return images.join("\n");
+      })
   );
 }

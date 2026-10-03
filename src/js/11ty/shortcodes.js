@@ -137,3 +137,7 @@ export async function generateImage(content, section, fileSlug) {
       : ""
   }</figure>`;
 }
+
+export function addRule(char) {
+  return (char || "=").repeat(120);
+}

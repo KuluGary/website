@@ -1,0 +1,36 @@
+---
+pagination:
+  data: collections.posts
+  size: 1
+  alias: post
+
+permalink: "/plain/post/{{ post.fileSlug }}/"
+
+layout: plaintext.njk
+
+eleventyComputed:
+  title: "{{ post.data.title }}"
+  date: "{{ post.date }}"
+
+plaintext: true
+---
+
+<article>
+  <h1>{{ title }}</h1>
+
+  <span>
+    <time datetime="{{ date | formatDate }}">
+      {{ date | formatDate }}
+    </time>
+  </span>
+
+  <span> | </span>
+
+  <span>
+    {{ post.data.tags | join(", ") }}
+  </span>
+
+  <div class="rule" aria-hidden="true">{% rule site.ruleChar %}</div>
+
+  {{ post.templateContent | safe }}
+</article>

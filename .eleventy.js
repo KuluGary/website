@@ -25,13 +25,14 @@ import {
   limit,
   optimizeRssImages,
   pad,
+  plaintextHtml,
   slice,
   sortByDate,
   split,
   unslugify,
   webmentionsByType,
 } from "./src/js/11ty/filters.js";
-import { generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
+import { addRule, generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 import mdIt from "./src/js/lib/markdown-it.js";
 
 dotenv.config();
@@ -44,6 +45,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
   eleventyConfig.addPassthroughCopy("./src/journal/**/assets");
+  eleventyConfig.addPassthroughCopy({ "./src/assets/images/cap.svg": "plain/cap.svg" });
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
@@ -66,6 +68,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
   eleventyConfig.addFilter("rssImages", optimizeRssImages);
+  eleventyConfig.addFilter("plaintextHtml", plaintextHtml);
 
   /* Markdown */
   eleventyConfig.setLibrary("md", mdIt);
@@ -73,7 +76,7 @@ export default async function (eleventyConfig) {
   /** Shortcodes */
   eleventyConfig.addPairedNunjucksAsyncShortcode("gallery", generateGallery);
   eleventyConfig.addPairedNunjucksAsyncShortcode("image", generateImage);
-
+  eleventyConfig.addShortcode("rule", addRule);
   /* Plugins */
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(PostCSSPlugin);

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>{{ title }} | Gary</title>
+		<link rel="icon" href="/plain/cap.svg" type="image/svg+xml">
+		<style>
+			:root {
+				color-scheme: light dark;
+			}
+			html {
+				font: 1rem/1.5 monospace;
+			}
+			body {
+				max-width: 80ch;
+				margin: 0 auto;
+				padding: 1rem 1ch;
+				overflow-wrap: break-word;
+			}
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: inherit;
+				margin: 1.5em 0 0.5em;
+			}
+			footer,
+			header {
+				text-align: center;
+			}
+			code,
+			kbd,
+			pre,
+			samp {
+				font: inherit;
+			}
+			pre {
+				overflow-x: auto;
+				padding: 0.75em 1ch;
+			}
+			code {
+				padding: 0.1em 0.3ch;
+			}
+			pre code {
+				background: none;
+				padding: 0;
+			}
+			ul {
+				padding-left: 3ch;
+				list-style: disc;
+				list-style: "- ";
+			}
+			blockquote {
+				margin: 1em 0 1em 2ch;
+			}
+			blockquote > p::before {
+				content: "> ";
+			}
+			table {
+				border-collapse: collapse;
+			}
+			td,
+			th {
+				border: 1px solid;
+				padding: 0 1ch;
+				text-align: left;
+			}
+			.scroll {
+				overflow-x: auto;
+			}
+			nav ul {
+				display: inline;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			nav li {
+				display: inline;
+			}
+			.rule {
+				overflow: hidden;
+				white-space: nowrap;
+				margin: 1rem 0;
+			}
+			.skip:not(:focus) {
+				position: absolute;
+				left: -9999px;
+			}
+			iframe,
+			img,
+			video {
+				max-width: 100%;
+				margin-inline: auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<nav>
+				<a href="/plain/">Home</a> /
+      <a href="/plain/archive/">Archive</a>
+			</nav>
+		</header>
+
+		<main>
+			{{ content | plaintextHtml | safe }}
+		</main>
+	</body>
+</html>
