@@ -24,7 +24,7 @@ screenshot-1.png | Second iteration of this website
 In the end I went for something a little minimalistic. I used [Hyperblam's docs](https://hyperblam.how/) and [Toby Fox's website](https://toby.fangamer.com/) for inspiration.
 
 {% image category, postSlug %}
-website.png | Newest design for {{ metadata.title }}
+website.png | A screenshot of the home page of gary.place | Newest design for gary.place
 {% endimage %}
 
 ## Personal media tracker
@@ -43,13 +43,13 @@ On my prototype, I’m working on re-creating the dungeon-generation algorithm.
 
 
 {% image category, postSlug %}
-dungeon-generation.gif
+dungeon-generation.gif | A showcase of multiple dungeon layouts being generated in real time.
 {% endimage %}
 
 Thankfully, lots of smart people have already made [fan-made](https://wiki.pmdo.pmdcollab.org/Grid_of_Rooms_Generation) [implementations](https://github.com/hayesgr/Dungeon_gen) of those [features](https://github.com/EpicYoshiMaster/dungeon-mystery), so I had lots of references while writing the code.
 
 {% image category, postSlug %}
-dungeon-navigation.gif
+dungeon-navigation.gif | A small character-sprite navigating the generated dungeon.
 {% endimage %}
 
 Right now it’s just a prototype, but maybe later it’ll shape up into something more.

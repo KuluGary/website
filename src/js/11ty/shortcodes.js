@@ -81,11 +81,12 @@ export async function generateGallery(content, section, fileSlug) {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
-      const [filename, alt = "", className = ""] = line.split("|").map((value) => value.trim());
+      const [filename, alt = "", caption = "", className = ""] = line.split("|").map((value) => value.trim());
 
       return {
         filename,
         alt,
+        caption,
         className,
       };
     });
@@ -105,18 +106,25 @@ export async function generateGallery(content, section, fileSlug) {
         ? generateOptimizedHtml(image.metadata, image.alt, "(max-width: 700px) calc(100vw - 2rem), 360px")
         : generateGifHtml(originalUrl, image.alt);
 
-      return `<a
-  href="${escapeAttribute(originalUrl)}"
-  class="glightbox grid-item${image.className ? ` ${escapeAttribute(image.className)}` : ""}"
->
-  ${imageHtml}
-</a>`;
+      return `<figure class="grid-item${image.className ? ` ${escapeAttribute(image.className)}` : ""}">
+  <a
+    href="${escapeAttribute(originalUrl)}"
+    class="glightbox"
+  >
+    ${imageHtml}
+  </a>${
+    image.caption
+      ? `
+  <figcaption>${escapeHtml(image.caption)}</figcaption>`
+      : ""
+  }
+</figure>`;
     })
     .join("")}</div>`;
 }
 
 export async function generateImage(content, section, fileSlug) {
-  const [filename, description = "", className = ""] = content
+  const [filename, alt = "", caption = "", className = ""] = content
     .trim()
     .split("|")
     .map((value) => value.trim());
@@ -125,15 +133,15 @@ export async function generateImage(content, section, fileSlug) {
 
   const originalUrl = getOriginalUrl(section, fileSlug, filename);
 
-  const imageHtml = metadata ? generateOptimizedHtml(metadata, description) : generateGifHtml(originalUrl, description);
+  const imageHtml = metadata ? generateOptimizedHtml(metadata, alt) : generateGifHtml(originalUrl, alt);
 
   return `<figure class="${escapeAttribute(className)}">
   <a href="${escapeAttribute(originalUrl)}" class="glightbox">
     ${imageHtml}
   </a>${
-    description
+    caption
       ? `
-    <figcaption>${escapeHtml(description)}</figcaption>`
+  <figcaption>${escapeHtml(caption)}</figcaption>`
       : ""
   }</figure>`;
 }
