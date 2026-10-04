@@ -7,8 +7,6 @@ export async function getBubblesSignal(url) {
     const encodedUrl = encodeURIComponent(url);
     const cached = getFromCache(`bubbles-url-${encodedUrl}`);
 
-    console.log(url, cached);
-
     if (cached) return cached;
 
     const response = await fetch(`${BUBBLES_API}?url=${encodedUrl}`);
