@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
-		<title>{{ title }} | Gary</title>
-		<link rel="icon" href="/plain/cap.svg" type="image/svg+xml">
+		<title>{{ title }} | {{ metadata.title }}</title>
+		<link rel="icon" href={{"/cap.svg" | plainUrl }} type="image/svg+xml">
 		<style>
 			:root {
 				color-scheme: light dark;
@@ -96,19 +96,47 @@
 				margin-inline: auto;
 				display: block;
 			}
+			dd {
+				margin-bottom: 1.5rem;
+			}
 		</style>
 	</head>
 
 	<body>
 		<header>
+			<p>
+				<a href="{{ "/" | plainUrl }}">{{ metadata.title }}</a>
+			</p>
 			<nav>
-				<a href="/plain/">Home</a> /
-      <a href="/plain/archive/">Archive</a>
+				<ul>
+					<li>
+						<a href={{ "/archive/" | plainUrl }}>Archive</a>
+					</li>
+					|
+					<li>
+						<a href={{ "/about/" | plainUrl }}>About</a>
+					</li>
+					|
+					<li>
+						<a href={{ "/contact/" | plainUrl }}>Contact</a>
+					</li>
+				</ul>
 			</nav>
 		</header>
 
+		<div class="rule" aria-hidden="true">{% rule %}</div>
+
 		<main>
-			{{ content | plaintextHtml | safe }}
+			{{ content | plaintextHtml | asciiPunct | safe }}
 		</main>
+
+		<div class="rule" aria-hidden="true">{% rule %}</div>
+
+		<footer>
+			<p>(c) {{ currentYear }}
+				<a href="https://gary.place">gary.place</a> |
+				<a href="mailto:webmaster@gary.place">contact</a>
+			</p>
+		</footer>
 	</body>
 </html>

@@ -3,7 +3,10 @@ title: Procedural dungeon generation
 date: 2023-02-28
 tags: ["game-dev"]
 ---
-![A dark animated image of a dungeon layout being re-generated periodically](/journal/{{page.fileSlug}}/assets/1.gif)
+
+{% image category, postSlug %}
+1.gif | A dark animated image of a dungeon layout being re-generated periodically
+{% endimage %}
 
 I like rogue-likes, and procedural generation is a fascinating subject to me.
 

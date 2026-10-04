@@ -4,7 +4,7 @@ pagination:
   size: 1
   alias: post
 
-permalink: "/plain/post/{{ post.fileSlug }}/"
+permalink: "{{ plainRoot }}/post/{{ post.fileSlug }}/"
 
 layout: plaintext.njk
 
@@ -19,8 +19,8 @@ plaintext: true
   <h1>{{ title }}</h1>
 
   <span>
-    <time datetime="{{ date | formatDate }}">
-      {{ date | formatDate }}
+    <time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
+      {{ date | formatDate("yyyy-MM-dd") }}
     </time>
   </span>
 
@@ -30,7 +30,12 @@ plaintext: true
     {{ post.data.tags | join(", ") }}
   </span>
 
-  <div class="rule" aria-hidden="true">{% rule site.ruleChar %}</div>
+  <p>Original: <a href="{{ metadata.url }}{{ post.url }}">
+      {{ metadata.url }}{{ post.url }}
+    </a>
+  </p>
+
+  <div class="rule" aria-hidden="true">{% rule "-" %}</div>
 
   {{ post.templateContent | safe }}
 </article>

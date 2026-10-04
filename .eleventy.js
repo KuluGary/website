@@ -16,6 +16,7 @@ import {
   getPostTagPages,
 } from "./src/js/11ty/collections.js";
 import {
+  asciiPunct,
   filterByLang,
   filterOwnWebmentions,
   formatDate,
@@ -26,6 +27,7 @@ import {
   optimizeRssImages,
   pad,
   plaintextHtml,
+  plainUrl,
   slice,
   sortByDate,
   split,
@@ -34,12 +36,22 @@ import {
 } from "./src/js/11ty/filters.js";
 import { addRule, generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
 import mdIt from "./src/js/lib/markdown-it.js";
+import { fullPageMetadata, plainTextMetadata } from "./src/js/metadata.js";
 
 dotenv.config();
+
+const isPlain = process.env.ELEVENTY_MODE === "plain";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("rootURL", process.env.ROOT_URL);
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
+  eleventyConfig.addGlobalData("isPlain", isPlain);
+  eleventyConfig.addGlobalData("plainRoot", isPlain ? "" : "/plain");
+  eleventyConfig.addGlobalData("metadata", isPlain ? plainTextMetadata : fullPageMetadata);
+
+  if (!isPlain) {
+    eleventyConfig.ignores.add("./src/plaintext");
+  }
 
   eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/assets");
@@ -69,6 +81,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
   eleventyConfig.addFilter("rssImages", optimizeRssImages);
   eleventyConfig.addFilter("plaintextHtml", plaintextHtml);
+  eleventyConfig.addFilter("asciiPunct", asciiPunct);
+  eleventyConfig.addFilter("plainUrl", plainUrl);
 
   /* Markdown */
   eleventyConfig.setLibrary("md", mdIt);
@@ -110,6 +124,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("posts", getAllPosts);
   eleventyConfig.addCollection("postsWithTranslations", getAllPostsWithTranslations);
   eleventyConfig.addCollection("postTagPages", getPostTagPages);
+
+  if (isPlain) {
+    eleventyConfig.ignores.add("./src/pages/**");
+  }
 
   return {
     dir: {

@@ -1,3 +1,4 @@
+import { getBubblesSignal } from "../js/11ty/bubbles.js";
 import { getLang, getPostSlug, DEFAULT_LANG, getPostLayout } from "../js/i18n.js";
 
 export default {
@@ -23,5 +24,14 @@ export default {
     eleventyExcludeFromCollections: ({ draft }) =>
       draft && process.env.ENVIRONMENT === "PRODUCTION" ? true : undefined,
     ignore: ({ draft }) => (draft ? true : undefined),
+    bubblesSignal: async (data) => {
+      if (!data.page?.url || !data.rootURL) {
+        return null;
+      }
+
+      const url = new URL(data.page.url, data.rootURL).href;
+
+      return getBubblesSignal(url);
+    },
   },
 };

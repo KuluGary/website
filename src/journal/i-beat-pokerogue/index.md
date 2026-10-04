@@ -7,7 +7,9 @@ description: After playing for about a week, I've finally beaten PokéRogue.
 
 I've been playing [PokéRogue](https://pokerogue.net/) on and off for about a week. In my most recent run (and the only successful one), I've finally beaten the game.
 
-![The main menu of PokéRogue](/journal/{{page.fileSlug}}/assets/01.png)
+{% image category, postSlug %}
+01.png | The main menu of PokéRogue
+{% endimage %}
 
 I started the run with **Torchic**, **Magnemite** and **Magikarp**. Through the game, I ended up forming a team of **Blaziken**, **Magneton**, **Gyarados**, **Shiftry**, **Dusknoir** and **Seismitoad**. At one point, I got both the **Mega Bracelet**, and the **Blazikenite** and **Gyaradosite**.
 

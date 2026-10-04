@@ -204,20 +204,34 @@ export function optimizeRssImages(html, siteUrl) {
 }
 
 /**
- * Optimizes the images of an HTML block for plaintext
+ * Optimizes the images and iframes of an HTML block for plaintext
  * @param {string} html - The HTML string to modify
  * @returns {string} Optimized HTML for plaintext
  */
 export function plaintextHtml(html) {
   return (
     html
+      // Iframes
+      .replace(/<iframe([^>]*)>(?:[\s\S]*?)<\/iframe>/gi, (_, attributes) => {
+        const src = attributes.match(/\bsrc="([^"]*)"/i)?.[1] ?? "";
+        const title = attributes.match(/\btitle="([^"]*)"/i)?.[1] ?? "";
+
+        if (!src) {
+          return "";
+        }
+
+        const label = title || "Embedded content";
+
+        return `<p><a href="${src}" aria-label="${label}">[Iframe: ${label}]</a></p>`;
+      })
+
       // Individual optimized images
       .replace(
         /<figure[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>\s*<picture>[\s\S]*?<img([^>]*)>[\s\S]*?<\/picture>\s*<\/a>([\s\S]*?)<\/figure>/g,
         (_, imageUrl, imgAttributes, caption) => {
           const alt = imgAttributes.match(/alt="([^"]*)"/)?.[1] ?? "";
 
-          return `<p><a href="${imageUrl}" aria-label="${alt}">Image: ${caption.trim() ?? alt}</a></p>`;
+          return `<p><a href="${imageUrl}" aria-label="${alt}">[Image: ${alt || caption.trim()}]</a></p>`;
         },
       )
 
@@ -227,7 +241,7 @@ export function plaintextHtml(html) {
         (_, imageUrl, imgAttributes, caption) => {
           const alt = imgAttributes.match(/alt="([^"]*)"/)?.[1] ?? "";
 
-          return `<p><a href="${imageUrl}" aria-label="${alt}">Image: ${caption.trim() ?? alt}</a></p>`;
+          return `<p><a href="${imageUrl}" aria-label="${alt}">[Image: ${alt || caption.trim()}]</a></p>`;
         },
       )
 
@@ -249,4 +263,37 @@ export function plaintextHtml(html) {
         return images.join("\n");
       })
   );
+}
+
+const REPLACEMENTS = [
+  [/[\u201C\u201D]/g, '"'],
+  [/[\u2018\u2019]/g, "'"],
+  [/\u2014/g, "--"],
+  [/\u2013/g, "-"],
+  [/\u2026/g, "..."],
+  [/\u00A0/g, " "],
+];
+
+/**
+ * Normalise typographic punctuation to ASCII.
+ * Non-Latin scripts and accented characters aren't modified.
+ * @param {string} str - Raw HTML to parse
+ * @returns {string} - ASCIIfied string
+ */
+export function asciiPunct(str) {
+  if (typeof str !== "string") return str;
+  let out = str;
+  for (const [pattern, replacement] of REPLACEMENTS) {
+    out = out.replace(pattern, replacement);
+  }
+  return out;
+}
+
+/**
+ * Parses a URL
+ * @param {string} url - URL to parse
+ * @returns parsed URL
+ */
+export function plainUrl(url) {
+  return process.env.ELEVENTY_MODE === "plain" ? url : `/plain${url}`;
 }

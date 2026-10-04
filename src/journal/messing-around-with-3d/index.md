@@ -1,13 +1,17 @@
 ---
 title: Messing around with 3D
-date: 2023-09-09
+date: 2023-04-20
 tags: ["game-dev"]
 description: I've always loved low-poly 3D games of the Playstation era, and I wanted to replicate the look and feel of them in Godot.
 ---
 
-![An animated gif of a 3D capsule wandering around in a pixelated world](/journal/{{page.fileSlug}}/assets/1.gif)
+{% image category, postSlug %}
+1.gif | An animated gif of a 3D capsule wandering around in a pixelated world
+{% endimage %}
 
-![Claire, the protagonist, flying around a low-res 3D world](https://cdn.akamai.steamstatic.com/steam/apps/1055540/ss_0e864bf975bb71f238de6861fc8fd3d6ed6e4ce8.1920x1080.jpg?t=1701219411 "Claire, the protagonist, flying around a low-res 3D world")
+{% image category, postSlug %}
+image.png | Claire, the protagonist of A Short Hike, flying around a low-res 3D world
+{% endimage %}
 
 A few months ago, I played [A Short Hike](https://store.steampowered.com/app/1055540/A_Short_Hike/) by recommendation from my partner, and I fell in love with the aesthetic. The concept of the game is very nice and feel-good, but it made me remember how much I loved the look and feel of games like [Digimon World](https://en.wikipedia.org/wiki/Digimon_World) and other PSX-era low-res 3D games.
 

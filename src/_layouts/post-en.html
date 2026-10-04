@@ -76,7 +76,7 @@ layout: base.html
 			{% set likes = mentions | webmentionsByType('like-of') %}
 			{% set replies = mentions | webmentionsByType('in-reply-to') %}
 
-			{% if likes.length or reposts.length or replies.length %}
+			{% if likes.length or reposts.length or replies.length or bubblesSignal %}
 				<div class="interactions">
 					{% if likes.length %}
 						<p>{{ likes.length }} likes</p>
@@ -86,6 +86,17 @@ layout: base.html
 					{% endif %}
 					{% if replies.length %}
 						<p>{{ replies.length }} replies</p>
+					{% endif %}
+
+					{% if bubblesSignal %}
+						<p>
+							<a
+							class="bubbles-vote unstyled"
+							href="https://bubbles.town/entry/{{ bubblesSignal.id }}"
+						>
+								<span>▲
+							{{ bubblesSignal.count or "" }}</span> on Bubbles</a>
+						</p>
 					{% endif %}
 				</div>
 			{% endif %}

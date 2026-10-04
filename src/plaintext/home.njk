@@ -1,15 +1,56 @@
 ---
 layout: plaintext.njk
 title: Home
-permalink: /plain/
+permalink: "{{ plainRoot }}/"
 ---
 
-<p>Welcome! This is a plain text mirror of {{ metadata.title }}. It's designed for older hardware and terminal readers. This place is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye. </p>
+<p>Welcome! This is a plain text mirror of <a href="https://gary.place">gary.place</a>. This website is a patchwork of interests ranging from technology, art, literature and entertainment. Please look around and see if you find anything that catches your eye.</p>
 
-<nav>
-	<ul>
+<ul>
+	<li>
+		<a href={{ "/archive/" | plainUrl }}>Archive</a>
+	</li>
+	<li>
+		<a href={{ "/about/" | plainUrl }}>About</a>
+	</li>
+	<li>
+		<a href={{ "/contact/" | plainUrl }}>Contact</a>
+	</li>
+</ul>
+
+<h2>Recent updates</h2>
+
+<ul>
+	{% for post in collections.posts | limit(5) %}
 		<li>
-			<a href="/plain/archive/">Archive</a>
+			<time datetime="{{ post.date }}">{{ post.date | formatDate("yyyy-MM-dd") }}:</time>
+			<a href="{{ post.url | replace('/blog/', '/post/') | replace("/journal/", "/post/") | plainUrl }}">
+				{{ post.data.title }}
+			</a>
 		</li>
-	</ul>
-</nav>
+	{% endfor %}
+</ul>
+
+<p>Or, find me elsewhere.</p>
+
+<ul>
+	<li>
+		<a href="{{ metadata.social.mastodon }}" target="_blank" class="icon-link" aria-label="Mastodon profile">Mastodon</a>
+	</li>
+	<li>
+		<a href="{{ metadata.social.bsky }}" target="_blank" class="icon-link" aria-label="Bluesky profile">
+	Bluesky
+</a>
+	</li>
+	<li>
+		<a href="{{ metadata.social.tumblr }}" target="_blank" class="icon-link" aria-label="Tumblr profile">
+Tumblr</a>
+	</li>
+	<li>
+		<a href="{{ metadata.social.itch }}" target="_blank" class="icon-link" aria-label="Itch.io profile">
+Itch.io</a>
+	</li>
+	<li>
+		<a href="{{ metadata.social.github }}" target="_blank" class="icon-link" aria-label="Github profile">Github</a>
+	</li>
+</ul>
