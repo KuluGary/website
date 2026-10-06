@@ -13,7 +13,7 @@ When I was a kid, I was really into videogame and cartoon magazines. I was lucky
 
 One collectibe I still own to this day and I remember fondly is a small supplement that came with the Jetix Magazine. It was Pokémon Mystery Dungeon: Ginji's Rescue Team –or ポケモン不思議のダンジョンギンジの救助隊 in the original japanese. Unlike the manga I was used to reading which came in tankōbon, these were made into little A6 booklets with a single chapter on each.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 booklets.png | The first three chapters of Pokémon Mystery Dungeon: Ginji's Rescue Team layed out over a black background. | The first three chapters, each in a little booklet.
 {% endimage %}
 
@@ -21,13 +21,13 @@ At that point in time, I had played other Pokémon games but not Mystery Dungeon
 
 The first chapter of the manga, *Pokémon to the Rescue!* (<span>ポケモンになった<ruby>少年<rp>(</rp><rt>しょうねん</rt><rp>)</rp></ruby></span>), introduces the reader to Ginji, a [hasty](https://mysterydungeonwiki.com/wiki/Rescue_Team:Nature#Hasty) kid excited to get home after class to try and find his birthday present, hidden by his mom at home. He eventually passes out from exhaustion, muttering “I won’t give up… Until I find… My p-present…”. When he wakes up though, he finds out he has been transformed into a Torchic!
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 what.png | A page from the first chapter of Pokémon Mystery Dungeon: Ginji's Rescue Team, where Ginji discovers he’s turned into a Torchic. | He really be twerking chicken-style.
 {% endimage %}
 
 The art on this manga is very cool. Unlike some other versions of these characters, Mr. Makoto Mizobuchi really accomplishes giving a threatening and intense look into the Pokémon. He then went to work on several other Pokémon spin-off manga, a testament of the job well-done in this series.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 zapdos.png | A page from the second chapter of Pokémon Mystery Dungeon: Ginji's Rescue Team, with a full-spread of Zapdos. | Zapdos is really scary in this manga.
 {% endimage %}
 

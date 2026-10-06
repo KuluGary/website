@@ -13,7 +13,7 @@ A principios de los 2000, con acceso a Internet limitado y solo las obras más f
 
 Es por eso que recuerdo un día yendo a la tienda de videojuegos en nuestro centro comercial, y encontrando Sonic Mega Collection rebuscando en la estantería de juegos de segunda mano. A esas alturas ya había jugado juegos de Sonic, tanto en GameCube como en consolas antiguas como la Mega Drive y la Game Gear, pero hacía tiempo y esta colección incluía juegos que no conocía ni de nombre.
 
-{% gallery category, postSlug %}
+{% gallery section=category, slug=postSlug %}
 mean-bean.jpg
 flicky.jpg
 {% endgallery %}

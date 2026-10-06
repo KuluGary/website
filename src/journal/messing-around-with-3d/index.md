@@ -5,11 +5,11 @@ tags: ["game-dev"]
 description: I've always loved low-poly 3D games of the Playstation era, and I wanted to replicate the look and feel of them in Godot.
 ---
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 1.gif | An animated gif of a 3D capsule wandering around in a pixelated world
 {% endimage %}
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 image.png | Claire, the protagonist of A Short Hike, flying around a low-res 3D world
 {% endimage %}
 

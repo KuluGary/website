@@ -12,7 +12,7 @@ postmedia:
 description: A Short Hike has a very cute dialogue system, and I wanted to try to repliacte it with the help of a video by DashNothing.
 ---
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 1.jpg | A small pixelated 3D world with a speech bubble saying "Hey, this is a test message!
 {% endimage %}
 

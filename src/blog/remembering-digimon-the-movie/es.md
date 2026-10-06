@@ -9,7 +9,7 @@ tags:
 ---
 Cuando compramos la cinta VHS de esta película, ya debía haber visto algunos capítulos sueltos de Digimon Adventure y Digimon Adventure 02 en la televisión. Recuerdo meter la cinta en el reproductor VHS y quedar totalmente anonadado cuando ésto salió en la pantalla…
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 angela-anaconda.png
 {% endimage %}
 
@@ -21,7 +21,7 @@ Hablaré de ellas por separado:
 
 ## Digimon Adventure
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 digimon-adventure.png
 {% endimage %}
 
@@ -35,7 +35,7 @@ A cuentas resumidas, esta película y el juego de Digimon World son los causante
 
 ## Digimon Adventure: Our War Game!
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 our-war-game.png
 {% endimage %}
 
@@ -49,7 +49,7 @@ La secuencia final de la pelea, donde los Digimon de los protagonistas evolucion
 
 ## Digimon Adventure 02: Hurricane Touchdown!!
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 hurricane-touchdown.png
 {% endimage %}
 

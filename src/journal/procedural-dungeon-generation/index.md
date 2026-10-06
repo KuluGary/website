@@ -4,7 +4,7 @@ date: 2023-02-28
 tags: ["game-dev"]
 ---
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 1.gif | A dark animated image of a dungeon layout being re-generated periodically
 {% endimage %}
 

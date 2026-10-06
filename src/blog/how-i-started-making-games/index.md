@@ -14,16 +14,21 @@ At that point in time I already loved playing videogames, but I didn’t know yo
 
 I remember I had a Dragon Ball book, and in that book there was a very small passage about how people were making Dragon Ball games using the MUGEN engine.
 
-{% image category, postSlug %}
-db.jpg | | max-w-half
+{% image section=category, slug=postSlug %}
+db.jpg | An excerpt from the book “Generación Dragon Ball”. It says: […] With the “M.U.G.E.N.” program (a 2D fighting game “maker”, which allows importing fighters and giving them any attributes we want), fans have created a fighting game based on “Dragon Ball AF”, where you can select Super Saiyan 5 Goku or Super Saiyan 4 Gohan […] | | max-w-half
 {% endimage %}
 
 > […] With the “M.U.G.E.N.” program (a 2D fighting game “maker”, which allows importing fighters and giving them any attributes we want), fans have created a fighting game based on “Dragon Ball AF”, where you can select Super Saiyan 5 Goku or Super Saiyan 4 Gohan […].
 
+{% gallery section=category, slug=postSlug %}
+mugen-2.png | The character select menu. Currently selected are Sonic for Player 1 and Cloud Strife for Player 2.
+mugen-3.png | The battlers are entering the arena. On the left, Kenshin Himura, and on the right, Luigi.
+{% endgallery %}
+
 My friends and I downloaded it and “made some games” (in reality, we just downloaded the engine and some characters people already created…). We had fun, but using ready-made assets didn’t feel like “making a game”. After that I vividly remember we went to the mall, and downloaded Blender on McDonald’s wi-fi but the UI was so confusing we couldn’t even delete the default cube.
 
-{% image category, postSlug %}
-blender.png | Blender has gotten *so much* better over the years. | max-w-half
+{% image section=category, slug=postSlug %}
+blender.png | A screenshot showing the v2.77 version of Blender. | | max-w-half
 {% endimage %}
 
 Of course, summer break came and went and we never even made anything close to a game, but since then I got hooked. I don’t think any of my middle-school friends ever tried game-making again, but I kept going and tried different game engines such as RPG Maker and Game Maker, but that’s a story for another time.

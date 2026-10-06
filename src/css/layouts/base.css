@@ -37,6 +37,10 @@
     color: var(--clr-selection, var(--clr-bg-main));
   }
 
+  em {
+    font-variant-ligatures: no-historical-ligatures;
+  }
+
   ol,
   ul {
     & > li {

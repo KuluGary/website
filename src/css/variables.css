@@ -16,8 +16,8 @@
   --clr-border-main: light-dark(#302f2c, #dedec0);
 
   /* Fonts  */
-  --font-patrick-hand: PatrickHandSC, var(--font-handwritten);
-  --font-zen-kurenaido: ZenKurenaido, var(--font-handwritten);
+  --font-patrick-hand: PatrickHandSC, var(--font-rounded-sans);
+  --font-zen-kurenaido: ZenKurenaido, var(--font-rounded-sans);
   --font-maple-mono: MapleMono, var(--font-mono);
 
   --font-family-main: var(--font-maple-mono);
@@ -44,6 +44,7 @@
   font-family: PatrickHandSC;
   src: url("/assets/fonts/PatrickHandSC-Regular.subset.woff2") format("woff2");
   font-display: swap;
+  size-adjust: 119%;
 }
 
 @font-face {
@@ -52,6 +53,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  size-adjust: 93%;
 }
 
 @font-face {
@@ -59,6 +61,7 @@
   src: url("/assets/fonts/MapleMono-Italic.subset.woff2") format("woff2");
   font-style: italic;
   font-display: swap;
+  size-adjust: 93%;
 }
 
 @font-face {
@@ -67,6 +70,7 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
+  size-adjust: 93%;
 }
 
 @font-face {

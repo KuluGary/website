@@ -16,14 +16,14 @@ A pesar de que ha sido difícil, he intentado seguir avanzando en proyectos igua
 
 He tenido el gusanillo de rediseñar mi página personal desde hace tiempo. Creo que mis primeros prototipos son de finales del año pasado, pero no había encontrado nada que me convenciese hasta ahora.
 
-{% gallery category, postSlug %}
+{% gallery section=category, slug=postSlug %}
 screenshot-2.png | Primera versión de esta web
 screenshot-1.png | Segunda versión de esta web
 {% endgallery %}
 
 Al final opté por algo un poco minimalista. Usé [la documentación de Hyperblam](https://hyperblam.how/) y [la página de Toby Fox](https://toby.fangamer.com/) como inspiración.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 website.png | Un pantallazo de la página principal de gary.place | Diseño actual de gary.place
 {% endimage %}
 
@@ -41,13 +41,13 @@ He estado trabajando en un pequeño prototipo basado en la saga _Fushigi no Dung
 
 En mi prototipo, estoy intentando recrear el algoritmo de generación de mazmorras.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 dungeon-generation.gif | Una demostración de varias distribuciones de mazmorras generadas a tiempo real.
 {% endimage %}
 
 Por suerte, un montón de gente espabilada ya ha [hecho](https://wiki.pmdo.pmdcollab.org/Grid_of_Rooms_Generation) [implementaciones](https://github.com/hayesgr/Dungeon_gen) de esos [algoritmos](https://github.com/EpicYoshiMaster/dungeon-mystery), así que tengo muchas referencias para diseñar el código.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 dungeon-navigation.gif | Un pequeño sprite navegando la mazmorra generada.
 {% endimage %}
 

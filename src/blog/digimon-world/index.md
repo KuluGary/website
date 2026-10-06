@@ -10,7 +10,7 @@ tags:
 ---
 When I was a kid I had a Playstation 1, and I loved it. I spent a lot of time playing games, such as Crash Bandicoot 2: Cortex Strikes Back or Monsters Inc. Scream Team. Another one I spent an ungodly amount of time on is Digimon World, the original.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 cover.png | I had the European version, but the Japanese cover art goes hard.
 {% endimage %}
 
@@ -18,7 +18,7 @@ Digimon World is an infamous game for being cryptic with its game mechanics. The
 
 The issue is, the game is very unpredictable. It will not tell you which stat requirements you need to progress to the next evolution stage, and because of that more often than not you will be stuck… with Him.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 numemon.png | I've seen this guy enough for a lifetime.
 {% endimage %}
 
@@ -26,7 +26,7 @@ Whenever you have too many “care mistakes” (not feeding you Digimon, letting
 
 If you play this game as a kid you will likely want to get a MetalGreymon instead, because it’s all over the opening cinematic and promotional artwork. Well, good luck with that… The requirements are strict, and most likely you will not be lucky to match them on your first try.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 metalgreymon.png | Such a cool-looking monster.
 {% endimage %}
 
@@ -38,7 +38,7 @@ But even with all that, the main issue kid-me had with this game… Is that it�
 
 See, I had a PAL version of the Playstation 1. And… I got to this screen.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 fortress.png | This screen haunts me to this day.
 {% endimage %}
 

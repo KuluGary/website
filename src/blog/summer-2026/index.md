@@ -16,14 +16,14 @@ Even though it’s been tough, I’ve tried to keep working on stuff all the sam
 
 I’ve had the itch to rework my personal site for a while now. I think my first prototypes go back to late last year, but I didn’t find something I was content with until now.
 
-{% gallery category, postSlug %}
+{% gallery section=category, slug=postSlug %}
 screenshot-2.png | First iteration of this website
 screenshot-1.png | Second iteration of this website
 {% endgallery %}
 
 In the end I went for something a little minimalistic. I used [Hyperblam's docs](https://hyperblam.how/) and [Toby Fox's website](https://toby.fangamer.com/) for inspiration.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 website.png | A screenshot of the home page of gary.place | Newest design for gary.place
 {% endimage %}
 
@@ -42,13 +42,13 @@ I’ve been working in a small prototype based on the *Fushigi no Dungeon* serie
 On my prototype, I’m working on re-creating the dungeon-generation algorithm.
 
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 dungeon-generation.gif | A showcase of multiple dungeon layouts being generated in real time.
 {% endimage %}
 
 Thankfully, lots of smart people have already made [fan-made](https://wiki.pmdo.pmdcollab.org/Grid_of_Rooms_Generation) [implementations](https://github.com/hayesgr/Dungeon_gen) of those [features](https://github.com/EpicYoshiMaster/dungeon-mystery), so I had lots of references while writing the code.
 
-{% image category, postSlug %}
+{% image section=category, slug=postSlug %}
 dungeon-navigation.gif | A small character-sprite navigating the generated dungeon.
 {% endimage %}
 

@@ -67,6 +67,10 @@ figure figcaption {
   margin-inline: auto;
 }
 
+figure p {
+  margin: 0;
+}
+
 img.pixelated,
 figure.pixelated img {
   image-rendering: pixelated;
@@ -134,6 +138,10 @@ span.sub {
   gap: var(--spacing-tight);
 }
 
+.gallery picture {
+  margin-block: 0;
+}
+
 .grid-item {
   width: 100%;
   min-width: 0;
@@ -176,7 +184,8 @@ span.sub {
 
 @media (--lg-n-above) {
   .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--grid-cols, 2), minmax(0, 1fr));
+    align-items: center;
   }
 }
 

@@ -7,7 +7,7 @@ tags:
   - gaming
 ---
 
-{% image category, page.fileSlug %}
+{% image section=category, slug=postSlug %}
 image.png | Image from wikidex.net | | centered scale-150 pixelated
 {% endimage %}
 
