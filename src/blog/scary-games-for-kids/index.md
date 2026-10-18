@@ -23,7 +23,7 @@ Luigi’s Mansion is designed with a kid’s funfair “haunted house” look an
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aLmcvfgtZ5I?si=DUj8_Sp1vA_dRiz8&amp;start=83" title="Luigi’s Mansion Blackout" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-There are a lot of other games with spooky elements in them. It’s been a popular motif since very early on, and lots of kids games have them. Kingdom Hearts has *Halloween Town*, Mario has had *Haunted House* levels since forever, Digimon World has *Grey Lord’s Mansion*, *Sonic the Hedgehog* has toons of hallooween-y levels… Spooky-themed levels or characters have been a staple of too many games to count.
+There are a lot of other games with spooky elements in them. It’s been a popular motif since very early on, and lots of kids games have them. Kingdom Hearts has *Halloween Town*, Mario has had *Haunted House* levels since forever, Digimon World has *Grey Lord’s Mansion*, *Sonic the Hedgehog* has tons of halloween-y levels… Spooky-themed levels or characters have been a staple of too many games to count.
 
 {% gallery section=category, slug=postSlug, style="--grid-cols:3" %}
 kh.png | Sora, Donald & Goofy fighting Heartless on Halloween Town | Halloween Town from Kingdom Hearts (2002)

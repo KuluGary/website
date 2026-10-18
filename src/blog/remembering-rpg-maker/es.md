@@ -11,7 +11,7 @@ lightbox: true
 
 <span class="sub">
 
-Este post es el sucesor de [Cómo empecé a hacer videojuegos](/blog/how-i-started-making-games/es), donde hablé acerca de la vez que fui invitado a hacer un juego en primaria.
+Este post es sucesor de [Cómo empecé a hacer videojuegos](/blog/how-i-started-making-games/es), donde hablé acerca de la vez que fui invitado a hacer un juego en primaria.
 
 </span>
 

@@ -15,7 +15,7 @@ This post is a successor to [How I started making games](/blog/how-i-started-mak
 
 </span>
 
-By the time I was around ten or eleven, I discovered a program called RPG Maker XP. It was the newest in a line of game engines were you could create turn-based JRPGs without needing to code. That was very exciting news, since I was an “artsy” kid but had no idea how to program at all.
+By the time I was around ten or eleven, I discovered a program called RPG Maker XP. It was the newest in a line of game engines where you could create turn-based JRPGs without needing to code. That was very exciting news, since I was an “artsy” kid but had no idea how to program at all.
 
 I downloaded it and started playing around with it a lot. I must have made hundreds of projects with only a few maps each… The great thing about RPG Maker is that you don’t need much to get started and have something you can actually play.
 
@@ -29,7 +29,7 @@ zelda-1.png | Link, from The Legend of Zelda: Minish Cap fighting a multi-colore
 
 After tinkering by myself for a while, I signed up to an [obscure forum](http://www.emudesc.com/) where I met fellow hobbyist game developers and even shared some of my demos. People seemed to like them and it encouraged me to keep learning.
 
-Inspired by the work of some of the fellow devs I met, I began making “original” games. They used the default sprites, stuff I downloaded from the web with small touch-ups, or “Frankenstein”-ed characters made from parts of multiple sprites; but the story and characters were all made up.
+Inspired by the cool games everyone was making, I started developing “original” games. They used the default sprites, stuff I downloaded from the web with small touch-ups, or “Frankenstein”-ed characters made from parts of multiple sprites; but the story and characters were all made up.
 
 {% gallery section=category, slug=postSlug, style="--grid-cols:3" %}
 cry-of-fate.png | A pixel-art game with a medieval look. The main character is interacting with a market stall. | “Cry of Fate” was one of my first “serious” JRPGs. The sprites in this screenshot are modified from *Elebits: The Adventures of Kai and Zero*.
@@ -39,7 +39,7 @@ dos-aceros.png | Another pixel-art game. A redheaded character is exploring a di
 
 I even remember someone starting a game where all the characters were people from the forums. I think I was a helpful NPC that would teach you a skill, or something like that… I guess I always gave off more the vibe of mentor-character rather than a party member?
 
-Over the year I did a lot of stuff related to RPG Maker… I wrote in a magazine about RPG Maker games, I was hired as a level designer in a couple of commercial games on Steam, but in the end I never got to actually finish a game with RPG Maker.
+Over the years I did a lot of stuff related to RPG Maker… I wrote in a magazine about RPG Maker games, I was hired as a level designer in a couple of commercial games on Steam, but in the end I never got to actually finish a game with RPG Maker.
 
 The nature of JRPGs is that you tend to want to create an epic story, and so it’s very easy to scale the game to something unmanageable for a kid learning game dev. Since most people using RPG Maker at the time were just starting up, the kind of epic game we wanted to make was not feasible for us. I stopped using RPG Maker with an important takeaway: anyone can get started making games by themselves! Just maybe don’t try to improvise a 50-hour Final Fantasy knock-off.
 

@@ -78,25 +78,14 @@ layout: base.html
 
 			{% if likes.length or reposts.length or replies.length or bubblesSignal %}
 				<div class="interactions">
-					{% if likes.length %}
-						<p>{{ likes.length }} likes</p>
+					{% if likes.length or bubblesSignal.cpunt %}
+						<p>{{ (likes.length or 0) + (bubblesSignal.count or 0) }} likes</p>
 					{% endif %}
 					{% if reposts.length %}
 						<p>{{ reposts.length }} reposts</p>
 					{% endif %}
 					{% if replies.length %}
 						<p>{{ replies.length }} replies</p>
-					{% endif %}
-
-					{% if bubblesSignal %}
-						<p>
-							<a
-							class="bubbles-vote unstyled"
-							href="https://bubbles.town/entry/{{ bubblesSignal.id }}"
-						>
-								<span>▲
-							{{ bubblesSignal.count or "" }}</span> on Bubbles</a>
-						</p>
 					{% endif %}
 				</div>
 			{% endif %}

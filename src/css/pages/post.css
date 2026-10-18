@@ -81,6 +81,21 @@ figure.width-auto img {
   width: auto;
 }
 
+img.scale-2,
+figure.scale-2 img {
+  scale: 2;
+}
+
+img.scale-3,
+figure.scale-3 img {
+  scale: 3;
+}
+
+img.scale-4,
+figure.scale-4 img {
+  scale: 4;
+}
+
 #content-nav a {
   color: inherit;
   text-decoration-color: inherit;
