@@ -210,3 +210,40 @@ export function getPostTagPages(collectionApi) {
 
   return tagMap;
 }
+
+/**
+ * Returns all language variants of newsletter posts inside src/newsletter.
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of newsletter posts
+ */
+export function getAllNewsletterPosts(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/newsletter/**/*.md");
+}
+
+/**
+ * Returns the default-language newsletter posts inside src/newsletter.
+ * @param {Eleventy.collection} collectionApi
+ * @returns a list of newsletter posts
+ */
+export function getNewsletterPosts(collectionApi) {
+  return getAllNewsletterPosts(collectionApi).filter((post) => getPostLang(post) === DEFAULT_LANG);
+}
+
+export function getNewsletterByYear(collectionApi) {
+  const newsletters = getNewsletterPosts(collectionApi);
+
+  const byYear = {};
+
+  newsletters.forEach((newsletter) => {
+    const date = new Date(newsletter.date);
+    const year = date.getFullYear();
+
+    if (!byYear[year]) {
+      byYear[year] = [];
+    }
+
+    byYear[year].push(newsletter);
+  });
+
+  return byYear;
+}
