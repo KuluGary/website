@@ -72,7 +72,8 @@ figure p {
 }
 
 img.pixelated,
-figure.pixelated img {
+figure.pixelated img,
+.gallery.pixelated img {
   image-rendering: pixelated;
 }
 
@@ -107,9 +108,15 @@ figure.scale-4 img {
   }
 }
 
-span.sub {
+span.sub,
+p.sub {
   font-style: italic;
   color: var(--clr-text-faint-1);
+}
+
+span.center,
+p.center {
+  text-align: center;
 }
 
 .post-footer .post-meta {
