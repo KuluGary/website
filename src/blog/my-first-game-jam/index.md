@@ -1,9 +1,8 @@
 ---
 title: My first game jam
 date: 2026-10-14
-draft: true
 lightbox: true
-description: I entered my first game jam ever, and this is the game I made.
+description: Let’s reflect on my first game jam ever.
 tags:
   - game-dev
 ---
