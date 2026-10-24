@@ -453,3 +453,16 @@ mark {
     color: var(--clr-accent-secondary);
   }
 }
+
+audio {
+  display: block;
+  margin-inline: auto;
+}
+
+figcaption + audio {
+  margin-block-start: 0;
+}
+
+figcaption:has(+ audio) {
+  margin-block-end: var(--spacing-tight);
+}
