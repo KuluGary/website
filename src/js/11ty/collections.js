@@ -58,8 +58,9 @@ export function getJournalPosts(collectionApi) {
 export function getAllPosts(collectionApi) {
   const blog = getBlogPosts(collectionApi);
   const journal = getJournalPosts(collectionApi);
+  const newsletter = getNewsletterPosts(collectionApi);
 
-  return [...blog, ...journal].sort((a, b) => b.date - a.date);
+  return [...blog, ...journal, ...newsletter].sort((a, b) => b.date - a.date);
 }
 
 /**

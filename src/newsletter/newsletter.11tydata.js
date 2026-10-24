@@ -2,10 +2,10 @@ import { getLang, getPostSlug, DEFAULT_LANG, getPostLayout } from "../js/i18n.js
 
 export default {
   category: "newsletter",
-  css: ["/css/reset.css", "/css/variables.css", "/css/layouts/base.css"],
+  css: ["/css/reset.css", "/css/variables.css", "/css/layouts/base.css", "/css/pages/post.css"],
   eleventyComputed: {
     lang: ({ lang, page }) => getLang(page, lang),
-    postSlug: ({ page }) => getPostSlug(page),
+    postSlug: ({ page }) => getPostSlug(page, "newsletter"),
     layout: ({ page, lang }) => getPostLayout(getLang(page, lang)),
     permalink: ({ draft, lang, page }) => {
       const baseUrl = draft ? "/drafts" : "/newsletter";

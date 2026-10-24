@@ -19,7 +19,8 @@ css:
 			<ul>
 				{% for post in posts | reverse %}
 					<li>
-						<a href="{{post.url}}">Issue {{loop.index}} - {{post.data.title}}</a>
+						<a href="{{post.url}}">Issue {{collections.newsletter.length - loop.index + 1}} - {{post.data.title}}</a>
+						<p>{{ post.data.description }}</p>
 					</li>
 				{% endfor %}
 			</ul>
