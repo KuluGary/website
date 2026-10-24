@@ -1,6 +1,6 @@
 ---
 title: My first game jam
-date: 2026-10-14
+date: 2026-10-24
 lightbox: true
 description: Let’s reflect on my first game jam ever.
 tags:
