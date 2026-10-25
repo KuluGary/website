@@ -11,9 +11,8 @@ import { getNewsletterPosts } from "./newsletter.js";
 export function getAllPosts(collectionApi) {
   const blog = getBlogPosts(collectionApi);
   const journal = getJournalPosts(collectionApi);
-  const newsletter = getNewsletterPosts(collectionApi);
 
-  return [...blog, ...journal, ...newsletter].sort((a, b) => b.date - a.date);
+  return [...blog, ...journal].sort((a, b) => b.date - a.date);
 }
 
 /**
