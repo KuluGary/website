@@ -88,14 +88,9 @@
       <article class="basic-article">
         {{post.content | safe}}
 
-        {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
         <footer>
           <p>Published <time datetime="{{post.date}}">{{post.date | formatDate("LLL dd yyyy")}}</time>
           </p>
-
-          {% if mentions.length > 0 %}
-            <p>with {{mentions.length}} interactions</p>
-          {% endif %}
 
           <p>in</p>
 

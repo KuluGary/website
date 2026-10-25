@@ -68,7 +68,7 @@ layout: base.html
 				</nav>
 			</section>
 
-			{% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
+			{# {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
 			{% set reposts = mentions | webmentionsByType('repost-of') %}
 			{% set likes = mentions | webmentionsByType('like-of') %}
 			{% set replies = mentions | webmentionsByType('in-reply-to') %}
@@ -85,7 +85,7 @@ layout: base.html
 						<p>{{ replies.length }}件の返信</p>
 					{% endif %}
 				</div>
-			{% endif %}
+			{% endif %} #}
 
 		</footer>
 	</main>
