@@ -2,6 +2,7 @@
 title: Autumn 2026
 description: "The spooky season ended. Let's catch up before winter comes."
 date: 2026-10-23
+draft: true
 ---
 
 Hey! I hope everyone’s had a good spooky season. It’s my favorite time of year: the orange leaves, the crisp and cool air, and lots of tasty treats. After a very hot summer, I hope everyone has had a little breather for themselves.

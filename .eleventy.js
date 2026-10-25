@@ -5,6 +5,7 @@ import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
 
+import { RenderPlugin } from "@11ty/eleventy";
 import { getAllBlogPosts, getBlogPosts, getBlogTagPages } from "./src/js/11ty/collections/blog.js";
 import { getAllJournalPosts, getJournalPosts, getJournalTagPages } from "./src/js/11ty/collections/journal.js";
 import {
@@ -20,12 +21,12 @@ import { asciiPunct, plaintextHtml, plainUrl } from "./src/js/11ty/filters/plain
 import { pad, unslugify } from "./src/js/11ty/filters/string.js";
 import { filterByLang, getTranslations } from "./src/js/11ty/filters/translations.js";
 import { filterOwnWebmentions, getWebmentionsByUrl, webmentionsByType } from "./src/js/11ty/filters/webmentions.js";
-import mdIt from "./src/js/lib/markdown-it.js";
-import { fullPageMetadata, plainTextMetadata } from "./src/js/metadata.js";
+import { generateAudio } from "./src/js/11ty/shortcodes/audio.js";
 import { generateGallery } from "./src/js/11ty/shortcodes/images/gallery.js";
 import { generateImage } from "./src/js/11ty/shortcodes/images/image.js";
 import { addRule } from "./src/js/11ty/shortcodes/string.js";
-import { generateAudio } from "./src/js/11ty/shortcodes/audio.js";
+import mdIt from "./src/js/lib/markdown-it.js";
+import { fullPageMetadata, plainTextMetadata } from "./src/js/metadata.js";
 
 dotenv.config();
 
@@ -48,6 +49,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/journal/**/assets");
   eleventyConfig.addPassthroughCopy("./src/newsletter/**/assets");
   eleventyConfig.addPassthroughCopy({ "./src/assets/images/cap.svg": "plain/cap.svg" });
+  eleventyConfig.addPassthroughCopy("_redirects");
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
@@ -87,6 +89,7 @@ export default async function (eleventyConfig) {
   /* Plugins */
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(PostCSSPlugin);
+  eleventyConfig.addPlugin(RenderPlugin);
   eleventyConfig.addPlugin(postGraph, {
     limit: 1,
     sort: "desc",

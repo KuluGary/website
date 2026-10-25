@@ -1,0 +1,6 @@
+/archive								/posts											301
+/archive/*							/posts/:splat								301
+/blog/summer-2026				/newsletter/summer-2026			301
+/blog/summer-2026/es		/newsletter/summer-2026/es	301
+/blog/*									/post/:splat								301
+/journal/*							/post/:splat								301

@@ -9,7 +9,7 @@ export default {
     layout: ({ page, lang }) => getPostLayout(getLang(page, lang)),
     permalink: ({ draft, lang, page }) => {
       const baseUrl = draft ? "/drafts" : "/newsletter";
-      const postSlug = getPostSlug(page);
+      const postSlug = getPostSlug(page, "newsletter");
       const postLang = getLang(page, lang);
       const langSegment = postLang === DEFAULT_LANG ? "" : `${postLang}/`;
 

@@ -1,6 +1,6 @@
 ---
-title: Archive
-permalink: "/archive/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
+title: Posts
+permalink: "/posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}/"
 pagination:
   data: collections.posts
   size: 10
@@ -9,7 +9,7 @@ layout: base.html
 css:
   - /pagefind/pagefind-component-ui.css
   - /css/lib/glightbox.min.css
-  - /css/pages/archive.css
+  - /css/pages/posts.css
 ---
 
 {% block content %}

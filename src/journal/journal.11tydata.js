@@ -14,7 +14,7 @@ export default {
       return getPostLayout(language);
     },
     permalink: ({ draft, lang, page }) => {
-      const baseUrl = draft ? "/drafts" : "/journal";
+      const baseUrl = draft ? "/drafts" : "/post";
       const postSlug = getPostSlug(page, "journal");
       const postLang = getLang(page, lang);
       const langSegment = postLang === DEFAULT_LANG ? "" : `${postLang}/`;
