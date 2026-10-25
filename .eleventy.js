@@ -4,39 +4,28 @@ import syntaxHighlight from "@pborenstein/eleventy-md-syntax-highlight";
 import subsetting from "@photogabble/eleventy-plugin-font-subsetting";
 import postGraph from "@rknightuk/eleventy-plugin-post-graph";
 import dotenv from "dotenv";
+
+import { getAllBlogPosts, getBlogPosts, getBlogTagPages } from "./src/js/11ty/collections/blog.js";
+import { getAllJournalPosts, getJournalPosts, getJournalTagPages } from "./src/js/11ty/collections/journal.js";
 import {
-  getAllBlogPosts,
-  getAllJournalPosts,
-  getAllPosts,
-  getAllPostsWithTranslations,
-  getBlogPosts,
-  getBlogTagPages,
-  getJournalPosts,
-  getJournalTagPages,
-  getPostTagPages,
-} from "./src/js/11ty/collections.js";
-import {
-  asciiPunct,
-  filterByLang,
-  filterOwnWebmentions,
-  formatDate,
-  formatDuration,
-  getTranslations,
-  getWebmentionsByUrl,
-  limit,
-  optimizeRssImages,
-  pad,
-  plaintextHtml,
-  plainUrl,
-  slice,
-  sortByDate,
-  split,
-  unslugify,
-  webmentionsByType,
-} from "./src/js/11ty/filters.js";
-import { addRule, generateGallery, generateImage } from "./src/js/11ty/shortcodes.js";
+  getAllNewsletterPosts,
+  getNewsletterByYear,
+  getNewsletterPosts,
+} from "./src/js/11ty/collections/newsletter.js";
+import { getAllPosts, getAllPostsWithTranslations, getPostTagPages } from "./src/js/11ty/collections/post.js";
+import { limit, slice, split } from "./src/js/11ty/filters/array.js";
+import { formatDate, formatDuration, sortByDate } from "./src/js/11ty/filters/date.js";
+import { optimizeRssImages } from "./src/js/11ty/filters/image.js";
+import { asciiPunct, plaintextHtml, plainUrl } from "./src/js/11ty/filters/plaintext.js";
+import { pad, unslugify } from "./src/js/11ty/filters/string.js";
+import { filterByLang, getTranslations } from "./src/js/11ty/filters/translations.js";
+import { filterOwnWebmentions, getWebmentionsByUrl, webmentionsByType } from "./src/js/11ty/filters/webmentions.js";
 import mdIt from "./src/js/lib/markdown-it.js";
 import { fullPageMetadata, plainTextMetadata } from "./src/js/metadata.js";
+import { generateGallery } from "./src/js/11ty/shortcodes/images/gallery.js";
+import { generateImage } from "./src/js/11ty/shortcodes/images/image.js";
+import { addRule } from "./src/js/11ty/shortcodes/string.js";
+import { generateAudio } from "./src/js/11ty/shortcodes/audio.js";
 
 dotenv.config();
 
@@ -68,14 +57,14 @@ export default async function (eleventyConfig) {
   /** Filters */
   eleventyConfig.addFilter("formatDate", formatDate);
   eleventyConfig.addFilter("formatDuration", formatDuration);
-  eleventyConfig.addFilter("filterByLang", filterByLang);
-  eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("sortByDate", sortByDate);
+  eleventyConfig.addFilter("limit", limit);
   eleventyConfig.addFilter("slice", slice);
   eleventyConfig.addFilter("split", split);
   eleventyConfig.addFilter("pad", pad);
   eleventyConfig.addFilter("unslugify", unslugify);
   eleventyConfig.addFilter("getTranslations", getTranslations);
+  eleventyConfig.addFilter("filterByLang", filterByLang);
   eleventyConfig.addFilter("filterOwnWebmentions", filterOwnWebmentions);
   eleventyConfig.addFilter("getWebmentionsByUrl", getWebmentionsByUrl);
   eleventyConfig.addFilter("webmentionsByType", webmentionsByType);
@@ -84,13 +73,15 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("asciiPunct", asciiPunct);
   eleventyConfig.addFilter("plainUrl", plainUrl);
 
-  /* Markdown */
+  /* Libraries */
   eleventyConfig.setLibrary("md", mdIt);
 
   /** Shortcodes */
   eleventyConfig.addPairedNunjucksAsyncShortcode("gallery", generateGallery);
   eleventyConfig.addPairedNunjucksAsyncShortcode("image", generateImage);
+  eleventyConfig.addPairedNunjucksAsyncShortcode("audio", generateAudio);
   eleventyConfig.addShortcode("rule", addRule);
+
   /* Plugins */
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(PostCSSPlugin);

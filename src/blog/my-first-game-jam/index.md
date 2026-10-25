@@ -23,10 +23,10 @@ The idea was to parody “Duck Hunt” for the NES, and the art-style was inspir
 
 Even though I have more experience coding, I wanted to spend most of my time on art and music so I could gain more experience in those areas. This was my first time composing a game soundtrack by myself, so I spent a lot of time fiddling around on my DAW.
 
-<figure>
-  <figcaption>♪ Theodore’s Great Hunt theme</figcaption>
-  <audio controls src="./assets/main-theme.wav"></audio>
-</figure>
+
+{% audio section=category, slug=postSlug %}
+main-theme.wav | Theodore’s Great Hunt theme | Gary C. | Theodore’s Great Hunt OST | audio-thumbnail.png
+{% endaudio %}
 
 I think both goods and bads of the game come from the fact that it’s a very short game. Something I decided from the beginning is that I wanted keep the scope small, and to submit a fully finished game no matter what.
 
