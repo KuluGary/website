@@ -1,9 +1,8 @@
 ---
 title: Mi primera game jam
-date: 2026-10-14
-draft: true
+date: 2026-10-24
 lightbox: true
-description: Entré por primera vez en una game jam y este es el juego que hice.
+description: Reflexionemos sobre mi primera game jam.
 tags:
   - game-dev
 ---
@@ -18,7 +17,7 @@ Mi participación se llamó “[Theodore’s Great Hunt](https://kulugary.itch.i
 title.png | | | pixelated
 {% endimage %}
 
-Si quieres jugarlo, por favor dime que te parece. Por lo demás, hablaré un poco sobre el proceso de creación.
+Si quieres jugarlo, estaría encantado si me dieras tu opinión. Por lo demás, hablaré un poco sobre el proceso de creación.
 
 La idea era crear una parodia de “Duck Hunt” para la NES, y el estilo artístico fue inspirado por los gráficos y sonidos de la era de la Game Boy. El resultado final es un juego muy corto, con solo tres niveles y alrededor de 10 minutos de juego.
 
