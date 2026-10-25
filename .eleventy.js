@@ -46,12 +46,14 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/assets");
   eleventyConfig.addPassthroughCopy("./src/blog/**/assets");
   eleventyConfig.addPassthroughCopy("./src/journal/**/assets");
+  eleventyConfig.addPassthroughCopy("./src/newsletter/**/assets");
   eleventyConfig.addPassthroughCopy({ "./src/assets/images/cap.svg": "plain/cap.svg" });
 
   eleventyConfig.addWatchTarget("./src/css");
   eleventyConfig.addWatchTarget("./src/js");
   eleventyConfig.addWatchTarget("./src/blog/**/*.md");
   eleventyConfig.addWatchTarget("./src/journal/**/*.md");
+  eleventyConfig.addWatchTarget("./src/newsletter/**/*.md");
   eleventyConfig.addWatchTarget("./src/data");
 
   /** Filters */
@@ -112,6 +114,9 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection("journal", getJournalPosts);
   eleventyConfig.addCollection("journalAll", getAllJournalPosts);
   eleventyConfig.addCollection("journalTagPages", getJournalTagPages);
+  eleventyConfig.addCollection("newsletter", getNewsletterPosts);
+  eleventyConfig.addCollection("newsletterAll", getAllNewsletterPosts);
+  eleventyConfig.addCollection("newsletterByYear", getNewsletterByYear);
   eleventyConfig.addCollection("posts", getAllPosts);
   eleventyConfig.addCollection("postsWithTranslations", getAllPostsWithTranslations);
   eleventyConfig.addCollection("postTagPages", getPostTagPages);

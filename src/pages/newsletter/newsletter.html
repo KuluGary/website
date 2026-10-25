@@ -1,0 +1,29 @@
+---
+title: Newsletter
+permalink: /newsletter/
+layout: base.html
+css:
+  - /css/pages/newsletter.css
+---
+
+{% block content %}
+	<main id="main-content">
+		<p>Subscribe for free e-mail updates!</p>
+
+		<p>I will <em>never</em> use this e-mail for <em>any</em> other purpose other than to send you updates like the ones listed here.</p>
+
+		{% include "components/kit-email-form.html" %}
+
+		{% for year, posts in collections.newsletterByYear | dictsort | reverse %}
+			<h2>{{ year }}</h2>
+			<ul>
+				{% for post in posts | reverse %}
+					<li>
+						<a href="{{post.url}}">Issue {{collections.newsletter.length - loop.index + 1}} - {{post.data.title}}</a>
+						<p>{{ post.data.description }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</main>
+{% endblock content %}
