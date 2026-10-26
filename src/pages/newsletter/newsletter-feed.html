@@ -25,7 +25,7 @@ metadata:
 	<updated>{{ postList | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
 	<author>
 		<name>{{ medatata.author.name }}</name>
-		<email>{{ metadata.author.email }}</name>
+		<email>{{ metadata.author.email }}</email>
 	</author>
 	<generator uri="https://www.11ty.dev/">Eleventy.js</generator>
 	{% for post in postsList %}

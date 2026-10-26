@@ -14,6 +14,8 @@ css:
 
 		{% include "components/kit-email-form.html" %}
 
+		<p>Or you can also subscribe to the <a href="/newsletter/feed.xml">RSS feed</a> to get updates that way.</p>
+
 		{% for year, posts in collections.newsletterByYear | dictsort | reverse %}
 			<h2>{{ year }}</h2>
 			<ul>
