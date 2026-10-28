@@ -41,26 +41,11 @@ layout: base.html
 			{% endif %}
 
 			<section class="footer-data">
-				<nav class="post-nav">
-					<ul class="unstyled">
-						{% if nextNewsletter %}
-							<li class="next">
-								<p>&larr; Siguiente</p>
-								<a href="{{ nextNewsletter.url }}" class="unstyled">
-									{{ nextNewsletter.data.title }}
-								</a>
-							</li>
-						{% endif %}
-						{% if previousNewsletter %}
-							<li class="prev">
-								<p>Anterior &rarr;</p>
-								<a href="{{ previousNewsletter.url }}" class="unstyled">
-									{{ previousNewsletter.data.title }}
-								</a>
-							</li>
-						{% endif %}
-					</ul>
-				</nav>
+				<p>
+					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
+						Publicado el {{ date | formatDate("LLLL dd, yyyy") }}
+					</time>
+				</p>
 			</section>
 		</footer>
 	</main>
