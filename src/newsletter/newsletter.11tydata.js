@@ -6,7 +6,7 @@ export default {
   eleventyComputed: {
     lang: ({ lang, page }) => getLang(page, lang),
     postSlug: ({ page }) => getPostSlug(page, "newsletter"),
-    layout: ({ page, lang }) => getPostLayout(getLang(page, lang)),
+    layout: ({ page, lang }) => getPostLayout(getLang(page, lang), "newsletter"),
     permalink: ({ draft, lang, page }) => {
       const baseUrl = draft ? "/drafts" : "/newsletter";
       const postSlug = getPostSlug(page, "newsletter");

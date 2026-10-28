@@ -5,6 +5,12 @@ tags: ["web-dev", "changelog"]
 description: Part of my workflow when writing to this site is building the static files and uploading them to Neocities, so I made a sh script to automate it.
 ---
 
+<span class="sub">
+
+As of Oct. 2026 I’m no longer hosting my website on Neocities. Even so, the process should still work as explained.
+
+</span>
+
 This personal site is hosted in [Neocities](https://neocities.org/) and built using [11ty](https://www.11ty.dev/). To simplify uploading my static files to Neocities, I wrote a very small shell script that I added to my `package.json`.
 
 ```sh

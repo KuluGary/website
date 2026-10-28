@@ -34,67 +34,45 @@ layout: base.html
 				</section>
 			{% endif %}
 
-			{% if category != "newsletter" %}
-				<section class="footer-data">
-					<p class="post-meta">
-						<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
+			<section class="footer-data">
+				<p class="post-meta">
+					<time datetime="{{ date | formatDate("yyyy-MM-dd") }}">
 						Published {{ date | formatDate("LLLL dd, yyyy") }}
-						</time>
+					</time>
 
-						{% if tags.length > 0 %}
+					{% if tags.length > 0 %}
 					in
 					{% endif %}
-					</p>
-					<ul class="post-tags unstyled">
-						{% for tag in tags %}
-							<li>
-								<a href="/posts/tags/{{ tag }}">#{{ tag | lower }}</a>
+				</p>
+				<ul class="post-tags unstyled">
+					{% for tag in tags %}
+						<li>
+							<a href="/posts/tags/{{ tag }}">#{{ tag | lower }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<nav class="post-nav">
+
+					<ul class="unstyled">
+						{% if nextPost %}
+							<li class="next">
+								<p>&larr; Next</p>
+								<a href="{{ nextPost.url }}" class="unstyled">
+									{{ nextPost.data.title }}
+								</a>
 							</li>
-						{% endfor %}
+						{% endif %}
+						{% if previousPost %}
+							<li class="prev">
+								<p>Previous &rarr;</p>
+								<a href="{{ previousPost.url }}" class="unstyled">
+									{{ previousPost.data.title }}
+								</a>
+							</li>
+						{% endif %}
 					</ul>
-					<nav class="post-nav">
-
-						<ul class="unstyled">
-							{% if nextPost %}
-								<li class="next">
-									<p>&larr; Next</p>
-									<a href="{{ nextPost.url }}" class="unstyled">
-										{{ nextPost.data.title }}
-									</a>
-								</li>
-							{% endif %}
-							{% if previousPost %}
-								<li class="prev">
-									<p>Previous &rarr;</p>
-									<a href="{{ previousPost.url }}" class="unstyled">
-										{{ previousPost.data.title }}
-									</a>
-								</li>
-							{% endif %}
-						</ul>
-					</nav>
-				</section>
-			{% endif %}
-
-			{# {% set mentions = webmentions | getWebmentionsByUrl(page.url) | filterOwnWebmentions %}
-			{% set reposts = mentions | webmentionsByType('repost-of') %}
-			{% set likes = mentions | webmentionsByType('like-of') %}
-			{% set replies = mentions | webmentionsByType('in-reply-to') %}
-
-			{% if likes.length or reposts.length or replies.length or bubblesSignal %}
-				<div class="interactions">
-					{% if likes.length or bubblesSignal.cpunt %}
-						<p>{{ (likes.length or 0) + (bubblesSignal.count or 0) }} likes</p>
-					{% endif %}
-					{% if reposts.length %}
-						<p>{{ reposts.length }} reposts</p>
-					{% endif %}
-					{% if replies.length %}
-						<p>{{ replies.length }} replies</p>
-					{% endif %}
-				</div>
-			{% endif %} #}
-
+				</nav>
+			</section>
 		</footer>
 	</main>
 {% endblock %}

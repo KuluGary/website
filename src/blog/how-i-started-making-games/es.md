@@ -21,11 +21,6 @@ db.jpg | Un extracto del libro “Generación Dragon Ball”. Dice: […] Con el
 
 > […] Con el programa “M.U.G.E.N.” (un “creador” de juegos de lucha en 2D, que permite importar nuestros propios luchadores y dotarlos de los atributos que queramos) los fans han creado un juego de lucha basado en “Dragon Ball AF”, donde se puede seleccionar a Goku súper saiyano 5 o Gohan Súper Saiyano 4 [...].
 
-{% gallery section=category, slug=postSlug %}
-mugen-2.png | El menú de selección de personajes. Actualmente seleccionados: Sonic para el jugador 1 y Cloud Strife para el jugador 2.
-mugen-3.png | Los luchadores entran a la arena. A la izquierda, Kenshin Himura, y a la izquierda, Luigi.
-{% endgallery %}
-
 Mis amigos y yo nos lo descargamos e “hicimos algunos juegos” (en realidad, solamente descargamos el motor y unos cuantos personajes que otra gente ya había creado…). Nos lo pasamos bien, pero usar recursos pre-fabricados no nos dio la sensación de “estar haciendo un juego”. Después de eso recuerdo vívidamente haber ido al centro comercial, y nos descargamos Blender desde el wi-fi del McDonald’s pero la interfaz era tan confusa que ni siquiera supimos borrar el cubo por defecto.
 
 {% image section=category, slug=postSlug %}
